@@ -1,1 +1,3 @@
-initialize
+initialize 
+
+start
