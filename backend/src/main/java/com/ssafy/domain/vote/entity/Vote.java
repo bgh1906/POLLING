@@ -33,7 +33,7 @@ public class Vote extends BaseTimeEntity {
     @Column
     private LocalDateTime end_date;
 
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Candidate> candidates = new ArrayList<Candidate>();
 
     @Builder

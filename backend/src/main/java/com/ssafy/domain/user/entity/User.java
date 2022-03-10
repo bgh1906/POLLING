@@ -44,10 +44,10 @@ public class User extends BaseTimeEntity {
     @Column
     private Long oauth_id;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<Comment>();
 
-    @OneToMany(mappedBy = "candidate_history", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "candidate_history", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<CandidateHistory> candidateHistories = new ArrayList<CandidateHistory>();
 
     @Builder
