@@ -1,7 +1,7 @@
-package com.ssafy.core.repository.candidate;
+package com.ssafy.core.repository.vote;
 
-import com.ssafy.core.entity.candidate.Candidate;
+import com.ssafy.core.entity.vote.Vote;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+public interface VoteRepository extends JpaRepository<Vote, Long> {
 }

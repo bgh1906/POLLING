@@ -1,7 +1,7 @@
-package com.ssafy.core.repository.candidate;
+package com.ssafy.core.repository.comment;
 
-import com.ssafy.core.entity.candidate.Candidate;
+import com.ssafy.core.entity.comment.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }

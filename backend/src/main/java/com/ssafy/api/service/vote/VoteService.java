@@ -1,2 +1,4 @@
-package com.ssafy.api.service.vote;public class VoteService {
+package com.ssafy.api.service.vote;
+
+public class VoteService {
 }

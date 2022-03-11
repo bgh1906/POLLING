@@ -1,7 +1,7 @@
 package com.ssafy.core.repository.candidate;
 
-import com.ssafy.core.entity.candidate.Candidate;
+import com.ssafy.core.entity.candidate.CandidateHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+public interface CandidateHistoryRepository extends JpaRepository<CandidateHistory, Long> {
 }
