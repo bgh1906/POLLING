@@ -37,4 +37,10 @@ public class UserController {
     public ResponseEntity<Void> update(@RequestBody UpdateUserRequestDto requestDto) {
         return ResponseEntity.status(200).build();
     }
+
+    @PutMapping("/role")
+    @ApiOperation(value = "회원 권한 수정")
+    public ResponseEntity<Void> updateRole(@RequestBody UpdateUserRequestDto requestDto) {
+        return ResponseEntity.status(200).build();
+    }
 }

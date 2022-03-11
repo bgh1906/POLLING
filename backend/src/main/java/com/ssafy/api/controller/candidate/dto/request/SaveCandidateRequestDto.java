@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class SaveCandidateRequestDto {
-    private Long vote_id;
+    private Long voteId;
     private String name;
     private String profile_path;
 }
