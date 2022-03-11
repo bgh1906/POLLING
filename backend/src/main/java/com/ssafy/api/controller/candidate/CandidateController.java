@@ -1,7 +1,8 @@
 package com.ssafy.api.controller.candidate;
 
 import com.ssafy.api.controller.candidate.dto.request.SaveCandidateRequestDto;
-import com.ssafy.api.controller.candidate.dto.response.FindCommentReponseDto;
+import com.ssafy.api.controller.candidate.dto.request.SaveCommentRequestDto;
+import com.ssafy.api.controller.candidate.dto.request.UpdateCommentRequestDto;
 import com.ssafy.api.controller.candidate.dto.response.FindProfileResponseDto;
 import com.ssafy.api.controller.candidate.dto.response.FindVoteHistoryResponseDto;
 import com.ssafy.api.controller.user.dto.request.SaveUserRequestDto;
@@ -9,6 +10,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/candidate")
@@ -30,21 +34,20 @@ public class CandidateController {
 
     @GetMapping("/history/{id}")
     @ApiOperation(value = "특정 후보자 득표 내역 조회")
-    public ResponseEntity<FindVoteHistoryResponseDto> getHistory(@PathVariable Long id) {
-        FindVoteHistoryResponseDto responseDto = new FindVoteHistoryResponseDto();
+    public ResponseEntity<List<FindVoteHistoryResponseDto>> getHistory(@PathVariable Long id) {
+        List<FindVoteHistoryResponseDto> responseDto = new ArrayList<FindVoteHistoryResponseDto>();
         return ResponseEntity.status(200).body(responseDto);
     }
 
     @PostMapping("/comment")
     @ApiOperation(value = "응원 댓글 작성")
-    public ResponseEntity<Void> saveComment(@RequestBody SaveUserRequestDto requestDto) {
+    public ResponseEntity<Void> saveComment(@RequestBody SaveCommentRequestDto requestDto) {
         return ResponseEntity.status(200).build();
     }
 
     @PutMapping("/comment/{commentId}")
     @ApiOperation(value = "응원 댓글 수정")
-    public ResponseEntity<Void> updateComment(@PathVariable Long commentId) {
-        FindCommentReponseDto reponseDto = new FindCommentReponseDto();
+    public ResponseEntity<Void> updateComment(@PathVariable Long commentId, @RequestBody UpdateCommentRequestDto requestDto) {
         return ResponseEntity.status(200).build();
     }
 
