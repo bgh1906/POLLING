@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FindProfileResponseDto {
     private String name;
-    private String profile_path;
+    private String profilePath;
     private Long voteTotal;
 }

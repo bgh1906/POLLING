@@ -6,6 +6,6 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class SaveCommentRequestDto {
-    private Long candidate_id;
+    private Long candidateId;
     private String content;
 }

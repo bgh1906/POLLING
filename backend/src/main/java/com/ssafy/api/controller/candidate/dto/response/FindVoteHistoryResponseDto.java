@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FindVoteHistoryResponseDto {
-    private String user_name;
+    private String userName;
     private int voteCount;
     private String transactionId;
 }
