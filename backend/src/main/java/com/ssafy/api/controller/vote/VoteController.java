@@ -2,6 +2,7 @@ package com.ssafy.api.controller.vote;
 
 import com.ssafy.api.controller.vote.dto.request.FindVoteRankingRsponseDto;
 import com.ssafy.api.controller.user.dto.request.SaveUserRequestDto;
+import com.ssafy.api.controller.vote.dto.request.SaveVoteRequestDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class VoteController {
 
     @PostMapping
     @ApiOperation(value = "투표 생성")
-    public ResponseEntity<Void> save(@RequestBody SaveUserRequestDto requestDto) {
+    public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
         return ResponseEntity.status(200).build();
     }
 
@@ -29,7 +30,7 @@ public class VoteController {
 
     @GetMapping("/rank/{id}")
     @ApiOperation(value = "득표 현황 랭킹 조회")
-    public ResponseEntity<List<FindVoteRankingRsponseDto>> getRanking(@PathVariable Long voteId) {
+    public ResponseEntity<List<FindVoteRankingRsponseDto>> getRanking(@PathVariable Long id) {
         List<FindVoteRankingRsponseDto> responseDto = new ArrayList<>();
         return ResponseEntity.status(200).body(responseDto);
     }

@@ -40,9 +40,6 @@ public class Vote extends BaseTimeEntity {
     @Column
     private VoteStatus voteStatus;
 
-    @OneToMany(mappedBy = "candidate_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Candidate> candidates = new ArrayList<Candidate>();
-
     @Builder
     public Vote(String name, String host, LocalDateTime startDate, LocalDateTime end_date){
         this.name = name;

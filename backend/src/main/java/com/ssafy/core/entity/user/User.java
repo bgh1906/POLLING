@@ -1,8 +1,6 @@
 package com.ssafy.core.entity.user;
 
 import com.querydsl.core.annotations.QueryEntity;
-import com.ssafy.core.entity.candidate.CandidateHistory;
-import com.ssafy.core.entity.comment.Comment;
 import com.ssafy.core.entity.common.BaseTimeEntity;
 import com.ssafy.core.entity.user.status.OAuthType;
 import com.ssafy.core.entity.user.status.UserRole;
@@ -12,8 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -35,8 +31,8 @@ public class User extends BaseTimeEntity {
     @Column
     private String password;
 
-    @Column(name = "phone_number")
-    private String phone;
+    @Column
+    private String phoneNumber;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -49,18 +45,12 @@ public class User extends BaseTimeEntity {
     @Column
     private Long oauthId;
 
-    @OneToMany(mappedBy = "comment_id", cascade = CascadeType.PERSIST)
-    private List<Comment> comments = new ArrayList<Comment>();
-
-    @OneToMany(mappedBy = "candidate_history_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<CandidateHistory> candidateHistories = new ArrayList<CandidateHistory>();
-
     @Builder
-    public User(String name, String email, String password, String phone, UserRole userRole, OAuthType oauthType, Long oauthId){
+    public User(String name, String email, String password, String phoneNumber, UserRole userRole, OAuthType oauthType, Long oauthId){
         this.name = name;
         this.email = email;
         this.password = password;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.userRole = userRole;
         this.oauthType = oauthType;
         this.oauthId = oauthId;

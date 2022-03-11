@@ -37,12 +37,6 @@ public class Candidate extends BaseTimeEntity {
     @Column
     private Long voteTotal;
 
-    @OneToMany(mappedBy = "comment_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<Comment>();
-
-    @OneToMany(mappedBy = "candidate_history_id", cascade = CascadeType.PERSIST)
-    private List<CandidateHistory> candidateHistories = new ArrayList<CandidateHistory>();
-
     @Builder
     public Candidate(Vote vote, String name, String profilePath, Long voteTotal){
         this.vote = vote;

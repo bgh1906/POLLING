@@ -6,7 +6,7 @@ plugins {
 }
 group = 'com.ssafy'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
@@ -46,6 +46,7 @@ dependencies {
     runtimeOnly	'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
     compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
