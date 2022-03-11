@@ -35,10 +35,10 @@ public class Candidate extends BaseTimeEntity {
     private String profilePath;
 
     @Column
-    private Long voteTotal;
+    private Integer voteTotal;
 
     @Builder
-    public Candidate(Vote vote, String name, String profilePath, Long voteTotal){
+    public Candidate(Vote vote, String name, String profilePath, Integer voteTotal){
         this.vote = vote;
         this.name = name;
         this.profilePath = profilePath;

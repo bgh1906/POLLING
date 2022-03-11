@@ -1,8 +1,7 @@
-package com.ssafy.api.controller.vote.dto.request;
+package com.ssafy.api.controller.vote.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ssafy.api.controller.candidate.dto.request.SaveCandidateRequestDto;
-import lombok.AccessLevel;
+import com.ssafy.api.controller.candidate.dto.response.FindCandidateResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,11 +10,11 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-public class SaveVoteRequestDto {
-    List<SaveCandidateRequestDto> candidates;
+public class FindVoteResponseDto {
+    private List<FindCandidateResponseDto> candidates;
     @NotNull
     String name;
     @NotNull
