@@ -1,11 +1,13 @@
 package com.ssafy.api.controller.candidate.dto.request;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class SaveCommentRequestDto {
-    private Long candidate_id;
+public class UpdateCommentRequestDto {
     private String content;
 }
