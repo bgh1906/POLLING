@@ -30,17 +30,16 @@ public class CandidateHistory extends BaseTimeEntity {
     private Candidate candidate;
 
     @Column
-    private String voteCount;
+    private Integer voteCount;
 
     @Column
     private String transactionId;
 
     @Builder
-    public CandidateHistory(User user, Candidate candidate, String voteCount, String transactionId){
+    public CandidateHistory(User user, Candidate candidate, Integer voteCount, String transactionId) {
         this.user = user;
         this.candidate = candidate;
         this.voteCount = voteCount;
         this.transactionId = transactionId;
     }
-
 }

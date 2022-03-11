@@ -1,8 +1,7 @@
 package com.ssafy.api.controller.vote;
 
-import com.ssafy.api.controller.vote.dto.request.FindVoteRankingRsponseDto;
-import com.ssafy.api.controller.user.dto.request.SaveUserRequestDto;
 import com.ssafy.api.controller.vote.dto.request.SaveVoteRequestDto;
+import com.ssafy.api.controller.vote.dto.response.FindVoteResponseDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,22 +21,16 @@ public class VoteController {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation(value = "대회 정보 조회")
-    public ResponseEntity<Void> getHistory (@PathVariable Long id) {
-        return ResponseEntity.status(200).build();
-    }
-
-    @GetMapping("/rank/{id}")
+    @GetMapping("{id}")
     @ApiOperation(value = "득표 현황 랭킹 조회")
-    public ResponseEntity<List<FindVoteRankingRsponseDto>> getRanking(@PathVariable Long id) {
-        List<FindVoteRankingRsponseDto> responseDto = new ArrayList<>();
+    public ResponseEntity<FindVoteResponseDto> getRanking(@PathVariable Long id) {
+        FindVoteResponseDto responseDto = new FindVoteResponseDto();
         return ResponseEntity.status(200).body(responseDto);
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "투표 삭제")
-    public ResponseEntity<Void> delete() {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         return ResponseEntity.status(200).build();
     }
 

@@ -1,14 +1,15 @@
-package com.ssafy.api.controller.candidate.dto.request;
+package com.ssafy.api.controller.candidate.dto.response;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
-public class SaveCandidateRequestDto {
+public class FindCandidateResponseDto {
+    private Long id;
     private String name;
     private String profilePath;
     private Integer voteTotal;
