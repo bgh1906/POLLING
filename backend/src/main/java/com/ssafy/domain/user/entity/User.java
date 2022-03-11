@@ -3,6 +3,7 @@ package com.ssafy.domain.user.entity;
 import com.ssafy.domain.candidatehistory.entity.CandidateHistory;
 import com.ssafy.domain.comment.entity.Comment;
 import com.ssafy.domain.common.BaseTimeEntity;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "TB_USER")
 @Entity
 public class User extends BaseTimeEntity {
@@ -35,30 +36,30 @@ public class User extends BaseTimeEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private String role;
+    private Role role;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private String oauth_type;
+    private OAuthType oauthType;
 
     @Column
-    private Long oauth_id;
+    private Long oauthId;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "comment_id", cascade = CascadeType.PERSIST)
     private List<Comment> comments = new ArrayList<Comment>();
 
-    @OneToMany(mappedBy = "candidate_history", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "candidate_history_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<CandidateHistory> candidateHistories = new ArrayList<CandidateHistory>();
 
     @Builder
-    public User(String name, String email, String password, String phone, String role, String oauth_type, Long oauth_id){
+    public User(String name, String email, String password, String phone, Role role, OAuthType oauthType, Long oauthId){
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.role = role;
-        this.oauth_type = oauth_type;
-        this.oauth_id = oauth_id;
+        this.oauthType = oauthType;
+        this.oauthId = oauthId;
     }
 
 }

@@ -4,6 +4,7 @@ import com.ssafy.domain.candidatehistory.entity.CandidateHistory;
 import com.ssafy.domain.comment.entity.Comment;
 import com.ssafy.domain.common.BaseTimeEntity;
 import com.ssafy.domain.vote.entity.Vote;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "TB_CANDIDATE")
 @Entity
 public class Candidate extends BaseTimeEntity {
@@ -22,7 +23,7 @@ public class Candidate extends BaseTimeEntity {
     @Column(name = "candidate_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vote_id")
     private Vote vote;
 
@@ -30,23 +31,23 @@ public class Candidate extends BaseTimeEntity {
     private String name;
 
     @Column
-    private String profile_path;
+    private String profilePath;
 
     @Column
-    private Long vote_total;
+    private Long voteTotal;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "comment_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<Comment>();
 
-    @OneToMany(mappedBy = "candidate_history", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "candidate_history_id", cascade = CascadeType.PERSIST)
     private List<CandidateHistory> candidateHistories = new ArrayList<CandidateHistory>();
 
     @Builder
-    public Candidate(Vote vote, String name, String profile_path, Long vote_total){
+    public Candidate(Vote vote, String name, String profilePath, Long voteTotal){
         this.vote = vote;
         this.name = name;
-        this.profile_path = profile_path;
-        this.vote_total = vote_total;
+        this.profilePath = profilePath;
+        this.voteTotal = voteTotal;
     }
 
 }

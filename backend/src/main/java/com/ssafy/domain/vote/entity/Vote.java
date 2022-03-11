@@ -2,6 +2,7 @@ package com.ssafy.domain.vote.entity;
 
 import com.ssafy.domain.candidate.entity.Candidate;
 import com.ssafy.domain.common.BaseTimeEntity;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "TB_VOTE")
 @Entity
 public class Vote extends BaseTimeEntity {
@@ -28,20 +29,24 @@ public class Vote extends BaseTimeEntity {
     private String host;
 
     @Column
-    private LocalDateTime start_date;
+    private LocalDateTime startDate;
 
     @Column
-    private LocalDateTime end_date;
+    private LocalDateTime endDate;
 
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @Column
+    private VoteStatus voteStatus;
+
+    @OneToMany(mappedBy = "candidate_id", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Candidate> candidates = new ArrayList<Candidate>();
 
     @Builder
-    public Vote(String name, String host, LocalDateTime start_date, LocalDateTime end_date){
+    public Vote(String name, String host, LocalDateTime startDate, LocalDateTime end_date){
         this.name = name;
         this.host = host;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startDate = startDate;
+        this.endDate = end_date;
+        this.voteStatus = VoteStatus.WAIT;
     }
 
 }
