@@ -3,6 +3,7 @@ package com.ssafy.core.entity.vote;
 import com.querydsl.core.annotations.QueryEntity;
 import com.ssafy.core.entity.candidate.Candidate;
 import com.ssafy.core.entity.common.BaseTimeEntity;
+import com.ssafy.core.entity.user.User;
 import com.ssafy.core.entity.vote.status.VoteStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,8 +29,12 @@ public class Vote extends BaseTimeEntity {
     @Column(name = "vote_name")
     private String name;
 
-    @Column(name = "vote_host")
-    private String host;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "host_id")
+    private User host;
+
+    @Column
+    private String content;
 
     @Column
     private LocalDateTime startDate;
@@ -38,15 +43,14 @@ public class Vote extends BaseTimeEntity {
     private LocalDateTime endDate;
 
     @Column
-    private VoteStatus voteStatus;
+    private VoteStatus voteStatus = VoteStatus.WAIT;
 
     @Builder
-    public Vote(String name, String host, LocalDateTime startDate, LocalDateTime end_date){
+    public Vote(String name, User host, String content, LocalDateTime startDate, LocalDateTime endDate) {
         this.name = name;
         this.host = host;
+        this.content = content;
         this.startDate = startDate;
-        this.endDate = end_date;
-        this.voteStatus = VoteStatus.WAIT;
+        this.endDate = endDate;
     }
-
 }
