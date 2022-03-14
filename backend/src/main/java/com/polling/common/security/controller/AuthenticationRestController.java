@@ -23,7 +23,7 @@ import javax.validation.Valid;
  * Controller to authenticate users.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @Slf4j
 public class AuthenticationRestController {
@@ -32,7 +32,7 @@ public class AuthenticationRestController {
 
    private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-   @PostMapping("/auth")
+   @PostMapping
    public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginDto loginDto) {
 
       UsernamePasswordAuthenticationToken authenticationToken =
