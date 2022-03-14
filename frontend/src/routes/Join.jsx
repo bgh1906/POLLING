@@ -1,10 +1,12 @@
-
+import Nav from "../components/layout/Nav.jsx"
 
 
 function Join() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <>
+            <Nav />
+        </>
     );
 }
 

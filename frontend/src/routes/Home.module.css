@@ -1,0 +1,132 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+#mainimg {
+    width: 80vw;
+    height: 20vh;
+}
+
+
+.poll_list {
+    display: flex;
+    justify-content: center;
+}
+
+#list {
+    display: inline;
+    position: relative;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5vw;
+    top: 3vh;
+    left: 1vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#box1 {
+    background-color: #faffdf;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 35vh;
+}
+
+#box2 {
+    background-color: #faffdf;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 7vh;
+}
+
+#box3 {
+    background-color: #faffdf;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 6vh;
+}
+
+#box4 {
+    background-color: #faffdf;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    height: 4vh;
+}
+
+#list_img {
+    position: relative;
+    width: 23vw;
+    margin: 1vw;
+    top: 4vh;
+
+}
+
+#list_text {
+    position: relative;
+    display: flex;
+    width: 23vw;
+    justify-content: center;
+    top: 3vh;
+    margin: 1vw;
+    font-size: 1.5vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-weight: bold;
+}
+
+#list_date {
+    position: relative;
+    display: flex;
+    width: 23vw;
+    justify-content: center;
+    margin: 1vw;
+    font-size: 1.5vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+
+#more {
+    position: relative;
+    top: 2vh;
+    width: 6vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+}
+
+
+/* 히스토리 */
+
+.history_list {
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+#history {
+    display: inline;
+    position: relative;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5vw;
+    top: 3vh;
+    left: 2vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
