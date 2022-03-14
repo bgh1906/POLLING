@@ -1,3 +1,8 @@
+.Navbox {
+    height: 30vh !important;
+    
+}
+
 .leftbox {
     position: relative;
     width: 24vw;

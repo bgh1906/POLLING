@@ -5,7 +5,7 @@ import votebox from "./vote.png";
 function Nav() {
 
     return (
-        <>
+        <div className={Styles.Navbox}>
             {/* 서비스 이름 */}
                 <div className={Styles.leftbox}>
                     <div className={Styles.leftboxbottom}></div>
@@ -32,7 +32,7 @@ function Nav() {
                 <Link to="/notice" className={Styles.notice}> 공지사항</Link>
                 <Link to="/login" className={Styles.login}> 로그인</Link>
                 <Link to="/admin" className={Styles.admin}> 관리자페이지</Link>
-        </>
+        </div>
     );
 }
 
