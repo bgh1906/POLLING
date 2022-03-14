@@ -4,7 +4,7 @@
 function PollList() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <h1> Poll List </h1>
     );
 }
 
