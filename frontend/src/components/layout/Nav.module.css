@@ -1,3 +1,8 @@
+.NavBox {
+    display: block;
+}
+
+
 .leftbox {
     position: absolute;
     width: 24vw;

@@ -4,7 +4,7 @@
 function CreatePoll() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <h1> create a poll </h1>
     );
 }
 
