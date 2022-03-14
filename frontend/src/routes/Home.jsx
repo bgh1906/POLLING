@@ -1,5 +1,6 @@
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
+import Nav from "../components/layout/Nav.jsx"
 
 
 function Home() {
@@ -7,8 +8,7 @@ function Home() {
     return (
         <div>
             <div>
-                <h1>Nav</h1>
-                <h1>Nav</h1>
+              <Nav />
             </div>
 {/* 메인 이미지 */}
             <div className={styles.main}>
@@ -94,6 +94,7 @@ function Home() {
             </div>
 
         </div>
+
     );
 }
 
