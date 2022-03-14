@@ -5,19 +5,19 @@ function Footer() {
     <div className={styles.footer}>
       <div className={styles.company_Info}>
         <div className={styles.ci_contact}>POLLING</div>
+        <div className={styles.ci_phone}>010 - 2790 - 6642</div>
         <div className={styles.ci_contents}>
           Monday - Friday
           <br />
           10:30 AM - 6:00 PM
-          <br />
-          010 - 2790 - 6642
+          {/* <br />
+          010 - 2790 - 6642 */}
           <br />
           contact@polling.com
         </div>
       </div>
       <div className={styles.ft_menu}>
         <ul>
-          <li>이벤트</li>
           <li>자주 묻는 질문</li>
           <li>개인정보처리방침</li>
           <li>이용약관</li>

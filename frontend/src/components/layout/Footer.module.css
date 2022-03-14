@@ -15,10 +15,17 @@
   font-family: "RussoOne";
 }
 
-.ci_contents {
-  font-size: 14px;
-  line-height: 24px;
+.ci_phone {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "RussoOne";
   margin-top: 22px;
+}
+
+.ci_contents {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 12px;
 }
 
 .ft_menu {

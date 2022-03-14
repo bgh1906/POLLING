@@ -1,0 +1,9 @@
+.list_title {
+  font-family: "RussoOne";
+  font-size: 40px;
+}
+
+@font-face {
+  font-family: "RussoOne";
+  src: url(../fonts/RussoOne-Regular.ttf);
+}

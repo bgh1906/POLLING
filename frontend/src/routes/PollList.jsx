@@ -1,9 +1,12 @@
 import Footer from "../components/layout/Footer";
+import Nav from "../components/layout/Nav";
+import styles from "./PollList.module.css";
 
 function PollList() {
   return (
     <div>
-      <h1> PollList </h1>
+      <Nav />
+      <div className={styles.list_title}> PollList </div>
       <Footer />
     </div>
   );
