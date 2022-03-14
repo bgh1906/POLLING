@@ -3,6 +3,7 @@ package com.polling.api.controller.vote;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.service.vote.VoteService;
+import com.polling.common.security.SecurityUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,7 @@ public class VoteController {
     @PostMapping
     @ApiOperation(value = "투표 생성")
     public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
-        //todo jwt security
-        String hostEmail = null;
+        String hostEmail = getCurrentUserEmail();
         voteService.saveVote(requestDto, hostEmail);
         return ResponseEntity.status(200).build();
     }
@@ -47,5 +47,10 @@ public class VoteController {
     @ApiOperation(value = "투표 공개 <-> 비공개 스왑")
     public ResponseEntity<Void> changeStatus(@PathVariable Long id, @PathVariable Boolean status) {
         return ResponseEntity.status(200).build();
+    }
+
+    //todo: throw Custom exception 처리
+    private String getCurrentUserEmail(){
+        return SecurityUtils.getCurrentUsername().orElseThrow();
     }
 }

@@ -1,8 +1,11 @@
 package com.polling.common.config;
 
 
+import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
@@ -20,11 +23,11 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
                 .select()
-//                .apis(Predicates.or(
-//                        RequestHandlerSelectors.basePackage("com.ssafy.backend.api.controller"),
-//                        RequestHandlerSelectors.basePackage("com.ssafy.backend.security.controller")
-//                ))
-//                .paths(PathSelectors.ant("/api/**"))
+                .apis(Predicates.or(
+                        RequestHandlerSelectors.basePackage("com.polling.api.controller"),
+                        RequestHandlerSelectors.basePackage("com.polling.common.security.controller")
+                ))
+                .paths(PathSelectors.ant("/api/**"))
                 .build();
     }
 
