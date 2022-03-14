@@ -10,6 +10,7 @@ import com.ssafy.api.queryrepository.VoteQueryRepository;
 import com.ssafy.core.entity.candidate.Candidate;
 import com.ssafy.core.entity.user.User;
 import com.ssafy.core.entity.vote.Vote;
+import com.ssafy.core.entity.vote.status.VoteStatus;
 import com.ssafy.core.repository.candidate.CandidateRepository;
 import com.ssafy.core.repository.user.UserRepository;
 import com.ssafy.core.repository.vote.VoteRepository;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Transactional
 @RequiredArgsConstructor
@@ -58,6 +60,18 @@ public class VoteService {
         List<FindCandidateResponseDto> list = voteQueryRepository.findCandidatesSortByVoteTotal(id);
         FindVoteResponseDto responseDto = new FindVoteResponseDto(list, vote.getName(), vote.getContent(), vote.getStartDate(), vote.getEndDate());
         return responseDto;
+    }
+
+    public void delete(Long id){
+        Vote vote = voteRepository.findById(id)
+                .orElseThrow(()->new RuntimeException());
+        voteRepository.deleteById(id);
+    }
+
+    public void endVote(Long id){
+        Vote vote = voteRepository.findById(id)
+                .orElseThrow(()->new RuntimeException());
+        vote.setVoteStatus(VoteStatus.COMPLETE);
     }
 
     public void voteTo(Long candidateId, int vote){

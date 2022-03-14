@@ -53,4 +53,8 @@ public class Vote extends BaseTimeEntity {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public void setVoteStatus(VoteStatus voteStatus){
+        this.voteStatus = voteStatus;
+    }
 }
