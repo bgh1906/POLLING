@@ -1,11 +1,12 @@
-
-
+import Footer from "../components/layout/Footer";
 
 function PollList() {
-
-    return (
-        <h1> Hello, Let's start </h1>
-    );
+  return (
+    <div>
+      <h1> PollList </h1>
+      <Footer />
+    </div>
+  );
 }
 
 export default PollList;
