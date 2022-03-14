@@ -1,10 +1,13 @@
-
+import Nav from "../components/layout/Nav.jsx"
 
 
 function Home() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <>
+        <Nav />
+        {/* <h1> Hello, Let's start </h1> */}
+        </>
     );
 }
 
