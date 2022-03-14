@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -38,11 +39,22 @@ public class Candidate extends BaseTimeEntity {
     private Integer voteTotal;
 
     @Builder
-    public Candidate(Vote vote, String name, String profilePath, Integer voteTotal){
+    public Candidate(Vote vote, String name, String profilePath){
         this.vote = vote;
         this.name = name;
         this.profilePath = profilePath;
-        this.voteTotal = voteTotal;
+        this.voteTotal = 0;
+    }
+
+    public void assignVote(Vote vote){
+        if(Objects.isNull(vote)){
+            throw new RuntimeException();
+        }
+        this.vote = vote;
+    }
+
+    public void addVote(int num){
+        voteTotal += num;
     }
 
 }
