@@ -5,10 +5,8 @@ function Login() {
 
     return (
         <>
-            <Nav />
-
+            <Nav/>
             <div>Sign in</div>
-
             <div>
                 <form>
                     <input type="text" placeholder="E-mail"/>
@@ -16,7 +14,7 @@ function Login() {
                     <button></button>
                 </form>
                 <div></div>
-                
+
 
             </div>
         </>
