@@ -5,9 +5,8 @@ import votebox from "./vote.png";
 function Nav() {
 
     return (
-        <div className={Styles.NavBox}>
-        {/* 서비스 이름 */}
-            <div>
+        <div className={Styles.Navbox}>
+            {/* 서비스 이름 */}
                 <div className={Styles.leftbox}>
                     <div className={Styles.leftboxbottom}></div>
                 </div>
@@ -24,17 +23,15 @@ function Nav() {
                 <div className={Styles.rightbox}>
                     <div className={Styles.rightboxtop}></div>
                 </div>
-            </div>
 
-        {/* 메뉴 */}
-        <div className={Styles.nav}>
-        </div>
-            <Link to="/hall"><span className={Styles.hall}> 명예의 전당 </span></Link>
-            <Link to="/polllist"><span className={Styles.poll}> 투표 참여 </span></Link>
-            <Link to="/history"><span className={Styles.history}> History </span></Link>
-            <Link to="/notice"><span className={Styles.notice}> 공지사항 </span></Link>
-            <Link to="/login"><span className={Styles.login}> 로그인 </span></Link>
-
+            {/* 메뉴 */}
+                <div className={Styles.nav}></div>
+                <Link to="/hall" className={Styles.hall}>명예의 전당</Link>
+                <Link to="/polllist" className={Styles.poll}> 투표 참여 </Link>
+                <Link to="/history" className={Styles.history}> History</Link>
+                <Link to="/notice" className={Styles.notice}> 공지사항</Link>
+                <Link to="/login" className={Styles.login}> 로그인</Link>
+                <Link to="/admin" className={Styles.admin}> 관리자페이지</Link>
         </div>
     );
 }
