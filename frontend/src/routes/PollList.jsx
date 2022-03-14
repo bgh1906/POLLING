@@ -6,7 +6,30 @@ function PollList() {
   return (
     <div>
       <Nav />
-      <div className={styles.list_title}> PollList </div>
+      <div className={styles.list_title}>
+        {" "}
+        PollList
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />{" "}
+      </div>
       <Footer />
     </div>
   );

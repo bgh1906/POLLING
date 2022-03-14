@@ -50,6 +50,15 @@
   color: gray;
 }
 
+.backtotop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
 li {
   list-style: none;
 }

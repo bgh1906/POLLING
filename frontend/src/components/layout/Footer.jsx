@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for smoothly scrolling
+    });
+  };
+
   return (
     <div className={styles.footer}>
       <div className={styles.company_Info}>
@@ -42,6 +64,13 @@ function Footer() {
       <div className={styles.ft_copyright}>
         Copyright © 2022 POLLING. All Rights Reserved.
       </div>
+      {showButton && (
+        <FontAwesomeIcon
+          icon={faChevronUp}
+          onClick={scrollToTop}
+          className={styles.backtotop}
+        />
+      )}
     </div>
   );
 }
