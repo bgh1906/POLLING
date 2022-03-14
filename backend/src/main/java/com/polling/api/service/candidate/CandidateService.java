@@ -70,9 +70,10 @@ public class CandidateService {
                 .voteCount(requestDto.getVoteCount())
                 .build();
         candidateHistoryRepository.save(candidateHistory);
+        candidate.addVote(requestDto.getVoteCount());
     }
 
-    public void saveComment(SaveCommentRequestDto requestDto, String userName){
+    public Long saveComment(SaveCommentRequestDto requestDto, String userName){
         User user = userRepository.findByName(userName)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
@@ -82,7 +83,8 @@ public class CandidateService {
                 .content(requestDto.getContent())
                 .candidate(candidate)
                 .build();
-        commentRepository.save(comment);
+        Comment savedComment = commentRepository.save(comment);
+        return savedComment.getId();
     }
 
     public void updateComment(Long commentId, PatchCommentRequestDto requestDto, String userName){
