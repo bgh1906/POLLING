@@ -1,15 +1,24 @@
 package com.ssafy.api.controller.candidate.dto.request;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.ssafy.core.entity.candidate.Candidate;
+import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class SaveCandidateRequestDto {
     private String name;
     private String profilePath;
-    private Integer voteTotal;
+
+    @Builder
+    public SaveCandidateRequestDto(String name, String profilePath){
+        this.name = name;
+        this.profilePath = profilePath;
+    }
+
+    public Candidate toEntity(){
+        return Candidate.builder()
+                .name(name)
+                .profilePath(profilePath)
+                .build();
+    }
 }

@@ -2,6 +2,8 @@ package com.ssafy.api.controller.vote;
 
 import com.ssafy.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.ssafy.api.controller.vote.dto.response.FindVoteResponseDto;
+import com.ssafy.api.service.user.UserService;
+import com.ssafy.api.service.vote.VoteService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +17,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VoteController {
 
+    private final VoteService voteService;
+
     @PostMapping
     @ApiOperation(value = "투표 생성")
     public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
+        voteService.saveVote(requestDto);
         return ResponseEntity.status(200).build();
     }
 
     @GetMapping("{id}")
     @ApiOperation(value = "득표 현황 랭킹 조회")
     public ResponseEntity<FindVoteResponseDto> getRanking(@PathVariable Long id) {
-        FindVoteResponseDto responseDto = new FindVoteResponseDto();
+        FindVoteResponseDto responseDto = voteService.getRanking(id);
         return ResponseEntity.status(200).body(responseDto);
     }
 
