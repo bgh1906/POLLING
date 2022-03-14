@@ -1,16 +1,18 @@
 .footer {
   border-top: 1px solid #eee;
+  /* background-color: #f7f7ef; */
   padding: 80px 110px;
   position: relative;
   font-weight: 300;
 }
 
-.company_Info {
-}
+/* .company_Info {
+} */
 
 .ci_contact {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 500;
+  font-family: "RussoOne";
 }
 
 .ci_contents {
@@ -43,4 +45,9 @@
 
 li {
   list-style: none;
+}
+
+@font-face {
+  font-family: "RussoOne";
+  src: url(../../fonts/RussoOne-Regular.ttf);
 }
