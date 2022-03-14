@@ -1,9 +1,9 @@
 package com.polling.core.entity.user;
 
+import com.querydsl.core.annotations.QueryEntity;
 import com.polling.core.entity.common.BaseTimeEntity;
 import com.polling.core.entity.user.status.OAuthType;
 import com.polling.core.entity.user.status.UserRole;
-import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,14 +46,45 @@ public class User extends BaseTimeEntity {
     private Long oauthId;
 
     @Builder
-    public User(String name, String email, String password, String phoneNumber, UserRole userRole, OAuthType oauthType, Long oauthId){
+    public User(String name, String email, String password, String phoneNumber, UserRole userRole/*, OAuthType oauthType, Long oauthId*/){
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.userRole = userRole;
-        this.oauthType = oauthType;
-        this.oauthId = oauthId;
+//        this.oauthType = oauthType;
+//        this.oauthId = oauthId;
+    }
+
+    public void nameUpdate(String name){
+        if(name != null){
+            this.name = name;
+        }
+    }
+
+    public void emailUpdate(String email){
+        if(email != null){
+            this.email = email;
+        }
+    }
+
+    public void passwordUpdate(String password){
+        if(password != null){
+            this.password = password;
+        }
+    }
+
+    public void phoneNumberUpdate(String phoneNumber){
+        if(phoneNumber != null){
+            this.phoneNumber = phoneNumber;
+        }
+    }
+
+    public void userRoleUpdate(UserRole userRole){
+        if(userRole != null){
+            this.userRole = userRole;
+        }
+
     }
 
 }
