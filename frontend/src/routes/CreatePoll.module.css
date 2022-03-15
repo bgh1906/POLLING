@@ -1,0 +1,93 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.title {
+    position: relative;
+    justify-content: center;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5vw;
+    /* top: 3vh; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    position: relative;
+    background-color: #faffdf;
+    margin: 6vw 10vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+}
+
+#subtitle {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2vw;
+}
+
+#main_div {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.5vw;
+    line-height: 6vh;
+}
+
+#poll_input {
+    width: 50vw;
+    height: 4vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+
+#poll_input2 {
+    width: 50vw;
+    height: 15vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+
+#poll_input3 {
+    position: relative;
+    width: 4.5vw;
+    height: 4.5vh;
+    /* margin-left: 1 vw; */
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+}
+
+#image_button {
+    width: 5vw;
+    height: 4.7vh;
+}
+
+#poll_image {
+    width: 18vw;
+}
+
+#check_div {
+    display: flex;
+    justify-content: center;
+}
+
+#check_text {
+    position: relative;
+    bottom: 1vh;
+    right: 0.5vw;
+}

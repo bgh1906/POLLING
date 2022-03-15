@@ -85,9 +85,9 @@
 .nav {
     position: relative;
     justify-content: center;
-    width: 100vw;
+    width: 99vw;
     height: 5.2vh;
-    left: -0.5vw;
+    left: -0.3vw;
     top: -16vh;
 
     background: #000000;

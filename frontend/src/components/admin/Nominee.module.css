@@ -1,0 +1,138 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.form_box {
+    display: flex;
+    justify-content: center;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.5vw;
+}
+
+
+#nomi_input {
+    width: 10vw;
+    height: 4vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+
+#nomi_input2 {
+    width: 40vw;
+    height: 4vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+
+#nomi_input3 {
+    width: 60vw;
+    height: 15vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+#nomi_input4 {
+    width: 60vw;
+    height: 4vh;
+    margin: 0 1vw;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    padding-top: 1vh;
+}
+
+#form_buttonbox {
+    display: flex;
+    justify-content: center;
+    height: 4vh;
+}
+
+#form_button {
+    width: 13vw;
+    height: 4vh;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    padding-top: 1vh;
+}
+
+#nomi_form {
+    border: solid rgb(96, 95, 97);
+    padding: 3vh;
+}
+
+#profile_div{
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    height: 25vh;
+}
+
+#profile_image{
+    width: 10vw;
+    margin: 2vw;
+    padding:1px;
+    margin-left: 7vw;
+    border:3px solid #021a40;
+}
+
+#profile_name{
+    font-size: 2vw;
+    position: relative;
+    /* top: 1vh; */
+    bottom: 20vh;
+    
+}
+
+#add_div{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+
+#add_image{
+    width: 10vw;
+    margin: 1.5vw;
+    padding:1px;
+    border:3px solid #021a40;
+}
+
+#profile_desc{
+    position: relative;
+    width: 52vw;
+    left: 20vw;
+    bottom: 18vh;
+}
+
+#profile_del{
+    width: 4vw;
+    height: 4vh;
+    padding-top: 1vh;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    position:relative;
+    bottom: 20.1vh;
+    left: 1vw;
+}
+
+#profile_gallery{
+    display: flex;
+    justify-content: center;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.3vw;
+    color: blue;
+}
