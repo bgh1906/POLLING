@@ -6,6 +6,7 @@ import com.polling.api.controller.user.dto.response.FindUserResponseDto;
 import com.polling.api.controller.user.dto.response.UpdateUserResponseDto;
 import com.polling.api.service.user.UserService;
 import com.polling.core.entity.user.status.UserRole;
+import com.polling.core.repository.user.UserRepository;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,27 +18,29 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @PostMapping
     @ApiOperation(value = "회원 가입")
-    public ResponseEntity<Void> signUp(@RequestBody SaveNativeUserRequestDto requestDto) {
-        userService.signUp(requestDto);
+    public ResponseEntity<Void> save(@RequestBody SaveNativeUserRequestDto requestDto) {
+        userService.save(requestDto);
         return ResponseEntity.status(200).build();
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/{name}")
+    @ApiOperation(value = "이름 중복체크")
+    public ResponseEntity<Void> checkName(@PathVariable String name) {
+        userService.updateNickname(name);
+        return ResponseEntity.status(200).build();
+    }
+
+    @DeleteMapping
     @ApiOperation(value = "회원 탈퇴")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        userService.delete(id);
+    public ResponseEntity<Void> delete() {
+        Long id=364L;
+        userRepository.deleteById(id);
         return ResponseEntity.status(200).build();
     }
-
-//    @GetMapping("/{id}")
-//    @ApiOperation(value = "회원 정보 조회")
-//    public ResponseEntity<FindUserResponseDto> get(@PathVariable Long id) {
-//        FindUserResponseDto responseDto = new FindUserResponseDto();
-//        return ResponseEntity.status(200).body(responseDto);
-//    }
 
     @GetMapping("/{id}")
     @ApiOperation(value = "회원 정보 조회")
@@ -53,7 +56,7 @@ public class UserController {
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @PutMapping("/role/{id}")
+    @PatchMapping("/role/{id}")
     @ApiOperation(value = "회원 권한 수정")
     public ResponseEntity<Void> updateRole(@PathVariable Long id, UserRole userRole) {
         userService.updateRole(id, userRole);
