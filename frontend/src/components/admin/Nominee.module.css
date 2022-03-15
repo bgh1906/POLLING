@@ -79,11 +79,13 @@
 #profile_div{
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
-    height: 25vh;
+    height: 30vh;
+    bottom: 10vh;
 }
 
 #profile_image{
-    width: 10vw;
+    width: 11vw;
+    height: 12vw;
     margin: 2vw;
     padding:1px;
     margin-left: 7vw;
@@ -94,28 +96,29 @@
     font-size: 2vw;
     position: relative;
     /* top: 1vh; */
-    bottom: 20vh;
+    bottom: 22vh;
     
 }
 
 #add_div{
     display: flex;
     justify-content: center;
-    margin-bottom: 3vh;
+    margin-bottom: 5vh;
+    
 }
 
 #add_image{
-    width: 10vw;
     margin: 1.5vw;
     padding:1px;
     border:3px solid #021a40;
+    height: 11vw;
 }
 
 #profile_desc{
     position: relative;
     width: 52vw;
     left: 20vw;
-    bottom: 18vh;
+    bottom: 20vh;
 }
 
 #profile_del{
@@ -125,7 +128,7 @@
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
     position:relative;
-    bottom: 20.1vh;
+    bottom: 22vh;
     left: 1vw;
 }
 
@@ -135,4 +138,5 @@
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
     color: blue;
+    margin-top: 1vh;
 }

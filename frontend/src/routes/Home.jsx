@@ -14,7 +14,7 @@ function Home() {
             <div className={styles.main}>
                 <img 
                 id={styles.mainimg}
-                src="https://blog.kakaocdn.net/dn/vckff/btqCjeJmBHM/tMVpe4aUIMfH4nKS4aO3tK/img.jpg" alt="mainimg"/>
+                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/>
             </div>
 {/* 투표리스트  */}
             <div className={styles.poll_list}>

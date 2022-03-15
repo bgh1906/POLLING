@@ -1,10 +1,18 @@
 import styles from "./Admin.module.css";
 import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
+import { useEffect } from "react";
+import { useSelector } from 'react-redux'
 
 
 
 function Admin() {
+
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[])
+        
+      
 
     return (
         <div>

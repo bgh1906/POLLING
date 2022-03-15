@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./Nominee.module.css";
+import Swal from "sweetalert2";
 
 
 function NomineeInput({onAdd}) {
@@ -24,19 +25,24 @@ function NomineeInput({onAdd}) {
 
     const onSubmit=(e)=>{
         e.preventDefault()
-        // if(!name || !profile || !profile_image) return
-        onAdd(form)
-        console.log(form)
+        if(name !== '' || profile !== '' || profile_image !== ''){
+            onAdd(form)
+            setForm({
+                name: '',
+                profile: '',
+                profile_image: '',
+                additional_image1: '',
+                additional_image2: '',
+                additional_image3: '',
+            })
+            nameRef.current.focus()
+        } else {
+            Swal.fire({
+                title: '참가자 정보를 입력해주세요!!',
+                icon: "error"
+            })
+        }
 
-        setForm({
-            name: '',
-            profile: '',
-            profile_image: '',
-            additional_image1: '',
-            additional_image2: '',
-            additional_image3: '',
-        })
-        nameRef.current.focus()
     }
     const {name, profile, profile_image, additional_image1, additional_image2, additional_image3} = form
 

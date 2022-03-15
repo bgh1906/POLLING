@@ -91,3 +91,33 @@
     bottom: 1vh;
     right: 0.5vw;
 }
+
+#poll_savebox {
+    height: 15vh;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    margin: 2vw;
+}
+
+
+#poll_save{
+    color: black;
+    font-size: 2vw;
+    text-decoration: none;
+    margin: 2vw;
+    position: relative;
+    left: 45vw;
+    border: none;
+    background-color: transparent;
+    font-family: 'GangwonEdu_OTFBoldA';
+    cursor: pointer;
+}
+
+
+#poll_back {
+    color: black;
+    font-size: 2vw;
+    text-decoration: none;
+    position: relative;
+    left: 47vw;
+}
