@@ -12,14 +12,11 @@ import Poll from "./routes/Poll";
 import Nominee from "./routes/Nominee";
 import Notice from "./routes/Notice";
 
-
 function App() {
   return (
     <div>
-
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-          
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -32,10 +29,8 @@ function App() {
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route>
-
         </Routes>
-    </BrowserRouter>
-    
+      </BrowserRouter>
     </div>
   );
 }

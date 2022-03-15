@@ -1,11 +1,5 @@
-
-
-
 function History() {
-
-    return (
-        <h1> Histoty </h1>
-    );
+  return <h1> History </h1>;
 }
 
 export default History;
