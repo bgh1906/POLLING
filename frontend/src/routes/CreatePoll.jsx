@@ -177,7 +177,7 @@ function CreatePoll() {
                             navigate("/admin");
                         } else {
                             Swal.fire({
-                                title: '투표 정보를 입력해주세요!!',
+                                title: '투표 정보를 입력해주세요.',
                                 icon: 'error'                        
                             })
                         }

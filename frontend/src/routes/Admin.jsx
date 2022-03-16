@@ -68,15 +68,15 @@ function Admin() {
                     <div id={styles.box4}>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                     </div>
                 </div>    

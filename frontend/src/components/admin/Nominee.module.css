@@ -26,6 +26,7 @@
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;
     padding-top: 1vh;
+    margin-right: 1.5vw;
 }
 
 #nomi_input2 {
@@ -46,6 +47,7 @@
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;
     padding-top: 2vh;
+
 }
 #nomi_input4 {
     width: 60vw;
@@ -55,7 +57,6 @@
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;
     padding-top: 1vh;
-    margin-top: 1vw;
 }
 
 #form_buttonbox {
