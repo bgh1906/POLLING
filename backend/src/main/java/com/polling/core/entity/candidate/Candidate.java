@@ -29,20 +29,22 @@ public class Candidate extends BaseTimeEntity {
     private String name;
 
     @Column
-    private String profilePath;
-
-    @Column
     private String content;
 
     @Column
     private Integer voteTotal;
+
+    @Embedded
+    private final CandidateInfo candidateInfo = new CandidateInfo();
+
+
 
     @Builder
     public Candidate(Vote vote, String name, String content, String profilePath){
         this.vote = vote;
         this.name = name;
         this.content = content;
-        this.profilePath = profilePath;
+        this.candidateInfo.setProfilePath(profilePath);
         voteTotal = 0;
     }
 
