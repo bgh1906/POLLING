@@ -3,7 +3,6 @@ package com.polling.api.controller.vote;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.service.vote.VoteService;
-import com.polling.common.security.SecurityUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

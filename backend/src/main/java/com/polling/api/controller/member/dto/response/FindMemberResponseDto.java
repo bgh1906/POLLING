@@ -1,4 +1,4 @@
-package com.polling.api.controller.user.dto.response;
+package com.polling.api.controller.member.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindUserResponseDto {
+public class FindMemberResponseDto {
     private Long id;
     private String name;
     private String email;

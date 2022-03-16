@@ -1,8 +1,8 @@
-package com.polling.core.entity.user;
+package com.polling.core.entity.member;
 
 import com.polling.core.entity.common.BaseTimeEntity;
-import com.polling.core.entity.user.status.OAuthType;
-import com.polling.core.entity.user.status.UserRole;
+import com.polling.core.entity.member.status.MemberRole;
+import com.polling.core.entity.member.status.OAuthType;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,50 +10,47 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "TB_USER")
 @Entity
 @QueryEntity
-public class User extends BaseTimeEntity {
+public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "user_name")
-    private String name;
+    private String nickname;
 
-    @Column
     private String email;
 
-    @Column
     private String password;
 
-    @Column
     private String phoneNumber;
 
-    @Column
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    private Set<MemberRole> memberRole;
 
-    @Column
     @Enumerated(EnumType.STRING)
     private OAuthType oauthType;
 
-    @Column
     private Long oauthId;
 
     @Builder
-    public User(String name, String email, String password, String phoneNumber, UserRole userRole, OAuthType oauthType, Long oauthId){
-        this.name = name;
+    public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType, Long oauthId){
+        this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.userRole = userRole;
         this.oauthType = oauthType;
         this.oauthId = oauthId;
+        memberRole = new HashSet<>();
+        memberRole.add(MemberRole.ROLE_USER);
     }
 
 }

@@ -22,7 +22,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
     public List<FindVoteHistoryResponseDto> findVoteHistoryByCandidateId(Long id) {
         return query
                 .select((Projections.constructor(FindVoteHistoryResponseDto.class,
-                        candidateHistory.user.name,
+                        candidateHistory.member.nickname,
                         candidateHistory.voteCount,
                         candidateHistory.transactionId)))
                 .from(candidateHistory)

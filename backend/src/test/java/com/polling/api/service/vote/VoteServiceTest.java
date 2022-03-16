@@ -5,12 +5,11 @@ import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.queryrepository.VoteQueryRepository;
 import com.polling.core.entity.candidate.Candidate;
-import com.polling.core.entity.user.User;
-import com.polling.core.entity.user.status.UserRole;
+import com.polling.core.entity.member.Member;
 import com.polling.core.entity.vote.Vote;
 import com.polling.core.entity.vote.status.VoteStatus;
 import com.polling.core.repository.candidate.CandidateRepository;
-import com.polling.core.repository.user.UserRepository;
+import com.polling.core.repository.member.MemberRepository;
 import com.polling.core.repository.vote.VoteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,7 +34,7 @@ class VoteServiceTest {
     @Autowired
     VoteRepository voteRepository;
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
     @Autowired
     VoteQueryRepository voteQueryRepository;
     @Autowired
@@ -45,14 +44,13 @@ class VoteServiceTest {
 
     @BeforeEach
     void init(){
-        User admin = User.builder()
+        Member admin = Member.builder()
                 .name("관리자")
                 .email(hostEmail)
                 .password("sasds")
-                .userRole(UserRole.ROLE_ADMIN)
                 .phoneNumber("01099123127")
                 .build();
-        userRepository.save(admin);
+        memberRepository.save(admin);
     }
 
     @DisplayName("투표와 후보자들을 저장")
@@ -119,7 +117,7 @@ class VoteServiceTest {
 
 
     SaveVoteRequestDto getSaveVoteRequest(){
-        User admin = userRepository.findAll().get(0);
+        Member admin = memberRepository.findAll().get(0);
 
         List<SaveCandidateRequestDto> candidates = new ArrayList<SaveCandidateRequestDto>();
         SaveCandidateRequestDto requestDto1 = SaveCandidateRequestDto.builder()

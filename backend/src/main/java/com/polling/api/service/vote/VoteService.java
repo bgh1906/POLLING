@@ -6,11 +6,11 @@ import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.queryrepository.VoteQueryRepository;
 import com.polling.core.entity.candidate.Candidate;
-import com.polling.core.entity.user.User;
+import com.polling.core.entity.member.Member;
 import com.polling.core.entity.vote.Vote;
 import com.polling.core.entity.vote.status.VoteStatus;
 import com.polling.core.repository.candidate.CandidateRepository;
-import com.polling.core.repository.user.UserRepository;
+import com.polling.core.repository.member.MemberRepository;
 import com.polling.core.repository.vote.VoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,12 +23,12 @@ import java.util.List;
 @Service
 public class VoteService {
     private final VoteRepository voteRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
     private final VoteQueryRepository voteQueryRepository;
     private final CandidateRepository candidateRepository;
 
     public Long saveVote(SaveVoteRequestDto requestDto, String hostEmail){
-        User host = userRepository.findByEmail(hostEmail).orElseThrow(RuntimeException::new);
+        Member host = memberRepository.findByEmail(hostEmail).orElseThrow(RuntimeException::new);
         //save vote
         Vote vote = Vote.builder()
                 .name(requestDto.getName())

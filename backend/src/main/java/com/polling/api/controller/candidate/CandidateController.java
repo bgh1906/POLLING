@@ -9,8 +9,6 @@ import com.polling.api.controller.candidate.dto.response.FindVoteHistoryResponse
 import com.polling.api.controller.exception.CustomException;
 import com.polling.api.controller.exception.ErrorCode;
 import com.polling.api.service.candidate.CandidateService;
-import com.polling.common.security.SecurityUtils;
-import com.polling.core.entity.user.User;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
