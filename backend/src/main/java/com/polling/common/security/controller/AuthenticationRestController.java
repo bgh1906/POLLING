@@ -1,23 +1,22 @@
 package com.polling.common.security.controller;
 
+import com.polling.api.controller.exception.CustomException;
+import com.polling.api.controller.exception.ErrorCode;
+import com.polling.common.security.CurrentUser;
+import com.polling.common.security.adapter.MemberAndDtoAdapter;
 import com.polling.common.security.dto.LoginDto;
-import com.polling.common.security.jwt.JwtFilter;
-import com.polling.common.security.jwt.TokenProvider;
-import lombok.Getter;
+import com.polling.common.security.dto.MemberDto;
+import com.polling.common.security.jwt.JwtTokenProvider;
+import com.polling.common.security.service.RedisService;
+import com.polling.core.entity.member.Member;
+import com.polling.core.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Controller to authenticate users.
@@ -28,42 +27,30 @@ import javax.validation.Valid;
 @Slf4j
 public class AuthenticationRestController {
 
-   private final TokenProvider tokenProvider;
-
-   private final AuthenticationManagerBuilder authenticationManagerBuilder;
+   private final JwtTokenProvider jwtTokenProvider;
+   private final RedisService redisService;
+   private final MemberRepository memberRepository;
 
    @PostMapping
-   public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginDto loginDto) {
+   public ResponseEntity<Void> authorize(@RequestBody  LoginDto loginDto, HttpServletResponse response) {
+      Member member = memberRepository.findByEmail(loginDto.getEmail()).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+      if(!member.getPassword().equals(loginDto.getPassword()))
+         throw new CustomException(ErrorCode.USER_NOT_FOUND);
+      MemberDto memberDto = MemberAndDtoAdapter.entityToDto(member);
+      String accessToken = jwtTokenProvider.createAccessToken(memberDto.getId().toString(), memberDto.getMemberRole());
+      String refreshToken = jwtTokenProvider.createRefreshToken(memberDto.getId().toString(), memberDto.getMemberRole());
+      jwtTokenProvider.setHeaderAccessToken(response, accessToken);
+      jwtTokenProvider.setHeaderRefreshToken(response, refreshToken);
 
-      UsernamePasswordAuthenticationToken authenticationToken =
-         new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword());
+      // Redis 인메모리에 리프레시 토큰 저장
+      redisService.setValues(refreshToken, memberDto.getId());
 
-      Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-      SecurityContextHolder.getContext().setAuthentication(authentication);
-
-      boolean rememberMe = loginDto.getRememberMe() != null && loginDto.getRememberMe();
-      String token = tokenProvider.createToken(authentication, rememberMe);
-
-      HttpHeaders httpHeaders = new HttpHeaders();
-      httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + token);
-
-      return ResponseEntity.status(200).body(new JWTToken(token, 200, "Success"));
+      return ResponseEntity.status(200).build();
    }
 
-   /**
-    * Object to return as body in JWT Authentication.
-    */
-   @Getter
-   static class JWTToken{
-
-      private int status;
-      private String message;
-      private String idToken;
-
-      JWTToken(String idToken, int status, String message) {
-         this.status = status;
-         this.message = message;
-         this.idToken = idToken;
-      }
+   @GetMapping("/logout")
+   public ResponseEntity<Void> logout(HttpServletRequest request) {
+      redisService.delValues(request.getHeader("refreshToken"));
+      return ResponseEntity.status(200).build();
    }
 }
