@@ -150,7 +150,7 @@ html {
 
 #VoteVote {
 	width: 80vw;
-	height: 60vh;
+	height: 50vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

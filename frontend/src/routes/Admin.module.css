@@ -152,6 +152,7 @@
     font-family: 'ROKAFSansMedium';
     text-align: center;
     background-color: #ffffff;
+    cursor: pointer; 
 }
 
 #status_button:hover{
