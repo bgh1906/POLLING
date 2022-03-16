@@ -1,13 +1,11 @@
 .footer {
   border-top: 1px solid #eee;
-  /* background-color: #f7f7ef; */
+  background-color: rgb(32, 32, 32);
+  color: white;
   padding: 80px 110px;
   position: relative;
   font-weight: 300;
 }
-
-/* .company_Info {
-} */
 
 .ci_contact {
   font-size: 40px;
@@ -38,7 +36,7 @@
 }
 
 .ft_subInfo {
-  margin-top: 120px;
+  margin-top: 40px;
   font-size: 13px;
   line-height: 24px;
   width: 50%;
@@ -54,12 +52,15 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
+  padding: 2px;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  border-radius: 50%;
 }
 
-li {
+.ft_menu li {
   list-style: none;
 }
 

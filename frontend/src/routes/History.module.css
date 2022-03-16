@@ -1,0 +1,55 @@
+.history_title {
+  font-family: "RussoOne";
+  font-size: 60px;
+  padding-right: 110px;
+  padding-top: 100px;
+  text-align: right;
+}
+
+.history_container {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+
+.history_item {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
+  transition: all 0.5s;
+}
+
+.history_itemlist {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.history_itemlist li:nth-child(odd) {
+  z-index: 3;
+  margin-top: -50px;
+  /* float: left; */
+  position: relative;
+  list-style: none;
+}
+
+.history_itemlist li:nth-child(even) {
+  z-index: 2;
+  margin-top: -50px;
+  /* float: right; */
+  position: relative;
+  list-style: none;
+}
+
+/* .history_itemlist img:nth-child(even) {
+  width: 690px;
+  height: 420px;
+  object-fit: cover;
+}
+
+.history_itemlist img:nth-child(odd) {
+  width: 420px;
+  height: 690px;
+  object-fit: cover;
+} */
