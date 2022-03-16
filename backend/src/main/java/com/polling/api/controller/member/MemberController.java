@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/members")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -27,6 +27,7 @@ public class MemberController {
     @PostMapping
     @ApiOperation(value = "회원 가입")
     public ResponseEntity<Void> save(@RequestBody SaveNativeMemberRequestDto requestDto) {
+        memberService.save(requestDto);
         return ResponseEntity.status(200).build();
     }
 

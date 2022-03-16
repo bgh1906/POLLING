@@ -1,9 +1,9 @@
 package com.polling.core.entity.member;
 
-import com.querydsl.core.annotations.QueryEntity;
 import com.polling.core.entity.common.BaseTimeEntity;
 import com.polling.core.entity.member.status.MemberRole;
 import com.polling.core.entity.member.status.OAuthType;
+import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

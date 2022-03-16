@@ -66,9 +66,9 @@ public class MemberService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(final String email) {
-        Member findMember = memberRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " was not found in the database"));
+    public UserDetails loadUserByUsername(final String id) {
+        Member findMember = memberRepository.findById(Long.parseLong(id))
+                .orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " was not found in the database"));
         return MemberAndUserAdapter.from(MemberAndDtoAdapter.entityToDto(findMember));
     }
 }

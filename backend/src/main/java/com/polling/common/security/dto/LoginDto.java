@@ -15,14 +15,4 @@ public class LoginDto {
 
    @NotNull
    private String password;
-
-   private Boolean rememberMe;
-
-   @Override
-   public String toString() {
-      return "LoginVM{" +
-         "username='" + email + '\'' +
-         ", rememberMe=" + rememberMe +
-         '}';
-   }
 }

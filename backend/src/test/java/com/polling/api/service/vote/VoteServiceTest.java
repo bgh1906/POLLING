@@ -45,7 +45,7 @@ class VoteServiceTest {
     @BeforeEach
     void init(){
         Member admin = Member.builder()
-                .name("관리자")
+                .nickname("관리자")
                 .email(hostEmail)
                 .password("sasds")
                 .phoneNumber("01099123127")

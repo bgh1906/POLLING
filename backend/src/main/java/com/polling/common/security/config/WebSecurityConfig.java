@@ -1,10 +1,10 @@
-package com.polling.common.config;
+package com.polling.common.security.config;
 
 import com.polling.api.service.member.MemberService;
 import com.polling.common.security.jwt.JwtAccessDeniedHandler;
 import com.polling.common.security.jwt.JwtAuthenticationEntryPoint;
-import com.polling.common.security.jwt.JwtFilter;
-import com.polling.common.security.jwt.TokenProvider;
+import com.polling.common.security.jwt.JwtAuthenticationFilter;
+import com.polling.common.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ import org.springframework.web.filter.CorsFilter;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-   private final TokenProvider tokenProvider;
+   private final JwtTokenProvider jwtTokenProvider;
    private final CorsFilter corsFilter;
    private final JwtAuthenticationEntryPoint authenticationErrorHandler;
    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
@@ -74,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .httpBasic().disable()
 
          .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
-         .addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
+         .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
 
          .exceptionHandling()
          .authenticationEntryPoint(authenticationErrorHandler)
@@ -87,13 +87,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
          .and()
          .authorizeRequests()
-//         .antMatchers("/api/auth").permitAll()
-//         .antMatchers("/api/user", "/api/user/password/**").permitAll()
-//         .antMatchers("/api/notification/mail", "/api/notification/sms").permitAll()
+         .antMatchers("/api/auth").permitAll()
+         .antMatchers("/api/members").permitAll()
          .antMatchers(SWAGGER_URL_PATHS).permitAll()
-
-//         .antMatchers("/api/**").hasAuthority(UserRoleStatus.ROLE_USER.name())
-//         .antMatchers("/api/notice/**").hasAuthority(UserRoleStatus.ROLE_ADMIN.name())
 
          .anyRequest().authenticated()
 
