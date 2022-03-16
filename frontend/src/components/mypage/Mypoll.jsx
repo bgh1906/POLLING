@@ -1,10 +1,13 @@
+import Nav from "../layout/Nav";
 
 
 
 function Mypoll() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <div>
+            <Nav />
+        </div>
     );
 }
 

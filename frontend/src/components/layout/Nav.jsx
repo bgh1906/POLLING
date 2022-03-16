@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Styles from "./Nav.module.css";
-import votebox from "./vote.png";
+import votebox from "../../assets/vote.png";
 
 function Nav() {
 
@@ -10,12 +10,14 @@ function Nav() {
                 <div className={Styles.leftbox}>
                     <div className={Styles.leftboxbottom}></div>
                 </div>
-                <div className={Styles.header}> 
-                    POLLING
-                    <div>
-                        <img src={votebox} height={20} alt="poll box"></img>
+                <Link to="/" style={{textDecoration:"none"}}>
+                    <div className={Styles.header}> 
+                        POLLING
+                        <div>
+                            <img src={votebox} height={20} alt="poll box"></img>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 {/* <div className={Styles.boxtop}></div> */}
                 {/* <span className={Styles.pollbox}>
                     <img src={votebox} height={30} alt="poll box"></img>
@@ -30,8 +32,12 @@ function Nav() {
                 <Link to="/polllist" className={Styles.poll}> 투표 참여 </Link>
                 <Link to="/history" className={Styles.history}> History</Link>
                 <Link to="/notice" className={Styles.notice}> 공지사항</Link>
-                <Link to="/login" className={Styles.login}> 로그인</Link>
-                <Link to="/admin" className={Styles.admin}> 관리자페이지</Link>
+                {  `회원가입 했으면`?
+                    <Link to="/login" className={Styles.login}> 로그인</Link>
+                    :
+                    <Link to="/mypage" className={Styles.login}> 마이페이지</Link>
+                }
+                <Link to="/management" className={Styles.admin}> 관리자페이지</Link>
         </div>
     );
 }
