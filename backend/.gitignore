@@ -18,6 +18,8 @@ bin/
 !**/src/test/**/bin/
 backend/src/main/generated/
 
+backend/PJT-web.log.*
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
