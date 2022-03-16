@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.polling.core.entity.candidate.QCandidateHistory.candidateHistory;
+import static com.polling.core.entity.member.QMember.member;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
                         candidateHistory.voteCount,
                         candidateHistory.transactionId)))
                 .from(candidateHistory)
+                .leftJoin(member, candidateHistory.member)
                 .where(candidateHistory.candidate.id.eq(id))
                 .fetch();
     }

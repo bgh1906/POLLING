@@ -1,12 +1,18 @@
 package com.polling.api.controller.vote;
 
+import com.polling.api.controller.vote.dto.VoteResponseDto;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
+import com.polling.api.queryrepository.VoteQueryRepository;
 import com.polling.api.service.vote.VoteService;
+import com.polling.core.entity.vote.status.VoteStatus;
+import com.polling.core.repository.vote.VoteRepository;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/votes")
@@ -14,13 +20,30 @@ import org.springframework.web.bind.annotation.*;
 public class VoteController {
 
     private final VoteService voteService;
+    private final VoteRepository voteRepository;
+    private final VoteQueryRepository voteQueryRepository;
 
     @PostMapping
     @ApiOperation(value = "투표 생성")
     public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
-        String hostEmail = getCurrentUserEmail();
+        String hostEmail = "test@gm.com";
+//                = getCurrentUserEmail();
         voteService.saveVote(requestDto, hostEmail);
         return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping
+    @ApiOperation(value = "모든 투표 조회")
+    public ResponseEntity<List<VoteResponseDto>> getVotes(){
+        List<VoteResponseDto> responseDto = voteQueryRepository.findAll();
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @GetMapping("/status/{status}")
+    @ApiOperation(value = "Status별 투표 조회")
+    public ResponseEntity<List<VoteResponseDto>> getVotesByStatus(@PathVariable VoteStatus status){
+        List<VoteResponseDto> responseDto = voteQueryRepository.findVoteByStatus(status);
+        return ResponseEntity.status(200).body(responseDto);
     }
 
     @GetMapping("{id}")
@@ -49,7 +72,7 @@ public class VoteController {
     }
 
     //todo: throw Custom exception 처리
-    private String getCurrentUserEmail(){
-        return SecurityUtils.getCurrentUsername().orElseThrow();
-    }
+//    private String getCurrentUserEmail(){
+//        return SecurityUtils.getCurrentUsername().orElseThrow();
+//    }
 }
