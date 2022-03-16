@@ -23,8 +23,8 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
         return query
                 .select((Projections.constructor(CommentDto.class,
                         comment.id,
-                        comment.user.id,
-                        comment.user.name,
+                        comment.member.id,
+                        comment.member.nickname,
                         comment.content)))
                 .from(comment)
                 .where(comment.candidate.id.eq(id))

@@ -324,8 +324,8 @@ Caused by: org.hibernate.AnnotationException: mappedBy reference an unknown targ
 2022-03-11 14:29:54.388  INFO 1508 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
 2022-03-11 14:29:54.501 DEBUG 1508 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@40d968c] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@45dfd7a5]
 2022-03-11 14:29:55.070 DEBUG 1508 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.ssafy.core.entity.vote.status.VoteStatus
-2022-03-11 14:29:55.075 DEBUG 1508 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.user.status.OAuthType
-2022-03-11 14:29:55.075 DEBUG 1508 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.user.status.UserRole
+2022-03-11 14:29:55.075 DEBUG 1508 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.member.status.OAuthType
+2022-03-11 14:29:55.075 DEBUG 1508 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.member.status.UserRole
 2022-03-11 14:29:55.076 DEBUG 1508 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@40d968c] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@661389cc]
 2022-03-11 14:29:55.870  INFO 1508 --- [restartedMain] p6spy                                    : #1646976595869 | took 7ms | statement | connection 2| url jdbc:h2:mem:58388528-ddc3-4c5d-a3b4-082e21bb00f0
 
@@ -1630,8 +1630,8 @@ Update your application's configuration. The following values are valid:
 2022-03-11 14:39:32.286  INFO 15024 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 2022-03-11 14:39:32.410 DEBUG 15024 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6a09c6da] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@77e7c316]
 2022-03-11 14:39:32.950 DEBUG 15024 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.ssafy.core.entity.vote.status.VoteStatus
-2022-03-11 14:39:32.955 DEBUG 15024 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.user.status.OAuthType
-2022-03-11 14:39:32.956 DEBUG 15024 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.user.status.UserRole
+2022-03-11 14:39:32.955 DEBUG 15024 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.member.status.OAuthType
+2022-03-11 14:39:32.956 DEBUG 15024 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.ssafy.core.entity.member.status.UserRole
 2022-03-11 14:39:32.956 DEBUG 15024 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6a09c6da] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@2f313dab]
 2022-03-11 14:39:33.645  INFO 15024 --- [restartedMain] p6spy                                    : #1646977173645 | took 3ms | statement | connection 2| url jdbc:h2:mem:4c95be72-e8cb-434e-b210-e99e2920c1f1
 select * from INFORMATION_SCHEMA.SEQUENCES
@@ -2063,8 +2063,8 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:08:12.488 DEBUG 16916 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@1d47efed
 2022-03-14 15:08:12.578  INFO 16916 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 2022-03-14 15:08:12.701 DEBUG 16916 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4bea9da8] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@776516fa]
-2022-03-14 15:08:13.181 DEBUG 16916 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.OAuthType
-2022-03-14 15:08:13.183 DEBUG 16916 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.UserRole
+2022-03-14 15:08:13.181 DEBUG 16916 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.OAuthType
+2022-03-14 15:08:13.183 DEBUG 16916 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.MemberRole
 2022-03-14 15:08:13.185 DEBUG 16916 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.core.entity.vote.status.VoteStatus
 2022-03-14 15:08:13.185 DEBUG 16916 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4bea9da8] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@30ec6910]
 2022-03-14 15:08:13.845  INFO 16916 --- [restartedMain] p6spy                                    : #1647238093845 | took 3ms | statement | connection 2| url jdbc:h2:mem:29a0e9a3-c369-431f-8034-09d6a045ae8a
@@ -2528,8 +2528,8 @@ Consider defining a bean of type 'com.polling.api.queryrepository.VoteQueryRepos
 2022-03-14 15:08:46.831 DEBUG 12912 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@71dc440e
 2022-03-14 15:08:46.923  INFO 12912 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 2022-03-14 15:08:47.045 DEBUG 12912 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@282bdd57] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@46eebfb9]
-2022-03-14 15:08:47.522 DEBUG 12912 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.OAuthType
-2022-03-14 15:08:47.524 DEBUG 12912 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.UserRole
+2022-03-14 15:08:47.522 DEBUG 12912 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.OAuthType
+2022-03-14 15:08:47.524 DEBUG 12912 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.MemberRole
 2022-03-14 15:08:47.526 DEBUG 12912 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.core.entity.vote.status.VoteStatus
 2022-03-14 15:08:47.526 DEBUG 12912 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@282bdd57] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@5e9c59b]
 2022-03-14 15:08:48.168  INFO 12912 --- [restartedMain] p6spy                                    : #1647238128168 | took 3ms | statement | connection 2| url jdbc:h2:mem:e6bd0cd4-a8c2-4282-80e7-3910cb1422cb
@@ -2984,8 +2984,8 @@ SHUTDOWN;
 2022-03-14 15:09:23.807  INFO 15900 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
 2022-03-14 15:09:23.930  INFO 15900 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 2022-03-14 15:09:24.200 DEBUG 15900 --- [Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@67d180e4] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@54e18a46]
-2022-03-14 15:09:25.005 DEBUG 15900 --- [Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.OAuthType
-2022-03-14 15:09:25.008 DEBUG 15900 --- [Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.user.status.UserRole
+2022-03-14 15:09:25.005 DEBUG 15900 --- [Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.OAuthType
+2022-03-14 15:09:25.008 DEBUG 15900 --- [Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.MemberRole
 2022-03-14 15:09:25.011 DEBUG 15900 --- [Test worker] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.core.entity.vote.status.VoteStatus
 2022-03-14 15:09:25.012 DEBUG 15900 --- [Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@67d180e4] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@6f36e806]
 2022-03-14 15:09:25.942  INFO 15900 --- [Test worker] p6spy                                    : #1647238165942 | took 5ms | statement | connection 1| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
@@ -3305,7 +3305,7 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:31.716  INFO 15900 --- [Test worker] c.p.api.service.vote.VoteServiceTest     : Started VoteServiceTest in 14.945 seconds (JVM running for 18.661)
 2022-03-14 15:09:31.787  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@4ec1192f, testMethod = saveVoteTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@453fcce2]; rollback [true]
 2022-03-14 15:09:32.110 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
-    /* insert com.polling.core.entity.user.User
+    /* insert com.polling.core.entity.member.Member
         */ insert 
         into
             tb_user
@@ -3315,15 +3315,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.127 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.129 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.130 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [polling@test.com]
-2022-03-14 15:09:32.130 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [°ü¸®ÀÚ]
+2022-03-14 15:09:32.130 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.134 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [null]
 2022-03-14 15:09:32.134 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [null]
 2022-03-14 15:09:32.135 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [sasds]
 2022-03-14 15:09:32.135 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [01099123127]
 2022-03-14 15:09:32.135 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [ROLE_ADMIN]
 2022-03-14 15:09:32.142  INFO 15900 --- [Test worker] p6spy                                    : #1647238172142 | took 3ms | statement | connection 2| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', '°ü¸®ÀÚ', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
 2022-03-14 15:09:32.486 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         generatedAlias0 
@@ -3381,15 +3381,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
             (null, ?, ?, ?, ?, ?, ?, ?, ?)
 2022-03-14 15:09:32.589 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.589 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
-2022-03-14 15:09:32.590 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯±¸³×]
+2022-03-14 15:09:32.590 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.590 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [TIMESTAMP] - [+999999999-12-31T23:59:59.999999999]
 2022-03-14 15:09:32.607 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
-2022-03-14 15:09:32.608 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [¸ø¸»¸®´Â½ÅÂ¯]
+2022-03-14 15:09:32.608 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯]
 2022-03-14 15:09:32.609 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [TIMESTAMP] - [-999999999-01-01T00:00]
 2022-03-14 15:09:32.609 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [INTEGER] - [0]
 2022-03-14 15:09:32.616  INFO 15900 --- [Test worker] p6spy                                    : #1647238172616 | took 2ms | statement | connection 2| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯±¸³×', '169104628-12-10T19:08:16.767+0900', 1, '¸ø¸»¸®´Â½ÅÂ¯', '169087565-03-15T04:51:43.232+0900', 0);
+/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯ï¿½ï¿½ï¿½ï¿½', '169104628-12-10T19:08:16.767+0900', 1, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯', '169087565-03-15T04:51:43.232+0900', 0);
 2022-03-14 15:09:32.626 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3401,13 +3401,13 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.627 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.628 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.628 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.629 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:32.629 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.630 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.630 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [1]
 2022-03-14 15:09:32.631 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.633  INFO 15900 --- [Test worker] p6spy                                    : #1647238172633 | took 1ms | statement | connection 2| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯±¸', 'somewhere', 1, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 1, 0);
 2022-03-14 15:09:32.637 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3419,20 +3419,20 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.638 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.641 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.642 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.643 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯¾Æ]
+2022-03-14 15:09:32.643 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.644 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.644 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [1]
 2022-03-14 15:09:32.645 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.646  INFO 15900 --- [Test worker] p6spy                                    : #1647238172646 | took 0ms | statement | connection 2| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯¾Æ', 'somewhere', 1, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 1, 0);
 2022-03-14 15:09:32.698  INFO 15900 --- [Test worker] p6spy                                    : #1647238172698 | took 2ms | rollback | connection 2| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 
 ;
 2022-03-14 15:09:32.703  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@4ec1192f, testMethod = saveVoteTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
 2022-03-14 15:09:32.725  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@4d462edc, testMethod = endVoteTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@453fcce2]; rollback [true]
 2022-03-14 15:09:32.730 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
-    /* insert com.polling.core.entity.user.User
+    /* insert com.polling.core.entity.member.Member
         */ insert 
         into
             tb_user
@@ -3442,15 +3442,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.731 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.732 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.732 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [polling@test.com]
-2022-03-14 15:09:32.732 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [°ü¸®ÀÚ]
+2022-03-14 15:09:32.732 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.732 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [null]
 2022-03-14 15:09:32.733 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [null]
 2022-03-14 15:09:32.733 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [sasds]
 2022-03-14 15:09:32.733 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [01099123127]
 2022-03-14 15:09:32.733 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [ROLE_ADMIN]
 2022-03-14 15:09:32.734  INFO 15900 --- [Test worker] p6spy                                    : #1647238172734 | took 0ms | statement | connection 3| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', '°ü¸®ÀÚ', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
 2022-03-14 15:09:32.737 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         generatedAlias0 
@@ -3508,15 +3508,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
             (null, ?, ?, ?, ?, ?, ?, ?, ?)
 2022-03-14 15:09:32.748 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.748 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
-2022-03-14 15:09:32.748 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯±¸³×]
+2022-03-14 15:09:32.748 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.748 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [TIMESTAMP] - [+999999999-12-31T23:59:59.999999999]
 2022-03-14 15:09:32.749 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [2]
-2022-03-14 15:09:32.749 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [¸ø¸»¸®´Â½ÅÂ¯]
+2022-03-14 15:09:32.749 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯]
 2022-03-14 15:09:32.750 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [TIMESTAMP] - [-999999999-01-01T00:00]
 2022-03-14 15:09:32.750 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [INTEGER] - [0]
 2022-03-14 15:09:32.752  INFO 15900 --- [Test worker] p6spy                                    : #1647238172752 | took 0ms | statement | connection 3| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯±¸³×', '169104628-12-10T19:08:16.767+0900', 2, '¸ø¸»¸®´Â½ÅÂ¯', '169087565-03-15T04:51:43.232+0900', 0);
+/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯ï¿½ï¿½ï¿½ï¿½', '169104628-12-10T19:08:16.767+0900', 2, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯', '169087565-03-15T04:51:43.232+0900', 0);
 2022-03-14 15:09:32.754 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3528,13 +3528,13 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.755 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.756 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.756 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.756 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:32.756 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.757 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.757 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [2]
 2022-03-14 15:09:32.757 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.758  INFO 15900 --- [Test worker] p6spy                                    : #1647238172758 | took 0ms | statement | connection 3| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯±¸', 'somewhere', 2, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 2, 0);
 2022-03-14 15:09:32.761 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3546,20 +3546,20 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.762 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.762 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.762 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.763 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯¾Æ]
+2022-03-14 15:09:32.763 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.763 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.763 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [2]
 2022-03-14 15:09:32.764 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.765  INFO 15900 --- [Test worker] p6spy                                    : #1647238172765 | took 0ms | statement | connection 3| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯¾Æ', 'somewhere', 2, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 2, 0);
 2022-03-14 15:09:32.774  INFO 15900 --- [Test worker] p6spy                                    : #1647238172774 | took 0ms | rollback | connection 3| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 
 ;
 2022-03-14 15:09:32.775  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@4d462edc, testMethod = endVoteTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
 2022-03-14 15:09:32.780  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@3b191676, testMethod = getRankingTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@453fcce2]; rollback [true]
 2022-03-14 15:09:32.785 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
-    /* insert com.polling.core.entity.user.User
+    /* insert com.polling.core.entity.member.Member
         */ insert 
         into
             tb_user
@@ -3569,15 +3569,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.786 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.786 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.787 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [polling@test.com]
-2022-03-14 15:09:32.787 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [°ü¸®ÀÚ]
+2022-03-14 15:09:32.787 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.787 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [null]
 2022-03-14 15:09:32.788 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [null]
 2022-03-14 15:09:32.788 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [sasds]
 2022-03-14 15:09:32.788 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [01099123127]
 2022-03-14 15:09:32.788 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [ROLE_ADMIN]
 2022-03-14 15:09:32.789  INFO 15900 --- [Test worker] p6spy                                    : #1647238172789 | took 0ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', '°ü¸®ÀÚ', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
 2022-03-14 15:09:32.808 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         generatedAlias0 
@@ -3635,15 +3635,15 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
             (null, ?, ?, ?, ?, ?, ?, ?, ?)
 2022-03-14 15:09:32.830 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.831 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
-2022-03-14 15:09:32.832 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯±¸³×]
+2022-03-14 15:09:32.832 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:32.840 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [TIMESTAMP] - [+999999999-12-31T23:59:59.999999999]
 2022-03-14 15:09:32.841 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [3]
-2022-03-14 15:09:32.842 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [¸ø¸»¸®´Â½ÅÂ¯]
+2022-03-14 15:09:32.842 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯]
 2022-03-14 15:09:32.843 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [TIMESTAMP] - [-999999999-01-01T00:00]
 2022-03-14 15:09:32.844 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [INTEGER] - [0]
 2022-03-14 15:09:32.848  INFO 15900 --- [Test worker] p6spy                                    : #1647238172848 | took 2ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯±¸³×', '169104628-12-10T19:08:16.767+0900', 3, '¸ø¸»¸®´Â½ÅÂ¯', '169087565-03-15T04:51:43.232+0900', 0);
+/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯ï¿½ï¿½ï¿½ï¿½', '169104628-12-10T19:08:16.767+0900', 3, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯', '169087565-03-15T04:51:43.232+0900', 0);
 2022-03-14 15:09:32.850 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3655,13 +3655,13 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.851 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.851 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.851 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.851 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:32.851 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.852 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.852 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
 2022-03-14 15:09:32.852 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.853  INFO 15900 --- [Test worker] p6spy                                    : #1647238172853 | took 0ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯±¸', 'somewhere', 3, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 3, 0);
 2022-03-14 15:09:32.856 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3673,13 +3673,13 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:32.857 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.857 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:32.858 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:32.858 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯¾Æ]
+2022-03-14 15:09:32.858 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.859 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:32.859 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
 2022-03-14 15:09:32.859 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:32.860  INFO 15900 --- [Test worker] p6spy                                    : #1647238172860 | took 0ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯¾Æ', 'somewhere', 3, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 3, 0);
 2022-03-14 15:09:32.872 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         generatedAlias0 
@@ -3699,10 +3699,10 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
             tb_candidate candidate0_ 
         where
             candidate0_.candidate_name=?
-2022-03-14 15:09:32.873 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:32.873 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:32.875  INFO 15900 --- [Test worker] p6spy                                    : #1647238172875 | took 0ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* select generatedAlias0 from Candidate as generatedAlias0 where generatedAlias0.name=:param0 */ select candidate0_.candidate_id as candidat1_0_, candidate0_.created_date as created_2_0_, candidate0_.modified_date as modified3_0_, candidate0_.content as content4_0_, candidate0_.candidate_name as candidat5_0_, candidate0_.profile_path as profile_6_0_, candidate0_.vote_id as vote_id8_0_, candidate0_.vote_total as vote_tot7_0_ from tb_candidate candidate0_ where candidate0_.candidate_name=?
-/* select generatedAlias0 from Candidate as generatedAlias0 where generatedAlias0.name=:param0 */ select candidate0_.candidate_id as candidat1_0_, candidate0_.created_date as created_2_0_, candidate0_.modified_date as modified3_0_, candidate0_.content as content4_0_, candidate0_.candidate_name as candidat5_0_, candidate0_.profile_path as profile_6_0_, candidate0_.vote_id as vote_id8_0_, candidate0_.vote_total as vote_tot7_0_ from tb_candidate candidate0_ where candidate0_.candidate_name='Â¯±¸';
+/* select generatedAlias0 from Candidate as generatedAlias0 where generatedAlias0.name=:param0 */ select candidate0_.candidate_id as candidat1_0_, candidate0_.created_date as created_2_0_, candidate0_.modified_date as modified3_0_, candidate0_.content as content4_0_, candidate0_.candidate_name as candidat5_0_, candidate0_.profile_path as profile_6_0_, candidate0_.vote_id as vote_id8_0_, candidate0_.vote_total as vote_tot7_0_ from tb_candidate candidate0_ where candidate0_.candidate_name='Â¯ï¿½ï¿½';
 2022-03-14 15:09:32.876 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([candidat1_0_] : [BIGINT]) - [5]
 2022-03-14 15:09:33.187 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* update
@@ -3721,14 +3721,14 @@ select * from INFORMATION_SCHEMA.SEQUENCES;
 2022-03-14 15:09:33.188 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.188 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.189 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:33.189 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:33.189 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:33.190 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:33.190 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
 2022-03-14 15:09:33.190 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [100]
 2022-03-14 15:09:33.190 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [BIGINT] - [5]
 2022-03-14 15:09:33.194  INFO 15900 --- [Test worker] p6spy                                    : #1647238173194 | took 3ms | statement | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* update com.polling.core.entity.candidate.Candidate */ update tb_candidate set created_date=?, modified_date=?, content=?, candidate_name=?, profile_path=?, vote_id=?, vote_total=? where candidate_id=?
-/* update com.polling.core.entity.candidate.Candidate */ update tb_candidate set created_date=NULL, modified_date=NULL, content=NULL, candidate_name='Â¯±¸', profile_path='somewhere', vote_id=3, vote_total=100 where candidate_id=5;
+/* update com.polling.core.entity.candidate.Candidate */ update tb_candidate set created_date=NULL, modified_date=NULL, content=NULL, candidate_name='Â¯ï¿½ï¿½', profile_path='somewhere', vote_id=3, vote_total=100 where candidate_id=5;
 2022-03-14 15:09:33.206 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         candidate.id,
@@ -3762,11 +3762,11 @@ from Candidate candidate
 where candidate.vote.id = 31
 order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_, candidate0_.candidate_name as col_1_0_, candidate0_.profile_path as col_2_0_, candidate0_.vote_total as col_3_0_ from tb_candidate candidate0_ where candidate0_.vote_id=NULL order by candidate0_.vote_total desc;
 2022-03-14 15:09:33.209 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [5]
-2022-03-14 15:09:33.209 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_1_0_] : [VARCHAR]) - [Â¯±¸]
+2022-03-14 15:09:33.209 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_1_0_] : [VARCHAR]) - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:33.210 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_2_0_] : [VARCHAR]) - [somewhere]
 2022-03-14 15:09:33.210 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_3_0_] : [INTEGER]) - [100]
 2022-03-14 15:09:33.210 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [6]
-2022-03-14 15:09:33.211 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_1_0_] : [VARCHAR]) - [Â¯¾Æ]
+2022-03-14 15:09:33.211 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_1_0_] : [VARCHAR]) - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:33.211 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_2_0_] : [VARCHAR]) - [somewhere]
 2022-03-14 15:09:33.211 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_3_0_] : [INTEGER]) - [0]
 2022-03-14 15:09:33.219  INFO 15900 --- [Test worker] p6spy                                    : #1647238173219 | took 0ms | rollback | connection 4| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
@@ -3775,7 +3775,7 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
 2022-03-14 15:09:33.220  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@3b191676, testMethod = getRankingTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
 2022-03-14 15:09:33.229  INFO 15900 --- [Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@6f6a7463 testClass = VoteServiceTest, testInstance = com.polling.api.service.vote.VoteServiceTest@3dcc59f5, testMethod = deleteTest@VoteServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1bdaa23d testClass = VoteServiceTest, locations = '{}', classes = '{class com.polling.BackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@183e8023, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@56bca85b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22b53226, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40c80397, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47db5fa5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@239105a8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@453fcce2]; rollback [true]
 2022-03-14 15:09:33.237 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
-    /* insert com.polling.core.entity.user.User
+    /* insert com.polling.core.entity.member.Member
         */ insert 
         into
             tb_user
@@ -3785,15 +3785,15 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
 2022-03-14 15:09:33.238 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.238 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.238 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [polling@test.com]
-2022-03-14 15:09:33.238 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [°ü¸®ÀÚ]
+2022-03-14 15:09:33.238 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:33.239 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [null]
 2022-03-14 15:09:33.239 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [null]
 2022-03-14 15:09:33.239 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [sasds]
 2022-03-14 15:09:33.239 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [01099123127]
 2022-03-14 15:09:33.240 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [ROLE_ADMIN]
 2022-03-14 15:09:33.240  INFO 15900 --- [Test worker] p6spy                                    : #1647238173240 | took 0ms | statement | connection 5| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.user.User */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', '°ü¸®ÀÚ', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.core.entity.member.Member */ insert into tb_user (user_id, created_date, modified_date, email, user_name, oauth_id, oauth_type, password, phone_number, user_role) values (null, NULL, NULL, 'polling@test.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', NULL, NULL, 'sasds', '01099123127', 'ROLE_ADMIN');
 2022-03-14 15:09:33.247 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* select
         generatedAlias0 
@@ -3851,15 +3851,15 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
             (null, ?, ?, ?, ?, ?, ?, ?, ?)
 2022-03-14 15:09:33.265 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.265 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
-2022-03-14 15:09:33.265 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯±¸³×]
+2022-03-14 15:09:33.265 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Â¯ï¿½ï¿½ï¿½ï¿½]
 2022-03-14 15:09:33.265 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [TIMESTAMP] - [+999999999-12-31T23:59:59.999999999]
 2022-03-14 15:09:33.267 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [4]
-2022-03-14 15:09:33.267 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [¸ø¸»¸®´Â½ÅÂ¯]
+2022-03-14 15:09:33.267 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯]
 2022-03-14 15:09:33.268 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [TIMESTAMP] - [-999999999-01-01T00:00]
 2022-03-14 15:09:33.268 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [INTEGER] - [0]
 2022-03-14 15:09:33.270  INFO 15900 --- [Test worker] p6spy                                    : #1647238173270 | took 0ms | statement | connection 5| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, ?, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯±¸³×', '169104628-12-10T19:08:16.767+0900', 4, '¸ø¸»¸®´Â½ÅÂ¯', '169087565-03-15T04:51:43.232+0900', 0);
+/* insert com.polling.core.entity.vote.Vote */ insert into tb_vote (vote_id, created_date, modified_date, content, end_date, host_id, vote_name, start_date, vote_status) values (null, NULL, NULL, 'Â¯ï¿½ï¿½ï¿½ï¿½', '169104628-12-10T19:08:16.767+0900', 4, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½Â¯', '169087565-03-15T04:51:43.232+0900', 0);
 2022-03-14 15:09:33.274 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3871,13 +3871,13 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
 2022-03-14 15:09:33.275 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯±¸]
+2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:33.276 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [4]
 2022-03-14 15:09:33.277 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:33.277  INFO 15900 --- [Test worker] p6spy                                    : #1647238173277 | took 0ms | statement | connection 5| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯±¸', 'somewhere', 4, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 4, 0);
 2022-03-14 15:09:33.281 DEBUG 15900 --- [Test worker] org.hibernate.SQL                        : 
     /* insert com.polling.core.entity.candidate.Candidate
         */ insert 
@@ -3889,13 +3889,13 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
 2022-03-14 15:09:33.282 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.282 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [null]
 2022-03-14 15:09:33.282 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
-2022-03-14 15:09:33.282 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯¾Æ]
+2022-03-14 15:09:33.282 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [Â¯ï¿½ï¿½]
 2022-03-14 15:09:33.283 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [somewhere]
 2022-03-14 15:09:33.283 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [4]
 2022-03-14 15:09:33.283 TRACE 15900 --- [Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [INTEGER] - [0]
 2022-03-14 15:09:33.284  INFO 15900 --- [Test worker] p6spy                                    : #1647238173284 | took 0ms | statement | connection 5| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 /* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, ?, ?, ?, ?, ?, ?, ?)
-/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯¾Æ', 'somewhere', 4, 0);
+/* insert com.polling.core.entity.candidate.Candidate */ insert into tb_candidate (candidate_id, created_date, modified_date, content, candidate_name, profile_path, vote_id, vote_total) values (null, NULL, NULL, NULL, 'Â¯ï¿½ï¿½', 'somewhere', 4, 0);
 2022-03-14 15:09:33.495  INFO 15900 --- [Test worker] p6spy                                    : #1647238173495 | took 0ms | rollback | connection 5| url jdbc:h2:mem:17ff654d-c554-400c-bd24-bfbcaf94cac9
 
 ;
@@ -3905,3 +3905,963 @@ order by candidate.voteTotal desc */ select candidate0_.candidate_id as col_0_0_
 2022-03-14 15:09:33.531 DEBUG 15900 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@181c45e0] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@6f36e806]
 2022-03-14 15:09:33.534  INFO 15900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-03-14 15:09:33.540  INFO 15900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-16 10:18:23.101  INFO 9612 --- [restartedMain] com.polling.BackendApplication           : Starting BackendApplication using Java 11.0.14 on DESKTOP-KVCQHCD with PID 9612 (C:\Users\SSAFY\Desktop\git\S06P22A304\backend\build\classes\java\main started by SSAFY in C:\Users\SSAFY\Desktop\git\S06P22A304\backend)
+2022-03-16 10:18:23.103  INFO 9612 --- [restartedMain] com.polling.BackendApplication           : The following profiles are active: local
+2022-03-16 10:18:23.190  INFO 9612 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-16 10:18:23.191  INFO 9612 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-16 10:18:25.073  INFO 9612 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-16 10:18:25.252  INFO 9612 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 5 JPA repository interfaces.
+2022-03-16 10:18:25.939  INFO 9612 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@96e82a1' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-16 10:18:25.951  INFO 9612 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-16 10:18:26.467  INFO 9612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-16 10:18:26.487  INFO 9612 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-16 10:18:26.488  INFO 9612 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-16 10:18:26.666  INFO 9612 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-16 10:18:26.666  INFO 9612 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3474 ms
+2022-03-16 10:18:26.802  INFO 9612 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-16 10:18:27.043  INFO 9612 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-16 10:18:27.057  INFO 9612 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920'
+2022-03-16 10:18:27.347  INFO 9612 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-16 10:18:27.461  INFO 9612 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.33
+2022-03-16 10:18:27.733  INFO 9612 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-16 10:18:27.793 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@276dfbbc
+2022-03-16 10:18:27.793 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@276dfbbc
+2022-03-16 10:18:27.794 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@276dfbbc
+2022-03-16 10:18:27.795 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@26b6e3f3
+2022-03-16 10:18:27.796 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@4add1f8f
+2022-03-16 10:18:27.797 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@79bcf4d1
+2022-03-16 10:18:27.800 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@64ef4679
+2022-03-16 10:18:27.800 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@64ef4679
+2022-03-16 10:18:27.800 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@64ef4679
+2022-03-16 10:18:27.802 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@50861011
+2022-03-16 10:18:27.802 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@50861011
+2022-03-16 10:18:27.803 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@50861011
+2022-03-16 10:18:27.805 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@773926ea
+2022-03-16 10:18:27.805 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@773926ea
+2022-03-16 10:18:27.806 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@773926ea
+2022-03-16 10:18:27.807 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@7a10af84
+2022-03-16 10:18:27.808 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@7a10af84
+2022-03-16 10:18:27.808 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@7a10af84
+2022-03-16 10:18:27.810 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@43e6df8
+2022-03-16 10:18:27.811 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@43e6df8
+2022-03-16 10:18:27.811 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@43e6df8
+2022-03-16 10:18:27.813 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3034d443
+2022-03-16 10:18:27.813 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3034d443
+2022-03-16 10:18:27.813 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@3034d443
+2022-03-16 10:18:27.815 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@36c34738
+2022-03-16 10:18:27.815 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@36c34738
+2022-03-16 10:18:27.816 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@36c34738
+2022-03-16 10:18:27.817 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@2e3bbcea
+2022-03-16 10:18:27.818 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@2e3bbcea
+2022-03-16 10:18:27.819 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@200bcaf
+2022-03-16 10:18:27.820 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@200bcaf
+2022-03-16 10:18:27.822 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@4a007700
+2022-03-16 10:18:27.822 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@4a007700
+2022-03-16 10:18:27.823 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@7265683
+2022-03-16 10:18:27.824 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@4ed049ea
+2022-03-16 10:18:27.825 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@3c125f67
+2022-03-16 10:18:27.826 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@3c125f67
+2022-03-16 10:18:27.827 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@16396bfe
+2022-03-16 10:18:27.828 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@16396bfe
+2022-03-16 10:18:27.830 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@79bb6052
+2022-03-16 10:18:27.830 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@79bb6052
+2022-03-16 10:18:27.832 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@274c14fa
+2022-03-16 10:18:27.832 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@274c14fa
+2022-03-16 10:18:27.834 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@542d6228
+2022-03-16 10:18:27.834 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@542d6228
+2022-03-16 10:18:27.836 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@62358962
+2022-03-16 10:18:27.836 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@62358962
+2022-03-16 10:18:27.838 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@60fe34d1
+2022-03-16 10:18:27.839 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@60fe34d1
+2022-03-16 10:18:27.841 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@515879ca
+2022-03-16 10:18:27.841 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@515879ca
+2022-03-16 10:18:27.844 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@b29b7f
+2022-03-16 10:18:27.844 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@b29b7f
+2022-03-16 10:18:27.847 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@319e261
+2022-03-16 10:18:27.847 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@319e261
+2022-03-16 10:18:27.850 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@14675b16
+2022-03-16 10:18:27.850 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@14675b16
+2022-03-16 10:18:27.852 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@64311523
+2022-03-16 10:18:27.853 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@64311523
+2022-03-16 10:18:27.853 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@64311523
+2022-03-16 10:18:27.855 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@7ece2fd8
+2022-03-16 10:18:27.857 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@1b19e770
+2022-03-16 10:18:27.857 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1b19e770
+2022-03-16 10:18:27.857 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1b19e770
+2022-03-16 10:18:27.859 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@1b7dc24f
+2022-03-16 10:18:27.860 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@70f6300f
+2022-03-16 10:18:27.862 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@3e543c23
+2022-03-16 10:18:27.862 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@3e543c23
+2022-03-16 10:18:27.864 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@6fcbabf2
+2022-03-16 10:18:27.864 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@6fcbabf2
+2022-03-16 10:18:27.866 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@34fd383d
+2022-03-16 10:18:27.867 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@34fd383d
+2022-03-16 10:18:27.869 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@3424c797
+2022-03-16 10:18:27.869 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@3424c797
+2022-03-16 10:18:27.871 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@31b866a1
+2022-03-16 10:18:27.871 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@31b866a1
+2022-03-16 10:18:27.872 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@352f66c3
+2022-03-16 10:18:27.875 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@5b5f989f
+2022-03-16 10:18:27.875 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@5b5f989f
+2022-03-16 10:18:27.875 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@5b5f989f
+2022-03-16 10:18:27.877 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@4c876a62
+2022-03-16 10:18:27.877 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@4c876a62
+2022-03-16 10:18:27.877 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@4c876a62
+2022-03-16 10:18:27.879 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@3100375c
+2022-03-16 10:18:27.880 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@2f3a69cc
+2022-03-16 10:18:27.881 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@315e37f4
+2022-03-16 10:18:27.882 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@315e37f4
+2022-03-16 10:18:27.882 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@315e37f4
+2022-03-16 10:18:27.883 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@3af585f8
+2022-03-16 10:18:27.884 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@3af585f8
+2022-03-16 10:18:27.884 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@3af585f8
+2022-03-16 10:18:27.885 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@6b33bf53
+2022-03-16 10:18:27.885 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@185c8139
+2022-03-16 10:18:27.888 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@59fd709
+2022-03-16 10:18:27.889 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@59fd709
+2022-03-16 10:18:27.890 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@7819745c
+2022-03-16 10:18:27.892 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@64b357b
+2022-03-16 10:18:27.893 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@64b357b
+2022-03-16 10:18:27.895 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@78d4301
+2022-03-16 10:18:27.895 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@78d4301
+2022-03-16 10:18:27.896 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@2815daf1
+2022-03-16 10:18:27.897 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1244a845
+2022-03-16 10:18:27.900 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@73046d15
+2022-03-16 10:18:27.905 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@b939bbb
+2022-03-16 10:18:27.906 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@b939bbb
+2022-03-16 10:18:27.907 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@17caea6a
+2022-03-16 10:18:27.907 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@5aa426ae
+2022-03-16 10:18:27.907 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@81b3c0e
+2022-03-16 10:18:27.907 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@172b656a
+2022-03-16 10:18:27.908 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@57f2445f
+2022-03-16 10:18:27.908 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@2c188959
+2022-03-16 10:18:27.908 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@7db23b98
+2022-03-16 10:18:27.909 DEBUG 9612 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@31fe0171
+2022-03-16 10:18:28.023  INFO 9612 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-16 10:18:28.153 DEBUG 9612 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4df694bf] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@774f4291]
+2022-03-16 10:18:28.680 DEBUG 9612 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.core.entity.vote.status.VoteStatus
+2022-03-16 10:18:28.684 DEBUG 9612 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.MemberRole
+2022-03-16 10:18:28.685 DEBUG 9612 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.OAuthType
+2022-03-16 10:18:28.685 DEBUG 9612 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4df694bf] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@74974358]
+2022-03-16 10:18:29.358  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509357 | took 3ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+select * from INFORMATION_SCHEMA.SEQUENCES
+select * from INFORMATION_SCHEMA.SEQUENCES;
+2022-03-16 10:18:29.435 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    )
+2022-03-16 10:18:29.454  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509454 | took 18ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    )
+
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    );
+2022-03-16 10:18:29.455 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    )
+2022-03-16 10:18:29.457  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509457 | took 1ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    )
+
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    );
+2022-03-16 10:18:29.457 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    )
+2022-03-16 10:18:29.459  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509459 | took 1ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    )
+
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    );
+2022-03-16 10:18:29.459 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        member_role varchar(255),
+        user_name varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    )
+2022-03-16 10:18:29.461  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509461 | took 1ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        member_role varchar(255),
+        user_name varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    )
+
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        member_role varchar(255),
+        user_name varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    );
+2022-03-16 10:18:29.462 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    )
+2022-03-16 10:18:29.463  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509463 | took 1ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    )
+
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    );
+2022-03-16 10:18:29.465 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote
+2022-03-16 10:18:29.475  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509475 | took 10ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote
+
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote;
+2022-03-16 10:18:29.476 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate
+2022-03-16 10:18:29.478  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509478 | took 2ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate
+
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate;
+2022-03-16 10:18:29.478 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user
+2022-03-16 10:18:29.481  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509481 | took 2ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user
+
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user;
+2022-03-16 10:18:29.481 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate
+2022-03-16 10:18:29.484  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509484 | took 2ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate
+
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate;
+2022-03-16 10:18:29.484 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user
+2022-03-16 10:18:29.487  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509487 | took 2ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user
+
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user;
+2022-03-16 10:18:29.487 DEBUG 9612 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user
+2022-03-16 10:18:29.490  INFO 9612 --- [restartedMain] p6spy                                    : #1647393509490 | took 2ms | statement | connection 2| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user
+
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user;
+2022-03-16 10:18:29.490  INFO 9612 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-16 10:18:29.503 TRACE 9612 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@74974358] for TypeConfiguration
+2022-03-16 10:18:29.508  INFO 9612 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 10:18:30.593  WARN 9612 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-16 10:18:31.151  INFO 9612 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-03-16 10:18:31.357  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-03-16 10:18:31.357  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/*.html'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/favicon.ico'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-03-16 10:18:31.358  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2-console/**'] with []
+2022-03-16 10:18:31.429  INFO 9612 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a2f75fb, org.springframework.security.web.context.SecurityContextPersistenceFilter@88c490f, org.springframework.security.web.header.HeaderWriterFilter@3556dc2e, org.springframework.web.filter.CorsFilter@2f5201b, org.springframework.security.web.authentication.logout.LogoutFilter@7ec48b04, org.springframework.web.filter.CorsFilter@2f5201b, com.polling.common.security.jwt.JwtFilter@451a3ae1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c41bc25, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5fa6e509, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fc2267b, org.springframework.security.web.session.SessionManagementFilter@28911cc2, org.springframework.security.web.access.ExceptionTranslationFilter@2c4c73e0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1bbacf1]
+2022-03-16 10:18:31.765  INFO 9612 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-16 10:18:32.170  INFO 9612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-16 10:18:32.172  INFO 9612 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-03-16 10:18:32.204  INFO 9612 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-03-16 10:18:32.273  INFO 9612 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-03-16 10:18:32.572  INFO 9612 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-03-16 10:18:32.595  INFO 9612 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2022-03-16 10:18:32.634  INFO 9612 --- [restartedMain] com.polling.BackendApplication           : Started BackendApplication in 10.515 seconds (JVM running for 13.438)
+2022-03-16 10:19:15.831  INFO 9612 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 10:19:15.832 TRACE 9612 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@74974358] for TypeConfiguration
+2022-03-16 10:19:15.832 DEBUG 9612 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@69bab37d] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@74974358]
+2022-03-16 10:19:16.055  INFO 9612 --- [SpringApplicationShutdownHook] p6spy                                    : #1647393556055 | took 217ms | statement | connection 3| url jdbc:h2:mem:6f7b41ef-5a78-453e-bc4a-21d19075e920
+SHUTDOWN
+SHUTDOWN;
+2022-03-16 10:19:16.057  WARN 9612 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-16 10:19:16.058  INFO 9612 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-16 10:19:16.063  INFO 9612 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-16 11:54:24.490  INFO 1104 --- [restartedMain] com.polling.BackendApplication           : Starting BackendApplication using Java 11.0.14 on DESKTOP-KVCQHCD with PID 1104 (C:\Users\SSAFY\Desktop\git\S06P22A304\backend\build\classes\java\main started by SSAFY in C:\Users\SSAFY\Desktop\git\S06P22A304\backend)
+2022-03-16 11:54:24.492  INFO 1104 --- [restartedMain] com.polling.BackendApplication           : The following profiles are active: local
+2022-03-16 11:54:24.571  INFO 1104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-16 11:54:24.572  INFO 1104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-16 11:54:26.339  INFO 1104 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-16 11:54:26.507  INFO 1104 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 5 JPA repository interfaces.
+2022-03-16 11:54:27.207  INFO 1104 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6445e8cd' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-16 11:54:27.217  INFO 1104 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-16 11:54:27.706  INFO 1104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-16 11:54:27.723  INFO 1104 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-16 11:54:27.723  INFO 1104 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-16 11:54:27.882  INFO 1104 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-16 11:54:27.883  INFO 1104 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3310 ms
+2022-03-16 11:54:28.015  INFO 1104 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-16 11:54:28.226  INFO 1104 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-16 11:54:28.241  INFO 1104 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5'
+2022-03-16 11:54:28.514  INFO 1104 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-16 11:54:28.603  INFO 1104 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.33
+2022-03-16 11:54:28.838  INFO 1104 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-16 11:54:28.890 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@7632cc2f
+2022-03-16 11:54:28.890 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@7632cc2f
+2022-03-16 11:54:28.891 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@7632cc2f
+2022-03-16 11:54:28.892 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@7c20b641
+2022-03-16 11:54:28.893 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@10aae23b
+2022-03-16 11:54:28.894 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@9d0b4d9
+2022-03-16 11:54:28.896 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@d260906
+2022-03-16 11:54:28.897 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@d260906
+2022-03-16 11:54:28.897 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@d260906
+2022-03-16 11:54:28.899 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@46aa7078
+2022-03-16 11:54:28.899 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@46aa7078
+2022-03-16 11:54:28.899 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@46aa7078
+2022-03-16 11:54:28.901 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@307fee6c
+2022-03-16 11:54:28.901 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@307fee6c
+2022-03-16 11:54:28.901 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@307fee6c
+2022-03-16 11:54:28.903 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@19e4e9bd
+2022-03-16 11:54:28.903 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@19e4e9bd
+2022-03-16 11:54:28.904 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@19e4e9bd
+2022-03-16 11:54:28.905 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@1f66205c
+2022-03-16 11:54:28.906 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@1f66205c
+2022-03-16 11:54:28.906 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@1f66205c
+2022-03-16 11:54:28.908 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@4172fcd2
+2022-03-16 11:54:28.908 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@4172fcd2
+2022-03-16 11:54:28.909 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@4172fcd2
+2022-03-16 11:54:28.910 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@78c6c8ef
+2022-03-16 11:54:28.911 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@78c6c8ef
+2022-03-16 11:54:28.911 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@78c6c8ef
+2022-03-16 11:54:28.912 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@48521375
+2022-03-16 11:54:28.913 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@48521375
+2022-03-16 11:54:28.914 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@2a338182
+2022-03-16 11:54:28.915 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@2a338182
+2022-03-16 11:54:28.916 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@454404dd
+2022-03-16 11:54:28.917 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@454404dd
+2022-03-16 11:54:28.918 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@2503f178
+2022-03-16 11:54:28.919 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@79fb8bcc
+2022-03-16 11:54:28.921 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@1ecd0315
+2022-03-16 11:54:28.921 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@1ecd0315
+2022-03-16 11:54:28.923 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@4f57d86e
+2022-03-16 11:54:28.923 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@4f57d86e
+2022-03-16 11:54:28.925 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@aaf05f
+2022-03-16 11:54:28.925 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@aaf05f
+2022-03-16 11:54:28.926 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@1ae3eaf3
+2022-03-16 11:54:28.927 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@1ae3eaf3
+2022-03-16 11:54:28.929 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@75a0872d
+2022-03-16 11:54:28.929 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@75a0872d
+2022-03-16 11:54:28.931 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@2101765c
+2022-03-16 11:54:28.931 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@2101765c
+2022-03-16 11:54:28.933 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@7fc81d51
+2022-03-16 11:54:28.933 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@7fc81d51
+2022-03-16 11:54:28.935 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@454337c
+2022-03-16 11:54:28.935 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@454337c
+2022-03-16 11:54:28.937 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@62cdb800
+2022-03-16 11:54:28.938 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@62cdb800
+2022-03-16 11:54:28.940 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@541d5974
+2022-03-16 11:54:28.941 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@541d5974
+2022-03-16 11:54:28.943 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@58f0fea9
+2022-03-16 11:54:28.944 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@58f0fea9
+2022-03-16 11:54:28.946 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@2e5e0adc
+2022-03-16 11:54:28.946 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@2e5e0adc
+2022-03-16 11:54:28.946 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@2e5e0adc
+2022-03-16 11:54:28.948 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@5dea8cc4
+2022-03-16 11:54:28.950 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@17697760
+2022-03-16 11:54:28.950 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@17697760
+2022-03-16 11:54:28.950 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@17697760
+2022-03-16 11:54:28.953 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@1dff48f2
+2022-03-16 11:54:28.953 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@49509f12
+2022-03-16 11:54:28.955 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@6daf330a
+2022-03-16 11:54:28.955 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@6daf330a
+2022-03-16 11:54:28.957 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@23acfb0a
+2022-03-16 11:54:28.957 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@23acfb0a
+2022-03-16 11:54:28.959 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@7b6e9ec7
+2022-03-16 11:54:28.959 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@7b6e9ec7
+2022-03-16 11:54:28.961 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@40501f06
+2022-03-16 11:54:28.961 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@40501f06
+2022-03-16 11:54:28.962 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@3b8f809c
+2022-03-16 11:54:28.963 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@3b8f809c
+2022-03-16 11:54:28.964 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@26943df
+2022-03-16 11:54:28.967 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@15a4bc8e
+2022-03-16 11:54:28.967 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@15a4bc8e
+2022-03-16 11:54:28.967 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@15a4bc8e
+2022-03-16 11:54:28.969 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@47f157c9
+2022-03-16 11:54:28.970 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@47f157c9
+2022-03-16 11:54:28.970 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@47f157c9
+2022-03-16 11:54:28.972 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@7f193584
+2022-03-16 11:54:28.973 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@4e772008
+2022-03-16 11:54:28.975 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@3fa55539
+2022-03-16 11:54:28.975 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@3fa55539
+2022-03-16 11:54:28.975 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@3fa55539
+2022-03-16 11:54:28.977 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@7c4b0293
+2022-03-16 11:54:28.977 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@7c4b0293
+2022-03-16 11:54:28.977 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@7c4b0293
+2022-03-16 11:54:28.978 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@bd9e7b
+2022-03-16 11:54:28.979 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@59c88bd2
+2022-03-16 11:54:28.982 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@5cf635c5
+2022-03-16 11:54:28.982 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@5cf635c5
+2022-03-16 11:54:28.983 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@68b859b
+2022-03-16 11:54:28.985 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@5fab4668
+2022-03-16 11:54:28.985 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@5fab4668
+2022-03-16 11:54:28.988 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@42978d0c
+2022-03-16 11:54:28.988 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@42978d0c
+2022-03-16 11:54:28.989 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@339c5e7a
+2022-03-16 11:54:28.990 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@600b12e9
+2022-03-16 11:54:28.992 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@2391ed74
+2022-03-16 11:54:28.998 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@15089e81
+2022-03-16 11:54:28.998 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@15089e81
+2022-03-16 11:54:28.999 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@26844519
+2022-03-16 11:54:28.999 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@26c1ea9d
+2022-03-16 11:54:28.999 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@3ffb4ff
+2022-03-16 11:54:28.999 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@3de7eb12
+2022-03-16 11:54:29.000 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@394fcd3a
+2022-03-16 11:54:29.000 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@10735d8c
+2022-03-16 11:54:29.000 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@6ed55b31
+2022-03-16 11:54:29.000 DEBUG 1104 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@6c689282
+2022-03-16 11:54:29.097  INFO 1104 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-16 11:54:29.237 DEBUG 1104 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@403a80f2] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@3fe296e8]
+2022-03-16 11:54:29.740 DEBUG 1104 --- [restartedMain] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.core.entity.vote.status.VoteStatus
+2022-03-16 11:54:29.743 DEBUG 1104 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.OAuthType
+2022-03-16 11:54:29.744 DEBUG 1104 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.core.entity.member.status.MemberRole
+2022-03-16 11:54:29.744 DEBUG 1104 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@403a80f2] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@34224e8]
+2022-03-16 11:54:30.431  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270431 | took 3ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+select * from INFORMATION_SCHEMA.SEQUENCES
+select * from INFORMATION_SCHEMA.SEQUENCES;
+2022-03-16 11:54:30.505 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table member_member_role (
+       member_user_id bigint not null,
+        member_role varchar(255)
+    )
+2022-03-16 11:54:30.511  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270511 | took 5ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table member_member_role (
+       member_user_id bigint not null,
+        member_role varchar(255)
+    )
+
+    create table member_member_role (
+       member_user_id bigint not null,
+        member_role varchar(255)
+    );
+2022-03-16 11:54:30.511 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    )
+2022-03-16 11:54:30.525  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270525 | took 13ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    )
+
+    create table tb_candidate (
+       candidate_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_name varchar(255),
+        profile_path varchar(255),
+        vote_total integer,
+        vote_id bigint,
+        primary key (candidate_id)
+    );
+2022-03-16 11:54:30.525 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    )
+2022-03-16 11:54:30.527  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270527 | took 1ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    )
+
+    create table tb_candidatehistory (
+       candidate_history_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        transaction_id varchar(255),
+        vote_count integer,
+        candidate_id bigint,
+        user_id bigint,
+        primary key (candidate_history_id)
+    );
+2022-03-16 11:54:30.528 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    )
+2022-03-16 11:54:30.529  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270529 | took 1ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    )
+
+    create table tb_comment (
+       comment_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        candidate_id bigint,
+        user_id bigint,
+        primary key (comment_id)
+    );
+2022-03-16 11:54:30.530 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        nickname varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    )
+2022-03-16 11:54:30.532  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270532 | took 1ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        nickname varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    )
+
+    create table tb_user (
+       user_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        email varchar(255),
+        nickname varchar(255),
+        oauth_id bigint,
+        oauth_type varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        primary key (user_id)
+    );
+2022-03-16 11:54:30.532 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    )
+2022-03-16 11:54:30.534  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270534 | took 1ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    )
+
+    create table tb_vote (
+       vote_id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        content varchar(255),
+        end_date timestamp,
+        vote_name varchar(255),
+        start_date timestamp,
+        vote_status integer,
+        host_id bigint,
+        primary key (vote_id)
+    );
+2022-03-16 11:54:30.535 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table member_member_role 
+       add constraint FK9t7ic4c9ownuy951bhg5kvx0e 
+       foreign key (member_user_id) 
+       references tb_user
+2022-03-16 11:54:30.546  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270546 | took 10ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table member_member_role 
+       add constraint FK9t7ic4c9ownuy951bhg5kvx0e 
+       foreign key (member_user_id) 
+       references tb_user
+
+    alter table member_member_role 
+       add constraint FK9t7ic4c9ownuy951bhg5kvx0e 
+       foreign key (member_user_id) 
+       references tb_user;
+2022-03-16 11:54:30.546 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote
+2022-03-16 11:54:30.548  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270548 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote
+
+    alter table tb_candidate 
+       add constraint FKnyunt2ljjg218k4a29owby7wt 
+       foreign key (vote_id) 
+       references tb_vote;
+2022-03-16 11:54:30.549 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate
+2022-03-16 11:54:30.551  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270551 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate
+
+    alter table tb_candidatehistory 
+       add constraint FKtf2mwllg5on16aespuom5gia 
+       foreign key (candidate_id) 
+       references tb_candidate;
+2022-03-16 11:54:30.551 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user
+2022-03-16 11:54:30.554  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270554 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user
+
+    alter table tb_candidatehistory 
+       add constraint FK1r8ieaec6hsspckap8bi6o0yh 
+       foreign key (user_id) 
+       references tb_user;
+2022-03-16 11:54:30.554 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate
+2022-03-16 11:54:30.556  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270556 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate
+
+    alter table tb_comment 
+       add constraint FK4idcjwgfw31th9l0ronn3i580 
+       foreign key (candidate_id) 
+       references tb_candidate;
+2022-03-16 11:54:30.557 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user
+2022-03-16 11:54:30.560  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270560 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user
+
+    alter table tb_comment 
+       add constraint FK45c1cuqlljd60ihc9j0962ekq 
+       foreign key (user_id) 
+       references tb_user;
+2022-03-16 11:54:30.560 DEBUG 1104 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user
+2022-03-16 11:54:30.562  INFO 1104 --- [restartedMain] p6spy                                    : #1647399270562 | took 2ms | statement | connection 2| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user
+
+    alter table tb_vote 
+       add constraint FKe9s3ln2m97991b8te8mc419uw 
+       foreign key (host_id) 
+       references tb_user;
+2022-03-16 11:54:30.563  INFO 1104 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-16 11:54:30.577 TRACE 1104 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@34224e8] for TypeConfiguration
+2022-03-16 11:54:30.581  INFO 1104 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 11:54:31.650  WARN 1104 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-16 11:54:32.206  INFO 1104 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-03-16 11:54:32.373  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@9287e91 with []
+2022-03-16 11:54:32.373  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-03-16 11:54:32.373  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/'] with []
+2022-03-16 11:54:32.373  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/*.html'] with []
+2022-03-16 11:54:32.374  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/favicon.ico'] with []
+2022-03-16 11:54:32.374  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-03-16 11:54:32.374  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-03-16 11:54:32.374  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-03-16 11:54:32.374  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2-console/**'] with []
+2022-03-16 11:54:32.442  INFO 1104 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ffc1f48, org.springframework.security.web.context.SecurityContextPersistenceFilter@45a4c56e, org.springframework.security.web.header.HeaderWriterFilter@44983f37, org.springframework.web.filter.CorsFilter@7b90eb1, org.springframework.security.web.authentication.logout.LogoutFilter@5f1334b3, org.springframework.web.filter.CorsFilter@7b90eb1, com.polling.common.security.jwt.JwtFilter@64b53f95, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6456cd3d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1b0adfbb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2326c367, org.springframework.security.web.session.SessionManagementFilter@46ac5beb, org.springframework.security.web.access.ExceptionTranslationFilter@6f2ce4c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5cfb2839]
+2022-03-16 11:54:32.772  INFO 1104 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-16 11:54:33.171  INFO 1104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-16 11:54:33.173  INFO 1104 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-03-16 11:54:33.203  INFO 1104 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-03-16 11:54:33.270  INFO 1104 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-03-16 11:54:33.560  INFO 1104 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-03-16 11:54:33.584  INFO 1104 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2022-03-16 11:54:33.623  INFO 1104 --- [restartedMain] com.polling.BackendApplication           : Started BackendApplication in 9.978 seconds (JVM running for 12.403)
+2022-03-16 11:54:47.403  INFO 1104 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-16 11:54:47.404 TRACE 1104 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@34224e8] for TypeConfiguration
+2022-03-16 11:54:47.405 DEBUG 1104 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@54a7c9b1] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@34224e8]
+2022-03-16 11:54:47.617  INFO 1104 --- [SpringApplicationShutdownHook] p6spy                                    : #1647399287617 | took 206ms | statement | connection 3| url jdbc:h2:mem:dac02b84-6979-443c-9731-29f59a9d5aa5
+SHUTDOWN
+SHUTDOWN;
+2022-03-16 11:54:47.619  WARN 1104 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-16 11:54:47.620  INFO 1104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-16 11:54:47.626  INFO 1104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

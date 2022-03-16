@@ -2,7 +2,7 @@ package com.polling.core.entity.comment;
 
 import com.polling.core.entity.candidate.Candidate;
 import com.polling.core.entity.common.BaseTimeEntity;
-import com.polling.core.entity.user.User;
+import com.polling.core.entity.member.Member;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class Comment extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_id")
@@ -34,8 +34,8 @@ public class Comment extends BaseTimeEntity {
     private String content;
 
     @Builder
-    public Comment(User user, Candidate candidate, String content){
-        this.user = user;
+    public Comment(Member member, Candidate candidate, String content){
+        this.member = member;
         this.candidate = candidate;
         this.content = content;
     }

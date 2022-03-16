@@ -14,16 +14,15 @@ import com.polling.api.queryrepository.CommentQueryRepository;
 import com.polling.core.entity.candidate.Candidate;
 import com.polling.core.entity.candidate.CandidateHistory;
 import com.polling.core.entity.comment.Comment;
-import com.polling.core.entity.user.User;
+import com.polling.core.entity.member.Member;
 import com.polling.core.repository.candidate.CandidateHistoryRepository;
 import com.polling.core.repository.candidate.CandidateRepository;
 import com.polling.core.repository.comment.CommentRepository;
-import com.polling.core.repository.user.UserRepository;
+import com.polling.core.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -35,7 +34,7 @@ public class CandidateService {
     private final CommentQueryRepository commentQueryRepository;
     private final CandidateHistoryRepository candidateHistoryRepository;
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
     //전체 대회에 대한 후보자들 목록 전부 뽑아야 하는지->그러면 param으로 vote 받아야 함
     @Transactional(readOnly = true)
@@ -59,14 +58,14 @@ public class CandidateService {
     }
 
     public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, String userName){
-        User user = userRepository.findByName(userName)
+        Member member = memberRepository.findByNickname(userName)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
                 .orElseThrow(()-> new CustomException(ErrorCode.CANDIDATE_NOT_FOUND));
         CandidateHistory candidateHistory = CandidateHistory.builder()
                 .candidate(candidate)
                 .transactionId(requestDto.getTransactionId())
-                .user(user)
+                .member(member)
                 .voteCount(requestDto.getVoteCount())
                 .build();
         candidateHistoryRepository.save(candidateHistory);
@@ -74,12 +73,12 @@ public class CandidateService {
     }
 
     public Long saveComment(SaveCommentRequestDto requestDto, String userName){
-        User user = userRepository.findByName(userName)
+        Member member = memberRepository.findByNickname(userName)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
                 .orElseThrow(()-> new CustomException(ErrorCode.CANDIDATE_NOT_FOUND));
         Comment comment = Comment.builder()
-                .user(user)
+                .member(member)
                 .content(requestDto.getContent())
                 .candidate(candidate)
                 .build();
@@ -88,22 +87,22 @@ public class CandidateService {
     }
 
     public void updateComment(Long commentId, PatchCommentRequestDto requestDto, String userName){
-        User user = userRepository.findByName(userName)
+        Member member = memberRepository.findByNickname(userName)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(()->new CustomException(ErrorCode.COMMENT_NOT_FOUND));
-        if(comment.getUser().getId() != user.getId()){
+        if(comment.getMember().getId() != member.getId()){
             throw new CustomException(ErrorCode.INVALID_COMMENT_OWNER);
         }
         comment.updateContent(requestDto.getContent());
     }
 
     public void deleteComment(Long commentId, String userName){
-        User user = userRepository.findByName(userName)
+        Member member = memberRepository.findByNickname(userName)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(()->new CustomException(ErrorCode.COMMENT_NOT_FOUND));
-        if(comment.getUser().getId() != user.getId()){
+        if(comment.getMember().getId() != member.getId()){
             throw new CustomException(ErrorCode.INVALID_COMMENT_OWNER);
         }
         commentRepository.deleteById(commentId);

@@ -3,22 +3,19 @@ package com.polling.api.service.candidate;
 import com.polling.api.controller.candidate.dto.CommentDto;
 import com.polling.api.controller.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.api.controller.candidate.dto.request.SaveCandidateHistoryRequestDto;
-import com.polling.api.controller.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.api.controller.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.api.controller.candidate.dto.response.FindProfileResponseDto;
 import com.polling.api.controller.candidate.dto.response.FindVoteHistoryResponseDto;
-import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.queryrepository.CommentQueryRepository;
 import com.polling.core.entity.candidate.Candidate;
 import com.polling.core.entity.candidate.CandidateHistory;
 import com.polling.core.entity.comment.Comment;
-import com.polling.core.entity.user.User;
-import com.polling.core.entity.user.status.UserRole;
+import com.polling.core.entity.member.Member;
 import com.polling.core.entity.vote.Vote;
 import com.polling.core.repository.candidate.CandidateHistoryRepository;
 import com.polling.core.repository.candidate.CandidateRepository;
 import com.polling.core.repository.comment.CommentRepository;
-import com.polling.core.repository.user.UserRepository;
+import com.polling.core.repository.member.MemberRepository;
 import com.polling.core.repository.vote.VoteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +25,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,7 +44,7 @@ class CandidateServiceTest {
 
 
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
     @Autowired
     VoteRepository voteRepository;
     @Autowired
@@ -58,14 +54,13 @@ class CandidateServiceTest {
 
     @BeforeEach
     void setUp() {
-        User admin = User.builder()
+        Member admin = Member.builder()
                 .name("관리자")
                 .email(hostEmail)
                 .password("sasds")
-                .userRole(UserRole.ROLE_ADMIN)
                 .phoneNumber("01099123127")
                 .build();
-        userRepository.save(admin);
+        memberRepository.save(admin);
 
         Vote vote = Vote.builder()
                 .content("소개")
@@ -99,18 +94,17 @@ class CandidateServiceTest {
     @Test
     void getProfile() {
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         Comment comment = Comment.builder()
                 .candidate(candidate)
                 .content("화이팅")
-                .user(user)
+                .member(member)
                 .build();
         commentRepository.save(comment);
 
@@ -124,16 +118,15 @@ class CandidateServiceTest {
     @Test
     void getHistory() {
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         CandidateHistory history = CandidateHistory.builder()
-                .user(user)
+                .member(member)
                 .voteCount(10)
                 .candidate(candidate)
                 .transactionId("transssss")
@@ -152,14 +145,13 @@ class CandidateServiceTest {
     @Test
     void saveVoteHistory() {
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         SaveCandidateHistoryRequestDto requestDto = SaveCandidateHistoryRequestDto.builder()
                 .candidateId(candidate.getId())
                 .transactionId("asdsadas")
@@ -167,7 +159,7 @@ class CandidateServiceTest {
                 .build();
 
         //when
-        candidateService.saveVoteHistory(requestDto, user.getName());
+        candidateService.saveVoteHistory(requestDto, member.getNickname());
 
         //then
         Candidate savedCandidate = candidateRepository.findByName("구아").get();
@@ -178,19 +170,18 @@ class CandidateServiceTest {
     void saveComment() {
         //given
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         String content = "화이링";
         SaveCommentRequestDto requestDto = new SaveCommentRequestDto(candidate.getId(), content);
 
         //when
-        Long id = candidateService.saveComment(requestDto, user.getName());
+        Long id = candidateService.saveComment(requestDto, member.getNickname());
 
         //then
         Comment comment = commentRepository.findById(id).get();
@@ -202,17 +193,16 @@ class CandidateServiceTest {
     void updateComment() {
         //given
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         Comment comment = Comment.builder()
                 .candidate(candidate)
-                .user(user)
+                .member(member)
                 .content("화이링")
                 .build();
         Comment saved = commentRepository.save(comment);
@@ -220,7 +210,7 @@ class CandidateServiceTest {
         PatchCommentRequestDto requestDto = new PatchCommentRequestDto(newContent);
 
         //when
-        candidateService.updateComment(saved.getId(), requestDto, user.getName());
+        candidateService.updateComment(saved.getId(), requestDto, member.getNickname());
 
         //then
         Comment updated = commentRepository.getById(saved.getId());
@@ -230,19 +220,18 @@ class CandidateServiceTest {
     @Test
     void deleteComment() {
         Candidate candidate = candidateRepository.findByName("구아").get();
-        User user = User.builder()
-                .userRole(UserRole.ROLE_USER)
+        Member member = Member.builder()
                 .email("test@asd.com")
                 .name("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
         String content = "화이링";
         SaveCommentRequestDto requestDto = new SaveCommentRequestDto(candidate.getId(), content);
-        Long id = candidateService.saveComment(requestDto, user.getName());
+        Long id = candidateService.saveComment(requestDto, member.getNickname());
 
-        candidateService.deleteComment(id, user.getName());
+        candidateService.deleteComment(id, member.getNickname());
 
         //then
         List<CommentDto> list = candidateService.getProfile(candidate.getId()).getComments();

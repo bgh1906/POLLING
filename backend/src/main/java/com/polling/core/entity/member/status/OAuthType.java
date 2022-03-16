@@ -1,4 +1,4 @@
-package com.polling.core.entity.user.status;
+package com.polling.core.entity.member.status;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.polling.api.controller.user.dto.request;
+package com.polling.api.controller.member.dto.request;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class SaveSNSUserRequestDto {
+public class SaveNativeMemberRequestDto {
     private String name;
     private String email;
-    private String accessToken;
+    private String password;
     private String phoneNumber;
 }
