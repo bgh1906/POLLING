@@ -84,7 +84,7 @@ function CreatePoll() {
             pollLatestTX: {pollLatestTX},
             pollAllTX: {pollAllTX},
             nomiList: {nomiList},
-            status: "stand by"
+            status: "unapproved"
         }
         console.log(pollInfo)
         dispatch(actionCreators.addInfo(pollInfo));

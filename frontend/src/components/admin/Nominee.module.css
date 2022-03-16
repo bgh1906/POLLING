@@ -103,7 +103,7 @@
 #add_div{
     display: flex;
     justify-content: center;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     
 }
 
@@ -139,4 +139,13 @@
     font-size: 1.3vw;
     color: blue;
     margin-top: 1vh;
+}
+
+#distinct_box{
+    position: relative;
+    height: 1vh;
+    width: 62vw;
+    left: 7.7vw;
+    border-bottom: dashed;
+    margin-bottom: 4vh;
 }

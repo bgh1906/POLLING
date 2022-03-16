@@ -26,7 +26,8 @@ function Nominee({nominee, onDel}) {
                 {additional_image3 !== "" && (
                     <img id={styles.add_image} src={additional_image3} alt="additional_image3" />
                     )}
-            </div>   
+            </div>
+            <div id={styles.distinct_box}></div>   
         </div>
     );
 }
