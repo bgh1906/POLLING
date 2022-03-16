@@ -8,6 +8,20 @@
     font-weight: normal;
     font-style: normal;
 }
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 .title {
@@ -40,7 +54,7 @@
     justify-content: center;
     position: relative;
     top: 10vh;
-    margin-bottom: 15vh;
+    margin-bottom: 20vh;
 
 }
 
@@ -63,7 +77,7 @@
     background-color: #ffffff;
     /* background-color: #ffc983; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80vw;
     height: 35vh;
 }
@@ -80,7 +94,7 @@
     background-color: #ffffff;
     /* background-color: #ffc983; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80vw;
     height: 8vh;
 }
@@ -93,7 +107,7 @@
     top: 1.5vh;
     margin: 1vw;
     font-size: 1.5vw;
-    font-family: 'GangwonEdu_OTFBoldA';
+    font-family: 'ROKAFSansBold';
     font-weight: bold;
 }
 
@@ -101,7 +115,7 @@
     background-color: #ffffff;
     /* background-color: #ffc983; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80vw;
     height: 6vh;
 }
@@ -112,15 +126,15 @@
     width: 21vw;
     justify-content: center;
     margin: 0 1vw;
-    font-size: 1.5vw;
-    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+    font-family: 'ROKAFSansMedium';
 }
 
 #box4 {
     background-color: #ffffff;
     /* background-color: #ffc983; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80vw;
     height: 8vh;
 }
@@ -131,10 +145,16 @@
 }
 
 #status_button {
-    margin: 0 1vw;
-    width: 8vw;
-    height: 3vh;
-    font-size: 1.3vw;
-    font-family: 'GangwonEdu_OTFBoldA';
+    margin: 0 0.7vw;
+    width: 9vw;
+    height: 4vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
     text-align: center;
+    background-color: #ffffff;
+}
+
+#status_button:hover{
+    color:#fff;
+    background-color: black;
 }
