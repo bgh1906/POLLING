@@ -14,12 +14,10 @@ import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
 
-
 function App() {
   return (
     <div>
-
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join />}></Route>
@@ -35,10 +33,8 @@ function App() {
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route>
-
         </Routes>
-    </BrowserRouter>
-    
+      </BrowserRouter>
     </div>
   );
 }
