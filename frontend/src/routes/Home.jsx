@@ -1,6 +1,8 @@
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
+import Footer from "../components/layout/Footer";
+import VoteVote from "../components/layout/VoteVote";
 
 
 function Home() {
@@ -12,9 +14,10 @@ function Home() {
             </div>
 {/* 메인 이미지 */}
             <div className={styles.main}>
-                <img 
+                <VoteVote></VoteVote>
+                {/* <img 
                 id={styles.mainimg}
-                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/>
+                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/> */}
             </div>
 {/* 투표리스트  */}
             <div className={styles.poll_list}>
@@ -50,7 +53,7 @@ function Home() {
                         </div>
                         <div id={styles.box4}>
                         <Link to="/polllist">
-                        <button id={styles.more}>더보기</button>
+                        <button id={styles.more_btn}>더보기</button>
                         </Link>
                         </div>
                     </div>
@@ -90,15 +93,15 @@ function Home() {
                         </div>
                         <div id={styles.box4}>
                     <Link to="/history">
-                      <button id={styles.more}>더보기</button>
+                      <button id={styles.more_btn}>더보기</button>
                     </Link>
                     </div>
                     </div>
                 </div>
             </div>
 
+            <Footer></Footer>
         </div>
-
     );
 }
 
