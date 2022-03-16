@@ -11,6 +11,8 @@ import Hall from "./routes/History";
 import Poll from "./routes/Poll";
 import Nominee from "./routes/Nominee";
 import Notice from "./routes/Notice";
+import Management from "./routes/Management";
+import User from "./routes/User";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/join" element={<Join />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/management" element={<Management />}></Route>
+          <Route path="/user" element={<User />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
           <Route path="/createpoll" element={<CreatePoll />}></Route>
           <Route path="/polllist" element={<PollList />}></Route>
