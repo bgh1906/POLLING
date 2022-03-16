@@ -2,6 +2,7 @@ package com.polling.core.entity.vote;
 
 import com.polling.core.entity.common.BaseTimeEntity;
 import com.polling.core.entity.member.Member;
+import com.polling.core.entity.vote.status.HistoryStatus;
 import com.polling.core.entity.vote.status.VoteStatus;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
@@ -42,13 +43,17 @@ public class Vote extends BaseTimeEntity {
     @Column
     private VoteStatus voteStatus = VoteStatus.WAIT;
 
+    @Column
+    private HistoryStatus historyStatus;
+
     @Builder
-    public Vote(String name, Member host, String content, LocalDateTime startDate, LocalDateTime endDate) {
+    public Vote(String name, Member host, String content, LocalDateTime startDate, LocalDateTime endDate, HistoryStatus historyStatus) {
         this.name = name;
         this.host = host;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.historyStatus = historyStatus;
     }
 
     public void setVoteStatus(VoteStatus voteStatus){

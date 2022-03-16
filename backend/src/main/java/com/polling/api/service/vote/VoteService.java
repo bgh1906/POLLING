@@ -37,6 +37,7 @@ public class VoteService {
                 .content(requestDto.getContent())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
+                .historyStatus(requestDto.getHistoryStatus())
                 .build();
         Vote savedVote = voteRepository.save(vote);
 

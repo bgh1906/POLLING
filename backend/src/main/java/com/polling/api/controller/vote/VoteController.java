@@ -5,6 +5,8 @@ import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.queryrepository.VoteQueryRepository;
 import com.polling.api.service.vote.VoteService;
+import com.polling.common.security.CurrentUser;
+import com.polling.common.security.dto.MemberDto;
 import com.polling.core.entity.vote.status.VoteStatus;
 import com.polling.core.repository.vote.VoteRepository;
 import io.swagger.annotations.ApiOperation;
@@ -25,10 +27,8 @@ public class VoteController {
 
     @PostMapping
     @ApiOperation(value = "투표 생성")
-    public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
-        String hostEmail = "test@gm.com";
-//                = getCurrentUserEmail();
-        voteService.saveVote(requestDto, hostEmail);
+    public ResponseEntity<Void> save(@CurrentUser MemberDto memberDto, @RequestBody SaveVoteRequestDto requestDto) {
+        voteService.saveVote(requestDto, memberDto.getEmail());
         return ResponseEntity.status(200).build();
     }
 

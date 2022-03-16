@@ -51,6 +51,11 @@ public class CandidateService {
         return FindProfileResponseDto.of(candidate, comments);
     }
 
+    /**
+     * vote의 historyStatus에 따라 리턴하는 history의 갯수가 달라집니다.
+     * SHOW_ALL: 전부 리턴
+     * SHOW_RECENT: 최근 50개의 내역만 리턴
+     */
     @Transactional(readOnly = true)
     public List<FindVoteHistoryResponseDto> getHistory(Long id){
         List<FindVoteHistoryResponseDto> response = candidateHistoryQueryRepository.findVoteHistoryByCandidateId(id);
