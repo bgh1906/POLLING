@@ -110,6 +110,8 @@
     width: 21vw;
     margin: 2vw;
     top: 4vh;
+    padding:1px;
+    border:5px solid #ffcbcb;
 
 }
 

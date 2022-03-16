@@ -2,7 +2,6 @@ import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
 import Footer from "../components/layout/Footer";
-import VoteVote from "../components/layout/VoteVote";
 
 
 function Home() {
@@ -14,10 +13,9 @@ function Home() {
             </div>
 {/* 메인 이미지 */}
             <div className={styles.main}>
-                <VoteVote></VoteVote>
-                {/* <img 
+                <img 
                 id={styles.mainimg}
-                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/> */}
+                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/>
             </div>
 {/* 투표리스트  */}
             <div className={styles.poll_list}>
