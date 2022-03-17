@@ -12,7 +12,7 @@ import muscleMania from "../assets/muscleMania.PNG";
 import snack from "../assets/snack.PNG";
 import snack2 from "../assets/snack2.PNG";
 import golf from "../assets/golf.PNG";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function PollList() {
   const navigate = useNavigate();
@@ -21,25 +21,204 @@ function PollList() {
       <Nav />
       <div className={styles.list_title}>Poll List</div>
       <div className={styles.list_container}>
-        <img
-          src={chunhyang}
-          alt="img1"
-          onClick={() => {
-            navigate("/poll/:pollnum");
-          }}
-          className={styles.list_item}
-        />
-        {/* <Link to="/poll/:pollnum"></Link> */}
-        <img src={apart} alt="img2" className={styles.list_item} />
-        <img src={ev9} alt="img3" className={styles.list_item} />
-        <img src={kClassic} alt="img4" className={styles.list_item} />
-        <img src={logoContest} alt="img5" className={styles.list_item} />
-        <img src={missKorea} alt="img6" className={styles.list_item} />
-        <img src={mrKorea} alt="img7" className={styles.list_item} />
-        <img src={muscleMania} alt="img8" className={styles.list_item} />
-        <img src={snack} alt="img9" className={styles.list_item} />
-        <img src={snack2} alt="img10" className={styles.list_item} />
-        <img src={golf} alt="img11" className={styles.list_item} />
+        <div className={styles.list_item}>
+          <img src={chunhyang} alt="img1" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={apart} alt="img2" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={ev9} alt="img3" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={kClassic} alt="img4" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={logoContest} alt="img5" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={missKorea} alt="img6" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={mrKorea} alt="img7" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={muscleMania} alt="img8" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={snack2} alt="img10" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={golf} alt="img11" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
+        <div className={styles.list_item}>
+          <img src={snack} alt="img9" className={styles.image} />
+          <div className={styles.middle}>
+            <div>제 91회 춘향제</div>
+            <br />
+            <div>2022.03.03 ~ 2022.05.10</div>
+          </div>
+          <div className={styles.bottom}>
+            <div
+              className={styles.button}
+              onClick={() => {
+                navigate("/poll/:pollnum");
+              }}
+            >
+              투표하기
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
