@@ -1,14 +1,14 @@
 .history_title {
   font-family: "RussoOne";
   font-size: 60px;
-  padding-right: 110px;
+  padding-right: 230px;
   padding-top: 100px;
   text-align: right;
 }
 
 .contents {
   position: relative;
-  padding-top: 200px;
+  padding-top: 100px;
 }
 
 .history_container {
@@ -23,21 +23,30 @@
   transition: all 0.5s;
   width: 690px;
   height: 420px;
-  object-fit: fill;
+  object-fit: cover;
   float: left;
   margin-top: -150px;
-  z-index: 2;
 }
 
-.history_item:nth-child(even) {
+.history_item:nth-child(4n + 2) {
   box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
   transition: all 0.5s;
   width: 420px;
   height: 690px;
-  object-fit: fill;
+  object-fit: cover;
   float: right;
   margin-top: -50px;
-  z-index: 3;
+}
+
+.history_item:nth-child(4n) {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
+  transition: all 0.5s;
+  width: 420px;
+  height: 690px;
+  object-fit: cover;
+  float: left;
+  margin-top: -50px;
+  margin-left: -80px;
 }
 
 .history_itemlist {

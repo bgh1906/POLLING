@@ -8,6 +8,7 @@ import kClassic from "../assets/kClassic.PNG";
 import logoContest from "../assets/logoContest.PNG";
 import missKorea from "../assets/missKorea.PNG";
 import mrKorea from "../assets/mrKorea.PNG";
+import muscleMania from "../assets/muscleMania.PNG";
 
 function History() {
   return (
@@ -24,6 +25,7 @@ function History() {
             <img src={logoContest} alt="img5" className={styles.history_item} />
             <img src={missKorea} alt="img6" className={styles.history_item} />
             <img src={mrKorea} alt="img7" className={styles.history_item} />
+            <img src={muscleMania} alt="img8" className={styles.history_item} />
           </div>
         </div>
       </div>
