@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @SpringBootTest
@@ -55,7 +55,7 @@ class CandidateServiceTest {
     @BeforeEach
     void setUp() {
         Member admin = Member.builder()
-                .name("관리자")
+                .nickname("관리자")
                 .email(hostEmail)
                 .password("sasds")
                 .phoneNumber("01099123127")
@@ -96,7 +96,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
@@ -120,7 +120,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
@@ -147,7 +147,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
@@ -172,7 +172,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
@@ -195,7 +195,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
@@ -222,7 +222,7 @@ class CandidateServiceTest {
         Candidate candidate = candidateRepository.findByName("구아").get();
         Member member = Member.builder()
                 .email("test@asd.com")
-                .name("test")
+                .nickname("test")
                 .password("asdasd")
                 .phoneNumber("01062341233")
                 .build();
