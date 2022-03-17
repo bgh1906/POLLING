@@ -18,14 +18,62 @@ function History() {
       <div className={styles.contents}>
         <div className={styles.history_container}>
           <div className={styles.history_itemlist}>
-            <img src={chunhyang} alt="img1" className={styles.history_item} />
-            <img src={apart} alt="img2" className={styles.history_item} />
-            <img src={ev9} alt="img3" className={styles.history_item} />
-            <img src={kClassic} alt="img4" className={styles.history_item} />
-            <img src={logoContest} alt="img5" className={styles.history_item} />
-            <img src={missKorea} alt="img6" className={styles.history_item} />
-            <img src={mrKorea} alt="img7" className={styles.history_item} />
-            <img src={muscleMania} alt="img8" className={styles.history_item} />
+            <div className={styles.history_item}>
+              <img src={chunhyang} alt="img1" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={apart} alt="img2" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={ev9} alt="img3" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={kClassic} alt="img4" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={logoContest} alt="img5" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={missKorea} alt="img6" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={mrKorea} alt="img7" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
+            <div className={styles.history_item}>
+              <img src={muscleMania} alt="img8" />
+              <figcaption>
+                <span>2020</span>
+                춘향제
+              </figcaption>
+            </div>
           </div>
         </div>
       </div>

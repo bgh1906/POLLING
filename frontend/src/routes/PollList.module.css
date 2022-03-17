@@ -16,7 +16,7 @@
   position: relative;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(13, 5vw);
-  gap: 10px;
+  gap: 6px;
 }
 
 .list_item {
@@ -81,11 +81,6 @@
 .list_item:nth-child(11) {
   grid-column: 6 / 9;
   grid-row: 13 / 16;
-}
-
-@font-face {
-  font-family: "RussoOne";
-  src: url(../fonts/RussoOne-Regular.ttf);
 }
 
 img {

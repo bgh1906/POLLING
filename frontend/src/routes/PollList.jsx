@@ -12,14 +12,24 @@ import muscleMania from "../assets/muscleMania.PNG";
 import snack from "../assets/snack.PNG";
 import snack2 from "../assets/snack2.PNG";
 import golf from "../assets/golf.PNG";
+import { Link, useNavigate } from "react-router-dom";
 
 function PollList() {
+  const navigate = useNavigate();
   return (
     <div className={styles.polllist}>
       <Nav />
       <div className={styles.list_title}>Poll List</div>
       <div className={styles.list_container}>
-        <img src={chunhyang} alt="img1" className={styles.list_item} />
+        <img
+          src={chunhyang}
+          alt="img1"
+          onClick={() => {
+            navigate("/poll/:pollnum");
+          }}
+          className={styles.list_item}
+        />
+        {/* <Link to="/poll/:pollnum"></Link> */}
         <img src={apart} alt="img2" className={styles.list_item} />
         <img src={ev9} alt="img3" className={styles.list_item} />
         <img src={kClassic} alt="img4" className={styles.list_item} />
