@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CandidateHistoryQueryRepository {
     List<FindVoteHistoryResponseDto> findVoteHistoryByCandidateId(Long id);
+    List<FindVoteHistoryResponseDto> findVoteHistoryByCandidateIdLimit50(Long id);
 }

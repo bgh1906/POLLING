@@ -15,10 +15,13 @@ import com.polling.core.entity.candidate.Candidate;
 import com.polling.core.entity.candidate.CandidateHistory;
 import com.polling.core.entity.comment.Comment;
 import com.polling.core.entity.member.Member;
+import com.polling.core.entity.vote.Vote;
+import com.polling.core.entity.vote.status.HistoryStatus;
 import com.polling.core.repository.candidate.CandidateHistoryRepository;
 import com.polling.core.repository.candidate.CandidateRepository;
 import com.polling.core.repository.comment.CommentRepository;
 import com.polling.core.repository.member.MemberRepository;
+import com.polling.core.repository.vote.VoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +38,7 @@ public class CandidateService {
     private final CandidateHistoryRepository candidateHistoryRepository;
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
     private final MemberRepository memberRepository;
+    private final VoteRepository voteRepository;
 
     //전체 대회에 대한 후보자들 목록 전부 뽑아야 하는지->그러면 param으로 vote 받아야 함
     @Transactional(readOnly = true)
@@ -58,7 +62,17 @@ public class CandidateService {
      */
     @Transactional(readOnly = true)
     public List<FindVoteHistoryResponseDto> getHistory(Long id){
-        List<FindVoteHistoryResponseDto> response = candidateHistoryQueryRepository.findVoteHistoryByCandidateId(id);
+        Vote vote = voteRepository.findById(id)
+                .orElseThrow(()-> new CustomException(ErrorCode.VOTE_NOT_FOUND));
+
+        List<FindVoteHistoryResponseDto> response;
+        if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_ALL)){
+           response = candidateHistoryQueryRepository.findVoteHistoryByCandidateId(id);
+        }else if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_RECENT)){
+            response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
+        }else{
+            throw new CustomException(ErrorCode.STATUS_NOT_FOUND);
+        }
         return response;
     }
 

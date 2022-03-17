@@ -64,6 +64,15 @@ public class VoteController {
     public ResponseEntity<Void> endVote(@PathVariable Long id) {
         return ResponseEntity.status(200).build();
     }
+    
+    @PatchMapping("/{id}")
+    @ApiOperation(value = "투표 정보 업데이트")
+    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Boolean status) {
+        /**
+         * 관리자/기업 페이지에서 들어오는 dto 프론트에 물어보고 로직 작성해야 합니다.
+         */
+        return ResponseEntity.status(200).build();
+    }
 
     @PatchMapping("/{id}&{status}")
     @ApiOperation(value = "투표 공개 <-> 비공개 스왑")
