@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.polling.core.entity.comment.QComment.comment;
+import static com.polling.core.entity.member.QMember.member;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -23,10 +24,11 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
         return query
                 .select((Projections.constructor(CommentDto.class,
                         comment.id,
-                        comment.member.id,
-                        comment.member.nickname,
+                        member.id,
+                        member.nickname,
                         comment.content)))
                 .from(comment)
+                .leftJoin(member, comment.member)
                 .where(comment.candidate.id.eq(id))
                 .fetch();
     }
