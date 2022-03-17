@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: local
+  datasource:
+    url: jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+    username: root
+    password: root!
+    driver-class-name: org.mariadb.jdbc.Driver
   redis:
     host: 127.0.0.1
     port: 6379
