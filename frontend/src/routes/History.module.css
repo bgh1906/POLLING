@@ -7,14 +7,8 @@
 }
 
 .contents {
-  width: 100%;
   position: relative;
-  margin-top: 100px;
-}
-
-.sec {
-  padding-top: 100px;
-  width: 100%;
+  padding-top: 200px;
 }
 
 .history_container {
@@ -24,9 +18,26 @@
   position: relative;
 }
 
-.history_item {
+.history_item:nth-child(odd) {
   box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
   transition: all 0.5s;
+  width: 690px;
+  height: 420px;
+  object-fit: fill;
+  float: left;
+  margin-top: -150px;
+  z-index: 2;
+}
+
+.history_item:nth-child(even) {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
+  transition: all 0.5s;
+  width: 420px;
+  height: 690px;
+  object-fit: fill;
+  float: right;
+  margin-top: -50px;
+  z-index: 3;
 }
 
 .history_itemlist {
@@ -36,47 +47,6 @@
   z-index: 2;
   width: 100%;
 }
-
-.contents .history_container .history_itemlist li:first-child {
-  margin-top: 0;
-}
-
-.contents .history_container .history_itemlist li:nth-child(odd) {
-  z-index: 3;
-  margin-top: -50px;
-  /* float: left; */
-}
-
-.contents .history_container .history_itemlist li.long_img {
-  margin-top: -100px;
-  margin-bottom: -150px;
-}
-
-.contents .history_container .history_itemlist li:nth-child(even) {
-  z-index: 2;
-  margin-top: -50px;
-  float: right;
-}
-
-.contents .history_container .history_itemlist li {
-  /* opacity: 0; */
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.5s;
-}
-
-/* .history_itemlist img:nth-child(even) {
-  width: 690px;
-  height: 420px;
-  object-fit: cover;
-}
-
-.history_itemlist img:nth-child(odd) {
-  width: 420px;
-  height: 690px;
-  object-fit: cover;
-} */
 
 li {
   list-style: none;
