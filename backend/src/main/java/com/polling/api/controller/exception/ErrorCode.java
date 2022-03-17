@@ -21,6 +21,7 @@ public enum ErrorCode {
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 유저 정보를 찾을 수 없습니다"),
     VOTE_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 투표 정보를 찾을 수 없습니다"),
+    STATUS_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 상태 정보를 찾을 수 없습니다"),
     CANDIDATE_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 후보자 정보를 찾을 수 없습니다"),
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 댓글 정보를 찾을 수 없습니다"),
     TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "요청 헤더에 토큰이 없습니다"),

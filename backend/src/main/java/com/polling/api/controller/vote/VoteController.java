@@ -1,12 +1,20 @@
 package com.polling.api.controller.vote;
 
+import com.polling.api.controller.vote.dto.VoteResponseDto;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
+import com.polling.api.queryrepository.VoteQueryRepository;
 import com.polling.api.service.vote.VoteService;
+import com.polling.common.security.CurrentUser;
+import com.polling.common.security.dto.MemberDto;
+import com.polling.core.entity.vote.status.VoteStatus;
+import com.polling.core.repository.vote.VoteRepository;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/votes")
@@ -14,13 +22,28 @@ import org.springframework.web.bind.annotation.*;
 public class VoteController {
 
     private final VoteService voteService;
+    private final VoteRepository voteRepository;
+    private final VoteQueryRepository voteQueryRepository;
 
     @PostMapping
     @ApiOperation(value = "투표 생성")
-    public ResponseEntity<Void> save(@RequestBody SaveVoteRequestDto requestDto) {
-        String hostEmail = getCurrentUserEmail();
-        voteService.saveVote(requestDto, hostEmail);
+    public ResponseEntity<Void> save(@CurrentUser MemberDto memberDto, @RequestBody SaveVoteRequestDto requestDto) {
+        voteService.saveVote(requestDto, memberDto.getEmail());
         return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping
+    @ApiOperation(value = "모든 투표 조회")
+    public ResponseEntity<List<VoteResponseDto>> getVotes(){
+        List<VoteResponseDto> responseDto = voteQueryRepository.findAll();
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @GetMapping("/status/{status}")
+    @ApiOperation(value = "Status별 투표 조회")
+    public ResponseEntity<List<VoteResponseDto>> getVotesByStatus(@PathVariable VoteStatus status){
+        List<VoteResponseDto> responseDto = voteQueryRepository.findVoteByStatus(status);
+        return ResponseEntity.status(200).body(responseDto);
     }
 
     @GetMapping("{id}")
@@ -41,6 +64,15 @@ public class VoteController {
     public ResponseEntity<Void> endVote(@PathVariable Long id) {
         return ResponseEntity.status(200).build();
     }
+    
+    @PatchMapping("/{id}")
+    @ApiOperation(value = "투표 정보 업데이트")
+    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Boolean status) {
+        /**
+         * 관리자/기업 페이지에서 들어오는 dto 프론트에 물어보고 로직 작성해야 합니다.
+         */
+        return ResponseEntity.status(200).build();
+    }
 
     @PatchMapping("/{id}&{status}")
     @ApiOperation(value = "투표 공개 <-> 비공개 스왑")
@@ -49,7 +81,7 @@ public class VoteController {
     }
 
     //todo: throw Custom exception 처리
-    private String getCurrentUserEmail(){
-        return SecurityUtils.getCurrentUsername().orElseThrow();
-    }
+//    private String getCurrentUserEmail(){
+//        return SecurityUtils.getCurrentUsername().orElseThrow();
+//    }
 }

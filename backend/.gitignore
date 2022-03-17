@@ -16,6 +16,9 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+backend/src/main/generated/
+
+backend/PJT-web.log.*
 
 ### IntelliJ IDEA ###
 .idea
@@ -35,3 +38,4 @@ out/
 
 ### VS Code ###
 .vscode/
+PJT-web.log

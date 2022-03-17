@@ -2,6 +2,7 @@ package com.polling.api.service.vote;
 
 import com.polling.api.controller.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.api.controller.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.api.controller.vote.dto.VoteResponseDto;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.queryrepository.VoteQueryRepository;
@@ -36,6 +37,7 @@ public class VoteService {
                 .content(requestDto.getContent())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
+                .historyStatus(requestDto.getHistoryStatus())
                 .build();
         Vote savedVote = voteRepository.save(vote);
 
@@ -70,4 +72,5 @@ public class VoteService {
         Candidate candidate = candidateRepository.findById(candidateId).orElseThrow(RuntimeException::new);
         candidate.addVote(vote);
     }
+
 }
