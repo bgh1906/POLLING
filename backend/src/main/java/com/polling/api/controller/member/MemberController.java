@@ -49,14 +49,21 @@ public class MemberController {
     @GetMapping("/{id}")
     @ApiOperation(value = "회원 정보 조회")
     public ResponseEntity<FindMemberResponseDto> get(@PathVariable Long id) {
-        FindMemberResponseDto responseDto = new FindMemberResponseDto();
+        FindMemberResponseDto responseDto = memberService.findMember(id);
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @PatchMapping("/{id}")
-    @ApiOperation(value = "회원 정보 수정")
-    public ResponseEntity<Void> update(@CurrentUser MemberDto memberDto, @RequestBody UpdateMemberRequestDto requestDto) {
+    @PatchMapping("/nickname/{id}")
+    @ApiOperation(value = "닉네임 수정")
+    public ResponseEntity<Void> updateNickname(@CurrentUser MemberDto memberDto, @RequestBody UpdateMemberRequestDto requestDto) {
+        memberService.updateUser(memberDto.getId(),requestDto);
+        return ResponseEntity.status(200).build();
+    }
 
+    @PatchMapping("/password/{id}")
+    @ApiOperation(value = "패스워드 수정")
+    public ResponseEntity<Void> updatePassword(@CurrentUser MemberDto memberDto, @RequestBody UpdateMemberRequestDto requestDto) {
+        memberService.updateUser(memberDto.getId(),requestDto);
         return ResponseEntity.status(200).build();
     }
 

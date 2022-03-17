@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
         //todo 유저 있는지 없는지 체크
 
         Member member = Member.builder()
-                .nickname(requestDto.getName())
+                .nickname(requestDto.getNickname())
                 .email(requestDto.getEmail())
                 .password(requestDto.getPassword())
                 .phoneNumber(requestDto.getPhoneNumber())
@@ -55,7 +55,7 @@ public class MemberService implements UserDetailsService {
     public void updateUser(Long id, UpdateMemberRequestDto requestDto) {
         Member member = memberRepository.findById(id)
                 .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
-        member.nameUpdate(requestDto.getName());
+        member.nameUpdate(requestDto.getNickname());
         member.passwordUpdate(requestDto.getPassword());
     }
 

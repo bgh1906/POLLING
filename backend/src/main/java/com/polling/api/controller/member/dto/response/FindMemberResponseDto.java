@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Native login 유저 기준으로 작성
  * password와 phoneNumber는 조회되지 않습니다. 
@@ -15,8 +17,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FindMemberResponseDto {
+    @NotNull
     private Long id;
-    private String name;
+    @NotNull
+    private String nickname;
+    @NotNull
     private String email;
     //private OAuthType oAuthType;
 }
