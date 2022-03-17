@@ -27,7 +27,7 @@ public class VoteQueryRepositoryImpl implements VoteQueryRepository{
                 .select((Projections.constructor(FindCandidateResponseDto.class,
                         candidate.id,
                         candidate.name,
-                        candidate.profilePath,
+                        candidate.candidateInfo,
                         candidate.voteTotal)))
                 .from(candidate)
                 .where(candidate.vote.id.eq(id))
