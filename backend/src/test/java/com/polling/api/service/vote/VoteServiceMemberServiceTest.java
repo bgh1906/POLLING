@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @SpringBootTest
-class VoteServiceTest {
+class VoteServiceMemberServiceTest {
     @Autowired
     VoteService voteService;
     @Autowired

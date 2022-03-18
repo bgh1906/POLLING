@@ -52,20 +52,16 @@ public class Member extends BaseTimeEntity {
         memberRole.add(MemberRole.ROLE_USER);
     }
 
-    public void nameUpdate(String nickname){
+    public void changeNickname(String nickname){
         this.nickname = nickname;
     }
 
-    public void emailUpdate(String email){
+    public void changeEmail(String email){
         this.email = email;
     }
 
-    public void passwordUpdate(String password){
+    public void changePassword(String password){
         this.password = password;
-    }
-
-    public void phoneNumberUpdate(String phoneNumber){
-        this.phoneNumber = phoneNumber;
     }
 
     public void changeMemberRole(Set<MemberRole> memberRole){
