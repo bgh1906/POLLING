@@ -10,9 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class UpdateMemberRequestDto {
-    @NotNull
-    private String nickname;
+public class ChangePasswordRequestDto {
     @NotNull
     private String password;
 }
