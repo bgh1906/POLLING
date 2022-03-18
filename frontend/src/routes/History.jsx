@@ -9,8 +9,10 @@ import logoContest from "../assets/logoContest.PNG";
 import missKorea from "../assets/missKorea.PNG";
 import mrKorea from "../assets/mrKorea.PNG";
 import muscleMania from "../assets/muscleMania.PNG";
+import { useState } from "react";
 
 function History() {
+  const [modalShow, setModalShow] = useState(false);
   return (
     <div>
       <Nav />
@@ -19,7 +21,11 @@ function History() {
         <div className={styles.history_container}>
           <div className={styles.history_itemlist}>
             <div className={styles.history_item}>
-              <img src={chunhyang} alt="img1" />
+              <img
+                src={chunhyang}
+                alt="img1"
+                // onClick={() => setModalShow(true)}
+              />
               <figcaption>
                 <span>2020</span>
                 춘향제

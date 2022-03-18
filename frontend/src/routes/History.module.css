@@ -31,9 +31,9 @@
   transition: all 0.5s;
   width: 690px;
   height: 420px;
-  /* object-fit: cover; */
   float: left;
   margin-top: -150px;
+  /* z-index: 0; */
 }
 
 .history_item:nth-child(4n + 2) {
@@ -41,7 +41,6 @@
   transition: all 0.5s;
   width: 420px;
   height: 690px;
-  /* object-fit: cover; */
   float: right;
   margin-top: -50px;
 }
@@ -51,7 +50,6 @@
   transition: all 0.5s;
   width: 420px;
   height: 690px;
-  /* object-fit: cover; */
   float: left;
   margin-top: -50px;
   margin-left: -80px;
