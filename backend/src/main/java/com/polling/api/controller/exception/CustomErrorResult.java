@@ -37,6 +37,9 @@ public enum CustomErrorResult {
     DUPLICATE_NAME(HttpStatus.CONFLICT, "이미 존재하는 네임입니다"),
     DUPLICATE_EMAIL(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다"),
 
+    NO_LEFT_TICKET(HttpStatus.CONFLICT, "티켓이 부족합니다."),
+    USE_YOUR_TICKET(HttpStatus.CONFLICT, "0개의 티켓은 사용이 불가능합니다."),
+
     ;
 
     private final HttpStatus httpStatus;
