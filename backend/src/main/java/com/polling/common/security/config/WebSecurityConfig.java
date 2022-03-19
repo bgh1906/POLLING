@@ -1,10 +1,10 @@
 package com.polling.common.security.config;
 
-import com.polling.api.service.member.MemberService;
 import com.polling.common.security.jwt.JwtAccessDeniedHandler;
 import com.polling.common.security.jwt.JwtAuthenticationEntryPoint;
 import com.polling.common.security.jwt.JwtAuthenticationFilter;
 import com.polling.common.security.jwt.JwtTokenProvider;
+import com.polling.common.security.service.MemberDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
    private final CorsFilter corsFilter;
    private final JwtAuthenticationEntryPoint authenticationErrorHandler;
    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-   private final MemberService accountService;
+   private final MemberDetailsService detailsService;
    private final PasswordEncoder passwordEncoder;
 
    public static String[] SWAGGER_URL_PATHS = new String[] { "/swagger-ui.html**", "/swagger-resources/**",
@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
       auth
-              .userDetailsService(accountService)
+              .userDetailsService(detailsService)
               .passwordEncoder(passwordEncoder);
    }
 
@@ -87,8 +87,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
          .and()
          .authorizeRequests()
-         .antMatchers("/api/auth").permitAll()
-         .antMatchers("/api/members").permitAll()
+         .antMatchers("/api/auth/**").permitAll()
+         .antMatchers("/api/members/**").permitAll()
          .antMatchers(SWAGGER_URL_PATHS).permitAll()
 
          .anyRequest().authenticated()

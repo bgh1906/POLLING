@@ -30,6 +30,12 @@ public class MemberServiceTest {
 
     private final String email = "test@email.com";
     private final String nickname = "testNick";
+
+    @Test
+    public void memberServiceIsNotNull() throws Exception{
+        assertThat(target).isNotNull();
+        assertThat(memberRepository).isNotNull();
+    }
     
     @Test
     public void 멤버등록실패_이미존재함() throws Exception{

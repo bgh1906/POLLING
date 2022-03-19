@@ -2,7 +2,6 @@ package com.polling.api.service.member;
 
 import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.member.dto.request.ChangeNicknameRequestDto;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
@@ -23,7 +22,7 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MemberService implements UserDetailsService {
+public class MemberService {
 
     private final MemberRepository memberRepository;
 
@@ -48,7 +47,7 @@ public class MemberService implements UserDetailsService {
 
     public void checkDuplicateMemberNickname(String nickname){
         if(memberRepository.existsByNickname(nickname))
-            throw new CustomException(CustomErrorResult.DUPLICATE_NAME);
+            throw new CustomException(CustomErrorResult.DUPLICATE_NICKNAME);
     }
 
     public FindMemberResponseDto findMember(Long id) {
@@ -65,10 +64,11 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional
-    public void changeNickname(Long id, ChangeNicknameRequestDto requestDto) {
+    public void changeNickname(Long id, String nickname) {
+        checkDuplicateMemberNickname(nickname);
         Member member = memberRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
-        member.changeNickname(requestDto.getNickname());
+        member.changeNickname(nickname);
     }
 
     @Transactional
@@ -76,12 +76,5 @@ public class MemberService implements UserDetailsService {
         Member member = memberRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changeMemberRole(memberRole);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(final String id) {
-        Member findMember = memberRepository.findById(Long.parseLong(id))
-                .orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " was not found in the database"));
-        return MemberAndUserAdapter.from(MemberAndDtoAdapter.entityToDto(findMember));
     }
 }

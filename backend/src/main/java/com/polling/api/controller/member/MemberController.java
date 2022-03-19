@@ -1,7 +1,6 @@
 package com.polling.api.controller.member;
 
 
-import com.polling.api.controller.member.dto.request.ChangeNicknameRequestDto;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
@@ -32,45 +31,44 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping("/{nickname}")
-    @ApiOperation(value = "이름 중복체크")
-    public ResponseEntity<Void> checkNickname(@PathVariable String nickname) {
+    @DeleteMapping
+    @ApiOperation(value = "회원 탈퇴")
+    public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto) {
+        memberRepository.deleteById(memberDto.getId());
+        return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping
+    @ApiOperation(value = "회원 정보 조회")
+    public ResponseEntity<FindMemberResponseDto> getMember(@CurrentUser MemberDto memberDto) {
+        FindMemberResponseDto responseDto = memberService.findMember(memberDto.getId());
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @GetMapping("/nickname/{n}")
+    @ApiOperation(value = "닉네임 중복체크")
+    public ResponseEntity<Void> checkNickname(@PathVariable("n") String nickname) {
         memberService.checkDuplicateMemberNickname(nickname);
         return ResponseEntity.status(200).build();
     }
 
-    @DeleteMapping
-    @ApiOperation(value = "회원 탈퇴")
-    public ResponseEntity<Void> delete() {
-        Long id=364L;
-        memberRepository.deleteById(id);
-        return ResponseEntity.status(200).build();
-    }
-
-    @GetMapping("/{id}")
-    @ApiOperation(value = "회원 정보 조회")
-    public ResponseEntity<FindMemberResponseDto> get(@PathVariable Long id) {
-        FindMemberResponseDto responseDto = memberService.findMember(id);
-        return ResponseEntity.status(200).body(responseDto);
-    }
-
-    @PatchMapping("/nickname/{id}")
+    @PatchMapping("/nickname/{nickname}")
     @ApiOperation(value = "닉네임 수정")
-    public ResponseEntity<Void> updateNickname(@CurrentUser MemberDto memberDto, @RequestBody ChangeNicknameRequestDto requestDto) {
-        memberService.changeNickname(memberDto.getId(),requestDto);
+    public ResponseEntity<Void> changeNickname(@CurrentUser MemberDto memberDto, @PathVariable String nickname) {
+        memberService.changeNickname(memberDto.getId(),nickname);
         return ResponseEntity.status(200).build();
     }
 
     @PatchMapping("/password/{id}")
     @ApiOperation(value = "패스워드 수정")
-    public ResponseEntity<Void> updatePassword(@CurrentUser MemberDto memberDto, @RequestBody ChangePasswordRequestDto requestDto) {
+    public ResponseEntity<Void> changePassword(@CurrentUser MemberDto memberDto, @RequestBody ChangePasswordRequestDto requestDto) {
         memberService.changePassword(memberDto.getId(),requestDto);
         return ResponseEntity.status(200).build();
     }
 
     @PatchMapping("/role/{id}")
     @ApiOperation(value = "회원 권한 수정")
-    public ResponseEntity<Void> updateRole(@PathVariable Long id, Set<MemberRole> memberRole) {
+    public ResponseEntity<Void> changeRole(@PathVariable Long id, Set<MemberRole> memberRole) {
         memberService.changeRole(id, memberRole);
         return ResponseEntity.status(200).build();
     }

@@ -21,7 +21,9 @@ repositories {
 }
 
 dependencies {
+    /* Spring */
     implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     /* WEB */
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -39,6 +41,7 @@ dependencies {
 
     /* Security */
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     /* Jwt */
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
@@ -50,6 +53,10 @@ dependencies {
 
     /* mokito */
     testImplementation 'org.mockito:mockito-core:4.4.0'
+
+    /* gson */
+    implementation 'com.google.code.gson:gson:2.8.7'
+
 
     /* lombok */
     compileOnly 'org.projectlombok:lombok'
@@ -65,8 +72,6 @@ dependencies {
 
     /* maria */
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 def querydslDir = "src/main/generated/querydsl"

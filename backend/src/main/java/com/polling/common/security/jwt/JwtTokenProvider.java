@@ -2,7 +2,7 @@ package com.polling.common.security.jwt;
 
 import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.service.member.MemberService;
+import com.polling.common.security.service.MemberDetailsService;
 import com.polling.common.security.service.RedisService;
 import com.polling.core.entity.member.status.MemberRole;
 import com.polling.core.repository.member.MemberRepository;
@@ -34,10 +34,10 @@ public class JwtTokenProvider {
 
    // 어세스 토큰 유효시간 | 20s
    private long accessTokenValidTime = 20 * 1000L;
-   // 리프레시 토큰 유효시간 | 60s
-   private long refreshTokenValidTime = 1 * 60 * 1000L;
+   // 리프레시 토큰 유효시간 | 1800s
+   private long refreshTokenValidTime = 30 * 60 * 1000L;
 
-   private final MemberService memberService;
+   private final MemberDetailsService detailsService;
    private final RedisService redisService;
    private final MemberRepository memberRepository;
 
@@ -73,7 +73,7 @@ public class JwtTokenProvider {
 
    // JWT 토큰에서 인증 정보 조회
    public Authentication getAuthentication(String jwtToken) {
-      UserDetails userDetails = memberService.loadUserByUsername(this.getUserId(jwtToken));
+      UserDetails userDetails = detailsService.loadUserByUsername(this.getUserId(jwtToken));
       return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
    }
 

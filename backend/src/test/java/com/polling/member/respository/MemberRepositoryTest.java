@@ -24,7 +24,7 @@ class MemberRepositoryTest {
     private final String email = "test@email.com";
 
     @Test
-    public void MemberRepository_NotNull(){
+    public void memberRepositoryIsNotNull(){
         assertThat(memberRepository).isNotNull();
     }
 
