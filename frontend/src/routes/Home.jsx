@@ -61,7 +61,8 @@ function Home() {
                 </div>
             </div> */}
 {/* History */}
-            {/* <div className={styles.history_list}>
+            <div className={styles.history_list}>
+                {/* 
                 <div>
                     <div id={styles.history}>HISTORY</div>
                     <div id={styles.bigbox}>
@@ -97,10 +98,10 @@ function Home() {
                       <button id={styles.more}>더보기</button>
                     </Link>
                     </div>
-                    </div>
+                    </div>*/}
                     <p id={styles.list}> Pick  your  Star</p>
                 </div>
-            </div> */}
+            {/* </div>  */}
 
             {/* <Footer></Footer> */}
         </div>
