@@ -1,0 +1,163 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5vw;
+    top: 3vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.create {
+    display: flex;
+    position: relative;
+    justify-content: end;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2vw;
+    top: 3vh;
+    right: 7vw;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: black;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 10vh;
+    margin-bottom: 20vh;
+
+}
+
+#bigbox {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+}
+
+
+#status_title {
+    display: inline;
+    position: relative;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2vw;
+    top: 3vh;
+    left: 1vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#box1 {
+    background-color: #ffffff;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    height: 35vh;
+}
+
+#list_img {
+    position: relative;
+    width: 21vw;
+    margin: 2vw;
+    top: 4vh;
+    padding:1px;
+    border:5px solid #ffcbcb;
+
+}
+
+#box2 {
+    background-color: #ffffff;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    height: 8vh;
+}
+
+#list_text {
+    position: relative;
+    display: flex;
+    width: 21vw;
+    justify-content: center;
+    top: 1.5vh;
+    margin: 1vw;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansBold';
+    font-weight: bold;
+}
+
+#box3 {
+    background-color: #ffffff;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    height: 6vh;
+}
+
+#list_date {
+    position: relative;
+    display: flex;
+    width: 21vw;
+    justify-content: center;
+    margin: 0 1vw;
+    font-size: 1.2vw;
+    font-family: 'ROKAFSansMedium';
+}
+
+#box4 {
+    background-color: #ffffff;
+    /* background-color: #ffc983; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    height: 8vh;
+}
+
+#status_buttonbox {
+    justify-content: center;
+    margin: 0 2vw;
+}
+
+#status_button {
+    margin: 0 0.7vw;
+    width: 9vw;
+    height: 4vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer; 
+}
+
+#status_button:hover{
+    color:#fff;
+    background-color: black;
+}
