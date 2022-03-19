@@ -1,6 +1,6 @@
 package com.polling.api.controller.handler;
 
-import com.polling.api.controller.exception.ErrorCode;
+import com.polling.api.controller.exception.CustomErrorResult;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ public class ErrorResponse {
     private final String code;
     private final String message;
 
-    public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode errorCode) {
-        return ResponseEntity.status(errorCode.getHttpStatus()).body(ErrorResponse.builder().status(errorCode.getHttpStatus().value())
-                .error(errorCode.getHttpStatus().name())
-                .code(errorCode.name())
-                .message(errorCode.getDetail()).build());
+    public static ResponseEntity<ErrorResponse> toResponseEntity(CustomErrorResult customErrorResult) {
+        return ResponseEntity.status(customErrorResult.getHttpStatus()).body(ErrorResponse.builder().status(customErrorResult.getHttpStatus().value())
+                .error(customErrorResult.getHttpStatus().name())
+                .code(customErrorResult.name())
+                .message(customErrorResult.getDetail()).build());
     }
 }

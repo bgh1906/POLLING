@@ -1,8 +1,8 @@
 package com.polling.common.security.jwt;
 
+import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
-import com.polling.api.service.member.MemberService;
+import com.polling.common.security.service.MemberDetailsService;
 import com.polling.common.security.service.RedisService;
 import com.polling.core.entity.member.status.MemberRole;
 import com.polling.core.repository.member.MemberRepository;
@@ -22,7 +22,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 import java.util.Set;
 
@@ -35,10 +34,10 @@ public class JwtTokenProvider {
 
    // 어세스 토큰 유효시간 | 20s
    private long accessTokenValidTime = 20 * 1000L;
-   // 리프레시 토큰 유효시간 | 60s
-   private long refreshTokenValidTime = 1 * 60 * 1000L;
+   // 리프레시 토큰 유효시간 | 1800s
+   private long refreshTokenValidTime = 30 * 60 * 1000L;
 
-   private final MemberService memberService;
+   private final MemberDetailsService detailsService;
    private final RedisService redisService;
    private final MemberRepository memberRepository;
 
@@ -74,7 +73,7 @@ public class JwtTokenProvider {
 
    // JWT 토큰에서 인증 정보 조회
    public Authentication getAuthentication(String jwtToken) {
-      UserDetails userDetails = memberService.loadUserByUsername(this.getUserId(jwtToken));
+      UserDetails userDetails = detailsService.loadUserByUsername(this.getUserId(jwtToken));
       return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
    }
 
@@ -133,7 +132,7 @@ public class JwtTokenProvider {
    public Set<MemberRole> getRoles(String id) {
       long memberId = Long.parseLong(id);
       return memberRepository.findById(memberId)
-              .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND))
+              .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND))
               .getMemberRole();
    }
 }

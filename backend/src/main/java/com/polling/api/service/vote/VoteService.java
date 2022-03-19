@@ -2,7 +2,6 @@ package com.polling.api.service.vote;
 
 import com.polling.api.controller.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.api.controller.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.api.controller.vote.dto.VoteResponseDto;
 import com.polling.api.controller.vote.dto.request.SaveVoteRequestDto;
 import com.polling.api.controller.vote.dto.response.FindVoteResponseDto;
 import com.polling.api.queryrepository.VoteQueryRepository;

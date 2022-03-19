@@ -1,6 +1,5 @@
 package com.polling.core.entity.candidate;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

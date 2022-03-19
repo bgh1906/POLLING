@@ -1,8 +1,7 @@
 package com.polling.common.security.controller;
 
+import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
-import com.polling.common.security.CurrentUser;
 import com.polling.common.security.adapter.MemberAndDtoAdapter;
 import com.polling.common.security.dto.LoginDto;
 import com.polling.common.security.dto.MemberDto;
@@ -33,9 +32,9 @@ public class AuthenticationRestController {
 
    @PostMapping
    public ResponseEntity<Void> authorize(@RequestBody  LoginDto loginDto, HttpServletResponse response) {
-      Member member = memberRepository.findByEmail(loginDto.getEmail()).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+      Member member = memberRepository.findByEmail(loginDto.getEmail()).orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
       if(!member.getPassword().equals(loginDto.getPassword()))
-         throw new CustomException(ErrorCode.USER_NOT_FOUND);
+         throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
       MemberDto memberDto = MemberAndDtoAdapter.entityToDto(member);
       String accessToken = jwtTokenProvider.createAccessToken(memberDto.getId().toString(), memberDto.getMemberRole());
       String refreshToken = jwtTokenProvider.createRefreshToken(memberDto.getId().toString(), memberDto.getMemberRole());
