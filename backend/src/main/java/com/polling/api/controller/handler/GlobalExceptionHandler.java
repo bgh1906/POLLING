@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static com.polling.api.controller.exception.ErrorCode.DUPLICATE_RESOURCE;
+import static com.polling.api.controller.exception.CustomErrorResult.DUPLICATE_RESOURCE;
 
 
 @Slf4j
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     /*Custom한 exception 처리*/
     @ExceptionHandler(value = { CustomException.class })
     protected ResponseEntity<ErrorResponse> handleCustomException(CustomException e) {
-        log.error("handleCustomException throw CustomException : {}", e.getErrorCode());
-        return ErrorResponse.toResponseEntity(e.getErrorCode());
+        log.error("handleCustomException throw CustomException : {}", e.getCustomErrorResult());
+        return ErrorResponse.toResponseEntity(e.getCustomErrorResult());
     }
 }

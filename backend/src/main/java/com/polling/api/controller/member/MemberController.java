@@ -1,6 +1,7 @@
 package com.polling.api.controller.member;
 
 
+import com.polling.api.controller.member.dto.request.ChangeNicknameRequestDto;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
 import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
@@ -27,7 +28,7 @@ public class MemberController {
     @PostMapping
     @ApiOperation(value = "회원 가입")
     public ResponseEntity<Void> save(@RequestBody SaveNativeMemberRequestDto requestDto) {
-        memberService.save(requestDto);
+        memberService.addMember(requestDto);
         return ResponseEntity.status(200).build();
     }
 
@@ -55,22 +56,22 @@ public class MemberController {
 
     @PatchMapping("/nickname/{id}")
     @ApiOperation(value = "닉네임 수정")
-    public ResponseEntity<Void> updateNickname(@CurrentUser MemberDto memberDto, @RequestBody ChangePasswordRequestDto requestDto) {
-        memberService.updateUser(memberDto.getId(),requestDto);
+    public ResponseEntity<Void> updateNickname(@CurrentUser MemberDto memberDto, @RequestBody ChangeNicknameRequestDto requestDto) {
+        memberService.changeNickname(memberDto.getId(),requestDto);
         return ResponseEntity.status(200).build();
     }
 
     @PatchMapping("/password/{id}")
     @ApiOperation(value = "패스워드 수정")
     public ResponseEntity<Void> updatePassword(@CurrentUser MemberDto memberDto, @RequestBody ChangePasswordRequestDto requestDto) {
-        memberService.updateUser(memberDto.getId(),requestDto);
+        memberService.changePassword(memberDto.getId(),requestDto);
         return ResponseEntity.status(200).build();
     }
 
     @PatchMapping("/role/{id}")
     @ApiOperation(value = "회원 권한 수정")
     public ResponseEntity<Void> updateRole(@PathVariable Long id, Set<MemberRole> memberRole) {
-        memberService.updateRole(id, memberRole);
+        memberService.changeRole(id, memberRole);
         return ResponseEntity.status(200).build();
     }
 }

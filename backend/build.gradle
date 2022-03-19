@@ -48,17 +48,25 @@ dependencies {
     /* Redis */
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-    /* Oauth2 */
-    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.9'
+    /* mokito */
+    testImplementation 'org.mockito:mockito-core:4.4.0'
 
+    /* lombok */
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
+    /* devtools */
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    /* h2 */
+    runtimeOnly 'com.h2database:h2'
+
+    /* maria */
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 def querydslDir = "src/main/generated/querydsl"

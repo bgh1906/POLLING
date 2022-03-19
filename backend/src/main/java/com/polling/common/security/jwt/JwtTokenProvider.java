@@ -1,7 +1,7 @@
 package com.polling.common.security.jwt;
 
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
+import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.service.member.MemberService;
 import com.polling.common.security.service.RedisService;
 import com.polling.core.entity.member.status.MemberRole;
@@ -22,7 +22,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 import java.util.Set;
 
@@ -133,7 +132,7 @@ public class JwtTokenProvider {
    public Set<MemberRole> getRoles(String id) {
       long memberId = Long.parseLong(id);
       return memberRepository.findById(memberId)
-              .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND))
+              .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND))
               .getMemberRole();
    }
 }

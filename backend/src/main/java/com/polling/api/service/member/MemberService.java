@@ -1,7 +1,7 @@
 package com.polling.api.service.member;
 
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
+import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.controller.member.dto.request.ChangeNicknameRequestDto;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
@@ -28,7 +28,9 @@ public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public long save(SaveNativeMemberRequestDto requestDto) {
+    public void addMember(SaveNativeMemberRequestDto requestDto) {
+        checkDuplicateMemberEmail(requestDto.getEmail());
+
         Member member = Member.builder()
                 .nickname(requestDto.getNickname())
                 .email(requestDto.getEmail())
@@ -37,21 +39,20 @@ public class MemberService implements UserDetailsService {
                 .build();
 
         memberRepository.save(member);
-        return member.getId();
     }
 
-    public void checkDuplicateMember(String email){
+    public void checkDuplicateMemberEmail(String email){
         if(memberRepository.existsByEmail(email))
-            throw new CustomException(ErrorCode.DUPLICATE_EMAIL);
+            throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
     }
 
     public void checkDuplicateMemberNickname(String nickname){
         if(memberRepository.existsByNickname(nickname))
-            throw new CustomException(ErrorCode.DUPLICATE_NAME);
+            throw new CustomException(CustomErrorResult.DUPLICATE_NAME);
     }
 
     public FindMemberResponseDto findMember(Long id) {
-        Member member = memberRepository.findById(id).orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+        Member member = memberRepository.findById(id).orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
 
         return new FindMemberResponseDto(member.getId(), member.getNickname(), member.getEmail());
     }
@@ -59,21 +60,21 @@ public class MemberService implements UserDetailsService {
     @Transactional
     public void changePassword(Long id, ChangePasswordRequestDto requestDto) {
         Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changePassword(requestDto.getPassword());
     }
 
     @Transactional
     public void changeNickname(Long id, ChangeNicknameRequestDto requestDto) {
         Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changeNickname(requestDto.getNickname());
     }
 
     @Transactional
-    public void updateRole(Long id, Set<MemberRole> memberRole) {
+    public void changeRole(Long id, Set<MemberRole> memberRole) {
         Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changeMemberRole(memberRole);
     }
 

@@ -6,8 +6,6 @@ import com.polling.api.controller.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.api.controller.candidate.dto.response.FindCandidateResponseDto;
 import com.polling.api.controller.candidate.dto.response.FindProfileResponseDto;
 import com.polling.api.controller.candidate.dto.response.FindVoteHistoryResponseDto;
-import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
 import com.polling.api.service.candidate.CandidateService;
 import com.polling.common.security.CurrentUser;
 import com.polling.common.security.dto.MemberDto;

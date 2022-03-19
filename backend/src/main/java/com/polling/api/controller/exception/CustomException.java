@@ -1,10 +1,10 @@
 package com.polling.api.controller.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomException extends RuntimeException{
-    private final ErrorCode errorCode;
+    private final CustomErrorResult customErrorResult;
 }

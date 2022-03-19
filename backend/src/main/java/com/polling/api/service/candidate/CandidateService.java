@@ -8,7 +8,7 @@ import com.polling.api.controller.candidate.dto.response.FindCandidateResponseDt
 import com.polling.api.controller.candidate.dto.response.FindProfileResponseDto;
 import com.polling.api.controller.candidate.dto.response.FindVoteHistoryResponseDto;
 import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.ErrorCode;
+import com.polling.api.controller.exception.CustomErrorResult;
 import com.polling.api.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.api.queryrepository.CommentQueryRepository;
 import com.polling.core.entity.candidate.Candidate;
@@ -50,7 +50,7 @@ public class CandidateService {
     @Transactional(readOnly = true)
     public FindProfileResponseDto getProfile(Long id){
         Candidate candidate = candidateRepository.findById(id)
-                .orElseThrow(()->new CustomException(ErrorCode.CANDIDATE_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
         List<CommentDto> comments = commentQueryRepository.findCommentByCandidateId(id);
         return FindProfileResponseDto.of(candidate, comments);
     }
@@ -63,7 +63,7 @@ public class CandidateService {
     @Transactional(readOnly = true)
     public List<FindVoteHistoryResponseDto> getHistory(Long id){
         Vote vote = voteRepository.findById(id)
-                .orElseThrow(()-> new CustomException(ErrorCode.VOTE_NOT_FOUND));
+                .orElseThrow(()-> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
 
         List<FindVoteHistoryResponseDto> response;
         if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_ALL)){
@@ -71,16 +71,16 @@ public class CandidateService {
         }else if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_RECENT)){
             response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
         }else{
-            throw new CustomException(ErrorCode.STATUS_NOT_FOUND);
+            throw new CustomException(CustomErrorResult.STATUS_NOT_FOUND);
         }
         return response;
     }
 
     public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, String userName){
         Member member = memberRepository.findByNickname(userName)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
-                .orElseThrow(()-> new CustomException(ErrorCode.CANDIDATE_NOT_FOUND));
+                .orElseThrow(()-> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
         CandidateHistory candidateHistory = CandidateHistory.builder()
                 .candidate(candidate)
                 .transactionId(requestDto.getTransactionId())
@@ -93,9 +93,9 @@ public class CandidateService {
 
     public Long saveComment(SaveCommentRequestDto requestDto, String userName){
         Member member = memberRepository.findByNickname(userName)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
-                .orElseThrow(()-> new CustomException(ErrorCode.CANDIDATE_NOT_FOUND));
+                .orElseThrow(()-> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
         Comment comment = Comment.builder()
                 .member(member)
                 .content(requestDto.getContent())
@@ -107,22 +107,22 @@ public class CandidateService {
 
     public void updateComment(Long commentId, PatchCommentRequestDto requestDto, String userName){
         Member member = memberRepository.findByNickname(userName)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(()->new CustomException(ErrorCode.COMMENT_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
         if(comment.getMember().getId() != member.getId()){
-            throw new CustomException(ErrorCode.INVALID_COMMENT_OWNER);
+            throw new CustomException(CustomErrorResult.INVALID_COMMENT_OWNER);
         }
         comment.updateContent(requestDto.getContent());
     }
 
     public void deleteComment(Long commentId, String userName){
         Member member = memberRepository.findByNickname(userName)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(()->new CustomException(ErrorCode.COMMENT_NOT_FOUND));
+                .orElseThrow(()->new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
         if(comment.getMember().getId() != member.getId()){
-            throw new CustomException(ErrorCode.INVALID_COMMENT_OWNER);
+            throw new CustomException(CustomErrorResult.INVALID_COMMENT_OWNER);
         }
         commentRepository.deleteById(commentId);
     }
