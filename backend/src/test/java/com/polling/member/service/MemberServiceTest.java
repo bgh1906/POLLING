@@ -1,21 +1,23 @@
 package com.polling.member.service;
 
 
-import com.polling.api.controller.exception.CustomException;
 import com.polling.api.controller.exception.CustomErrorResult;
+import com.polling.api.controller.exception.CustomException;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
+import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
 import com.polling.api.service.member.MemberService;
 import com.polling.core.entity.member.Member;
 import com.polling.core.repository.member.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,11 +60,36 @@ public class MemberServiceTest {
         verify(memberRepository, times(1)).save(any(Member.class));
     }
 
+    @Test
+    public void 멤버조회실패_멤버없음() throws Exception{
+        //given
+        doReturn(Optional.empty()).when(memberRepository).findById(any(Long.class));
+
+        //when
+        final CustomException result = assertThrows(CustomException.class, () -> target.findMember(1L));
+
+        //then
+        assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.USER_NOT_FOUND);
+    }
+
+    @Test
+    public void 멤버조회성공() throws Exception{
+        //given
+        doReturn(Optional.of(createMember())).when(memberRepository).findById(any(Long.class));
+
+        //when
+        FindMemberResponseDto findMember = target.findMember(1L);
+
+        //then
+        assertThat(findMember.getEmail()).isEqualTo(email);
+        verify(memberRepository, times(1)).findById(any(Long.class));
+    }
+
     private Member createMember(){
         return Member.builder()
-                .nickname("testNickname")
+                .nickname(nickname)
                 .password("test")
-                .email("test@test.com")
+                .email(email)
                 .phoneNumber("01012345678")
                 .build();
     }

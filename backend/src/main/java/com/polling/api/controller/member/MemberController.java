@@ -2,8 +2,8 @@ package com.polling.api.controller.member;
 
 
 import com.polling.api.controller.member.dto.request.ChangeNicknameRequestDto;
-import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
+import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
 import com.polling.api.service.member.MemberService;
 import com.polling.common.security.CurrentUser;
