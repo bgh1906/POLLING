@@ -12,7 +12,7 @@ import mrKorea from "../assets/mrKorea.PNG";
 function History() {
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.history_title}>History</div>
       <div className={styles.contents}>
         <section className={styles.sec}>

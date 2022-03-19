@@ -21,15 +21,15 @@ function Newnav() {
             </div>
             <div className={Styles.user}>
                 <div className={Styles.userNav}>
-                    <Link to="/" className={Styles.text}> Home&nbsp; </Link>
-                    <Link to="/login" className={Styles.text}> Login&nbsp; </Link>
+                    <Link to="/" className={Styles.text}> Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Link>
+                    <Link to="/login" className={Styles.text}> Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Link>
                     <Link to="/notice" className={Styles.text}> FAQ </Link>
                 </div>
             </div>
             <div className={Styles.poll}>
                 <div className={Styles.pollNav}>
-                    <Link to="/polllist" className={Styles.text} style={{textDecoration: 'none'}}> POLL&nbsp; </Link>
-                    <Link to="/hall" className={Styles.text} style={{textDecoration: 'none'}}> HALL&nbsp; </Link>
+                    <Link to="/polllist" className={Styles.text} style={{textDecoration: 'none'}}> POLL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Link>
+                    <Link to="/hall" className={Styles.text} style={{textDecoration: 'none'}}> HALL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Link>
                     <Link to="/history" className={Styles.text} style={{textDecoration: 'none'}}> History </Link>
                 </div>
             </div>

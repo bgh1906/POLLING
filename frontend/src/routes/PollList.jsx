@@ -16,7 +16,7 @@ import golf from "../assets/golf.PNG";
 function PollList() {
   return (
     <div className={styles.polllist}>
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.list_title}>Poll List</div>
       <div className={styles.list_container}>
         <img src={chunhyang} alt="img1" className={styles.list_item} />
