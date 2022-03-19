@@ -32,6 +32,8 @@ public class Member extends BaseTimeEntity {
 
     private String phoneNumber;
 
+    private String oauthId;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<MemberRole> memberRole;
@@ -39,15 +41,14 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private OAuthType oauthType;
 
-    private Long oauthId;
-
     @Builder
-    public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType){
+    public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType, String oauthId){
         this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.oauthType = oauthType;
+        this.oauthId = oauthId;
         memberRole = new HashSet<>();
         memberRole.add(MemberRole.ROLE_USER);
     }

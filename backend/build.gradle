@@ -72,6 +72,9 @@ dependencies {
 
     /* maria */
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    testImplementation('io.projectreactor:reactor-test')
 }
 
 def querydslDir = "src/main/generated/querydsl"
