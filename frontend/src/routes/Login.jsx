@@ -27,7 +27,7 @@ function Login() {
 
     // 회원가입 로그인하기
     const onLogin = (e) => {
-        if(email == "" || password ==""){
+        if(email === "" || password === ""){
             e.preventDefault();
             alert("이메일/비밀번호를 입력해주세요");
         } else if(email !== "" && password !==""){
@@ -88,8 +88,8 @@ function Login() {
                     <button className={Styles.signinbtn} onClick={onLogin}>Sign in</button>
                     {/* <button className={Styles.signinbtn}>Sign in</button> */}
                 </form>
-                {/* <div className={Styles.findpassword}>Forgot Password?</div> */}
                 <div className={Styles.logindivjoin}></div>
+                <Link to="/Companylogin" className={Styles.company}>기업회원 로그인</Link>
                 <div>
                     <div className={Styles.question}>Don’t have an account?</div>
                     <Link to="/join" className={Styles.joinusbtn} > Join us</Link>
@@ -98,6 +98,8 @@ function Login() {
                     {/* <button className={Styles.kakaologin} onClick={LoginWithKakao}><img src={kakao} height={25} alt="kakaoTalk" style={{height: "2.5vh", marginTop:"1.5vh"}}></img> 카카오톡으로 로그인</button> */}
                 </div>
             </div>
+
+
 
             {/* <Footer /> */}
         </div>
