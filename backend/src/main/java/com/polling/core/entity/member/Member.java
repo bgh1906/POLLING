@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,24 +34,31 @@ public class Member extends BaseTimeEntity {
 
     private String phoneNumber;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<MemberRole> memberRole;
+    private String oauthId;
 
     @Enumerated(EnumType.STRING)
     private OAuthType oauthType;
 
-    private Long oauthId;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<MemberRole> memberRole;
+
+    //하루에 하나씩 주어지는 무료티켓. 마지막으로 기록된 날짜가 오늘이 아니라면 투표가능
+    private LocalDate lastTicket;
+
+    private int bonusTicket;
 
     @Builder
-    public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType){
+    public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType, String oauthId){
         this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.oauthType = oauthType;
+        this.oauthId = oauthId;
         memberRole = new HashSet<>();
         memberRole.add(MemberRole.ROLE_USER);
+        this.bonusTicket = 0;   //추가티켓은 0으로 init
     }
 
     public void changeNickname(String nickname){
@@ -66,6 +75,19 @@ public class Member extends BaseTimeEntity {
 
     public void changeMemberRole(Set<MemberRole> memberRole){
         this.memberRole = memberRole;
+    }
+
+    public void addRole(MemberRole role){
+        if(!this.memberRole.contains(role)){
+            this.memberRole.add(role);
+        }
+    }
+
+    public void setLastTicketToNow(){
+        this.lastTicket = LocalDate.now();
+    }
+    public void setBonusTicket(int bonusTicket){
+        this.bonusTicket = bonusTicket;
     }
 
 }

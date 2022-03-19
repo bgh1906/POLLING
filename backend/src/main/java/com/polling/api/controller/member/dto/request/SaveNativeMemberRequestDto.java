@@ -1,5 +1,6 @@
 package com.polling.api.controller.member.dto.request;
 
+import com.polling.core.entity.member.status.MemberRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,6 @@ public class SaveNativeMemberRequestDto {
     private String password;
     @NotNull
     private String phoneNumber;
+
+    private MemberRole role;
 }

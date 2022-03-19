@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
    private final PasswordEncoder passwordEncoder;
 
    public static String[] SWAGGER_URL_PATHS = new String[] { "/swagger-ui.html**", "/swagger-resources/**",
-           "/v2/api-docs**", "/webjars/**" };
+           "/v2/api-docs**", "/webjars/**", "swagger-ui/index.html" };
 
    @Bean
    @Override
@@ -48,7 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
               .userDetailsService(detailsService)
               .passwordEncoder(passwordEncoder);
    }
-
 
    @Override
    public void configure(WebSecurity web) {
@@ -64,6 +63,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/**/*.js",
             "/h2-console/**"
          );
+      web.ignoring().mvcMatchers(HttpMethod.OPTIONS, "/**");
+      web.ignoring().mvcMatchers(SWAGGER_URL_PATHS);
+
    }
 
    @Override
@@ -95,4 +97,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
          .and().cors();
    }
+
 }

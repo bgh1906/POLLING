@@ -36,6 +36,10 @@ public class MemberService {
                 .password(requestDto.getPassword())
                 .phoneNumber(requestDto.getPhoneNumber())
                 .build();
+        //기본 ROLE_USER, 상황에 따라 ROLE_COMPANY 추가
+        if(MemberRole.ROLE_COMPANY.equals(requestDto.getRole())){
+            member.addRole(MemberRole.ROLE_COMPANY);
+        }
 
         memberRepository.save(member);
     }

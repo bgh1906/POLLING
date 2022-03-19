@@ -67,9 +67,4 @@ public class VoteService {
         vote.setVoteStatus(VoteStatus.COMPLETE);
     }
 
-    public void voteTo(Long candidateId, int vote){
-        Candidate candidate = candidateRepository.findById(candidateId).orElseThrow(RuntimeException::new);
-        candidate.addVote(vote);
-    }
-
 }

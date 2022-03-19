@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Transactional
@@ -77,8 +78,25 @@ public class CandidateService {
     }
 
     public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, String userName){
+
+        //0표 투표라면 exception
+        if(requestDto.getVoteCount() == 0){
+            throw new CustomException(CustomErrorResult.USE_YOUR_TICKET);
+        }
+
+        //해당 표수 투표 가능한지 확인
         Member member = memberRepository.findByNickname(userName)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+        int remainTicket = 0;
+        if(member.getLastTicket().compareTo(LocalDate.now()) == 0){
+            remainTicket++;
+        }
+        remainTicket += member.getBonusTicket();
+        if(remainTicket > requestDto.getVoteCount()){
+            throw new CustomException(CustomErrorResult.NO_LEFT_TICKET);
+        }
+
+        //본 투표
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
                 .orElseThrow(()-> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
         CandidateHistory candidateHistory = CandidateHistory.builder()
@@ -89,6 +107,11 @@ public class CandidateService {
                 .build();
         candidateHistoryRepository.save(candidateHistory);
         candidate.addVote(requestDto.getVoteCount());
+
+        //티켓차감
+        member.setLastTicketToNow();
+        member.setBonusTicket(remainTicket-requestDto.getVoteCount()+1);
+
     }
 
     public Long saveComment(SaveCommentRequestDto requestDto, String userName){
