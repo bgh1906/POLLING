@@ -15,12 +15,10 @@ import Management from "./routes/Management";
 import User from "./routes/User";
 import Companylogin from "./routes/Companylogin";
 
-
 function App() {
   return (
     <div>
-
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join />}></Route>
@@ -36,11 +34,10 @@ function App() {
           <Route path="/hall" element={<Hall />}></Route>
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
-          <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route>
-
+          {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
+          <Route path="/nominee" element={<Nominee />}></Route>
         </Routes>
-    </BrowserRouter>
-    
+      </BrowserRouter>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
 import { useEffect } from "react";
 import { useSelector } from 'react-redux'
+import Footer from "../components/layout/Footer";
 
 
 
@@ -67,15 +68,15 @@ function Admin() {
                     <div id={styles.box4}>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                     </div>
                 </div>    
@@ -184,7 +185,7 @@ function Admin() {
         </div>
 
 {/* Closed */}
-        <div className={styles.container}>
+        <div className={styles.container} style={{marginBottom:"20vw"}}>
             <div>
                 <div id={styles.status_title}>CLOSED</div>
                 <div id={styles.bigbox}>
@@ -232,7 +233,7 @@ function Admin() {
                 </div>    
             </div>
         </div>            
-        
+        <Footer></Footer>
         </div>
     );
 }

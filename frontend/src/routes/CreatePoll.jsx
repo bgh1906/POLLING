@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from 'react-redux'
 import { actionCreators } from "../store"
+import Footer from "../components/layout/Footer";
 
 
 function CreatePoll() {
@@ -95,14 +96,14 @@ function CreatePoll() {
 
 
     return (
-        <div>
+        <div >
             <div>
               <Nav />
             </div>
-            <div style={{ margin: "0 10vw"}}>
+            <div style={{ margin: "0 10vw"}} >
                 <h1 className={styles.title}> CREATE A POLL </h1>
             </div>
-            <div className={styles.container}>
+            <div className={styles.container} style={{marginBottom: "10vw"}}>
                 <div id={styles.subtitle}> MAIN IMAGE </div>
                 <div  id={styles.main_div}>
                     <span>이미지(URL)주소: </span> 
@@ -155,7 +156,7 @@ function CreatePoll() {
                         <div>
                             <input id={styles.poll_input3} type="checkbox" value="recent"
                             onChange={changepollLatestTX}/> 
-                            <span id={styles.check_text}>투표 내역 공개 (최근 1 시간)</span>
+                            <span id={styles.check_text}>투표 내역 공개 (최근 50 건)</span>
                         </div>
                         <div>
                             <input id={styles.poll_input3} type="checkbox" value="all"
@@ -176,7 +177,7 @@ function CreatePoll() {
                             navigate("/admin");
                         } else {
                             Swal.fire({
-                                title: '투표 정보를 입력해주세요!!',
+                                title: '투표 정보를 입력해주세요.',
                                 icon: 'error'                        
                             })
                         }
@@ -187,6 +188,7 @@ function CreatePoll() {
                         
             </div>
 
+        <Footer></Footer>
         </div>
     );
 }

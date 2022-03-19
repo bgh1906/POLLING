@@ -57,6 +57,7 @@ function NomineeInput({onAdd}) {
                 EX) 수지 프로필
                 출생: 1994.10.10.     소속사: 매니지먼트 숲
                 데뷔: 2010년 MISSA 싱글[Bad But Good]"/></p>
+                
                 <p>참가자 갤러리</p><p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={additional_image1} name="additional_image1" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
                 <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={additional_image2} name="additional_image2" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
                 <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={additional_image3} name="additional_image3" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
