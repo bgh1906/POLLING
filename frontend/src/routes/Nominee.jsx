@@ -1,10 +1,17 @@
-
+import Nav from "../components/layout/Nav.jsx"
 
 
 function Nominee() {
 
     return (
-        <h1> Hello, Let's start </h1>
+
+        <div>
+            <div>
+                <Nav />
+            </div>
+
+            <h1> hi </h1>
+        </div>
     );
 }
 
