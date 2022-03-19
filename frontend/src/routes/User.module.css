@@ -20,25 +20,48 @@
 }
 
 .userbg {
-    position: absolute;
+    /* z-index: -1; */
+    /* position: absolute;
     width: 78vw;
     height: 50vh;
     left: 11vw;
     top: 33vh;
     
     background: #FFF9EE;
+    border-radius: 7vh; */
+    position: absolute;
+    width: 56.5vw;
+    height: 30vh;
+    left: 21vw;
+    /* top: 55vh; */
+    top: 53vh;
+    
+    background: #FFF9EE;
     border-radius: 7vh;
 }
  
+#more_btn:hover{
+    /* 글자색 */
+    color:#fff;
+     /*배경색  */
+    background-color: black;
+    transition: all 0.3s ease-out;
+}
+
 .addcompany {
     position: absolute;
-    width: 20vw;
+    /* width: 50vw; */
+    width: 24vw;
     height: 7vh;
-    left: 12vw;
-    top: 10vh;
+    left: 19vw;
+    /* left: 22vw; */
+    /* top: 45vh; */
+    top: 43vh;
     
     background: #FEFFF8;
-    background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
+    /* background-image: url(https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/40/000000/external-company-town-xnimrodx-lineal-xnimrodx-4.png); */
+    background-image: url(https://img.icons8.com/pastel-glyph/40/000000/company--v1.png);
+    /* background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png); */
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 5vw;
@@ -46,7 +69,7 @@
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
     /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 2vh;
-
+    
     font-family: 'GangwonEdu_OTFBoldA';
     text-decoration: none;
     font-style: normal;
@@ -54,19 +77,23 @@
     font-size: 1.7vw;
     line-height: 9vh;
     text-align: start;
-
+    
     color: #000000;
 }
 
 .other {
     position: absolute;
-    width: 20vw;
+    width: 24vw;
     height: 7vh;
-    left: 39vw;
-    top: 10vh;
+    left: 51vw;
+    top: 43vh;
+    /* top: 45vh; */
+    /* left: 22vw; */
+    /* top: 60vh; */
     
     background: #FEFFF8;
-    background-image: url(https://img.icons8.com/ios/40/000000/ballot--v2.png);
+    background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
+    /* background-image: url(https://img.icons8.com/ios/40/000000/ballot--v2.png); */
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left:5vw;
@@ -89,10 +116,15 @@
 
 .id {
     position: absolute;
-    width: 23.5vw;
-    height: 4vh;
-    left: 4vw;
-    top: 15vh;
+    /* width: 23.5vw; */
+    width: 32vw;
+    height: 6vh;
+    /* left: 4vw;
+    top: 15vh; */
+    left: 24vw;
+    /* left: 38vw; */
+    /* top: 62vh; */
+    top: 60vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
@@ -102,15 +134,20 @@
     /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
     /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
-    border-radius: 40px;
+    border-radius: 3vh;
 }
 
 .password {
     position: absolute;
-    width: 23.5vw;
-    height: 4vh;
-    left: 4vw;
-    top: 22vh;
+    /* width: 23.5vw; */
+    width: 32vw;
+    height: 6vh;
+    /* left: 4vw;
+    top: 22vh; */
+    left: 24vw;
+    /* left: 38vw; */
+    top: 69vh;
+    /* top: 71vh; */
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/24/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
@@ -121,22 +158,28 @@
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
     /* box-shadow: 0.0vw 0.1vw 0.5vw 0.1vw #f1d2a1; */
     /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
-    border-radius: 40px;
+    border-radius: 3vh;
 }
 
 .signinbtn {
     position: absolute;
     width: 15vw;
-    height: 6vh;
-    left: 10vw;
-    top: 30vh;
+    height: 9vh;
+    /* height: 6vh; */
+    /* left: 10vw;
+    top: 30vh; */
+    /* left: 43.5vw; */
+    left: 60.5vw;
+    top: 63.5vh;
+    /* top: 65.5vh; */
     
-    background: #FEFFF8;
+    /* background: #FEFFF8; */
+    background: #FFF9EE;
     mix-blend-mode: normal;
     /* box-shadow: 0px 5px 5px 5px #F5EAD8; */
     /* box-shadow: 0.2vw 0.2vw 0.2vw 0.2vw #fae7c8; */
     box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8;
-    border-radius: 30px;
+    border-radius: 2vh;
 
     font-family: 'Russo One';
     font-style: normal;
@@ -148,6 +191,112 @@
     text-align: center;
 
     color: #9F824D;
+}
+
+.userEmail {
+    position: absolute;
+    /* width: 23.5vw; */
+    width: 39vw;
+    height: 6vh;
+    /* left: 4vw;
+    top: 15vh; */
+    left: 25vw;
+    /* left: 38vw; */
+    top: 56vh;
+    /* top: 58vh; */
+    
+    /* background: #FEFFF8; */
+    background: #e8eca559;
+    background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left: 3.2vw;
+    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95;
+    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 1vh;
+    border-color: #00000000;
+
+    font-family: 'ROKAFSansMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3vw;
+    line-height: 6vh;
+}
+
+.searchbtn {
+    position: absolute;
+    /* width: 23.5vw; */
+    width: 4vw;
+    height: 6vh;
+    /* left: 4vw;
+    top: 15vh; */
+    left: 68vw;
+    /* left: 38vw; */
+    top: 56.5vh;
+    /* top: 58.5vh; */
+    
+    /* background: #FEFFF8; */
+    /* background: #e8eca559; */
+    background: #e8eca500;
+    background-image: url(https://img.icons8.com/pastel-glyph/40/000000/search--v2.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left: 2.3vw;
+    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95;
+    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 1vh;
+    border-color: #00000000;
+
+    font-family: 'ROKAFSansMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3vw;
+    line-height: 6vh;
+}
+
+.table {
+    position: absolute;
+    width: 44vw;
+    height: 6vh;
+    left: 26.5vw;
+    top: 67vh;
+
+    /* background: #e8eca500;
+    background-repeat: no-repeat;
+    background-position: 0.5vw center; */
+    padding-left: 2.3vw;
+    box-shadow: 0.1vw 0.2vw 0.5vw 0.0vw #0a0600;
+    border-radius: 1vh;
+    border-color: #00000000;
+
+    /* font-family: 'ROKAFSansMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2vw;
+    line-height: 6vh;
+    text-align: center; */
+}
+
+.thead {
+    font-family: 'ROKAFSansMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2vw;
+    line-height: 6vh;
+    text-align: center;
+}
+
+.tbody {
+    font-family: 'ROKAFSansMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    line-height: 6vh;
+    text-align: center;
 }
 
 @font-face {

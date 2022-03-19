@@ -28,6 +28,7 @@ function Nav() {
 
             {/* 메뉴 */}
                 <div className={Styles.nav}></div>
+                <Link to="/" className={Styles.home}>Home</Link>
                 <Link to="/hall" className={Styles.hall}>명예의 전당</Link>
                 <Link to="/polllist" className={Styles.poll}> 투표 참여 </Link>
                 <Link to="/history" className={Styles.history}> History</Link>
@@ -37,6 +38,8 @@ function Nav() {
                     :
                     <Link to="/mypage" className={Styles.login}> 마이페이지</Link>
                 }
+                {/* 기업 회원용 마이페이지 -> 추후 링크 연결 */}
+                {/* <Link to="/mypage" className={Styles.login}> 투표 관리(기업용) </Link> */}
                 <Link to="/management" className={Styles.admin}> 관리자페이지</Link>
         </div>
     );

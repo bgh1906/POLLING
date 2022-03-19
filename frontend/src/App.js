@@ -13,6 +13,7 @@ import Nominee from "./routes/Nominee";
 import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
+import Companylogin from "./routes/Companylogin";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/Companylogin" element={<Companylogin />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/management" element={<Management />}></Route>
           <Route path="/user" element={<User />}></Route>

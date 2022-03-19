@@ -1,6 +1,7 @@
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
+import Newnav from "../components/layout/NewNav";
 
 
 function Home() {
@@ -8,16 +9,16 @@ function Home() {
     return (
         <div>
             <div>
-              <Nav />
+              <Newnav />
             </div>
 {/* 메인 이미지 */}
-            <div className={styles.main}>
+            {/* <div className={styles.main}>
                 <img 
                 id={styles.mainimg}
                 src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/>
-            </div>
+            </div> */}
 {/* 투표리스트  */}
-            <div className={styles.poll_list}>
+            {/* <div className={styles.poll_list}>
                 <div >
                     <div id={styles.list}>POLL LIST</div>
                     <div id={styles.bigbox}>
@@ -55,9 +56,9 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 {/* History */}
-            <div className={styles.history_list}>
+            {/* <div className={styles.history_list}>
                 <div>
                     <div id={styles.history}>HISTORY</div>
                     <div id={styles.bigbox}>
@@ -95,7 +96,7 @@ function Home() {
                     </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
         </div>
 
