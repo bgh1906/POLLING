@@ -1,6 +1,6 @@
 import styles from "./Admin.module.css";
 import { Link } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx"
+import NewNav from "../components/layout/NewNav.jsx"
 import { useEffect } from "react";
 import { useSelector } from 'react-redux'
 import Footer from "../components/layout/Footer";
@@ -18,7 +18,7 @@ function Admin() {
     return (
         <div>
             <div>
-              <Nav />
+              <NewNav />
             </div>
             <div className={styles.title}>
                 <div>

@@ -1,5 +1,5 @@
 import styles from "./CreatePoll.module.css";
-import Nav from "../components/layout/Nav.jsx"
+import NewNav  from "../components/layout/NewNav.jsx"
 import React, { useRef, useState } from "react";
 import NomineeInput from "../components/admin/NomineeInput"
 import NomineeList from "../components/admin/NomineeList"
@@ -98,7 +98,7 @@ function CreatePoll() {
     return (
         <div >
             <div>
-              <Nav />
+              <NewNav  />
             </div>
             <div style={{ margin: "0 10vw"}} >
                 <h1 className={styles.title}> CREATE A POLL </h1>
