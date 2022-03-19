@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
 import Footer from "../components/layout/Footer";
 import Textscroll from "../components/layout/Textscroll";
+import Newnav from "../components/layout/NewNav";
 
 function Home() {
 
     return (
         <div>
             <div>
-              {/* <Nav /> */}
+              <Newnav />
             </div>
 {/* 메인 이미지 */}
             {/* <div className={styles.main}> */}

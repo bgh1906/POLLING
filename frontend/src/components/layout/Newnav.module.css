@@ -1,0 +1,158 @@
+.outbox{
+    z-index: -5;
+    position: fixed;
+    width: 96vw;
+    height: 92vh;
+    left: 1vw;
+    top: 2vh;
+
+    border: 1vw solid transparent;
+    border-radius: 1vh;
+    border-image: linear-gradient(120deg,  #3afaca8c, #8ac1be8c, #c399b48c, #fb71aa8c);
+    /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
+    /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
+    border-image-slice: 1;
+}
+
+.mark{
+    position: fixed;
+    left: 3vw;
+    top: 5vh;
+    height: 7vh;
+}
+
+.title{
+    position: fixed;
+    width: 9vw;
+    height: 9vh;
+    left: 6.5vw;
+    top: 5vh;
+
+    text-decoration: none;
+    text-align: center;
+    font-size: 6vh;
+    font-family: 'RussoOne';
+    /* font-family: 'Bitter', serif; */
+    color: #231815;
+}
+
+.hamNav1{
+    position: fixed;
+    width: 2vw;
+    height: 0.1vh;
+    right: 3vw;
+    top: 5.5vh;
+
+    background-color: #77A3A9;
+    border-radius: 2vh;
+    border: 1px solid #77A3A9;
+}
+
+.hamNav2{
+    position: fixed;
+    width: 2vw;
+    height: 0.1vh;
+    right: 3vw;
+    top: 6.5vh;
+
+    background-color: #77A3A9;
+    border-radius: 2vh;
+    border: 1px solid #77A3A9;
+}
+
+.hamNav3{
+    position: fixed;
+    width: 2vw;
+    height: -0.1vh;
+    right: 3vw;
+    top: 7.5vh;
+
+    background-color: #77A3A9;
+    border-radius: 2vh;
+    border: 1px solid #77A3A9;
+}
+
+/* 큰 div 만들고 */
+/* .div{
+    display: flex; */
+    /* 세로 */
+    /* flex-direction: column; 
+
+    width: 10vw;
+    height: 100vh;
+} */
+
+/* 네브바 */
+/* .div{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+} */
+
+.user{
+    display: flex;
+    flex-direction: column; 
+    float: left;
+    width: 10vw;
+    /* height: 100vh; */
+    height: 98.5vh;
+    justify-content: center;
+    /* border: 0.1vw solid #000000; */
+}
+
+.userNav{
+    -webkit-transform: rotate(270deg);
+    -webkit-transform-origin: bottom ;
+    position: fixed;
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    display: flex;
+    width: 10.5vw;
+    top: 45vh;
+
+    text-align: center;
+    font-size: 2.5vh;
+    font-family: 'RussoOne';
+
+}
+
+.poll{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 10vw;
+    /* height: 100vh; */
+    height: 98.5vh;
+    justify-content: center;
+    /* border: 0.1vw solid #000000; */
+}
+
+.pollNav{
+    -webkit-transform: rotate(90deg);
+    /* -webkit-transform-origin:left top; */
+    -webkit-transform-origin: bottom;
+    position: fixed;
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    display: flex;
+    /* width: 21vw; */
+    width: 10.5vw;
+    top: 45vh;
+
+    text-align: center;
+    font-size: 2.5vh;
+    font-family: 'RussoOne';
+}
+
+.text {
+    text-decoration: none;
+    text-align: center;
+    color: #231815;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../../fonts/RussoOne-Regular.ttf);
+  }
