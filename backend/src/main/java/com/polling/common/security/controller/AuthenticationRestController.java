@@ -44,7 +44,7 @@ public class AuthenticationRestController {
       return ResponseEntity.status(200).build();
    }
 
-   @PostMapping("/auth")
+   @PostMapping("/social")
    @ApiOperation(value = "OAuth 회원 가입/로그인")
    public ResponseEntity<Void> authorizeOAuth(@RequestBody AuthDto requestDto, HttpServletResponse response) {
       Member member = authService.auth(requestDto);
