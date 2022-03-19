@@ -32,7 +32,8 @@ function App() {
           <Route path="/hall" element={<Hall />}></Route>
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
-          <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route>
+          {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
+          <Route path="/nominee" element={<Nominee />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
