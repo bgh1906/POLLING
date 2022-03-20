@@ -240,7 +240,7 @@ function Admin() {
             </div>
         </div>  
         </Fade>  
-                
+
         <Footer></Footer>
         </div>
     );
