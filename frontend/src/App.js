@@ -14,6 +14,7 @@ import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
 import Companylogin from "./routes/Companylogin";
+import WhyPolling from "./routes/WhyPolling";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
           <Route path="/nominee" element={<Nominee />}></Route>
+          <Route path="/whypolling" element={<WhyPolling />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
