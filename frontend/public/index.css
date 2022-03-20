@@ -5,11 +5,6 @@
 }
 
 
-
-/* .scrollbar {
-    overflow-y: scroll;
-} */
-
 /* 스크롤바 설정*/
 .scrollbar::-webkit-scrollbar{
     width: 10px;
