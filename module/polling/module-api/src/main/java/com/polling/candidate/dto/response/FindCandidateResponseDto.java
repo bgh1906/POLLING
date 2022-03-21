@@ -1,12 +1,10 @@
 package com.polling.candidate.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@NoArgsConstructor
+@Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-@Getter
 public class FindCandidateResponseDto {
     private Long id;
     private String name;
