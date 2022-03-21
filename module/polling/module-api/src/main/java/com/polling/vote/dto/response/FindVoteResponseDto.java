@@ -2,16 +2,14 @@ package com.polling.vote.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@NoArgsConstructor
-@Getter
+@Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FindVoteResponseDto {
     private List<FindCandidateResponseDto> candidates;
     @NotNull

@@ -1,5 +1,6 @@
 package com.polling.vote.controller;
 
+import com.polling.repository.vote.VoteRepository;
 import com.polling.vote.dto.VoteResponseDto;
 import com.polling.vote.dto.request.SaveVoteRequestDto;
 import com.polling.vote.dto.response.FindVoteResponseDto;
@@ -21,7 +22,6 @@ import java.util.List;
 public class VoteController {
 
     private final VoteService voteService;
-    private final VoteQueryRepository voteRepository;
     private final VoteQueryRepository voteQueryRepository;
 
     @PostMapping

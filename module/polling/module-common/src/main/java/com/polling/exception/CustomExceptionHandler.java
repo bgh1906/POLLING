@@ -40,10 +40,10 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return this.makeErrorResponseEntity(exception.getCustomErrorResult());
     }
 
-    @ExceptionHandler({Exception.class})
-    public ResponseEntity<ErrorResponse> handleException(final Exception exception) {
-        return this.makeErrorResponseEntity(CustomErrorResult.STATUS_NOT_FOUND);
-    }
+//    @ExceptionHandler({Exception.class})
+//    public ResponseEntity<ErrorResponse> handleException(final Exception exception) {
+//        return this.makeErrorResponseEntity(CustomErrorResult.STATUS_NOT_FOUND);
+//    }
 
     private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final CustomErrorResult errorResult) {
         return ResponseEntity.status(errorResult.getHttpStatus())
