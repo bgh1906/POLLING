@@ -1,10 +1,10 @@
 spring:
   profiles:
     active: local
-  redis:
-    host: 127.0.0.1
-    port: 6379
-
+    default: local
+    include:
+      - core-local
+      - common-local
 
 logging:
   file.name: ./PJT-web.log
@@ -13,11 +13,9 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
 
-
 jwt:
   secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
   route:
     authentication:
       path: auth
       refresh: refresh
-

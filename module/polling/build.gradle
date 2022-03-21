@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.6.4'
+        springBootVersion = '2.5.3'
     }
     repositories {
         mavenCentral()
@@ -26,6 +26,7 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -75,6 +76,9 @@ subprojects {
         /* webflux */
         implementation('org.springframework.boot:spring-boot-starter-webflux')
         testImplementation('io.projectreactor:reactor-test')
+
+        /* yaml-importer */
+//        implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.1.0'
 
     }
 
