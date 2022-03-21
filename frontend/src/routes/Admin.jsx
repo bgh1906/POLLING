@@ -1,8 +1,10 @@
 import styles from "./Admin.module.css";
 import { Link } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx"
+import NewNav from "../components/layout/NewNav.jsx"
 import { useEffect } from "react";
 import { useSelector } from 'react-redux'
+import Footer from "../components/layout/Footer";
+import { Fade } from "react-awesome-reveal";
 
 
 
@@ -17,7 +19,7 @@ function Admin() {
     return (
         <div>
             <div>
-              <Nav />
+              <NewNav />
             </div>
             <div className={styles.title}>
                 <div>
@@ -67,15 +69,15 @@ function Admin() {
                     <div id={styles.box4}>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                         <div id={styles.status_buttonbox}>
                             <button id={styles.status_button}>투표 수정하기</button>
-                            <button id={styles.status_button}>투표 시작하기</button>
+                            <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                     </div>
                 </div>    
@@ -83,6 +85,7 @@ function Admin() {
         </div>
 
 {/* Stand by */}
+        <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>STAND BY</div>
@@ -131,9 +134,10 @@ function Admin() {
                 </div>    
             </div>
         </div>
+        </Fade>
 
 {/* In Progress */}
-
+        <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>IN PROGRESS</div>
@@ -182,9 +186,12 @@ function Admin() {
                 </div>    
             </div>
         </div>
+        </Fade>
 
 {/* Closed */}
-        <div className={styles.container}>
+
+        <Fade>
+        <div className={styles.container} style={{marginBottom:"20vw"}}>
             <div>
                 <div id={styles.status_title}>CLOSED</div>
                 <div id={styles.bigbox}>
@@ -231,8 +238,10 @@ function Admin() {
                     </div>
                 </div>    
             </div>
-        </div>            
-        
+        </div>  
+        </Fade>  
+
+        <Footer></Footer>
         </div>
     );
 }

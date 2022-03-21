@@ -13,6 +13,8 @@ import Nominee from "./routes/Nominee";
 import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
+import Companylogin from "./routes/Companylogin";
+import WhyPolling from "./routes/WhyPolling";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/Companylogin" element={<Companylogin />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/management" element={<Management />}></Route>
           <Route path="/user" element={<User />}></Route>
@@ -32,7 +35,9 @@ function App() {
           <Route path="/hall" element={<Hall />}></Route>
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
-          <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route>
+          {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
+          <Route path="/nominee" element={<Nominee />}></Route>
+          <Route path="/whypolling" element={<WhyPolling />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

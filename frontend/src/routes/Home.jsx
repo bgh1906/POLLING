@@ -1,102 +1,66 @@
-import styles from "./Home.module.css";
+import styles from "../components/home/Home.module.css";
 import { Link } from "react-router-dom";
 import Nav from "../components/layout/Nav.jsx"
-
+import Newnav from "../components/layout/NewNav";
+import Footer from "../components/layout/Footer";
+import About from "../components/home/About"
+import PollListmain from "../components/home/PollListmain"
+import Historymain from "../components/home/Historymain"
+import Hallmain from "../components/home/Hallmain"
+import { Fade } from "react-awesome-reveal";
+import { useEffect, useState } from "react";
 
 function Home() {
+    
+    const [mode, setMode] = useState(1001);
+    const [mode_about, setMode_about] = useState(false);
+    const [mode_poll, setMode_poll] = useState(false);
+    const [mode_history, setMode_history] = useState(false);
+    const [mode_hall, setMode_hall] = useState(false);
+
+
+    function changeModeplus() {
+        setMode((mode+1))
+    }
+
+    function changeModeminus() {
+        setMode((mode-1))
+    }
+
+    useEffect(() => {
+        if ((mode%4) ===1) {
+            setMode_hall(false);
+            setMode_about(true);
+            setMode_poll(false);
+        } else if ((mode%4)===2 ){
+            setMode_about(false);
+            setMode_poll(true);
+            setMode_history(false);
+        } else if ((mode%4) ===3){
+            setMode_poll(false);
+            setMode_history(true);
+            setMode_hall(false);
+        } else if ((mode%4) ===0){
+            setMode_history(false);
+            setMode_hall(true);
+            setMode_about(false);
+        }
+    },[mode])
+
 
     return (
         <div>
             <div>
-              <Nav />
-            </div>
-{/* 메인 이미지 */}
-            <div className={styles.main}>
-                <img 
-                id={styles.mainimg}
-                src="https://www.biblicaltraining.org/sites/default/files/poll.jpg" alt="mainimg"/>
-            </div>
-{/* 투표리스트  */}
-            <div className={styles.poll_list}>
-                <div >
-                    <div id={styles.list}>POLL LIST</div>
-                    <div id={styles.bigbox}>
-                        <div id={styles.box1}>
-                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
-                            <img id={styles.list_img} src="https://cdn.mhns.co.kr/news/photo/201608/21091_43510_93.JPG" alt="img2" />
-                            <img id={styles.list_img} src="https://image.ytn.co.kr/general/jpg/2021/1210/202112100850018249_d.jpg" alt="img3" />
-                        </div>
-                        <div id={styles.box2}>
-                            <div id={styles.list_text}>
-                                <span > 제90회 전국춘향선발대회 </span> 
-                            </div>
-                            <div id={styles.list_text}>
-                                <span > 프로듀스 101 </span>
-                            </div>
-                            <div id={styles.list_text}>
-                                <span > 내일은 미스터 트롯 </span>
-                            </div>
-                        </div>
-                        <div id={styles.box3}>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span> 
-                            </div>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span>
-                            </div>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span>
-                            </div>
-                        </div>
-                        <div id={styles.box4}>
-                        <Link to="/polllist">
-                        <button id={styles.more}>더보기</button>
-                        </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{/* History */}
-            <div className={styles.history_list}>
-                <div>
-                    <div id={styles.history}>HISTORY</div>
-                    <div id={styles.bigbox}>
-                        <div id={styles.box1}>
-                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
-                            <img id={styles.list_img} src="https://cdn.mhns.co.kr/news/photo/201608/21091_43510_93.JPG" alt="img2" />
-                            <img id={styles.list_img} src="https://image.ytn.co.kr/general/jpg/2021/1210/202112100850018249_d.jpg" alt="img3" />
-                        </div>
-                        <div id={styles.box2}>
-                            <div id={styles.list_text}>
-                                <span > 제90회 전국춘향선발대회 </span> 
-                            </div>
-                            <div id={styles.list_text}>
-                                <span > 프로듀스 101 </span>
-                            </div>
-                            <div id={styles.list_text}>
-                                <span > 내일은 미스터 트롯 </span>
-                            </div>
-                        </div>
-                        <div id={styles.box3}>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span> 
-                            </div>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span>
-                            </div>
-                            <div id={styles.list_date}>
-                                <span > 2020.09.10 - 2020.09.13 </span>
-                            </div>
-                        </div>
-                        <div id={styles.box4}>
-                    <Link to="/history">
-                      <button id={styles.more}>더보기</button>
-                    </Link>
-                    </div>
-                    </div>
-                </div>
+              <Newnav />
             </div>
 
+            <div>
+                {mode_about && <Fade><About changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}
+                {mode_poll && <Fade><PollListmain changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}
+                {mode_history && <Fade><Historymain changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}
+                {mode_hall && <Fade><Hallmain changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}
+
+            </div>    
         </div>
 
     );

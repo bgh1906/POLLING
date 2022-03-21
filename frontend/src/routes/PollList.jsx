@@ -18,7 +18,7 @@ function PollList() {
   const navigate = useNavigate();
   return (
     <div className={styles.polllist}>
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.list_title}>Poll List</div>
       <div className={styles.list_container}>
         <div className={styles.list_item}>

@@ -15,7 +15,7 @@ function History() {
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.history_title}>History</div>
       <div className={styles.contents}>
         <div className={styles.history_container}>

@@ -1,7 +1,7 @@
 import Nav from "../components/layout/Nav.jsx"
 
 
-function Nominee() {
+function WhyPolling() {
 
     return (
 
@@ -15,4 +15,4 @@ function Nominee() {
     );
 }
 
-export default Nominee;
+export default WhyPolling;
