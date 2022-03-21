@@ -4,7 +4,7 @@ import chunhyang from "../assets/chunhyang.PNG";
 import ocean from "../assets/ocean.PNG";
 import ev9 from "../assets/ev9.PNG";
 import kClassic from "../assets/kClassic.PNG";
-import logoContest from "../assets/logoContest.PNG";
+import contest from "../assets/contest.PNG";
 import missKorea from "../assets/missKorea.PNG";
 import eyes from "../assets/eyes.PNG";
 import fox from "../assets/fox.PNG";
@@ -16,30 +16,85 @@ import Newnav from "../components/layout/NewNav";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+// import { useEffect } from "react";
 
 export default function PollList() {
   const navigate = useNavigate();
+  const itemData = [
+    {
+      img: chunhyang,
+      title: "chunhyang",
+    },
+    {
+      img: ocean,
+      title: "ocean",
+    },
+    {
+      img: ev9,
+      title: "ev9",
+    },
+    {
+      img: kClassic,
+      title: "kClassic",
+    },
+    {
+      img: contest,
+      title: "contest",
+    },
+    {
+      img: missKorea,
+      title: "missKorea",
+    },
+    {
+      img: eyes,
+      title: "eyes",
+    },
+    {
+      img: fox,
+      title: "fox",
+    },
+    {
+      img: gogh,
+      title: "gogh",
+    },
+    {
+      img: monarisa,
+      title: "monarisa",
+    },
+    {
+      img: hair,
+      title: "hair",
+    },
+  ];
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  shuffle(itemData);
+  // useEffect(() => {
+  // }, [itemData]);
   return (
-    <div className={styles.polllist}>
+    <div>
       <Newnav />
-      <div className={styles.list_title}>Poll List ?Center</div>
-      <Box
-        sx={{ width: 1600, height: 1080 }}
-        // style={{ display: "flex", justifyContent: "center" }}
-      >
-        <ImageList variant="masonry" cols={4} gap={28}>
-          {itemData.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Box>
+      <div className={styles.polllist}>
+        <div className={styles.list_title}>Poll List ?Center</div>
+        <Box sx={{ width: 1500, height: 1080 }}>
+          <ImageList variant="masonry" cols={4} gap={28}>
+            {itemData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Box>
+      </div>
       <Footer />
     </div>
   );
@@ -118,7 +173,7 @@ export default function PollList() {
 //     </div>
 //   </div>
 //   <div className={styles.list_item}>
-//     <img src={logoContest} alt="img5" className={styles.image} />
+//     <img src={contest} alt="img5" className={styles.image} />
 //     <div className={styles.middle}>
 //       <div>제 91회 춘향제</div>
 //       <br />
@@ -244,50 +299,3 @@ export default function PollList() {
 //     </div>
 //   </div>
 // </div>
-
-const itemData = [
-  {
-    img: chunhyang,
-    title: "chunhyang",
-  },
-  {
-    img: ocean,
-    title: "ocean",
-  },
-  {
-    img: ev9,
-    title: "ev9",
-  },
-  {
-    img: kClassic,
-    title: "kClassic",
-  },
-  {
-    img: logoContest,
-    title: "logoContest",
-  },
-  {
-    img: missKorea,
-    title: "missKorea",
-  },
-  {
-    img: eyes,
-    title: "eyes",
-  },
-  {
-    img: fox,
-    title: "fox",
-  },
-  {
-    img: gogh,
-    title: "gogh",
-  },
-  {
-    img: monarisa,
-    title: "monarisa",
-  },
-  {
-    img: hair,
-    title: "hair",
-  },
-];
