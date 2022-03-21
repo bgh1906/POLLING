@@ -14,9 +14,9 @@ import logo from "../assets/mark_slim.png"
 
 function Admin() {
 
-    useEffect(()=>{
-        window.scrollTo(0,0);
-    },[])
+    // useEffect(()=>{
+    //     window.scrollTo(0,0);
+    // },[])
         
       
 
@@ -44,17 +44,150 @@ function Admin() {
             </div>
 
         <div className={styles.container}>
-{/* unapproved */}
             <div style={{width:"100%"}}>
                 <div id={styles.status}>POLL STATUS</div>
                 <img id={styles.logo} src={logo} alt="logo" />
 
+{/* unapproved */}
                 <div id={styles.status_title}>UNAPPROVED
                     <div id={styles.status_kor}> 미승인 </div>
                 </div>
-                    
-            </div>
-
+                <Grid id={styles.poll_container} container>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 승인하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 승인하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 승인하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 승인하기</button></div>
+                    </Grid>
+                </Grid>
+                <div id={styles.status_under}></div>  
+{/* stand by */}
+                <div id={styles.status_title}>STAND BY
+                    <div id={styles.status_kor}> 대기 </div>
+                </div>
+                <Grid id={styles.poll_container} container>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 시작하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 시작하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 시작하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 수정하기</button></div>
+                            <div><button id={styles.status_button2}>투표 시작하기</button></div>
+                    </Grid>
+                </Grid>
+                <div id={styles.status_under}></div>
+{/* In progress */}       
+                <div id={styles.status_title}>IN PROGRESS
+                    <div id={styles.status_kor}> 진행중 </div>
+                </div>
+                <Grid id={styles.poll_container} container>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 옵션변경</button></div>
+                            <div><button id={styles.status_button2}>투표 종료하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 옵션변경</button></div>
+                            <div><button id={styles.status_button2}>투표 종료하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 옵션변경</button></div>
+                            <div><button id={styles.status_button2}>투표 종료하기</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>투표 옵션변경</button></div>
+                            <div><button id={styles.status_button2}>투표 종료하기</button></div>
+                    </Grid>
+                </Grid>
+                <div id={styles.status_under}></div>     
+{/* history */}       
+                <div id={styles.status_title}> CLOSED
+                    <div id={styles.status_kor}> 종료 </div>
+                </div>
+                <Grid id={styles.poll_container} container>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>NFT 발급</button></div>
+                            <div><button id={styles.status_button2}>HISTORY 추가</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>NFT 발급</button></div>
+                            <div><button id={styles.status_button2}>HISTORY 추가</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>NFT 발급</button></div>
+                            <div><button id={styles.status_button2}>HISTORY 추가</button></div>
+                    </Grid>
+                    <Grid id={styles.pollbox} xs={12} sm={6} lg={3}>
+                            <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
+                            <div> 제90회 전국춘향선발대회 </div>
+                            <div> 2020.09.10 - 2020.09.13 </div>
+                            <div><button id={styles.status_button1}>NFT 발급</button></div>
+                            <div><button id={styles.status_button2}>HISTORY 추가</button></div>
+                    </Grid>
+                </Grid>
+                <div id={styles.status_under}></div>     
 
                 {/* <div id={styles.status_title}>UNAPPROVED</div>
                 <div id={styles.bigbox}>
@@ -257,6 +390,7 @@ function Admin() {
             </div>
         </div>  
         </Fade>   */}
+        </div>
 </div>
 
         <Footer></Footer>

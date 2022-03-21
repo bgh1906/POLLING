@@ -109,6 +109,7 @@
     font-weight: 900;
     font-size: 2.5vw;
     margin: 2vw;
+    margin-top: 4vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-bottom-style: double;
     border-width: 0.3vw;
@@ -122,94 +123,81 @@
     top: 1.5vh;
 }
 
-
-#box1 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 35vh;
+#poll_container{
+    justify-content: center;
 }
+
+
+#pollbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'ROKAFSansBold';
+    font-size: 1vw;
+    border-left-style: dashed ;
+    border-right-style: dashed ;
+    border-width: 0.1vw;
+}
+
+
+
 
 #list_img {
-    position: relative;
-    width: 21vw;
-    margin: 2vw;
-    top: 4vh;
-    padding:1px;
+    width: 70%;
     border:5px solid #ffcbcb;
-
+    margin: auto;
+    margin-bottom: 2vh;
 }
 
-#box2 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 8vh;
-}
 
-#list_text {
-    position: relative;
-    display: flex;
-    width: 21vw;
-    justify-content: center;
-    top: 1.5vh;
-    margin: 1vw;
-    font-size: 1.5vw;
-    font-family: 'ROKAFSansBold';
-    font-weight: bold;
-}
-
-#box3 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 6vh;
-}
-
-#list_date {
-    position: relative;
-    display: flex;
-    width: 21vw;
-    justify-content: center;
-    margin: 0 1vw;
-    font-size: 1.2vw;
-    font-family: 'ROKAFSansMedium';
-}
-
-#box4 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 8vh;
-}
-
-#status_buttonbox {
-    justify-content: center;
-    margin: 0 2vw;
-}
-
-#status_button {
-    margin: 0 0.7vw;
-    width: 9vw;
+#status_button1 {
+    margin-top: 1.5vh;
+    width: 8vw;
     height: 4vh;
-    font-size: 1vw;
+    font-size: 0.9vw;
     font-family: 'ROKAFSansMedium';
     text-align: center;
-    background-color: #ffffff;
+    background-color: #FFE29A;
     cursor: pointer; 
+    border-radius: 10px;
 }
 
-#status_button:hover{
-    color:#fff;
-    background-color: black;
+#status_button2 {
+    margin: 1vh;
+    margin-bottom: 2.5vh;
+    width: 8vw;
+    height: 4vh;
+    font-size: 0.9vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
 }
+
+#status_button1:hover{
+    color:#fff;
+    background-color: rgb(255, 0, 0);
+}
+
+#status_button2:hover{
+    color:#fff;
+    background-color: rgb(0, 26, 255);
+}
+
+
+#status_under {
+    margin: 1vw;
+
+    border-top-style: solid;
+    border-width: 0.3vw;
+}
+
+
+
+
+
+
 
 
