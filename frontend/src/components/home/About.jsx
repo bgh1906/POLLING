@@ -18,7 +18,7 @@ function About({changeModeplus, changeModeminus}) {
             </div>
             <img id={styles.main_image} src={block} alt="block" />
             <p id={styles.click}>Click here</p>
-            <Link to='/whypolling' id={styles.sub_text_about2}> Why Polling? </Link>
+            <Link to='/whypolling' id={styles.sub_text_about2}> Why POLLING? </Link>
             <button id={styles.arrow_button} onClick={changeModeminus}><img id={styles.arrow} src={arrow} alt="arrow"/></button>
             <button id={styles.arrow_button} onClick={changeModeplus}><img id={styles.arrow2} src={arrow} alt="arrow2"/></button> 
         </div>
