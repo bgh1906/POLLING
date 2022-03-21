@@ -5,15 +5,10 @@ import com.polling.api.controller.exception.CustomException;
 import com.polling.api.controller.member.dto.request.ChangePasswordRequestDto;
 import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.api.controller.member.dto.response.FindMemberResponseDto;
-import com.polling.common.security.adapter.MemberAndDtoAdapter;
-import com.polling.common.security.adapter.MemberAndUserAdapter;
 import com.polling.core.entity.member.Member;
 import com.polling.core.entity.member.status.MemberRole;
 import com.polling.core.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

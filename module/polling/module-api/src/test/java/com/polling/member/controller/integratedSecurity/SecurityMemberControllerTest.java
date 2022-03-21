@@ -1,12 +1,13 @@
 package com.polling.member.controller.integratedSecurity;
 
 import com.google.gson.Gson;
-import com.polling.api.controller.exception.CustomErrorResult;
-import com.polling.api.controller.exception.CustomException;
-import com.polling.api.service.member.MemberService;
-import com.polling.common.security.dto.LoginDto;
-import com.polling.core.entity.member.Member;
-import com.polling.core.repository.member.MemberRepository;
+
+import com.polling.auth.dto.LoginDto;
+import com.polling.entity.member.Member;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
+import com.polling.member.service.MemberService;
+import com.polling.repository.member.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

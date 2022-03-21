@@ -1,12 +1,13 @@
 package com.polling.member.controller;
 
 import com.google.gson.Gson;
-import com.polling.api.controller.exception.CustomErrorResult;
-import com.polling.api.controller.exception.CustomException;
-import com.polling.api.controller.exception.CustomExceptionHandler;
-import com.polling.api.controller.member.MemberController;
-import com.polling.api.controller.member.dto.request.SaveNativeMemberRequestDto;
-import com.polling.api.service.member.MemberService;
+
+import com.polling.entity.member.status.MemberRole;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
+import com.polling.exception.CustomExceptionHandler;
+import com.polling.member.dto.request.SaveNativeMemberRequestDto;
+import com.polling.member.service.MemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -61,7 +62,7 @@ public class MemberControllerTest {
     public void 회원가입실패_이메일중복() throws Exception{
         //given
         final String url = "/api/members";
-        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678");
+        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678", MemberRole.ROLE_USER);
         doThrow(new CustomException(CustomErrorResult.DUPLICATE_EMAIL))
                 .when(memberService)
                 .addMember(any(SaveNativeMemberRequestDto.class));
@@ -80,7 +81,7 @@ public class MemberControllerTest {
     public void 회원가입성공() throws Exception{
         //given
         final String url = "/api/members";
-        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678");
+        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678", MemberRole.ROLE_USER);
 
         //when
         ResultActions resultActions = mockMvc.perform(post(url)
