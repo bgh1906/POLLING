@@ -9,31 +9,57 @@
     font-style: normal;
 }
 
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
 
 
 
 
 .title {
     position: relative;
+    display: flex;
+    margin-top: 10vw;
     justify-content: center;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2.5vw;
-    /* top: 3vh; */
+    font-family: 'Bitter', serif;
+    font-size: 7vw;
+    font-weight: 900;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .container {
     position: relative;
-    background-color: #ffffff;
+    background-color: #F9F7F1;
     margin: 6vw 10vw;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0.4vw;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 #subtitle {
-    font-family: 'Russo One', sans-serif;
+    font-family: 'Bitter', serif;
     font-size: 2vw;
+    font-weight: 900;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 2vw;
+}
+
+#info {
+    font-family: 'Bitter', serif;
+    font-size: 4vw;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 5vw;
+}
+
+#logo{
+    position: absolute;
+    width: 6vw;
+    top: 1vh;
+    right: 0.5vw;
 }
 
 #main_div {

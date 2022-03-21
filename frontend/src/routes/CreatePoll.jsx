@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { useDispatch, useSelector } from 'react-redux'
 import { actionCreators } from "../store"
 import Footer from "../components/layout/Footer";
+import logo from "../assets/mark_slim.png"
 
 
 function CreatePoll() {
@@ -100,10 +101,15 @@ function CreatePoll() {
             <div>
               <NewNav  />
             </div>
-            <div style={{ margin: "0 10vw"}} >
-                <h1 className={styles.title}> CREATE A POLL </h1>
+            <div>
+                <div className={styles.title}> CREATE A POLL </div>
             </div>
-            <div className={styles.container} style={{marginBottom: "10vw"}}>
+            
+            <div className={styles.container} style={{marginBottom: "1vw"}}>
+                <div id={styles.info}> POLL&nbsp;INFORMATION </div>
+                <img id={styles.logo} src={logo} alt="logo" /> 
+                
+                
                 <div id={styles.subtitle}> MAIN IMAGE </div>
                 <div  id={styles.main_div}>
                     <span>이미지(URL)주소: </span> 
@@ -185,7 +191,6 @@ function CreatePoll() {
                     <Link to="/admin" id={styles.poll_back}> <span>돌아가기</span></Link>
 
                 </div>
-                        
             </div>
 
         <Footer></Footer>
