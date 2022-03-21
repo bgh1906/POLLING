@@ -1,0 +1,402 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* font-family: 'Russo One', sans-serif; */
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+.homebox {
+    position: absolute;
+    width: 77vw;
+    height: 75vh;
+    top: 12vh;
+    left: 10vw;
+    margin: 2vw;
+}
+
+
+/* about */
+
+#main_text_about {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 10vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 20vw;
+    top: 11vh;
+    margin: 0;
+    z-index: 1;
+}
+
+#main_text_about2 {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 10vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 13vw;
+    top: 28vh;
+    margin: 0;
+}
+
+#main_text_about3 {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 10vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 24vw;
+    top: 46vh;
+    margin: 0;
+}
+
+#main_image {
+    position: absolute;
+    width: 25vw;
+    left: 45vw;
+    bottom: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#sub_text_about{
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Bitter', serif;
+    font-size: 5vw;
+    font-weight: 900;
+    position: absolute;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    top: -5vh;
+    left: 3vw;
+}
+
+#sub_text_about2{
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'Bitter', serif;
+    font-size: 3vw;
+    /* font-weight: 700; */
+    position: absolute;
+    font-weight: 900;
+    bottom: 8vh;
+    left: 3vw;
+    text-decoration: underline solid rgb(255, 0, 0);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: black;
+}
+
+#sub_text_about2:hover{
+    color: blue;
+}
+
+#arrow {
+    position: absolute;
+    width: 8vw;
+    top: 25vh;
+    left: -4.5vw;
+}
+
+#arrow2 {
+    position: absolute;
+    width: 8vw;
+    top: 25vh;
+    right: -4.0vw;
+    transform: rotate(180deg);
+}
+
+#arrow_button {
+    background-color: transparent;
+    border: none;
+}
+
+#click {
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    bottom: 11vh;
+    left: 2vw;
+}
+
+
+
+/* PollList */
+
+
+#main_text_compe {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 11vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 21vw;
+    top: 21vh;
+    margin: 0;
+    transform: rotate(90deg);
+}
+
+#main_text_compe2 {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 7vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 14vw;
+    top: 31vh;
+    margin: 0;
+    transform: rotate(90deg);
+}
+
+#main_image5 {
+    position: absolute;
+    width: 25vw;
+    left: 46vw;
+    bottom: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#sub_text_compe{
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Bitter', serif;
+    font-size: 8vw;
+    font-weight: 900;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 1vh;
+    left: 6vw;
+}
+
+#sub_text_compe2{
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'Bitter', serif;
+    font-size: 3vw;
+    /* font-weight: 700; */
+    position: absolute;
+    font-weight: 900;
+    bottom: 25vh;
+    left: 8vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: underline solid rgb(255, 0, 0);
+    color: black;
+}
+
+#sub_text_compe2:hover{
+    color: blue;
+}
+
+#click5 {
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2vw;
+    position: absolute;
+    bottom: 28vh;
+    left: 5.5vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* history */
+
+#main_image2 {
+    position: absolute;
+    width: 25vw;
+    left: 41vw;
+    bottom: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#main_text_history {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 11vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 12.5vw;
+    top: 20vh;
+    margin: 0;
+    z-index: 1;
+}
+
+#main_text_history2 {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 11vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 15vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 22.5vw;
+    top: 33vh;
+    margin: 0;
+    z-index: 1;
+}
+
+#sub_text_history{
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Bitter', serif;
+    font-size: 6vw;
+    font-weight: 900;
+    position: absolute;
+    top: -5vh;
+    left: 6vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#click2 {
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2vw;
+    position: absolute;
+    bottom: 7vh;
+    left: 10vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+#sub_text_history2{
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'Bitter', serif;
+    font-size: 3vw;
+    /* font-weight: 700; */
+    position: absolute;
+    font-weight: 900;
+    bottom: 5vh;
+    left: 12vw;
+    text-decoration: underline solid rgb(255, 0, 0);
+    color: black;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#sub_text_history2:hover{
+    color: blue;
+}
+
+
+/* hall */
+
+#main_image3 {
+    position: absolute;
+    width: 25vw;
+    left: 4vw;
+    bottom: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#sub_text_hall{
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Bitter', serif;
+    font-size: 5.5vw;
+    font-weight: 900;
+    position: absolute;
+    top: -5vh;
+    left: 36vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#main_text_hall {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 9.5vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 9vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 30vw;
+    top: 20vh;
+    margin: 0;
+    z-index: 1;
+}
+
+#main_text_hall2 {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 9.5vw;
+    font-weight: 900;
+    /* font-size: 160px; */
+    line-height: 15vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 34vw;
+    top: 33vh;
+    margin: 0;
+    z-index: 1;
+}
+
+#click3 {
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2vw;
+    position: absolute;
+    bottom: 7vh;
+    left: 41vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+#sub_text_hall2{
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'Bitter', serif;
+    font-size: 3vw;
+    /* font-weight: 700; */
+    position: absolute;
+    font-weight: 900;
+    bottom: 5vh;
+    left: 43vw;
+    text-decoration: underline solid rgb(255, 0, 0);
+    color: black;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#sub_text_hall2:hover{
+    color: blue;
+}
+
+
+
+

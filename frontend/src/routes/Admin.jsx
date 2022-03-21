@@ -4,6 +4,7 @@ import NewNav from "../components/layout/NewNav.jsx"
 import { useEffect } from "react";
 import { useSelector } from 'react-redux'
 import Footer from "../components/layout/Footer";
+import { Fade } from "react-awesome-reveal";
 
 
 
@@ -84,6 +85,7 @@ function Admin() {
         </div>
 
 {/* Stand by */}
+        <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>STAND BY</div>
@@ -132,9 +134,10 @@ function Admin() {
                 </div>    
             </div>
         </div>
+        </Fade>
 
 {/* In Progress */}
-
+        <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>IN PROGRESS</div>
@@ -183,8 +186,11 @@ function Admin() {
                 </div>    
             </div>
         </div>
+        </Fade>
 
 {/* Closed */}
+
+        <Fade>
         <div className={styles.container} style={{marginBottom:"20vw"}}>
             <div>
                 <div id={styles.status_title}>CLOSED</div>
@@ -232,7 +238,9 @@ function Admin() {
                     </div>
                 </div>    
             </div>
-        </div>            
+        </div>  
+        </Fade>  
+
         <Footer></Footer>
         </div>
     );
