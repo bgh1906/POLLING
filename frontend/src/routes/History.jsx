@@ -1,4 +1,3 @@
-import Nav from "../components/layout/Nav";
 import Footer from "../components/layout/Footer";
 import styles from "./History.module.css";
 import chunhyang from "../assets/chunhyang.PNG";
@@ -10,12 +9,13 @@ import missKorea from "../assets/missKorea.PNG";
 import mrKorea from "../assets/mrKorea.PNG";
 import muscleMania from "../assets/muscleMania.PNG";
 import { useState } from "react";
+import Newnav from "../components/layout/NewNav";
 
 function History() {
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      {/* <Nav /> */}
+      <Newnav />
       <div className={styles.history_title}>History</div>
       <div className={styles.contents}>
         <div className={styles.history_container}>

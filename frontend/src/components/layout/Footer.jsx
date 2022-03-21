@@ -29,41 +29,49 @@ function Footer() {
   return (
     <div>
       <div className={styles.footer}>
-        <div className={styles.company_Info}>
-          <div className={styles.ci_contact}>POLLING</div>
-          <div className={styles.ci_phone}>010 - 2790 - 6642</div>
-          <div className={styles.ci_contents}>
-            Monday - Friday
-            <br />
-            10:30 AM - 6:00 PM
-            {/* <br />
-            010 - 2790 - 6642 */}
-            <br />
-            contact@polling.com
+        <div className={styles.ft_company}>
+          <div className={styles.ft_Name}>POLLING</div>
+          <div className={styles.ft_Info}>
+            <div className={styles.ft_Address}>
+              Multicampus, 12F,
+              <br />
+              212, Teheran-ro,
+              <br />
+              Gangnam-gu, Seoul
+            </div>
+            <div className={styles.ft_Contact}>
+              <ul>
+                <li>T. 010-2790-6642</li>
+                <li>10:00 AM - 06:00 PM</li>
+                <li>M. contact@polling.com</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className={styles.ft_menu}>
+        <span className={styles.ft_verticalline}></span>
+        <div className={styles.ft_right1}>
+          <div className={styles.ft_itemTitle}>About</div>
           <ul>
-            <li>자주 묻는 질문</li>
-            <li>개인정보처리방침</li>
-            <li>이용약관</li>
-            <li>가이드</li>
-            <li>고객센터</li>
-          </ul>
-          <ul>
-            <li>Instagram</li>
-            <li>Kakao</li>
-            <li>Facebook</li>
-            <li>Pinterest</li>
-            <li>Youtube</li>
+            <li>Guide</li>
+            <li>FAQ</li>
+            <li>Privacy Policy</li>
+            <li>Terms & Conditions</li>
           </ul>
         </div>
-        <div className={styles.ft_subInfo}>
-          주식회사 폴링
-          <br />
-          Owner: 이현우 | CPO: 김혜란 | CTO: 서승원 | Business License:
-          000-00-00000 | Online Biz: 2022-서울강남-0000 | Adress: 06220
-          서울특별시 강남구 테헤란로 212 멀티캠퍼스 역삼 12층
+        <div className={styles.ft_right2}>
+          <div className={styles.ft_itemTitle}>Follow Us</div>
+          <ul>
+            <li>Instagram</li>
+            <li>Facebook</li>
+            <li>Twitter</li>
+          </ul>
+        </div>
+        <div className={styles.ft_right3}>
+          <div className={styles.ft_itemTitle}>Languages</div>
+          <ul>
+            <li>Korean</li>
+            <li>English</li>
+          </ul>
         </div>
         <div className={styles.ft_copyright}>
           Copyright © 2022 POLLING. All Rights Reserved.

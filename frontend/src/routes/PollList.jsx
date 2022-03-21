@@ -1,5 +1,4 @@
 import Footer from "../components/layout/Footer";
-import Nav from "../components/layout/Nav";
 import styles from "./PollList.module.css";
 import chunhyang from "../assets/chunhyang.PNG";
 import apart from "../assets/apart.PNG";
@@ -13,12 +12,13 @@ import snack from "../assets/snack.PNG";
 import snack2 from "../assets/snack2.PNG";
 import golf from "../assets/golf.PNG";
 import { useNavigate } from "react-router-dom";
+import Newnav from "../components/layout/NewNav";
 
 function PollList() {
   const navigate = useNavigate();
   return (
     <div className={styles.polllist}>
-      {/* <Nav /> */}
+      <Newnav />
       <div className={styles.list_title}>Poll List</div>
       <div className={styles.list_container}>
         <div className={styles.list_item}>
