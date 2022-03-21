@@ -23,14 +23,25 @@
     font-style: normal;
 }
 
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+#title_header{
+    position: relative;
+    margin: 5vh;
+}
 
 .title {
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2.5vw;
+    font-family: 'Bitter', serif;;
+    font-size: 7vw;
     top: 3vh;
+    font-weight: 900;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -38,40 +49,79 @@
     display: flex;
     position: relative;
     justify-content: end;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2vw;
+    font-family: 'Bitter', serif;;
+    font-size: 4vw;
     top: 3vh;
-    right: 7vw;
+    right: 1vw;
+    font-weight: 900;
     text-decoration: none;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: black;
 }
 
+.create:hover {
+    color:blue;
+}
 
+#moment {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 1.8vw;
+    font-weight: 900;
+    bottom: -15vh;
+    left: 8vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .container {
     display: flex;
     justify-content: center;
     position: relative;
-    top: 10vh;
-    margin-bottom: 20vh;
-
-}
-
-#bigbox {
+    background-color: #F9F7F1;
+    margin-top: 17vh;
+    margin-bottom: 17vh;
+    border-style: double;
+    border-width: 0.5vw;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+
 }
 
-
-#status_title {
-    display: inline;
+#status{
     position: relative;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2vw;
-    top: 3vh;
-    left: 1vw;
+    font-size: 4vw;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    text-align: center;
+    margin: 5vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+#logo{
+    position: absolute;
+    width: 6vw;
+    top: 1vh;
+    right: 0.5vw;
+}
+
+#status_title {
+    position: relative;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2.5vw;
+    margin: 2vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom-style: double;
+    border-width: 0.3vw;
+}
+
+#status_kor{
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 1.6vw;
+    right: 0.5vw;
+    top: 1.5vh;
+}
+
 
 #box1 {
     background-color: #ffffff;

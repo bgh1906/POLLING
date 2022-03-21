@@ -5,6 +5,10 @@ import { useEffect } from "react";
 import { useSelector } from 'react-redux'
 import Footer from "../components/layout/Footer";
 import { Fade } from "react-awesome-reveal";
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Moment from 'react-moment';
+import logo from "../assets/mark_slim.png"
 
 
 
@@ -21,23 +25,38 @@ function Admin() {
             <div>
               <NewNav />
             </div>
-            <div className={styles.title}>
-                <div>
-                    POLL MANAGEMENT
-                </div>
-                
-            </div> 
+{/* Header */}
+            <div id={styles.title_header}>
+                <div className={styles.title}>
+                    <div >
+                    <div style={{ textAlign:"center"}}>POLL</div>
+                    <div>MANAGEMENT </div>
+                    </div>
+                    
+                </div> 
 
-            <div className={styles.create} >
-                <Link to="/createpoll" className={styles.create}>
-                    + CREATE A POLL
-                </Link>
+                <div className={styles.create} >
+                    <Link to="/createpoll" className={styles.create}>
+                        CREATE A POLL
+                    </Link>
+                </div>
+                <Moment id={styles.moment}></Moment>
             </div>
 
-{/* unapproved */}
         <div className={styles.container}>
-            <div>
-                <div id={styles.status_title}>UNAPPROVED</div>
+{/* unapproved */}
+            <div style={{width:"100%"}}>
+                <div id={styles.status}>POLL STATUS</div>
+                <img id={styles.logo} src={logo} alt="logo" />
+
+                <div id={styles.status_title}>UNAPPROVED
+                    <div id={styles.status_kor}> 미승인 </div>
+                </div>
+                    
+            </div>
+
+
+                {/* <div id={styles.status_title}>UNAPPROVED</div>
                 <div id={styles.bigbox}>
                     <div id={styles.box1}>
                         <img id={styles.list_img} src="http://tong.visitkorea.or.kr/cms/resource/22/2655022_image2_1.jpg" alt="img1" />
@@ -80,12 +99,10 @@ function Admin() {
                             <button id={styles.status_button}>투표 승인하기</button>
                         </div>
                     </div>
-                </div>    
-            </div>
-        </div>
+                </div>             */}
 
 {/* Stand by */}
-        <Fade>
+        {/* <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>STAND BY</div>
@@ -134,10 +151,10 @@ function Admin() {
                 </div>    
             </div>
         </div>
-        </Fade>
+        </Fade> */}
 
 {/* In Progress */}
-        <Fade>
+        {/* <Fade>
         <div className={styles.container}>
             <div>
                 <div id={styles.status_title}>IN PROGRESS</div>
@@ -186,11 +203,11 @@ function Admin() {
                 </div>    
             </div>
         </div>
-        </Fade>
+        </Fade> */}
 
 {/* Closed */}
 
-        <Fade>
+        {/* <Fade>
         <div className={styles.container} style={{marginBottom:"20vw"}}>
             <div>
                 <div id={styles.status_title}>CLOSED</div>
@@ -239,7 +256,8 @@ function Admin() {
                 </div>    
             </div>
         </div>  
-        </Fade>  
+        </Fade>   */}
+</div>
 
         <Footer></Footer>
         </div>
