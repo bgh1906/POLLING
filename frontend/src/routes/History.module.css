@@ -1,20 +1,14 @@
 .history_title {
   font-family: "RussoOne";
   font-size: 60px;
-  padding-right: 110px;
+  padding-right: 230px;
   padding-top: 100px;
   text-align: right;
 }
 
 .contents {
-  width: 100%;
   position: relative;
-  margin-top: 100px;
-}
-
-.sec {
   padding-top: 100px;
-  width: 100%;
 }
 
 .history_container {
@@ -22,11 +16,6 @@
   margin: 0 auto;
   height: 100%;
   position: relative;
-}
-
-.history_item {
-  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
-  transition: all 0.5s;
 }
 
 .history_itemlist {
@@ -37,47 +26,51 @@
   width: 100%;
 }
 
-.contents .history_container .history_itemlist li:first-child {
-  margin-top: 0;
-}
-
-.contents .history_container .history_itemlist li:nth-child(odd) {
-  z-index: 3;
-  margin-top: -50px;
-  /* float: left; */
-}
-
-.contents .history_container .history_itemlist li.long_img {
-  margin-top: -100px;
-  margin-bottom: -150px;
-}
-
-.contents .history_container .history_itemlist li:nth-child(even) {
-  z-index: 2;
-  margin-top: -50px;
-  float: right;
-}
-
-.contents .history_container .history_itemlist li {
-  /* opacity: 0; */
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
+.history_item:nth-child(odd) {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
   transition: all 0.5s;
-}
-
-/* .history_itemlist img:nth-child(even) {
   width: 690px;
   height: 420px;
-  object-fit: cover;
+  float: left;
+  margin-top: -150px;
+  /* z-index: 0; */
 }
 
-.history_itemlist img:nth-child(odd) {
+.history_item:nth-child(4n + 2) {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
+  transition: all 0.5s;
   width: 420px;
   height: 690px;
-  object-fit: cover;
-} */
+  float: right;
+  margin-top: -50px;
+}
 
-li {
-  list-style: none;
+.history_item:nth-child(4n) {
+  box-shadow: 100px 100px 100px 0 rgb(0 0 0 / 55%);
+  transition: all 0.5s;
+  width: 420px;
+  height: 690px;
+  float: left;
+  margin-top: -50px;
+  margin-left: -80px;
+}
+
+.history_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid black;
+}
+
+.history_item figcaption {
+  /* position: absolute; */
+  transform: rotate(-90deg);
+  transform-origin: -20px 14px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.history_item span {
+  color: #ccc;
+  padding-right: 5px;
 }

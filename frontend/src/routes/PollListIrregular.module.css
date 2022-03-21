@@ -85,11 +85,6 @@
   grid-row: 13 / 16;
 }
 
-@font-face {
-  font-family: "RussoOne";
-  src: url(../fonts/RussoOne-Regular.ttf);
-}
-
 img {
   /* filter: grayscale(1);
   transition: all 0.4s ease-in-out; */

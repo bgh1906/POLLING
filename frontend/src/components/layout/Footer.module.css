@@ -5,7 +5,7 @@
   padding: 80px 110px;
   position: relative;
   font-weight: 300;
-  margin: -14.5px;
+  clear: both;
 }
 
 .ci_contact {
@@ -53,12 +53,14 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  padding: 2px;
+  padding: 5px;
   cursor: pointer;
-  width: 25px;
-  height: 25px;
-  border: 2px solid white;
+  width: 27px;
+  height: 27px;
+  border: 2px solid rgb(32, 32, 32);
+  background-color: rgb(32, 32, 32);
   border-radius: 50%;
+  color: white;
 }
 
 .ft_menu li {
