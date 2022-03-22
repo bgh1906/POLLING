@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: local
   redis:
-    host: redis
+    host: 127.0.0.1
     port: 6379
     password: root
 
