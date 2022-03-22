@@ -1,9 +1,9 @@
-import Nav from "../components/layout/Nav.jsx"
 import Styles from "./Join.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Private from "../components/mypage/Private.jsx";
+import NewNav from "../components/layout/NewNav.jsx";
 
 function Join() {
 
@@ -71,7 +71,7 @@ function Join() {
 
     return (
         <div>
-            <Nav />
+            <NewNav />
 
             <div className={Styles.joinus}>Join us</div>
             <div className={Styles.joinbg}>

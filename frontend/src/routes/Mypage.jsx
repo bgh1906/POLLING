@@ -1,4 +1,4 @@
-import Nav from "../components/layout/Nav";
+import NewNav from "../components/layout/NewNav";
 import Styles from "./Mypage.module.css";
 
 
@@ -6,7 +6,7 @@ function Mypage() {
 
     return (
         <div>
-            <Nav />
+            <NewNav />
 
             <div className={Styles.mypage}> My page </div>
 
@@ -32,7 +32,7 @@ function Mypage() {
                     {/* <!-- 여기에 세 번째 탭의 콘텐츠를 작성! --> */}
                     
                 </div>
-</div>
+        </div>
 
 
 

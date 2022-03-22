@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./routes/Admin";
 import Home from "./routes/Home";
-import Join from "./routes/Join";
-import Login from "./routes/Login";
 import Mypage from "./routes/Mypage";
 import CreatePoll from "./routes/CreatePoll";
 import PollList from "./routes/PollList";
@@ -13,7 +11,9 @@ import Nominee from "./routes/Nominee";
 import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
-import Companylogin from "./routes/Companylogin";
+import Login2 from "./routes/Login2";
+import Join2 from "./routes/Join2";
+import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 
 function App() {
@@ -22,9 +22,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/join" element={<Join />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/Companylogin" element={<Companylogin />}></Route>
+          <Route path="/join" element={<Join2 />}></Route>
+          <Route path="/login" element={<Login2 />}></Route>
+          <Route path="/Companylogin" element={<Companylogin2 />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/management" element={<Management />}></Route>
           <Route path="/user" element={<User />}></Route>
