@@ -31,18 +31,19 @@
 .container {
     position: relative;
     background-color: #F9F7F1;
-    margin: 6vw 10vw;
+    margin: 5vw 15vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
+    margin-bottom: 1vw;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 #subtitle {
     font-family: 'Bitter', serif;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 900;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
     padding: 2vw;
 }
 
@@ -52,7 +53,7 @@
     text-align: center;
     font-weight: 900;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 5vw;
+    margin: 3vw;
 }
 
 #logo{
@@ -61,6 +62,160 @@
     top: 1vh;
     right: 0.5vw;
 }
+
+#box1 {
+    border-top-style: double;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    border-width: 0.4vw;
+}
+
+
+#box2 {
+    margin: 2vw;
+    height: 65vh;
+}
+
+#no_image {
+    width: 15vw;
+    margin-left: 5vw;
+    border-radius: 10px;
+    
+}
+
+#poll_image {
+    width: 15vw;
+    margin-left: 5vw;
+    border-radius: 10px;
+}
+
+#poll_title {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    right: 6vw;
+    top: 30vh;
+}
+
+#poll_title2 {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    right: 6vw;
+    top: 39vh;
+}
+#poll_title3 {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    right: 6vw;
+    top: 47vh;
+}
+
+#poll_title4 {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    /* right: 6vw; */
+    width: 100%;
+    top: 60vh;
+    left: 1vw;
+}
+
+#poll_title5 {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    /* right: 6vw; */
+    width: 100%;
+    top: 68vh;
+    left: -1vw;
+}
+
+
+
+#datepick {
+    margin: 0 10vw !important;
+    width: 5vw !important;
+}
+
+
+#input_name{
+    position: relative;
+    margin: 2vh;
+    padding-top: 2vh;
+    right: 0.5vw;
+}
+
+#input_name2{
+    position: relative;
+    top: 1vh;
+    margin: 0 2vh;
+    vertical-align: middle;
+}
+
+#input_name3{
+    margin: 2vh;
+    padding-top: 2vh;
+    position: relative;
+    right: 1.8vw;
+}
+
+#input_name4{
+    position: relative;
+    margin: 6vw;
+    margin-left: 9.5vw;
+    vertical-align: middle;
+}
+
+#input_name5{
+    position: relative;
+    margin: 6vw;
+    margin-left: 11.3vw;
+    vertical-align: middle;
+    top:4vh;
+}
+
+#input_name6{
+    position: relative;
+    margin: 1vw;
+    margin-left: 5vw;
+    vertical-align: middle;
+    top:32vh;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+}
+
+#title_input {
+    width: 25vw;
+    height: 3vh;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.3vw;
+    /* margin: 0 1vw; */
+    text-align: center;
+
+}
+
+#check_div {
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.3vw;
+    left: 19.5vw;
+    bottom: -1vh;
+}
+
+#checkbox {
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+
+
+
 
 #main_div {
     display: flex;
@@ -82,47 +237,35 @@
 }
 
 #poll_input2 {
-    width: 50vw;
+    width: 34.1vw;
     height: 15vh;
-    margin: 0 1vw;
+    margin: 0 vw;
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;
     padding-top: 1vh;
+    right: 1vw;
 }
 
 #poll_input3 {
     position: relative;
-    width: 4.5vw;
-    height: 4.5vh;
+    width: 3vw;
+    height: 3vh;
     /* margin-left: 1 vw; */
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;
 }
 
-#image_button {
-    width: 5vw;
-    height: 4.7vh;
-}
-
-#poll_image {
-    width: 18vw;
-}
-
-#check_div {
-    display: flex;
-    justify-content: center;
-}
 
 #check_text {
     position: relative;
-    bottom: 1vh;
-    right: 0.5vw;
+    bottom: 0.5vh;
+    right: vw;
 }
 
 #poll_savebox {
-    height: 15vh;
+    height: 10vh;
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
     margin: 2vw;
@@ -133,9 +276,22 @@
     color: black;
     font-size: 2vw;
     text-decoration: none;
-    margin: 2vw;
+    margin: 1vw;
     position: relative;
-    left: 45vw;
+    left: 37vw;
+    border: none;
+    background-color: transparent;
+    font-family: 'GangwonEdu_OTFBoldA';
+    cursor: pointer;
+}
+
+#poll_save:hover{
+    color: blue;
+    font-size: 2vw;
+    text-decoration: none;
+    margin: 1vw;
+    position: relative;
+    left: 37vw;
     border: none;
     background-color: transparent;
     font-family: 'GangwonEdu_OTFBoldA';
@@ -148,5 +304,12 @@
     font-size: 2vw;
     text-decoration: none;
     position: relative;
-    left: 47vw;
+    left: 38vw;
+}
+#poll_back:hover {
+    color: blue;
+    font-size: 2vw;
+    text-decoration: none;
+    position: relative;
+    left: 38vw;
 }
