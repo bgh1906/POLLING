@@ -2,7 +2,7 @@ import Footer from "../components/layout/Footer";
 import styles from "./PollList.module.css";
 import chunhyang from "../assets/chunhyang.PNG";
 import ocean from "../assets/ocean.PNG";
-import ev9 from "../assets/ev9.PNG";
+import cybertruck from "../assets/cybertruck.PNG";
 import kClassic from "../assets/kClassic.PNG";
 import contest from "../assets/contest.PNG";
 import missKorea from "../assets/missKorea.PNG";
@@ -30,8 +30,8 @@ export default function PollList() {
       title: "ocean",
     },
     {
-      img: ev9,
-      title: "ev9",
+      img: cybertruck,
+      title: "cybertruck",
     },
     {
       img: kClassic,
@@ -79,7 +79,7 @@ export default function PollList() {
     <div>
       <Newnav />
       <div className={styles.polllist}>
-        <div className={styles.list_title}>Poll List ?Center</div>
+        <div className={styles.list_title}>Poll List</div>
         <Box sx={{ width: 1500, height: 1080 }}>
           <ImageList variant="masonry" cols={4} gap={28}>
             {itemData.map((item) => (
@@ -137,7 +137,7 @@ export default function PollList() {
 //     </div>
 //   </div>
 //   <div className={styles.list_item}>
-//     <img src={ev9} alt="img3" className={styles.image} />
+//     <img src={cybertruck} alt="img3" className={styles.image} />
 //     <div className={styles.middle}>
 //       <div>제 91회 춘향제</div>
 //       <br />
