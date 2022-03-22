@@ -2,7 +2,9 @@ package com.polling.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.polling.exception.CustomErrorResult.DUPLICATE_RESOURCE;
 
 @RestControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
@@ -29,6 +33,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return this.makeErrorResponseEntity(errorList.toString());
     }
 
+    /*hibernate 관련 exception 처리*/
+    @ExceptionHandler(value = { ConstraintViolationException.class, DataIntegrityViolationException.class})
+    protected ResponseEntity<ErrorResponse> handleDataException() {
+        return this.makeErrorResponseEntity(DUPLICATE_RESOURCE);
+    }
+
     private ResponseEntity<Object> makeErrorResponseEntity(final String errorDescription) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
@@ -40,10 +50,10 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return this.makeErrorResponseEntity(exception.getCustomErrorResult());
     }
 
-//    @ExceptionHandler({Exception.class})
-//    public ResponseEntity<ErrorResponse> handleException(final Exception exception) {
-//        return this.makeErrorResponseEntity(CustomErrorResult.STATUS_NOT_FOUND);
-//    }
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<ErrorResponse> handleException(final Exception exception) {
+        return this.makeErrorResponseEntity(CustomErrorResult.STATUS_NOT_FOUND);
+    }
 
     private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final CustomErrorResult errorResult) {
         return ResponseEntity.status(errorResult.getHttpStatus())

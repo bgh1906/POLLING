@@ -69,6 +69,7 @@ MemberService {
         Member member = memberRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changeNickname(nickname);
+        System.out.println(member.getNickname());
     }
 
     @Transactional

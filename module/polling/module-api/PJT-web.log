@@ -1,0 +1,1228 @@
+2022-03-22 10:53:38.472  INFO 16536 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : Starting SecurityMemberControllerTest using Java 11.0.14 on DESKTOP-KVCQHCD with PID 16536 (started by SSAFY in C:\Users\SSAFY\Desktop\git\S06P22A304\module\polling\module-api)
+2022-03-22 10:53:38.476  INFO 16536 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : The following 1 profile is active: "local"
+2022-03-22 10:53:40.998  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 10:53:41.001  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-22 10:53:41.065  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+2022-03-22 10:53:41.649  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 10:53:41.653  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-22 10:53:42.223  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 563 ms. Found 5 JPA repository interfaces.
+2022-03-22 10:53:42.241  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 10:53:42.242  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-22 10:53:42.282  INFO 16536 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.polling.repository.candidate.CandidateHistoryRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2022-03-22 10:53:42.284  INFO 16536 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.polling.repository.candidate.CandidateRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2022-03-22 10:53:42.285  INFO 16536 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.polling.repository.comment.CommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2022-03-22 10:53:42.286  INFO 16536 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.polling.repository.member.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2022-03-22 10:53:42.287  INFO 16536 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.polling.repository.vote.VoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2022-03-22 10:53:42.287  INFO 16536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 0 Redis repository interfaces.
+2022-03-22 10:53:46.336  INFO 16536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-22 10:53:46.935  INFO 16536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-22 10:53:47.162  INFO 16536 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-22 10:53:47.380  INFO 16536 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.5.Final
+2022-03-22 10:53:47.551  INFO 16536 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-22 10:53:47.662 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3487947c
+2022-03-22 10:53:47.663 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3487947c
+2022-03-22 10:53:47.663 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@3487947c
+2022-03-22 10:53:47.665 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@7ea039b4
+2022-03-22 10:53:47.666 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@7c200e57
+2022-03-22 10:53:47.669 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@6556471b
+2022-03-22 10:53:47.671 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@443ac5b8
+2022-03-22 10:53:47.672 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@443ac5b8
+2022-03-22 10:53:47.672 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@443ac5b8
+2022-03-22 10:53:47.674 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@4b762988
+2022-03-22 10:53:47.675 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@4b762988
+2022-03-22 10:53:47.675 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@4b762988
+2022-03-22 10:53:47.677 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@6cf3b3d7
+2022-03-22 10:53:47.678 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@6cf3b3d7
+2022-03-22 10:53:47.678 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@6cf3b3d7
+2022-03-22 10:53:47.680 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@70d7a49b
+2022-03-22 10:53:47.681 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@70d7a49b
+2022-03-22 10:53:47.681 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@70d7a49b
+2022-03-22 10:53:47.684 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@7e8783b0
+2022-03-22 10:53:47.684 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@7e8783b0
+2022-03-22 10:53:47.685 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@7e8783b0
+2022-03-22 10:53:47.687 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@4d964c9e
+2022-03-22 10:53:47.688 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@4d964c9e
+2022-03-22 10:53:47.688 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@4d964c9e
+2022-03-22 10:53:47.690 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1d167630
+2022-03-22 10:53:47.691 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1d167630
+2022-03-22 10:53:47.691 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1d167630
+2022-03-22 10:53:47.693 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@42c9b1ee
+2022-03-22 10:53:47.694 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@42c9b1ee
+2022-03-22 10:53:47.696 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@79636080
+2022-03-22 10:53:47.696 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@79636080
+2022-03-22 10:53:47.698 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@2c557eee
+2022-03-22 10:53:47.699 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@2c557eee
+2022-03-22 10:53:47.700 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@3afaa39f
+2022-03-22 10:53:47.701 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@4a1934e2
+2022-03-22 10:53:47.704 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@75ac326f
+2022-03-22 10:53:47.705 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@75ac326f
+2022-03-22 10:53:47.707 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@6f6a2ac8
+2022-03-22 10:53:47.707 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@6f6a2ac8
+2022-03-22 10:53:47.710 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@1f0f92f5
+2022-03-22 10:53:47.710 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@1f0f92f5
+2022-03-22 10:53:47.713 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@7acfcfc4
+2022-03-22 10:53:47.713 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@7acfcfc4
+2022-03-22 10:53:47.716 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@2a19c36b
+2022-03-22 10:53:47.716 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@2a19c36b
+2022-03-22 10:53:47.719 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@66589252
+2022-03-22 10:53:47.719 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@66589252
+2022-03-22 10:53:47.723 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@1260c85e
+2022-03-22 10:53:47.723 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@1260c85e
+2022-03-22 10:53:47.725 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@351be56b
+2022-03-22 10:53:47.725 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@351be56b
+2022-03-22 10:53:47.729 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@3c271988
+2022-03-22 10:53:47.729 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@3c271988
+2022-03-22 10:53:47.733 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@3945886e
+2022-03-22 10:53:47.733 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@3945886e
+2022-03-22 10:53:47.735 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@750457a5
+2022-03-22 10:53:47.736 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@750457a5
+2022-03-22 10:53:47.738 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@7d0df326
+2022-03-22 10:53:47.738 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@7d0df326
+2022-03-22 10:53:47.738 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@7d0df326
+2022-03-22 10:53:47.741 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@b1fa523
+2022-03-22 10:53:47.744 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@5a3be84
+2022-03-22 10:53:47.744 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@5a3be84
+2022-03-22 10:53:47.744 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@5a3be84
+2022-03-22 10:53:47.746 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@464d60fb
+2022-03-22 10:53:47.748 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@2de96eba
+2022-03-22 10:53:47.750 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@121dac1a
+2022-03-22 10:53:47.751 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@121dac1a
+2022-03-22 10:53:47.753 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@39109603
+2022-03-22 10:53:47.753 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@39109603
+2022-03-22 10:53:47.755 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@71d78cac
+2022-03-22 10:53:47.756 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@71d78cac
+2022-03-22 10:53:47.758 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@125124ea
+2022-03-22 10:53:47.758 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@125124ea
+2022-03-22 10:53:47.760 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@480994d3
+2022-03-22 10:53:47.761 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@480994d3
+2022-03-22 10:53:47.762 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@7d7a8d23
+2022-03-22 10:53:47.765 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@1f1ffc18
+2022-03-22 10:53:47.765 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@1f1ffc18
+2022-03-22 10:53:47.765 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@1f1ffc18
+2022-03-22 10:53:47.768 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@5a9baba8
+2022-03-22 10:53:47.768 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@5a9baba8
+2022-03-22 10:53:47.768 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@5a9baba8
+2022-03-22 10:53:47.771 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@8636cf4
+2022-03-22 10:53:47.772 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@8ee1404
+2022-03-22 10:53:47.775 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@65021bb4
+2022-03-22 10:53:47.775 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@65021bb4
+2022-03-22 10:53:47.775 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@65021bb4
+2022-03-22 10:53:47.777 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@cfc4601
+2022-03-22 10:53:47.778 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@cfc4601
+2022-03-22 10:53:47.778 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@cfc4601
+2022-03-22 10:53:47.779 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@3e0327dd
+2022-03-22 10:53:47.781 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@49fb693d
+2022-03-22 10:53:47.785 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@565c887e
+2022-03-22 10:53:47.785 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@565c887e
+2022-03-22 10:53:47.786 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@363ba634
+2022-03-22 10:53:47.789 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@52963839
+2022-03-22 10:53:47.790 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@52963839
+2022-03-22 10:53:47.794 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@53564a4c
+2022-03-22 10:53:47.794 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@53564a4c
+2022-03-22 10:53:47.796 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@11d422fd
+2022-03-22 10:53:47.797 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@5b1f0f26
+2022-03-22 10:53:47.802 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@4fbbd98c
+2022-03-22 10:53:47.811 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@2c92f094
+2022-03-22 10:53:47.811 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@2c92f094
+2022-03-22 10:53:47.813 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@182fd26b
+2022-03-22 10:53:47.813 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@5dc120ab
+2022-03-22 10:53:47.813 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@49c4118b
+2022-03-22 10:53:47.813 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@7ef7f414
+2022-03-22 10:53:47.813 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@182dcd2b
+2022-03-22 10:53:47.814 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@4c3d72fd
+2022-03-22 10:53:47.814 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@259c6ab8
+2022-03-22 10:53:47.814 DEBUG 16536 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@640a6d4b
+2022-03-22 10:53:48.064  INFO 16536 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-22 10:53:48.243 DEBUG 16536 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2987b699] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@2d36add1]
+2022-03-22 10:53:49.321 DEBUG 16536 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.HistoryStatus
+2022-03-22 10:53:49.325 DEBUG 16536 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.VoteStatus
+2022-03-22 10:53:49.329 DEBUG 16536 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.OAuthType
+2022-03-22 10:53:49.330 DEBUG 16536 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.MemberRole
+2022-03-22 10:53:49.330 DEBUG 16536 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2987b699] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@1fce6eb4]
+2022-03-22 10:53:50.069 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists member_member_role CASCADE 
+2022-03-22 10:53:50.079  INFO 16536 --- [main] p6spy                                    : #1647914030079 | took 2ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists member_member_role CASCADE 
+drop table if exists member_member_role CASCADE ;
+2022-03-22 10:53:50.080 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists refresh_token CASCADE 
+2022-03-22 10:53:50.080  INFO 16536 --- [main] p6spy                                    : #1647914030080 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists refresh_token CASCADE 
+drop table if exists refresh_token CASCADE ;
+2022-03-22 10:53:50.080 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists tb_candidate CASCADE 
+2022-03-22 10:53:50.081  INFO 16536 --- [main] p6spy                                    : #1647914030081 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_candidate CASCADE 
+drop table if exists tb_candidate CASCADE ;
+2022-03-22 10:53:50.081 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists tb_candidatehistory CASCADE 
+2022-03-22 10:53:50.081  INFO 16536 --- [main] p6spy                                    : #1647914030081 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_candidatehistory CASCADE 
+drop table if exists tb_candidatehistory CASCADE ;
+2022-03-22 10:53:50.081 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists tb_comment CASCADE 
+2022-03-22 10:53:50.082  INFO 16536 --- [main] p6spy                                    : #1647914030082 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_comment CASCADE 
+drop table if exists tb_comment CASCADE ;
+2022-03-22 10:53:50.082 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists tb_user CASCADE 
+2022-03-22 10:53:50.082  INFO 16536 --- [main] p6spy                                    : #1647914030082 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_user CASCADE 
+drop table if exists tb_user CASCADE ;
+2022-03-22 10:53:50.082 DEBUG 16536 --- [main] org.hibernate.SQL                        : drop table if exists tb_vote CASCADE 
+2022-03-22 10:53:50.083  INFO 16536 --- [main] p6spy                                    : #1647914030083 | took 0ms | statement | connection 2| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_vote CASCADE 
+drop table if exists tb_vote CASCADE ;
+2022-03-22 10:53:50.090 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table member_member_role (member_user_id bigint not null, member_role varchar(255))
+2022-03-22 10:53:50.095  INFO 16536 --- [main] p6spy                                    : #1647914030095 | took 5ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table member_member_role (member_user_id bigint not null, member_role varchar(255))
+create table member_member_role (member_user_id bigint not null, member_role varchar(255));
+2022-03-22 10:53:50.096 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table refresh_token (refresh_token varchar(255) not null, primary key (refresh_token))
+2022-03-22 10:53:50.112  INFO 16536 --- [main] p6spy                                    : #1647914030112 | took 15ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table refresh_token (refresh_token varchar(255) not null, primary key (refresh_token))
+create table refresh_token (refresh_token varchar(255) not null, primary key (refresh_token));
+2022-03-22 10:53:50.112 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table tb_candidate (candidate_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, media_path_1 varchar(255), media_path_2 varchar(255), media_path_3 varchar(255), profile_path varchar(255), content varchar(255), candidate_name varchar(255), vote_total integer, vote_id bigint, primary key (candidate_id))
+2022-03-22 10:53:50.124  INFO 16536 --- [main] p6spy                                    : #1647914030124 | took 11ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table tb_candidate (candidate_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, media_path_1 varchar(255), media_path_2 varchar(255), media_path_3 varchar(255), profile_path varchar(255), content varchar(255), candidate_name varchar(255), vote_total integer, vote_id bigint, primary key (candidate_id))
+create table tb_candidate (candidate_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, media_path_1 varchar(255), media_path_2 varchar(255), media_path_3 varchar(255), profile_path varchar(255), content varchar(255), candidate_name varchar(255), vote_total integer, vote_id bigint, primary key (candidate_id));
+2022-03-22 10:53:50.125 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table tb_candidatehistory (candidate_history_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, transaction_id varchar(255), vote_count integer, candidate_id bigint, user_id bigint, primary key (candidate_history_id))
+2022-03-22 10:53:50.127  INFO 16536 --- [main] p6spy                                    : #1647914030127 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table tb_candidatehistory (candidate_history_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, transaction_id varchar(255), vote_count integer, candidate_id bigint, user_id bigint, primary key (candidate_history_id))
+create table tb_candidatehistory (candidate_history_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, transaction_id varchar(255), vote_count integer, candidate_id bigint, user_id bigint, primary key (candidate_history_id));
+2022-03-22 10:53:50.128 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table tb_comment (comment_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), candidate_id bigint, user_id bigint, primary key (comment_id))
+2022-03-22 10:53:50.130  INFO 16536 --- [main] p6spy                                    : #1647914030130 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table tb_comment (comment_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), candidate_id bigint, user_id bigint, primary key (comment_id))
+create table tb_comment (comment_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), candidate_id bigint, user_id bigint, primary key (comment_id));
+2022-03-22 10:53:50.131 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table tb_user (user_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, bonus_ticket integer not null, email varchar(255), last_ticket date, nickname varchar(255), oauth_id varchar(255), oauth_type varchar(255), password varchar(255), phone_number varchar(255), primary key (user_id))
+2022-03-22 10:53:50.134  INFO 16536 --- [main] p6spy                                    : #1647914030133 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table tb_user (user_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, bonus_ticket integer not null, email varchar(255), last_ticket date, nickname varchar(255), oauth_id varchar(255), oauth_type varchar(255), password varchar(255), phone_number varchar(255), primary key (user_id))
+create table tb_user (user_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, bonus_ticket integer not null, email varchar(255), last_ticket date, nickname varchar(255), oauth_id varchar(255), oauth_type varchar(255), password varchar(255), phone_number varchar(255), primary key (user_id));
+2022-03-22 10:53:50.134 DEBUG 16536 --- [main] org.hibernate.SQL                        : create table tb_vote (vote_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), end_date timestamp, history_status integer, vote_name varchar(255), start_date timestamp, vote_status integer, host_id bigint, primary key (vote_id))
+2022-03-22 10:53:50.137  INFO 16536 --- [main] p6spy                                    : #1647914030137 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+create table tb_vote (vote_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), end_date timestamp, history_status integer, vote_name varchar(255), start_date timestamp, vote_status integer, host_id bigint, primary key (vote_id))
+create table tb_vote (vote_id bigint generated by default as identity, created_date timestamp, modified_date timestamp, content varchar(255), end_date timestamp, history_status integer, vote_name varchar(255), start_date timestamp, vote_status integer, host_id bigint, primary key (vote_id));
+2022-03-22 10:53:50.138 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table member_member_role add constraint FK9t7ic4c9ownuy951bhg5kvx0e foreign key (member_user_id) references tb_user
+2022-03-22 10:53:50.154  INFO 16536 --- [main] p6spy                                    : #1647914030154 | took 16ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table member_member_role add constraint FK9t7ic4c9ownuy951bhg5kvx0e foreign key (member_user_id) references tb_user
+alter table member_member_role add constraint FK9t7ic4c9ownuy951bhg5kvx0e foreign key (member_user_id) references tb_user;
+2022-03-22 10:53:50.155 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_candidate add constraint FKnyunt2ljjg218k4a29owby7wt foreign key (vote_id) references tb_vote
+2022-03-22 10:53:50.158  INFO 16536 --- [main] p6spy                                    : #1647914030158 | took 3ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_candidate add constraint FKnyunt2ljjg218k4a29owby7wt foreign key (vote_id) references tb_vote
+alter table tb_candidate add constraint FKnyunt2ljjg218k4a29owby7wt foreign key (vote_id) references tb_vote;
+2022-03-22 10:53:50.158 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_candidatehistory add constraint FKtf2mwllg5on16aespuom5gia foreign key (candidate_id) references tb_candidate
+2022-03-22 10:53:50.161  INFO 16536 --- [main] p6spy                                    : #1647914030161 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_candidatehistory add constraint FKtf2mwllg5on16aespuom5gia foreign key (candidate_id) references tb_candidate
+alter table tb_candidatehistory add constraint FKtf2mwllg5on16aespuom5gia foreign key (candidate_id) references tb_candidate;
+2022-03-22 10:53:50.162 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_candidatehistory add constraint FK1r8ieaec6hsspckap8bi6o0yh foreign key (user_id) references tb_user
+2022-03-22 10:53:50.165  INFO 16536 --- [main] p6spy                                    : #1647914030165 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_candidatehistory add constraint FK1r8ieaec6hsspckap8bi6o0yh foreign key (user_id) references tb_user
+alter table tb_candidatehistory add constraint FK1r8ieaec6hsspckap8bi6o0yh foreign key (user_id) references tb_user;
+2022-03-22 10:53:50.165 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_comment add constraint FK4idcjwgfw31th9l0ronn3i580 foreign key (candidate_id) references tb_candidate
+2022-03-22 10:53:50.168  INFO 16536 --- [main] p6spy                                    : #1647914030168 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_comment add constraint FK4idcjwgfw31th9l0ronn3i580 foreign key (candidate_id) references tb_candidate
+alter table tb_comment add constraint FK4idcjwgfw31th9l0ronn3i580 foreign key (candidate_id) references tb_candidate;
+2022-03-22 10:53:50.168 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_comment add constraint FK45c1cuqlljd60ihc9j0962ekq foreign key (user_id) references tb_user
+2022-03-22 10:53:50.171  INFO 16536 --- [main] p6spy                                    : #1647914030171 | took 3ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_comment add constraint FK45c1cuqlljd60ihc9j0962ekq foreign key (user_id) references tb_user
+alter table tb_comment add constraint FK45c1cuqlljd60ihc9j0962ekq foreign key (user_id) references tb_user;
+2022-03-22 10:53:50.172 DEBUG 16536 --- [main] org.hibernate.SQL                        : alter table tb_vote add constraint FKe9s3ln2m97991b8te8mc419uw foreign key (host_id) references tb_user
+2022-03-22 10:53:50.174  INFO 16536 --- [main] p6spy                                    : #1647914030174 | took 2ms | statement | connection 3| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+alter table tb_vote add constraint FKe9s3ln2m97991b8te8mc419uw foreign key (host_id) references tb_user
+alter table tb_vote add constraint FKe9s3ln2m97991b8te8mc419uw foreign key (host_id) references tb_user;
+2022-03-22 10:53:50.181  INFO 16536 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-22 10:53:50.206 TRACE 16536 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@1fce6eb4] for TypeConfiguration
+2022-03-22 10:53:50.210  INFO 16536 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 10:53:54.455  WARN 16536 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-22 10:53:57.336  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@724d4e75. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.338  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@724d4e75 with []
+2022-03-22 10:53:57.339  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.340  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-03-22 10:53:57.340  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.340  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/'] with []
+2022-03-22 10:53:57.340  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.341  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/*.html'] with []
+2022-03-22 10:53:57.341  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.341  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/favicon.ico'] with []
+2022-03-22 10:53:57.341  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.341  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-03-22 10:53:57.341  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.css']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.341  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-03-22 10:53:57.341  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.js']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.342  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-03-22 10:53:57.342  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/h2-console/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.342  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2-console/**'] with []
+2022-03-22 10:53:57.342  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.342  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/**', OPTIONS] with []
+2022-03-22 10:53:57.342  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-ui.html**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.342  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html**'] with []
+2022-03-22 10:53:57.342  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.343  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-22 10:53:57.343  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/v2/api-docs**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.343  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/api-docs**'] with []
+2022-03-22 10:53:57.343  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.343  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-22 10:53:57.343  WARN 16536 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='swagger-ui/index.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 10:53:57.343  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='swagger-ui/index.html'] with []
+2022-03-22 10:53:57.679  INFO 16536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-22 10:53:59.198  INFO 16536 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-03-22 10:53:59.198  INFO 16536 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 10:53:59.200  INFO 16536 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-03-22 10:54:00.373  INFO 16536 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : Started SecurityMemberControllerTest in 23.012 seconds (JVM running for 29.131)
+2022-03-22 10:54:00.799 DEBUG 16536 --- [main] org.hibernate.SQL                        : select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_
+2022-03-22 10:54:00.823  INFO 16536 --- [main] p6spy                                    : #1647914040823 | took 13ms | statement | connection 4| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_
+select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_;
+2022-03-22 10:54:00.837  INFO 16536 --- [main] p6spy                                    : #1647914040837 | took 0ms | commit | connection 4| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+
+;
+2022-03-22 10:54:01.002 DEBUG 16536 --- [main] org.hibernate.SQL                        : insert into tb_user (user_id, created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-03-22 10:54:01.010 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-03-22T10:54:00.897984900]
+2022-03-22 10:54:01.022 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-03-22T10:54:00.897984900]
+2022-03-22 10:54:01.022 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [0]
+2022-03-22 10:54:01.023 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test1@email.com]
+2022-03-22 10:54:01.024 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [DATE] - [null]
+2022-03-22 10:54:01.024 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [test1nickname]
+2022-03-22 10:54:01.024 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [null]
+2022-03-22 10:54:01.025 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [null]
+2022-03-22 10:54:01.025 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [test]
+2022-03-22 10:54:01.025 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [0122345678]
+2022-03-22 10:54:01.031  INFO 16536 --- [main] p6spy                                    : #1647914041031 | took 3ms | statement | connection 5| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+insert into tb_user (user_id, created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+insert into tb_user (user_id, created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values (default, '2022-03-22T10:54:00.897+0900', '2022-03-22T10:54:00.897+0900', 0, 'test1@email.com', NULL, 'test1nickname', NULL, NULL, 'test', '0122345678');
+2022-03-22 10:54:01.072 DEBUG 16536 --- [main] org.hibernate.SQL                        : insert into member_member_role (member_user_id, member_role) values (?, ?)
+2022-03-22 10:54:01.073 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-03-22 10:54:01.074 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [ROLE_USER]
+2022-03-22 10:54:01.075  INFO 16536 --- [main] p6spy                                    : #1647914041075 | took 0ms | statement | connection 5| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+insert into member_member_role (member_user_id, member_role) values (?, ?)
+insert into member_member_role (member_user_id, member_role) values (1, 'ROLE_USER');
+2022-03-22 10:54:01.081  INFO 16536 --- [main] p6spy                                    : #1647914041081 | took 0ms | commit | connection 5| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+
+;
+2022-03-22 10:54:01.349 DEBUG 16536 --- [main] org.hibernate.SQL                        : select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email=?
+2022-03-22 10:54:01.350 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test1@email.com]
+2022-03-22 10:54:01.351  INFO 16536 --- [main] p6spy                                    : #1647914041351 | took 0ms | statement | connection 6| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email=?
+select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email='test1@email.com';
+2022-03-22 10:54:01.352 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [1]
+2022-03-22 10:54:01.360 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T10:54:00.897985]
+2022-03-22 10:54:01.360 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T10:54:00.897985]
+2022-03-22 10:54:01.360 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 10:54:01.361 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 10:54:01.362 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 10:54:01.363 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [test1nickname]
+2022-03-22 10:54:01.363 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 10:54:01.363 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 10:54:01.364 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [test]
+2022-03-22 10:54:01.364 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [0122345678]
+2022-03-22 10:54:01.373 TRACE 16536 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#1]
+2022-03-22 10:54:01.378 DEBUG 16536 --- [main] org.hibernate.SQL                        : select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=?
+2022-03-22 10:54:01.379 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-03-22 10:54:01.381  INFO 16536 --- [main] p6spy                                    : #1647914041381 | took 0ms | statement | connection 6| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=?
+select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=1;
+2022-03-22 10:54:01.405 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [1]
+2022-03-22 10:54:01.405 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 10:54:03.080 DEBUG 16536 --- [main] org.hibernate.SQL                        : select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=?
+2022-03-22 10:54:03.084 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-03-22 10:54:03.085  INFO 16536 --- [main] p6spy                                    : #1647914043085 | took 0ms | statement | connection 7| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=?
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=1;
+2022-03-22 10:54:03.088 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_0_] : [TIMESTAMP]) - [2022-03-22T10:54:00.897985]
+2022-03-22 10:54:03.088 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_0_] : [TIMESTAMP]) - [2022-03-22T10:54:00.897985]
+2022-03-22 10:54:03.088 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_0_] : [INTEGER]) - [0]
+2022-03-22 10:54:03.088 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_0_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 10:54:03.088 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_0_] : [DATE]) - [null]
+2022-03-22 10:54:03.089 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_0_] : [VARCHAR]) - [test1nickname]
+2022-03-22 10:54:03.089 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_0_] : [VARCHAR]) - [null]
+2022-03-22 10:54:03.089 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_0_] : [VARCHAR]) - [null]
+2022-03-22 10:54:03.089 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_0_] : [VARCHAR]) - [test]
+2022-03-22 10:54:03.089 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_0_] : [VARCHAR]) - [0122345678]
+2022-03-22 10:54:03.091 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_1_] : [BIGINT]) - [1]
+2022-03-22 10:54:03.091 TRACE 16536 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_1_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 10:54:03.092  INFO 16536 --- [main] p6spy                                    : #1647914043092 | took 0ms | commit | connection 7| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+
+;
+2022-03-22 10:54:03.409  INFO 16536 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 10:54:03.411  INFO 16536 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-22 10:54:03.413 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists member_member_role CASCADE 
+2022-03-22 10:54:03.420  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043420 | took 5ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists member_member_role CASCADE 
+drop table if exists member_member_role CASCADE ;
+2022-03-22 10:54:03.420 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists refresh_token CASCADE 
+2022-03-22 10:54:03.421  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043421 | took 1ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists refresh_token CASCADE 
+drop table if exists refresh_token CASCADE ;
+2022-03-22 10:54:03.422 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists tb_candidate CASCADE 
+2022-03-22 10:54:03.424  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043424 | took 2ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_candidate CASCADE 
+drop table if exists tb_candidate CASCADE ;
+2022-03-22 10:54:03.425 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists tb_candidatehistory CASCADE 
+2022-03-22 10:54:03.427  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043426 | took 1ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_candidatehistory CASCADE 
+drop table if exists tb_candidatehistory CASCADE ;
+2022-03-22 10:54:03.427 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists tb_comment CASCADE 
+2022-03-22 10:54:03.429  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043429 | took 1ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_comment CASCADE 
+drop table if exists tb_comment CASCADE ;
+2022-03-22 10:54:03.429 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists tb_user CASCADE 
+2022-03-22 10:54:03.431  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043431 | took 1ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_user CASCADE 
+drop table if exists tb_user CASCADE ;
+2022-03-22 10:54:03.431 DEBUG 16536 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : drop table if exists tb_vote CASCADE 
+2022-03-22 10:54:03.433  INFO 16536 --- [SpringApplicationShutdownHook] p6spy                                    : #1647914043433 | took 1ms | statement | connection 8| url jdbc:h2:mem:55aed152-6b3e-427f-a4b8-9631602df8fa
+drop table if exists tb_vote CASCADE 
+drop table if exists tb_vote CASCADE ;
+2022-03-22 10:54:03.433 TRACE 16536 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@1fce6eb4] for TypeConfiguration
+2022-03-22 10:54:03.433 DEBUG 16536 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@66164c55] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@1fce6eb4]
+2022-03-22 10:54:03.436  INFO 16536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-22 10:54:03.443  INFO 16536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-22 11:41:43.827  INFO 8720 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : Starting SecurityMemberControllerTest using Java 11.0.14 on DESKTOP-KVCQHCD with PID 8720 (started by SSAFY in C:\Users\SSAFY\Desktop\git\S06P22A304\module\polling\module-api)
+2022-03-22 11:41:43.832  INFO 8720 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : The following 3 profiles are active: "core-local", "common-local", "local"
+2022-03-22 11:41:46.147  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 11:41:46.150  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-22 11:41:46.209  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2022-03-22 11:41:46.792  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 11:41:46.796  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-22 11:41:47.367  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 562 ms. Found 5 JPA repository interfaces.
+2022-03-22 11:41:50.973  INFO 8720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-22 11:41:51.174  INFO 8720 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.5.Final
+2022-03-22 11:41:51.302  INFO 8720 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-22 11:41:51.994 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:41:51.995 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:41:51.995 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:41:51.996 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@6f36267d
+2022-03-22 11:41:51.998 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@1a85e86e
+2022-03-22 11:41:52.000 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@10301d6f
+2022-03-22 11:41:52.002 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:41:52.003 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:41:52.003 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:41:52.005 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:41:52.006 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:41:52.006 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:41:52.009 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:41:52.010 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:41:52.010 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:41:52.013 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:41:52.013 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:41:52.013 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:41:52.016 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:41:52.016 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:41:52.016 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:41:52.018 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:41:52.019 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:41:52.019 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:41:52.021 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:41:52.021 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:41:52.021 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:41:52.024 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@3d8fd373
+2022-03-22 11:41:52.024 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@3d8fd373
+2022-03-22 11:41:52.027 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1b994617
+2022-03-22 11:41:52.027 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1b994617
+2022-03-22 11:41:52.029 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@4b2acb12
+2022-03-22 11:41:52.029 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@4b2acb12
+2022-03-22 11:41:52.031 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@2d5c160e
+2022-03-22 11:41:52.032 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@2a73a64f
+2022-03-22 11:41:52.034 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@336070ab
+2022-03-22 11:41:52.035 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@336070ab
+2022-03-22 11:41:52.037 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@2ed35f24
+2022-03-22 11:41:52.037 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@2ed35f24
+2022-03-22 11:41:52.040 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@323c6f9c
+2022-03-22 11:41:52.040 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@323c6f9c
+2022-03-22 11:41:52.043 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@3436d3d7
+2022-03-22 11:41:52.043 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@3436d3d7
+2022-03-22 11:41:52.045 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@f9de1fd
+2022-03-22 11:41:52.045 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@f9de1fd
+2022-03-22 11:41:52.048 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@4be7acd9
+2022-03-22 11:41:52.049 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@4be7acd9
+2022-03-22 11:41:52.052 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@4fa6fb7f
+2022-03-22 11:41:52.052 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@4fa6fb7f
+2022-03-22 11:41:52.054 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@79fcd194
+2022-03-22 11:41:52.055 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@79fcd194
+2022-03-22 11:41:52.058 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@699bb304
+2022-03-22 11:41:52.059 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@699bb304
+2022-03-22 11:41:52.062 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@5977bdea
+2022-03-22 11:41:52.062 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@5977bdea
+2022-03-22 11:41:52.065 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@6ed7b9c5
+2022-03-22 11:41:52.065 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@6ed7b9c5
+2022-03-22 11:41:52.068 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:41:52.068 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:41:52.068 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:41:52.072 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@10ba9780
+2022-03-22 11:41:52.075 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:41:52.075 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:41:52.077 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:41:52.078 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@4e614370
+2022-03-22 11:41:52.080 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@343727b5
+2022-03-22 11:41:52.082 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@63b58ff4
+2022-03-22 11:41:52.083 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@63b58ff4
+2022-03-22 11:41:52.085 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@66226ab
+2022-03-22 11:41:52.085 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@66226ab
+2022-03-22 11:41:52.087 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@55c8fc60
+2022-03-22 11:41:52.087 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@55c8fc60
+2022-03-22 11:41:52.089 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@13c81bc5
+2022-03-22 11:41:52.089 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@13c81bc5
+2022-03-22 11:41:52.091 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@6ba355e4
+2022-03-22 11:41:52.092 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@6ba355e4
+2022-03-22 11:41:52.093 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@8dbf0f2
+2022-03-22 11:41:52.096 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:41:52.096 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:41:52.097 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:41:52.099 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:41:52.099 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:41:52.100 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:41:52.102 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@24f5e9e8
+2022-03-22 11:41:52.103 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@3661b732
+2022-03-22 11:41:52.106 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:41:52.106 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:41:52.106 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:41:52.108 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:41:52.109 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:41:52.109 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:41:52.110 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@33c9f1ac
+2022-03-22 11:41:52.111 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@442310fd
+2022-03-22 11:41:52.115 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@36ab69d9
+2022-03-22 11:41:52.115 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@36ab69d9
+2022-03-22 11:41:52.116 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@56a9b662
+2022-03-22 11:41:52.119 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@1abf951a
+2022-03-22 11:41:52.119 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@1abf951a
+2022-03-22 11:41:52.122 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@27a6384b
+2022-03-22 11:41:52.123 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@27a6384b
+2022-03-22 11:41:52.124 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@733bd6f3
+2022-03-22 11:41:52.125 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@391e5ffa
+2022-03-22 11:41:52.128 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@28269c65
+2022-03-22 11:41:52.136 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@333a2df2
+2022-03-22 11:41:52.136 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@333a2df2
+2022-03-22 11:41:52.137 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@5ae16aa
+2022-03-22 11:41:52.137 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@344a065a
+2022-03-22 11:41:52.138 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@3051e476
+2022-03-22 11:41:52.138 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@1870b9b8
+2022-03-22 11:41:52.138 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@6d9ee75a
+2022-03-22 11:41:52.139 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@9825465
+2022-03-22 11:41:52.139 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@36cf6377
+2022-03-22 11:41:52.139 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@2befb16f
+2022-03-22 11:41:52.295  INFO 8720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-22 11:41:52.539  INFO 8720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-22 11:41:52.691  INFO 8720 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDB106Dialect
+2022-03-22 11:41:52.796 DEBUG 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4d90d91f] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@c478e4e]
+2022-03-22 11:41:53.805 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.HistoryStatus
+2022-03-22 11:41:53.808 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.VoteStatus
+2022-03-22 11:41:53.813 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.OAuthType
+2022-03-22 11:41:53.813 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.MemberRole
+2022-03-22 11:41:53.814 DEBUG 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4d90d91f] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@65a8c306]
+2022-03-22 11:41:54.577  INFO 8720 --- [main] p6spy                                    : #1647916914577 | took 27ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE'
+select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE';
+2022-03-22 11:41:54.657  INFO 8720 --- [main] p6spy                                    : #1647916914656 | took 8ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:41:54.697  INFO 8720 --- [main] p6spy                                    : #1647916914696 | took 9ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_vote` where 1=0
+select * from `polling`.`tb_vote` where 1=0;
+2022-03-22 11:41:54.727  INFO 8720 --- [main] p6spy                                    : #1647916914727 | took 9ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_candidate` where 1=0
+select * from `polling`.`tb_candidate` where 1=0;
+2022-03-22 11:41:54.747  INFO 8720 --- [main] p6spy                                    : #1647916914747 | took 9ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:41:54.779  INFO 8720 --- [main] p6spy                                    : #1647916914779 | took 9ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_candidate` where 1=0
+select * from `polling`.`tb_candidate` where 1=0;
+2022-03-22 11:41:54.802  INFO 8720 --- [main] p6spy                                    : #1647916914801 | took 10ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:41:54.835  INFO 8720 --- [main] p6spy                                    : #1647916914835 | took 9ms | statement | connection 1| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:41:54.836  INFO 8720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-22 11:41:54.859 TRACE 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@65a8c306] for TypeConfiguration
+2022-03-22 11:41:54.864  INFO 8720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 11:41:58.991  WARN 8720 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-22 11:42:01.852  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@67599bae. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.854  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@67599bae with []
+2022-03-22 11:42:01.855  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.855  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-03-22 11:42:01.856  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.856  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/'] with []
+2022-03-22 11:42:01.856  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.856  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/*.html'] with []
+2022-03-22 11:42:01.856  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.856  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/favicon.ico'] with []
+2022-03-22 11:42:01.856  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.857  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-03-22 11:42:01.857  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.css']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.857  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-03-22 11:42:01.857  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.js']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.857  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-03-22 11:42:01.858  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/h2-console/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.858  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2-console/**'] with []
+2022-03-22 11:42:01.858  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.859  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/**', OPTIONS] with []
+2022-03-22 11:42:01.859  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-ui.html**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.859  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html**'] with []
+2022-03-22 11:42:01.859  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.859  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-22 11:42:01.860  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/v2/api-docs**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.860  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/api-docs**'] with []
+2022-03-22 11:42:01.860  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.860  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-22 11:42:01.861  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='swagger-ui/index.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:01.861  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='swagger-ui/index.html'] with []
+2022-03-22 11:42:02.151  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-22 11:42:03.775  INFO 8720 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:03.776  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:03.778  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-03-22 11:42:05.008  INFO 8720 --- [main] c.p.m.c.i.SecurityMemberControllerTest   : Started SecurityMemberControllerTest in 22.312 seconds (JVM running for 25.682)
+2022-03-22 11:42:05.503 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 */ select
+            member0_.user_id as user_id1_5_,
+            member0_.created_date as created_2_5_,
+            member0_.modified_date as modified3_5_,
+            member0_.bonus_ticket as bonus_ti4_5_,
+            member0_.email as email5_5_,
+            member0_.last_ticket as last_tic6_5_,
+            member0_.nickname as nickname7_5_,
+            member0_.oauth_id as oauth_id8_5_,
+            member0_.oauth_type as oauth_ty9_5_,
+            member0_.password as passwor10_5_,
+            member0_.phone_number as phone_n11_5_ 
+        from
+            tb_user member0_
+2022-03-22 11:42:05.524  INFO 8720 --- [main] p6spy                                    : #1647916925524 | took 19ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* select generatedAlias0 from Member as generatedAlias0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_
+/* select generatedAlias0 from Member as generatedAlias0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_;
+2022-03-22 11:42:05.534 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [23]
+2022-03-22 11:42:05.550 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T11:39:55.229626]
+2022-03-22 11:42:05.551 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T11:39:55.229626]
+2022-03-22 11:42:05.551 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 11:42:05.551 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:05.553 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 11:42:05.553 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:05.553 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:05.554 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:05.554 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [test]
+2022-03-22 11:42:05.554 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:05.558 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [24]
+2022-03-22 11:42:05.559 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T11:41:13.600771]
+2022-03-22 11:42:05.559 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T11:41:13.600771]
+2022-03-22 11:42:05.559 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 11:42:05.559 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [wjdrndk96@ssafy.com]
+2022-03-22 11:42:05.560 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 11:42:05.560 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [ㄱㅇ싸피]
+2022-03-22 11:42:05.560 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:05.560 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:05.561 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [1234]
+2022-03-22 11:42:05.561 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [01099999999]
+2022-03-22 11:42:05.594 TRACE 8720 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#23]
+2022-03-22 11:42:05.598 TRACE 8720 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#24]
+2022-03-22 11:42:05.606 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* load collection com.polling.entity.member.Member.memberRole */ select
+        memberrole0_.member_user_id as member_u1_0_0_,
+        memberrole0_.member_role as member_r2_0_0_ 
+    from
+        member_member_role memberrole0_ 
+    where
+        memberrole0_.member_user_id in (
+            ?, ?
+        )
+2022-03-22 11:42:05.608 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [24]
+2022-03-22 11:42:05.610 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [23]
+2022-03-22 11:42:05.629  INFO 8720 --- [main] p6spy                                    : #1647916925629 | took 17ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id in (?, ?)
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id in (24, 23);
+2022-03-22 11:42:05.636 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [23]
+2022-03-22 11:42:05.636 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:05.637 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [24]
+2022-03-22 11:42:05.637 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:05.737 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete collection com.polling.entity.member.Member.memberRole */ delete 
+        from
+            member_member_role 
+        where
+            member_user_id=?
+2022-03-22 11:42:05.738 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [23]
+2022-03-22 11:42:05.755  INFO 8720 --- [main] p6spy                                    : #1647916925755 | took 16ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=?
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=23;
+2022-03-22 11:42:05.761 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete collection com.polling.entity.member.Member.memberRole */ delete 
+        from
+            member_member_role 
+        where
+            member_user_id=?
+2022-03-22 11:42:05.762 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [24]
+2022-03-22 11:42:05.775  INFO 8720 --- [main] p6spy                                    : #1647916925775 | took 12ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=?
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=24;
+2022-03-22 11:42:05.784 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete com.polling.entity.member.Member */ delete 
+        from
+            tb_user 
+        where
+            user_id=?
+2022-03-22 11:42:05.784 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [23]
+2022-03-22 11:42:05.795  INFO 8720 --- [main] p6spy                                    : #1647916925795 | took 10ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=?
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=23;
+2022-03-22 11:42:05.798 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete com.polling.entity.member.Member */ delete 
+        from
+            tb_user 
+        where
+            user_id=?
+2022-03-22 11:42:05.799 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [24]
+2022-03-22 11:42:05.812  INFO 8720 --- [main] p6spy                                    : #1647916925812 | took 12ms | statement | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=?
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=24;
+2022-03-22 11:42:05.829  INFO 8720 --- [main] p6spy                                    : #1647916925829 | took 16ms | commit | connection 2| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:05.977 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* insert com.polling.entity.member.Member
+        */ insert 
+        into
+            tb_user
+            (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-03-22 11:42:05.979 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-03-22T11:42:05.937392800]
+2022-03-22 11:42:05.981 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-03-22T11:42:05.937392800]
+2022-03-22 11:42:05.982 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [0]
+2022-03-22 11:42:05.983 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test1@email.com]
+2022-03-22 11:42:05.985 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [DATE] - [null]
+2022-03-22 11:42:05.987 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [test1nickname]
+2022-03-22 11:42:05.987 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [null]
+2022-03-22 11:42:05.987 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [null]
+2022-03-22 11:42:05.987 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [test]
+2022-03-22 11:42:05.987 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [0122345678]
+2022-03-22 11:42:06.001  INFO 8720 --- [main] p6spy                                    : #1647916926001 | took 11ms | statement | connection 3| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* insert com.polling.entity.member.Member */ insert into tb_user (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.entity.member.Member */ insert into tb_user (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values ('2022-03-22T11:42:05.937+0900', '2022-03-22T11:42:05.937+0900', 0, 'test1@email.com', NULL, 'test1nickname', NULL, NULL, 'test', '0122345678');
+2022-03-22 11:42:06.012 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* insert collection
+        row com.polling.entity.member.Member.memberRole */ insert 
+        into
+            member_member_role
+            (member_user_id, member_role) 
+        values
+            (?, ?)
+2022-03-22 11:42:06.013 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:06.013 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [ROLE_USER]
+2022-03-22 11:42:06.024  INFO 8720 --- [main] p6spy                                    : #1647916926024 | took 10ms | statement | connection 3| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* insert collection row com.polling.entity.member.Member.memberRole */ insert into member_member_role (member_user_id, member_role) values (?, ?)
+/* insert collection row com.polling.entity.member.Member.memberRole */ insert into member_member_role (member_user_id, member_role) values (25, 'ROLE_USER');
+2022-03-22 11:42:06.038  INFO 8720 --- [main] p6spy                                    : #1647916926038 | took 11ms | commit | connection 3| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:06.311 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            member0_.user_id as user_id1_5_,
+            member0_.created_date as created_2_5_,
+            member0_.modified_date as modified3_5_,
+            member0_.bonus_ticket as bonus_ti4_5_,
+            member0_.email as email5_5_,
+            member0_.last_ticket as last_tic6_5_,
+            member0_.nickname as nickname7_5_,
+            member0_.oauth_id as oauth_id8_5_,
+            member0_.oauth_type as oauth_ty9_5_,
+            member0_.password as passwor10_5_,
+            member0_.phone_number as phone_n11_5_ 
+        from
+            tb_user member0_ 
+        where
+            member0_.email=?
+2022-03-22 11:42:06.311 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test1@email.com]
+2022-03-22 11:42:06.321  INFO 8720 --- [main] p6spy                                    : #1647916926321 | took 9ms | statement | connection 4| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.email=:param0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.email=:param0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email='test1@email.com';
+2022-03-22 11:42:06.321 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [25]
+2022-03-22 11:42:06.322 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:06.322 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:06.323 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 11:42:06.323 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:06.323 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 11:42:06.323 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:06.323 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:06.324 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:06.324 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [test]
+2022-03-22 11:42:06.324 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:06.325 TRACE 8720 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#25]
+2022-03-22 11:42:06.325 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* load collection com.polling.entity.member.Member.memberRole */ select
+        memberrole0_.member_user_id as member_u1_0_0_,
+        memberrole0_.member_role as member_r2_0_0_ 
+    from
+        member_member_role memberrole0_ 
+    where
+        memberrole0_.member_user_id=?
+2022-03-22 11:42:06.325 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:06.347  INFO 8720 --- [main] p6spy                                    : #1647916926347 | took 21ms | statement | connection 4| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=?
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=25;
+2022-03-22 11:42:06.348 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [25]
+2022-03-22 11:42:06.348 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:08.095 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    select
+        member0_.user_id as user_id1_5_0_,
+        member0_.created_date as created_2_5_0_,
+        member0_.modified_date as modified3_5_0_,
+        member0_.bonus_ticket as bonus_ti4_5_0_,
+        member0_.email as email5_5_0_,
+        member0_.last_ticket as last_tic6_5_0_,
+        member0_.nickname as nickname7_5_0_,
+        member0_.oauth_id as oauth_id8_5_0_,
+        member0_.oauth_type as oauth_ty9_5_0_,
+        member0_.password as passwor10_5_0_,
+        member0_.phone_number as phone_n11_5_0_,
+        memberrole1_.member_user_id as member_u1_0_1_,
+        memberrole1_.member_role as member_r2_0_1_ 
+    from
+        tb_user member0_ 
+    left outer join
+        member_member_role memberrole1_ 
+            on member0_.user_id=memberrole1_.member_user_id 
+    where
+        member0_.user_id=?
+2022-03-22 11:42:08.095 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:08.107  INFO 8720 --- [main] p6spy                                    : #1647916928107 | took 10ms | statement | connection 5| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=?
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=25;
+2022-03-22 11:42:08.115 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_0_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:08.115 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_0_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:08.115 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_0_] : [INTEGER]) - [0]
+2022-03-22 11:42:08.115 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_0_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_0_] : [DATE]) - [null]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_0_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_0_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_0_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_0_] : [VARCHAR]) - [test]
+2022-03-22 11:42:08.116 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_0_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:08.118 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_1_] : [BIGINT]) - [25]
+2022-03-22 11:42:08.118 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_1_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:08.129  INFO 8720 --- [main] p6spy                                    : #1647916928129 | took 9ms | commit | connection 5| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:08.263 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 */ select
+            member0_.user_id as user_id1_5_,
+            member0_.created_date as created_2_5_,
+            member0_.modified_date as modified3_5_,
+            member0_.bonus_ticket as bonus_ti4_5_,
+            member0_.email as email5_5_,
+            member0_.last_ticket as last_tic6_5_,
+            member0_.nickname as nickname7_5_,
+            member0_.oauth_id as oauth_id8_5_,
+            member0_.oauth_type as oauth_ty9_5_,
+            member0_.password as passwor10_5_,
+            member0_.phone_number as phone_n11_5_ 
+        from
+            tb_user member0_
+2022-03-22 11:42:08.274  INFO 8720 --- [main] p6spy                                    : #1647916928274 | took 10ms | statement | connection 6| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* select generatedAlias0 from Member as generatedAlias0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_
+/* select generatedAlias0 from Member as generatedAlias0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_;
+2022-03-22 11:42:08.274 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [25]
+2022-03-22 11:42:08.275 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:08.275 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T11:42:05.937392]
+2022-03-22 11:42:08.275 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 11:42:08.276 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:08.276 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 11:42:08.276 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:08.276 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.277 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.277 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [test]
+2022-03-22 11:42:08.277 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:08.277 TRACE 8720 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#25]
+2022-03-22 11:42:08.278 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* load collection com.polling.entity.member.Member.memberRole */ select
+        memberrole0_.member_user_id as member_u1_0_0_,
+        memberrole0_.member_role as member_r2_0_0_ 
+    from
+        member_member_role memberrole0_ 
+    where
+        memberrole0_.member_user_id=?
+2022-03-22 11:42:08.278 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:08.290  INFO 8720 --- [main] p6spy                                    : #1647916928290 | took 12ms | statement | connection 6| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=?
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=25;
+2022-03-22 11:42:08.291 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [25]
+2022-03-22 11:42:08.291 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:08.292 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete collection com.polling.entity.member.Member.memberRole */ delete 
+        from
+            member_member_role 
+        where
+            member_user_id=?
+2022-03-22 11:42:08.293 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:08.302  INFO 8720 --- [main] p6spy                                    : #1647916928302 | took 9ms | statement | connection 6| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=?
+/* delete collection com.polling.entity.member.Member.memberRole */ delete from member_member_role where member_user_id=25;
+2022-03-22 11:42:08.303 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* delete com.polling.entity.member.Member */ delete 
+        from
+            tb_user 
+        where
+            user_id=?
+2022-03-22 11:42:08.303 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [25]
+2022-03-22 11:42:08.313  INFO 8720 --- [main] p6spy                                    : #1647916928313 | took 9ms | statement | connection 6| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=?
+/* delete com.polling.entity.member.Member */ delete from tb_user where user_id=25;
+2022-03-22 11:42:08.324  INFO 8720 --- [main] p6spy                                    : #1647916928324 | took 9ms | commit | connection 6| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:08.344 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* insert com.polling.entity.member.Member
+        */ insert 
+        into
+            tb_user
+            (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-03-22 11:42:08.344 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-03-22T11:42:08.343736900]
+2022-03-22 11:42:08.344 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-03-22T11:42:08.343736900]
+2022-03-22 11:42:08.344 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [0]
+2022-03-22 11:42:08.344 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test1@email.com]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [DATE] - [null]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [test1nickname]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [null]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [null]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [test]
+2022-03-22 11:42:08.345 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [0122345678]
+2022-03-22 11:42:08.355  INFO 8720 --- [main] p6spy                                    : #1647916928355 | took 9ms | statement | connection 7| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* insert com.polling.entity.member.Member */ insert into tb_user (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.polling.entity.member.Member */ insert into tb_user (created_date, modified_date, bonus_ticket, email, last_ticket, nickname, oauth_id, oauth_type, password, phone_number) values ('2022-03-22T11:42:08.343+0900', '2022-03-22T11:42:08.343+0900', 0, 'test1@email.com', NULL, 'test1nickname', NULL, NULL, 'test', '0122345678');
+2022-03-22 11:42:08.356 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* insert collection
+        row com.polling.entity.member.Member.memberRole */ insert 
+        into
+            member_member_role
+            (member_user_id, member_role) 
+        values
+            (?, ?)
+2022-03-22 11:42:08.356 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [26]
+2022-03-22 11:42:08.357 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [ROLE_USER]
+2022-03-22 11:42:08.367  INFO 8720 --- [main] p6spy                                    : #1647916928367 | took 9ms | statement | connection 7| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* insert collection row com.polling.entity.member.Member.memberRole */ insert into member_member_role (member_user_id, member_role) values (?, ?)
+/* insert collection row com.polling.entity.member.Member.memberRole */ insert into member_member_role (member_user_id, member_role) values (26, 'ROLE_USER');
+2022-03-22 11:42:08.377  INFO 8720 --- [main] p6spy                                    : #1647916928377 | took 10ms | commit | connection 7| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:08.391 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            member0_.user_id as user_id1_5_,
+            member0_.created_date as created_2_5_,
+            member0_.modified_date as modified3_5_,
+            member0_.bonus_ticket as bonus_ti4_5_,
+            member0_.email as email5_5_,
+            member0_.last_ticket as last_tic6_5_,
+            member0_.nickname as nickname7_5_,
+            member0_.oauth_id as oauth_id8_5_,
+            member0_.oauth_type as oauth_ty9_5_,
+            member0_.password as passwor10_5_,
+            member0_.phone_number as phone_n11_5_ 
+        from
+            tb_user member0_ 
+        where
+            member0_.email=?
+2022-03-22 11:42:08.391 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test1@email.com]
+2022-03-22 11:42:08.401  INFO 8720 --- [main] p6spy                                    : #1647916928401 | took 9ms | statement | connection 8| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.email=:param0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.email=:param0 */ select member0_.user_id as user_id1_5_, member0_.created_date as created_2_5_, member0_.modified_date as modified3_5_, member0_.bonus_ticket as bonus_ti4_5_, member0_.email as email5_5_, member0_.last_ticket as last_tic6_5_, member0_.nickname as nickname7_5_, member0_.oauth_id as oauth_id8_5_, member0_.oauth_type as oauth_ty9_5_, member0_.password as passwor10_5_, member0_.phone_number as phone_n11_5_ from tb_user member0_ where member0_.email='test1@email.com';
+2022-03-22 11:42:08.402 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([user_id1_5_] : [BIGINT]) - [26]
+2022-03-22 11:42:08.402 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_] : [TIMESTAMP]) - [2022-03-22T11:42:08.343736]
+2022-03-22 11:42:08.402 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_] : [TIMESTAMP]) - [2022-03-22T11:42:08.343736]
+2022-03-22 11:42:08.402 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_] : [INTEGER]) - [0]
+2022-03-22 11:42:08.402 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_] : [DATE]) - [null]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_] : [VARCHAR]) - [test]
+2022-03-22 11:42:08.403 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:08.404 TRACE 8720 --- [main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.polling.entity.member.Member.memberRole#26]
+2022-03-22 11:42:08.404 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    /* load collection com.polling.entity.member.Member.memberRole */ select
+        memberrole0_.member_user_id as member_u1_0_0_,
+        memberrole0_.member_role as member_r2_0_0_ 
+    from
+        member_member_role memberrole0_ 
+    where
+        memberrole0_.member_user_id=?
+2022-03-22 11:42:08.404 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [26]
+2022-03-22 11:42:08.415  INFO 8720 --- [main] p6spy                                    : #1647916928415 | took 10ms | statement | connection 8| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=?
+/* load collection com.polling.entity.member.Member.memberRole */ select memberrole0_.member_user_id as member_u1_0_0_, memberrole0_.member_role as member_r2_0_0_ from member_member_role memberrole0_ where memberrole0_.member_user_id=26;
+2022-03-22 11:42:08.415 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_0_] : [BIGINT]) - [26]
+2022-03-22 11:42:08.415 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_0_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:08.443 DEBUG 8720 --- [main] org.hibernate.SQL                        : 
+    select
+        member0_.user_id as user_id1_5_0_,
+        member0_.created_date as created_2_5_0_,
+        member0_.modified_date as modified3_5_0_,
+        member0_.bonus_ticket as bonus_ti4_5_0_,
+        member0_.email as email5_5_0_,
+        member0_.last_ticket as last_tic6_5_0_,
+        member0_.nickname as nickname7_5_0_,
+        member0_.oauth_id as oauth_id8_5_0_,
+        member0_.oauth_type as oauth_ty9_5_0_,
+        member0_.password as passwor10_5_0_,
+        member0_.phone_number as phone_n11_5_0_,
+        memberrole1_.member_user_id as member_u1_0_1_,
+        memberrole1_.member_role as member_r2_0_1_ 
+    from
+        tb_user member0_ 
+    left outer join
+        member_member_role memberrole1_ 
+            on member0_.user_id=memberrole1_.member_user_id 
+    where
+        member0_.user_id=?
+2022-03-22 11:42:08.443 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [26]
+2022-03-22 11:42:08.453  INFO 8720 --- [main] p6spy                                    : #1647916928453 | took 9ms | statement | connection 9| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=?
+select member0_.user_id as user_id1_5_0_, member0_.created_date as created_2_5_0_, member0_.modified_date as modified3_5_0_, member0_.bonus_ticket as bonus_ti4_5_0_, member0_.email as email5_5_0_, member0_.last_ticket as last_tic6_5_0_, member0_.nickname as nickname7_5_0_, member0_.oauth_id as oauth_id8_5_0_, member0_.oauth_type as oauth_ty9_5_0_, member0_.password as passwor10_5_0_, member0_.phone_number as phone_n11_5_0_, memberrole1_.member_user_id as member_u1_0_1_, memberrole1_.member_role as member_r2_0_1_ from tb_user member0_ left outer join member_member_role memberrole1_ on member0_.user_id=memberrole1_.member_user_id where member0_.user_id=26;
+2022-03-22 11:42:08.453 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_5_0_] : [TIMESTAMP]) - [2022-03-22T11:42:08.343736]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_5_0_] : [TIMESTAMP]) - [2022-03-22T11:42:08.343736]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bonus_ti4_5_0_] : [INTEGER]) - [0]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_5_0_] : [VARCHAR]) - [test1@email.com]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_tic6_5_0_] : [DATE]) - [null]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([nickname7_5_0_] : [VARCHAR]) - [test1nickname]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_id8_5_0_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([oauth_ty9_5_0_] : [VARCHAR]) - [null]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([passwor10_5_0_] : [VARCHAR]) - [test]
+2022-03-22 11:42:08.454 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone_n11_5_0_] : [VARCHAR]) - [0122345678]
+2022-03-22 11:42:08.455 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_u1_0_1_] : [BIGINT]) - [26]
+2022-03-22 11:42:08.455 TRACE 8720 --- [main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_r2_0_1_] : [VARCHAR]) - [ROLE_USER]
+2022-03-22 11:42:08.465  INFO 8720 --- [main] p6spy                                    : #1647916928465 | took 9ms | commit | connection 9| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+
+;
+2022-03-22 11:42:08.642  INFO 8720 --- [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:08.643  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:08.643  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-03-22 11:42:08.688  INFO 8720 --- [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:08.688  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:08.689  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-03-22 11:42:08.720  INFO 8720 --- [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:08.720  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:08.720  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-03-22 11:42:08.768  INFO 8720 --- [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:08.768  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:08.769  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-03-22 11:42:08.959  INFO 8720 --- [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2022-03-22 11:42:08.960  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-22 11:42:08.960  INFO 8720 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2022-03-22 11:42:08.969  INFO 8720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.polling.PollingApplicationTests], using SpringBootContextLoader
+2022-03-22 11:42:08.971  INFO 8720 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.polling.PollingApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-03-22 11:42:08.971  INFO 8720 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.polling.PollingApplicationTests]: PollingApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-03-22 11:42:08.979  INFO 8720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.polling.PollingApplication for test class com.polling.PollingApplicationTests
+2022-03-22 11:42:08.980  INFO 8720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-03-22 11:42:08.981  INFO 8720 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@20461e2b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1f607db6, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@75288f47, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4effab3b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5e584389, org.springframework.test.context.support.DirtiesContextTestExecutionListener@42491839, org.springframework.test.context.transaction.TransactionalTestExecutionListener@732af580, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@40bf2ead, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5ce76938, org.springframework.test.context.event.EventPublishingTestExecutionListener@56653a4d, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@72c743f4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4bb4c147, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2c7ddfa0, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@53b52f30, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1b250e51, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@76f65a8b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@34341b2a]
+2022-03-22 11:42:09.071  INFO 8720 --- [main] com.polling.PollingApplicationTests      : Starting PollingApplicationTests using Java 11.0.14 on DESKTOP-KVCQHCD with PID 8720 (started by SSAFY in C:\Users\SSAFY\Desktop\git\S06P22A304\module\polling\module-api)
+2022-03-22 11:42:09.071  INFO 8720 --- [main] com.polling.PollingApplicationTests      : The following 3 profiles are active: "core-local", "common-local", "local"
+2022-03-22 11:42:09.873  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 11:42:09.873  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-22 11:42:09.880  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2022-03-22 11:42:09.945  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-22 11:42:09.945  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-22 11:42:10.051  INFO 8720 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 104 ms. Found 5 JPA repository interfaces.
+2022-03-22 11:42:10.406  INFO 8720 --- [main] c.g.g.b.j.d.p6spy.P6SpyConfiguration     : P6Spy modulelist is overridden, some p6spy configuration features will not be applied
+2022-03-22 11:42:10.584  INFO 8720 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-22 11:42:10.597 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:42:10.597 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:42:10.597 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@55e4dd68
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@6f36267d
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@1a85e86e
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@10301d6f
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@21d3d6ec
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:42:10.598 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@7cbfbcd1
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@4b76251c
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@a30dbc0
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:42:10.599 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@4e9bd2c8
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@239d73ff
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@3c17794e
+2022-03-22 11:42:10.600 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@3d8fd373
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@3d8fd373
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1b994617
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1b994617
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@4b2acb12
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@4b2acb12
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@2d5c160e
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@2a73a64f
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@336070ab
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@336070ab
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@2ed35f24
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@2ed35f24
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@323c6f9c
+2022-03-22 11:42:10.601 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@323c6f9c
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@3436d3d7
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@3436d3d7
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@f9de1fd
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@f9de1fd
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@4be7acd9
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@4be7acd9
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@4fa6fb7f
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@4fa6fb7f
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@79fcd194
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@79fcd194
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@699bb304
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@699bb304
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@5977bdea
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@5977bdea
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@6ed7b9c5
+2022-03-22 11:42:10.602 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@6ed7b9c5
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@65b680b4
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@10ba9780
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@48aaaed9
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@4e614370
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@343727b5
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@63b58ff4
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@63b58ff4
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@66226ab
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@66226ab
+2022-03-22 11:42:10.603 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@55c8fc60
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@55c8fc60
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@13c81bc5
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@13c81bc5
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@6ba355e4
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@6ba355e4
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@8dbf0f2
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@603b9d4b
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@da9374c
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@24f5e9e8
+2022-03-22 11:42:10.604 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@3661b732
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@2553dcc0
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@1906f982
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@33c9f1ac
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@442310fd
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@36ab69d9
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@36ab69d9
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@56a9b662
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@1abf951a
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@1abf951a
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@27a6384b
+2022-03-22 11:42:10.605 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@27a6384b
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@733bd6f3
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@391e5ffa
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@28269c65
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@333a2df2
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@333a2df2
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@ebad9a
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@3fa27158
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@4b2b2757
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@6026c754
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@3d7c21b7
+2022-03-22 11:42:10.606 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@11f8bff1
+2022-03-22 11:42:10.607 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@3fb2306
+2022-03-22 11:42:10.607 DEBUG 8720 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@5531484a
+2022-03-22 11:42:10.622  INFO 8720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-03-22 11:42:10.685  INFO 8720 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-03-22 11:42:10.685  INFO 8720 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDB106Dialect
+2022-03-22 11:42:10.699 DEBUG 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@58da1b27] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@347c6044]
+2022-03-22 11:42:10.802 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.HistoryStatus
+2022-03-22 11:42:10.803 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.polling.entity.vote.status.VoteStatus
+2022-03-22 11:42:10.803 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.OAuthType
+2022-03-22 11:42:10.803 DEBUG 8720 --- [main] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.polling.entity.member.status.MemberRole
+2022-03-22 11:42:10.803 DEBUG 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@58da1b27] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@6cd75a1b]
+2022-03-22 11:42:10.941  INFO 8720 --- [main] p6spy                                    : #1647916930941 | took 9ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE'
+select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE';
+2022-03-22 11:42:11.005  INFO 8720 --- [main] p6spy                                    : #1647916931005 | took 11ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:42:11.032  INFO 8720 --- [main] p6spy                                    : #1647916931032 | took 8ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_vote` where 1=0
+select * from `polling`.`tb_vote` where 1=0;
+2022-03-22 11:42:11.062  INFO 8720 --- [main] p6spy                                    : #1647916931062 | took 11ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_candidate` where 1=0
+select * from `polling`.`tb_candidate` where 1=0;
+2022-03-22 11:42:11.085  INFO 8720 --- [main] p6spy                                    : #1647916931085 | took 12ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:42:11.117  INFO 8720 --- [main] p6spy                                    : #1647916931117 | took 9ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_candidate` where 1=0
+select * from `polling`.`tb_candidate` where 1=0;
+2022-03-22 11:42:11.136  INFO 8720 --- [main] p6spy                                    : #1647916931136 | took 9ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:42:11.165  INFO 8720 --- [main] p6spy                                    : #1647916931165 | took 9ms | statement | connection 11| url jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+select * from `polling`.`tb_user` where 1=0
+select * from `polling`.`tb_user` where 1=0;
+2022-03-22 11:42:11.166  INFO 8720 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-22 11:42:11.166 TRACE 8720 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@6cd75a1b] for TypeConfiguration
+2022-03-22 11:42:11.166  INFO 8720 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 11:42:11.737  WARN 8720 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-22 11:42:13.013  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@68dc6497. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.013  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@68dc6497 with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/*.html'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/favicon.ico'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.html'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.css']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.css'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**/*.js']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**/*.js'] with []
+2022-03-22 11:42:13.014  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/h2-console/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.014  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2-console/**'] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/**', OPTIONS] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-ui.html**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html**'] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/v2/api-docs**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/api-docs**'] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-22 11:42:13.015  WARN 8720 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='swagger-ui/index.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-03-22 11:42:13.015  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='swagger-ui/index.html'] with []
+2022-03-22 11:42:13.189  INFO 8720 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-22 11:42:14.353  INFO 8720 --- [main] com.polling.PollingApplicationTests      : Started PollingApplicationTests in 5.37 seconds (JVM running for 35.027)
+2022-03-22 11:42:14.755  INFO 8720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 11:42:14.757 TRACE 8720 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@65a8c306] for TypeConfiguration
+2022-03-22 11:42:14.757 DEBUG 8720 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@5bb1eca9] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@65a8c306]
+2022-03-22 11:42:14.760  INFO 8720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-22 11:42:14.832  INFO 8720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-22 11:42:14.955  INFO 8720 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-22 11:42:14.956 TRACE 8720 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@6cd75a1b] for TypeConfiguration
+2022-03-22 11:42:14.956 DEBUG 8720 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@51a37233] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@6cd75a1b]
+2022-03-22 11:42:14.957  INFO 8720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-03-22 11:42:15.047  INFO 8720 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
