@@ -1,7 +1,6 @@
 package com.polling.member.controller.integratedSecurity;
 
 import com.google.gson.Gson;
-
 import com.polling.auth.dto.LoginDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;

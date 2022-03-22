@@ -2,8 +2,8 @@ package com.polling.queryrepository;
 
 
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.entity.vote.status.VoteStatus;
-import com.polling.vote.dto.VoteResponseDto;
+import com.polling.entity.poll.status.PollStatus;
+import com.polling.poll.dto.PollResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.polling.entity.candidate.QCandidate.candidate;
-import static com.polling.entity.vote.QVote.vote;
+import static com.polling.entity.poll.QVote.vote;
 
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Repository
-public class VoteQueryRepositoryImpl implements VoteQueryRepository{
+public class PollQueryRepositoryImpl implements PollQueryRepository {
     private final JPAQueryFactory query;
 
     @Override
@@ -37,9 +37,9 @@ public class VoteQueryRepositoryImpl implements VoteQueryRepository{
     }
 
     @Override
-    public List<VoteResponseDto> findVoteByStatus(VoteStatus status) {
+    public List<PollResponseDto> findVoteByStatus(PollStatus status) {
         return query
-                .select((Projections.constructor(VoteResponseDto.class,
+                .select((Projections.constructor(PollResponseDto.class,
                         vote.id,
                         vote.name,
                         vote.createdDate,
@@ -51,9 +51,9 @@ public class VoteQueryRepositoryImpl implements VoteQueryRepository{
     }
 
     @Override
-    public List<VoteResponseDto> findAll() {
+    public List<PollResponseDto> findAll() {
         return query
-                .select((Projections.constructor(VoteResponseDto.class,
+                .select((Projections.constructor(PollResponseDto.class,
                         vote.id,
                         vote.name,
                         vote.createdDate,

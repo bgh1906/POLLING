@@ -11,7 +11,7 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class RedisService {
 
-    private final RedisTemplate redisTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
     // 키-벨류 설정
     public void setValues(String token, Long id){

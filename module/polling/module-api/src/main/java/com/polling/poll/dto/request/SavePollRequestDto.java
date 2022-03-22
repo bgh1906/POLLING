@@ -1,8 +1,8 @@
-package com.polling.vote.dto.request;
+package com.polling.poll.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.polling.candidate.dto.request.SaveCandidateRequestDto;
-import com.polling.entity.vote.status.HistoryStatus;
+import com.polling.entity.poll.status.ShowStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class SaveVoteRequestDto {
+public class SavePollRequestDto {
     List<SaveCandidateRequestDto> candidates;
     @NotNull
     String name;
@@ -28,15 +28,15 @@ public class SaveVoteRequestDto {
     LocalDateTime endDate;
 
     @NotNull
-    HistoryStatus historyStatus;
+    ShowStatus showStatus;
 
     @Builder
-    public SaveVoteRequestDto(List<SaveCandidateRequestDto> candidates, String name, String content, LocalDateTime startDate, LocalDateTime endDate, HistoryStatus historyStatus){
+    public SavePollRequestDto(List<SaveCandidateRequestDto> candidates, String name, String content, LocalDateTime startDate, LocalDateTime endDate, ShowStatus showStatus){
         this.candidates = candidates;
         this.name = name;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.historyStatus = historyStatus;
+        this.showStatus = showStatus;
     }
 }

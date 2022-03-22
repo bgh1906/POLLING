@@ -1,7 +1,10 @@
-package com.polling.vote.dto;
+package com.polling.poll.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -9,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class VoteResponseDto {
+public class PollResponseDto {
     @NotNull
     Long id;
     @NotNull
