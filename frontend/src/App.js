@@ -14,6 +14,7 @@ import User from "./routes/User";
 import Login2 from "./routes/Login2";
 import Join2 from "./routes/Join2";
 import Companylogin2 from "./routes/Companylogin2";
+import WhyPolling from "./routes/WhyPolling";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
           <Route path="/nominee" element={<Nominee />}></Route>
+          <Route path="/whypolling" element={<WhyPolling />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

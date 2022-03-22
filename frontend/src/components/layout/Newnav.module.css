@@ -2,17 +2,25 @@
     z-index: -5;
     position: fixed;
     /* width: 95vw; */
+    /* width: 96vw;
+    height: 92vh; */
     width: 97vw;
     height: 96vh;
     left: 1vw;
     top: 2vh;
 
-    border: 1vw solid transparent;
-    border-radius: 1vh;
-    border-image: linear-gradient(120deg,  #3afaca8c, #8ac1be8c, #c399b48c, #fb71aa8c);
-    /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
-    /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
-    border-image-slice: 1;
+  border: 1vw solid transparent;
+  border-radius: 1vh;
+  border-image: linear-gradient(
+    120deg,
+    #3afaca8c,
+    #8ac1be8c,
+    #c399b48c,
+    #fb71aa8c
+  );
+  /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
+  /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
+  border-image-slice: 1;
 }
 
 .mark{
@@ -31,11 +39,10 @@
     position: fixed;
     max-width: 100%;
     max-height: 100%;
-    /* width: 9vw; */
     width: auto;
     height: auto;
-    /* width: auto; */
-    /* height: auto; */
+    /* width: 9vw;
+    height: 9vh; */
     left: 7vw;
     top: 5vh;
     display: block;
@@ -51,47 +58,47 @@
     color: #231815;
 }
 
-.hamNav1{
-    position: fixed;
-    width: 2vw;
-    height: 0.1vh;
-    right: 3vw;
-    top: 5.5vh;
+.hamNav1 {
+  position: fixed;
+  width: 2vw;
+  height: 0.1vh;
+  right: 3vw;
+  top: 5.5vh;
 
-    background-color: #77A3A9;
-    border-radius: 2vh;
-    border: 1px solid #77A3A9;
+  background-color: #77a3a9;
+  border-radius: 2vh;
+  border: 1px solid #77a3a9;
 }
 
-.hamNav2{
-    position: fixed;
-    width: 2vw;
-    height: 0.1vh;
-    right: 3vw;
-    top: 6.5vh;
+.hamNav2 {
+  position: fixed;
+  width: 2vw;
+  height: 0.1vh;
+  right: 3vw;
+  top: 6.5vh;
 
-    background-color: #77A3A9;
-    border-radius: 2vh;
-    border: 1px solid #77A3A9;
+  background-color: #77a3a9;
+  border-radius: 2vh;
+  border: 1px solid #77a3a9;
 }
 
-.hamNav3{
-    position: fixed;
-    width: 2vw;
-    height: -0.1vh;
-    right: 3vw;
-    top: 7.5vh;
+.hamNav3 {
+  position: fixed;
+  width: 2vw;
+  height: -0.1vh;
+  right: 3vw;
+  top: 7.5vh;
 
-    background-color: #77A3A9;
-    border-radius: 2vh;
-    border: 1px solid #77A3A9;
+  background-color: #77a3a9;
+  border-radius: 2vh;
+  border: 1px solid #77a3a9;
 }
 
 /* 큰 div 만들고 */
 /* .div{
     display: flex; */
-    /* 세로 */
-    /* flex-direction: column; 
+/* 세로 */
+/* flex-direction: column; 
 
     width: 10vw;
     height: 100vh;
@@ -104,15 +111,15 @@
     justify-content: center;
 } */
 
-.user{
-    display: flex;
-    flex-direction: column; 
-    float: left;
-    width: 10vw;
-    /* height: 100vh; */
-    height: 98.5vh;
-    justify-content: center;
-    /* border: 0.1vw solid #000000; */
+.user {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 10vw;
+  /* height: 100vh; */
+  height: 98.5vh;
+  justify-content: center;
+  /* border: 0.1vw solid #000000; */
 }
 
 .userNav{
@@ -129,7 +136,11 @@
     /* font-size: 2.5vh; */
     font-size: 1.18vw;
     font-family: 'RussoOne';
+    z-index: 5;
 
+  text-align: center;
+  font-size: 2.5vh;
+  font-family: "RussoOne";
 }
 
 .poll{
@@ -141,6 +152,7 @@
     height: 98.5vh;
     justify-content: center;
     /* border: 0.1vw solid #000000; */
+    z-index: 5;
 }
 
 .pollNav{
@@ -159,19 +171,21 @@
     /* font-size: 2.5vh; */
     font-size: 1.18vw;
     font-family: 'RussoOne';
+    z-index: 5;
 }
 
 .text {
     text-decoration: none;
     text-align: center;
     color: #231815;
+    z-index: 5;
     /* margin-left: 1vh; */
     /* margin-right: 1vh; */
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
 
 @font-face {
-    font-family: "RussoOne";
-    src: url(../../fonts/RussoOne-Regular.ttf);
-  }
+  font-family: "RussoOne";
+  src: url(../../fonts/RussoOne-Regular.ttf);
+}
