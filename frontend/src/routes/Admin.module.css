@@ -23,14 +23,25 @@
     font-style: normal;
 }
 
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+#title_header{
+    position: relative;
+    margin: 5vh;
+}
 
 .title {
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2.5vw;
+    font-family: 'Bitter', serif;;
+    font-size: 7vw;
     top: 3vh;
+    font-weight: 900;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -38,128 +49,155 @@
     display: flex;
     position: relative;
     justify-content: end;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2vw;
+    font-family: 'Bitter', serif;;
+    font-size: 4vw;
     top: 3vh;
-    right: 7vw;
+    right: 1vw;
+    font-weight: 900;
     text-decoration: none;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: black;
 }
 
+.create:hover {
+    color:blue;
+}
 
+#moment {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 1.8vw;
+    font-weight: 900;
+    bottom: -15vh;
+    left: 8vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .container {
     display: flex;
     justify-content: center;
     position: relative;
-    top: 10vh;
-    margin-bottom: 20vh;
-
-}
-
-#bigbox {
+    background-color: #F9F7F1;
+    margin-top: 17vh;
+    margin-bottom: 17vh;
+    border-style: double;
+    border-width: 0.5vw;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+
 }
 
-
-#status_title {
-    display: inline;
+#status{
     position: relative;
-    font-family: 'Russo One', sans-serif;
-    font-size: 2vw;
-    top: 3vh;
-    left: 1vw;
+    font-size: 4vw;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    text-align: center;
+    margin: 5vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#box1 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 35vh;
+#logo{
+    position: absolute;
+    width: 6vw;
+    top: 1vh;
+    right: 0.5vw;
 }
+
+#status_title {
+    position: relative;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2.5vw;
+    margin: 2vw;
+    margin-top: 4vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom-style: double;
+    border-width: 0.3vw;
+}
+
+#status_kor{
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 1.6vw;
+    right: 0.5vw;
+    top: 1.5vh;
+}
+
+#poll_container{
+    justify-content: center;
+}
+
+
+#pollbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'ROKAFSansBold';
+    font-size: 1vw;
+    border-left-style: dashed ;
+    border-right-style: dashed ;
+    border-width: 0.1vw;
+}
+
+
+
 
 #list_img {
-    position: relative;
-    width: 21vw;
-    margin: 2vw;
-    top: 4vh;
-    padding:1px;
+    width: 70%;
     border:5px solid #ffcbcb;
-
+    margin: auto;
+    margin-bottom: 2vh;
 }
 
-#box2 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 8vh;
-}
 
-#list_text {
-    position: relative;
-    display: flex;
-    width: 21vw;
-    justify-content: center;
-    top: 1.5vh;
-    margin: 1vw;
-    font-size: 1.5vw;
-    font-family: 'ROKAFSansBold';
-    font-weight: bold;
-}
-
-#box3 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 6vh;
-}
-
-#list_date {
-    position: relative;
-    display: flex;
-    width: 21vw;
-    justify-content: center;
-    margin: 0 1vw;
-    font-size: 1.2vw;
-    font-family: 'ROKAFSansMedium';
-}
-
-#box4 {
-    background-color: #ffffff;
-    /* background-color: #ffc983; */
-    display: flex;
-    justify-content: space-evenly;
-    width: 80vw;
-    height: 8vh;
-}
-
-#status_buttonbox {
-    justify-content: center;
-    margin: 0 2vw;
-}
-
-#status_button {
-    margin: 0 0.7vw;
-    width: 9vw;
+#status_button1 {
+    margin-top: 1.5vh;
+    width: 8vw;
     height: 4vh;
-    font-size: 1vw;
+    font-size: 0.9vw;
     font-family: 'ROKAFSansMedium';
     text-align: center;
-    background-color: #ffffff;
+    background-color: #FFE29A;
     cursor: pointer; 
+    border-radius: 10px;
 }
 
-#status_button:hover{
-    color:#fff;
-    background-color: black;
+#status_button2 {
+    margin: 1vh;
+    margin-bottom: 2.5vh;
+    width: 8vw;
+    height: 4vh;
+    font-size: 0.9vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
 }
+
+#status_button1:hover{
+    color:#fff;
+    background-color: rgb(255, 0, 0);
+}
+
+#status_button2:hover{
+    color:#fff;
+    background-color: rgb(0, 26, 255);
+}
+
+
+#status_under {
+    margin: 1vw;
+
+    border-top-style: solid;
+    border-width: 0.3vw;
+}
+
+
+
+
+
+
 
 
