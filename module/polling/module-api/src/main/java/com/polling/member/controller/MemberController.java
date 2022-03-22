@@ -1,5 +1,6 @@
 package com.polling.member.controller;
 
+import com.polling.auth.dto.MemberDto;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.member.dto.request.ChangePasswordRequestDto;
 import com.polling.member.dto.request.SaveNativeMemberRequestDto;
@@ -7,7 +8,6 @@ import com.polling.member.dto.response.FindMemberResponseDto;
 import com.polling.member.service.MemberService;
 import com.polling.repository.member.MemberRepository;
 import com.polling.security.CurrentUser;
-import com.polling.auth.dto.MemberDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

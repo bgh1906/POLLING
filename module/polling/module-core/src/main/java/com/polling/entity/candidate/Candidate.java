@@ -2,7 +2,7 @@ package com.polling.entity.candidate;
 
 
 import com.polling.entity.common.BaseTimeEntity;
-import com.polling.entity.vote.Vote;
+import com.polling.entity.poll.Poll;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class Candidate extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vote_id")
-    private Vote vote;
+    private Poll poll;
 
     @Column(name = "candidate_name")
     private String name;
@@ -41,16 +41,16 @@ public class Candidate extends BaseTimeEntity {
 
 
     @Builder
-    public Candidate(Vote vote, String name, String content, String profilePath){
-        this.vote = vote;
+    public Candidate(Poll poll, String name, String content, String profilePath){
+        this.poll = poll;
         this.name = name;
         this.content = content;
         this.candidateInfo.setProfilePath(profilePath);
         voteTotal = 0;
     }
 
-    public void assignVote(Vote vote){
-        this.vote = vote;
+    public void assignVote(Poll poll){
+        this.poll = poll;
     }
 
     public void addVote(int num){

@@ -6,23 +6,23 @@ import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
-import com.polling.candidate.dto.response.FindVoteHistoryResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.comment.Comment;
 import com.polling.entity.member.Member;
-import com.polling.entity.vote.Vote;
-import com.polling.entity.vote.status.HistoryStatus;
+import com.polling.entity.poll.Poll;
+import com.polling.entity.poll.status.ShowStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
+import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.comment.CommentRepository;
 import com.polling.repository.member.MemberRepository;
-import com.polling.repository.vote.VoteRepository;
+import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +40,7 @@ public class CandidateService {
     private final CandidateHistoryRepository candidateHistoryRepository;
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
     private final MemberRepository memberRepository;
-    private final VoteRepository voteRepository;
+    private final PollRepository pollRepository;
 
     //전체 대회에 대한 후보자들 목록 전부 뽑아야 하는지->그러면 param으로 vote 받아야 함
     @Transactional(readOnly = true)
@@ -63,14 +63,14 @@ public class CandidateService {
      * SHOW_RECENT: 최근 50개의 내역만 리턴
      */
     @Transactional(readOnly = true)
-    public List<FindVoteHistoryResponseDto> getHistory(Long id){
-        Vote vote = voteRepository.findById(id)
+    public List<FindPollHistoryResponseDto> getHistory(Long id){
+        Poll poll = pollRepository.findById(id)
                 .orElseThrow(()-> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
 
-        List<FindVoteHistoryResponseDto> response;
-        if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_ALL)){
+        List<FindPollHistoryResponseDto> response;
+        if(poll.getShowStatus().equals(ShowStatus.SHOW_ALL)){
            response = candidateHistoryQueryRepository.findVoteHistoryByCandidateId(id);
-        }else if(vote.getHistoryStatus().equals(HistoryStatus.SHOW_RECENT)){
+        }else if(poll.getShowStatus().equals(ShowStatus.SHOW_RECENT)){
             response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
         }else{
             throw new CustomException(CustomErrorResult.STATUS_NOT_FOUND);

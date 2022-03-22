@@ -1,14 +1,14 @@
 package com.polling.candidate.controller;
 
+import com.polling.auth.dto.MemberDto;
 import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
-import com.polling.candidate.dto.response.FindVoteHistoryResponseDto;
 import com.polling.candidate.service.CandidateService;
 import com.polling.security.CurrentUser;
-import com.polling.auth.dto.MemberDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +40,8 @@ public class CandidateController {
 
     @GetMapping("/history/{id}")
     @ApiOperation(value = "특정 후보자 득표 내역 조회")
-    public ResponseEntity<List<FindVoteHistoryResponseDto>> getHistory(@PathVariable Long id) {
-        List<FindVoteHistoryResponseDto> responseDto = candidateService.getHistory(id);
+    public ResponseEntity<List<FindPollHistoryResponseDto>> getHistory(@PathVariable Long id) {
+        List<FindPollHistoryResponseDto> responseDto = candidateService.getHistory(id);
         return ResponseEntity.status(200).body(responseDto);
     }
 

@@ -1,6 +1,6 @@
 package com.polling.queryrepository;
 
-import com.polling.candidate.dto.response.FindVoteHistoryResponseDto;
+import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +20,9 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
     private final JPAQueryFactory query;
 
     @Override
-    public List<FindVoteHistoryResponseDto> findVoteHistoryByCandidateId(Long id) {
+    public List<FindPollHistoryResponseDto> findVoteHistoryByCandidateId(Long id) {
         return query
-                .select((Projections.constructor(FindVoteHistoryResponseDto.class,
+                .select((Projections.constructor(FindPollHistoryResponseDto.class,
                         member.nickname,
                         candidateHistory.voteCount,
                         candidateHistory.transactionId)))
@@ -33,9 +33,9 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
     }
 
     @Override
-    public List<FindVoteHistoryResponseDto> findVoteHistoryByCandidateIdLimit50(Long id) {
+    public List<FindPollHistoryResponseDto> findVoteHistoryByCandidateIdLimit50(Long id) {
         return query
-                .select((Projections.constructor(FindVoteHistoryResponseDto.class,
+                .select((Projections.constructor(FindPollHistoryResponseDto.class,
                         member.nickname,
                         candidateHistory.voteCount,
                         candidateHistory.transactionId)))
