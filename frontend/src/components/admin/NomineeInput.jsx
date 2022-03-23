@@ -57,7 +57,7 @@ function NomineeInput({onAdd}) {
             {profile_image !== '' 
             && ( <img id={styles.no_pro2} src={profile_image} alt="profile_image"/>)}
                 <div id={styles.nomi_box}>
-                    <p><label>이름 </label> : <input id={styles.nomi_input} type="text" onChange={changeInput} value={name} name="name" ref={nameRef} placeholder="참가자 이름을 동록하세요."/> </p>
+                    <p><label>이름 </label> : <input id={styles.nomi_input} type="text" onChange={changeInput} value={name} name="name" ref={nameRef} placeholder="참가자 이름을 등록하세요."/> </p>
                     <p><label>사진 </label> : <input id={styles.nomi_input2} type="text" onChange={changeInput} value={profile_image} name="profile_image" placeholder="참가자 사진을 등록하세요."/> </p>
                     <p>프로필 소개</p>  <p><textarea id={styles.nomi_input3} type="text" onChange={changeInput} value={profile} name="profile" maxLength="200"
                     placeholder="참가자 프로필 소개

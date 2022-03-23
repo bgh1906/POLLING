@@ -138,7 +138,7 @@ function CreatePoll() {
                     <div id={styles.poll_title}>
                         <span id={styles.input_name3}>Poll Title</span>
                         <TextField id={styles.title_input}
-                        onChange={changePollName}
+                        onChange={changePollName} 
                         variant="standard" placeholder="투표 이름을 입력하세요."/>
                     </div>
                     <div id={styles.poll_title2}>
