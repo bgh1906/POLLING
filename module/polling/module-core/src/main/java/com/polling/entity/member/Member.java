@@ -42,11 +42,6 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Set<MemberRole> memberRole;
 
-    //하루에 하나씩 주어지는 무료티켓. 마지막으로 기록된 날짜가 오늘이 아니라면 투표가능
-    private LocalDate lastTicket;
-
-    private int bonusTicket;
-
     @Builder
     public Member(String nickname, String email, String password, String phoneNumber, OAuthType oauthType, String oauthId){
         this.nickname = nickname;
@@ -57,15 +52,10 @@ public class Member extends BaseTimeEntity {
         this.oauthId = oauthId;
         memberRole = new HashSet<>();
         memberRole.add(MemberRole.ROLE_USER);
-        this.bonusTicket = 0;   //추가티켓은 0으로 init
     }
 
     public void changeNickname(String nickname){
         this.nickname = nickname;
-    }
-
-    public void changeEmail(String email){
-        this.email = email;
     }
 
     public void changePassword(String password){
@@ -77,16 +67,6 @@ public class Member extends BaseTimeEntity {
     }
 
     public void addRole(MemberRole role){
-        if(!this.memberRole.contains(role)){
-            this.memberRole.add(role);
-        }
+        this.memberRole.add(role);
     }
-
-    public void setLastTicketToNow(){
-        this.lastTicket = LocalDate.now();
-    }
-    public void setBonusTicket(int bonusTicket){
-        this.bonusTicket = bonusTicket;
-    }
-
 }

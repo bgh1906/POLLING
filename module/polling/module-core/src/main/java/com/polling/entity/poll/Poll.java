@@ -5,7 +5,6 @@ import com.polling.entity.candidate.Candidate;
 import com.polling.entity.common.BaseTimeEntity;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.status.PollStatus;
-import com.polling.entity.poll.status.ShowStatus;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -47,20 +46,17 @@ public class Poll extends BaseTimeEntity {
     @Column
     private PollStatus pollStatus = PollStatus.UNAPPROVED;
 
-    @Column
-    private ShowStatus showStatus;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.PERSIST)
     private List<Candidate> candidates = new ArrayList<>();
 
     @Builder
-    public Poll(String title, Member pollCreator, String content, LocalDateTime startDate, LocalDateTime endDate, ShowStatus showStatus) {
+    public Poll(String title, Member pollCreator, String content, LocalDateTime startDate, LocalDateTime endDate) {
         this.title = title;
         this.pollCreator = pollCreator;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.showStatus = showStatus;
     }
 
     public void changePollStatus(PollStatus pollStatus){

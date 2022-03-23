@@ -56,7 +56,7 @@ public class PollQueryRepositoryTest {
         savedPoll1.changePollStatus(PollStatus.IN_PROGRESS);
 
         //when
-        List<FindPollPageResponseDto> result = pollQueryRepository.findPollPage(0, 10, PollStatus.IN_PROGRESS);
+        List<FindPollPageResponseDto> result = pollQueryRepository.findPollPageByStatus(PollStatus.IN_PROGRESS ,0, 10);
 
         //then
         assertThat(result.size()).isEqualTo(1);
@@ -72,7 +72,7 @@ public class PollQueryRepositoryTest {
         savedPoll1.changePollStatus(PollStatus.DONE);
 
         //when
-        List<FindPollPageResponseDto> result = pollQueryRepository.findPollPage(0, 10, PollStatus.DONE);
+        List<FindPollPageResponseDto> result = pollQueryRepository.findPollPageByStatus(PollStatus.DONE, 0, 10);
 
         //then
         assertThat(result.size()).isEqualTo(1);

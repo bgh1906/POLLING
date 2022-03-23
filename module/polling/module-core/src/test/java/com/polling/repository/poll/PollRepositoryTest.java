@@ -1,9 +1,9 @@
 package com.polling.repository.poll;
 
 import com.polling.config.JpaConfig;
+import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
-import com.polling.entity.poll.status.ShowStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -39,7 +39,6 @@ public class PollRepositoryTest {
                 .content("hello")
                 .startDate(current)
                 .endDate(current.plusDays(10))
-                .showStatus(ShowStatus.SHOW_ALL)
                 .build();
 
         //when
@@ -50,7 +49,6 @@ public class PollRepositoryTest {
         assertThat(savedPoll.getTitle()).isEqualTo(title);
         assertThat(savedPoll.getContent()).isEqualTo("hello");
         assertThat(savedPoll.getPollStatus()).isEqualTo(PollStatus.UNAPPROVED);
-        assertThat(savedPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(savedPoll.getStartDate()).isEqualTo(current);
         assertThat(savedPoll.getEndDate()).isEqualTo(current.plusDays(10));
     }
@@ -70,7 +68,6 @@ public class PollRepositoryTest {
         assertThat(findPoll.getTitle()).isEqualTo(title);
         assertThat(findPoll.getContent()).isEqualTo("hello");
         assertThat(findPoll.getPollStatus()).isEqualTo(PollStatus.UNAPPROVED);
-        assertThat(findPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(findPoll.getStartDate()).isEqualTo(current);
         assertThat(findPoll.getEndDate()).isEqualTo(current.plusDays(10));
     }
@@ -106,6 +103,21 @@ public class PollRepositoryTest {
         assertThat(pollRepository.count()).isEqualTo(0);
     }
 
+    @Test
+    public void 후보자추가() throws Exception{
+        //given
+        String format = "2022-04-01";
+        LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+        Poll savedPoll = createPoll(current, current.plusDays(10));
+
+        //when
+        savedPoll.addCandidate(Candidate.builder().build());
+        Poll findPoll = pollRepository.findById(savedPoll.getId()).orElseThrow();
+
+        //then
+        assertThat(findPoll.getCandidates().size()).isEqualTo(1);
+    }
+
     private Poll createPoll(LocalDateTime start, LocalDateTime end){
         Poll poll = Poll.builder()
                 .title(title)
@@ -113,7 +125,6 @@ public class PollRepositoryTest {
                 .pollCreator(null)
                 .startDate(start)
                 .endDate(end)
-                .showStatus(ShowStatus.SHOW_ALL)
                 .build();
         return pollRepository.save(poll);
     }

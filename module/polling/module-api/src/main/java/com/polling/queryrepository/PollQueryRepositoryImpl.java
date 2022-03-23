@@ -38,7 +38,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
     }
 
     @Override
-    public List<FindPollPageResponseDto> findPollPage(int offset, int limit, PollStatus pollStatus) {
+    public List<FindPollPageResponseDto> findPollPageByStatus(PollStatus pollStatus, int offset, int limit) {
         return query
                 .select(Projections.constructor(FindPollPageResponseDto.class,
                         poll.id,

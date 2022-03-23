@@ -1,4 +1,4 @@
-package com.polling.member.controller.integratedSecurity;
+package com.polling.member.controller.integrated;
 
 import com.google.gson.Gson;
 import com.polling.auth.dto.LoginDto;

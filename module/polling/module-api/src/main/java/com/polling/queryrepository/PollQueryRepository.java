@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface PollQueryRepository {
     List<FindCandidateResponseDto> findCandidatesSortByVoteTotal(Long id);
-    List<FindPollPageResponseDto> findPollPage(int offset, int limit, PollStatus pollStatus);
+    List<FindPollPageResponseDto> findPollPageByStatus(PollStatus pollStatus, int offset, int limit);
 }

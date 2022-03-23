@@ -1,4 +1,4 @@
-package com.polling.member.controller.integratedSecurity;
+package com.polling.member.controller.integrated;
 
 import com.polling.entity.member.status.MemberRole;
 import org.springframework.security.test.context.support.WithSecurityContext;

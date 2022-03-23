@@ -38,7 +38,6 @@ public class PollService {
                 .content(requestDto.getContent())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
-                .showStatus(requestDto.getShowStatus())
                 .build());
 
         // 후보자 추가

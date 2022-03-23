@@ -32,9 +32,11 @@ public class PollController {
     }
 
     @GetMapping("/{status}/{page}/{limit}")
-    @ApiOperation(value = "현재 진행중인 투표 페이지 조회",  notes = "page는 0부터 시작하며, limit은 가져올 의 개수")
-    public ResponseEntity<List<FindPollPageResponseDto>> getProgressPollPage(@PathVariable PollStatus pollStatus, @PathVariable int page, @PathVariable int limit){
-        List<FindPollPageResponseDto> responseDto = pollQueryRepository.findPollPage(page, limit, pollStatus);
+    @ApiOperation(value = "현재 진행중인 투표 페이지 조회",  notes = "status는 unapproved, wait, progress, done으로 구분," +
+            "page는 0부터 시작하며, limit은 가져올 데이터의 개수")
+    public ResponseEntity<List<FindPollPageResponseDto>> getProgressPollPage(@PathVariable String status, @PathVariable int page, @PathVariable int limit){
+        PollStatus pollStatus = PollStatus.findStatusByName(status);
+        List<FindPollPageResponseDto> responseDto = pollQueryRepository.findPollPageByStatus(pollStatus, page, limit);
         return ResponseEntity.status(200).body(responseDto);
     }
 
