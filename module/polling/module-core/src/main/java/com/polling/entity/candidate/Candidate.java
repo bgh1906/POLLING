@@ -59,5 +59,4 @@ public class Candidate extends BaseTimeEntity {
         this.poll = poll;
     }
 
-
 }

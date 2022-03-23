@@ -1,4 +1,4 @@
-package com.polling.member.controller.integratedSecurity;
+package com.polling.member.controller.integrated;
 
 import com.polling.auth.service.MemberDetailsService;
 import lombok.RequiredArgsConstructor;

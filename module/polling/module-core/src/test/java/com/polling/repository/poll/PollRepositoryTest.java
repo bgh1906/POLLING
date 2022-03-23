@@ -1,6 +1,7 @@
 package com.polling.repository.poll;
 
 import com.polling.config.JpaConfig;
+import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.entity.poll.status.ShowStatus;
@@ -104,6 +105,21 @@ public class PollRepositoryTest {
 
         //then
         assertThat(pollRepository.count()).isEqualTo(0);
+    }
+
+    @Test
+    public void 후보자추가() throws Exception{
+        //given
+        String format = "2022-04-01";
+        LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+        Poll savedPoll = createPoll(current, current.plusDays(10));
+
+        //when
+        savedPoll.addCandidate(Candidate.builder().build());
+        Poll findPoll = pollRepository.findById(savedPoll.getId()).orElseThrow();
+
+        //then
+        assertThat(findPoll.getCandidates().size()).isEqualTo(1);
     }
 
     private Poll createPoll(LocalDateTime start, LocalDateTime end){
