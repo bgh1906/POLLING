@@ -6,25 +6,27 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class SaveCandidateRequestDto {
     private String name;
-    private String content;
-    private String profilePath;
+    private String profile;
+    private List<String> imagePaths;
 
     @Builder
-    public SaveCandidateRequestDto(String name, String content, String profilePath){
+    public SaveCandidateRequestDto(String name, String content, List<String> imagePaths){
         this.name = name;
-        this.content = content;
-        this.profilePath = profilePath;
+        this.profile = content;
+        this.imagePaths = imagePaths;
     }
 
     public Candidate toEntity(){
         return Candidate.builder()
                 .name(name)
-                .content(content)
-                .profilePath(profilePath)
+                .profile(profile)
+                .imagePaths(imagePaths)
                 .build();
     }
 }

@@ -2,7 +2,7 @@ package com.polling.entity.candidate;
 
 
 import com.polling.entity.common.BaseTimeEntity;
-import com.polling.entity.vote.Vote;
+import com.polling.entity.poll.Poll;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,37 +26,38 @@ public class Candidate extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vote_id")
-    private Vote vote;
+    private Poll poll;
 
     @Column(name = "candidate_name")
     private String name;
 
-    @Column
-    private String content;
+    private String profile;
+
+    private Integer voteTotalCount;
+
+    private String thumbnail;
 
     @Column
-    private Integer voteTotal;
-
-    @Embedded
-    private final CandidateInfo candidateInfo = new CandidateInfo();
-
-
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> imagePaths = new ArrayList<>();
 
     @Builder
-    public Candidate(Vote vote, String name, String content, String profilePath){
-        this.vote = vote;
+    public Candidate(Poll poll, String name, String profile, String thumbnail, List<String> imagePaths){
+        this.poll = poll;
         this.name = name;
-        this.content = content;
-        this.candidateInfo.setProfilePath(profilePath);
-        voteTotal = 0;
+        this.profile = profile;
+        this.thumbnail = thumbnail;
+        this.imagePaths = imagePaths;
+        voteTotalCount = 0;
     }
 
-    public void assignVote(Vote vote){
-        this.vote = vote;
+    public void addVoteTotal(int numOfVotes){
+        voteTotalCount += numOfVotes;
     }
 
-    public void addVote(int num){
-        voteTotal += num;
+    public void changePoll(Poll poll){
+        this.poll = poll;
     }
+
 
 }
