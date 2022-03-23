@@ -54,9 +54,9 @@ public class PollController {
         return ResponseEntity.status(200).build();
     }
 
-    @PatchMapping("/{id}&{status}")
+    @PatchMapping("/{id}/{status}")
     @ApiOperation(value = "투표 status 변경")
-    public ResponseEntity<Void> changeStatus(@PathVariable Long id, @PathVariable PollStatus status) {
+    public ResponseEntity<Void> changeStatus(@PathVariable Long id, @PathVariable String status) {
         pollService.updateStatus(id, status);
         return ResponseEntity.status(200).build();
     }
