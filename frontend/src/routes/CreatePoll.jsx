@@ -110,23 +110,38 @@ function CreatePoll() {
             pollLatestTX: {pollLatestTX},
             pollAllTX: {pollAllTX},
             nomiList: {nomiList},
-            status: "unapproved"
         }
         console.log(pollInfo)
+        console.log(nomiList)
     
         dispatch(actionCreators.addInfo(pollInfo));
+        axios.post(
+            "http://j6a304.p.ssafy.io:8080/api/votes",
+            {
+                "candidateDtos":[],
+                "content":{pollDescribe},
+                "endDate":{pollEnd},
+                "showStatus": "SHOW_ALL",
+                "starDate":{pollStart},
+                "title":{pollName},
+            },
+            {
+                headers: {
+                    Authorization:"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODA1ODk2NSwiZXhwIjoxNjQ4MDYwNzY1fQ.8o-Qm4UN9gvc0Jsb6LU5Ge7pHvAHL2HrD3W3BQ6W2RM"
+                },
+            }
+        )
+        .then((res) =>{
+            console.log(res)
+        })
 
         
     }
 
     return (
         <div >
-            <div>
               <NewNav  />
-            </div>
-            <div>
-                <div className={styles.title}> CREATE A POLL </div>
-            </div>
+            <div className={styles.title}> CREATE A POLL </div>
             
             <div className={styles.container} style={{marginBottom: "1vw"}}>
                 <div id={styles.info}> POLL&nbsp;&nbsp;INFORMATION </div>

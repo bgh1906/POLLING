@@ -1,12 +1,13 @@
 import styles from "./Admin.module.css";
 import { Link } from "react-router-dom";
 import NewNav from "../components/layout/NewNav.jsx"
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/layout/Footer";
 import Grid from '@mui/material/Grid';
 import Moment from 'react-moment';
 import logo from "../assets/mark_slim.png"
 import Button from '@mui/material/Button';
+import axios from "axios";
 
 
 
@@ -15,14 +16,26 @@ function Admin() {
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
+
+
+    const [polldata, setPolldata] = useState([]);
+
+    useEffect(()=>{
+            axios
+            .get("http://j6a304.p.ssafy.io:8080/api/votes")
+            .then((res) => {
+                setPolldata(res.data);
+            })
+            .catch((e) =>{
+                console.error(e);
+            });
+    }, []);
         
       
 
     return (
         <div>
-            <div>
               <NewNav />
-            </div>
 {/* Header */}
             <div id={styles.title_header}>
                 <div className={styles.title}>
