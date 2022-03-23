@@ -1,4 +1,4 @@
-package com.polling.poll.dto;
+package com.polling.poll.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class PollResponseDto {
+public class FindPollPageResponseDto {
     @NotNull
     Long id;
     @NotNull

@@ -2,7 +2,7 @@ package com.polling.poll.controller;
 
 import com.polling.auth.dto.MemberDto;
 import com.polling.entity.poll.status.PollStatus;
-import com.polling.poll.dto.PollResponseDto;
+import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollResponseDto;
 import com.polling.poll.service.PollService;
@@ -31,19 +31,17 @@ public class PollController {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping
-    @ApiOperation(value = "모든 투표 조회")
-    public ResponseEntity<List<PollResponseDto>> getVotes(){
-//        List<PollResponseDto> responseDto = pollQueryRepository.findAll();
-        List<PollResponseDto> responseDto = new ArrayList<>();
+    @GetMapping("/{page}/{limit}")
+    @ApiOperation(value = "현재 진행중인 투표 페이지 조회",  notes = "page는 0부터 시작하며, limit은 가져올 게시판의 개수")
+    public ResponseEntity<List<FindPollPageResponseDto>> getProgressPollPage(@PathVariable int page, @PathVariable int limit){
+        List<FindPollPageResponseDto> responseDto = pollQueryRepository.findProgressPollPage(page, limit);
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @GetMapping("/status/{status}")
-    @ApiOperation(value = "Status별 투표 조회")
-    public ResponseEntity<List<PollResponseDto>> getVotesByStatus(@PathVariable PollStatus status){
-//        List<PollResponseDto> responseDto = pollQueryRepository.findPollByStatus(status);
-        List<PollResponseDto> responseDto = new ArrayList<>();
+    @GetMapping("/end/{page}/{limit}")
+    @ApiOperation(value = "종료된 투표 페이지 조회", notes = "page는 0부터 시작하며, limit은 가져올 게시판의 개수")
+    public ResponseEntity<List<FindPollPageResponseDto>> getResultPollPage(@PathVariable int page, @PathVariable int limit){
+        List<FindPollPageResponseDto> responseDto = pollQueryRepository.findDonePollPage(page, limit);
         return ResponseEntity.status(200).body(responseDto);
     }
 
