@@ -53,7 +53,7 @@ public class CandidateService {
     public FindProfileResponseDto getProfile(Long id){
         Candidate candidate = candidateRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
-        List<CommentDto> comments = commentQueryRepository.findCommentByCandidateId(id);
+        List<CommentDto> comments = commentQueryRepository.findAllByCandidateId(id);
         return FindProfileResponseDto.of(candidate, comments);
     }
 
@@ -80,8 +80,7 @@ public class CandidateService {
 
     public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, Long userId){
 
-        //0표 투표라면 exception
-        if(requestDto.getVoteCount() == 0){
+        if(requestDto.getVoteCount() < 0){
             throw new CustomException(CustomErrorResult.USE_YOUR_TICKET);
         }
 
@@ -150,7 +149,5 @@ public class CandidateService {
         }
         commentRepository.deleteById(commentId);
     }
-
-
 
 }

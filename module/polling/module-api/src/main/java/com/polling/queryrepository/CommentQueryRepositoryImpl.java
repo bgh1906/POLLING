@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.polling.entity.candidate.QCandidate.candidate;
 import static com.polling.entity.comment.QComment.comment;
 import static com.polling.entity.member.QMember.member;
 
@@ -21,7 +22,7 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<CommentDto> findCommentByCandidateId(Long id) {
+    public List<CommentDto> findAllByCandidateId(Long candidateId) {
         return query
                 .select((Projections.constructor(CommentDto.class,
                         comment.id,
@@ -29,8 +30,10 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
                         member.nickname,
                         comment.content)))
                 .from(comment)
-                .leftJoin(member, comment.member)
-                .where(comment.candidate.id.eq(id))
+                .leftJoin(comment.member, member)
+                .innerJoin(comment.candidate, candidate)
+                .where(comment.candidate.id.eq(candidateId))
+                .orderBy(comment.createdDate.asc())
                 .fetch();
     }
 }
