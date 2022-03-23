@@ -15,6 +15,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import dayjs from "dayjs";
+import axios from "axios";
 
 
 
@@ -112,7 +113,10 @@ function CreatePoll() {
             status: "unapproved"
         }
         console.log(pollInfo)
+    
         dispatch(actionCreators.addInfo(pollInfo));
+
+        
     }
 
     return (
