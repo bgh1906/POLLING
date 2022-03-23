@@ -6,7 +6,7 @@ import NewNav from "../components/layout/NewNav.jsx";
 function Management() {
 
     return (
-        <div>
+        <div style={{height:'100vh'}}>
             <NewNav/>
             <div className={Styles.management}>Management</div>
             {/* <div className={Styles.managementbg}> */}

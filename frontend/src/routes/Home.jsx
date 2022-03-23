@@ -49,11 +49,8 @@ function Home() {
 
 
     return (
-        <div>
-            <div>
+        <div style={{height:'100vh'}}>
               <Newnav />
-            </div>
-
             <div>
                 {mode_about && <Fade><About changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}
                 {mode_poll && <Fade><PollListmain changeModeplus={changeModeplus} changeModeminus={changeModeminus}/></Fade>}

@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import history from "../../assets/history.png"
-import arrow from "../../assets/arrow.png"
+import arrow7 from "../../assets/arrow7.png"
 import { Link } from "react-router-dom";
 
 
@@ -18,8 +18,8 @@ function Historymain({changeModeplus, changeModeminus}) {
             <img id={styles.main_image2} src={history} alt="history" />
             <p id={styles.click2}>Click here</p>
             <Link to='/history' id={styles.sub_text_history2}> Go to History </Link>
-            <button id={styles.arrow_button} onClick={changeModeminus}><img id={styles.arrow} src={arrow} alt="arrow"/></button>
-            <button id={styles.arrow_button} onClick={changeModeplus}><img id={styles.arrow2} src={arrow} alt="arrow2"/></button> 
+            <button id={styles.arrow_button} onClick={changeModeminus}><img id={styles.arrow} src={arrow7} alt="arrow"/></button>
+            <button id={styles.arrow_button} onClick={changeModeplus}><img id={styles.arrow2} src={arrow7} alt="arrow2"/></button> 
         </div>
     );
 }
