@@ -105,6 +105,13 @@ project(':module-api') {
     }
 }
 
+project(':module-blockchain') {
+    dependencies {
+        api project(':module-common')
+        api project(':module-core')
+    }
+}
+
 project(':module-common') {
     dependencies {
         api project(':module-core')

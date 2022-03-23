@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.polling.entity.candidate.QCandidate.candidate;
-import static com.polling.entity.poll.QVote.vote;
+import static com.polling.entity.poll.QPoll.poll;
 
 
 @Transactional(readOnly = true)
@@ -31,7 +31,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
                         candidate.candidateInfo,
                         candidate.voteTotal)))
                 .from(candidate)
-                .where(candidate.vote.id.eq(id))
+                .where(candidate.poll.id.eq(id))
                 .orderBy(candidate.voteTotal.desc())
                 .fetch();
     }
@@ -40,13 +40,13 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
     public List<PollResponseDto> findVoteByStatus(PollStatus status) {
         return query
                 .select((Projections.constructor(PollResponseDto.class,
-                        vote.id,
-                        vote.name,
-                        vote.createdDate,
-                        vote.endDate
+                        poll.id,
+                        poll.title,
+                        poll.createdDate,
+                        poll.endDate
                         )))
-                .from(vote)
-                .where(vote.voteStatus.eq(status))
+                .from(poll)
+                .where(poll.pollStatus.eq(status))
                 .fetch();
     }
 
@@ -54,12 +54,12 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
     public List<PollResponseDto> findAll() {
         return query
                 .select((Projections.constructor(PollResponseDto.class,
-                        vote.id,
-                        vote.name,
-                        vote.createdDate,
-                        vote.endDate
+                        poll.id,
+                        poll.title,
+                        poll.createdDate,
+                        poll.endDate
                 )))
-                .from(vote)
+                .from(poll)
                 .fetch();
     }
 }
