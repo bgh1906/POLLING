@@ -1,7 +1,7 @@
 .background_test {
     background: linear-gradient(180deg, rgba(251, 217, 233, 0.2) 0%, rgba(242, 248, 170, 0.2) 60.79%), linear-gradient(180deg, rgba(213, 255, 245, 0.8) 0%, rgba(255, 219, 234, 0.8) 100%);
-    margin: 14.5px;
-
+    margin: 0;
+    
 }
 
 
@@ -13,7 +13,8 @@
 /* 스크롤바 막대 설정*/
 .scrollbar::-webkit-scrollbar-thumb{
     height: 17%;
-    background-color: rgba(33,133,133,1);
+    background-color: #77a3a9;
+    border-radius: 10px;
     /* border-radius: 10px;   */
 }
 
@@ -21,3 +22,7 @@
 .scrollbar::-webkit-scrollbar-track{
     background-color: rgba(221, 252, 244, 0.8);
 }
+
+/* html {
+    height:100%;
+} */
