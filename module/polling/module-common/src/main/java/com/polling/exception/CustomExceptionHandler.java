@@ -52,12 +52,17 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<ErrorResponse> handleException(final Exception exception) {
-        return this.makeErrorResponseEntity(CustomErrorResult.STATUS_NOT_FOUND);
+        return this.makeErrorResponseEntity(exception);
     }
 
     private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final CustomErrorResult errorResult) {
         return ResponseEntity.status(errorResult.getHttpStatus())
                 .body(new ErrorResponse(errorResult.name(), errorResult.getDetail()));
+    }
+
+    private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final Exception exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.name(), exception.getMessage()));
     }
 
     @Getter

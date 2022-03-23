@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+    default: local
+    include:
+      - core-local
+      - common-local
+
+logging:
+  file.name: ./PJT-web.log
+  level:
+    root: INFO
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+global:
+  coinbasekey:
+    0x731256b1ef4e69a4d439bb0d6dc601bd0008cbed
+  coinbasepw:
+    ""
