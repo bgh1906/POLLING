@@ -26,7 +26,7 @@ subprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+//        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -38,11 +38,6 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-        /* JPA */
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
-        implementation 'com.querydsl:querydsl-jpa'
-        implementation 'com.querydsl:querydsl-apt'
 
         /* Security */
         implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -100,20 +95,18 @@ subprojects {
 
 project(':module-api') {
     dependencies {
-        api project(':module-common')
-        api project(':module-core')
+        implementation project(':module-common')
+        implementation project(':module-core')
     }
 }
 
 project(':module-blockchain') {
     dependencies {
-        api project(':module-common')
-        api project(':module-core')
     }
 }
 
 project(':module-common') {
     dependencies {
-        api project(':module-core')
+        implementation project(':module-core')
     }
 }
