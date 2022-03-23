@@ -49,7 +49,7 @@ public class PollRepositoryTest {
         assertThat(savedPoll.getId()).isNotNull();
         assertThat(savedPoll.getTitle()).isEqualTo(title);
         assertThat(savedPoll.getContent()).isEqualTo("hello");
-        assertThat(savedPoll.getPollStatus()).isEqualTo(PollStatus.WAIT);
+        assertThat(savedPoll.getPollStatus()).isEqualTo(PollStatus.UNAPPROVED);
         assertThat(savedPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(savedPoll.getStartDate()).isEqualTo(current);
         assertThat(savedPoll.getEndDate()).isEqualTo(current.plusDays(10));
@@ -69,7 +69,7 @@ public class PollRepositoryTest {
         assertThat(findPoll.getId()).isNotNull();
         assertThat(findPoll.getTitle()).isEqualTo(title);
         assertThat(findPoll.getContent()).isEqualTo("hello");
-        assertThat(findPoll.getPollStatus()).isEqualTo(PollStatus.WAIT);
+        assertThat(findPoll.getPollStatus()).isEqualTo(PollStatus.UNAPPROVED);
         assertThat(findPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(findPoll.getStartDate()).isEqualTo(current);
         assertThat(findPoll.getEndDate()).isEqualTo(current.plusDays(10));
