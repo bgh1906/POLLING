@@ -1,7 +1,6 @@
 package com.polling.member.controller;
 
 import com.google.gson.Gson;
-
 import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;

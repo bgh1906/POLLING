@@ -1,8 +1,11 @@
-package com.polling.vote.dto.response;
+package com.polling.poll.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -10,7 +13,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class FindVoteResponseDto {
+public class FindPollResponseDto {
     private List<FindCandidateResponseDto> candidates;
     @NotNull
     String name;
@@ -24,7 +27,7 @@ public class FindVoteResponseDto {
     LocalDateTime endDate;
 
     @Builder
-    public FindVoteResponseDto(List<FindCandidateResponseDto> list,
+    public FindPollResponseDto(List<FindCandidateResponseDto> list,
                                String name, String content, LocalDateTime startDate, LocalDateTime endDate){
         this.candidates = list;
         this.content = content;

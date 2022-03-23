@@ -1,20 +1,20 @@
-package com.polling.vote.service;
+package com.polling.poll.service;
 
 
 import com.polling.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.repository.candidate.CandidateRepository;
-import com.polling.repository.member.MemberRepository;
-import com.polling.repository.vote.VoteRepository;
-import com.polling.vote.dto.response.FindVoteResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.member.Member;
-import com.polling.entity.vote.Vote;
-import com.polling.entity.vote.status.VoteStatus;
+import com.polling.entity.poll.Poll;
+import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.vote.dto.request.SaveVoteRequestDto;
-import com.polling.queryrepository.VoteQueryRepository;
+import com.polling.poll.dto.request.SavePollRequestDto;
+import com.polling.poll.dto.response.FindPollResponseDto;
+import com.polling.queryrepository.PollQueryRepository;
+import com.polling.repository.candidate.CandidateRepository;
+import com.polling.repository.member.MemberRepository;
+import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,53 +25,53 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class VoteService {
-    private final VoteRepository voteRepository;
+    private final PollRepository pollRepository;
     private final MemberRepository memberRepository;
-    private final VoteQueryRepository voteQueryRepository;
+    private final PollQueryRepository pollQueryRepository;
     private final CandidateRepository candidateRepository;
 
-    public Long saveVote(SaveVoteRequestDto requestDto, String hostEmail){
+    public Long saveVote(SavePollRequestDto requestDto, String hostEmail){
         Member host = memberRepository.findByEmail(hostEmail)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         //save vote
-        Vote vote = Vote.builder()
-                .name(requestDto.getName())
+        Poll poll = Poll.builder()
+                .title(requestDto.getName())
                 .host(host)
                 .content(requestDto.getContent())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
-                .historyStatus(requestDto.getHistoryStatus())
+                .showStatus(requestDto.getShowStatus())
                 .build();
-        Vote savedVote = voteRepository.save(vote);
+        Poll savedPoll = pollRepository.save(poll);
 
         //save candidate
         for (SaveCandidateRequestDto request:
                 requestDto.getCandidates()) {
             Candidate candidate = request.toEntity();
-            candidate.assignVote(savedVote);
+            candidate.assignVote(savedPoll);
             candidateRepository.save(candidate);
         }
 
-        return savedVote.getId();
+        return savedPoll.getId();
     }
 
-    public FindVoteResponseDto getRanking(Long id){
-        Vote vote = voteRepository.findById(id)
+    public FindPollResponseDto getRanking(Long id){
+        Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        List<FindCandidateResponseDto> list = voteQueryRepository.findCandidatesSortByVoteTotal(id);
-        return new FindVoteResponseDto(list, vote.getName(), vote.getContent(), vote.getStartDate(), vote.getEndDate());
+        List<FindCandidateResponseDto> list = pollQueryRepository.findCandidatesSortByVoteTotal(id);
+        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getStartDate(), poll.getEndDate());
     }
 
     public void delete(Long id){
-        Vote vote = voteRepository.findById(id)
+        Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        voteRepository.deleteById(id);
+        pollRepository.deleteById(id);
     }
 
-    public void updateStatus(Long id, VoteStatus status){
-        Vote vote = voteRepository.findById(id)
+    public void updateStatus(Long id, PollStatus status){
+        Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        vote.setVoteStatus(status);
+        poll.changePollStatus(status);
     }
 
 }
