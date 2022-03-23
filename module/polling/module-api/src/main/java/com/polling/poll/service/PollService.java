@@ -1,7 +1,6 @@
 package com.polling.poll.service;
 
 
-import com.polling.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.member.Member;
@@ -12,7 +11,6 @@ import com.polling.exception.CustomException;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollResponseDto;
 import com.polling.queryrepository.PollQueryRepository;
-import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,35 +22,33 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class VoteService {
+public class PollService {
     private final PollRepository pollRepository;
     private final MemberRepository memberRepository;
     private final PollQueryRepository pollQueryRepository;
-    private final CandidateRepository candidateRepository;
 
-    public Long saveVote(SavePollRequestDto requestDto, String hostEmail){
-        Member host = memberRepository.findByEmail(hostEmail)
+    public void savePoll(SavePollRequestDto requestDto, String pollCreatorEmail){
+        Member pollCreator = memberRepository.findByEmail(pollCreatorEmail)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
-        //save vote
-        Poll poll = Poll.builder()
-                .title(requestDto.getName())
-                .host(host)
+
+        // 투표 생성
+        Poll poll = pollRepository.save(Poll.builder()
+                .pollCreator(pollCreator)
+                .title(requestDto.getTitle())
                 .content(requestDto.getContent())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
                 .showStatus(requestDto.getShowStatus())
-                .build();
-        Poll savedPoll = pollRepository.save(poll);
+                .build());
 
-        //save candidate
-        for (SaveCandidateRequestDto request:
-                requestDto.getCandidates()) {
-            Candidate candidate = request.toEntity();
-            candidate.assignVote(savedPoll);
-            candidateRepository.save(candidate);
-        }
-
-        return savedPoll.getId();
+        // 후보자 추가
+        requestDto.getCandidateDtos().forEach(candidateDto -> {
+                    poll.addCandidate(Candidate.builder()
+                            .imagePaths(candidateDto.getImagePaths())
+                            .name(candidateDto.getName())
+                            .profile(candidateDto.getProfile())
+                            .build());
+                    });
     }
 
     public FindPollResponseDto getRanking(Long id){

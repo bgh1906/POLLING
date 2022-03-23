@@ -1,6 +1,7 @@
 package com.polling.entity.poll;
 
 
+import com.polling.entity.candidate.Candidate;
 import com.polling.entity.common.BaseTimeEntity;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.status.PollStatus;
@@ -13,6 +14,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -30,7 +33,7 @@ public class Poll extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id")
-    private Member host;
+    private Member pollCreator;
 
     @Column
     private String content;
@@ -47,10 +50,13 @@ public class Poll extends BaseTimeEntity {
     @Column
     private ShowStatus showStatus;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.PERSIST)
+    private List<Candidate> candidates = new ArrayList<>();
+
     @Builder
-    public Poll(String title, Member host, String content, LocalDateTime startDate, LocalDateTime endDate, ShowStatus showStatus) {
+    public Poll(String title, Member pollCreator, String content, LocalDateTime startDate, LocalDateTime endDate, ShowStatus showStatus) {
         this.title = title;
-        this.host = host;
+        this.pollCreator = pollCreator;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -69,5 +75,10 @@ public class Poll extends BaseTimeEntity {
     public void changeDescription(String title, String content){
         this.title = title;
         this.content = content;
+    }
+
+    public void addCandidate(Candidate candidate){
+        this.candidates.add(candidate);
+        candidate.changePoll(this);
     }
 }

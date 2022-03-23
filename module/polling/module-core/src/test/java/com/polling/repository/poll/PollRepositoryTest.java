@@ -25,7 +25,7 @@ public class PollRepositoryTest {
     private final String title = "test_poll_title";
 
     @Test
-    public void voteRepositoryIsNotNull() throws Exception{
+    public void pollRepositoryIsNotNull() throws Exception{
         assertThat(pollRepository).isNotNull();
     }
     
@@ -110,7 +110,7 @@ public class PollRepositoryTest {
         Poll poll = Poll.builder()
                 .title(title)
                 .content("hello")
-                .host(null)
+                .pollCreator(null)
                 .startDate(start)
                 .endDate(end)
                 .showStatus(ShowStatus.SHOW_ALL)

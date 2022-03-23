@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -29,32 +31,30 @@ public class Candidate extends BaseTimeEntity {
     @Column(name = "candidate_name")
     private String name;
 
-    @Column
-    private String content;
+    private String profile;
 
-    @Column
     private Integer voteTotal;
 
-    @Embedded
-    private final CandidateInfo candidateInfo = new CandidateInfo();
-
-
+    @Column
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> imagePaths = new ArrayList<>();
 
     @Builder
-    public Candidate(Poll poll, String name, String content, String profilePath){
+    public Candidate(Poll poll, String name, String profile, List<String> imagePaths){
         this.poll = poll;
         this.name = name;
-        this.content = content;
-        this.candidateInfo.setProfilePath(profilePath);
+        this.profile = profile;
+        this.imagePaths = imagePaths;
         voteTotal = 0;
     }
 
-    public void assignVote(Poll poll){
+    public void addVoteTotal(int numOfVotes){
+        voteTotal += numOfVotes;
+    }
+
+    public void changePoll(Poll poll){
         this.poll = poll;
     }
 
-    public void addVote(int num){
-        voteTotal += num;
-    }
 
 }

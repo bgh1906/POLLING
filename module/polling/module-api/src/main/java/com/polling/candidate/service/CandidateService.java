@@ -107,7 +107,7 @@ public class CandidateService {
                 .voteCount(requestDto.getVoteCount())
                 .build();
         candidateHistoryRepository.save(candidateHistory);
-        candidate.addVote(requestDto.getVoteCount());
+        candidate.addVoteTotal(requestDto.getVoteCount());
 
         //티켓차감
         member.setLastTicketToNow();
