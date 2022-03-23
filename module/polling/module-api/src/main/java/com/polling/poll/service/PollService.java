@@ -51,6 +51,7 @@ public class PollService {
                     });
     }
 
+    @Transactional(readOnly = true)
     public FindPollResponseDto getRanking(Long id){
         Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
@@ -61,7 +62,7 @@ public class PollService {
     public void delete(Long id){
         Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        pollRepository.deleteById(id);
+        pollRepository.delete(poll);
     }
 
     public void updateStatus(Long id, PollStatus status){

@@ -9,6 +9,4 @@ import java.util.List;
 
 public interface PollQueryRepository {
     List<FindCandidateResponseDto> findCandidatesSortByVoteTotal(Long id);
-    List<PollResponseDto> findVoteByStatus(PollStatus status);
-    List<PollResponseDto> findAll();
 }

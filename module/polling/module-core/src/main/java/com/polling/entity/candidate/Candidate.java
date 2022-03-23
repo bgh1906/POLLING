@@ -33,23 +33,26 @@ public class Candidate extends BaseTimeEntity {
 
     private String profile;
 
-    private Integer voteTotal;
+    private Integer voteTotalCount;
+
+    private String thumbnail;
 
     @Column
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> imagePaths = new ArrayList<>();
 
     @Builder
-    public Candidate(Poll poll, String name, String profile, List<String> imagePaths){
+    public Candidate(Poll poll, String name, String profile, String thumbnail, List<String> imagePaths){
         this.poll = poll;
         this.name = name;
         this.profile = profile;
+        this.thumbnail = thumbnail;
         this.imagePaths = imagePaths;
-        voteTotal = 0;
+        voteTotalCount = 0;
     }
 
     public void addVoteTotal(int numOfVotes){
-        voteTotal += numOfVotes;
+        voteTotalCount += numOfVotes;
     }
 
     public void changePoll(Poll poll){

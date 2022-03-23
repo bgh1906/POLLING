@@ -16,7 +16,9 @@ public class PollResponseDto {
     @NotNull
     Long id;
     @NotNull
-    String name;
+    String title;
+    @NotNull
+    String content;
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     LocalDateTime startDate;

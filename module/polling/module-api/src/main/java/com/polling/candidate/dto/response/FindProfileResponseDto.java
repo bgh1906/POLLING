@@ -3,7 +3,6 @@ package com.polling.candidate.dto.response;
 
 import com.polling.candidate.dto.CommentDto;
 import com.polling.entity.candidate.Candidate;
-import com.polling.entity.candidate.CandidateInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +20,6 @@ public class FindProfileResponseDto {
     private List<CommentDto> comments;
 
     public static FindProfileResponseDto of(Candidate candidate, List<CommentDto> comments){
-        return new FindProfileResponseDto(candidate.getName(), candidate.getProfile(), candidate.getImagePaths(), candidate.getVoteTotal(), comments);
+        return new FindProfileResponseDto(candidate.getName(), candidate.getProfile(), candidate.getImagePaths(), candidate.getVoteTotalCount(), comments);
     }
 }

@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -33,14 +34,16 @@ public class PollController {
     @GetMapping
     @ApiOperation(value = "모든 투표 조회")
     public ResponseEntity<List<PollResponseDto>> getVotes(){
-        List<PollResponseDto> responseDto = pollQueryRepository.findAll();
+//        List<PollResponseDto> responseDto = pollQueryRepository.findAll();
+        List<PollResponseDto> responseDto = new ArrayList<>();
         return ResponseEntity.status(200).body(responseDto);
     }
 
     @GetMapping("/status/{status}")
     @ApiOperation(value = "Status별 투표 조회")
     public ResponseEntity<List<PollResponseDto>> getVotesByStatus(@PathVariable PollStatus status){
-        List<PollResponseDto> responseDto = pollQueryRepository.findVoteByStatus(status);
+//        List<PollResponseDto> responseDto = pollQueryRepository.findPollByStatus(status);
+        List<PollResponseDto> responseDto = new ArrayList<>();
         return ResponseEntity.status(200).body(responseDto);
     }
 
@@ -65,8 +68,4 @@ public class PollController {
         return ResponseEntity.status(200).build();
     }
 
-    //todo: throw Custom exception 처리
-//    private String getCurrentUserEmail(){
-//        return SecurityUtils.getCurrentUsername().orElseThrow();
-//    }
 }
