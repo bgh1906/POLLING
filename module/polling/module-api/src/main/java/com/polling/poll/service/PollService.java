@@ -64,10 +64,11 @@ public class PollService {
         pollRepository.delete(poll);
     }
 
-    public void updateStatus(Long id, PollStatus status){
+    public void updateStatus(Long id, String status){
+        PollStatus pollStatus = PollStatus.findStatusByName(status);
         Poll poll = pollRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        poll.changePollStatus(status);
+        poll.changePollStatus(pollStatus);
     }
 
 }
