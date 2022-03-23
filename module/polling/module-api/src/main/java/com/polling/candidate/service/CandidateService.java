@@ -13,7 +13,6 @@ import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.comment.Comment;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
-import com.polling.entity.poll.status.ShowStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
@@ -64,53 +63,54 @@ public class CandidateService {
      */
     @Transactional(readOnly = true)
     public List<FindPollHistoryResponseDto> getHistory(Long id){
-        Poll poll = pollRepository.findById(id)
-                .orElseThrow(()-> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-
-        List<FindPollHistoryResponseDto> response;
-        if(poll.getShowStatus().equals(ShowStatus.SHOW_ALL)){
-           response = candidateHistoryQueryRepository.findVoteHistoryByCandidateId(id);
-        }else if(poll.getShowStatus().equals(ShowStatus.SHOW_RECENT)){
-            response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
-        }else{
-            throw new CustomException(CustomErrorResult.STATUS_NOT_FOUND);
-        }
-        return response;
+//        Poll poll = pollRepository.findById(id)
+//                .orElseThrow(()-> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
+//
+//        List<FindPollHistoryResponseDto> response;
+//        if(poll.getShowStatus().equals(ShowStatus.SHOW_ALL)){
+//           response = candidateHistoryQueryRepository.findCandidateHistoryById(id);
+//        }else if(poll.getShowStatus().equals(ShowStatus.SHOW_RECENT)){
+//            response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
+//        }else{
+//            throw new CustomException(CustomErrorResult.STATUS_NOT_FOUND);
+//        }
+//        return response;
+        return null;
     }
 
     public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, Long userId){
 
-        if(requestDto.getVoteCount() < 0){
-            throw new CustomException(CustomErrorResult.USE_YOUR_TICKET);
-        }
-
-        //해당 표수 투표 가능한지 확인
-        Member member = memberRepository.findById(userId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
-        int remainTicket = 0;
-        if(member.getLastTicket().compareTo(LocalDate.now()) == 0){
-            remainTicket++;
-        }
-        remainTicket += member.getBonusTicket();
-        if(remainTicket > requestDto.getVoteCount()){
-            throw new CustomException(CustomErrorResult.NO_LEFT_TICKET);
-        }
-
-        //본 투표
-        Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
-                .orElseThrow(()-> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
-        CandidateHistory candidateHistory = CandidateHistory.builder()
-                .candidate(candidate)
-                .transactionId(requestDto.getTransactionId())
-                .member(member)
-                .voteCount(requestDto.getVoteCount())
-                .build();
-        candidateHistoryRepository.save(candidateHistory);
-        candidate.addVoteTotal(requestDto.getVoteCount());
-
-        //티켓차감
-        member.setLastTicketToNow();
-        member.setBonusTicket(remainTicket-requestDto.getVoteCount()+1);
+//        if(requestDto.getVoteCount() < 0){
+//            throw new CustomException(CustomErrorResult.USE_YOUR_TICKET);
+//        }
+//
+//        //해당 표수 투표 가능한지 확인
+//        Member member = memberRepository.findById(userId)
+//                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+//        int remainTicket = 0;
+//        if(member.getLastTicket().compareTo(LocalDate.now()) == 0){
+//            remainTicket++;
+//        }
+//        remainTicket += member.getBonusTicket();
+//        if(remainTicket > requestDto.getVoteCount()){
+//            throw new CustomException(CustomErrorResult.NO_LEFT_TICKET);
+//        }
+//
+//        //본 투표
+//        Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
+//                .orElseThrow(()-> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
+//        CandidateHistory candidateHistory = CandidateHistory.builder()
+//                .candidate(candidate)
+//                .transactionId(requestDto.getTransactionId())
+//                .member(member)
+//                .voteCount(requestDto.getVoteCount())
+//                .build();
+//        candidateHistoryRepository.save(candidateHistory);
+//        candidate.addVoteTotal(requestDto.getVoteCount());
+//
+//        //티켓차감
+//        member.setLastTicketToNow();
+//        member.setBonusTicket(remainTicket-requestDto.getVoteCount()+1);
 
     }
 

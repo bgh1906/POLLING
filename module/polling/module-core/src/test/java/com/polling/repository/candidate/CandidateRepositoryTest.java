@@ -3,15 +3,11 @@ package com.polling.repository.candidate;
 
 import com.polling.config.JpaConfig;
 import com.polling.entity.candidate.Candidate;
-import com.polling.entity.poll.Poll;
-import com.polling.entity.poll.status.ShowStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.*;

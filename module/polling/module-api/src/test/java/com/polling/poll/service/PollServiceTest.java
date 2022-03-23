@@ -3,7 +3,6 @@ package com.polling.poll.service;
 import com.polling.candidate.dto.request.SaveCandidateRequestDto;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
-import com.polling.entity.poll.status.ShowStatus;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -50,7 +48,6 @@ public class PollServiceTest {
         SavePollRequestDto savePollRequestDto = SavePollRequestDto.builder()
                 .title("testTitle")
                 .content("testContent")
-                .showStatus(ShowStatus.SHOW_ALL)
                 .startDate(current)
                 .endDate(current.plusDays(10))
                 .candidateDtos(candidateRequestDtos)

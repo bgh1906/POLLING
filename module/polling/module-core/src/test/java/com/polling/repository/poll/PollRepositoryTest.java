@@ -4,7 +4,6 @@ import com.polling.config.JpaConfig;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
-import com.polling.entity.poll.status.ShowStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -40,7 +39,6 @@ public class PollRepositoryTest {
                 .content("hello")
                 .startDate(current)
                 .endDate(current.plusDays(10))
-                .showStatus(ShowStatus.SHOW_ALL)
                 .build();
 
         //when
@@ -51,7 +49,6 @@ public class PollRepositoryTest {
         assertThat(savedPoll.getTitle()).isEqualTo(title);
         assertThat(savedPoll.getContent()).isEqualTo("hello");
         assertThat(savedPoll.getPollStatus()).isEqualTo(PollStatus.WAIT);
-        assertThat(savedPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(savedPoll.getStartDate()).isEqualTo(current);
         assertThat(savedPoll.getEndDate()).isEqualTo(current.plusDays(10));
     }
@@ -71,7 +68,6 @@ public class PollRepositoryTest {
         assertThat(findPoll.getTitle()).isEqualTo(title);
         assertThat(findPoll.getContent()).isEqualTo("hello");
         assertThat(findPoll.getPollStatus()).isEqualTo(PollStatus.WAIT);
-        assertThat(findPoll.getShowStatus()).isEqualTo(ShowStatus.SHOW_ALL);
         assertThat(findPoll.getStartDate()).isEqualTo(current);
         assertThat(findPoll.getEndDate()).isEqualTo(current.plusDays(10));
     }
@@ -129,7 +125,6 @@ public class PollRepositoryTest {
                 .pollCreator(null)
                 .startDate(start)
                 .endDate(end)
-                .showStatus(ShowStatus.SHOW_ALL)
                 .build();
         return pollRepository.save(poll);
     }
