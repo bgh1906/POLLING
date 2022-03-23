@@ -45,7 +45,7 @@ public class Poll extends BaseTimeEntity {
     private LocalDateTime endDate;
 
     @Column
-    private PollStatus pollStatus = PollStatus.WAIT;
+    private PollStatus pollStatus = PollStatus.UNAPPROVED;
 
     @Column
     private ShowStatus showStatus;

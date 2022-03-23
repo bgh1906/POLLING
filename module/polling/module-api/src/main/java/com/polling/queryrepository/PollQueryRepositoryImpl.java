@@ -38,7 +38,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
     }
 
     @Override
-    public List<FindPollPageResponseDto> findProgressPollPage(int offset, int limit) {
+    public List<FindPollPageResponseDto> findPollPage(int offset, int limit, PollStatus pollStatus) {
         return query
                 .select(Projections.constructor(FindPollPageResponseDto.class,
                         poll.id,
@@ -47,24 +47,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
                         poll.startDate,
                         poll.endDate))
                 .from(poll)
-                .where(poll.pollStatus.eq(PollStatus.IN_PROGRESS))
-                .orderBy(poll.createdDate.desc())
-                .offset(offset)
-                .limit(limit)
-                .fetch();
-    }
-
-    @Override
-    public List<FindPollPageResponseDto> findDonePollPage(int offset, int limit) {
-        return query
-                .select(Projections.constructor(FindPollPageResponseDto.class,
-                        poll.id,
-                        poll.title,
-                        poll.content,
-                        poll.startDate,
-                        poll.endDate))
-                .from(poll)
-                .where(poll.pollStatus.eq(PollStatus.DONE))
+                .where(poll.pollStatus.eq(pollStatus))
                 .orderBy(poll.createdDate.desc())
                 .offset(offset)
                 .limit(limit)
