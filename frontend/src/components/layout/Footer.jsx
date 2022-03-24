@@ -10,13 +10,19 @@ function Footer() {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
+    let iscompomount = true
+
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 300) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
+      if(iscompomount){
+        if (window.pageYOffset > 300) {
+          setShowButton(true);
+        } else {
+          setShowButton(false);
+        }
+      } });
+      return () => {
+        iscompomount = false
       }
-    });
   }, []);
 
   const scrollToTop = () => {

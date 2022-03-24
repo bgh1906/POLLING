@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx";
 import Footer from "../components/layout/Footer.jsx";
-import Styles from "./Companylogin.module.css";
-import kakao from "../assets/kakao.png";
+import Styles2 from "./Companylogin2.module.css";
 import { useState } from "react";
 import axios from "axios";
+import NewNav from "../components/layout/NewNav.jsx";
 
-function Companylogin() {
+function Companylogin2() {
 
     //id 받아오기
+    
     const [id, setId] = useState("");
     const getId = (e) => {
         setId(e.target.value);
@@ -46,34 +46,26 @@ function Companylogin() {
         }
     };
 
-    //기업 회원가입 띄우기
-    const [open, setOpen] = useState(true);
-    const getOpen = () => {
-        setOpen(!open);
-    }
-
     return (
         <div>
-            <Nav/>
-            <div className={Styles.signin}>Sign in _ <h className={Styles.company} >기업 로그인</h></div>
-            <div className={Styles.loginbg}>
-                {/* <div className={Styles.addcompany}>
-                        <summary> 기업 로그인 </summary>
-                </div> */}
-                <form>
-                    <div className={Styles.userbg}> </div>
-                    <input type="text" placeholder="ID" className={Styles.id} onChange={getId} name="id"/>
-                    <input type="password" placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
-                    <button className={Styles.signinbtn} onClick={onLogin}>Sign in</button>
-                </form>
-                <Link to="/login" className={Styles.login}>일반회원이신가요?</Link>
+            <NewNav/>
+            <div className={Styles2.container} onclick="onclick">
+                <div className={Styles2.top}></div>
+                <div className={Styles2.bottom}></div>
+                <div className={Styles2.center}>
+                    <div className={Styles2.signin}>Sign in_Business</div>
+                    <form>
+                        {/* <div className={Styles2.userbg}> </div> */}
+                        <input type="text" placeholder=" Business ID" className={Styles2.id} onChange={getId} name="id"/>
+                        <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
+                        <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button>
+                    </form>
+                <Link to="/login" className={Styles2.login}>일반회원이신가요?</Link>
+                </div>
             </div>
-
-
-
             {/* <Footer /> */}
         </div>
     );
 }
 
-export default Companylogin;
+export default Companylogin2;

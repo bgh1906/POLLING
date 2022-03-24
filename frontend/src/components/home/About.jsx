@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import block from "../../assets/block.png"
-import arrow from "../../assets/arrow.png"
+import arrow7 from "../../assets/arrow7.png"
 import { Link } from "react-router-dom";
 
 
@@ -19,8 +19,8 @@ function About({changeModeplus, changeModeminus}) {
             <img id={styles.main_image} src={block} alt="block" />
             <p id={styles.click}>Click here</p>
             <Link to='/whypolling' id={styles.sub_text_about2}> Why POLLING? </Link>
-            <button id={styles.arrow_button} onClick={changeModeminus}><img id={styles.arrow} src={arrow} alt="arrow"/></button>
-            <button id={styles.arrow_button} onClick={changeModeplus}><img id={styles.arrow2} src={arrow} alt="arrow2"/></button> 
+            <button id={styles.arrow_button} onClick={changeModeminus}><img id={styles.arrow} src={arrow7} alt="arrow"/></button>
+            <button id={styles.arrow_button} onClick={changeModeplus}><img id={styles.arrow2} src={arrow7} alt="arrow2"/></button> 
         </div>
     );
 }

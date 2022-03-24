@@ -1,12 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx";
 import Footer from "../components/layout/Footer.jsx";
-import Styles from "./Login.module.css";
+import Styles2 from "./Login2.module.css";
 import kakao from "../assets/kakao.png";
 import { useState } from "react";
 import axios from "axios";
+import NewNav from "../components/layout/NewNav.jsx";
 
-function Login() {
+function Login2() {
+
+    //로그인/회원가입 체인지
+    // const [loginChange, setLoginChange] = useState();
+
+
 
     //이메일 받아오기
     const [email, setEmail] = useState("");
@@ -47,7 +52,7 @@ function Login() {
     };
 
     //카톡 로그인
-    // const LoginWithKakao = () => {
+    const LoginWithKakao = () => {
     //     Kakao.Auth.login({
     //       success: (response) => {
     //         axios
@@ -75,35 +80,42 @@ function Login() {
     //         navigate("/");
     //       },
     //     });
-    //   };
+      };
 
     return (
         <div>
-            <Nav/>
-            <div className={Styles.signin}>Sign in</div>
-            <div className={Styles.loginbg}>
-                <form>
-                    <input type={"email"} placeholder=" E-mail" className={Styles.email} onChange={getEmail} name="email"/>
-                    <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
-                    <button className={Styles.signinbtn} onClick={onLogin}>Sign in</button>
-                    {/* <button className={Styles.signinbtn}>Sign in</button> */}
-                </form>
-                <div className={Styles.logindivjoin}></div>
-                <Link to="/Companylogin" className={Styles.company}>기업회원 로그인</Link>
-                <div>
-                    <div className={Styles.question}>Don’t have an account?</div>
-                    <Link to="/join" className={Styles.joinusbtn} > Join us</Link>
-                    <div className={Styles.or}> or </div>
-                    <button className={Styles.kakaologin} ><img src={kakao} height={25} alt="kakaoTalk" style={{height: "2.5vh", marginTop:"1.5vh"}}></img> 카카오톡으로 로그인</button>
-                    {/* <button className={Styles.kakaologin} onClick={LoginWithKakao}><img src={kakao} height={25} alt="kakaoTalk" style={{height: "2.5vh", marginTop:"1.5vh"}}></img> 카카오톡으로 로그인</button> */}
+            {/* <Nav/> */}
+            <NewNav />
+            {/* 로그인 */}
+            <div className={Styles2.container} onclick="onclick">
+                <div className={Styles2.top}></div>
+                <div className={Styles2.bottom}></div>
+                <div className={Styles2.center}>
+                    <div className={Styles2.signin}>Sign In&nbsp;</div>
+                    {/* <h2>Sign In &nbsp;</h2>  */}
+                    {/* <input type="email" placeholder="email"/>
+                    <input type="password" placeholder="password"/> */}
+                    <form>
+                        <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
+                        <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
+                        <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button>
+                    </form>
+                    <div>
+                        <Link to="/Companylogin" className={Styles2.company}>기업회원 로그인 / </Link>
+                        {/* <button className={Styles2.kakao}>
+                            <img src={kakao}  alt="kakaoTalk" className={Styles2.kakaoimg}></img>
+                        </button> */}
+                        <button className={Styles2.kakao} onClick={LoginWithKakao}> 카카오톡 로그인 </button>
+                    </div>
+                    <div className={Styles2.question}>Don’t have an account?</div>
+                    <Link to="/join" className={Styles2.join}>Join us</Link>
+                    <h2>&nbsp;</h2>
                 </div>
             </div>
-
-
 
             {/* <Footer /> */}
         </div>
     );
 }
 
-export default Login;
+export default Login2;
