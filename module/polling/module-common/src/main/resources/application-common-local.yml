@@ -5,5 +5,10 @@ spring:
   redis:
     host: redis
     port: 6379
+sms:
+  serviceid: ncp:sms:kr:282615511747:validation_sms
+  secretkey: 983fa6d1fa944c86800a7f8650e4832b
+  accesskey: oekTboQ7Jao7JPzE8omf
+
 
 

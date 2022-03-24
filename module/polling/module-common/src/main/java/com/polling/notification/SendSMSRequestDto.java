@@ -1,4 +1,4 @@
-package com.polling.member.dto.request;
+package com.polling.notification;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
