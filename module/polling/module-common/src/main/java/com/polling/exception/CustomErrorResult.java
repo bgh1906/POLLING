@@ -10,6 +10,8 @@ public enum CustomErrorResult {
     /* 400 BAD_REQUEST : 잘못된 요청 */
     INVALID_REFRESH_TOKEN(HttpStatus.BAD_REQUEST, "리프레시 토큰이 유효하지 않습니다"),
     MISMATCH_REFRESH_TOKEN(HttpStatus.BAD_REQUEST, "리프레시 토큰의 유저 정보가 일치하지 않습니다"),
+    INVALID_VOTES(HttpStatus.BAD_REQUEST, "0개 이하의 투표권은 사용이 불가능합니다."),
+    ALREADY_VOTES(HttpStatus.BAD_REQUEST, "이미 투표한 회원입니다."),
 
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
@@ -36,9 +38,6 @@ public enum CustomErrorResult {
     DUPLICATE_NICKNAME(HttpStatus.CONFLICT, "이미 존재하는 닉네임입니다"),
     DUPLICATE_NAME(HttpStatus.CONFLICT, "이미 존재하는 네임입니다"),
     DUPLICATE_EMAIL(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다"),
-
-    NO_LEFT_TICKET(HttpStatus.CONFLICT, "티켓이 부족합니다."),
-    USE_YOUR_TICKET(HttpStatus.CONFLICT, "0개의 티켓은 사용이 불가능합니다."),
 
     ;
 

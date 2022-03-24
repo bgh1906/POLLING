@@ -48,7 +48,7 @@ public class CandidateController {
     @PostMapping("/history")
     @ApiOperation(value = "특정 후보자에게 투표")
     public ResponseEntity<Void> saveVoteHistory(@CurrentUser MemberDto memberDto, @RequestBody SaveCandidateHistoryRequestDto requestDto) {
-        candidateService.saveVoteHistory(requestDto, memberDto.getId());
+        candidateService.voteToCandidate(requestDto, memberDto.getId());
         return ResponseEntity.status(200).build();
     }
     @PostMapping("/comment")
