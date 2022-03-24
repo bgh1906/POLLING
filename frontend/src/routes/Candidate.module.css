@@ -42,7 +42,7 @@
 #profile_image {
     position: relative;
     width: 32vw;
-    /* height: 32vw; */
+    height: 32vw;
     left: 33vw;
     border-radius: 10px;
     border-style: double;
@@ -108,6 +108,7 @@
     color: black;
     left: 9vw;
     top: 57vh;
+    padding-top: 1vh;
 }
 
 #poll_button:hover{
@@ -121,6 +122,10 @@
 }
 
 #back_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+#list_button:hover{
     background-color: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
 }
@@ -139,6 +144,7 @@
     color: black;
     left: 9vw;
     top: 64vh;
+    padding-top: 1vh;
 }
 
 #back_button {
@@ -156,6 +162,21 @@
     right: 7vw;
     top: 64vh;
     transform: rotate(90deg);
+}
+#list_button {
+    position:relative;
+    width: 13vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    top: 1.5vh;
+    left: 65vw;
+    padding-top: 1vh;
 }
 
 #photobox{
@@ -270,6 +291,7 @@
     color: black;
     right: 12vw;
     top: 57vh;
+    padding-top: 1vh;
 }
 
 #poll_button2:hover{
@@ -301,6 +323,7 @@
     color: black;
     right: 12vw;
     top: 64vh;
+    padding-top: 1vh;
 }
 
 #back_button2 {

@@ -22,8 +22,10 @@ function Admin() {
 
     useEffect(()=>{
             axios
-            .get("http://j6a304.p.ssafy.io:8080/api/votes")
+            .get("http://j6a304.p.ssafy.io:8080/api/votes/25")
             .then((res) => {
+                console.log("성공!");
+                console.log(res);
                 setPolldata(res.data);
             })
             .catch((e) =>{

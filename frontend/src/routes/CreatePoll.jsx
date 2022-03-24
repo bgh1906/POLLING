@@ -40,10 +40,10 @@ function CreatePoll() {
         id: 0,
         name: '',
         profile: '',
-        profile_image: '',
-        additional_image1: '',
-        additional_image2: '',
-        additional_image3: '',
+        thumbnail: '',
+        imagePath1: '',
+        imagePath2: '',
+        imagePath3: ''
     }])
 
     const onDel=(id)=>{
@@ -51,7 +51,8 @@ function CreatePoll() {
     }
     const onAdd=(form)=>{
         form.id = no.current++;
-        setnomiList(nomiList.concat(form));
+        setnomiList((nomiList)=> nomiList.concat(form));
+        console.log(nomiList)
     }
 
     
@@ -64,13 +65,13 @@ function CreatePoll() {
     }
     function changePollStart(e) {
         const startdate = dayjs(e).format("YYYY-MM-DD HH:mm")
-        setpollStart(startdate);
-        console.log(startdate)
+        setpollStart(String(startdate));
+        // console.log(String(startdate))
     }
     function changePollEnd(e) {
         const enddate = dayjs(e).format("YYYY-MM-DD HH:mm")
-        setpollEnd(enddate);
-        console.log(enddate)
+        setpollEnd(String(enddate));
+        // console.log(enddate)
         
     }
     function changepollDescribe(e) {
@@ -102,14 +103,14 @@ function CreatePoll() {
 
     function savePolldata(){
         const pollInfo = {
-            pollName: {pollName},
-            pollStart: {pollStart},
-            pollEnd: {pollEnd},
-            pollDescribe: {pollDescribe},
-            pollRealtime: {pollRealtime},
-            pollLatestTX: {pollLatestTX},
-            pollAllTX: {pollAllTX},
-            nomiList: {nomiList},
+            pollName: pollName,
+            pollStart: pollStart,
+            pollEnd: pollEnd,
+            pollDescribe: pollDescribe,
+            pollRealtime: pollRealtime,
+            pollLatestTX: pollLatestTX,
+            pollAllTX: pollAllTX,
+            nomiList: nomiList,
         }
         console.log(pollInfo)
         console.log(nomiList)
@@ -118,22 +119,39 @@ function CreatePoll() {
         axios.post(
             "http://j6a304.p.ssafy.io:8080/api/votes",
             {
-                "candidateDtos":[],
-                "content":{pollDescribe},
-                "endDate":{pollEnd},
-                "showStatus": "SHOW_ALL",
-                "starDate":{pollStart},
-                "title":{pollName},
+                "candidatesDtos": nomiList,
+                // "candidateDtos":[{
+                //     id: 0,
+                //     name: '',
+                //     profile: '',
+                //     thumbnail: '',
+                //     imagePath1: '',
+                //     imagePath2: '',
+                //     imagePath3: ''
+                // }],
+                "content":pollDescribe,
+                // "content":"",
+                "endDate":pollEnd,
+                // "endDate": "2022-11-03 00:00",
+                "starDate":pollStart,
+                // "startDate": "2023-11-03 00:00",
+                "title":pollName
+                // "title":"",
             },
             {
                 headers: {
-                    Authorization:"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODA1ODk2NSwiZXhwIjoxNjQ4MDYwNzY1fQ.8o-Qm4UN9gvc0Jsb6LU5Ge7pHvAHL2HrD3W3BQ6W2RM"
+                    "Content-Type": "application/json",
+                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE0MDE0OSwiZXhwIjoxNjQ4MTQxOTQ5fQ.Z0aLFw56pIXvydH7CFvbpql-__mKOgXUIixXut0L-n8",
+                    "Accept" : "*/*",
                 },
             }
         )
         .then((res) =>{
             console.log(res)
         })
+        .catch((e) =>{
+            console.error(e);
+        });
 
         
     }

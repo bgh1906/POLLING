@@ -23,7 +23,8 @@ const reducer = (state =[], action) => {
              },
              ...state,
          ];
-         console.log(newPollInfo);
+        //  console.log(newPollInfo);
+        
          return newPollInfo;  
 
          default:

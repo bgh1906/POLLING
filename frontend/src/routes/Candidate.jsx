@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Comment from "../components/comment/Comment"
 
+
 function Candidate() {
 
     const navigate = useNavigate();
@@ -66,9 +67,7 @@ function Candidate() {
                 </div>
 
                 <Comment></Comment>
-
-
-
+                <Button id={styles.list_button} onClick={gotoList} variant="contained">리스트로 돌아가기</Button>
             </div>
 
         </div>

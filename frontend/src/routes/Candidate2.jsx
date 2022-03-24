@@ -66,7 +66,7 @@ function Candidate2() {
                 </div>
 
                 <Comment></Comment>
-
+                <Button id={styles.list_button} onClick={gotoList} variant="contained">리스트로 돌아가기</Button>
 
 
             </div>
