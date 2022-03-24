@@ -82,7 +82,7 @@ export default function PollList() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
-    <div>
+    <>
       <Newnav />
       <div className={styles.polllist}>
         <div className={styles.list_title}>Poll List</div>
@@ -218,7 +218,7 @@ export default function PollList() {
         </Box>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 // <div className={styles.list_container}>

@@ -4,7 +4,7 @@ import chunhyang from "../assets/chunhyang.PNG";
 import fox from "../assets/fox.PNG";
 import ocean from "../assets/ocean.PNG";
 import eyes from "../assets/eyes.PNG";
-import logoContest from "../assets/logoContest.PNG";
+import cybertruck from "../assets/cybertruck.PNG";
 import monarisa from "../assets/monarisa.PNG";
 import hair from "../assets/hair.PNG";
 import gogh from "../assets/gogh.PNG";
@@ -34,8 +34,8 @@ function History() {
       title: "eyes",
     },
     {
-      img: logoContest,
-      title: "logoContest",
+      img: cybertruck,
+      title: "cybertruck",
     },
     {
       img: gogh,
@@ -74,6 +74,11 @@ function History() {
     <>
       <Newnav />
       <div className={styles.history_title}>History</div>
+      <div className={styles.history_desc}>
+        종료된 투표를 확인하고 전체 투표 내역을
+        <br />
+        조회할 수 있습니다.
+      </div>
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
           {endItemData.map((item) => (
@@ -96,10 +101,6 @@ function History() {
                   투표결과
                 </Button>
               </div>
-              <figcaption>
-                <span>2022</span>
-                {item.title}
-              </figcaption>
             </div>
           ))}
         </div>

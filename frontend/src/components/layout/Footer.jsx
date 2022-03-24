@@ -31,7 +31,7 @@ function Footer() {
   };
 
   return (
-    <div>
+    <>
       <div className={styles.footer}>
         <div className={styles.ft_company}>
           <div className={styles.ft_Name}>POLLING</div>
@@ -88,7 +88,7 @@ function Footer() {
           className={styles.backtotop}
         />
       )}
-    </div>
+    </>
   );
 }
 
