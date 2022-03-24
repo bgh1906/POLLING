@@ -42,11 +42,7 @@ public class PollService {
 
         // 후보자 추가
         requestDto.getCandidateDtos().forEach(candidateDto -> {
-                    poll.addCandidate(Candidate.builder()
-                            .imagePaths(candidateDto.getImagePaths())
-                            .name(candidateDto.getName())
-                            .profile(candidateDto.getProfile())
-                            .build());
+                    poll.addCandidate(candidateDto.toEntity());
                     });
     }
 

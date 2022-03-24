@@ -12,19 +12,19 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class SaveCandidateRequestDto {
+    private Long id;
     private String name;
     private String profile;
-    private List<String> imagePaths;
     private String imagePath1;
     private String imagePath2;
     private String imagePath3;
     private String thumbnail;
 
     @Builder
-    public SaveCandidateRequestDto(String name, String profile, List<String> imagePaths, String imagePath1, String imagePath2, String imagePath3, String thumbnail) {
+    public SaveCandidateRequestDto(Long id, String name, String profile, String imagePath1, String imagePath2, String imagePath3, String thumbnail) {
+        this.id = id;
         this.name = name;
         this.profile = profile;
-        this.imagePaths = imagePaths;
         this.imagePath1 = imagePath1;
         this.imagePath2 = imagePath2;
         this.imagePath3 = imagePath3;
