@@ -76,16 +76,17 @@ export default function PollList() {
   shuffle(itemData);
   // useEffect(() => {
   // }, [itemData]);
-  const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isMobile = useMediaQuery({ query: "(max-width: 992px)" });
+  const isDesktop = useMediaQuery({ minWidth: 1200 });
+  const isLabtop = useMediaQuery({ minWidth: 992, maxWidth: 1199 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <div>
       <Newnav />
       <div className={styles.polllist}>
         <div className={styles.list_title}>Poll List</div>
-        <Box sx={{ width: "80vw", height: 1080 }}>
+        <Box sx={{ width: "80vw", height: "auto" }}>
           {isDesktop && (
             <ImageList variant="masonry" cols={4} gap={28}>
               {itemData.map((item) => (
@@ -117,7 +118,7 @@ export default function PollList() {
               ))}
             </ImageList>
           )}
-          {isTablet && (
+          {isLabtop && (
             <ImageList variant="masonry" cols={3} gap={28}>
               {itemData.map((item) => (
                 <ImageListItem key={item.img} className={styles.opened_item}>
@@ -148,8 +149,39 @@ export default function PollList() {
               ))}
             </ImageList>
           )}
-          {isMobile && (
+          {isTablet && (
             <ImageList variant="masonry" cols={2} gap={28}>
+              {itemData.map((item) => (
+                <ImageListItem key={item.img} className={styles.opened_item}>
+                  <img
+                    src={`${item.img}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.title}
+                    loading="lazy"
+                    className={styles.opened_img}
+                  />
+                  <div className={styles.opened_info}>
+                    <div>제 91회 춘향제</div>
+                    <div>2022.03.03 ~ 2022.05.10</div>
+                  </div>
+                  <div className={styles.opened_button}>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      style={{ backgroundColor: "#77A3A9" }}
+                      onClick={() => {
+                        navigate("/poll/:pollnum");
+                      }}
+                    >
+                      투표하기
+                    </Button>
+                  </div>
+                </ImageListItem>
+              ))}
+            </ImageList>
+          )}
+          {isMobile && (
+            <ImageList variant="masonry" cols={1} gap={28}>
               {itemData.map((item) => (
                 <ImageListItem key={item.img} className={styles.opened_item}>
                   <img
