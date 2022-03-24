@@ -83,8 +83,8 @@ ul {
 
 .backtotop {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 4vw;
+  right: 4vw;
   padding: 5px;
   cursor: pointer;
   width: 27px;

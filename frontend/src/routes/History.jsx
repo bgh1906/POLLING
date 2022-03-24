@@ -63,8 +63,8 @@ function History() {
 
     // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
     offset: 120, // offset (in px) from the original trigger point
-    delay: 800, // values from 0 to 3000, with step 50ms
-    duration: 700, // values from 0 to 3000, with step 50ms
+    delay: 600, // values from 0 to 3000, with step 50ms
+    duration: 500, // values from 0 to 3000, with step 50ms
     easing: "ease", // default easing for AOS animations
     once: false, // whether animation should happen only once - while scrolling down
     mirror: false, // whether elements should animate out while scrolling past them
@@ -77,12 +77,14 @@ function History() {
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
           {endItemData.map((item) => (
-            // <div className={styles.history_item} data-aos="fade-up">
-            <div className={styles.history_item}>
+            // <div className={styles.history_item}>
+            <div className={styles.history_item} data-aos="fade-up">
               <img src={item.img} alt={item.title} />
               <div className={styles.ended_info}>
-                <div>{item.title}</div>
-                <div>2022.03.03 ~ 2022.05.10</div>
+                <div style={{ fontSize: "3vw", fontWeight: 700 }}>
+                  {item.title}
+                </div>
+                <div style={{ fontSize: "1.2vw" }}>2022.03.03 ~ 2022.05.10</div>
               </div>
               <div className={styles.ended_button}>
                 <Button

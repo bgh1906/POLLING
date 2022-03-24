@@ -31,8 +31,6 @@
   line-height: normal;
   width: fit-content;
   font-family: "Bitter", serif;
-  font-size: 1.3rem;
-  font-weight: 500;
 }
 
 .opened_button {
@@ -179,13 +177,3 @@
   grid-column: 6 / 9;
   grid-row: 13 / 16;
 } */
-
-img {
-  /* filter: grayscale(1);
-  transition: all 0.4s ease-in-out; */
-}
-
-img:hover {
-  /* filter: grayscale(0);
-  transform: scale(1.025); */
-}
