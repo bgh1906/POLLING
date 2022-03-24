@@ -47,17 +47,17 @@ public class NotificationService {
     }
 
     private void sendSmsServer(List<SendSMSRequestDto> messages)  throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
-//        Long time = System.currentTimeMillis();
-//
-//        SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82", "01065752938", "테스트", messages);
-//        String jsonBody = gson.toJson(smsRequest);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        headers.set("x-ncp-apigw-timestamp", time.toString());
-//        headers.set("x-ncp-iam-access-key", this.accessKey);
-//        String sig = makeSignature(time);
-//        headers.set("x-ncp-apigw-signature-v2", sig);
+        Long time = System.currentTimeMillis();
+
+        SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82", "01065752938", "테스트", messages);
+        String jsonBody = gson.toJson(smsRequest);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("x-ncp-apigw-timestamp", time.toString());
+        headers.set("x-ncp-iam-access-key", this.accessKey);
+        String sig = makeSignature(time);
+        headers.set("x-ncp-apigw-signature-v2", sig);
 //
 //        HttpEntity<String> body = new HttpEntity<>(jsonBody,headers);
 //
