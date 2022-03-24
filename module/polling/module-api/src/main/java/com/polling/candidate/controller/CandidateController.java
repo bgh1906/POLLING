@@ -5,9 +5,10 @@ import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
+import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
 import com.polling.candidate.service.CandidateService;
+import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.List;
 public class CandidateController {
 
     private final CandidateService candidateService;
+    private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
 
     @GetMapping()
     @ApiOperation(value = "후보자들 목록 조회")
@@ -38,17 +40,18 @@ public class CandidateController {
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @GetMapping("/history/{id}")
+    @GetMapping("/history/{id}/{page}/{limit}")
     @ApiOperation(value = "특정 후보자 득표 내역 조회")
-    public ResponseEntity<List<FindPollHistoryResponseDto>> getHistory(@PathVariable Long id) {
-        List<FindPollHistoryResponseDto> responseDto = candidateService.getHistory(id);
+    public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistory(@PathVariable(value = "id") Long candidateId, @PathVariable int page, @PathVariable int limit) {
+        List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
+                .findByCandidateId(candidateId, page, limit);
         return ResponseEntity.status(200).body(responseDto);
     }
 
     @PostMapping("/history")
     @ApiOperation(value = "특정 후보자에게 투표")
     public ResponseEntity<Void> saveVoteHistory(@CurrentUser MemberDto memberDto, @RequestBody SaveCandidateHistoryRequestDto requestDto) {
-        candidateService.saveVoteHistory(requestDto, memberDto.getId());
+        candidateService.voteToCandidate(requestDto, memberDto.getId());
         return ResponseEntity.status(200).build();
     }
     @PostMapping("/comment")

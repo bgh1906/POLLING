@@ -30,9 +30,9 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
                         member.nickname,
                         comment.content)))
                 .from(comment)
-                .leftJoin(comment.member, member)
+                .innerJoin(comment.member, member)
                 .innerJoin(comment.candidate, candidate)
-                .where(comment.candidate.id.eq(candidateId))
+                .where(candidate.id.eq(candidateId))
                 .orderBy(comment.createdDate.asc())
                 .fetch();
     }

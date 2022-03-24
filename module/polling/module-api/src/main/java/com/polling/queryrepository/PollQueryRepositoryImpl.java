@@ -32,7 +32,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
                         candidate.voteTotalCount)))
                 .from(candidate)
                 .innerJoin(candidate.poll, poll)
-                .where(candidate.poll.id.eq(id))
+                .where(poll.id.eq(id))
                 .orderBy(candidate.voteTotalCount.desc())
                 .fetch();
     }

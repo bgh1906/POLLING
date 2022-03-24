@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
 public class SaveCandidateHistoryRequestDto {
     private Long candidateId;
     private Integer voteCount;
-    private String transactionId;
 
     @Builder
-    public SaveCandidateHistoryRequestDto(Long candidateId, Integer voteCount, String transactionId){
+    public SaveCandidateHistoryRequestDto(Long candidateId, Integer voteCount){
         this.candidateId = candidateId;
         this.voteCount = voteCount;
-        this.transactionId = transactionId;
     }
 }
