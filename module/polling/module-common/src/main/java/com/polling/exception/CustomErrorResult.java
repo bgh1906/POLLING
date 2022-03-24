@@ -39,6 +39,9 @@ public enum CustomErrorResult {
     DUPLICATE_NAME(HttpStatus.CONFLICT, "이미 존재하는 네임입니다"),
     DUPLICATE_EMAIL(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다"),
 
+    /*500*/
+    FAIL_SEND_SMS(HttpStatus.INTERNAL_SERVER_ERROR, "SMS 전송 실패"),
+
     ;
 
     private final HttpStatus httpStatus;
