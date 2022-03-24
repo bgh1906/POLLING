@@ -31,7 +31,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
                 .from(candidateHistory)
                 .innerJoin(candidateHistory.member, member)
                 .innerJoin(candidateHistory.candidate, candidate)
-                .where(candidateHistory.candidate.id.eq(candidateId))
+                .where(candidate.id.eq(candidateId))
                 .orderBy(candidateHistory.createdDate.desc())
                 .offset(offset)
                 .limit(limit)

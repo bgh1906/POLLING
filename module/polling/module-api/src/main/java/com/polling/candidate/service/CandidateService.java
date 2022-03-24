@@ -34,10 +34,8 @@ public class CandidateService {
     private final CandidateRepository candidateRepository;
     private final CommentRepository commentRepository;
     private final CommentQueryRepository commentQueryRepository;
-    private final CandidateHistoryRepository candidateHistoryRepository;
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
     private final MemberRepository memberRepository;
-    private final PollRepository pollRepository;
 
     @Transactional(readOnly = true)
     public FindProfileResponseDto getProfile(Long id){
@@ -45,11 +43,6 @@ public class CandidateService {
                 .orElseThrow(()->new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
         List<CommentDto> comments = commentQueryRepository.findAllByCandidateId(id);
         return FindProfileResponseDto.of(candidate, comments);
-    }
-    
-    @Transactional(readOnly = true)
-    public List<FindCandidateHistoryResponseDto> getHistory(Long candidateId, int offset, int limit){
-        return candidateHistoryQueryRepository.findByCandidateId(candidateId, offset, limit);
     }
 
     public void voteToCandidate(SaveCandidateHistoryRequestDto requestDto, Long memberId){
@@ -77,7 +70,7 @@ public class CandidateService {
                 .build();
     }
 
-    public Long saveComment(SaveCommentRequestDto requestDto, Long userId){
+    public void saveComment(SaveCommentRequestDto requestDto, Long userId){
         Member member = memberRepository.findById(userId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         Candidate candidate = candidateRepository.findById(requestDto.getCandidateId())
@@ -88,29 +81,22 @@ public class CandidateService {
                 .candidate(candidate)
                 .build();
         Comment savedComment = commentRepository.save(comment);
-        return savedComment.getId();
     }
 
-    public void updateComment(Long commentId, PatchCommentRequestDto requestDto, Long userId){
-        Member member = memberRepository.findById(userId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    public void updateComment(Long commentId, PatchCommentRequestDto requestDto, Long memberId){
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
-        if(comment.getMember().getId() != member.getId()){
+        if(commentId.equals(memberId))
             throw new CustomException(CustomErrorResult.INVALID_COMMENT_OWNER);
-        }
         comment.updateContent(requestDto.getContent());
     }
 
-    public void deleteComment(Long commentId, Long userId){
-        Member member = memberRepository.findById(userId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
-        Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
-        if(comment.getMember().getId() != member.getId()){
+    public void deleteComment(Long commentId, Long memberId){
+        if(commentId.equals(memberId))
             throw new CustomException(CustomErrorResult.INVALID_COMMENT_OWNER);
-        }
-        commentRepository.deleteById(commentId);
+        Comment comment = commentRepository
+                .findById(commentId).orElseThrow(() -> new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
+        commentRepository.delete(comment);
     }
 
 }
