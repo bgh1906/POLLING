@@ -2,10 +2,10 @@ package com.polling.candidate.service;
 
 
 import com.polling.candidate.dto.CommentDto;
+import com.polling.candidate.dto.request.ModifyCandidateRequestDto;
 import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
-import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateHistory;
@@ -15,16 +15,15 @@ import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CommentQueryRepository;
-import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.comment.CommentRepository;
 import com.polling.repository.member.MemberRepository;
-import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -80,7 +79,7 @@ public class CandidateService {
                 .content(requestDto.getContent())
                 .candidate(candidate)
                 .build();
-        Comment savedComment = commentRepository.save(comment);
+        commentRepository.save(comment);
     }
 
     public void updateComment(Long commentId, PatchCommentRequestDto requestDto, Long memberId){
@@ -99,4 +98,25 @@ public class CandidateService {
         commentRepository.delete(comment);
     }
 
+    public void modifyCandidate(Long id, ModifyCandidateRequestDto requestDto) {
+        Candidate candidate = candidateRepository
+                .findById(id).orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
+        List<String> imagePaths = new ArrayList<>();
+        imagePaths.add(requestDto.getImagePath1());
+        imagePaths.add(requestDto.getImagePath2());
+        imagePaths.add(requestDto.getImagePath3());
+        if(requestDto.getName() != null)
+            candidate.changeName(requestDto.getName());
+        if(requestDto.getProfile() != null)
+            candidate.changeProfile(requestDto.getProfile());
+        if(requestDto.getThumbnail() != null)
+            candidate.changeThumbnail(requestDto.getThumbnail());
+        candidate.changeImagePaths(imagePaths);
+    }
+
+    public void deleteCandidate(Long id) {
+        Candidate candidate = candidateRepository
+                .findById(id).orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
+        candidateRepository.delete(candidate);
+    }
 }

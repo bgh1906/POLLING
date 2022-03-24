@@ -33,12 +33,9 @@ public class SaveCandidateRequestDto {
 
     public Candidate toEntity(){
         List<String> imagePaths = new ArrayList<>();
-        if(imagePath1 != null)
-            imagePaths.add(imagePath1);
-        if(imagePath2 != null)
-            imagePaths.add(imagePath2);
-        if(imagePath3 != null)
-            imagePaths.add(imagePath3);
+        imagePaths.add(imagePath1);
+        imagePaths.add(imagePath2);
+        imagePaths.add(imagePath3);
 
         return Candidate.builder()
                 .name(name)

@@ -29,24 +29,7 @@ public class PollQueryRepositoryTest {
     private PollRepository pollRepository;
     @Autowired
     private PollQueryRepository pollQueryRepository;
-    
-    @Test
-    public void 투표랭킹조회_득표순으로() throws Exception{
-        //given
-        Poll savedPoll = pollRepository.save(createPoll("testTitle"));
-        Candidate candidate1 = Candidate.builder().name("TestA").build();
-        candidate1.addVoteTotal(1);
-        Candidate candidate2 = Candidate.builder().name("TestA").build();
-        savedPoll.addCandidate(candidate1);
-        savedPoll.addCandidate(candidate2);
 
-        //when
-        List<FindCandidateResponseDto> responseDtos = pollQueryRepository.findCandidatesSortByVoteTotal(savedPoll.getId());
-
-        //then
-        assertThat(responseDtos.get(0).getVotesTotalCount()).isEqualTo(1);
-        assertThat(responseDtos.get(1).getVotesTotalCount()).isEqualTo(0);
-    }
     
     @Test
     public void 투표페이지조회_현재진행중() throws Exception{

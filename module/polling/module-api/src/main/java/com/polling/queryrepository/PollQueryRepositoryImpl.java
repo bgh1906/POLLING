@@ -23,21 +23,6 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<FindCandidateResponseDto> findCandidatesSortByVoteTotal(Long id) {
-        return query
-                .select((Projections.constructor(FindCandidateResponseDto.class,
-                        candidate.id,
-                        candidate.name,
-                        candidate.thumbnail,
-                        candidate.voteTotalCount)))
-                .from(candidate)
-                .innerJoin(candidate.poll, poll)
-                .where(poll.id.eq(id))
-                .orderBy(candidate.voteTotalCount.desc())
-                .fetch();
-    }
-
-    @Override
     public List<FindPollPageResponseDto> findPollPageByStatus(PollStatus pollStatus, int offset, int limit) {
         return query
                 .select(Projections.constructor(FindPollPageResponseDto.class,

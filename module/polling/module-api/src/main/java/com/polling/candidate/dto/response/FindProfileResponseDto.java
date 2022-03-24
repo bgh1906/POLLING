@@ -15,11 +15,21 @@ import java.util.List;
 public class FindProfileResponseDto {
     private String name;
     private String content;
-    private List<String> imagePaths;
+    private String thumbnail;
+    private String imagePath1;
+    private String imagePath2;
+    private String imagePath3;
     private Integer voteTotal;
     private List<CommentDto> comments;
 
     public static FindProfileResponseDto of(Candidate candidate, List<CommentDto> comments){
-        return new FindProfileResponseDto(candidate.getName(), candidate.getProfile(), candidate.getImagePaths(), candidate.getVoteTotalCount(), comments);
+        return new FindProfileResponseDto(candidate.getName(),
+                candidate.getProfile(),
+                candidate.getThumbnail(),
+                candidate.getImagePaths().get(0),
+                candidate.getImagePaths().get(1),
+                candidate.getImagePaths().get(2),
+                candidate.getVoteTotalCount(),
+                comments);
     }
 }

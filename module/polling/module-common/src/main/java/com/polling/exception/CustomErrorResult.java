@@ -12,6 +12,7 @@ public enum CustomErrorResult {
     MISMATCH_REFRESH_TOKEN(HttpStatus.BAD_REQUEST, "리프레시 토큰의 유저 정보가 일치하지 않습니다"),
     INVALID_VOTES(HttpStatus.BAD_REQUEST, "0개 이하의 투표권은 사용이 불가능합니다."),
     ALREADY_VOTES(HttpStatus.BAD_REQUEST, "이미 투표한 회원입니다."),
+    IMPOSSIBLE_STATUS_TO_MODIFY(HttpStatus.BAD_REQUEST, "수정이 불가능한 상태입니다."),
 
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */

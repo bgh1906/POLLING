@@ -59,4 +59,19 @@ public class Candidate extends BaseTimeEntity {
         this.poll = poll;
     }
 
+    public void changeName(String name){
+        this.name = name;
+    }
+
+    public void changeProfile(String profile){
+        this.profile = profile;
+    }
+
+    public void changeThumbnail(String thumbnail){
+        this.thumbnail = thumbnail;
+    }
+
+    public void changeImagePaths(List<String> imagePaths){
+        this.imagePaths = imagePaths;
+    }
 }

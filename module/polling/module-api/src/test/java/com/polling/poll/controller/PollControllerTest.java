@@ -66,7 +66,7 @@ public class PollControllerTest {
     @Test
     public void 득표현황랭킹조회() throws Exception{
         //given
-        final String url = "/api/votes/{id}";
+        final String url = "/api/votes/ranking/{id}";
         doReturn(FindPollResponseDto.builder().build()).when(pollService).getRanking(1L);
 
         //when

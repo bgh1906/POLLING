@@ -1,6 +1,7 @@
 package com.polling.candidate.controller;
 
 import com.polling.auth.dto.MemberDto;
+import com.polling.candidate.dto.request.ModifyCandidateRequestDto;
 import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
@@ -9,6 +10,7 @@ import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
 import com.polling.candidate.service.CandidateService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
+import com.polling.repository.candidate.CandidateRepository;
 import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +40,20 @@ public class CandidateController {
     public ResponseEntity<FindProfileResponseDto> getProfile(@PathVariable Long id) {
         FindProfileResponseDto responseDto = candidateService.getProfile(id);
         return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @PatchMapping("/{candidateId}")
+    @ApiOperation(value = "특정 후보자 정보 수정", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
+    public ResponseEntity<FindProfileResponseDto> modifyProfile(@PathVariable Long candidateId, @RequestBody ModifyCandidateRequestDto requestDto) {
+        candidateService.modifyCandidate(candidateId, requestDto);
+        return ResponseEntity.status(200).build();
+    }
+
+    @DeleteMapping("/{candidateId}")
+    @ApiOperation(value = "특정 후보자 삭제", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
+    public ResponseEntity<FindProfileResponseDto> deleteProfile(@PathVariable Long candidateId) {
+        candidateService.deleteCandidate(candidateId);
+        return ResponseEntity.status(200).build();
     }
 
     @GetMapping("/history/{id}/{page}/{limit}")
