@@ -42,7 +42,7 @@ public class CandidateController {
 
     @GetMapping("/history/{id}/{page}/{limit}")
     @ApiOperation(value = "특정 후보자 득표 내역 조회")
-    public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistory(@PathVariable(value = "id") Long candidateId, int page, int limit) {
+    public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistory(@PathVariable(value = "id") Long candidateId, @PathVariable int page, @PathVariable int limit) {
         List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
                 .findByCandidateId(candidateId, page, limit);
         return ResponseEntity.status(200).body(responseDto);
