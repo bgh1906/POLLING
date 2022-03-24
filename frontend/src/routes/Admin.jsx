@@ -20,18 +20,18 @@ function Admin() {
 
     const [polldata, setPolldata] = useState([]);
 
-    useEffect(()=>{
-            axios
-            .get("http://j6a304.p.ssafy.io:8080/api/votes/25")
-            .then((res) => {
-                console.log("성공!");
-                console.log(res);
-                setPolldata(res.data);
-            })
-            .catch((e) =>{
-                console.error(e);
-            });
-    }, []);
+    // useEffect(()=>{
+    //         axios
+    //         .get("http://j6a304.p.ssafy.io:8080/api/votes/unapproved/0/50")
+    //         .then((res) => {
+    //             console.log("성공!");
+    //             console.log(res);
+    //             setPolldata(res.data);
+    //         })
+    //         .catch((e) =>{
+    //             console.error(e);
+    //         });
+    // }, []);
         
       
 

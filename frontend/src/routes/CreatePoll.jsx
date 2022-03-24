@@ -38,12 +38,12 @@ function CreatePoll() {
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
         id: 0,
-        name: '',
-        profile: '',
-        thumbnail: '',
-        imagePath1: '',
-        imagePath2: '',
-        imagePath3: ''
+        name: "",
+        profile: "",
+        thumbnail: "",
+        imagePath1: "",
+        imagePath2: "",
+        imagePath3: ""
     }])
 
     const onDel=(id)=>{
@@ -99,8 +99,6 @@ function CreatePoll() {
         }
     }
 
-
-
     function savePolldata(){
         const pollInfo = {
             pollName: pollName,
@@ -114,39 +112,62 @@ function CreatePoll() {
         }
         console.log(pollInfo)
         console.log(nomiList)
-    
+        
+        const testList = [{
+            id: 0,
+            name: '지헌',
+            profile: '지헌입니다/',
+            thumbnail: '123',
+            imagePath1: '22',
+            imagePath2: '3',
+            imagePath3: '3'
+        },{
+            id: 0,
+            name: '수지',
+            profile: '수지입니다/',
+            thumbnail: '123',
+            imagePath1: '22',
+            imagePath2: '3',
+            imagePath3: '3'
+        }]
+        
         dispatch(actionCreators.addInfo(pollInfo));
         axios.post(
             "http://j6a304.p.ssafy.io:8080/api/votes",
             {
-                "candidatesDtos": nomiList,
+                "candidatesDtos": testList,
                 // "candidateDtos":[{
                 //     id: 0,
-                //     name: '',
-                //     profile: '',
-                //     thumbnail: '',
-                //     imagePath1: '',
-                //     imagePath2: '',
-                //     imagePath3: ''
+                //     name: '지헌',
+                //     profile: '지헌입니다/',
+                //     thumbnail: '123',
+                //     imagePath1: '22',
+                //     imagePath2: '3',
+                //     imagePath3: '3'
+                // },{
+                //     id: 0,
+                //     name: '수지',
+                //     profile: '수지입니다/',
+                //     thumbnail: '123',
+                //     imagePath1: '22',
+                //     imagePath2: '3',
+                //     imagePath3: '3'
                 // }],
                 "content":pollDescribe,
-                // "content":"",
                 "endDate":pollEnd,
-                // "endDate": "2022-11-03 00:00",
                 "starDate":pollStart,
-                // "startDate": "2023-11-03 00:00",
                 "title":pollName
-                // "title":"",
             },
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE0MDE0OSwiZXhwIjoxNjQ4MTQxOTQ5fQ.Z0aLFw56pIXvydH7CFvbpql-__mKOgXUIixXut0L-n8",
+                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE0OTEyNiwiZXhwIjoxNjQ4MTUwOTI2fQ.94PJQBfPSL_zpYVpDO_5FD0SpaRZZ1_f6PLbnMDz07w",
                     "Accept" : "*/*",
                 },
             }
         )
         .then((res) =>{
+            console.log("POST 성공!!")
             console.log(res)
         })
         .catch((e) =>{

@@ -9,12 +9,12 @@ function NomineeInput({onAdd}) {
     const nameRef = useRef()
 
     const [form, setForm] = useState({
-        name: '',
-        profile: '',
-        thumbnail: '',
-        imagePath1: '',
-        imagePath2: '',
-        imagePath3: '',
+        name: "",
+        profile: "",
+        thumbnail: "",
+        imagePath1: "",
+        imagePath2: "",
+        imagePath3: "",
     })
 
     const changeInput=(e)=>{
@@ -27,15 +27,15 @@ function NomineeInput({onAdd}) {
 
     const onSubmit=(e)=>{
         e.preventDefault()
-        if(name !== '' || profile !== '' || thumbnail !== ''){
+        if(name !== "" || profile !== "" || thumbnail !== ""){
             onAdd(form)
             setForm({
-                name: '',
-                profile: '',
-                thumbnail: '',
-                imagePath1: '',
-                imagePath2: '',
-                imagePath3: '',
+                name: "",
+                profile: "",
+                thumbnail: "",
+                imagePath1: "",
+                imagePath2: "",
+                imagePath3: "",
             })
             nameRef.current.focus()
         } else {
@@ -52,9 +52,9 @@ function NomineeInput({onAdd}) {
     return (
         <div className={styles.form_box}>
             <form id={styles.nomi_form} onSubmit={onSubmit}>
-            {thumbnail === '' 
+            {thumbnail === "" 
             && ( <img id={styles.no_pro} src={nopro} alt="nopro"/>)}
-            {thumbnail !== '' 
+            {thumbnail !== "" 
             && ( <img id={styles.no_pro2} src={thumbnail} alt="thumbnail"/>)}
                 <div id={styles.nomi_box}>
                     <p><label>이름 </label> : <input id={styles.nomi_input} type="text" onChange={changeInput} value={name} name="name" ref={nameRef} placeholder="참가자 이름을 등록하세요."/> </p>
