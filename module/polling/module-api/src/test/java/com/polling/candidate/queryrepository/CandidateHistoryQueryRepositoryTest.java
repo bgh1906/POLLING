@@ -1,6 +1,6 @@
 package com.polling.candidate.queryrepository;
 
-import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
+import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.member.Member;
@@ -10,7 +10,6 @@ import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,7 +48,7 @@ public class CandidateHistoryQueryRepositoryTest {
         vote(savedMember, anotherCandidate, 1);
 
         //when
-        List<FindPollHistoryResponseDto> result = queryRepository.findByCandidateId(savedCandidate.getId(), 0, 10);
+        List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateId(savedCandidate.getId(), 0, 10);
 
         //then
         assertThat(result.size()).isEqualTo(5);

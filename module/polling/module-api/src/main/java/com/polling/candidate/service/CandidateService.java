@@ -5,7 +5,7 @@ import com.polling.candidate.dto.CommentDto;
 import com.polling.candidate.dto.request.PatchCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
-import com.polling.candidate.dto.response.FindPollHistoryResponseDto;
+import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateHistory;
@@ -46,27 +46,10 @@ public class CandidateService {
         List<CommentDto> comments = commentQueryRepository.findAllByCandidateId(id);
         return FindProfileResponseDto.of(candidate, comments);
     }
-
-    /**
-     * vote의 historyStatus에 따라 리턴하는 history의 갯수가 달라집니다.
-     * SHOW_ALL: 전부 리턴
-     * SHOW_RECENT: 최근 50개의 내역만 리턴
-     */
+    
     @Transactional(readOnly = true)
-    public List<FindPollHistoryResponseDto> getHistory(Long id){
-//        Poll poll = pollRepository.findById(id)
-//                .orElseThrow(()-> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-//
-//        List<FindPollHistoryResponseDto> response;
-//        if(poll.getShowStatus().equals(ShowStatus.SHOW_ALL)){
-//           response = candidateHistoryQueryRepository.findCandidateHistoryById(id);
-//        }else if(poll.getShowStatus().equals(ShowStatus.SHOW_RECENT)){
-//            response = candidateHistoryQueryRepository.findVoteHistoryByCandidateIdLimit50(id);
-//        }else{
-//            throw new CustomException(CustomErrorResult.STATUS_NOT_FOUND);
-//        }
-//        return response;
-        return null;
+    public List<FindCandidateHistoryResponseDto> getHistory(Long candidateId, int offset, int limit){
+        return candidateHistoryQueryRepository.findByCandidateId(candidateId, offset, limit);
     }
 
     public void voteToCandidate(SaveCandidateHistoryRequestDto requestDto, Long memberId){
