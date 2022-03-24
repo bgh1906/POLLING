@@ -7,7 +7,7 @@ import PollList from "./routes/PollList";
 import History from "./routes/History";
 import Hall from "./routes/History";
 import Poll from "./routes/Poll";
-import Nominee from "./routes/Nominee";
+import Candidate from "./routes/Candidate";
 import Notice from "./routes/Notice";
 import Management from "./routes/Management";
 import User from "./routes/User";
@@ -15,6 +15,7 @@ import Login2 from "./routes/Login2";
 import Join2 from "./routes/Join2";
 import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
+import Candidate2 from "./routes/Candidate2";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
-          <Route path="/nominee" element={<Nominee />}></Route>
+          <Route path="/nominee" element={<Candidate />}></Route>
+          <Route path="/nominee2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,357 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+
+
+
+.container {
+    position: relative;
+    margin: 8vw 10vw;
+    /* border-style: double; */
+}
+
+
+#profile_image {
+    position: relative;
+    width: 32vw;
+    height: 32vw;
+    left: 33vw;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0.4vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#name {
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 9vw;
+    left: 5.5vw;
+    top: 5vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+#profile {
+    position: absolute;
+    width: 20vw;
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    left: 12vw;
+    top: 26vh;
+    text-align: center;
+}
+
+#nowrank {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    right: -0.5vw;
+    top: 24vh;
+    text-align: center;
+    transform: rotate(90deg);
+}
+
+#nowpoll {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    right: 2.5vw;
+    top: 25vh;
+    text-align: center;
+    transform: rotate(90deg);
+}
+
+
+#poll_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    left: 9vw;
+    top: 57vh;
+    padding-top: 1vh;
+}
+
+#poll_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#back_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+#list_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    left: 9vw;
+    top: 64vh;
+    padding-top: 1vh;
+}
+
+#back_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 7vw;
+    top: 64vh;
+    transform: rotate(90deg);
+}
+#list_button {
+    position:relative;
+    width: 13vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    top: 1.5vh;
+    left: 65vw;
+    padding-top: 1vh;
+}
+
+#photobox{
+    position: relative;
+    border: solid;
+    border-radius: 10px;
+    border-width: 0.1vw;
+    width: 32vw;
+    left: 33vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    
+}
+
+#photo1 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+
+#photo2 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+#photo3 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+
+
+
+
+
+
+
+/* Candidate2 */
+
+
+#name2 {
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 9vw;
+    left: 48vw;
+    top: 5vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+#profile_image2 {
+    position: relative;
+    width: 32vw;
+    /* height: 32vw; */
+    left: 12vw;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0.4vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#profile2 {
+    position: absolute;
+    width: 30vw;
+    /* height: 10vh; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    left: 47vw;
+    top: 26vh;
+    text-align: center;
+}
+
+#nowrank2 {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    left: -3vw;
+    top: 24vh;
+    text-align: center;
+    transform: rotate(270deg);
+}
+
+#nowpoll2 {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    left: vw;
+    top: 25vh;
+    text-align: center;
+    transform: rotate(270deg);
+}
+
+
+#poll_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 12vw;
+    top: 57vh;
+    padding-top: 1vh;
+}
+
+#poll_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#back_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 12vw;
+    top: 64vh;
+    padding-top: 1vh;
+}
+
+#back_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    left: 4.5vw;
+    top: 64vh;
+    transform: rotate(270deg);
+}
+
+#photobox2{
+    position: relative;
+    border: solid;
+    border-radius: 10px;
+    border-width: 0.1vw;
+    width: 32vw;
+    left: 12vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    
+}

@@ -2,13 +2,13 @@ import styles from "./Nominee.module.css";
 
 
 function Nominee({nominee, onDel}) {
-    const {id, name, profile, profile_image, additional_image1,additional_image2,additional_image3} = nominee
+    const {id, name, profile, thumbnail, imagePath1,imagePath2,imagePath3} = nominee
 
 
     return (        
         <div>
             <div id={styles.profile_div}>
-                <img id={styles.profile_image} src={profile_image} alt="profile_image" />
+                <img id={styles.thumbnail} src={thumbnail} alt="thumbnail" />
                 <span id={styles.profile_name}> {name} </span>
                 <button id={styles.profile_del} onClick={()=>onDel(id)}>삭제</button>
                 <div id={styles.profile_desc}>{profile} </div>
@@ -17,14 +17,14 @@ function Nominee({nominee, onDel}) {
                 <span> [ 참가자  갤러리 ]</span>
             </div>
             <div id={styles.add_div}>
-                {additional_image1 !== "" && (
-                    <img id={styles.add_image} src={additional_image1} alt="additional_image1" />
+                {imagePath1 !== "" && (
+                    <img id={styles.add_image} src={imagePath1} alt="imagePath1" />
                     )}
-                {additional_image2 !== "" && (
-                    <img id={styles.add_image} src={additional_image2} alt="additional_image2" />
+                {imagePath2 !== "" && (
+                    <img id={styles.add_image} src={imagePath2} alt="imagePath2" />
                     )}
-                {additional_image3 !== "" && (
-                    <img id={styles.add_image} src={additional_image3} alt="additional_image3" />
+                {imagePath3 !== "" && (
+                    <img id={styles.add_image} src={imagePath3} alt="imagePath3" />
                     )}
             </div>
             <div id={styles.distinct_box}></div>   

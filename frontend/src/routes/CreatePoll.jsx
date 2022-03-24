@@ -38,12 +38,12 @@ function CreatePoll() {
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
         id: 0,
-        name: '',
-        profile: '',
-        profile_image: '',
-        additional_image1: '',
-        additional_image2: '',
-        additional_image3: '',
+        name: "",
+        profile: "",
+        thumbnail: "",
+        imagePath1: "",
+        imagePath2: "",
+        imagePath3: ""
     }])
 
     const onDel=(id)=>{
@@ -51,7 +51,8 @@ function CreatePoll() {
     }
     const onAdd=(form)=>{
         form.id = no.current++;
-        setnomiList(nomiList.concat(form));
+        setnomiList((nomiList)=> nomiList.concat(form));
+        console.log(nomiList)
     }
 
     
@@ -64,13 +65,13 @@ function CreatePoll() {
     }
     function changePollStart(e) {
         const startdate = dayjs(e).format("YYYY-MM-DD HH:mm")
-        setpollStart(startdate);
-        console.log(startdate)
+        setpollStart(String(startdate));
+        // console.log(String(startdate))
     }
     function changePollEnd(e) {
         const enddate = dayjs(e).format("YYYY-MM-DD HH:mm")
-        setpollEnd(enddate);
-        console.log(enddate)
+        setpollEnd(String(enddate));
+        // console.log(enddate)
         
     }
     function changepollDescribe(e) {
@@ -98,35 +99,88 @@ function CreatePoll() {
         }
     }
 
-
-
     function savePolldata(){
         const pollInfo = {
-            pollName: {pollName},
-            pollStart: {pollStart},
-            pollEnd: {pollEnd},
-            pollDescribe: {pollDescribe},
-            pollRealtime: {pollRealtime},
-            pollLatestTX: {pollLatestTX},
-            pollAllTX: {pollAllTX},
-            nomiList: {nomiList},
-            status: "unapproved"
+            pollName: pollName,
+            pollStart: pollStart,
+            pollEnd: pollEnd,
+            pollDescribe: pollDescribe,
+            pollRealtime: pollRealtime,
+            pollLatestTX: pollLatestTX,
+            pollAllTX: pollAllTX,
+            nomiList: nomiList,
         }
         console.log(pollInfo)
-    
+        console.log(nomiList)
+        
+        const testList = [{
+            id: 0,
+            name: '지헌',
+            profile: '지헌입니다/',
+            thumbnail: '123',
+            imagePath1: '22',
+            imagePath2: '3',
+            imagePath3: '3'
+        },{
+            id: 0,
+            name: '수지',
+            profile: '수지입니다/',
+            thumbnail: '123',
+            imagePath1: '22',
+            imagePath2: '3',
+            imagePath3: '3'
+        }]
+        
         dispatch(actionCreators.addInfo(pollInfo));
+        axios.post(
+            "http://j6a304.p.ssafy.io:8080/api/votes",
+            {
+                "candidatesDtos": testList,
+                // "candidateDtos":[{
+                //     id: 0,
+                //     name: '지헌',
+                //     profile: '지헌입니다/',
+                //     thumbnail: '123',
+                //     imagePath1: '22',
+                //     imagePath2: '3',
+                //     imagePath3: '3'
+                // },{
+                //     id: 0,
+                //     name: '수지',
+                //     profile: '수지입니다/',
+                //     thumbnail: '123',
+                //     imagePath1: '22',
+                //     imagePath2: '3',
+                //     imagePath3: '3'
+                // }],
+                "content":pollDescribe,
+                "endDate":pollEnd,
+                "starDate":pollStart,
+                "title":pollName
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE0OTEyNiwiZXhwIjoxNjQ4MTUwOTI2fQ.94PJQBfPSL_zpYVpDO_5FD0SpaRZZ1_f6PLbnMDz07w",
+                    "Accept" : "*/*",
+                },
+            }
+        )
+        .then((res) =>{
+            console.log("POST 성공!!")
+            console.log(res)
+        })
+        .catch((e) =>{
+            console.error(e);
+        });
 
         
     }
 
     return (
         <div >
-            <div>
               <NewNav  />
-            </div>
-            <div>
-                <div className={styles.title}> CREATE A POLL </div>
-            </div>
+            <div className={styles.title}> CREATE A POLL </div>
             
             <div className={styles.container} style={{marginBottom: "1vw"}}>
                 <div id={styles.info}> POLL&nbsp;&nbsp;INFORMATION </div>
