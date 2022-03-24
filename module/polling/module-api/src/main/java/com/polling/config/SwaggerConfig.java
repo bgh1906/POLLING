@@ -28,17 +28,6 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
-//    @Bean
-//    public Docket api() {
-//        return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
-//                .select()
-//                .apis(Predicates.or(
-//                        RequestHandlerSelectors.basePackage("com.polling.api.controller"),
-//                        RequestHandlerSelectors.basePackage("com.polling.common.security.controller")
-//                ))
-//                .paths(PathSelectors.ant("/api/**"))
-//                .build();
-//    }
     @Bean
     public Docket swaggerMainApi() {
         return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
@@ -48,8 +37,8 @@ public class SwaggerConfig {
                 .paths(PathSelectors.ant("/api/**"))
                 .build()
                 .apiInfo(new ApiInfoBuilder().version("1.0").title("Main API").build())
-                .securityContexts(Arrays.asList(securityContext()))
-                .securitySchemes(Arrays.asList(apiKey()));
+                .securityContexts(List.of(securityContext()))
+                .securitySchemes(List.of(apiKey()));
     }
 
     private ApiKey apiKey() {
@@ -66,9 +55,8 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
+        return List.of(new SecurityReference("JWT", authorizationScopes));
     }
-
 
     @Bean
     UiConfiguration uiConfig() {

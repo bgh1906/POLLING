@@ -41,8 +41,9 @@ public class PollServiceTest {
     public void 투표생성() throws Exception{
         //given
         List<SaveCandidateRequestDto> candidateRequestDtos = new ArrayList<>();
-        candidateRequestDtos.add(new SaveCandidateRequestDto("candidateName1", "hello", new ArrayList<>()));
-        candidateRequestDtos.add(new SaveCandidateRequestDto("candidateName2", "hello", new ArrayList<>()));
+        candidateRequestDtos.add(SaveCandidateRequestDto.builder().build());
+        candidateRequestDtos.add(SaveCandidateRequestDto.builder().build());
+
         String format = "2022-04-01";
         LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
         SavePollRequestDto savePollRequestDto = SavePollRequestDto.builder()
