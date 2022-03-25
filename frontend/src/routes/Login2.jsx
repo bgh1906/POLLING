@@ -83,11 +83,12 @@ function Login2() {
       };
 
     return (
+        <>
         <div>
             {/* <Nav/> */}
             <NewNav />
             {/* 로그인 */}
-            <div className={Styles2.container} onclick="onclick">
+            <div className={Styles2.container} onclick="onclick" >
                 <div className={Styles2.top}></div>
                 <div className={Styles2.bottom}></div>
                 <div className={Styles2.center}>
@@ -115,6 +116,7 @@ function Login2() {
 
             {/* <Footer /> */}
         </div>
+        </>
     );
 }
 

@@ -17,7 +17,8 @@
   height: 92vh;
   left: 2vw;
   top: 4.5vh; */
-  width: 95.2vw;
+  /* width: 95.2vw; */
+  width: 96.2vw;
   height: 92vh;
   /* left: 7vw; */
   /* top: 13vh; */
@@ -31,6 +32,7 @@
 /* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after { */
 /* .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after, .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after { */
 .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after {
+  /* z-index: 1; */
   margin-left: 13vw;
   transform-origin: -13vw 50%;
   transition-delay: 0s;
@@ -122,8 +124,8 @@
   position: absolute;
   width: 10vw;
   height: 3vh;
-  left: 8.1vw;
-  top: 3vh;
+  left: 8vw;
+  top: 5vh;
   
   font-family: 'Russo One';
   font-style: normal;
@@ -141,8 +143,8 @@
     position: absolute;
     width: 21vw;
     height: 4.5vh;
-    left: 2.5vw;
-    top: 12vh;
+    left: 2.3vw;
+    top: 14vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
@@ -159,8 +161,8 @@
     position: absolute;
     width: 21vw;
     height: 4.5vh;
-    left: 2.5vw;
-    top: 20vh;
+    left: 2.2vw;
+    top: 22vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/24/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
@@ -178,8 +180,8 @@
     position: absolute;
     width: 8vw;
     height: 4vh;
-    left: 9vw;
-    top: 28vh;
+    left: 8.8vw;
+    top: 30vh;
     
     background: #FEFFF8;
     mix-blend-mode: normal;
@@ -204,8 +206,8 @@
     position: absolute;
     width: 6.5vw;
     height: 6vh;
-    left: 6.8vw;
-    top: 33vh;
+    left: 6.6vw;
+    top: 35vh;
 
     /* font-family: 'Russo One'; */
     /* font-family: 'ROKAFSansMedium'; */
@@ -225,8 +227,8 @@
     position: absolute;
     /* width: 2.1vw; */
     height: 3.1vh;
-    left: 13vw;
-    top: 33.6vh;
+    left: 12.8vw;
+    top: 35.6vh;
     
     background: #fae10000;
     border-radius: 1vw;
@@ -257,7 +259,7 @@
   width: 25vw;
   height: 6vh;
   left: 0.5vw;
-  top: 36vh;
+  top: 38vh;
 
   font-family: 'Russo One';
   font-style: normal;
@@ -273,8 +275,8 @@
     position: absolute;
     width: 13vw;
     height: 3vh;
-    left: 6.5vw;
-    top: 39.7vh;
+    left: 6.4vw;
+    top: 42vh;
 
     font-family: 'Russo One';
     /* font-family: 'ROKAFSansMedium'; */
