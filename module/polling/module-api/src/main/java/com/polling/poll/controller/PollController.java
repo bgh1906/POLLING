@@ -54,8 +54,8 @@ public class PollController {
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @PatchMapping("/{pollId}")
-    @ApiOperation(value = "투표 수정", notes = "상태가 unapproved인 경우에만 가능")
+    @PutMapping("/{pollId}")
+    @ApiOperation(value = "투표 수정", notes = "상태가 unapproved, wait인 경우에만 가능")
     public ResponseEntity<Void> modifyPollInfo(@PathVariable Long pollId, @RequestBody ModifyPollRequestDto requestDto) {
         pollService.modifyPoll(pollId, requestDto);
         return ResponseEntity.status(200).build();
