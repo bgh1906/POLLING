@@ -90,7 +90,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .and()
          .authorizeRequests()
          .antMatchers(HttpMethod.GET,"/api/**").permitAll()
-         .antMatchers(HttpMethod.POST,"/api/member/**").permitAll()
+         .antMatchers(HttpMethod.POST,"/api/members/**").permitAll()
          .antMatchers("/api/auth/**").permitAll()
          .antMatchers("/api/notify/**").permitAll()
          .antMatchers(SWAGGER_URL_PATHS).permitAll()

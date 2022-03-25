@@ -20,6 +20,7 @@ public enum CustomErrorResult {
     UNAUTHORIZED_MEMBER(HttpStatus.UNAUTHORIZED, "현재 내 계정 정보가 존재하지 않습니다"),
     INVALID_COMMENT_OWNER(HttpStatus.UNAUTHORIZED, "해당 댓글에 대한 권한이 없습니다."),
     WRONG_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 불일치합니다."),
+    WRONG_VERIFY_CODE(HttpStatus.UNAUTHORIZED, "인증번호가 일치하지 않습니다."),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 유저 정보를 찾을 수 없습니다"),
