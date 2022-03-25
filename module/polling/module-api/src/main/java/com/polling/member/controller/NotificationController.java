@@ -1,6 +1,6 @@
 package com.polling.member.controller;
 
-import com.polling.member.dto.request.SendSMSRequestDto;
+import com.polling.notification.SendSMSRequestDto;
 import com.polling.member.service.NotificationService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
