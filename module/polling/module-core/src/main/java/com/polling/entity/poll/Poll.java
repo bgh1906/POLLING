@@ -42,6 +42,7 @@ public class Poll extends BaseTimeEntity {
 
     private PollStatus pollStatus = PollStatus.UNAPPROVED;
 
+    @Column(length = 1000)
     private String thumbnail;
 
 

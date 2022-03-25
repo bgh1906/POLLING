@@ -35,9 +35,10 @@ public class Candidate extends BaseTimeEntity {
 
     private Integer voteTotalCount;
 
+    @Column(length = 1000)
     private String thumbnail;
 
-    @Column
+    @Column(length = 1000)
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> imagePaths = new ArrayList<>();
 
