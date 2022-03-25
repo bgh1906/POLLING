@@ -11,7 +11,6 @@ import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
-import com.polling.queryrepository.PollQueryRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;

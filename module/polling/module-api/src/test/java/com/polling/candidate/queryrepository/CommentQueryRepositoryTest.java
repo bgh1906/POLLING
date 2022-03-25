@@ -8,7 +8,6 @@ import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.comment.CommentRepository;
 import com.polling.repository.member.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest

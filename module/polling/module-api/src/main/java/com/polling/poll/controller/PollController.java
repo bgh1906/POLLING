@@ -3,8 +3,8 @@ package com.polling.poll.controller;
 import com.polling.auth.dto.MemberDto;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
-import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
+import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.dto.response.FindPollResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/votes")
+@RequestMapping("/api/polls")
 @RequiredArgsConstructor
 public class PollController {
 

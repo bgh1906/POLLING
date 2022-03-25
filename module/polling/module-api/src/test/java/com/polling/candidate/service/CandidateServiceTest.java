@@ -6,17 +6,13 @@ import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.service.PollService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
-import com.polling.repository.poll.PollRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.internal.matchers.Null;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;

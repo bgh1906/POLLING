@@ -1,26 +1,18 @@
 package com.polling.poll.queryrepository;
 
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.config.JpaConfig;
-import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.queryrepository.PollQueryRepository;
 import com.polling.repository.poll.PollRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
