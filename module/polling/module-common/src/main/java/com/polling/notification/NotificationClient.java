@@ -1,6 +1,8 @@
 package com.polling.notification;
 
 import com.google.gson.Gson;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -34,35 +36,7 @@ public class NotificationClient {
     private WebClient webClient = WebClient.builder().build();
 
     private final String SEND_MESSAGE_URL = "/sms/v2/services/" + this.serviceId + "/messages";
-    private static final String SENDER = "01096121458";
-//
-//    public Mono<NotificationSmsResponse> sendSms(SendSMSRequestDto requestDto) {
-//        long time = System.currentTimeMillis();
-//        List<SendSMSRequestDto> messages = new ArrayList<>();
-//        messages.add(requestDto);
-//        SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82", "01065752938", "테스트", messages);
-//
-//        try {
-//            String sig = makeSignature(time);
-//            return webClient.post()
-//                    .uri("https://sens.apigw.ntruss.com/sms/v2/services/{serviceId}/messages", serviceId)
-//                    .headers(headers -> {
-//                        headers.setContentType(MediaType.APPLICATION_JSON);
-//                        headers.set("x-ncp-apigw-timestamp", Long.toString(time));
-//                        headers.set("x-ncp-iam-access-key", accessKey);
-//                        headers.set("x-ncp-apigw-signature-v2", sig);
-//                    })
-//                    .body(BodyInserters.fromValue(smsRequest))
-//                    .retrieve()
-//                    .bodyToMono(NotificationSmsResponse.class).log()
-//                    .doOnError(WebClientResponseException.class, throwable -> log.error("[SMS] message = {}", throwable.getResponseBodyAsString(), throwable))
-//                    .timeout(timeout);
-//
-//        } catch (Exception e) {
-//            throw new CustomException(CustomErrorResult.FAIL_SEND_SMS);
-//        }
-//    }
-
+    private static final String SENDER = "01065752938";
 
     public NotificationSmsResponse sendSMS(SendSMSRequestDto requestDto) {
         List<SendSMSRequestDto> messages = new ArrayList<>();
@@ -72,7 +46,7 @@ public class NotificationClient {
         try {
             String sig = makeSignature(time);
 
-            System.out.println("SEND_MESSAGE_URL: " + SEND_MESSAGE_URL);
+            System.out.println("SEND_MESSAGE_URL: " + "/sms/v2/services/" + this.serviceId + "/messages");
             System.out.println("Time: " + time);
             System.out.println("AccessKey: " + this.accessKey);
             System.out.println("Signature: " + sig);
@@ -92,11 +66,10 @@ public class NotificationClient {
                     .bodyToMono(NotificationSmsResponse.class)
                     .block();
         }
-        catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException e) {
-            throw new RuntimeException("SMS 전송 실패 {}", e.getCause());
-        }
-        //catch (Exception e) { throw new CustomException(CustomErrorResult.FAIL_SEND_SMS); }
+        catch (Exception e) { throw new CustomException(CustomErrorResult.FAIL_SEND_SMS); }
     }
+
+
 
 
 

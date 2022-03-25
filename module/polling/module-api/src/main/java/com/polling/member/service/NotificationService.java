@@ -1,6 +1,8 @@
 package com.polling.member.service;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.notification.NotificationClient;
@@ -41,7 +43,7 @@ public class NotificationService {
     private String secretKey;
 
     /*WebClient*/
-//    public void sendSms(SendSMSRequestDto requestDto) {
+//    public void sendSms_webClient(SendSMSRequestDto requestDto) {
 //        notificationClient.sendSMS(requestDto);
 //    }
 
@@ -51,13 +53,12 @@ public class NotificationService {
         messages.add(requestDto);
         try { sendSmsServer(messages); }
         catch (Exception e) { throw new CustomException(CustomErrorResult.FAIL_SEND_SMS); }
-//        catch (Exception e) { throw new RuntimeException(e.getCause()); }
     }
 
     private void sendSmsServer(List<SendSMSRequestDto> messages)  throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
         Long time = System.currentTimeMillis();
 
-        SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82", "01096121458", "테스트", messages);
+        SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82", "01065752938", "테스트", messages);
         String jsonBody = gson.toJson(smsRequest);
 
         HttpHeaders headers = new HttpHeaders();
