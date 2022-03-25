@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Controller to authenticate users.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor

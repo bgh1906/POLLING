@@ -19,6 +19,7 @@ public class CorsConfig {
       config.setAllowCredentials(true);
       config.setAllowedOriginPatterns(Collections.singletonList("*"));
       config.addAllowedHeader("*");
+      config.setAllowCredentials(true);
       config.addAllowedMethod("*");
       config.setMaxAge(3600L);
       source.registerCorsConfiguration("/api/**", config);
