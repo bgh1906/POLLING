@@ -52,8 +52,8 @@ public class CommentQueryRepositoryTest {
         //then
         assertThat(commentDtos.size()).isEqualTo(5);
         assertThat(commentDtos.get(0).getContent()).isEqualTo("hello1");
-        assertThat(commentDtos.get(0).getUserId()).isEqualTo(savedMember.getId());
-        assertThat(commentDtos.get(0).getUserName()).isEqualTo("testName");
+        assertThat(commentDtos.get(0).getMemberId()).isEqualTo(savedMember.getId());
+        assertThat(commentDtos.get(0).getMemberNickname()).isEqualTo("testName");
     }
 
     private Comment createComment(Member member, Candidate target, String message){

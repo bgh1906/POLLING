@@ -26,7 +26,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
                 .select(Projections.constructor(FindPollPageResponseDto.class,
                         poll.id,
                         poll.title,
-                        poll.content,
+                        poll.thumbnail,
                         poll.startDate,
                         poll.endDate))
                 .from(poll)
