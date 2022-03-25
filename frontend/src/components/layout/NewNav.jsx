@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Styles from "./Newnav.module.css";
 import mark_slim from "../../assets/mark_slim.png";
+import Hamburger from "./Hamburger";
 
 function NewNav() {
 
@@ -14,9 +15,10 @@ function NewNav() {
 
                 {/* <Link to="/login" className={Styles.hamNav1}></Link> */}
             <div>
-                <button className={Styles.hamNav1}></button>
+                <Hamburger />
+                {/* <button className={Styles.hamNav1}></button>
                 <button className={Styles.hamNav2}></button>
-                <button className={Styles.hamNav3}></button>
+                <button className={Styles.hamNav3}></button> */}
             </div>
             <div className={Styles.user}>
                 <div className={Styles.userNav}>

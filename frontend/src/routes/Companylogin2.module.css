@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 @import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
 
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -15,7 +16,7 @@
   position: absolute;
   /* width: 85vw; */
   /* height: 75vh; */
-  width: 95.2vw;
+  width: 96.2vw;
   height: 92vh;
   /* left: 7vw; */
   /* top: 13vh; */
@@ -120,8 +121,8 @@
   position: absolute;
   width: 20vw;
   height: 3vh;
-  left: 3.23vw;
-  top: 7.5vh;
+  left: 3vw;
+  top: 10vh;
   
   font-family: 'Russo One';
   font-style: normal;
@@ -139,8 +140,8 @@
     position: absolute;
     width: 21vw;
     height: 4.5vh;
-    left: 2.5vw;
-    top: 15vh;
+    left: 2.3vw;
+    top: 18vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
@@ -157,8 +158,8 @@
     position: absolute;
     width: 21vw;
     height: 4.5vh;
-    left: 2.5vw;
-    top: 23vh;
+    left: 2.3vw;
+    top: 25.5vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/24/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
@@ -177,7 +178,7 @@
     width: 8vw;
     height: 4vh;
     left: 9vw;
-    top: 31vh;
+    top: 33.5vh;
     
     background: #FEFFF8;
     mix-blend-mode: normal;
@@ -202,8 +203,8 @@
     position: absolute;
     width: 7vw;
     height: 6vh;
-    left: 9.5vw;
-    top: 36vh;
+    left: 9.8vw;
+    top: 38.5vh;
 
     /* font-family: 'Russo One'; */
     /* font-family: 'ROKAFSansMedium'; */

@@ -2,13 +2,16 @@ import Styles2 from "./Join2.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Private from "../components/mypage/Private.jsx";
 import NewNav from "../components/layout/NewNav.jsx";
+
+import * as React from 'react';
+
+import Private2 from "../components/mypage/Private2";
 
 function Join2() {
 
     //개인정보처리방침 모달
-    const [openPrivate, setOpenPrivate] = useState(false);
+    
 
     //닉네임 받아오기
     const [nickname, setNickname] = useState("");
@@ -48,9 +51,12 @@ function Join2() {
     const [pcheck, setPcheck] = useState(false);
 
     const getPcheck = (e) => {
-        setPcheck(true);
+        setPcheck(!pcheck);
         console.log(pcheck);
     }
+
+    //페이지 이동
+    
 
     //회원가입
     const joinus = (e) => {
@@ -65,6 +71,7 @@ function Join2() {
             alert("개인정보처리방침에 동의해주세요.")
         }
         else if( nickname !== " " && email !== " " && password !== " " && phone !== false && pcheck !== false ){
+            alert("회원가입 성공!.")
 
         }
     }
@@ -82,18 +89,19 @@ function Join2() {
                         {/* <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/> */}
                         <form>
-                            <input type={"text"} placeholder="Nickname" name="nickname" onClick={getNickname} className={Styles2.nickname} />
+                            <input type={"text"} placeholder="Nickname" className={Styles2.nickname} name="nickname" onChange={getNickname}  />
                             <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
-                            <button className={Styles2.phonenum}>휴대폰 인증</button>
+                            <button className={Styles2.phonenum} onClick={getPhone}>휴대폰 인증</button>
                             <input type={"checkbox"} className={Styles2.privatecheck} onClick={getPcheck} />
                             <div className={Styles2.privateset}>
                                 <span>
                                 {/* <input type={"checkbox"} className={Styles.privatecheck}></input> */}
-                                    <button className={Styles2.privatebtn} onClick={() => {setOpenPrivate(true);}}>{" "}이용약관/개인정보처리방침{" "}</button> 
-                                    {openPrivate && (<Private closePrivate={setOpenPrivate}/>)}
-                                    {/* <h className={Styles.privatebtn}>이용약관/개인정보처리방침</h>  */}
-                                {/* <h className={Styles.private}>에 동의합니다.</h> */}
+                                    {/* <button className={Styles2.privatebtn} onClick={getOpenPrivate}>{" "}이용약관/개인정보처리방침{" "}</button>  */}
+                                    {/* <button className={Styles2.privatebtn} variant="outlined" onClick={getOpenPrivate}>{" "}이용약관/개인정보처리방침{" "}</button>  */}
+                                    {/* {openPrivate && (<Private closePrivate={getClosePrivate}/>)} */}
+                                    {/* <Private /> */}
+                                    <Private2 />
                                 <h className={Styles2.private}> 동의</h>
                                 </span>
                             </div>

@@ -1,12 +1,17 @@
 import { Link,useNavigate } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx";
+import NewNav from "../components/layout/NewNav.jsx";
 import Footer from "../components/layout/Footer.jsx";
 import Styles from "./User.module.css";
 import { Collapse } from "bootstrap";
 import { useState } from "react";
 import { Button } from "bootstrap";
 import axios from "axios";
-import { Table } from "react-bootstrap";
+// import { Table } from "react-bootstrap";
+import UserSearch from "../components/admin/Usesearch.jsx";
+
+import * as React from 'react';
+import UserSearch2 from "../components/admin/Usesearch2.jsx";
+
 
 function User() {
 
@@ -24,13 +29,6 @@ function User() {
         if(openO === false){
             setOpenO(true);
         }
-        //펼쳐지면 버튼색 진해지게 -> 와이 안됨?
-        if(open === false){
-            // changeColor();
-            clickCom === '#FEFFF8' ? setClickCom('#caceb7') : setClickCom('#FEFFF8');
-            // setClickCom('#caceb7');
-        }
-
     }
 
     //회원 관리 띄우기
@@ -83,30 +81,41 @@ function User() {
     };
 
     return (
-        <div>
-            <Nav/>
+        <div style={{height:'100vh'}}>
+            <NewNav />
             <div className={Styles.user}>User Mgt</div>
-                <div className={Styles.addcompany} onClick={getOpen}>
-                    <summary> 기업 회원 가입 </summary>
+                <div className={Styles.nav}>
+                    <div className={Styles.addcompany} onClick={getOpen}>
+                        <summary> 기업 회원 가입 </summary>
+                    </div>
+                    <div className={Styles.other} onClick={getOpenO}>
+                    <summary>회원 관리</summary>
+                    </div>
                 </div>
+
                 <form hidden={open}>
-                    <div className={Styles.userbg}> </div>
+                    {/* <div className={Styles.userbg}> </div>
                     <input type="text" placeholder="ID" className={Styles.id} onChange={getId} name="id"/>
                     <input type="password" placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
-                    <button className={Styles.signinbtn}>Create</button>
+                    <button className={Styles.signinbtn}>Create</button> */}
+                    <div className={Styles.login}>
+                        <form >
+                            <input type={"text"} placeholder=" ID" className={Styles.id} onChange={getId} name="Id"/>
+                            <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
+                            <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
+                        </form>
+                    </div>
                 </form>
 
-                <div className={Styles.other} onClick={getOpenO}>
-                 <summary>회원 관리</summary>
-                </div>
                 
                 <div hidden={openO}>
-                    <input className={Styles.userEmail} type="text" placeholder="회원 이메일" />
                     {/* <button className={Styles.search}><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></button> */}
-                    <button className={Styles.searchbtn}></button>
-
+                    {/* <input className={Styles.userEmail} type="text" placeholder="회원 이메일" />
+                    <button className={Styles.searchbtn}></button> */}
+                    {/* <UserSearch /> */}
+                    <UserSearch2 />
                     {/* 회원리스트 주루륵 */}
-                    <div>
+                    {/* <div>
                         <Table className={Styles.table}>
                             <thead className={Styles.thead}>
                                 <tr>
@@ -125,7 +134,7 @@ function User() {
                                 </tr>
                             </tbody>
                         </Table>
-                    </div>
+                    </div> */}
                 </div>
                 
 
