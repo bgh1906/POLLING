@@ -33,19 +33,14 @@ contract Voting {
     //초기화하는경우 해당 후보자는 0으로 자동 할당된다.
     //require를 사용하면 해당 값이 true면 아래로 진행되며 false인경우 실행되지 않는다.
     //string(abi.encodePacked(userId, candidate)) 문자열 병합 방법 - 220323
-    function voteForCandidate(string memory userId, string memory candidate, uint8 voteCount) public {
+    function voteForCandidate(string memory userId, string memory candidate, uint8 voteCount, uint8 index) public {
         require(validCandidate(candidate));
         votesReceived[candidate] += voteCount;
 
         votesTracker[candidate] = userId;
 
-        for(uint i = 0; i < candidateList.length; i++) {
-            if(keccak256(abi.encodePacked(candidateList[i])) == keccak256(abi.encodePacked(candidate))){
-                votesTrackersss.push();
-                votesTrackersss[i].push(string(abi.encodePacked(userId, candidate, uint2str(voteCount))));
-                break;
-            }
-        }
+        votesTrackersss.push();
+        votesTrackersss[index].push(string(abi.encodePacked(userId, candidate, uint2str(voteCount))));
     }
 
     // function vote
@@ -92,6 +87,7 @@ contract Voting {
     //입력받은 후보자가 실제 배열에 존재하는지 확인
     //존재하면 true반환
     //keccak256(abi.encodePacked(candidateList[i])) == keccak256(abi.encodePacked(candidate)) 문자열 비교방법 - 220323
+    //인덱스값을 받아 해당 값과 리스트위 데이터를 비교한다 - 220325
     function validCandidate(string memory candidate) view public returns (bool){
         for(uint i = 0; i < candidateList.length; i++) {
             if (keccak256(abi.encodePacked(candidateList[i])) == keccak256(abi.encodePacked(candidate))) {
