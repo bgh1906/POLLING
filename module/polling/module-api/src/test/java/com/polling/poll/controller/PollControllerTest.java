@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.poll.dto.response.FindPollResponseDto;
+import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
 import org.assertj.core.api.Assertions;
@@ -59,7 +59,7 @@ public class PollControllerTest {
     public void 득표현황랭킹조회() throws Exception{
         //given
         final String url = "/api/polls/ranking/{id}";
-        doReturn(new FindPollResponseDto(null,
+        doReturn(new FindPollAndCandidateThumbnailResponseDto(null,
                 null,
                 null,
                 null,

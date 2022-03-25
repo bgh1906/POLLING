@@ -4,8 +4,9 @@ import com.polling.auth.dto.MemberDto;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
+import com.polling.poll.dto.response.FindPollAndCandidateResponseDto;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.poll.dto.response.FindPollResponseDto;
+import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
 import com.polling.security.CurrentUser;
@@ -42,15 +43,22 @@ public class PollController {
 
     @GetMapping("/ranking/{pollId}")
     @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 득표 순위를 기준으로 정렬해서 조회")
-    public ResponseEntity<FindPollResponseDto> getRanking(@PathVariable Long pollId) {
-        FindPollResponseDto responseDto = pollService.getRanking(pollId);
+    public ResponseEntity<FindPollAndCandidateThumbnailResponseDto> getRanking(@PathVariable Long pollId) {
+        FindPollAndCandidateThumbnailResponseDto responseDto = pollService.getRanking(pollId);
         return ResponseEntity.status(200).body(responseDto);
     }
 
     @GetMapping("/{pollId}")
     @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 조회")
-    public ResponseEntity<FindPollResponseDto> getPollInfo(@PathVariable Long pollId) {
-        FindPollResponseDto responseDto = pollService.getPollInfo(pollId);
+    public ResponseEntity<FindPollAndCandidateThumbnailResponseDto> getPoll(@PathVariable Long pollId) {
+        FindPollAndCandidateThumbnailResponseDto responseDto = pollService.getPoll(pollId);
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @GetMapping("/info/{pollId}")
+    @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 조회")
+    public ResponseEntity<FindPollAndCandidateResponseDto> getPollInfo(@PathVariable Long pollId) {
+        FindPollAndCandidateResponseDto responseDto = pollService.getPollInfo(pollId);
         return ResponseEntity.status(200).body(responseDto);
     }
 

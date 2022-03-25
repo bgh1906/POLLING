@@ -19,7 +19,7 @@ public class FindProfileResponseDto {
     private String imagePath1;
     private String imagePath2;
     private String imagePath3;
-    private Integer voteTotal;
+    private Integer voteTotalCount;
     private List<CommentDto> comments;
 
     public static FindProfileResponseDto of(Candidate candidate, List<CommentDto> comments){

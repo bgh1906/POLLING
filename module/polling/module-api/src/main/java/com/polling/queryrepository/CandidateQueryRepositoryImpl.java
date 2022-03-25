@@ -1,6 +1,7 @@
 package com.polling.queryrepository;
 
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,9 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository{
     private final JPAQueryFactory query;
 
     @Override
-    public List<FindCandidateResponseDto> findAllByPollIdOrderByVotesTotal(Long pollId) {
+    public List<FindCandidateThumbnailResponseDto> findAllByPollIdOrderByVotesTotal(Long pollId) {
         return query
-                .select((Projections.constructor(FindCandidateResponseDto.class,
+                .select((Projections.constructor(FindCandidateThumbnailResponseDto.class,
                         candidate.id,
                         candidate.name,
                         candidate.thumbnail,
@@ -34,12 +35,27 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository{
     }
 
     @Override
+    public List<FindCandidateThumbnailResponseDto> findAllThumbnailByPollId(Long pollId) {
+        return query
+                .select((Projections.constructor(FindCandidateThumbnailResponseDto.class,
+                        candidate.id,
+                        candidate.name,
+                        candidate.thumbnail,
+                        candidate.voteTotalCount)))
+                .from(candidate)
+                .innerJoin(candidate.poll, poll)
+                .where(poll.id.eq(pollId))
+                .fetch();
+    }
+
+    @Override
     public List<FindCandidateResponseDto> findAllByPollId(Long pollId) {
         return query
                 .select((Projections.constructor(FindCandidateResponseDto.class,
                         candidate.id,
                         candidate.name,
                         candidate.thumbnail,
+                        candidate.imagePaths,
                         candidate.voteTotalCount)))
                 .from(candidate)
                 .innerJoin(candidate.poll, poll)

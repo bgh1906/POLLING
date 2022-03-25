@@ -2,6 +2,7 @@ package com.polling.poll.service;
 
 
 import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
@@ -9,7 +10,8 @@ import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
-import com.polling.poll.dto.response.FindPollResponseDto;
+import com.polling.poll.dto.response.FindPollAndCandidateResponseDto;
+import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
@@ -48,20 +50,29 @@ public class PollService {
     }
 
     @Transactional(readOnly = true)
-    public FindPollResponseDto getRanking(Long pollId){
+    public FindPollAndCandidateThumbnailResponseDto getRanking(Long pollId){
         Poll poll = pollRepository.findById(pollId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        List<FindCandidateResponseDto> list = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(pollId);
-        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
+        List<FindCandidateThumbnailResponseDto> list = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(pollId);
+        return new FindPollAndCandidateThumbnailResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
 
     @Transactional(readOnly = true)
-    public FindPollResponseDto getPollInfo(Long pollId){
+    public FindPollAndCandidateThumbnailResponseDto getPoll(Long pollId){
+        Poll poll = pollRepository.findById(pollId)
+                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
+        List<FindCandidateThumbnailResponseDto> list = candidateQueryRepository.findAllThumbnailByPollId(pollId);
+        return new FindPollAndCandidateThumbnailResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
+    }
+
+    @Transactional(readOnly = true)
+    public FindPollAndCandidateResponseDto getPollInfo(Long pollId){
         Poll poll = pollRepository.findById(pollId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
         List<FindCandidateResponseDto> list = candidateQueryRepository.findAllByPollId(pollId);
-        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
+        return new FindPollAndCandidateResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
+
     public void delete(Long pollId){
         Poll poll = pollRepository.findById(pollId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));

@@ -1,6 +1,6 @@
 package com.polling.candidate.queryrepository;
 
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.queryrepository.CandidateQueryRepository;
@@ -34,7 +34,7 @@ public class CandidateQueryRepositoryTest {
         savedPoll.addCandidate(candidate2);
 
         //when
-        List<FindCandidateResponseDto> responseDtos = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(savedPoll.getId());
+        List<FindCandidateThumbnailResponseDto> responseDtos = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(savedPoll.getId());
 
         //then
         assertThat(responseDtos.get(0).getVotesTotalCount()).isEqualTo(1);

@@ -1,7 +1,7 @@
 package com.polling.poll.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
+import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class FindPollResponseDto {
-    private List<FindCandidateResponseDto> candidates;
+public class FindPollAndCandidateThumbnailResponseDto {
+    private List<FindCandidateThumbnailResponseDto> candidates;
     String name;
     String content;
     String thumbnail;
