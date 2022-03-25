@@ -21,9 +21,7 @@ public class CorsConfig {
       config.addAllowedMethod("*");
       config.setAllowedOriginPatterns(Collections.singletonList("*"));
       config.setAllowCredentials(true);
-      config.setAllowCredentials(true);
-      config.addExposedHeader("refreshToken");
-      config.addExposedHeader("accessToken");
+      config.addExposedHeader("authorization");
       config.setMaxAge(3600L);
       source.registerCorsConfiguration("/api/**", config);
       return new CorsFilter(source);
