@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronUp,
-  faChevronCircleUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    let iscompomount = true
+    let iscompomount = true;
 
     window.addEventListener("scroll", () => {
-      if(iscompomount){
+      if (iscompomount) {
         if (window.pageYOffset > 300) {
           setShowButton(true);
         } else {
           setShowButton(false);
         }
-      } });
-      return () => {
-        iscompomount = false
       }
+    });
+    return () => {
+      iscompomount = false;
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -33,7 +31,7 @@ function Footer() {
   };
 
   return (
-    <div>
+    <>
       <div className={styles.footer}>
         <div className={styles.ft_company}>
           <div className={styles.ft_Name}>POLLING</div>
@@ -85,12 +83,12 @@ function Footer() {
       </div>
       {showButton && (
         <FontAwesomeIcon
-          icon={faChevronUp}
+          icon={faArrowUp}
           onClick={scrollToTop}
           className={styles.backtotop}
         />
       )}
-    </div>
+    </>
   );
 }
 

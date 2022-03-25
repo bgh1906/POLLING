@@ -82,7 +82,7 @@ export default function PollList() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
-    <div>
+    <>
       <Newnav />
       <div className={styles.polllist}>
         <div className={styles.list_title}>Poll List</div>
@@ -99,8 +99,12 @@ export default function PollList() {
                     className={styles.opened_img}
                   />
                   <div className={styles.opened_info}>
-                    <div>제 91회 춘향제</div>
-                    <div>2022.03.03 ~ 2022.05.10</div>
+                    <div style={{ fontSize: "2vw", fontWeight: 700 }}>
+                      {item.title}
+                    </div>
+                    <div style={{ fontSize: "1vw" }}>
+                      2022.03.03 ~ 2022.05.10
+                    </div>
                   </div>
                   <div className={styles.opened_button}>
                     <Button
@@ -214,7 +218,7 @@ export default function PollList() {
         </Box>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 // <div className={styles.list_container}>
