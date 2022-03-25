@@ -1,5 +1,5 @@
 import Styles2 from "./Join2.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import NewNav from "../components/layout/NewNav.jsx";
@@ -7,10 +7,28 @@ import NewNav from "../components/layout/NewNav.jsx";
 import * as React from 'react';
 
 import Private2 from "../components/mypage/Private2";
+import { Tooltip } from "@mui/material/Tooltip";
+import IconButton from '@mui/material/IconButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function Join2() {
 
-    //개인정보처리방침 모달
+    //리로딩할 때마다 값 리셋
+    React.useEffect(() => {
+        setNickname("");
+        setEmail("");
+        setPassword("");
+        setPhone("");
+        setPhonecheck(false);
+        setPcheck(false);
+    }, []);
     
 
     //닉네임 받아오기
@@ -38,13 +56,81 @@ function Join2() {
         console.log(password);
     };
 
-    //휴대폰인증
-    const [phone, setPhone] = useState(false);
+    //휴대전화 번호 입력
+    const [phone, setPhone] = useState("");
+    const getPhonenum = (e) =>{
+        setPhone(e.target.value);
+        console.log(phone);
+    }
+
+    //휴대폰인증 모달창
+    const [open, setOpen] = React.useState(false);
+    //인증번호 버튼 잠그기
+    const [phonelock, setPhonelock] = useState(false);
+    //찐 인증번호 확인위해 저장하기
+    const [realNum, setRealNum] = useState("");
+
+    //인증창 열기 & 인증번호 보내기
+    const handleClickOpen = (e) => {
+        //인증번호 보내기
+        if(phone === " "){
+            e.preventDefault();
+            alert("휴대폰 번호를 입력해주세요")
+        }
+        else if(phone !== "") {
+            axios
+            .post(
+                "http://j6a304.p.ssafy.io:8080/api/notify/sms",
+                {
+                    content : "",
+                    to : phone,
+                },
+            )
+            .then((res) => {
+                console.log("인증번호 발송", res);
+                alert("인증번호가 전송되었습니다!")
+                setRealNum(res.code);
+                setOpen(true);
+                setPhonelock(true);
+            })
+            .catch(error => {
+                const message = error.message;
+                console.log("message", message);
+                alert("인증번호 전송 실패!");
+            });
+        }
+    };
+    //인증창 닫기
+    const handleClose = () => {
+        setOpen(false);
+    };
+    //인증번호 입력 태그랑, 인증확인보낼 태크 만들기 -> 인증번호 받으면 버튼 비활성화 시키기
+    //입력받은 인증번호 값
+    const [checknum, setChecknum] = useState("");
+    const getChecknum = (e) => {
+        setChecknum(e);
+        console.log(checknum);
+    }
+    //인증번호 맞는지 체크
+    const [phonecheck, setPhonecheck] = useState(false);
     const getPhone = (e) =>{
         //휴대폰인증 진행
+        if(checknum === " "){
+            e.preventDefault();
+            alert("인증번호를 입력해주세요")
+        }
+        else if(checknum !== "") {
+            if(checknum !== realNum ){
+                alert("인증번호가 틀렸습니다.")
+            }
+            if(checknum === realNum ){
+                alert("본인 확인 완료")
+                //정상 처리되면 true로 바꾸기 & 모달 종료
+                setPhonecheck(true);
+                setOpen(false);
+            }
+        }
 
-        //휴대폰 인증 진행하고, 정상 처리되면 true로 바꾸기.
-        setPhone(true);
     }
 
     //개인정보처리방침 동의
@@ -56,30 +142,56 @@ function Join2() {
     }
 
     //페이지 이동
-    
+    const navigate = useNavigate();
 
     //회원가입
     const joinus = (e) => {
         if(nickname ===" " || email === " " || password === " "){
             e.preventDefault();
             alert("닉네임/이메일/비밀번호를 입력하세요.")
-        } else if( phone === false){
-            e.preventDefault();
-            alert("휴대폰 인증을 진행해주세요.")
-        } else if( pcheck===false ){
+        } 
+        // else if( phonecheck === false){
+        //     e.preventDefault();
+        //     alert("휴대폰 인증을 진행해주세요.")
+        // } 
+        else if( pcheck===false ){
             e.preventDefault();
             alert("개인정보처리방침에 동의해주세요.")
         }
-        else if( nickname !== " " && email !== " " && password !== " " && phone !== false && pcheck !== false ){
-            alert("회원가입 성공!.")
-
+        // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && phonecheck !== false && pcheck !== false ){
+        else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
+            axios
+            .post(
+                "http://j6a304.p.ssafy.io:8080/api/members",
+                {
+                    email: email,
+                    nickname: nickname,
+                    password: password,
+                    phoneNumber: phone,
+                    role: "ROLE_USER",
+                },
+            )
+            .then((res) => {
+                console.log("res", res);
+                alert("회원가입 성공!")
+                console.log("회원가입")
+                navigate("/login");
+            })
+            .catch(error => {
+                const message = error.message;
+                console.log("message", message);
+                alert("회원가입 실패");
+              });
+            // alert("회원가입 성공!.")
+            // navigate("/");
         }
     }
-
-    return (
-        <div>
+        
+        return (
+            <div>
             <NewNav />
-            <div className={Styles2.container} onclick="onclick">
+            {/* <div className={Styles2.container} onclick="onclick"> */}
+            <div className={Styles2.container} >
                 <div className={Styles2.top}></div>
                 <div className={Styles2.bottom}></div>
                 <div className={Styles2.center}>
@@ -88,11 +200,36 @@ function Join2() {
                         {/* <h2>Join us &nbsp;</h2>  */}
                         {/* <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/> */}
-                        <form>
                             <input type={"text"} placeholder="Nickname" className={Styles2.nickname} name="nickname" onChange={getNickname}  />
+                            <button className={Styles2.nicknameCheck} onClick={setChecknick} disabled={checknick === true}>중복확인</button>
                             <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
-                            <button className={Styles2.phonenum} onClick={getPhone}>휴대폰 인증</button>
+                            <input type={"text"} placeholder="PhoneNumber" className={Styles2.phonenum} onChange={getPhonenum} name="phone"/>
+                            <button className={Styles2.phonebtn} onClick={handleClickOpen} disabled={phonelock === true}>본인인증</button>
+                            <Dialog open={open} onClose={handleClose}>
+                                <DialogTitle className={Styles2.phonetitle}>휴대폰 인증</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText className={Styles2.phonetitle}>
+                                    입력하신 번호로 받으신 인증번호를 입력해주세요.
+                                </DialogContentText>
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="num"
+                                    label="Verification Code"
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                    className={Styles2.phonetitle}
+                                    onChange={getChecknum}
+                                />
+                                </DialogContent>
+                                <DialogActions>
+                                <button onClick={handleClose} className={Styles2.phonemodalclose}>Cancel</button>
+                                <button onClick={getPhone} className={Styles2.phonemodalSubscribe}>Subscribe</button>
+                                </DialogActions>
+                            </Dialog>
+                            
                             <input type={"checkbox"} className={Styles2.privatecheck} onClick={getPcheck} />
                             <div className={Styles2.privateset}>
                                 <span>
@@ -102,12 +239,11 @@ function Join2() {
                                     {/* {openPrivate && (<Private closePrivate={getClosePrivate}/>)} */}
                                     {/* <Private /> */}
                                     <Private2 />
-                                <h className={Styles2.private}> 동의</h>
+                                <p className={Styles2.private}> 동의</p>
                                 </span>
                             </div>
                             {/* <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button> */}
                             <button className={Styles2.create} onClick={joinus}>CREATE ACCOUNT</button>
-                        </form>
                         <div>
                             {/* <h className={Styles2.signinQ}>Alraedy have an account?</h> */}
                             <Link to="/login" className={Styles2.signinQ}>Alraedy have an account?</Link>

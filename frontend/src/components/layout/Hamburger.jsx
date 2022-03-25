@@ -8,8 +8,10 @@ function Hamburger() {
         <>
             <label>
                 <input type='checkbox' />
-                    <span class='menu' className={Styles.menu}>
-                        <span class='hamburger' className={Styles.hamburger}></span>
+                    {/* <span class='menu' className={Styles.menu}> */}
+                    <span className={Styles.menu}>
+                        {/* <span class='hamburger' className={Styles.hamburger}></span> */}
+                        <span className={Styles.hamburger}></span>
                     </span>
                     <ul>
                     {/* <div> */}
