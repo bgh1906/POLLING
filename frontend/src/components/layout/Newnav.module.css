@@ -33,6 +33,7 @@
     /* height: 7vh; */
     height: auto;
     /* padding-right: 1vw; */
+    z-index:100;
 }
 
 .title{
@@ -56,6 +57,7 @@
     font-family: 'RussoOne';
     /* font-family: 'Bitter', serif; */
     color: #231815;
+    z-index:100;
 }
 
 .hamNav1 {
@@ -182,6 +184,8 @@
     /* margin-left: 1vh; */
     /* margin-right: 1vh; */
 }
+
+
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
 

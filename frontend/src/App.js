@@ -5,7 +5,7 @@ import Mypage from "./routes/Mypage";
 import CreatePoll from "./routes/CreatePoll";
 import PollList from "./routes/PollList";
 import History from "./routes/History";
-import Hall from "./routes/History";
+import Hall from "./routes/Hall";
 import Poll from "./routes/Poll";
 import Candidate from "./routes/Candidate";
 import Notice from "./routes/Notice";

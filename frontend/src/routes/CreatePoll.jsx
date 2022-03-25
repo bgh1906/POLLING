@@ -46,6 +46,7 @@ function CreatePoll() {
         imagePath3: ""
     }])
 
+
     const onDel=(id)=>{
         setnomiList(nomiList.filter(nomiList => nomiList.id !== id))
     }
@@ -111,31 +112,13 @@ function CreatePoll() {
             nomiList: nomiList,
         }
         console.log(pollInfo)
-        console.log(nomiList)
-        
-        const testList = [{
-            id: 0,
-            name: '지헌',
-            profile: '지헌입니다/',
-            thumbnail: '123',
-            imagePath1: '22',
-            imagePath2: '3',
-            imagePath3: '3'
-        },{
-            id: 0,
-            name: '수지',
-            profile: '수지입니다/',
-            thumbnail: '123',
-            imagePath1: '22',
-            imagePath2: '3',
-            imagePath3: '3'
-        }]
-        
         dispatch(actionCreators.addInfo(pollInfo));
+        console.log("savePolldata", nomiList)
+        
         axios.post(
-            "http://j6a304.p.ssafy.io:8080/api/votes",
+            "http://j6a304.p.ssafy.io:8080/api/polls",
             {
-                "candidatesDtos": testList,
+                "candidateDtos": nomiList,
                 // "candidateDtos":[{
                 //     id: 0,
                 //     name: '지헌',
@@ -156,12 +139,13 @@ function CreatePoll() {
                 "content":pollDescribe,
                 "endDate":pollEnd,
                 "starDate":pollStart,
+                "thumbnail":pollImage,
                 "title":pollName
             },
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE0OTEyNiwiZXhwIjoxNjQ4MTUwOTI2fQ.94PJQBfPSL_zpYVpDO_5FD0SpaRZZ1_f6PLbnMDz07w",
+                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE4MDg3NCwiZXhwIjoxNjQ4MTgyNjc0fQ.jN_m5fcGSL2i0iIYdYw5-h14HfBg0kuMUny_ubzfQV0",
                     "Accept" : "*/*",
                 },
             }
