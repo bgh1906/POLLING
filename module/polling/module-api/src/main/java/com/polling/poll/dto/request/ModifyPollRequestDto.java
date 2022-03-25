@@ -16,16 +16,18 @@ public class ModifyPollRequestDto {
     List<SaveCandidateRequestDto> candidateDtos;
     String title;
     String content;
+    String thumbnail;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     LocalDateTime startDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     LocalDateTime endDate;
 
     @Builder
-    public ModifyPollRequestDto(List<SaveCandidateRequestDto> candidateDtos, String title, String content, LocalDateTime startDate, LocalDateTime endDate) {
+    public ModifyPollRequestDto(List<SaveCandidateRequestDto> candidateDtos, String title, String content, String thumbnail, LocalDateTime startDate, LocalDateTime endDate) {
         this.candidateDtos = candidateDtos;
         this.title = title;
         this.content = content;
+        this.thumbnail = thumbnail;
         this.startDate = startDate;
         this.endDate = endDate;
     }

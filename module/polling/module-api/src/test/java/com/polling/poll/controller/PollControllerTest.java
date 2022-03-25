@@ -59,7 +59,12 @@ public class PollControllerTest {
     public void 득표현황랭킹조회() throws Exception{
         //given
         final String url = "/api/polls/ranking/{id}";
-        doReturn(FindPollResponseDto.builder().build()).when(pollService).getRanking(1L);
+        doReturn(new FindPollResponseDto(null,
+                null,
+                null,
+                null,
+                null,
+                null)).when(pollService).getRanking(1L);
 
         //when
         ResultActions resultActions = mockMvc.perform(get(url, 1L));
