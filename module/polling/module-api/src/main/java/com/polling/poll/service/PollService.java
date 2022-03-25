@@ -36,6 +36,7 @@ public class PollService {
                 .pollCreator(pollCreator)
                 .title(requestDto.getTitle())
                 .content(requestDto.getContent())
+                .thumbnail(requestDto.getThumbnail())
                 .startDate(requestDto.getStartDate())
                 .endDate(requestDto.getEndDate())
                 .build());
@@ -51,7 +52,7 @@ public class PollService {
         Poll poll = pollRepository.findById(pollId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
         List<FindCandidateResponseDto> list = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(pollId);
-        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getStartDate(), poll.getEndDate());
+        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
 
     @Transactional(readOnly = true)
@@ -59,7 +60,7 @@ public class PollService {
         Poll poll = pollRepository.findById(pollId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
         List<FindCandidateResponseDto> list = candidateQueryRepository.findAllByPollId(pollId);
-        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getStartDate(), poll.getEndDate());
+        return new FindPollResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
     public void delete(Long pollId){
         Poll poll = pollRepository.findById(pollId)
@@ -74,6 +75,7 @@ public class PollService {
             throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
         poll.changeDescription(requestDto.getTitle(), requestDto.getContent());
         poll.changePeriod(requestDto.getStartDate(), requestDto.getEndDate());
+        poll.changeThumbnail(requestDto.getThumbnail());
     }
 
     public void updateStatus(Long pollId, String status){

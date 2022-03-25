@@ -10,8 +10,6 @@ import com.polling.candidate.service.CandidateService;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.member.service.MemberService;
-import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.repository.member.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
