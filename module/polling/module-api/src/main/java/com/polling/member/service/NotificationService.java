@@ -3,6 +3,7 @@ package com.polling.member.service;
 import com.google.gson.Gson;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
+import com.polling.member.dto.response.SMSCodeResponseDto;
 import com.polling.notification.NotificationClient;
 import com.polling.notification.SendSMSApiRequestDto;
 import com.polling.notification.SendSMSRequestDto;
@@ -46,10 +47,14 @@ public class NotificationService {
 //    }
 
     /*RestTemplate*/
-    public void sendSms(SendSMSRequestDto requestDto) {
+    public SMSCodeResponseDto sendSms(SendSMSRequestDto requestDto) {
         List<SendSMSRequestDto> messages = new ArrayList<>();
         messages.add(requestDto);
-        try { sendSmsServer(messages); }
+        try {
+            sendSmsServer(messages);
+            SMSCodeResponseDto response = new SMSCodeResponseDto("testcode");
+            return response;
+        }
         catch (Exception e) { throw new CustomException(CustomErrorResult.FAIL_SEND_SMS); }
     }
 
@@ -69,8 +74,8 @@ public class NotificationService {
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-
-        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
+        /* 실제 요청 날리는 부분 주석 처리 */
+//        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
     }
 
     private String makeSignature(Long time) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {
