@@ -3,7 +3,7 @@ package com.polling.candidate.service;
 
 import com.polling.candidate.dto.CommentDto;
 import com.polling.candidate.dto.request.ModifyCandidateRequestDto;
-import com.polling.candidate.dto.request.PatchCommentRequestDto;
+import com.polling.candidate.dto.request.ModifyCommentRequestDto;
 import com.polling.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.candidate.dto.request.SaveCommentRequestDto;
 import com.polling.candidate.dto.response.FindProfileResponseDto;
@@ -11,6 +11,7 @@ import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.comment.Comment;
 import com.polling.entity.member.Member;
+import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
@@ -82,7 +83,7 @@ public class CandidateService {
         commentRepository.save(comment);
     }
 
-    public void updateComment(Long commentId, PatchCommentRequestDto requestDto, Long memberId){
+    public void updateComment(Long commentId, ModifyCommentRequestDto requestDto, Long memberId){
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
         if(commentId.equals(memberId))
@@ -101,6 +102,10 @@ public class CandidateService {
     public void modifyCandidate(Long id, ModifyCandidateRequestDto requestDto) {
         Candidate candidate = candidateRepository
                 .findById(id).orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
+        PollStatus pollStatus = candidate.getPoll().getPollStatus();
+        if(pollStatus == PollStatus.IN_PROGRESS || pollStatus == PollStatus.DONE)
+            throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+
         List<String> imagePaths = new ArrayList<>();
         imagePaths.add(requestDto.getImagePath1());
         imagePaths.add(requestDto.getImagePath2());

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
@@ -66,36 +66,6 @@ public class CandidateHistoryQueryRepositoryTest {
 
         //when
         boolean result = queryRepository.existsByMemberIdAndPollIdInToday(savedMember.getId(), pollId, LocalDate.now().atStartOfDay());
-
-        //then
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    public void 후보자투표내역조회_오늘투표했는지많이() throws Exception{
-        //given
-        Poll savedPoll1 = pollRepository.save(Poll.builder().build());
-        Poll savedPoll2 = pollRepository.save(Poll.builder().build());
-        Poll savedPoll3 = pollRepository.save(Poll.builder().build());
-        Candidate savedCandidate1 = candidateRepository.save(Candidate.builder().poll(savedPoll1).build());
-        Candidate savedCandidate2 = candidateRepository.save(Candidate.builder().poll(savedPoll2).build());
-        Candidate savedCandidate3 = candidateRepository.save(Candidate.builder().poll(savedPoll3).build());
-        Member savedMember1 = memberRepository.save(Member.builder().build());
-        Member savedMember2 = memberRepository.save(Member.builder().build());
-        Member savedMember3 = memberRepository.save(Member.builder().build());
-        vote(savedMember1, savedCandidate1, 1);
-        vote(savedMember2, savedCandidate1, 1);
-        vote(savedMember3, savedCandidate1, 1);
-        vote(savedMember1, savedCandidate2, 1);
-        vote(savedMember2, savedCandidate2, 1);
-        vote(savedMember3, savedCandidate2, 1);
-        vote(savedMember1, savedCandidate3, 1);
-        vote(savedMember2, savedCandidate3, 1);
-        vote(savedMember3, savedCandidate3, 1);
-        Long pollId = savedCandidate1.getPoll().getId();
-
-        //when
-        boolean result = queryRepository.existsByMemberIdAndPollIdInToday(savedMember1.getId(), pollId, LocalDate.now().atStartOfDay());
 
         //then
         assertThat(result).isTrue();

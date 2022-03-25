@@ -8,7 +8,6 @@ import com.polling.exception.CustomException;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.service.PollService;
 import com.polling.repository.member.MemberRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,7 +52,7 @@ public class SecurityPollControllerTest {
     @Test
     public void 투표생성_실패() throws Exception{
         //given
-        final String url = "/api/votes";
+        final String url = "/api/polls";
         SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
         String email = "testEmail";
         doThrow(new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER))
@@ -72,7 +71,7 @@ public class SecurityPollControllerTest {
     @Test
     public void 투표생성_성공() throws Exception{
         //given
-        final String url = "/api/votes";
+        final String url = "/api/polls";
         SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
         String email = "testEmail";
 
@@ -90,7 +89,7 @@ public class SecurityPollControllerTest {
     @Test
     public void 투표삭제_실패() throws Exception{
         //given
-        final String url = "/api/votes/{id}";
+        final String url = "/api/polls/{id}";
         Long id = 1L;
         doThrow(new CustomException(CustomErrorResult.VOTE_NOT_FOUND))
                 .when(pollService).delete(anyLong());
@@ -106,7 +105,7 @@ public class SecurityPollControllerTest {
     @Test
     public void 투표삭제_성공() throws Exception{
         //given
-        final String url = "/api/votes/{id}";
+        final String url = "/api/polls/{id}";
         Long id = 1L;
 
         //when

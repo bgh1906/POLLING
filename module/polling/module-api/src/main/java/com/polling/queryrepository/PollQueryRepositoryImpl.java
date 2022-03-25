@@ -1,7 +1,6 @@
 package com.polling.queryrepository;
 
 
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.querydsl.core.types.Projections;
@@ -12,8 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.polling.entity.candidate.QCandidate.candidate;
-import static com.polling.entity.poll.QPoll.*;
+import static com.polling.entity.poll.QPoll.poll;
 
 
 @Transactional(readOnly = true)

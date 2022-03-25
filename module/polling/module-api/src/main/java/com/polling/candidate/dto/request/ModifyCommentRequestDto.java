@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class PatchCommentRequestDto {
+public class ModifyCommentRequestDto {
     private String content;
 }
