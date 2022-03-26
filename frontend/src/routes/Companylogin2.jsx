@@ -9,10 +9,10 @@ function Companylogin2() {
 
     //id 받아오기
     
-    const [id, setId] = useState("");
-    const getId = (e) => {
-        setId(e.target.value);
-        console.log(id);
+    const [email, setEmail] = useState("");
+    const getEmail = (e) => {
+        setEmail(e.target.value);
+        console.log(email);
     };
 
     //비밀번호 받아오기
@@ -27,39 +27,46 @@ function Companylogin2() {
 
     // 로그인하기
     const onLogin = (e) => {
-        if(id === "" || password === ""){
+        if(email === "" || password === ""){
             e.preventDefault();
             alert("이메일/비밀번호를 입력해주세요");
-        } else if(id !== "" && password !==""){
-    //         axios
-    //           .post(
-    //               "",
-    //               {
-    //                   email: email,
-    //                   password: password,
-    //               },
-    //           )
-    //         .then((res) => {
-    //            navigate("/");
-    //         })
-            alert("로그인");
+        } else if(email !== "" && password !==""){
+            axios
+              .post(
+                "http://j6a304.p.ssafy.io:8080/api/auth",
+                  {
+                    email: email,
+                    password: password,
+                  },
+              )
+            .then((res) => {
+                console.log("res", res);
+                console.log("로그인 성공");
+                alert("로그인 성공");
+                navigate("/");
+            })
+            .catch(error => {
+                const message = error.message;
+                console.log("message", message);
+                alert("로그인 실패");
+              });
         }
     };
 
     return (
         <div>
             <NewNav/>
-            <div className={Styles2.container} onclick="onclick">
+            <div className={Styles2.container}>
                 <div className={Styles2.top}></div>
                 <div className={Styles2.bottom}></div>
                 <div className={Styles2.center}>
                     <div className={Styles2.signin}>Sign in_Business</div>
-                    <form>
+                    {/* <form> */}
                         {/* <div className={Styles2.userbg}> </div> */}
-                        <input type="text" placeholder=" Business ID" className={Styles2.id} onChange={getId} name="id"/>
+                        <input type="text" placeholder=" Business E-mail" className={Styles2.id} onChange={getEmail} name="email"/>
                         <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
                         <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button>
-                    </form>
+                    {/* </form> */}
                 <Link to="/login" className={Styles2.login}>일반회원이신가요?</Link>
                 </div>
             </div>

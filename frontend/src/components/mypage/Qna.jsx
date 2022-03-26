@@ -1,4 +1,4 @@
-import Nav from "../layout/Nav";
+import NewNav from "../layout/NewNav";
 
 
 
@@ -6,7 +6,7 @@ function Qna() {
 
     return (
         <div>
-            <Nav />
+            <NewNav />
         </div>
     );
 }

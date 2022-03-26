@@ -91,7 +91,7 @@ function Login4() {
         <div>
             {/* <Nav/> */}
             <NewNav />
-            <p class={Styles4.tip}>Click on button in image container</p>
+            <p className={Styles4.tip}>Click on button in image container</p>
             <div className={Styles4.cont}>
             <div className={Styles4.form} class="sign-in">
                 <div className={Styles4.sign_in}>
@@ -111,24 +111,21 @@ function Login4() {
             </div>
             <div className={Styles4.sub_cont}  class="sub-cont">
                 <div class="img" className={Styles4.img}>
-                <div class={Styles4.img__text} className={Styles4.m__up}>
+                {/* <div class={Styles4.img__text} className={Styles4.m__up}>
                     <h2 className={Styles4.img__texth2}>New here?</h2>
                     <p className={Styles4.img__textp}>Sign up and discover great amount of new opportunities!</p>
-                </div>
-                <div class={Styles4.img__text} className={Styles4.m__in}>
+                </div> */}
+                {/* <div class={Styles4.img__text} className={Styles4.m__in}>
                     <h2 className={Styles4.img__texth2}>One of us?</h2>
                     <p className={Styles4.img__textp}>If you already has an account, just sign in. We've missed you!</p>
-                </div>
-                {/* 화면전환 버튼 */}
-                {/* <div class={Styles4.img__btn} onClick={change()}> */}
-                {/* <div class={Styles4.$`{btn}`} onClick={change()}> */}
-                {/* <div class={Styles4.img__btn} onClick={change()}> */}
-                <div class={Styles4.img__btn}>
-                    <span class={Styles4.spanm__up} onClick={change}>Sign Up</span>
-                    <span class={Styles4.spanm__in}>Sign In</span>
+                </div> */}
+                <div className={Styles4.img__btn}>
+                    <span className={Styles4.spanm__up} onClick={change}>Sign Up</span>
+                    <span className={Styles4.spanm__in}>Sign In</span>
                 </div>
                 </div>
-                <div class={Styles4.sign_up} className={Styles4.ssign_up}>
+                {/* <div class={Styles4.sign_up} className={Styles4.ssign_up}> */}
+                <div className={Styles4.ssign_up}>
                 <h2 className={Styles4.h2}>Time to feel like home,</h2>
                 <label className={Styles4.label}>
                     <span className={Styles4.name}>Name</span>
@@ -142,8 +139,8 @@ function Login4() {
                     <span className={Styles4.password}>Password</span>
                     <input type="password" className={Styles4.input}/>
                 </label>
-                <button type="button" class={Styles4.submit}>Sign Up</button>
-                <button type="button" class={Styles4.fb-btn}>Join with <span class={Styles4.kakao}>KakaoTalk</span></button>
+                <button type="button" className={Styles4.submit}>Sign Up</button>
+                <button type="button" className={Styles4.fb-btn}>Join with <span className={Styles4.kakao}>KakaoTalk</span></button>
                 </div>
             </div>
             </div>
