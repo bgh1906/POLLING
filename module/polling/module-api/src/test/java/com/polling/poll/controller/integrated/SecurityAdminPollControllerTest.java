@@ -49,23 +49,23 @@ public class SecurityAdminPollControllerTest {
         this.memberRepository.deleteAll();
     }
 
-    @Test
-    public void 투표생성_허용되지않은권한() throws Exception{
-        //given
-        final String url = "/api/polls/admin";
-        SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
-        Long id = 1L;
-        doThrow(new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER))
-                .when(pollService).savePoll(requestDto, id);
-
-        //when
-        ResultActions resultActions = mockMvc.perform(post(url)
-                .content(gson.toJson(requestDto))
-                .contentType(MediaType.APPLICATION_JSON));
-
-        //then
-        resultActions.andExpect(status().is4xxClientError());
-    }
+//    @Test
+//    public void 투표생성_허용되지않은권한() throws Exception{
+//        //given
+//        final String url = "/api/polls/admin";
+//        SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
+//        Long id = 1L;
+//        doThrow(new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER))
+//                .when(pollService).savePoll(requestDto, id);
+//
+//        //when
+//        ResultActions resultActions = mockMvc.perform(post(url)
+//                .content(gson.toJson(requestDto))
+//                .contentType(MediaType.APPLICATION_JSON));
+//
+//        //then
+//        resultActions.andExpect(status().is4xxClientError());
+//    }
 
 
     @Test
