@@ -1,5 +1,7 @@
 package com.polling.member.controller;
 
+import com.polling.aop.annotation.Retry;
+import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.member.dto.request.ChangePasswordRequestDto;
@@ -23,6 +25,7 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
+    @Retry
     @PostMapping
     @ApiOperation(value = "회원 가입")
     public ResponseEntity<Void> save(@RequestBody SaveNativeMemberRequestDto requestDto) {
@@ -30,6 +33,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @DeleteMapping
     @ApiOperation(value = "회원 탈퇴")
     public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto) {
@@ -37,6 +41,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @GetMapping
     @ApiOperation(value = "회원 정보 조회")
     public ResponseEntity<FindMemberResponseDto> getMember(@CurrentUser MemberDto memberDto) {
@@ -51,6 +56,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @PatchMapping("/nickname/{nickname}")
     @ApiOperation(value = "닉네임 수정")
     public ResponseEntity<Void> changeNickname(@CurrentUser MemberDto memberDto, @PathVariable String nickname) {
@@ -58,6 +64,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @PatchMapping("/password/{id}")
     @ApiOperation(value = "패스워드 수정")
     public ResponseEntity<Void> changePassword(@CurrentUser MemberDto memberDto, @RequestBody ChangePasswordRequestDto requestDto) {
@@ -65,6 +72,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @PatchMapping("/role/{id}")
     @ApiOperation(value = "회원 권한 수정")
     public ResponseEntity<Void> changeRole(@PathVariable Long id, Set<MemberRole> memberRole) {
@@ -72,6 +80,7 @@ public class MemberController {
         return ResponseEntity.status(200).build();
     }
 
+    @Trace
     @PatchMapping("/role/admin/{id}")
     @ApiOperation(value = "임시용 멤버에 어드민 권한 추가")
     public ResponseEntity<Void> changeRole(@PathVariable Long id) {

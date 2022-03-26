@@ -1,5 +1,6 @@
 package com.polling.member.controller;
 
+import com.polling.aop.annotation.Retry;
 import com.polling.member.dto.response.SMSCodeResponseDto;
 import com.polling.member.service.NotificationService;
 import com.polling.notification.SendSMSRequestDto;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
     private final NotificationService notificationService;
 
+    @Retry
     @PostMapping("/sms")
     @ApiOperation(value = "휴대폰 인증")
     public ResponseEntity<SMSCodeResponseDto> save(@RequestBody SendSMSRequestDto requestDto) {
