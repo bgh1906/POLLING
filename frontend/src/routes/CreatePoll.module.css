@@ -278,7 +278,31 @@
     text-decoration: none;
     margin: 1vw;
     position: relative;
-    left: 37vw;
+    left: 35.5vw;
+    border: none;
+    background-color: transparent;
+    font-family: 'GangwonEdu_OTFBoldA';
+    cursor: pointer;
+}
+#poll_save2{
+    color: black;
+    font-size: 2vw;
+    text-decoration: none;
+    margin: 1vw;
+    position: relative;
+    left: 39vw;
+    border: none;
+    background-color: transparent;
+    font-family: 'GangwonEdu_OTFBoldA';
+    cursor: pointer;
+}
+#poll_delete{
+    color: black;
+    font-size: 2vw;
+    text-decoration: none;
+    margin: 1vw;
+    position: relative;
+    left: 35vw;
     border: none;
     background-color: transparent;
     font-family: 'GangwonEdu_OTFBoldA';
@@ -287,15 +311,12 @@
 
 #poll_save:hover{
     color: blue;
-    font-size: 2vw;
-    text-decoration: none;
-    margin: 1vw;
-    position: relative;
-    left: 37vw;
-    border: none;
-    background-color: transparent;
-    font-family: 'GangwonEdu_OTFBoldA';
-    cursor: pointer;
+}
+#poll_save2:hover{
+    color: blue;
+}
+#poll_delete:hover{
+    color: red;
 }
 
 
@@ -304,12 +325,20 @@
     font-size: 2vw;
     text-decoration: none;
     position: relative;
-    left: 38vw;
+    left: 35vw;
 }
-#poll_back:hover {
-    color: blue;
+#poll_back2 {
+    color: black;
     font-size: 2vw;
     text-decoration: none;
     position: relative;
-    left: 38vw;
+    left: 40vw;
+}
+#poll_back:hover {
+    color: rgb(255, 0, 212);
+
+}
+#poll_back2:hover {
+    color: red
+
 }

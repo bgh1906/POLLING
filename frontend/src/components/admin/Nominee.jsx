@@ -1,16 +1,17 @@
 import styles from "./Nominee.module.css";
+import Button from '@mui/material/Button';
 
 
-function Nominee({nominee, onDel}) {
+function Nominee({nominee, onDel, onEdit}) {
     const {id, name, profile, thumbnail, imagePath1,imagePath2,imagePath3} = nominee
-
 
     return (        
         <div>
             <div id={styles.profile_div}>
                 <img id={styles.thumbnail} src={thumbnail} alt="thumbnail" />
                 <span id={styles.profile_name}> {name} </span>
-                <button id={styles.profile_del} onClick={()=>onDel(id)}>삭제</button>
+                <Button id={styles.profile_update} onClick={()=>onEdit(nominee)} variant="contained">수정</Button>
+                <Button id={styles.profile_del} onClick={()=>onDel(id)} variant="contained">삭제</Button>
                 <div id={styles.profile_desc}>{profile} </div>
             </div>
             <div id={styles.profile_gallery}>

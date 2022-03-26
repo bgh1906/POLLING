@@ -16,6 +16,7 @@ import Join2 from "./routes/Join2";
 import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 import Candidate2 from "./routes/Candidate2";
+import UpdatePoll from "./routes/UpdatePoll";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/nominee" element={<Candidate />}></Route>
           <Route path="/nominee2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
+          <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

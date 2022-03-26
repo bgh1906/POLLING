@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Nominee.module.css";
 import Swal from "sweetalert2";
 import nopro from "../../assets/nopro.jpg"
 import Button from '@mui/material/Button';
 
 
-function NomineeInput({onAdd}) {
+function NomineeInput({onAdd, current, isEdit, onUpdate}) {
     const nameRef = useRef()
 
     const [form, setForm] = useState({
@@ -16,6 +16,20 @@ function NomineeInput({onAdd}) {
         imagePath2: "",
         imagePath3: "",
     })
+
+    useEffect(()=>{
+        if(isEdit){
+            setForm({
+                id: current.id,
+                name: current.name,
+                profile: current.profile,
+                thumbnail: current.thumbnail,
+                imagePath1: current.imagePath1,
+                imagePath2: current.imagePath2,
+                imagePath3: current.imagePath3,
+            })
+        }
+    }, [isEdit])
 
     const changeInput=(e)=>{
         const{value, name} = e.target
@@ -28,16 +42,31 @@ function NomineeInput({onAdd}) {
     const onSubmit=(e)=>{
         e.preventDefault()
         if(name !== "" || profile !== "" || thumbnail !== ""){
-            onAdd(form)
-            setForm({
-                name: "",
-                profile: "",
-                thumbnail: "",
-                imagePath1: "",
-                imagePath2: "",
-                imagePath3: "",
-            })
+            if(isEdit){
+                onUpdate(form)
+                setForm({
+                    name: "",
+                    profile: "",
+                    thumbnail: "",
+                    imagePath1: "",
+                    imagePath2: "",
+                    imagePath3: "",
+                })
             nameRef.current.focus()
+            } else{
+                onAdd(form)
+                setForm({
+                    name: "",
+                    profile: "",
+                    thumbnail: "",
+                    imagePath1: "",
+                    imagePath2: "",
+                    imagePath3: "",
+                })
+            nameRef.current.focus()
+            }
+            
+            
         } else {
             Swal.fire({
                 title: '참가자 정보를 입력해주세요!!',
@@ -70,7 +99,8 @@ function NomineeInput({onAdd}) {
                     <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath2} name="imagePath2" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
                     <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath3} name="imagePath3" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
                     <p id={styles.form_buttonbox}>
-                        <Button id={styles.register_button} type="submit" variant="contained"> 참가자 등록</Button>
+                        {isEdit ? <Button id={styles.register_button} type="submit" variant="contained"> 수정하기</Button>:
+                        <Button id={styles.register_button} type="submit" variant="contained"> 참가자 등록</Button>}
                     </p>
                 </div>
             </form>
