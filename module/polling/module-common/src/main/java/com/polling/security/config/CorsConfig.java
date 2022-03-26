@@ -16,12 +16,14 @@ public class CorsConfig {
    public CorsFilter corsFilter() {
       UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
       CorsConfiguration config = new CorsConfiguration();
-      config.addAllowedOrigin("*");
+      config.addAllowedOrigin("http://localhost:3000");
+      config.addAllowedOrigin("https://j6a304.p.ssafy.io");
       config.addAllowedHeader("*");
       config.addAllowedMethod("*");
       config.setAllowedOriginPatterns(Collections.singletonList("*"));
       config.setAllowCredentials(true);
       config.addExposedHeader("authorization");
+      config.addExposedHeader("refreshToken");
       config.setMaxAge(3600L);
       source.registerCorsConfiguration("/api/**", config);
       return new CorsFilter(source);
