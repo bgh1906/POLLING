@@ -71,4 +71,11 @@ public class MemberController {
         memberService.changeRole(id, memberRole);
         return ResponseEntity.status(200).build();
     }
+
+    @PatchMapping("/role/admin/{id}")
+    @ApiOperation(value = "임시용 멤버에 어드민 권한 추가")
+    public ResponseEntity<Void> changeRole(@PathVariable Long id) {
+        memberService.addAdminRole(id);
+        return ResponseEntity.status(200).build();
+    }
 }

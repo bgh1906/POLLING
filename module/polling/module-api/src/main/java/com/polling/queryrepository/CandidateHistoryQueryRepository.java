@@ -1,6 +1,6 @@
 package com.polling.queryrepository;
 
-import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
+import com.polling.poll.dto.candidate.response.FindCandidateHistoryResponseDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

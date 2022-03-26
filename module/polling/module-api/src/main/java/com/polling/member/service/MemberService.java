@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -77,5 +78,15 @@ MemberService {
         Member member = memberRepository.findById(id)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
         member.changeMemberRole(memberRole);
+    }
+
+    @Transactional
+    public void addAdminRole(Long id) {
+        Member member = memberRepository.findById(id)
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+        Set<MemberRole> memberRoles = new HashSet<>();
+        memberRoles.add(MemberRole.ROLE_ADMIN);
+        memberRoles.add(MemberRole.ROLE_USER);
+        member.changeMemberRole(memberRoles);
     }
 }

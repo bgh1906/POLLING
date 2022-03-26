@@ -1,8 +1,10 @@
 package com.polling.poll.service;
 
 
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
+import com.polling.entity.member.status.MemberRole;
+import com.polling.poll.dto.candidate.response.FindAdminCandidateResponseDto;
+import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
+import com.polling.entity.candidate.Candidate;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
@@ -13,6 +15,7 @@ import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollAndCandidateResponseDto;
 import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
+import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Transactional
 @RequiredArgsConstructor
@@ -29,9 +34,11 @@ public class PollService {
     private final MemberRepository memberRepository;
     private final CandidateQueryRepository candidateQueryRepository;
 
-    public void savePoll(SavePollRequestDto requestDto, String pollCreatorEmail){
-        Member pollCreator = memberRepository.findByEmail(pollCreatorEmail)
+    public void savePoll(SavePollRequestDto requestDto, Long pollCreatorId){
+        Member pollCreator = memberRepository.findById(pollCreatorId)
                 .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+
+        validateRole(pollCreator.getMemberRole());
 
         // 투표 생성
         Poll poll = pollRepository.save(Poll.builder()
@@ -50,50 +57,65 @@ public class PollService {
     }
 
     @Transactional(readOnly = true)
-    public FindPollAndCandidateThumbnailResponseDto getRanking(Long pollId){
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        List<FindCandidateThumbnailResponseDto> list = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(pollId);
+    public FindPollAndCandidateThumbnailResponseDto findPollThumbnailSortByVoteCount(Long pollId){
+        Poll poll = getPoll(pollId);
+        List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(pollId);
         return new FindPollAndCandidateThumbnailResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
 
     @Transactional(readOnly = true)
-    public FindPollAndCandidateThumbnailResponseDto getPoll(Long pollId){
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        List<FindCandidateThumbnailResponseDto> list = candidateQueryRepository.findAllThumbnailByPollId(pollId);
+    public FindPollAndCandidateThumbnailResponseDto findPollThumbnail(Long pollId){
+        Poll poll = getPoll(pollId);
+        List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllThumbnailByPollId(pollId);
         return new FindPollAndCandidateThumbnailResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
 
     @Transactional(readOnly = true)
-    public FindPollAndCandidateResponseDto getPollInfo(Long pollId){
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        List<FindCandidateResponseDto> list = candidateQueryRepository.findAllByPollId(pollId);
+    public FindPollAndCandidateResponseDto findPollAllInfo(Long pollId){
+        Poll poll = getPoll(pollId);
+        List<Candidate> candidates = candidateQueryRepository.findAllByPollId(pollId);
+        List<FindAdminCandidateResponseDto> list = candidates.stream().map(candidate -> FindAdminCandidateResponseDto.builder()
+                .id(candidate.getId())
+                .name(candidate.getName())
+                .thumbnail(candidate.getThumbnail())
+                .imagePaths(candidate.getImagePaths())
+                .build()).collect(Collectors.toList());
         return new FindPollAndCandidateResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
 
-    public void delete(Long pollId){
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
+    public void deletePoll(Long pollId){
+        Poll poll = getPoll(pollId);
+        poll.deleteCandidates();
         pollRepository.delete(poll);
     }
 
     public void modifyPoll(Long pollId, ModifyPollRequestDto requestDto) {
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
-        if(poll.getPollStatus() == PollStatus.IN_PROGRESS || poll.getPollStatus() == PollStatus.DONE)
-            throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+        Poll poll = getPoll(pollId);
+        validateStatus(poll);
         poll.changeDescription(requestDto.getTitle(), requestDto.getContent());
         poll.changePeriod(requestDto.getStartDate(), requestDto.getEndDate());
         poll.changeThumbnail(requestDto.getThumbnail());
     }
 
-    public void updateStatus(Long pollId, String status){
+    public void modifyStatus(Long pollId, String status){
         PollStatus pollStatus = PollStatus.findStatusByName(status);
-        Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
+        Poll poll = getPoll(pollId);
+        validateStatus(poll);
         poll.changePollStatus(pollStatus);
     }
 
+    private Poll getPoll(Long pollId){
+        return pollRepository.findById(pollId)
+                .orElseThrow(()->new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
+    }
+
+    private void validateRole(Set<MemberRole> memberRole) {
+        if(!(memberRole.contains(MemberRole.ROLE_COMPANY) || memberRole.contains(MemberRole.ROLE_ADMIN)))
+            throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER_ROLE);
+    }
+
+    private void validateStatus(Poll poll){
+        if(poll.getPollStatus() == PollStatus.IN_PROGRESS || poll.getPollStatus() == PollStatus.DONE)
+            throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+    }
 }

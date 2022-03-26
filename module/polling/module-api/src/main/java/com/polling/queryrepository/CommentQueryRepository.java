@@ -1,7 +1,7 @@
 package com.polling.queryrepository;
 
 
-import com.polling.candidate.dto.CommentDto;
+import com.polling.poll.dto.comment.request.CommentDto;
 
 import java.util.List;
 

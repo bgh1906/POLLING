@@ -3,8 +3,8 @@ package com.polling.poll.controller;
 import com.google.gson.Gson;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
-import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
+import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
 import org.assertj.core.api.Assertions;
@@ -39,12 +39,10 @@ public class PollControllerTest {
     @Mock
     private PollQueryRepository pollQueryRepository;
 
-    private Gson gson;
     private MockMvc mockMvc;
 
     @BeforeEach
     public void init(){
-        gson = new Gson();
         mockMvc = MockMvcBuilders.standaloneSetup(target)
                 .setControllerAdvice(new CustomExceptionHandler())
                 .build();
@@ -64,7 +62,7 @@ public class PollControllerTest {
                 null,
                 null,
                 null,
-                null)).when(pollService).getRanking(1L);
+                null)).when(pollService).findPollThumbnailSortByVoteCount(1L);
 
         //when
         ResultActions resultActions = mockMvc.perform(get(url, 1L));

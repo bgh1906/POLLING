@@ -1,6 +1,6 @@
 package com.polling.queryrepository;
 
-import com.polling.candidate.dto.CommentDto;
+import com.polling.poll.dto.comment.request.CommentDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +31,7 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
                         comment.content)))
                 .from(comment)
                 .innerJoin(comment.member, member)
-                .innerJoin(comment.candidate, candidate)
-                .where(candidate.id.eq(candidateId))
+                .where(comment.candidate.id.eq(candidateId))
                 .orderBy(comment.createdDate.asc())
                 .fetch();
     }

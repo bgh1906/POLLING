@@ -46,7 +46,7 @@ public class Poll extends BaseTimeEntity {
     private String thumbnail;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Candidate> candidates = new ArrayList<>();
 
     @Builder
@@ -80,5 +80,9 @@ public class Poll extends BaseTimeEntity {
     public void addCandidate(Candidate candidate){
         this.candidates.add(candidate);
         candidate.changePoll(this);
+    }
+
+    public void deleteCandidates(){
+        this.candidates = null;
     }
 }

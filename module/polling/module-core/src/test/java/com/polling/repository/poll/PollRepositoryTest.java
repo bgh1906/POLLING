@@ -115,7 +115,7 @@ public class PollRepositoryTest {
         Poll findPoll = pollRepository.findById(savedPoll.getId()).orElseThrow();
 
         //then
-        assertThat(findPoll.getCandidates().size()).isEqualTo(1);
+        assertThat(findPoll.getCandidates().size()).isGreaterThan(5);
     }
 
     private Poll createPoll(LocalDateTime start, LocalDateTime end){
@@ -126,6 +126,13 @@ public class PollRepositoryTest {
                 .startDate(start)
                 .endDate(end)
                 .build();
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
+        poll.addCandidate(Candidate.builder().build());
         return pollRepository.save(poll);
     }
 

@@ -1,6 +1,5 @@
 package com.polling.notification;
 
-import com.polling.notification.SendSMSRequestDto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

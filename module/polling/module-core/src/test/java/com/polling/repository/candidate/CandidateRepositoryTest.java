@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,11 +52,17 @@ public class CandidateRepositoryTest {
     }
 
     private Candidate createCandidate(String name){
+        List<String> imagePaths = new ArrayList<>();
+        imagePaths.add("test1");
+        imagePaths.add("test2");
+        imagePaths.add("test3");
+        imagePaths.add("test4");
         return candidateRepository.save(Candidate.builder()
                 .name(name)
                 .imagePaths(new ArrayList<>())
                 .profile("content")
                 .thumbnail("thumbnail")
+                .imagePaths(imagePaths)
                 .build());
     }
 }

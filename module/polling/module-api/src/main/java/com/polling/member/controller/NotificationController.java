@@ -1,8 +1,8 @@
 package com.polling.member.controller;
 
 import com.polling.member.dto.response.SMSCodeResponseDto;
-import com.polling.notification.SendSMSRequestDto;
 import com.polling.member.service.NotificationService;
+import com.polling.notification.SendSMSRequestDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

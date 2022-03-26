@@ -1,6 +1,6 @@
 package com.polling.queryrepository;
 
-import com.polling.candidate.dto.response.FindCandidateHistoryResponseDto;
+import com.polling.poll.dto.candidate.response.FindCandidateHistoryResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +30,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
                         candidateHistory.transactionId)))
                 .from(candidateHistory)
                 .innerJoin(candidateHistory.member, member)
-                .innerJoin(candidateHistory.candidate, candidate)
-                .where(candidate.id.eq(candidateId))
+                .where(candidateHistory.candidate.id.eq(candidateId))
                 .orderBy(candidateHistory.createdDate.desc())
                 .offset(offset)
                 .limit(limit)
@@ -46,7 +45,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
                 .innerJoin(candidateHistory.member, member)
                 .innerJoin(candidateHistory.candidate, candidate)
                 .where(candidateHistory.member.id.eq(memberId),
-                        candidate.poll.id.eq(pollId),
+                        candidateHistory.candidate.poll.id.eq(pollId),
                         candidateHistory.createdDate.after(today),
                         candidateHistory.createdDate.before(today.plusDays(1)))
                 .fetchFirst() != null;

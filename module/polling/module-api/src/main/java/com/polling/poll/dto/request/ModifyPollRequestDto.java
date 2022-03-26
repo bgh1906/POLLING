@@ -1,7 +1,7 @@
 package com.polling.poll.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.polling.candidate.dto.request.SaveCandidateRequestDto;
+import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,12 +1,12 @@
 package com.polling.queryrepository;
 
-import com.polling.candidate.dto.response.FindCandidateResponseDto;
-import com.polling.candidate.dto.response.FindCandidateThumbnailResponseDto;
+import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
+import com.polling.entity.candidate.Candidate;
 
 import java.util.List;
 
 public interface CandidateQueryRepository {
-    List<FindCandidateThumbnailResponseDto> findAllByPollIdOrderByVotesTotal(Long pollId);
-    List<FindCandidateThumbnailResponseDto> findAllThumbnailByPollId(Long pollId);
-    List<FindCandidateResponseDto> findAllByPollId(Long pollId);
+    List<FindAnonymousCandidateResponseDto> findAllByPollIdOrderByVotesTotal(Long pollId);
+    List<FindAnonymousCandidateResponseDto> findAllThumbnailByPollId(Long pollId);
+    List<Candidate> findAllByPollId(Long pollId);
 }

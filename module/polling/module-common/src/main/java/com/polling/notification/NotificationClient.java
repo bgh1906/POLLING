@@ -1,6 +1,5 @@
 package com.polling.notification;
 
-import com.google.gson.Gson;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import lombok.RequiredArgsConstructor;
