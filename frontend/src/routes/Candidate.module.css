@@ -88,7 +88,7 @@
     font-family: 'ROKAFSansMedium';
     font-size: 2vw;
     right: 2.5vw;
-    top: 25vh;
+    top: 21vh;
     text-align: center;
     transform: rotate(90deg);
 }
@@ -354,4 +354,40 @@
     justify-content: center;
     margin-bottom: 5vh;
     
+}
+
+#mark{
+    width: 3vw;
+    position: relative;
+    top: 1.3vh;
+    right: 0.5vh;
+}
+
+#crown {
+    position: absolute;
+    width: 4vw;
+    top: 3vh;
+    left: 2vw;
+    transform: rotate(320deg);
+}
+
+#crown2 {
+    position: absolute;
+    width: 4vw;
+    right: 28vw;
+}
+
+
+#tx {
+    position: absolute;
+    width: 3.5vw;
+    top: 63vh;
+    left: 25vw;
+}
+
+#tx2 {
+    position: absolute;
+    width: 3.5vw;
+    top: 63vh;
+    right: 8vw;
 }

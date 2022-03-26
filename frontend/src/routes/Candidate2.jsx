@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Comment from "../components/comment/Comment"
+import mark from "../assets/mark_slim.png"
+import crown from "../assets/crown.png"
+import tx from "../assets/tx.png"
 
 function Candidate2() {
 
@@ -40,6 +43,8 @@ function Candidate2() {
         <div>
                 <NewNav />
             <div className={styles.container}>
+                <img id={styles.crown2} src={crown} alt="crown" />
+                <img id={styles.tx2} src={tx} alt="tx2" />
                 <span id={styles.name2}>수지</span>
                 <p id={styles.profile2}>
                     출생: 1994. 10. 10. <br />
@@ -49,7 +54,7 @@ function Candidate2() {
                 </p>
                 <img id={styles.profile_image2} src={profile_image} alt="profile_image" />
                 <p id={styles.nowrank2}> 현재 순위: 1위 </p>
-                <p id={styles.nowpoll2}> 현재 투표수: 7548표 </p>
+                <p id={styles.nowpoll2}> <img id={styles.mark} src={mark} alt={mark}/>현재 투표수: 48표 </p>
                 <Button id={styles.poll_button2} variant="contained">투표하기</Button>
                 <Button id={styles.con_button2} variant="contained">투표내역</Button>
                 <Button id={styles.back_button2} onClick={gotoList} variant="contained">참가자 목록</Button>

@@ -37,7 +37,8 @@ function App() {
           <Route path="/hall" element={<Hall />}></Route>
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
-          {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
+          {/* <Route path="/poll/:pollnum/:id/1" element={<Candidate />}></Route> */}
+          {/* <Route path="/poll/:pollnum/:id/2" element={<Candidate2 />}></Route> */}
           <Route path="/nominee" element={<Candidate />}></Route>
           <Route path="/nominee2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>

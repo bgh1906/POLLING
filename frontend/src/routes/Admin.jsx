@@ -138,7 +138,7 @@ function Admin() {
 
         <div className={styles.container}>
             <div style={{width:"100%"}}>
-                <div id={styles.status}>POLL STATUS</div>
+                <div id={styles.status}>Poll Status</div>
                 <img id={styles.logo} src={logo} alt="logo" />
 
 {/* unapproved */}
@@ -149,8 +149,8 @@ function Admin() {
                 {polldata.map((poll)=> (
                     <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
-                            <div> {poll.title} </div>
-                            <div> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
+                            <div id={styles.list_pollname}> {poll.title} </div>
+                            <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.id} variant="contained">투표 수정하기</Button></div>
                             <div><Button id={styles.status_button2} onClick={changeStatuswait} name={poll.id} variant="contained">투표 승인하기</Button></div>
                     </Grid>))}
@@ -164,8 +164,8 @@ function Admin() {
                 {polldata2.map((poll)=> (
                     <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
-                            <div> {poll.title} </div>
-                            <div> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
+                            <div id={styles.list_pollname}> {poll.title} </div>
+                            <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.id} variant="contained">투표 수정하기</Button></div>
                             <div><Button id={styles.status_button2} onClick={changeStatusprogress} name={poll.id} variant="contained">투표 시작하기</Button></div>
                     </Grid>))}
@@ -179,8 +179,8 @@ function Admin() {
                 {polldata3.map((poll)=> (
                     <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
-                            <div> {poll.title} </div>
-                            <div> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
+                            <div id={styles.list_pollname}> {poll.title} </div>
+                            <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             <div><Button id={styles.status_button1} onClick={changeStatusprogress} name={poll.id} variant="contained">투표 옵션변경</Button></div>
                             <div><Button id={styles.status_button2} onClick={changeStatusdone} name={poll.id} variant="contained">투표 종료하기</Button></div>
                     </Grid>))}
@@ -194,8 +194,8 @@ function Admin() {
                 {polldata4.map((poll)=> (
                     <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
-                            <div> {poll.title} </div>
-                            <div> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
+                            <div id={styles.list_pollname}> {poll.title} </div>
+                            <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             <div><Button id={styles.status_button1} variant="contained">NFT 발급</Button></div>
                             <div><Button id={styles.status_button2} variant="contained">HISTORY 추가</Button></div>
                     </Grid>))}

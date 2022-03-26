@@ -1,6 +1,5 @@
 import styles from "../components/home/Home.module.css";
 import { Link } from "react-router-dom";
-import Nav from "../components/layout/Nav.jsx"
 import Newnav from "../components/layout/NewNav";
 import Footer from "../components/layout/Footer";
 import About from "../components/home/About"

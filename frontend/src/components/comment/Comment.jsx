@@ -3,6 +3,7 @@ import styles from "./Comment.module.css"
 import Button from '@mui/material/Button';
 import axios from "axios";
 import CommentList from "./CommentList";
+import cheer from "../../assets/cheer.png";
 
 
 
@@ -42,7 +43,7 @@ function Comment() {
 
     return (
         <div className={styles.comment_box}> 
-            <div id={styles.message}>응원 메시지</div>
+            <div id={styles.message}><img id={styles.cheer} src={cheer} alt="cheer"/>응원 메시지</div>
             <form id={styles.comment_form} onSubmit={onSubmit}>
                 <textarea id={styles.comment_input} type="text" onChange={changeInput} value={ripple} name="ripple" maxLength="100"
                     placeholder="응원 메시지를 적어주세요~!"
