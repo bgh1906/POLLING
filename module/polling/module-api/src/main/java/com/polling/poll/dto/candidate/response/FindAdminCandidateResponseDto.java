@@ -26,5 +26,6 @@ public class FindAdminCandidateResponseDto {
         imagePath1 = imagePaths.get(0);
         imagePath2 = imagePaths.get(1);
         imagePath3 = imagePaths.get(2);
+        this.profile = profile;
     }
 }
