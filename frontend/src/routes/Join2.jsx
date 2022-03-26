@@ -18,6 +18,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import Swal from "sweetalert2";
+
 function Join2() {
 
     //리로딩할 때마다 값 리셋
@@ -30,6 +32,24 @@ function Join2() {
         setPcheck(false);
     }, []);
     
+    const joinSuccess = () => {
+        Swal.fire({
+          title: "회원가입 성공!!",
+          text: "Polling에 오신 것을 환영합니다!",
+          icon: "success",
+          confirmButtonColor: "#73E0C1",
+          confirmButtonText: "확인",
+        })
+      };
+    
+      const joinFail = () => {
+        Swal.fire({
+          title:"회원가입 실패!",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+      }
 
     //닉네임 받아오기
     const [nickname, setNickname] = useState("");
@@ -41,6 +61,29 @@ function Join2() {
     //닉네임 중복 체크
     const [checknick, setChecknick] = useState(false);
     
+    const getChecknick = (e) => {
+        if(nickname === "") {
+            alert("Nickname을 입력해주세요.")
+        } else {
+            axios
+            .post(
+                `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+                {
+                    nickname: nickname,
+                    // n:n
+                }           
+            )
+            .then((res) => {
+                console.log("res", res);
+                alert("사용가능한 닉네임입니다.");
+                setChecknick(true);
+            })
+            .catch(error => {
+                console.log("error", error.response);
+                alert("동일 닉네임이 존재합니다.");
+            })
+        }
+    }
 
     //이메일 받아오기
     const [email, setEmail] = useState("");
@@ -73,7 +116,7 @@ function Join2() {
     //인증창 열기 & 인증번호 보내기
     const handleClickOpen = (e) => {
         //인증번호 보내기
-        if(phone === " "){
+        if(phone === ""){
             e.preventDefault();
             alert("휴대폰 번호를 입력해주세요")
         }
@@ -95,9 +138,10 @@ function Join2() {
             })
             .catch(error => {
                 const message = error.message;
+                console.log(error.response)
                 console.log("message", message);
                 alert("인증번호 전송 실패!");
-            });
+            }); 
         }
     };
     //인증창 닫기
@@ -130,10 +174,9 @@ function Join2() {
                 setOpen(false);
             }
         }
-
     }
 
-    //개인정보처리방침 동의
+    //개인정보처리방침 동의 여부
     const [pcheck, setPcheck] = useState(false);
 
     const getPcheck = (e) => {
@@ -173,17 +216,18 @@ function Join2() {
             )
             .then((res) => {
                 console.log("res", res);
-                alert("회원가입 성공!")
+                // alert("회원가입 성공!")
+                joinSuccess();
                 console.log("회원가입")
                 navigate("/login");
             })
             .catch(error => {
                 const message = error.message;
                 console.log("message", message);
-                alert("회원가입 실패");
-              });
-            // alert("회원가입 성공!.")
-            // navigate("/");
+                console.log(error.response);
+                // alert("회원가입 실패");
+                joinFail();
+            });
         }
     }
         
@@ -201,7 +245,7 @@ function Join2() {
                         {/* <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/> */}
                             <input type={"text"} placeholder="Nickname" className={Styles2.nickname} name="nickname" onChange={getNickname}  />
-                            <button className={Styles2.nicknameCheck} onClick={setChecknick} disabled={checknick === true}>중복확인</button>
+                            <button className={Styles2.nicknameCheck} onClick={getChecknick} disabled={checknick === true}>중복확인</button>
                             <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
                             <input type={"text"} placeholder="PhoneNumber" className={Styles2.phonenum} onChange={getPhonenum} name="phone"/>

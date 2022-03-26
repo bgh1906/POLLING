@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/layout/Footer.jsx";
 import Styles2 from "./Login2.module.css";
 // import kakao from "../assets/kakao.png";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import NewNav from "../components/layout/NewNav.jsx";
 import Swal from "sweetalert2";
@@ -11,7 +11,10 @@ const { Kakao } = window;
 
 function Login2() {
 
-    //리렌더일ㅇ
+  React.useEffect(() => {
+    setEmail("");
+    setPassword("");
+  }, []);
 
     const loginSuccess = () => {
         Swal.fire({
@@ -68,13 +71,16 @@ function Login2() {
                 //토큰 찍어보기
                 // console.log("토큰",res.headers.get("refreshToken"));
                 console.log("로그인 성공");
+                loginSuccess();
                 alert("로그인 성공");
                 navigate("/");
             })
             .catch(error => {
                 const message = error.message;
+                console.log("error", error);
                 console.log("message", message);
                 alert("로그인 실패");
+                loginFail();
               });
         }
     };
