@@ -3,7 +3,7 @@
   font-family: "Baskervville", serif;
   font-size: 60px;
   padding-right: 270px;
-  padding-top: 250px;
+  padding-top: 150px;
   text-align: right;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .history_container {
-  padding-top: 50px;
+  padding-top: 150px;
   max-width: 1024px;
   /* max-width: 53vw; */
   margin: 0 auto;
