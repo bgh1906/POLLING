@@ -16,9 +16,10 @@ public class FindAdminCandidateResponseDto {
     private String imagePath1;
     private String imagePath2;
     private String imagePath3;
+    private String profile;
 
     @Builder
-    public FindAdminCandidateResponseDto(Long id, String name, String thumbnail, List<String> imagePaths) {
+    public FindAdminCandidateResponseDto(Long id, String name, String thumbnail, List<String> imagePaths, String profile) {
         this.id = id;
         this.name = name;
         this.thumbnail = thumbnail;

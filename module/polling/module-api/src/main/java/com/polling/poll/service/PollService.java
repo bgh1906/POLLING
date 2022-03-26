@@ -79,6 +79,7 @@ public class PollService {
                 .name(candidate.getName())
                 .thumbnail(candidate.getThumbnail())
                 .imagePaths(candidate.getImagePaths())
+                .profile(candidate.getProfile())
                 .build()).collect(Collectors.toList());
         return new FindPollAndCandidateResponseDto(list, poll.getTitle(), poll.getContent(), poll.getThumbnail(), poll.getStartDate(), poll.getEndDate());
     }
