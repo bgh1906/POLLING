@@ -2,7 +2,8 @@ import styles from "./Poll.module.css";
 import Footer from "../components/layout/Footer";
 import Newnav from "../components/layout/NewNav";
 import fox from "../assets/fox.PNG";
-import ocean from "../assets/ocean.PNG";
+import pollinglogo from "../assets/pollinglogo.png";
+import { useEffect, useState } from "react";
 
 function Poll() {
   const itemDetail = {
@@ -60,6 +61,12 @@ function Poll() {
   itemDetail.candidates.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   const startYMD = itemDetail.startDate.slice(0, 10).replaceAll("-", ".");
   const endYMD = itemDetail.endDate.slice(0, 10).replaceAll("-", ".");
+  const [picked, setPicked] = useState(false);
+  // useEffect(() => console.log("클릭후", picked));
+  const voteToCand = () => {
+    // console.log("클릭전", picked);
+    setPicked((prev) => !prev);
+  };
   return (
     <>
       <Newnav />
@@ -80,14 +87,27 @@ function Poll() {
           <div className={styles.Cand_list}>
             {itemDetail.candidates.map((item, index) => (
               <div className={styles.poll_Cand} key={item.id}>
-                <img src={item.thumbnail} alt={item.name} />
+                <img
+                  src={item.thumbnail}
+                  alt={item.name}
+                  className={styles.CandImg}
+                />
                 <figcaption>
-                  기호{item.id}번 {item.name}
+                  {item.name}
                   <br />
                   득표수 : {item.votesTotalCount}표
                   <br />
                   현재 순위 : {index + 1}위
                 </figcaption>
+                <div className={styles.voteBox} onClick={voteToCand}>
+                  {picked && (
+                    <img
+                      src={pollinglogo}
+                      alt="pollinglogo"
+                      className={styles.stampImg}
+                    />
+                  )}
+                </div>
               </div>
             ))}
           </div>

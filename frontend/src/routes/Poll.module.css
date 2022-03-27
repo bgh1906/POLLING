@@ -48,15 +48,38 @@
   align-items: center;
 }
 
-.poll_Cand img {
-  width: 40%;
+.poll_Cand:nth-child(1) .CandImg {
+  border: 5px solid gold;
+}
+
+.poll_Cand:nth-child(2) .CandImg {
+  border: 5px solid silver;
+}
+
+.poll_Cand:nth-child(3) .CandImg {
+  border: 5px solid brown;
+}
+
+.poll_Cand .CandImg {
+  width: 30%;
   margin: 0 1vw 1vw 0;
 }
 
 .poll_Cand figcaption {
 }
 
-.right_title {
-  /* position: sticky;
-  top: 100px; */
+.voteBox {
+  border: 2px solid black;
+  width: 3vw;
+  height: 3vw;
+  margin-left: 5vw;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voteBox .stampImg {
+  width: 80%;
+  height: 80%;
 }
