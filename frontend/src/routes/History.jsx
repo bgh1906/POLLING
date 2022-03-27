@@ -83,7 +83,11 @@ function History() {
         <div className={styles.history_itemlist}>
           {endItemData.map((item) => (
             // <div className={styles.history_item}>
-            <div className={styles.history_item} data-aos="fade-up">
+            <div
+              className={styles.history_item}
+              key={item.img}
+              data-aos="fade-up"
+            >
               <img src={item.img} alt={item.title} />
               <div className={styles.ended_info}>
                 <div style={{ fontSize: "3vw", fontWeight: 700 }}>
