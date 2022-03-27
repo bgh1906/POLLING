@@ -97,7 +97,7 @@ public class PollRepositoryTest {
         Poll savedPoll = createPoll(current, current.plusDays(10));
 
         //when
-        pollRepository.delete(savedPoll);
+        pollRepository.deleteById(savedPoll.getId());
 
         //then
         assertThat(pollRepository.count()).isEqualTo(0);

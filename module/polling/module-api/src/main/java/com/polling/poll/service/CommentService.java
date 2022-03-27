@@ -1,13 +1,15 @@
 package com.polling.poll.service;
 
 
+import com.polling.aop.annotation.Retry;
+import com.polling.aop.annotation.Trace;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.comment.Comment;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.ModifyCommentRequestDto;
-import com.polling.poll.dto.candidate.request.SaveCommentRequestDto;
+import com.polling.poll.dto.comment.request.ModifyCommentRequestDto;
+import com.polling.poll.dto.comment.request.SaveCommentRequestDto;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.comment.CommentRepository;
 import com.polling.repository.member.MemberRepository;
@@ -23,7 +25,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final MemberRepository memberRepository;
 
-
+    @Trace
     public void saveComment(SaveCommentRequestDto requestDto, Long memberId){
         Member member = getMember(memberId);
         Candidate candidate = getCandidate(requestDto.getCandidateId());
@@ -35,11 +37,13 @@ public class CommentService {
         commentRepository.save(comment);
     }
 
-    public void updateComment(Long commentId, ModifyCommentRequestDto requestDto){
+    @Trace
+    public void changeContent(Long commentId, String content){
         Comment comment = getComment(commentId);
-        comment.updateContent(requestDto.getContent());
+        comment.updateContent(content);
     }
 
+    @Trace
     public void deleteComment(Long commentId){
         Comment comment = getComment(commentId);
         commentRepository.delete(comment);

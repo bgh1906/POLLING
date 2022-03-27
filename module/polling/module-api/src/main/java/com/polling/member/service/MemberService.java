@@ -1,5 +1,6 @@
 package com.polling.member.service;
 
+import com.polling.aop.annotation.Trace;
 import com.polling.entity.member.Member;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
@@ -33,10 +34,8 @@ MemberService {
                 .password(requestDto.getPassword())
                 .phoneNumber(requestDto.getPhoneNumber())
                 .build();
-        //기본 ROLE_USER, 상황에 따라 ROLE_COMPANY 추가
-        if(MemberRole.ROLE_COMPANY.equals(requestDto.getRole())){
-            member.addRole(MemberRole.ROLE_COMPANY);
-        }
+
+        member.addRole(requestDto.getRole());
 
         memberRepository.save(member);
     }
@@ -51,42 +50,46 @@ MemberService {
             throw new CustomException(CustomErrorResult.DUPLICATE_NICKNAME);
     }
 
-    public FindMemberResponseDto findMember(Long id) {
-        Member member = memberRepository.findById(id).orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    public FindMemberResponseDto findMember(Long memberId) {
+        Member member = getMember(memberId);
 
-        return new FindMemberResponseDto(member.getId(), member.getNickname(), member.getEmail());
+        return FindMemberResponseDto.of(member);
     }
 
+    @Trace
     @Transactional
-    public void changePassword(Long id, ChangePasswordRequestDto requestDto) {
-        Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    public void changePassword(Long memberId, ChangePasswordRequestDto requestDto) {
+        Member member = getMember(memberId);
         member.changePassword(requestDto.getPassword());
     }
 
+    @Trace
     @Transactional
-    public void changeNickname(Long id, String nickname) {
+    public void changeNickname(Long memberId, String nickname) {
         checkDuplicateMemberNickname(nickname);
-        Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+        Member member = getMember(memberId);
         member.changeNickname(nickname);
-        System.out.println(member.getNickname());
     }
 
+    @Trace
     @Transactional
-    public void changeRole(Long id, Set<MemberRole> memberRole) {
-        Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    public void changeRole(Long memberId, Set<MemberRole> memberRole) {
+        Member member = getMember(memberId);
         member.changeMemberRole(memberRole);
     }
 
+    @Trace
     @Transactional
-    public void addAdminRole(Long id) {
-        Member member = memberRepository.findById(id)
-                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    public void addAdminRole(Long memberId) {
+        Member member = getMember(memberId);
         Set<MemberRole> memberRoles = new HashSet<>();
         memberRoles.add(MemberRole.ROLE_ADMIN);
         memberRoles.add(MemberRole.ROLE_USER);
         member.changeMemberRole(memberRoles);
+    }
+
+    public Member getMember(Long memberId){
+        return memberRepository.findById(memberId)
+                .orElseThrow(()->new CustomException(CustomErrorResult.USER_NOT_FOUND));
     }
 }

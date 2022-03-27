@@ -25,7 +25,6 @@ public class CandidateController {
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
 
     @Trace
-    @Retry
     @PostMapping
     @ApiOperation(value = "특정 후보자에게 투표")
     public ResponseEntity<Void> addVoteCount(@CurrentUser MemberDto memberDto, @RequestBody AddVoteCountRequestDto requestDto) {

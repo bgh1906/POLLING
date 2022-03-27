@@ -1,6 +1,6 @@
 package com.polling.queryrepository;
 
-import com.polling.poll.dto.comment.request.CommentDto;
+import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.polling.entity.candidate.QCandidate.candidate;
 import static com.polling.entity.comment.QComment.comment;
 import static com.polling.entity.member.QMember.member;
 
@@ -22,9 +21,9 @@ public class CommentQueryRepositoryImpl implements CommentQueryRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<CommentDto> findAllByCandidateId(Long candidateId) {
+    public List<FindCommentResponseDto> findAllByCandidateId(Long candidateId) {
         return query
-                .select((Projections.constructor(CommentDto.class,
+                .select((Projections.constructor(FindCommentResponseDto.class,
                         comment.id,
                         member.id,
                         member.nickname,

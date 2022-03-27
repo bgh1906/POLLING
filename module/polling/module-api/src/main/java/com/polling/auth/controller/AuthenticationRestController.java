@@ -1,5 +1,6 @@
 package com.polling.auth.controller;
 
+import com.polling.aop.annotation.Trace;
 import com.polling.auth.JwtTokenProvider;
 import com.polling.auth.adapter.MemberAndDtoAdapter;
 import com.polling.auth.dto.AuthDto;
@@ -35,6 +36,7 @@ public class AuthenticationRestController {
    private final MemberRepository memberRepository;
    private final AuthService authService;
 
+   @Trace
    @PostMapping
    @ApiOperation(value = "Native 로그인")
    public ResponseEntity<Void> authorize(@RequestBody LoginDto loginDto, HttpServletResponse response) {
@@ -45,6 +47,7 @@ public class AuthenticationRestController {
       return ResponseEntity.status(200).build();
    }
 
+   @Trace
    @PostMapping("/social")
    @ApiOperation(value = "OAuth 회원 가입/로그인")
    public ResponseEntity<Void> authorizeOAuth(@RequestBody AuthDto requestDto, HttpServletResponse response) {

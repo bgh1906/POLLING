@@ -1,5 +1,6 @@
 package com.polling.member.dto.response;
 
+import com.polling.entity.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,12 @@ public class FindMemberResponseDto {
     @NotNull
     private String email;
     //private OAuthType oAuthType;
+
+    public static FindMemberResponseDto of(Member member){
+        return new FindMemberResponseDto(
+                member.getId(),
+                member.getNickname(),
+                member.getEmail()
+        );
+    }
 }

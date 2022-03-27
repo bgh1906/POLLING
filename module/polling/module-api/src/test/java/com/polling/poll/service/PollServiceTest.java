@@ -1,5 +1,6 @@
 package com.polling.poll.service;
 
+import com.polling.entity.candidate.Candidate;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
@@ -7,6 +8,7 @@ import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
 import com.polling.poll.dto.request.SavePollRequestDto;
+import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import org.junit.jupiter.api.Assertions;
@@ -35,6 +37,8 @@ public class PollServiceTest {
     private MemberRepository memberRepository;
     @Mock
     private PollRepository pollRepository;
+    @Mock
+    private CandidateQueryRepository candidateQueryRepository;
 
     @Test
     public void pollServiceIsNotNull() throws Exception{
@@ -104,5 +108,69 @@ public class PollServiceTest {
         //then
         verify(memberRepository, times(1)).findById(anyLong());
         verify(pollRepository, times(1)).save(any(Poll.class));
+    }
+
+    @Test
+    public void 투표조회_모든정보() throws Exception{
+        //given
+        Poll poll = Poll.builder().build();
+        List<Candidate> candidates = new ArrayList<>();
+        candidates.add(createCandidate("test1"));
+        candidates.add(createCandidate("test2"));
+        candidates.add(createCandidate("test3"));
+
+        //when
+        doReturn(Optional.of(poll)).when(pollRepository).findById(anyLong());
+        doReturn(candidates).when(candidateQueryRepository).findAllByPollId(anyLong());
+        target.findPollAllInfo(1L);
+
+
+        //then
+        verify(pollRepository, times(1)).findById(anyLong());
+        verify(candidateQueryRepository, times(1)).findAllByPollId(1L);
+    }
+
+    @Test
+    public void 투표조회_간략정보() throws Exception{
+        //given
+        Poll poll = Poll.builder().build();
+
+        //when
+        doReturn(Optional.of(poll)).when(pollRepository).findById(anyLong());
+        target.findPollThumbnail(1L);
+
+
+        //then
+        verify(pollRepository, times(1)).findById(anyLong());
+        verify(candidateQueryRepository, times(1)).findAllSimpleByPollId(1L);
+    }
+
+    @Test
+    public void 투표조회_득표수로정렬한간략정보() throws Exception{
+        //given
+        Poll poll = Poll.builder().build();
+
+        //when
+        doReturn(Optional.of(poll)).when(pollRepository).findById(anyLong());
+        target.findPollThumbnailSortByVoteCount(1L);
+
+
+        //then
+        verify(pollRepository, times(1)).findById(anyLong());
+        verify(candidateQueryRepository, times(1)).findAllSimpleByPollIdOrderByVotesTotal(1L);
+    }
+
+    private Candidate createCandidate(String name){
+        List<String> imagePaths = new ArrayList<>();
+        imagePaths.add("123");
+        imagePaths.add("456");
+        imagePaths.add("789");
+        return Candidate.builder()
+                .name(name)
+                .profile("profile")
+                .poll(null)
+                .imagePaths(imagePaths)
+                .thumbnail("thumbnail")
+                .build();
     }
 }

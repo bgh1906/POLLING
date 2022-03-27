@@ -36,7 +36,7 @@ public class CandidateQueryRepositoryTest {
         savedPoll.addCandidate(candidate2);
 
         //when
-        List<FindAnonymousCandidateResponseDto> responseDtos = candidateQueryRepository.findAllByPollIdOrderByVotesTotal(savedPoll.getId());
+        List<FindAnonymousCandidateResponseDto> responseDtos = candidateQueryRepository.findAllSimpleByPollIdOrderByVotesTotal(savedPoll.getId());
 
         //then
         assertThat(responseDtos.get(0).getVotesTotalCount()).isEqualTo(1);

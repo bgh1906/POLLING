@@ -1,9 +1,9 @@
 package com.polling.poll.queryrepository.comment;
 
-import com.polling.poll.dto.comment.request.CommentDto;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.comment.Comment;
 import com.polling.entity.member.Member;
+import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.comment.CommentRepository;
@@ -47,13 +47,13 @@ public class CommentQueryRepositoryTest {
         createComment(savedMember, savedCandidate, "hello5");
 
         //when
-        List<CommentDto> commentDtos = commentQueryRepository.findAllByCandidateId(savedCandidate.getId());
+        List<FindCommentResponseDto> findCommentResponseDtos = commentQueryRepository.findAllByCandidateId(savedCandidate.getId());
 
         //then
-        assertThat(commentDtos.size()).isEqualTo(5);
-        assertThat(commentDtos.get(0).getContent()).isEqualTo("hello1");
-        assertThat(commentDtos.get(0).getMemberId()).isEqualTo(savedMember.getId());
-        assertThat(commentDtos.get(0).getMemberNickname()).isEqualTo("testName");
+        assertThat(findCommentResponseDtos.size()).isEqualTo(5);
+        assertThat(findCommentResponseDtos.get(0).getContent()).isEqualTo("hello1");
+        assertThat(findCommentResponseDtos.get(0).getMemberId()).isEqualTo(savedMember.getId());
+        assertThat(findCommentResponseDtos.get(0).getMemberNickname()).isEqualTo("testName");
     }
 
     private Comment createComment(Member member, Candidate target, String message){

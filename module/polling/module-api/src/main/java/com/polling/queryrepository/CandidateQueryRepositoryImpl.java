@@ -20,7 +20,7 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository{
     private final JPAQueryFactory query;
 
     @Override
-    public List<FindAnonymousCandidateResponseDto> findAllByPollIdOrderByVotesTotal(Long pollId) {
+    public List<FindAnonymousCandidateResponseDto> findAllSimpleByPollIdOrderByVotesTotal(Long pollId) {
         return query
                 .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
                         candidate.id,
@@ -34,7 +34,7 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository{
     }
 
     @Override
-    public List<FindAnonymousCandidateResponseDto> findAllThumbnailByPollId(Long pollId) {
+    public List<FindAnonymousCandidateResponseDto> findAllSimpleByPollId(Long pollId) {
         return query
                 .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
                         candidate.id,

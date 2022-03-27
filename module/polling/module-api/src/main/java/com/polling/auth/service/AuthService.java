@@ -1,6 +1,8 @@
 package com.polling.auth.service;
 
 
+import com.polling.aop.annotation.Retry;
+import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.AuthDto;
 import com.polling.entity.member.Member;
 import com.polling.entity.member.status.OAuthType;
@@ -22,6 +24,8 @@ public class AuthService {
     private final MemberRepository memberRepository;
     private final OAuthClient oAuthClient;
 
+    @Trace
+    @Retry
     public Member auth(AuthDto requestDto){
         //OAuthType.KAKAO
         if(requestDto.getOAuthType().equals(OAuthType.KAKAO)){

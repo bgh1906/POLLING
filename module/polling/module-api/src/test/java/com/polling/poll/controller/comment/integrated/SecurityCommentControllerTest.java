@@ -5,13 +5,9 @@ import com.polling.auth.dto.LoginDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
-import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
-import com.polling.poll.dto.candidate.request.ModifyCommentRequestDto;
-import com.polling.poll.dto.candidate.request.SaveCommentRequestDto;
-import com.polling.poll.service.CandidateService;
+import com.polling.poll.dto.comment.request.ModifyCommentRequestDto;
+import com.polling.poll.dto.comment.request.SaveCommentRequestDto;
 import com.polling.poll.service.CommentService;
-import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,7 +72,7 @@ public class SecurityCommentControllerTest {
         final Long commentId = 1L;
         final ModifyCommentRequestDto requestDto = new ModifyCommentRequestDto("content");
         doThrow(new CustomException(CustomErrorResult.COMMENT_NOT_FOUND))
-                .when(commentService).updateComment(anyLong(), any(ModifyCommentRequestDto.class));
+                .when(commentService).changeContent(anyLong(), anyString());
 
         //when
         ResultActions resultActions = mockMvc.perform(put(url, commentId)
@@ -103,7 +99,7 @@ public class SecurityCommentControllerTest {
 
         //then
         resultActions.andExpect(status().isOk());
-        verify(commentService, times(1)).updateComment(anyLong(), any(ModifyCommentRequestDto.class));
+        verify(commentService, times(1)).changeContent(anyLong(), anyString());
     }
 
     @Test

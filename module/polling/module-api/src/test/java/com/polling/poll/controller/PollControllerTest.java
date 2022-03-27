@@ -1,9 +1,8 @@
 package com.polling.poll.controller;
 
-import com.google.gson.Gson;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
-import com.polling.poll.dto.response.FindPollAndCandidateThumbnailResponseDto;
+import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
@@ -57,7 +56,7 @@ public class PollControllerTest {
     public void 득표현황랭킹조회() throws Exception{
         //given
         final String url = "/api/polls/ranking/{id}";
-        doReturn(new FindPollAndCandidateThumbnailResponseDto(null,
+        doReturn(new FindSimplePollResponseDto(null,
                 null,
                 null,
                 null,

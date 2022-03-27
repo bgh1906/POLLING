@@ -1,5 +1,7 @@
 package com.polling.auth.service;
 
+import com.polling.aop.annotation.Retry;
+import com.polling.aop.annotation.Trace;
 import com.polling.auth.adapter.MemberAndDtoAdapter;
 import com.polling.auth.adapter.MemberAndUserAdapter;
 import com.polling.entity.member.Member;
@@ -15,6 +17,9 @@ import org.springframework.stereotype.Service;
 public class MemberDetailsService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
+
+    @Retry
+    @Trace
     @Override
     public UserDetails loadUserByUsername(final String id) {
         Member findMember = memberRepository.findById(Long.parseLong(id))

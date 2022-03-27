@@ -1,7 +1,8 @@
 package com.polling.poll.service;
 
 
-import com.polling.poll.dto.comment.request.CommentDto;
+import com.polling.aop.annotation.Retry;
+import com.polling.aop.annotation.Trace;
 import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
 import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
 import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
@@ -11,6 +12,7 @@ import com.polling.entity.member.Member;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
+import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
@@ -35,10 +37,12 @@ public class CandidateService {
     @Transactional(readOnly = true)
     public FindCandidateDetailsResponseDto getProfile(Long candidateId){
         Candidate candidate = getCandidate(candidateId);
-        List<CommentDto> comments = commentQueryRepository.findAllByCandidateId(candidateId);
+        List<FindCommentResponseDto> comments = commentQueryRepository.findAllByCandidateId(candidateId);
         return FindCandidateDetailsResponseDto.of(candidate, comments);
     }
 
+    @Trace
+    @Retry
     public void addVoteCount(AddVoteCountRequestDto requestDto, Long memberId){
 
         if(requestDto.getVoteCount() <= 0) throw new CustomException(CustomErrorResult.INVALID_VOTES);
@@ -62,6 +66,7 @@ public class CandidateService {
                 .build();
     }
 
+    @Trace
     public void modifyCandidate(Long candidateId, ModifyCandidateRequestDto requestDto) {
         Candidate candidate = getCandidate(candidateId);
         validateStatus(candidate.getPoll().getPollStatus());
@@ -79,6 +84,7 @@ public class CandidateService {
         candidate.changeImagePaths(imagePaths);
     }
 
+    @Trace
     public void deleteCandidate(Long candidateId) {
         if(candidateRepository.existsById(candidateId))
             throw  new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND);

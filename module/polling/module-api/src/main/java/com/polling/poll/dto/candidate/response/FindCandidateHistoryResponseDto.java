@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FindCandidateHistoryResponseDto {
-    private String userName;
+    private String nickname;
     private int voteCount;
     private String transactionId;
 }

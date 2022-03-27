@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 public class AdminCandidateController {
 
     private final CandidateService candidateService;
-    private final CandidateRepository candidateRepository;
 
     @Trace
     @PatchMapping("/{candidateId}")

@@ -1,4 +1,4 @@
-package com.polling.poll.dto.candidate.request;
+package com.polling.poll.dto.comment.request;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
