@@ -35,8 +35,6 @@ const reducer = (state =[], action) => {
 
 const store = createStore(reducer);
 
-
-
 export const actionCreators = {
     addInfo
 };

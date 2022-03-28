@@ -85,6 +85,7 @@
 }
 
 #nickname {
+    position: relative;
     font-family: 'ROKAFSansBold';
     font-size: 1.3vw;
     margin: 0;
@@ -114,4 +115,12 @@
     width: 3vw;
     top: 1vh;
     margin-right: 1vw;
+}
+
+#delete_button {
+    position: absolute;
+    width: 1.8vw;
+    top: 4vh;
+    right: 1vw;
+    cursor: pointer;
 }

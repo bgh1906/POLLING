@@ -47,7 +47,7 @@
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
 }
 
 #name {
@@ -380,9 +380,10 @@
 
 #tx {
     position: absolute;
-    width: 3.5vw;
-    top: 63vh;
-    left: 25vw;
+    width: 2vw;
+    top: 64.5vh;
+    left: 20vw;
+    z-index: 5;
 }
 
 #tx2 {

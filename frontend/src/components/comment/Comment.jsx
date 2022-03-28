@@ -7,7 +7,7 @@ import cheer from "../../assets/cheer.png";
 
 
 
-function Comment() {
+function Comment({candiId, data, renderCheck}) {
 
     const [ripple, setRipple] = useState("")
   
@@ -17,23 +17,25 @@ function Comment() {
 
     function onSubmit(e){
         e.preventDefault()
-        console.log(ripple)
-        setRipple("")
+       
         axios
         .post(
-            "http://j6a304.p.ssafy.io:8080/api/candidates/comment",
+            "http://j6a304.p.ssafy.io:8080/api/polls/candidates/comments",
             {
-                "candidateId": 0,
-                "content": {ripple}
+                "candidateId": candiId,
+                "content": ripple
             },
             {
                 headers: {
-                    Authorization:"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODA1ODk2NSwiZXhwIjoxNjQ4MDYwNzY1fQ.8o-Qm4UN9gvc0Jsb6LU5Ge7pHvAHL2HrD3W3BQ6W2RM"
+                    Authorization:"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzA4NDEsImV4cCI6MTY0ODQzMjY0MX0.g573ZVU0g1T76rMmJ6-PRuR4HCxlv_lutMbjw1ZIph8"
                 },
             }
         )
         .then((res) =>{
-            console.log(res)
+            console.log("댓글작성!")
+            setRipple("")
+            renderCheck()
+            
         })
         .catch((e) =>{
             console.error(e);
@@ -50,7 +52,7 @@ function Comment() {
                 ></textarea>
                 <Button id={styles.register_button} type="submit" variant="contained">댓글 등록</Button>
             </form>
-            <CommentList></CommentList>
+            <CommentList data={data} renderCheck={renderCheck}></CommentList>
         </div>
     );
 }

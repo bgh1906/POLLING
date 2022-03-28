@@ -133,7 +133,7 @@ function CreatePoll() {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQ09NUEFOWSJdLCJpYXQiOjE2NDgzMTM4MDksImV4cCI6MTY0ODMxNTYwOX0.Hm9g9a-jsoi6zFF6jm8LDjK9GSmAT5u3NhrjXi9TPYI",
+                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzUxNzUsImV4cCI6MTY0ODQzNjk3NX0.bAXVBEDwsNxG5NBGSdLfx3i9g9A_JHEnKvBV67HWqvM",
                     "Accept" : "*/*",
                 },
             }

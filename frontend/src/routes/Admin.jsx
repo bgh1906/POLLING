@@ -82,11 +82,11 @@ function Admin() {
     function changeStatusprogress(e){
         const poll_id = e.target.name;        
         axios.patch(
-         `http://j6a304.p.ssafy.io:8080/api/polls/${poll_id}/progress`,
+         `http://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/progress`,
          {},
         {
             headers: {
-                "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODMwOTM2NiwiZXhwIjoxNjQ4MzExMTY2fQ.JG3GnjvkHSpUKtYVE3J0HevOnyIo82l45sntxwqsTHI",
+                "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDgzODYxODUsImV4cCI6MTY0ODM4Nzk4NX0.kxD6MnicKcAY2pwPaK1yoedskVL2uBhCGw8ik8JM3LY",
             },
         })
         .then(()=>{
@@ -97,7 +97,7 @@ function Admin() {
     function changeStatusdone(e){
         const poll_id = e.target.name;        
         axios.patch(
-         `http://j6a304.p.ssafy.io:8080/api/polls/${poll_id}/done`,
+         `http://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/done`,
          {},
         {
             headers: {
