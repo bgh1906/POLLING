@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.17'
     }
 }
 
@@ -27,6 +28,10 @@ subprojects {
     repositories {
         mavenCentral()
 //        maven { url 'https://jitpack.io' }
+    }
+
+    allprojects {
+
     }
 
     dependencies {
@@ -74,7 +79,7 @@ subprojects {
 
         /* yaml-importer */
 //        implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.1.0'
-
+        implementation 'javax.annotation:javax.annotation-api:1.2'
     }
 
     configurations {
@@ -97,15 +102,23 @@ project(':module-api') {
     dependencies {
         implementation project(':module-common')
         implementation project(':module-core')
+        implementation project(':grpc-common')
     }
 }
 
 project(':module-blockchain') {
     dependencies {
+        implementation project(':grpc-common')
     }
 }
 
 project(':module-common') {
+    dependencies {
+        implementation project(':module-core')
+    }
+}
+
+project(':grpc-common') {
     dependencies {
         implementation project(':module-core')
     }

@@ -1,0 +1,55 @@
+syntax = "proto3";
+package com.polling.grpc;
+
+option java_multiple_files = true;
+
+option java_package = "com.polling.grpc";
+
+import "common.proto";
+
+service EventService {
+
+  /**
+   * Server(1) : Client(1)
+   * - unary RPC
+   * - Client 가 요청을 보내고 Server 가 응답하는 형태
+   */
+  rpc sendEvent(EventRequest) returns (EventResponse) {}
+
+  /**
+   * Server(N) : Client(1)
+   * - Server Streaming RPC
+   * - Client 가 요청을 보내고 Server로 부터 더이상 메시지가 없을 때까지 스트림을 읽음.
+   */
+  rpc sendEventServerStream(EventRequest) returns (stream EventResponse) {}
+
+  /**
+   * Server(1) : Client(N)
+   * - Client Streaming RPC
+   * - Client 가 스트림으로 Server 로 요청을 보내고, 더이상 메시지가 없을 때 응답을 리턴함.
+   */
+  rpc sendEventClientStream(stream EventRequest) returns (EventResponse) {}
+
+  /**
+   * Server(N) : Client(M)
+   * - Bidirectional Streaming RPC
+   * - Client 와 Server 가 서로 독립적으로 스트림을 읽고 쓴다.
+   */
+  rpc sendEventStream(stream EventRequest) returns (stream EventResponse) {}
+}
+
+enum Type {
+  NORMAL = 0;
+  DELETE = 1;
+  BLOCK = 2;
+}
+
+message EventRequest {
+  int64 id = 1;
+  Type type = 2;
+}
+
+message EventResponse {
+  ResultStatus status = 1;
+  string result = 2;
+}
