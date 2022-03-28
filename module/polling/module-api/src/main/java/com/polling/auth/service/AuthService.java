@@ -4,6 +4,8 @@ package com.polling.auth.service;
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.AuthDto;
+import com.polling.auth.dto.ValidateMemberRequestDto;
+import com.polling.auth.dto.ValidateMemberResponseDto;
 import com.polling.entity.member.Member;
 import com.polling.entity.member.status.OAuthType;
 import com.polling.exception.CustomErrorResult;
@@ -26,17 +28,17 @@ public class AuthService {
 
     @Trace
     @Retry
-    public Member auth(AuthDto requestDto){
+    public Member auth(AuthDto requestDto) {
         //OAuthType.KAKAO
-        if(requestDto.getOAuthType().equals(OAuthType.KAKAO)){
+        if (requestDto.getOAuthType().equals(OAuthType.KAKAO)) {
             KaKaoOAuthResponse profile = oAuthClient.getInfo(requestDto.getAccessToken());    //kakao만 잡혀 있음
             Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());
             //Login
-            if(existMember.isPresent()){
+            if (existMember.isPresent()) {
                 return existMember.get();
             }
             //Join
-            else{
+            else {
                 Member member = Member.builder()
                         .email(profile.getOAuthEmail())
                         .nickname(requestDto.getNickname())
@@ -53,5 +55,16 @@ public class AuthService {
         throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
     }
 
+    @Trace
+    @Retry
+    public Member validate(ValidateMemberRequestDto requestDto) {
+        KaKaoOAuthResponse profile = oAuthClient.getInfo(requestDto.getAccessToken());    //kakao만 잡혀 있음
+        Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());
+        if (existMember.isPresent()) {
+            return existMember.get();
+        } else {
+            return null;
+        }
+    }
 
 }

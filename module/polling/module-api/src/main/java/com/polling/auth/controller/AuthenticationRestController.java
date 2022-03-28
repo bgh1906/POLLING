@@ -3,9 +3,7 @@ package com.polling.auth.controller;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.JwtTokenProvider;
 import com.polling.auth.adapter.MemberAndDtoAdapter;
-import com.polling.auth.dto.AuthDto;
-import com.polling.auth.dto.LoginDto;
-import com.polling.auth.dto.MemberDto;
+import com.polling.auth.dto.*;
 import com.polling.auth.service.AuthService;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
@@ -56,6 +54,20 @@ public class AuthenticationRestController {
       return ResponseEntity.status(200).build();
    }
 
+   @Trace
+   @PostMapping("/validate")
+   @ApiOperation(value = "OAuth 회원으로 가입되어 있는지 ")
+   public ResponseEntity<ValidateMemberResponseDto> ValidateMember(@RequestBody ValidateMemberRequestDto requestDto, HttpServletResponse response) {
+      ValidateMemberResponseDto responseDto = new ValidateMemberResponseDto();
+      Member member = authService.validate(requestDto);
+      if(member == null){
+         responseDto.setMember(false);
+      }else{
+         responseDto.setMember(true);
+         setTokenHeaderAndRedis(member, response);
+      }
+      return ResponseEntity.status(200).body(responseDto);
+   }
 
    @GetMapping("/logout")
    public ResponseEntity<Void> logout(HttpServletRequest request) {
