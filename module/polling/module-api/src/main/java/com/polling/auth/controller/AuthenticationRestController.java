@@ -5,6 +5,7 @@ import com.polling.auth.JwtTokenProvider;
 import com.polling.auth.adapter.MemberAndDtoAdapter;
 import com.polling.auth.dto.AuthDto;
 import com.polling.auth.dto.LoginDto;
+import com.polling.auth.dto.LoginResponseDto;
 import com.polling.auth.dto.MemberDto;
 import com.polling.auth.service.AuthService;
 import com.polling.entity.member.Member;
@@ -43,7 +44,7 @@ public class AuthenticationRestController {
   @Trace
   @PostMapping
   @ApiOperation(value = "Native 로그인")
-  public ResponseEntity<Void> authorize(@RequestBody LoginDto loginDto,
+  public ResponseEntity<LoginResponseDto> authorize(@RequestBody LoginDto loginDto,
       HttpServletResponse response) {
     Member member = memberRepository.findByEmail(loginDto.getEmail())
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
@@ -51,17 +52,19 @@ public class AuthenticationRestController {
       throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
     }
     setTokenHeaderAndRedis(member, response);
-    return ResponseEntity.status(200).build();
+    return ResponseEntity.status(200)
+        .body(LoginResponseDto.of(member.getId(), member.getNickname()));
   }
 
   @Trace
   @PostMapping("/social")
   @ApiOperation(value = "OAuth 회원 가입/로그인")
-  public ResponseEntity<Void> authorizeOAuth(@RequestBody AuthDto requestDto,
+  public ResponseEntity<LoginResponseDto> authorizeOAuth(@RequestBody AuthDto requestDto,
       HttpServletResponse response) {
     Member member = authService.auth(requestDto);
     setTokenHeaderAndRedis(member, response);
-    return ResponseEntity.status(200).build();
+    return ResponseEntity.status(200)
+        .body(LoginResponseDto.of(member.getId(), member.getNickname()));
   }
 
 
