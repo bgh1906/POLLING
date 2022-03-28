@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: local
+    default: local
+    include:
+      - core-local
+      - core-dev
+      - common-local
+      - commmon-dev
