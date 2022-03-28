@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 class InternalService {
 
-    @Trace
-    public void internalCall(){
-        log.info("================= internalCall ================");
-    }
+  @Trace
+  public void internalCall() {
+    log.info("================= internalCall ================");
+  }
 }

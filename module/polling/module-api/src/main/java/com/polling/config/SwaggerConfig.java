@@ -1,6 +1,7 @@
 package com.polling.config;
 
 
+import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,8 +18,6 @@ import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.List;
-
 /**
  * API 문서 관련 swagger2 설정 정의.
  */
@@ -27,39 +26,43 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean
-    public Docket swaggerMainApi() {
-        return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
-                .groupName("Main")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.polling"))
-                .paths(PathSelectors.ant("/api/**"))
-                .build()
-                .apiInfo(new ApiInfoBuilder().version("1.0").title("Main API").build())
-                .securityContexts(List.of(securityContext()))
-                .securitySchemes(List.of(apiKey()));
-    }
+  /**
+   * 스웨거 Path Config
+   */
+  @Bean
+  public Docket swaggerMainApi() {
+    return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
+        .groupName("Main")
+        .select()
+        .apis(RequestHandlerSelectors.basePackage("com.polling"))
+        .paths(PathSelectors.ant("/api/**"))
+        .build()
+        .apiInfo(new ApiInfoBuilder().version("1.0").title("Main API").build())
+        .securityContexts(List.of(securityContext()))
+        .securitySchemes(List.of(apiKey()));
+  }
 
-    private ApiKey apiKey() {
-        return new ApiKey("JWT", "authorization", "header");
-    }
+  private ApiKey apiKey() {
+    return new ApiKey("JWT", "authorization", "header");
+  }
 
-    private SecurityContext securityContext() {
-        return SecurityContext
-                .builder()
-                .securityReferences(defaultAuth()).forPaths(PathSelectors.any()).build();
-    }
+  private SecurityContext securityContext() {
+    return SecurityContext
+        .builder()
+        .securityReferences(defaultAuth()).forPaths(PathSelectors.any()).build();
+  }
 
-    List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
-        return List.of(new SecurityReference("JWT", authorizationScopes));
-    }
+  List<SecurityReference> defaultAuth() {
+    AuthorizationScope authorizationScope = new AuthorizationScope("global",
+        "accessEverything");
+    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+    authorizationScopes[0] = authorizationScope;
+    return List.of(new SecurityReference("JWT", authorizationScopes));
+  }
 
-    @Bean
-    UiConfiguration uiConfig() {
-        return UiConfigurationBuilder.builder()
-                .build();
-    }
+  @Bean
+  UiConfiguration uiConfig() {
+    return UiConfigurationBuilder.builder()
+        .build();
+  }
 }

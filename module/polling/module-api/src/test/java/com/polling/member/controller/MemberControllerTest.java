@@ -1,5 +1,14 @@
 package com.polling.member.controller;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.google.gson.Gson;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
@@ -20,107 +29,97 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @EnableWebSecurity
 public class MemberControllerTest {
 
-    @InjectMocks
-    private MemberController target;
+  private final String email = "test@email.com";
+  private final String nickname = "testNickname";
+  @InjectMocks
+  private MemberController target;
+  @Mock
+  private MemberService memberService;
+  private Gson gson;
+  private MockMvc mockMvc;
 
-    @Mock
-    private MemberService memberService;
+  @BeforeEach
+  public void init() {
+    gson = new Gson();
+    mockMvc = MockMvcBuilders.standaloneSetup(target)
+        .setControllerAdvice(new CustomExceptionHandler())
+        .build();
+  }
 
-    private Gson gson;
-    private MockMvc mockMvc;
+  @Test
+  public void mockMvcIsNotNull() throws Exception {
+    assertThat(target).isNotNull();
+    assertThat(mockMvc).isNotNull();
+  }
 
-    private final String email = "test@email.com";
-    private final String nickname = "testNickname";
+  @Test
+  public void 회원가입실패_이메일중복() throws Exception {
+    //given
+    final String url = "/api/members";
+    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email,
+        "test", "01012345678", MemberRole.ROLE_USER);
+    doThrow(new CustomException(CustomErrorResult.DUPLICATE_EMAIL))
+        .when(memberService)
+        .addMember(any(SaveNativeMemberRequestDto.class));
 
-    @BeforeEach
-    public void init(){
-        gson = new Gson();
-        mockMvc = MockMvcBuilders.standaloneSetup(target)
-                .setControllerAdvice(new CustomExceptionHandler())
-                .build();
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(post(url)
+        .content(gson.toJson(requestDto))
+        .contentType(MediaType.APPLICATION_JSON));
 
-    @Test
-    public void mockMvcIsNotNull() throws Exception {
-        assertThat(target).isNotNull();
-        assertThat(mockMvc).isNotNull();
-    }
-    
-    @Test
-    public void 회원가입실패_이메일중복() throws Exception{
-        //given
-        final String url = "/api/members";
-        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678", MemberRole.ROLE_USER);
-        doThrow(new CustomException(CustomErrorResult.DUPLICATE_EMAIL))
-                .when(memberService)
-                .addMember(any(SaveNativeMemberRequestDto.class));
+    //then
+    resultActions.andExpect(status().is4xxClientError());
+  }
 
-        
-        //when
-        ResultActions resultActions = mockMvc.perform(post(url)
-                .content(gson.toJson(requestDto))
-                .contentType(MediaType.APPLICATION_JSON));
+  @Test
+  public void 회원가입성공() throws Exception {
+    //given
+    final String url = "/api/members";
+    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email,
+        "test", "01012345678", MemberRole.ROLE_USER);
 
-        //then
-        resultActions.andExpect(status().is4xxClientError());
-    }
-    
-    @Test
-    public void 회원가입성공() throws Exception{
-        //given
-        final String url = "/api/members";
-        SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678", MemberRole.ROLE_USER);
+    //when
+    ResultActions resultActions = mockMvc.perform(post(url)
+        .content(gson.toJson(requestDto))
+        .contentType(MediaType.APPLICATION_JSON));
 
-        //when
-        ResultActions resultActions = mockMvc.perform(post(url)
-                .content(gson.toJson(requestDto))
-                .contentType(MediaType.APPLICATION_JSON));
+    //then
+    resultActions.andExpect(status().isOk());
+    verify(memberService, times(1)).addMember(any(SaveNativeMemberRequestDto.class));
+  }
 
+  @Test
+  public void 닉네임체크실패_닉네임중복() throws Exception {
+    //given
+    final String url = "/api/members/nickname/{nickname}";
+    final String nickname = "testNickname";
+    doThrow(new CustomException(CustomErrorResult.DUPLICATE_NICKNAME))
+        .when(memberService)
+        .checkDuplicateMemberNickname(nickname);
 
-        //then
-        resultActions.andExpect(status().isOk());
-        verify(memberService, times(1)).addMember(any(SaveNativeMemberRequestDto.class));
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(get(url, nickname));
 
-    @Test
-    public void 닉네임체크실패_닉네임중복() throws Exception{
-        //given
-        final String url = "/api/members/nickname/{nickname}";
-        final String nickname = "testNickname";
-        doThrow(new CustomException(CustomErrorResult.DUPLICATE_NICKNAME))
-                .when(memberService)
-                .checkDuplicateMemberNickname(nickname);
+    //then
+    resultActions.andExpect(status().is4xxClientError());
+  }
 
+  @Test
+  public void 닉네임체크성공() throws Exception {
+    //given
+    final String url = "/api/members/nickname/{nickname}";
+    final String nickname = "testNickname";
 
-        //when
-        ResultActions resultActions = mockMvc.perform(get(url, nickname));
+    //when
+    ResultActions resultActions = mockMvc.perform(get(url, nickname));
 
-        //then
-        resultActions.andExpect(status().is4xxClientError());
-    }
-
-    @Test
-    public void 닉네임체크성공() throws Exception{
-        //given
-        final String url = "/api/members/nickname/{nickname}";
-        final String nickname = "testNickname";
-
-        //when
-        ResultActions resultActions = mockMvc.perform(get(url, nickname));
-
-        //then
-        resultActions.andExpect(status().isOk());
-        verify(memberService, times(1)).checkDuplicateMemberNickname(nickname);
-    }
+    //then
+    resultActions.andExpect(status().isOk());
+    verify(memberService, times(1)).checkDuplicateMemberNickname(nickname);
+  }
 }

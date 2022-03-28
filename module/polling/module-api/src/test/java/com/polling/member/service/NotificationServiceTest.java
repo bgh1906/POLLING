@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class NotificationServiceTest {
-    @Autowired
-    private NotificationService smsService;
+
+  @Autowired
+  private NotificationService smsService;
 
 //    @Test
 //    public void 휴대폰인증문자보내기_restTemplate() throws Exception{

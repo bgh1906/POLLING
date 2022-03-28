@@ -1,14 +1,23 @@
 package com.polling.poll.controller.candidate.integrated;
 
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.google.gson.Gson;
 import com.polling.auth.dto.LoginDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
 import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
 import com.polling.poll.service.CandidateService;
-import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,136 +26,134 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class SecurityAdminCandidateControllerTest {
-    @MockBean
-    private CandidateService candidateService;
 
-    @Autowired
-    private MemberRepository memberRepository;
+  @MockBean
+  private CandidateService candidateService;
 
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired
+  private MemberRepository memberRepository;
 
-    @Autowired
-    private Gson gson;
+  @Autowired
+  private MockMvc mockMvc;
 
-    @BeforeEach
-    public void setUp() {
-        this.memberRepository.deleteAll();
-    }
+  @Autowired
+  private Gson gson;
 
-    @Test
-    public void 후보자정보수정실패_투표가변경불가능한상태() throws Exception{
-        //given
-        final String url = "/api/polls/admin/candidates/{candidatesId}";
-        final Long candidatesId = 1L;
-        final ModifyCandidateRequestDto requestDto = new ModifyCandidateRequestDto("name",
-                        "profile",
-                        "image1",
-                        "image2",
-                        "image3",
-                        "thumbnail");
-        doThrow(new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY))
-                .when(candidateService).modifyCandidate(anyLong(), any(ModifyCandidateRequestDto.class));
+  @BeforeEach
+  public void setUp() {
+    this.memberRepository.deleteAll();
+  }
 
-        //when
-        ResultActions resultActions = mockMvc.perform(patch(url, candidatesId)
-                .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
-                .content(gson.toJson(requestDto))
-                .contentType(MediaType.APPLICATION_JSON));
+  @Test
+  public void 후보자정보수정실패_투표가변경불가능한상태() throws Exception {
+    //given
+    final String url = "/api/polls/admin/candidates/{candidatesId}";
+    final Long candidatesId = 1L;
+    final ModifyCandidateRequestDto requestDto = new ModifyCandidateRequestDto("name",
+        "profile",
+        "image1",
+        "image2",
+        "image3",
+        "thumbnail");
+    doThrow(new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY))
+        .when(candidateService)
+        .modifyCandidate(anyLong(), any(ModifyCandidateRequestDto.class));
 
-        //then
-        resultActions.andExpect(status().is4xxClientError());
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(patch(url, candidatesId)
+        .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
+        .content(gson.toJson(requestDto))
+        .contentType(MediaType.APPLICATION_JSON));
 
-    @Test
-    public void 후보자정보수정성공() throws Exception{
-        //given
-        final String url = "/api/polls/admin/candidates/{candidatesId}";
-        final Long candidatesId = 1L;
-        final ModifyCandidateRequestDto requestDto = new ModifyCandidateRequestDto("name",
-                "profile",
-                "image1",
-                "image2",
-                "image3",
-                "thumbnail");
+    //then
+    resultActions.andExpect(status().is4xxClientError());
+  }
 
-        //when
-        ResultActions resultActions = mockMvc.perform(patch(url, candidatesId)
-                .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
-                .content(gson.toJson(requestDto))
-                .contentType(MediaType.APPLICATION_JSON));
+  @Test
+  public void 후보자정보수정성공() throws Exception {
+    //given
+    final String url = "/api/polls/admin/candidates/{candidatesId}";
+    final Long candidatesId = 1L;
+    final ModifyCandidateRequestDto requestDto = new ModifyCandidateRequestDto("name",
+        "profile",
+        "image1",
+        "image2",
+        "image3",
+        "thumbnail");
 
-        //then
-        resultActions.andExpect(status().isOk());
-        verify(candidateService, times(1)).modifyCandidate(anyLong(), any(ModifyCandidateRequestDto.class));
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(put(url, candidatesId)
+        .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
+        .content(gson.toJson(requestDto))
+        .contentType(MediaType.APPLICATION_JSON));
 
-    @Test
-    public void 후보자삭제실패_후보자가없음() throws Exception{
-        //given
-        final String url = "/api/polls/admin/candidates/{candidateId}";
-        final Long candidateId = 1L;
-        doThrow(new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND)).when(candidateService).deleteCandidate(anyLong());
+    //then
+    resultActions.andExpect(status().isOk());
+    verify(candidateService, times(1)).modifyCandidate(anyLong(),
+        any(ModifyCandidateRequestDto.class));
+  }
 
-        //when
-        ResultActions resultActions = mockMvc.perform(delete(url, candidateId)
-                .header(HttpHeaders.AUTHORIZATION, getJwtToken(1)));
+  @Test
+  public void 후보자삭제실패_후보자가없음() throws Exception {
+    //given
+    final String url = "/api/polls/admin/candidates/{candidateId}";
+    final Long candidateId = 1L;
+    doThrow(new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND)).when(candidateService)
+        .deleteCandidate(anyLong());
 
-        //then
-        resultActions.andExpect(status().is4xxClientError());
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(delete(url, candidateId)
+        .header(HttpHeaders.AUTHORIZATION, getJwtToken(1)));
 
-    @Test
-    public void 후보자삭제성공() throws Exception{
-        //given
-        final String url = "/api/polls/admin/candidates/{candidateId}";
-        final Long candidateId = 1L;
+    //then
+    resultActions.andExpect(status().is4xxClientError());
+  }
 
-        //when
-        ResultActions resultActions = mockMvc.perform(delete(url, candidateId)
-                .header(HttpHeaders.AUTHORIZATION, getJwtToken(1)));
+  @Test
+  public void 후보자삭제성공() throws Exception {
+    //given
+    final String url = "/api/polls/admin/candidates/{candidateId}";
+    final Long candidateId = 1L;
 
-        //then
-        resultActions.andExpect(status().isOk());
-        verify(candidateService, times(1)).deleteCandidate(candidateId);
-    }
+    //when
+    ResultActions resultActions = mockMvc.perform(delete(url, candidateId)
+        .header(HttpHeaders.AUTHORIZATION, getJwtToken(1)));
 
-    public Member joinMember(int index){
-        return memberRepository.save(Member
-                .builder()
-                .email("test" + index + "@email.com")
-                .nickname("test" + index + "nickname")
-                .password("test")
-                .phoneNumber("0122345678")
-                .build());
-    }
+    //then
+    resultActions.andExpect(status().isOk());
+    verify(candidateService, times(1)).deleteCandidate(candidateId);
+  }
 
-    public String getJwtToken(int index) throws Exception {
-        Member member = joinMember(index);
-        LoginDto loginDto = new LoginDto();
-        loginDto.setEmail(member.getEmail());
-        loginDto.setPassword(member.getPassword());
+  public Member joinMember(int index) {
+    return memberRepository.save(Member
+        .builder()
+        .email("test" + index + "@email.com")
+        .nickname("test" + index + "nickname")
+        .password("test")
+        .phoneNumber("0122345678")
+        .build());
+  }
 
-        ResultActions resultActions = mockMvc.perform(post("/api/auth")
-                .content(gson.toJson(loginDto))
-                .contentType(MediaType.APPLICATION_JSON));
+  public String getJwtToken(int index) throws Exception {
+    Member member = joinMember(index);
+    LoginDto loginDto = new LoginDto();
+    loginDto.setEmail(member.getEmail());
+    loginDto.setPassword(member.getPassword());
 
-        return resultActions.andReturn().getResponse().getHeader("refreshToken");
-    }
+    ResultActions resultActions = mockMvc.perform(post("/api/auth")
+        .content(gson.toJson(loginDto))
+        .contentType(MediaType.APPLICATION_JSON));
+
+    return resultActions.andReturn().getResponse().getHeader("refreshToken");
+  }
 }

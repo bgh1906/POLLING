@@ -7,23 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Slf4j
 @Import(LogTraceAspect.class)
 @SpringBootTest
 class LogTraceAspectTest {
 
-    @Autowired
-    ExamService service;
+  @Autowired
+  ExamService service;
 
-    @Test
-    public void LogTrace적용() throws Exception{
-        //given
+  @Test
+  public void LogTrace적용() throws Exception {
+    //given
 
-        //when
-        service.request("1");
+    //when
+    service.request("1");
 
-        //then
-    }
+    //then
+  }
 }

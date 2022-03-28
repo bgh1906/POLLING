@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FindCommentResponseDto {
-    private Long commentId;
-    private Long memberId;
-    private String memberNickname;
-    private String content;
+
+  private Long commentId;
+  private Long memberId;
+  private String memberNickname;
+  private String content;
 }

@@ -1,0 +1,264 @@
+.joinus {
+    z-index: 5;
+    position: absolute;
+    /* width: 200px; */
+    /* height: 62px; */
+    left: 9vw;
+    top: 30vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    /* line-height: 60px; */
+    text-align: center;
+    
+    color: #000000;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.joinbg {
+    position: absolute;
+    width: 78vw;
+    height: 59vh;
+    left: 11vw;
+    top: 33vh;
+    
+    background: #FFF9EE;
+    border-radius: 7vh;
+}
+
+.nickname {
+    position: absolute;
+    width: 35vw;
+    height: 5vh;
+    left: 19vw;
+    top: 10vh;
+    
+    background: #FEFFF8;
+    background-image: url(https://img.icons8.com/cotton/30/000000/name--v2.png);
+    background-repeat: no-repeat;
+    background-position: 0.3vw center;
+    padding-left:2.3vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+
+    font-family: 'Roboto';
+    /* font-style: normal; */
+    /* font-weight: 400; */
+    /* line-height: 41px; */
+    /* text-align: center; */
+
+    /* color: #A5B8C2; */
+}
+
+.email {
+    position: absolute;
+    width: 35vw;
+    height: 5vh;
+    left: 19vw;
+    top: 19vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left: 2.3vw;
+
+    font-family: 'Roboto';
+    /* font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 41px;
+    text-align: center; */
+
+    /* color: #A5B8C2; */
+}
+
+.password {
+    position: absolute;
+    width: 35vw;
+    height: 5vh;
+    left: 19vw;
+    top: 28vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/24/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
+
+    font-family: 'Roboto';
+    /* font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 41px;
+    text-align: center; */
+
+    /* color: #A5B8C2; */
+}
+
+.phonenum {
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    left: 21vw;
+    top: 36vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/24/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    /* padding-left:2.3vw; */
+
+    /* font-family: 'Roboto'; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    /* font-style: normal;
+    font-weight: 400;
+    line-height: 41px;
+    text-align: center; */
+    font-size: 2vh;
+
+    color: #496370;
+
+}
+
+.privateset{
+    position: absolute;
+    width:20vw;
+    left:39vw;
+    top: 36.3vh;
+}
+
+.privatecheck {
+    z-index: 5;
+    position: absolute;
+    width: 2vw;
+    height: 3vh;
+    left:36.5vw;
+    top: 36.5vh;
+    
+    border: 3px solid #9F824D;
+    border-radius: 5px;
+}
+
+.privatebtn{
+    position: absolute;
+    width: 15vw;
+    /* height: 29px; */
+    left: -2.7vw;
+    /* top: 15vh; */
+    
+    /* font-family: 'Roboto'; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 5vh;
+    text-align: center;
+    border: none;
+    background-color: #9f824d00;
+
+    color: #9F824D;
+}
+
+.private{
+    position: absolute;
+    width: 15vw;
+    /* height: 26px; */
+    left:5vw;
+    /* top: 15vh; */
+
+    /* font-family: 'Roboto'; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 5vh;
+    text-align: center;
+
+    color: #000000;
+}
+
+.create {
+    position: absolute;
+    width: 18vw;
+    height: 6vh;
+    left: 28.5vw;
+    top: 45vh;
+    
+    background: #FEFFF8;
+    mix-blend-mode: normal;
+    box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8;
+    /* box-shadow: 0px 5px 5px 5px #F5EAD8; */
+    border-radius: 3vh;
+
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.6vh;
+    line-height: 3vh;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #9F824D;
+}
+
+.signinQ {
+    position: absolute;
+    /* width: 343px;
+    height: 28px; */
+    left: 29vw;
+    top: 53vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    /* font-size: 25px; */
+    /* line-height: 30px; */
+    /* text-align: center; */
+    
+    color: #000000;
+}
+
+.signin {
+    position: absolute;
+    /* width: 107px; */
+    /* height: 28px; */
+    left: 43vw;
+    top: 53vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    /* font-size: 25px; */
+    /* line-height: 30px;
+    text-align: center;
+    */
+    text-decoration: none;
+    color: #9F824D;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
