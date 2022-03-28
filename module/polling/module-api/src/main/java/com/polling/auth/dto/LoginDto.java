@@ -1,8 +1,7 @@
 package com.polling.auth.dto;
 
-import lombok.Data;
-
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 
 /**
  * DTO for storing a user's credentials.
@@ -10,9 +9,9 @@ import javax.validation.constraints.NotNull;
 @Data
 public class LoginDto {
 
-   @NotNull
-   private String email;
+  @NotNull
+  private String email;
 
-   @NotNull
-   private String password;
+  @NotNull
+  private String password;
 }

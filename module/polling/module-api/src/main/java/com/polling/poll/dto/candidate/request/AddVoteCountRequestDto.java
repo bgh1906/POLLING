@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class AddVoteCountRequestDto {
-    private Long candidateId;
-    private Integer voteCount;
 
-    @Builder
-    public AddVoteCountRequestDto(Long candidateId, Integer voteCount){
-        this.candidateId = candidateId;
-        this.voteCount = voteCount;
-    }
+  private Long candidateId;
+  private Integer voteCount;
+
+  @Builder
+  public AddVoteCountRequestDto(Long candidateId, Integer voteCount) {
+    this.candidateId = candidateId;
+    this.voteCount = voteCount;
+  }
 }

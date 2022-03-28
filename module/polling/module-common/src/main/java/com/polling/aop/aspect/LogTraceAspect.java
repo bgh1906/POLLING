@@ -16,22 +16,22 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class LogTraceAspect {
 
-    private final LogTrace logTrace;
+  private final LogTrace logTrace;
 
-    @Around("@annotation(trace)")
-    public Object doTrace(ProceedingJoinPoint joinPoint, Trace trace) throws Throwable {
-        TraceStatus status = null;
-        try{
-            String message = joinPoint.getSignature().toShortString();
-            status  = logTrace.begin(message);
+  @Around("@annotation(trace)")
+  public Object doTrace(ProceedingJoinPoint joinPoint, Trace trace) throws Throwable {
+    TraceStatus status = null;
+    try {
+      String message = joinPoint.getSignature().toShortString();
+      status = logTrace.begin(message);
 
-            Object result = joinPoint.proceed();
+      Object result = joinPoint.proceed();
 
-            logTrace.end(status);
-            return result;
-        } catch (Exception e){
-            logTrace.exception(status, e);
-            throw e;
-        }
+      logTrace.end(status);
+      return result;
+    } catch (Exception e) {
+      logTrace.exception(status, e);
+      throw e;
     }
+  }
 }

@@ -10,18 +10,20 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ExamService {
-    private final InternalService internalService;
 
-    @Trace
-    public void request(String data){
-        internalService.internalCall();
-        log.info("=================" + data + " receive =================");
-    }
+  private final InternalService internalService;
 
-    @Retry
-    public void requestKeep(int data) throws IllegalAccessException {
-        if(data == (int)(Math.random() * 100) / 5)
-            throw new IllegalAccessException();
-        log.info("=====================" + data + " keep going================");
+  @Trace
+  public void request(String data) {
+    internalService.internalCall();
+    log.info("=================" + data + " receive =================");
+  }
+
+  @Retry
+  public void requestKeep(int data) throws IllegalAccessException {
+    if (data == (int) (Math.random() * 100) / 5) {
+      throw new IllegalAccessException();
     }
+    log.info("=====================" + data + " keep going================");
+  }
 }

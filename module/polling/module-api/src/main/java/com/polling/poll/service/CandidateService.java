@@ -3,102 +3,109 @@ package com.polling.poll.service;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
-import com.polling.entity.candidate.CandidateGallery;
-import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
-import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
 import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
+import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
+import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
+import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
 import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
+import java.time.LocalDate;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Transactional
 @RequiredArgsConstructor
 @Service
 public class CandidateService {
-    private final CandidateRepository candidateRepository;
-    private final CommentQueryRepository commentQueryRepository;
-    private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
-    private final CandidateQueryRepository candidateQueryRepository;
-    private final MemberRepository memberRepository;
 
-    @Transactional(readOnly = true)
-    public FindCandidateDetailsResponseDto getProfile(Long candidateId){
-        Candidate candidate = getCandidate(candidateId);
-        List<FindCommentResponseDto> comments = commentQueryRepository.findAllByCandidateId(candidateId);
-        return FindCandidateDetailsResponseDto.of(candidate, comments);
+  private final CandidateRepository candidateRepository;
+  private final CommentQueryRepository commentQueryRepository;
+  private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
+  private final CandidateQueryRepository candidateQueryRepository;
+  private final MemberRepository memberRepository;
+
+  @Transactional(readOnly = true)
+  public FindCandidateDetailsResponseDto getProfile(Long candidateId) {
+    Candidate candidate = getCandidate(candidateId);
+    List<FindCommentResponseDto> comments = commentQueryRepository.findAllByCandidateId(
+        candidateId);
+    return FindCandidateDetailsResponseDto.of(candidate, comments);
+  }
+
+  @Trace
+  @Retry
+  public void addVoteCount(AddVoteCountRequestDto requestDto, Long memberId) {
+
+    if (requestDto.getVoteCount() <= 0) {
+      throw new CustomException(CustomErrorResult.INVALID_VOTES);
     }
 
-    @Trace
-    @Retry
-    public void addVoteCount(AddVoteCountRequestDto requestDto, Long memberId){
+    Member member = memberRepository.findById(memberId)
+        .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
 
-        if(requestDto.getVoteCount() <= 0) throw new CustomException(CustomErrorResult.INVALID_VOTES);
+    Candidate candidate = getCandidate(requestDto.getCandidateId());
 
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    Long id = candidate.getPoll().getId();
 
-        Candidate candidate = getCandidate(requestDto.getCandidateId());
-
-        Long id = candidate.getPoll().getId();
-
-        if(candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(memberId, id, LocalDate.now().atStartOfDay()))
-            throw new CustomException(CustomErrorResult.ALREADY_VOTES);
-
-        //todo : gRPC로 다른 api 호출 후 transaction id 받아오는 로직
-
-        CandidateHistory.builder()
-                .voteCount(requestDto.getVoteCount())
-                .candidate(candidate)
-                .member(member)
-                .build();
+    if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(memberId, id,
+        LocalDate.now().atStartOfDay())) {
+      throw new CustomException(CustomErrorResult.ALREADY_VOTES);
     }
 
-    @Trace
-    public void modifyCandidate(Long candidateId, ModifyCandidateRequestDto requestDto) {
-        Candidate candidate = getCandidate(candidateId);
-        validateStatus(candidate.getPoll().getPollStatus());
+    //todo : gRPC로 다른 api 호출 후 transaction id 받아오는 로직
 
-        candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
-        candidate.addGallery(new CandidateGallery(requestDto.getImagePath1()));
-        candidate.addGallery(new CandidateGallery(requestDto.getImagePath2()));
-        candidate.addGallery(new CandidateGallery(requestDto.getImagePath3()));
-        candidate.changeName(requestDto.getName());
-        candidate.changeProfile(requestDto.getProfile());
-        candidate.changeThumbnail(requestDto.getThumbnail());
-    }
+    CandidateHistory.builder()
+        .voteCount(requestDto.getVoteCount())
+        .candidate(candidate)
+        .member(member)
+        .build();
+  }
 
-    @Trace
-    public void deleteCandidate(Long candidateId) {
-        if(!candidateRepository.existsById(candidateId))
-            throw  new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND);
-        candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
-        candidateRepository.deleteById(candidateId);
-    }
+  @Trace
+  public void modifyCandidate(Long candidateId, ModifyCandidateRequestDto requestDto) {
+    Candidate candidate = getCandidate(candidateId);
+    validateStatus(candidate.getPoll().getPollStatus());
 
-    public Candidate getCandidate(Long candidateId){
-        return candidateRepository
-                .findById(candidateId).orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
-    }
+    candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
+    candidate.addGallery(new CandidateGallery(requestDto.getImagePath1()));
+    candidate.addGallery(new CandidateGallery(requestDto.getImagePath2()));
+    candidate.addGallery(new CandidateGallery(requestDto.getImagePath3()));
+    candidate.changeName(requestDto.getName());
+    candidate.changeProfile(requestDto.getProfile());
+    candidate.changeThumbnail(requestDto.getThumbnail());
+  }
 
-    public void validateStatus(PollStatus pollStatus){
-        if(pollStatus == PollStatus.IN_PROGRESS || pollStatus == PollStatus.DONE)
-            throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+  @Trace
+  public void deleteCandidate(Long candidateId) {
+    if (!candidateRepository.existsById(candidateId)) {
+      throw new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND);
     }
+    candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
+    candidateRepository.deleteById(candidateId);
+  }
+
+  public Candidate getCandidate(Long candidateId) {
+    return candidateRepository
+        .findById(candidateId)
+        .orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
+  }
+
+  public void validateStatus(PollStatus pollStatus) {
+    if (pollStatus == PollStatus.IN_PROGRESS || pollStatus == PollStatus.DONE) {
+      throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+    }
+  }
 
 }
