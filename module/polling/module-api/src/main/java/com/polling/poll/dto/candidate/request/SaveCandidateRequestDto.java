@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SaveCandidateRequestDto {
 
-  private Long id;
+  private Long pollId;
   private String name;
   private String profile;
   private String imagePath1;
@@ -20,9 +20,9 @@ public class SaveCandidateRequestDto {
   private String thumbnail;
 
   @Builder
-  public SaveCandidateRequestDto(Long id, String name, String profile, String imagePath1,
+  public SaveCandidateRequestDto(Long pollId, String name, String profile, String imagePath1,
       String imagePath2, String imagePath3, String thumbnail) {
-    this.id = id;
+    this.pollId = pollId;
     this.name = name;
     this.profile = profile;
     this.imagePath1 = imagePath1;

@@ -38,5 +38,4 @@ public class AdminCandidateController {
     candidateService.deleteCandidate(candidateId);
     return ResponseEntity.status(200).build();
   }
-
 }

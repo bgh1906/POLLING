@@ -39,8 +39,8 @@ public class CandidateService {
   @Transactional(readOnly = true)
   public FindCandidateDetailsResponseDto getProfile(Long candidateId) {
     Candidate candidate = getCandidate(candidateId);
-    List<FindCommentResponseDto> comments = commentQueryRepository.findAllByCandidateId(
-        candidateId);
+    List<FindCommentResponseDto> comments = commentQueryRepository
+        .findAllByCandidateId(candidateId);
     return FindCandidateDetailsResponseDto.of(candidate, comments);
   }
 
@@ -96,13 +96,13 @@ public class CandidateService {
     candidateRepository.deleteById(candidateId);
   }
 
-  public Candidate getCandidate(Long candidateId) {
+  private Candidate getCandidate(Long candidateId) {
     return candidateRepository
         .findById(candidateId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
   }
 
-  public void validateStatus(PollStatus pollStatus) {
+  private void validateStatus(PollStatus pollStatus) {
     if (pollStatus == PollStatus.IN_PROGRESS || pollStatus == PollStatus.DONE) {
       throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
     }

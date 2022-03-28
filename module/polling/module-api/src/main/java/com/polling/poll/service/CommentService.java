@@ -48,18 +48,18 @@ public class CommentService {
     commentRepository.delete(comment);
   }
 
-  public Comment getComment(Long commentId) {
+  private Comment getComment(Long commentId) {
     return commentRepository
         .findById(commentId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.COMMENT_NOT_FOUND));
   }
 
-  public Member getMember(Long memberId) {
+  private Member getMember(Long memberId) {
     return memberRepository.findById(memberId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
   }
 
-  public Candidate getCandidate(Long candidateId) {
+  private Candidate getCandidate(Long candidateId) {
     return candidateRepository.findById(candidateId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND));
   }

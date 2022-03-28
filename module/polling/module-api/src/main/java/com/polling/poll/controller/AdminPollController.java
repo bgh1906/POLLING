@@ -2,6 +2,7 @@ package com.polling.poll.controller;
 
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
+import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
@@ -42,6 +43,14 @@ public class AdminPollController {
   public ResponseEntity<FindPollWithCandidateResponseDto> getPollInfo(@PathVariable Long pollId) {
     FindPollWithCandidateResponseDto responseDto = pollService.findPollAllInfo(pollId);
     return ResponseEntity.status(200).body(responseDto);
+  }
+
+  @Trace
+  @PostMapping("/candidate")
+  @ApiOperation(value = "후보자 추가", notes = "상태가 unapproved, wait인 경우에만 가능")
+  public ResponseEntity<Void> addCandidate(@RequestBody SaveCandidateRequestDto requestDto) {
+    pollService.addCandidate(requestDto);
+    return ResponseEntity.status(200).build();
   }
 
   @Trace

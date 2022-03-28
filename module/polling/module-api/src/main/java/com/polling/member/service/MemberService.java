@@ -39,7 +39,7 @@ MemberService {
     memberRepository.save(member);
   }
 
-  public void checkDuplicateMemberEmail(String email) {
+  private void checkDuplicateMemberEmail(String email) {
     if (memberRepository.existsByEmail(email)) {
       throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
     }

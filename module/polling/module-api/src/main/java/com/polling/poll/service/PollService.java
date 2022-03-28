@@ -10,6 +10,7 @@ import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
+import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.poll.dto.candidate.response.FindAdminCandidateResponseDto;
 import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
@@ -109,6 +110,12 @@ public class PollService {
       throw new CustomException(CustomErrorResult.VOTE_NOT_FOUND);
     }
     pollRepository.deleteById(pollId);
+  }
+
+  @Trace
+  public void addCandidate(SaveCandidateRequestDto requestDto) {
+    Poll poll = getPoll(requestDto.getPollId());
+    poll.addCandidate(requestDto.toEntity());
   }
 
   @Trace
