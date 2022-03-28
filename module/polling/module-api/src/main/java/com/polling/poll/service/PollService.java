@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -63,6 +64,16 @@ public class PollService {
     public FindSimplePollResponseDto findPollThumbnailSortByVoteCount(Long pollId){
         Poll poll = getPoll(pollId);
         List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllSimpleByPollIdOrderByVotesTotal(pollId);
+
+        int rank = 0;
+        int prevTotal = -1;
+        for(FindAnonymousCandidateResponseDto dto: list){
+            if(dto.getVotesTotalCount() != prevTotal){
+                rank++;
+            }
+            dto.setRank(rank);
+            prevTotal = dto.getVotesTotalCount();
+        }
         return FindSimplePollResponseDto.of(list, poll);
     }
 
@@ -128,4 +139,5 @@ public class PollService {
         if(poll.getPollStatus() == PollStatus.IN_PROGRESS || poll.getPollStatus() == PollStatus.DONE)
             throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
     }
+
 }
