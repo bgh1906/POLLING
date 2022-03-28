@@ -49,7 +49,7 @@ public class Candidate extends BaseTimeEntity {
   private String thumbnail;
 
   @Column(length = 1000)
-  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST, orphanRemoval = true)
   private final List<CandidateGallery> galleries = new ArrayList<>();
 
   @Builder

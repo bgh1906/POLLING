@@ -38,8 +38,8 @@ public class SaveCandidateRequestDto {
         .thumbnail(thumbnail)
         .build();
     candidate.addGallery(new CandidateGallery(imagePath1));
-    candidate.addGallery(new CandidateGallery(imagePath1));
-    candidate.addGallery(new CandidateGallery(imagePath1));
+    candidate.addGallery(new CandidateGallery(imagePath2));
+    candidate.addGallery(new CandidateGallery(imagePath3));
 
     return candidate;
   }
