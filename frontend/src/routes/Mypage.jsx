@@ -7,6 +7,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from "react";
+import UserInfo from "../components/mypage/UserInfo";
+import Mypoll from "../components/mypage/Mypoll";
+import Qna from "../components/mypage/Qna";
+import QnaList from "../components/mypage/QnaList";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,22 +59,23 @@ function Mypage() {
 
             <div className={Styles.mypage}> My page </div>
 
-            <Box sx={{ width: '40vw'}}>
+            <Box sx={{ width: '80vw', paddingTop: '35vh', paddingLeft: '17vw'}}>
+            {/* <Box className={Styles.firstbox}> */}
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="정보 수정" {...a11yProps(0)} />
-                    <Tab label="투표 내역" {...a11yProps(1)} />
-                    <Tab label="1:1 문의" {...a11yProps(2)} />
+                    <Tab label="정보 수정" {...a11yProps(0)} className={Styles.tabs}/>
+                    <Tab label="투표 내역" {...a11yProps(1)} className={Styles.tabs}/>
+                    <Tab label="1:1 문의" {...a11yProps(2)} className={Styles.tabs}/>
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    Item One
+                    <UserInfo />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    Item Two
+                    <Mypoll />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    Item Three
+                    <QnaList />
                 </TabPanel>
             </Box>
         </div>
