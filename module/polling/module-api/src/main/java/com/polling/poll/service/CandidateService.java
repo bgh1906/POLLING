@@ -3,6 +3,7 @@ package com.polling.poll.service;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
+import com.polling.entity.candidate.CandidateGallery;
 import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
 import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
 import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
@@ -14,6 +15,7 @@ import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
+import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.queryrepository.CommentQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
@@ -32,6 +34,7 @@ public class CandidateService {
     private final CandidateRepository candidateRepository;
     private final CommentQueryRepository commentQueryRepository;
     private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
+    private final CandidateQueryRepository candidateQueryRepository;
     private final MemberRepository memberRepository;
 
     @Transactional(readOnly = true)
@@ -71,17 +74,13 @@ public class CandidateService {
         Candidate candidate = getCandidate(candidateId);
         validateStatus(candidate.getPoll().getPollStatus());
 
-        List<String> imagePaths = new ArrayList<>();
-        imagePaths.add(requestDto.getImagePath1());
-        imagePaths.add(requestDto.getImagePath2());
-        imagePaths.add(requestDto.getImagePath3());
-        if(requestDto.getName() != null)
-            candidate.changeName(requestDto.getName());
-        if(requestDto.getProfile() != null)
-            candidate.changeProfile(requestDto.getProfile());
-        if(requestDto.getThumbnail() != null)
-            candidate.changeThumbnail(requestDto.getThumbnail());
-        candidate.changeImagePaths(imagePaths);
+        candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
+        candidate.addGallery(new CandidateGallery(requestDto.getImagePath1()));
+        candidate.addGallery(new CandidateGallery(requestDto.getImagePath2()));
+        candidate.addGallery(new CandidateGallery(requestDto.getImagePath3()));
+        candidate.changeName(requestDto.getName());
+        candidate.changeProfile(requestDto.getProfile());
+        candidate.changeThumbnail(requestDto.getThumbnail());
     }
 
     @Trace

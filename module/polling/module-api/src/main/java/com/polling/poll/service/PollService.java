@@ -95,7 +95,7 @@ public class PollService {
                 .id(candidate.getId())
                 .name(candidate.getName())
                 .thumbnail(candidate.getThumbnail())
-                .imagePaths(candidate.getImagePaths())
+                .galleries(candidate.getGalleries())
                 .profile(candidate.getProfile())
                 .build()).collect(Collectors.toList());
         return FindPollWithCandidateResponseDto.of(list, poll);

@@ -87,7 +87,7 @@ public class SecurityAdminCandidateControllerTest {
                 "thumbnail");
 
         //when
-        ResultActions resultActions = mockMvc.perform(patch(url, candidatesId)
+        ResultActions resultActions = mockMvc.perform(put(url, candidatesId)
                 .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
                 .content(gson.toJson(requestDto))
                 .contentType(MediaType.APPLICATION_JSON));

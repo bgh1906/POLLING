@@ -20,7 +20,7 @@ public class AdminCandidateController {
     private final CandidateService candidateService;
 
     @Trace
-    @PatchMapping("/{candidateId}")
+    @PutMapping("/{candidateId}")
     @ApiOperation(value = "특정 후보자 정보 수정", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
     public ResponseEntity<FindCandidateDetailsResponseDto> modifyCandidate(@PathVariable Long candidateId, @RequestBody ModifyCandidateRequestDto requestDto) {
         candidateService.modifyCandidate(candidateId, requestDto);

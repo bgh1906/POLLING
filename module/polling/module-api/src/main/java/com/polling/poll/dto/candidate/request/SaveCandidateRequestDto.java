@@ -1,6 +1,7 @@
 package com.polling.poll.dto.candidate.request;
 
 import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,16 +33,15 @@ public class SaveCandidateRequestDto {
     }
 
     public Candidate toEntity(){
-        List<String> imagePaths = new ArrayList<>();
-        imagePaths.add(imagePath1);
-        imagePaths.add(imagePath2);
-        imagePaths.add(imagePath3);
-
-        return Candidate.builder()
+        Candidate candidate = Candidate.builder()
                 .name(name)
                 .profile(profile)
-                .imagePaths(imagePaths)
                 .thumbnail(thumbnail)
                 .build();
+        candidate.addGallery(new CandidateGallery(imagePath1));
+        candidate.addGallery(new CandidateGallery(imagePath1));
+        candidate.addGallery(new CandidateGallery(imagePath1));
+
+        return candidate;
     }
 }

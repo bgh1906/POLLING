@@ -26,9 +26,9 @@ public class FindCandidateDetailsResponseDto {
         return new FindCandidateDetailsResponseDto(candidate.getName(),
                 candidate.getProfile(),
                 candidate.getThumbnail(),
-                candidate.getImagePaths().get(0),
-                candidate.getImagePaths().get(1),
-                candidate.getImagePaths().get(2),
+                candidate.getGalleries().get(0).getImagePath(),
+                candidate.getGalleries().get(1).getImagePath(),
+                candidate.getGalleries().get(2).getImagePath(),
                 candidate.getVoteTotalCount(),
                 comments);
     }
