@@ -1,0 +1,233 @@
+.Navbox {
+    height: 30vh !important;
+    
+}
+
+.leftbox {
+    position: relative;
+    width: 24vw;
+    height: 10vh;
+    left: 5.5vw;
+    top: 1.5vh;
+
+    border: 0.4vw solid #000000;
+    border-right: none;
+    border-bottom: none;
+    margin: unset;
+}
+
+.leftboxbottom {
+    position: relative;
+    width: 14vw;
+    /* height: 15vh; */
+    left: -0.4vw;
+    top: 9.1vh;
+
+    border: 0.4vw solid #000000;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+
+}
+
+.rightbox {
+    position: relative;
+    width: 24vw;
+    height: 10vh;
+    right: -69vw;
+    top: -20vh;
+
+    border: 0.4vw solid #000000;
+    border-left: none;
+    border-top: none;
+}
+
+.rightboxtop {
+    position: relative;
+    width: 14vw;
+    right: -10vw;
+    top: 0vh;
+
+    border: 0.4vw solid #000000;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.header {
+    position: relative;
+    /* justify-content: center; */
+    width: 49vw;
+    /* height: 4.8vh; */
+    left: 39vw;
+    top: -10vh;
+
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight:bold ;
+    font-size: 5.0vw;
+    line-height: 10.8vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.pollbox{
+    left: 39vw;
+    top: 3vh; 
+}
+
+
+.nav {
+    position: relative;
+    justify-content: center;
+    width: 99vw;
+    height: 5.2vh;
+    left: -0.3vw;
+    top: -16vh;
+
+    background: #000000;
+}
+
+.hall {
+    position: relative;
+    /* width: 160px; */
+    /* height: 26px; */
+    left: 7vw;
+    top: -21.4vh;
+
+    font-family: 'ROKAFSansMedium';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    /* font-style: normal; */
+    /* font-weight: bold; */
+    /* font-size: 1.5vw; */
+    font-size: 1.3vw;
+    line-height: -1vh;
+    /* line-height: 6vh; */
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.poll {
+    position: relative;
+    /* width: 123px; */
+    /* height: 26px; */
+    left: 17vw;
+    justify-content: center;
+    top: -21vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 6vh;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.history {
+    position: relative;
+    /* width: 123px; */
+    /* height: 26px; */
+    left: 27vw;
+    top: -21vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 6vh;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.notice {
+    position: relative;
+    /* width: 114px; */
+    /* height: 26px; */
+    left: 37vw;
+    top: -21vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 6vh;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.login {
+    position: relative;
+    /* width: 107px; */
+    /* height: 26px; */
+    left: 47vw;
+    top:-21vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 6vh;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.admin{
+    position: relative;
+    /* width: 107px; */
+    /* height: 26px; */
+    left: 57vw;
+    top: -21vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 6vh;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../../fonts/RussoOne-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: 'YUniverse-B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_yuniverse@1.0/YUniverse-B.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

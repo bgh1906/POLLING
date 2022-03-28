@@ -12,16 +12,17 @@ import org.springframework.security.test.context.support.WithUserDetails;
 
 @RequiredArgsConstructor
 final class WithUserDetailsSecurityContextFactory
-        implements WithSecurityContextFactory<WithUserDetails> {
+    implements WithSecurityContextFactory<WithUserDetails> {
 
-    private final MemberDetailsService userDetailsService;
+  private final MemberDetailsService userDetailsService;
 
-    public SecurityContext createSecurityContext(WithUserDetails withUser) {
-        String username = withUser.value();
-        UserDetails principal = userDetailsService.loadUserByUsername(username);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(principal, principal.getPassword(), principal.getAuthorities());
-        SecurityContext context = SecurityContextHolder.createEmptyContext();
-        context.setAuthentication(authentication);
-        return context;
-    }
+  public SecurityContext createSecurityContext(WithUserDetails withUser) {
+    String username = withUser.value();
+    UserDetails principal = userDetailsService.loadUserByUsername(username);
+    Authentication authentication = new UsernamePasswordAuthenticationToken(principal,
+        principal.getPassword(), principal.getAuthorities());
+    SecurityContext context = SecurityContextHolder.createEmptyContext();
+    context.setAuthentication(authentication);
+    return context;
+  }
 }

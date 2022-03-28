@@ -16,14 +16,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberDetailsService implements UserDetailsService {
 
-    private final MemberRepository memberRepository;
+  private final MemberRepository memberRepository;
 
-    @Retry
-    @Trace
-    @Override
-    public UserDetails loadUserByUsername(final String id) {
-        Member findMember = memberRepository.findById(Long.parseLong(id))
-                .orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " was not found in the database"));
-        return MemberAndUserAdapter.from(MemberAndDtoAdapter.entityToDto(findMember));
-    }
+  @Retry
+  @Trace
+  @Override
+  public UserDetails loadUserByUsername(final String id) {
+    Member findMember = memberRepository.findById(Long.parseLong(id))
+        .orElseThrow(() -> new UsernameNotFoundException(
+            "User with id " + id + " was not found in the database"));
+    return MemberAndUserAdapter.from(MemberAndDtoAdapter.entityToDto(findMember));
+  }
 }

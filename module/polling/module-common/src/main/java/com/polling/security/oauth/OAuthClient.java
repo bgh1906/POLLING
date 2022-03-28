@@ -12,23 +12,25 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 @Component
 public class OAuthClient {
-    private final WebClient webClient;
+
+  private final WebClient webClient;
 
 
-    public KaKaoOAuthResponse getInfo(String accessToken) {
+  public KaKaoOAuthResponse getInfo(String accessToken) {
 
-        KaKaoOAuthResponse response = webClient.post()
-                .uri("https://kapi.kakao.com/v2/user/me?secure_resource=false")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .retrieve()
-                .onStatus(HttpStatus::is4xxClientError, clientResponse -> Mono.error(new IllegalArgumentException("액세스 토큰 실패")))
-                .onStatus(HttpStatus::is5xxServerError, clientResponse -> Mono.error(new IllegalArgumentException("로그인 과정 실패")))
-                .bodyToMono(KaKaoOAuthResponse.class)
-                .block();
-        return response;
+    KaKaoOAuthResponse response = webClient.post()
+        .uri("https://kapi.kakao.com/v2/user/me?secure_resource=false")
+        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+        .retrieve()
+        .onStatus(HttpStatus::is4xxClientError,
+            clientResponse -> Mono.error(new IllegalArgumentException("액세스 토큰 실패")))
+        .onStatus(HttpStatus::is5xxServerError,
+            clientResponse -> Mono.error(new IllegalArgumentException("로그인 과정 실패")))
+        .bodyToMono(KaKaoOAuthResponse.class)
+        .block();
+    return response;
 
-    }
+  }
 
-    
 
 }

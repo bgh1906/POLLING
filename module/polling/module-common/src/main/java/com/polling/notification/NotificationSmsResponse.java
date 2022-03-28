@@ -1,6 +1,10 @@
 package com.polling.notification;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Getter
@@ -9,8 +13,8 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class NotificationSmsResponse {
 
-    private String requestId;
-    private String statusCode;
-    private String statusName;
+  private String requestId;
+  private String statusCode;
+  private String statusName;
 
 }

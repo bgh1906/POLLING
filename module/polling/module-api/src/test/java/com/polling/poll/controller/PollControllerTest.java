@@ -1,11 +1,18 @@
 package com.polling.poll.controller;
 
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
-import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
+import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
+import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,69 +26,65 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.ArrayList;
-
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @EnableWebSecurity
 public class PollControllerTest {
-    @InjectMocks
-    private PollController target;
 
-    @Mock
-    private PollService pollService;
+  @InjectMocks
+  private PollController target;
 
-    @Mock
-    private PollQueryRepository pollQueryRepository;
+  @Mock
+  private PollService pollService;
 
-    private MockMvc mockMvc;
+  @Mock
+  private PollQueryRepository pollQueryRepository;
 
-    @BeforeEach
-    public void init(){
-        mockMvc = MockMvcBuilders.standaloneSetup(target)
-                .setControllerAdvice(new CustomExceptionHandler())
-                .build();
-    }
-    
-    @Test
-    public void pollControllerIsNotNull() throws Exception{
-        Assertions.assertThat(target).isNotNull();
-    }
+  private MockMvc mockMvc;
 
-    @Test
-    public void 득표현황랭킹조회() throws Exception{
-        //given
-        final String url = "/api/polls/ranking/{id}";
-        doReturn(new FindSimplePollResponseDto(null,
-                null,
-                null,
-                null,
-                null,
-                null)).when(pollService).findPollThumbnailSortByVoteCount(1L);
+  @BeforeEach
+  public void init() {
+    mockMvc = MockMvcBuilders.standaloneSetup(target)
+        .setControllerAdvice(new CustomExceptionHandler())
+        .build();
+  }
 
-        //when
-        ResultActions resultActions = mockMvc.perform(get(url, 1L));
+  @Test
+  public void pollControllerIsNotNull() throws Exception {
+    Assertions.assertThat(target).isNotNull();
+  }
 
-        //then
-        resultActions.andExpect(status().isOk());
-    }
+  @Test
+  public void 득표현황랭킹조회() throws Exception {
+    //given
+    final String url = "/api/polls/ranking/{id}";
+    doReturn(new FindSimplePollResponseDto(null,
+        null,
+        null,
+        null,
+        null,
+        null)).when(pollService).findPollThumbnailSortByVoteCount(1L);
 
-    @Test
-    public void 투표조회_진행중() throws Exception{
-        //given
-        final String url = "/api/polls/{status}/{page}/{limit}";
-        doReturn(new ArrayList<FindPollPageResponseDto>()).when(pollQueryRepository).findPollPageByStatus(PollStatus.IN_PROGRESS,0, 10);
+    //when
+    ResultActions resultActions = mockMvc.perform(get(url, 1L));
 
-        //when
-        ResultActions resultActions = mockMvc.perform(get(url, "progress", 0, 10));
+    //then
+    resultActions.andExpect(status().isOk());
+  }
 
-        //then
-        resultActions.andExpect(status().isOk());
-        verify(pollQueryRepository, times(1)).findPollPageByStatus(PollStatus.IN_PROGRESS, 0, 10);
-    }
+  @Test
+  public void 투표조회_진행중() throws Exception {
+    //given
+    final String url = "/api/polls/{status}/{page}/{limit}";
+    doReturn(new ArrayList<FindPollPageResponseDto>()).when(pollQueryRepository)
+        .findPollPageByStatus(PollStatus.IN_PROGRESS, 0, 10);
+
+    //when
+    ResultActions resultActions = mockMvc.perform(get(url, "progress", 0, 10));
+
+    //then
+    resultActions.andExpect(status().isOk());
+    verify(pollQueryRepository, times(1)).findPollPageByStatus(PollStatus.IN_PROGRESS, 0, 10);
+  }
 
 }

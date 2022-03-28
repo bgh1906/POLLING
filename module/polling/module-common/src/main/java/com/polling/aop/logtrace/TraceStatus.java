@@ -5,14 +5,14 @@ import lombok.Getter;
 @Getter
 public class TraceStatus {
 
-    private TraceId traceId;
-    private Long startTimeMillis;
-    private String message;
+  private final TraceId traceId;
+  private final Long startTimeMillis;
+  private final String message;
 
-    public TraceStatus(TraceId traceId, Long startTimeMillis, String message) {
-        this.traceId = traceId;
-        this.startTimeMillis = startTimeMillis;
-        this.message = message;
-    }
+  public TraceStatus(TraceId traceId, Long startTimeMillis, String message) {
+    this.traceId = traceId;
+    this.startTimeMillis = startTimeMillis;
+    this.message = message;
+  }
 
 }
