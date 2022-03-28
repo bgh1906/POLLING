@@ -34,10 +34,10 @@ public class JwtTokenProvider {
    @Value("${jwt.secret}")
    private String secretKey;
 
-   // 어세스 토큰 유효시간 | 20s
-   private long accessTokenValidTime = 20 * 1000L;
-   // 리프레시 토큰 유효시간 | 1800s
-   private long refreshTokenValidTime = 30 * 60 * 1000L;
+   // 어세스 토큰 유효시간 | 30m
+   private long accessTokenValidTime = 30 * 60 * 1000L;
+   // 리프레시 토큰 유효시간 | 600m
+   private long refreshTokenValidTime = 600 * 60 * 1000L;
 
    private final MemberDetailsService detailsService;
    private final RedisService redisService;

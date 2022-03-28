@@ -1,5 +1,6 @@
 package com.polling.queryrepository;
 
+import com.polling.entity.candidate.QCandidateGallery;
 import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
 import com.polling.entity.candidate.Candidate;
 import com.querydsl.core.types.Projections;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.polling.entity.candidate.QCandidate.candidate;
+import static com.polling.entity.candidate.QCandidateGallery.*;
 import static com.polling.entity.poll.QPoll.poll;
 
 @Transactional(readOnly = true)
@@ -53,6 +55,20 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository{
                 .from(candidate)
                 .where(candidate.poll.id.eq(pollId))
                 .fetch();
+    }
+
+    @Override
+    public void deleteByPollId(Long pollId) {
+        query.delete(candidate)
+                .where(candidate.poll.id.eq(pollId))
+                .execute();
+    }
+
+    @Override
+    public void deleteGalleriesByCandidateId(Long candidateId) {
+        query.delete(candidateGallery)
+                .where(candidateGallery.candidate.id.eq(candidateId))
+                .execute();
     }
 
 }

@@ -39,16 +39,15 @@ public class Candidate extends BaseTimeEntity {
     private String thumbnail;
 
     @Column(length = 1000)
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> imagePaths = new ArrayList<>();
+    @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
+    private List<CandidateGallery> galleries = new ArrayList<>();
 
     @Builder
-    public Candidate(Poll poll, String name, String profile, String thumbnail, List<String> imagePaths){
+    public Candidate(Poll poll, String name, String profile, String thumbnail){
         this.poll = poll;
         this.name = name;
         this.profile = profile;
         this.thumbnail = thumbnail;
-        this.imagePaths = imagePaths;
         voteTotalCount = 0;
     }
 
@@ -72,7 +71,8 @@ public class Candidate extends BaseTimeEntity {
         this.thumbnail = thumbnail;
     }
 
-    public void changeImagePaths(List<String> imagePaths){
-        this.imagePaths = imagePaths;
+    public void addGallery(CandidateGallery gallery){
+        this.galleries.add(gallery);
+        gallery.changeCandidate(this);
     }
 }

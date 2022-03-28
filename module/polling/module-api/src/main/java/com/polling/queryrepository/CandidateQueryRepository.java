@@ -9,4 +9,6 @@ public interface CandidateQueryRepository {
     List<FindAnonymousCandidateResponseDto> findAllSimpleByPollIdOrderByVotesTotal(Long pollId);
     List<FindAnonymousCandidateResponseDto> findAllSimpleByPollId(Long pollId);
     List<Candidate> findAllByPollId(Long pollId);
+    void deleteByPollId(Long pollId);
+    void deleteGalleriesByCandidateId(Long candidateId);
 }

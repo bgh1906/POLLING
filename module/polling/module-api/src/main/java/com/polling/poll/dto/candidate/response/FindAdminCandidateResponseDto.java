@@ -1,5 +1,6 @@
 package com.polling.poll.dto.candidate.response;
 
+import com.polling.entity.candidate.CandidateGallery;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -19,13 +20,13 @@ public class FindAdminCandidateResponseDto {
     private String imagePath3;
 
     @Builder
-    public FindAdminCandidateResponseDto(Long id, String name, String thumbnail, List<String> imagePaths, String profile) {
+    public FindAdminCandidateResponseDto(Long id, String name, String thumbnail, List<CandidateGallery> galleries, String profile) {
         this.id = id;
         this.name = name;
         this.profile = profile;
         this.thumbnail = thumbnail;
-        imagePath1 = imagePaths.get(0);
-        imagePath2 = imagePaths.get(1);
-        imagePath3 = imagePaths.get(2);
+        imagePath1 = galleries.get(0).getImagePath();
+        imagePath2 = galleries.get(1).getImagePath();
+        imagePath3 = galleries.get(2).getImagePath();
     }
 }

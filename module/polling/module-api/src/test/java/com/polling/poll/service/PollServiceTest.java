@@ -1,6 +1,7 @@
 package com.polling.poll.service;
 
 import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
@@ -161,16 +162,16 @@ public class PollServiceTest {
     }
 
     private Candidate createCandidate(String name){
-        List<String> imagePaths = new ArrayList<>();
-        imagePaths.add("123");
-        imagePaths.add("456");
-        imagePaths.add("789");
-        return Candidate.builder()
+        Candidate candidate = Candidate.builder()
                 .name(name)
                 .profile("profile")
                 .poll(null)
-                .imagePaths(imagePaths)
                 .thumbnail("thumbnail")
                 .build();
+        candidate.addGallery(new CandidateGallery("123"));
+        candidate.addGallery(new CandidateGallery("456"));
+        candidate.addGallery(new CandidateGallery("789"));
+
+        return candidate;
     }
 }

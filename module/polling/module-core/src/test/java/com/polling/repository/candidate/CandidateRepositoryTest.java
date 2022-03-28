@@ -3,6 +3,7 @@ package com.polling.repository.candidate;
 
 import com.polling.config.JpaConfig;
 import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -52,17 +53,16 @@ public class CandidateRepositoryTest {
     }
 
     private Candidate createCandidate(String name){
-        List<String> imagePaths = new ArrayList<>();
-        imagePaths.add("test1");
-        imagePaths.add("test2");
-        imagePaths.add("test3");
-        imagePaths.add("test4");
-        return candidateRepository.save(Candidate.builder()
+        Candidate candidate = Candidate.builder()
                 .name(name)
-                .imagePaths(new ArrayList<>())
-                .profile("content")
+                .profile("profile")
+                .poll(null)
                 .thumbnail("thumbnail")
-                .imagePaths(imagePaths)
-                .build());
+                .build();
+        candidate.addGallery(new CandidateGallery("123"));
+        candidate.addGallery(new CandidateGallery("456"));
+        candidate.addGallery(new CandidateGallery("789"));
+
+        return candidateRepository.save(candidate);
     }
 }

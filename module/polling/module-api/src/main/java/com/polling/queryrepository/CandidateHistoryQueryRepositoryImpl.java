@@ -50,4 +50,5 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
                         candidateHistory.createdDate.before(today.plusDays(1)))
                 .fetchFirst() != null;
     }
+
 }
