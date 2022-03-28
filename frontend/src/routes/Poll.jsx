@@ -4,6 +4,7 @@ import Newnav from "../components/layout/NewNav";
 import fox from "../assets/fox.PNG";
 import pollinglogo from "../assets/pollinglogo.png";
 import { useEffect, useState } from "react";
+import Countdown from "react-countdown";
 
 function Poll() {
   const itemDetail = {
@@ -67,6 +68,14 @@ function Poll() {
     // console.log("클릭전", picked);
     setPicked((prev) => !prev);
   };
+  const endDay = new Date(2022, 5, 21, 23, 59, 0, 0);
+  const renderCounter = ({ days, hours, minutes, seconds }) => {
+    return (
+      <p>
+        {days}일 | {hours}시간 | {minutes}분 | {seconds}초 남았습니다.
+      </p>
+    );
+  };
   return (
     <>
       <Newnav />
@@ -79,6 +88,7 @@ function Poll() {
               <span>{itemDetail.name}</span>
               <br />
               {startYMD} ~ {endYMD}
+              <Countdown date={endDay} renderer={renderCounter} />
             </figcaption>
           </div>
         </div>
