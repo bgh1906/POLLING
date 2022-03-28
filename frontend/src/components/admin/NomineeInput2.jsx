@@ -5,7 +5,7 @@ import nopro from "../../assets/nopro.jpg"
 import Button from '@mui/material/Button';
 
 
-function NomineeInput({onAdd, current, isEdit, onUpdate}) {
+function NomineeInput({onAdd, current, isEdit, onUpdate, patchCandi}) {
 
     const [form, setForm] = useState({
         name: "",
@@ -43,6 +43,7 @@ function NomineeInput({onAdd, current, isEdit, onUpdate}) {
         if(name !== "" || profile !== "" || thumbnail !== ""){
             if(isEdit){
                 onUpdate(form)
+                patchCandi(form)
                 setForm({
                     name: "",
                     profile: "",

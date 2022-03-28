@@ -47,7 +47,7 @@
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
 }
 
 #name {
@@ -88,7 +88,7 @@
     font-family: 'ROKAFSansMedium';
     font-size: 2vw;
     right: 2.5vw;
-    top: 25vh;
+    top: 21vh;
     text-align: center;
     transform: rotate(90deg);
 }
@@ -354,4 +354,41 @@
     justify-content: center;
     margin-bottom: 5vh;
     
+}
+
+#mark{
+    width: 3vw;
+    position: relative;
+    top: 1.3vh;
+    right: 0.5vh;
+}
+
+#crown {
+    position: absolute;
+    width: 4vw;
+    top: 3vh;
+    left: 2vw;
+    transform: rotate(320deg);
+}
+
+#crown2 {
+    position: absolute;
+    width: 4vw;
+    right: 28vw;
+}
+
+
+#tx {
+    position: absolute;
+    width: 2vw;
+    top: 64.5vh;
+    left: 20vw;
+    z-index: 5;
+}
+
+#tx2 {
+    position: absolute;
+    width: 3.5vw;
+    top: 63vh;
+    right: 8vw;
 }

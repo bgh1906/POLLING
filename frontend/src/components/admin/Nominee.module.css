@@ -112,8 +112,8 @@
 }
 
 #register_button:hover{
-    background-color: #BAF0E8;
-    color: rgb(17, 0, 255);
+    background-color: #ff0000;
+    color: rgb(255, 255, 255);
 }
 
 
@@ -184,20 +184,51 @@
     bottom: 20vh;
 }
 
-#profile_del{
+#profile_update{
     width: 4vw;
     height: 4vh;
-    padding-top: 1vh;
+    padding-top: 1.5vh;
     font-size: 1.3vw;
+    background-color: #FFE29A;
+    border-radius: 10px;
     font-family: 'GangwonEdu_OTFBoldA';
     position:relative;
+    color: black;
     bottom: 22vh;
     left: 1vw;
 }
+#profile_del{
+    width: 4vw;
+    height: 4vh;
+    padding-top: 1.5vh;
+    font-size: 1.3vw;
+    background-color: #FFE29A;
+    border-radius: 10px;
+    color: black;
+    font-family: 'GangwonEdu_OTFBoldA';
+    position:relative;
+    bottom: 22vh;
+    left: 2vw;
+}
+
+
+#profile_update:hover{
+    background-color: blue;
+    color: white;
+}
+
+#profile_del:hover{
+    background-color: red;
+    color: white;
+}
+
+
+
 
 #profile_gallery{
     display: flex;
     justify-content: center;
+    border-radius: 10px;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
     color: blue;

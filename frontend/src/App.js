@@ -16,6 +16,7 @@ import Join2 from "./routes/Join2";
 import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 import Candidate2 from "./routes/Candidate2";
+import UpdatePoll from "./routes/UpdatePoll";
 import Qna from "./components/mypage/Qna";
 
 function App() {
@@ -38,10 +39,12 @@ function App() {
           <Route path="/hall" element={<Hall />}></Route>
           <Route path="/notice" element={<Notice />}></Route>
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
-          {/* <Route path="/poll/:pollnum/:name" element={<Nominee />}></Route> */}
+          <Route path="/poll/:pollnum/:id/1" element={<Candidate />}></Route>
+          <Route path="/poll/:pollnum/:id/2" element={<Candidate2 />}></Route>
           <Route path="/nominee" element={<Candidate />}></Route>
           <Route path="/nominee2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
+          <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

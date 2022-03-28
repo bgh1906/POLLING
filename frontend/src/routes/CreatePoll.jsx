@@ -45,6 +45,8 @@ function CreatePoll() {
         imagePath2: "",
         imagePath3: ""
     }])
+    const [current, setCurrent] = useState({})
+    const [isEdit, setIsEdit] = useState(false)
 
 
     const onDel=(id)=>{
@@ -53,10 +55,16 @@ function CreatePoll() {
     const onAdd=(form)=>{
         form.id = no.current++;
         setnomiList((nomiList)=> nomiList.concat(form));
-        console.log(nomiList)
+    }
+    const onEdit=(nominee)=>{
+        setCurrent(nominee)    
+        setIsEdit(true) 
     }
 
-    
+    const onUpdate=(nominee)=>{
+        setnomiList(nomiList.map(nomilist=> nomilist.id===nominee.id ? nominee : nomilist ))
+        setIsEdit(false);        
+    }
 
     function changeUrl(e) {
         setpollImage(e.target.value);
@@ -67,12 +75,10 @@ function CreatePoll() {
     function changePollStart(e) {
         const startdate = dayjs(e).format("YYYY-MM-DD HH:mm")
         setpollStart(String(startdate));
-        // console.log(String(startdate))
     }
     function changePollEnd(e) {
         const enddate = dayjs(e).format("YYYY-MM-DD HH:mm")
         setpollEnd(String(enddate));
-        // console.log(enddate)
         
     }
     function changepollDescribe(e) {
@@ -110,52 +116,40 @@ function CreatePoll() {
             pollLatestTX: pollLatestTX,
             pollAllTX: pollAllTX,
             nomiList: nomiList,
+            thumbnail:pollImage,
         }
-        console.log(pollInfo)
         dispatch(actionCreators.addInfo(pollInfo));
-        console.log("savePolldata", nomiList)
         
         axios.post(
-            "http://j6a304.p.ssafy.io:8080/api/polls",
+            "http://j6a304.p.ssafy.io:8080/api/polls/admin",
             {
                 "candidateDtos": nomiList,
-                // "candidateDtos":[{
-                //     id: 0,
-                //     name: '지헌',
-                //     profile: '지헌입니다/',
-                //     thumbnail: '123',
-                //     imagePath1: '22',
-                //     imagePath2: '3',
-                //     imagePath3: '3'
-                // },{
-                //     id: 0,
-                //     name: '수지',
-                //     profile: '수지입니다/',
-                //     thumbnail: '123',
-                //     imagePath1: '22',
-                //     imagePath2: '3',
-                //     imagePath3: '3'
-                // }],
                 "content":pollDescribe,
                 "endDate":pollEnd,
-                "starDate":pollStart,
+                "startDate":pollStart,
                 "thumbnail":pollImage,
                 "title":pollName
             },
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODE4MDg3NCwiZXhwIjoxNjQ4MTgyNjc0fQ.jN_m5fcGSL2i0iIYdYw5-h14HfBg0kuMUny_ubzfQV0",
+                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzUxNzUsImV4cCI6MTY0ODQzNjk3NX0.bAXVBEDwsNxG5NBGSdLfx3i9g9A_JHEnKvBV67HWqvM",
                     "Accept" : "*/*",
                 },
             }
         )
         .then((res) =>{
             console.log("POST 성공!!")
-            console.log(res)
+            Swal.fire({
+                title: '투표가 생성되었습니다.',
+                icon: 'success'                        
+            })
         })
-        .catch((e) =>{
-            console.error(e);
+        .then(()=>{
+            navigate("/admin");
+        })
+        .catch(error => {
+            console.log(error.response)
         });
 
         
@@ -239,14 +233,13 @@ function CreatePoll() {
                     <div id={styles.input_name6}> Candidate Registration </div> 
                 </div>
 
-                <NomineeInput onAdd={onAdd}/>
-                <NomineeList nomiList={nomiList} onDel={onDel}/>
+                <NomineeInput onAdd={onAdd} current={current} isEdit={isEdit} onUpdate={onUpdate}/>
+                <NomineeList nomiList={nomiList} onDel={onDel} onEdit={onEdit}/>
                 
                 <div id={styles.poll_savebox}>
-                    <button id={styles.poll_save} onClick={()=>{
+                    <button id={styles.poll_save2} onClick={()=>{
                         if (pollImage !=='' || pollName !=='' || pollStart !==''){
                             savePolldata();
-                            navigate("/admin");
                         } else {
                             Swal.fire({
                                 title: '투표 정보를 입력해주세요.',
@@ -254,7 +247,7 @@ function CreatePoll() {
                             })
                         }
                     }}>투표 생성하기</button>
-                    <Link to="/admin" id={styles.poll_back}> <span>돌아가기</span></Link>
+                    <Link to="/admin" id={styles.poll_back2}> <span>돌아가기</span></Link>
 
                 </div>
             </div>

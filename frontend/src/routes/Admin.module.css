@@ -199,6 +199,14 @@
 
 
 
+#list_pollname{
+    font-size: 1.6vw;
+    font-family: 'ROKAFSansBold';
+    color: black;
+}
 
-
-
+#list_datefont{
+    margin-top: 2vh;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+}
