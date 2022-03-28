@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 
 
-function NomineeList({ nomiList, onDel, onEdit, deleteCandi, patchCandi}) {
+function NomineeList({ nomiList, onDel, onEdit, deleteCandi}) {
 
     useEffect(() =>{
 

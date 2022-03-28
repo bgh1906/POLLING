@@ -5,7 +5,7 @@ import NomineeInput2 from "../components/admin/NomineeInput2"
 import NomineeList2 from "../components/admin/NomineeList2"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { actionCreators } from "../store"
 import Footer from "../components/layout/Footer";
 import logo from "../assets/mark_slim.png"
@@ -34,8 +34,7 @@ function UpdatePoll() {
 
     const params = useParams();
 
-    const dispatch = useDispatch();
-    const state = useSelector((state) => state);
+    const token = useSelector((state)=>(state[0].token));
     const navigate = useNavigate();
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
@@ -92,7 +91,8 @@ function UpdatePoll() {
     const onAdd=(form)=>{
         form.id = no.current++;
         setnomiList((nomiList)=> nomiList.concat(form));
-        console.log(nomiList)
+        addCandi(form)
+        console.log("추가")
     }
 
     
@@ -156,7 +156,7 @@ function UpdatePoll() {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDgzNTgyNTUsImV4cCI6MTY0ODM2MDA1NX0.u1wPqt-7y6Ybu69K4RkJneHiOvp9q5IEAnpEsoWDB-k",
+                    "Authorization": token,
                     "Accept" : "*/*",
                 },
             }
@@ -181,7 +181,7 @@ function UpdatePoll() {
             `http://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
             {
                 headers: {
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzUxNzUsImV4cCI6MTY0ODQzNjk3NX0.bAXVBEDwsNxG5NBGSdLfx3i9g9A_JHEnKvBV67HWqvM",
+                    "Authorization": token,
                 }
             }
         )
@@ -201,7 +201,7 @@ function UpdatePoll() {
 
 
     function patchCandi(nominee){
-        axios.patch(
+        axios.put(
             `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${nominee.id}`,
             {
                 "imagePath1": nominee.imagePath1,
@@ -214,7 +214,7 @@ function UpdatePoll() {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzUxNzUsImV4cCI6MTY0ODQzNjk3NX0.bAXVBEDwsNxG5NBGSdLfx3i9g9A_JHEnKvBV67HWqvM",
+                    "Authorization": token,
                     "Accept" : "*/*",
                 },
             }
@@ -233,21 +233,46 @@ function UpdatePoll() {
             `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${id}`,
             {
                 headers: {
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzM5OTYsImV4cCI6MTY0ODQzNTc5Nn0.TCkdVp1uZfwpdhPv5-jvq74O7bTCsk4opp_axdcirXU",
+                    "Authorization": token,
                 }
             }
         )
         .then(() =>{
             console.log("delete 성공!!")
             onDel(id)
-            Swal.fire({
-                title: '후보자가 삭제되었습니다.',
-                icon: 'success'                        
-            })
         })
         .catch(error => {
             console.log(error.response)
         });
+    }
+
+    function addCandi(form){
+
+        axios.post(
+            `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidate`,
+            {
+                "imagePath1": form.imagePath1,
+                "imagePath2": form.imagePath2,
+                "imagePath3": form.imagePath3,
+                "name": form.name,
+                "pollId":params.pollnum,
+                "profile": form.profile,
+                "thumbnail": form.thumbnail
+              },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                } 
+            })
+            .then(() =>{
+                console.log("후보자 추가 성공!!")
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+        
     }
 
 
@@ -332,7 +357,7 @@ function UpdatePoll() {
                     <div id={styles.input_name6}> Candidate Registration </div> 
                 </div>
 
-                <NomineeInput2 onAdd={onAdd} current={current} isEdit={isEdit} onUpdate={onUpdate} patchCandi={patchCandi}/>
+                <NomineeInput2 onAdd={onAdd} current={current} isEdit={isEdit} onUpdate={onUpdate} patchCandi={patchCandi} addCandi={addCandi}/>
                 <NomineeList2 nomiList={nomiList} onDel={onDel} onEdit={onEdit} deleteCandi={deleteCandi}/>
                 
                 <div id={styles.poll_savebox}>

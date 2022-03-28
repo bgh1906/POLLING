@@ -4,13 +4,16 @@ import Button from '@mui/material/Button';
 import axios from "axios";
 import CommentList from "./CommentList";
 import cheer from "../../assets/cheer.png";
+import { useSelector } from 'react-redux'
 
 
 
 function Comment({candiId, data, renderCheck}) {
 
     const [ripple, setRipple] = useState("")
-  
+    const token = useSelector((state)=>(state[0].token));
+    const nick = useSelector((state)=>(state[0].token));
+
     function changeInput(e){
         setRipple(e.target.value)
     }
@@ -27,7 +30,7 @@ function Comment({candiId, data, renderCheck}) {
             },
             {
                 headers: {
-                    Authorization:"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzA4NDEsImV4cCI6MTY0ODQzMjY0MX0.g573ZVU0g1T76rMmJ6-PRuR4HCxlv_lutMbjw1ZIph8"
+                    Authorization: token
                 },
             }
         )

@@ -9,6 +9,7 @@ import crown from "../assets/crown.png"
 import tx from "../assets/tx.png"
 import axios from "axios";
 
+
 function Candidate2() {
 
     const navigate = useNavigate();

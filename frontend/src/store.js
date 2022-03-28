@@ -30,31 +30,19 @@ const modifyPassword = (newPassword) => {
 const reducer = (state =[], action) => {
     switch (action.type) {
         case ADD:
-         const newPollInfo = [
-             {
-                pollName: action.infoObj.pollName,
-                pollPeriod: action.infoObj.pollPeriod,
-                pollDescribe: action.infoObj.pollDescribe,
-                pollRealtime: action.infoObj.pollRealtime,
-                pollLatestTX: action.infoObj.pollLatestTX,
-                pollAllTX: action.infoObj.pollAllTX,
-                nomiList: action.infoObj.nomiList,
-                status: action.infoObj.status,
-             },
-             ...state,
-         ];
-         //  console.log(newPollInfo);
-         const newUserInfo = [
-           {
-             seq: action.infoObj.seq,
-             nickname: action.infoObj.nickname,
-             token: action.infoObj.token,
-             email: action.infoObj.email,
-           },
-           ...state,
-         ];
-        return [newPollInfo,newUserInfo];  
-        // return newUserInfo;
+        
+        const newUserInfo = [
+            {
+                userid: action.infoObj.id,
+                nickname: action.infoObj.nickname,
+                token: action.infoObj.token,
+                email: action.infoObj.email,  
+            }, ...state
+        ];
+
+        return newUserInfo
+        
+
         case DELETE:
           state.splice(0);
           return state;
@@ -69,10 +57,10 @@ const reducer = (state =[], action) => {
         case UPDATEPASSWORD:
           const updatedInfo3 = [...state];
           updatedInfo3[0] = { ...state[0], password: action.newPassword };
-        
+          return updatedInfo3
 
-         default:
-             return state;
+        default:
+            return state;
     }
 };
 

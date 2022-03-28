@@ -5,20 +5,22 @@ import { useState, useEffect } from "react";
 import deleteimage from "../../assets/delete.png";
 import deleteimage2 from "../../assets/delete2.png";
 import axios from "axios";
-
+import { useSelector } from 'react-redux'
 
 
 function CommentForm({comment, memberId, commentId, renderCheck}) {
 
     const {memberNickname, content} = comment
-    const userid = 11;
+    
+    const token = useSelector((state)=>(state[0].token));
+    const userid = useSelector((state)=>(state[0].userid)); 
 
     function deleteComment(){
         axios.delete(
             `http://j6a304.p.ssafy.io:8080/api/polls/candidates/comments/${commentId}`,
             {
                 headers: {
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDgzOTM5MjIsImV4cCI6MTY0ODM5NTcyMn0.yCU2JEhUbcrBfbMvFkzlnwU4fQ38s1Rfw-38EpgSmgg",
+                    "Authorization": token,
                 }
             }
         )

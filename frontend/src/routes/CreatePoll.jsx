@@ -5,7 +5,7 @@ import NomineeInput from "../components/admin/NomineeInput"
 import NomineeList from "../components/admin/NomineeList"
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { actionCreators } from "../store"
 import Footer from "../components/layout/Footer";
 import logo from "../assets/mark_slim.png"
@@ -32,8 +32,7 @@ function CreatePoll() {
     const [pollLatestTX, setpollLatestTX] = useState(false);
     const [pollAllTX, setpollAllTX] = useState(false);
 
-    const dispatch = useDispatch();
-    const state = useSelector((state) => state);
+    const token = useSelector((state)=>(state[0].token));
     const navigate = useNavigate();
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
@@ -107,19 +106,9 @@ function CreatePoll() {
     }
 
     function savePolldata(){
-        const pollInfo = {
-            pollName: pollName,
-            pollStart: pollStart,
-            pollEnd: pollEnd,
-            pollDescribe: pollDescribe,
-            pollRealtime: pollRealtime,
-            pollLatestTX: pollLatestTX,
-            pollAllTX: pollAllTX,
-            nomiList: nomiList,
-            thumbnail:pollImage,
-        }
-        dispatch(actionCreators.addInfo(pollInfo));
-        
+              
+        // console.log(token)
+
         axios.post(
             "http://j6a304.p.ssafy.io:8080/api/polls/admin",
             {
@@ -133,7 +122,7 @@ function CreatePoll() {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":"bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsInJvbGVzIjpbIlJPTEVfQ09NUEFOWSIsIlJPTEVfVVNFUiJdLCJpYXQiOjE2NDg0MzUxNzUsImV4cCI6MTY0ODQzNjk3NX0.bAXVBEDwsNxG5NBGSdLfx3i9g9A_JHEnKvBV67HWqvM",
+                    "Authorization": token,
                     "Accept" : "*/*",
                 },
             }

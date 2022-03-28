@@ -8,6 +8,10 @@ import NewNav from "../components/layout/NewNav.jsx";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
+import { useDispatch } from 'react-redux'
+
+
+
 
 const { Kakao } = window;
 
@@ -17,7 +21,8 @@ function Login2() {
     setEmail("");
     setPassword("");
   }, []);
-
+  
+    const dispatch = useDispatch();
     const loginSuccess = () => {
         Swal.fire({
           title: "로그인 성공!",
@@ -70,9 +75,20 @@ function Login2() {
               )
             .then((res) => {
                 console.log("res", res);
+                console.log(res.headers.refreshtoken)
                 //토큰 찍어보기
-                console.log("토큰",res.headers.get("refreshToken"));
+                // console.log("토큰",res.headers.get("refreshToken"));
                 console.log("로그인 성공");
+                localStorage.setItem("token", res.headers.refreshtoken);
+                dispatch(actionCreators.addInfo(
+                  {
+                    token: res.headers.refreshtoken,
+                    email: email,
+                    id: res.data.id,
+                    nickname: res.data.nickname
+                  }
+                ));
+                
                 loginSuccess();
                 alert("로그인 성공");
                 //백에 닉네임, e-mail 같이 넘겨달라고 하기.
