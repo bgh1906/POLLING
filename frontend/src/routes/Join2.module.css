@@ -1,7 +1,7 @@
-
+/* 
 *, *:before, *:after {
     box-sizing: border-box;
-  }
+  } */
   
   /* body {
     min-height: 100vh;
@@ -123,7 +123,7 @@
     width: 10vw;
     height: 3vh;
     left: 8.1vw;
-    top: 3vh;
+    top: 2vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -150,10 +150,11 @@
 
 .nickname {
     position: absolute;
-    width: 19vw;
+    /* width: 19vw; */
+    width: 15.5vw;
     height: 4vh;
-    left: 3vw;
-    top: 11vh;
+    left: 2.5vw;
+    top: 10vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/cotton/24/000000/name--v2.png);
@@ -169,16 +170,45 @@
     /* font-weight: 400; */
     /* line-height: 41px; */
     /* text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
 
     /* color: #A5B8C2; */
 }
 
+.nicknameCheck{
+  position: absolute;
+  width: 4vw;
+  height: 4.8vh;
+  left: 18.8vw;
+  top: 10vh;
+  
+  background: #FEFFF8;
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+  border-radius: 3vh;
+  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+  background-repeat: no-repeat;
+  background-position: 0.3vw center;
+  padding-left:1vw; */
+
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-style: normal;
+  font-weight: 400;
+  text-align: center; */
+  line-height: 1vh;
+  font-size: 0.9vw;
+
+  color: #496370;
+}
+
 .email {
     position: absolute;
-    width: 19vw;
+    width: 20vw;
     height: 4vh;
-    left: 3vw;
-    top: 18vh;
+    left: 2.5vw;
+    top: 17vh;
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -195,16 +225,18 @@
     font-size: 35px;
     line-height: 41px;
     text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
 
     /* color: #A5B8C2; */
 }
 
 .password {
     position: absolute;
-    width: 19vw;
+    width: 20vw;
     height: 4vh;
-    left: 3vw;
-    top: 25vh;
+    left: 2.5vw;
+    top: 24vh;
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -221,16 +253,18 @@
     font-size: 35px;
     line-height: 41px;
     text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
 
     /* color: #A5B8C2; */
 }
 
 .phonenum {
     position: absolute;
-    width: 7vw;
+    width: 15.5vw;
     height: 4vh;
-    left: 3.3vw;
-    top: 33vh;
+    left: 2.5vw;
+    top: 31vh;
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -238,36 +272,90 @@
     border-radius: 3vh;
     background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
     background-repeat: no-repeat;
-    background-position: 0.3vw center;
-    padding-left:1vw;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
 
-    /* font-family: 'Roboto'; */
-    font-family: 'GangwonEdu_OTFBoldA';
+    font-family: 'Roboto';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
     /* font-style: normal;
     font-weight: 400;
-    line-height: 41px;
     text-align: center; */
-    font-size: 2vh;
+    line-height: 10vh;
+    font-size: 0.9vw;
 
     color: #496370;
+}
 
+.phonebtn {
+  position: absolute;
+  width: 4vw;
+  height: 4.8vh;
+  left: 18.8vw;
+  top: 31.3vh;
+  
+  background: #FEFFF8;
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+  border-radius: 3vh;
+  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+  background-repeat: no-repeat;
+  background-position: 0.3vw center;
+  padding-left:1vw; */
+
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-style: normal;
+  font-weight: 400;
+  text-align: center; */
+  line-height: 1vh;
+  font-size: 0.9vw;
+
+  color: #496370;
+}
+
+.phonetitle {
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.phonemodalclose:hover, .phonemodalSubscribe:hover{
+  background-color: #bedae7b2 ;
+}
+.phonemodalclose {
+  border: none;
+  background-color: #00000000;
+  border-radius: 3vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1.1vw;
+}
+
+.phonemodalSubscribe {
+  border: none;
+  background-color: #00000000;
+  border-radius: 3vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1.1vw;
 }
 
 .privateset{
     position: absolute;
     width:20vw;
     /* width:18vw; */
-    left:12.5vw;
-    top: 32.7vh;
+    left:7.5vw;
+    /* top: 32.7vh; */
+    top: 36.7vh;
 }
 
 .privatecheck {
     z-index: 1;
     position: absolute;
-    width: 2vw;
+    /* width: 2vw; */
+    /* height: 3vh; */
+    width: 1vw;
     height: 3vh;
-    left:10.3vw;
-    top: 32.9vh;
+    /* left:10.3vw; */
+    /* top: 32.9vh; */
+    left:6vw;
+    top: 36.9vh;
     
     border: 3px solid #9F824D;
     border-radius: 5px;
@@ -278,14 +366,14 @@
     width: 15vw;
     /* height: 29px; */
     left: -2.6vw;
-    /* top: 15vh; */
+    top: 1.3vh;
     
     /* font-family: 'Roboto'; */
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
     font-weight: 700;
     font-size: 1vw;
-    line-height: 5vh;
+    /* line-height: 5vh; */
     text-align: center;
     border: none;
     background-color: #9f824d00;
@@ -295,28 +383,29 @@
 
 .private{
     position: absolute;
-    width: 2vw;
+    width: 2.5vw;
     /* height: 26px; */
-    left:9.8vw;
-    /* top: 32.7vh; */
+    left:9.6vw;
+    top: -0.6vh;
 
     /* font-family: 'Roboto'; */
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
     font-weight: 700;
     font-size: 1vw;
-    line-height: 5.5vh;
+    /* line-height: 5.5vh; */
     text-align: center;
 
     color: #000000;
 }
 
+/* 회원가입 버튼 */
 .create {
     position: absolute;
     width: 10vw;
     height: 5vh;
     left: 8.2vw;
-    top: 40vh;
+    top: 42vh;
     
     background: #FEFFF8;
     mix-blend-mode: normal;
@@ -327,8 +416,8 @@
     font-family: 'Russo One';
     font-style: normal;
     font-weight: 400;
-    font-size: 2vh;
-    line-height: 3vh;
+    font-size: 1vw;
+    /* line-height: 3vh; */
     /* identical to box height */
 
     text-align: center;
@@ -336,12 +425,13 @@
     color: #9F824D;
 }
 
+/* 이미 계정이 있는지 확인 질문 */
 .signinQ {
     position: absolute;
     /* width: 343px;
     height: 28px; */
     left: 6.5vw;
-    top: 46vh;
+    top: 48vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -353,6 +443,7 @@
     color: #000000;
 }
 
+/* 로그인페이지 이동 버튼 */
 .signin {
     position: absolute;
     /* width: 107px; */
@@ -360,7 +451,7 @@
     /* left: 11vw; */
     /* top: 49vh; */
     left: 15.7vw;
-    top: 45.4vh;
+    top: 47.4vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -373,6 +464,7 @@
     color: #9F824D;
 }
 
+/* 개인정보처리방침 모달*/
 .privacybtn{
   position: absolute;
   width: 15vw;
@@ -395,6 +487,7 @@
   /* color: #03333af1; */
 }
 
+/* 서비스 이용약관 모달*/
 .servicebtn{
   position: absolute;
   width: 15vw;

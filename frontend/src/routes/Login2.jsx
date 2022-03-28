@@ -1,17 +1,41 @@
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/layout/Footer.jsx";
 import Styles2 from "./Login2.module.css";
-import kakao from "../assets/kakao.png";
-import { useState } from "react";
+// import kakao from "../assets/kakao.png";
+import React, { useState } from "react";
 import axios from "axios";
 import NewNav from "../components/layout/NewNav.jsx";
+import Swal from "sweetalert2";
+import { connect } from "react-redux";
+import { actionCreators } from "../store";
+
+const { Kakao } = window;
 
 function Login2() {
 
-    //로그인/회원가입 체인지
-    // const [loginChange, setLoginChange] = useState();
+  React.useEffect(() => {
+    setEmail("");
+    setPassword("");
+  }, []);
 
-
+    const loginSuccess = () => {
+        Swal.fire({
+          title: "로그인 성공!",
+          text: "SSARAOKE에 오신 것을 환영합니다!",
+          icon: "success",
+          confirmButtonColor: "#73E0C1",
+          confirmButtonText: "확인",
+        })
+      };
+    
+      const loginFail = () => {
+        Swal.fire({
+          title:"로그인 실패!",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+      }
 
     //이메일 받아오기
     const [email, setEmail] = useState("");
@@ -36,50 +60,73 @@ function Login2() {
             e.preventDefault();
             alert("이메일/비밀번호를 입력해주세요");
         } else if(email !== "" && password !==""){
-    //         axios
-    //           .post(
-    //               "",
-    //               {
-    //                   email: email,
-    //                   password: password,
-    //               },
-    //           )
-    //         .then((res) => {
-    //            navigate("/");
-    //         })
-            alert("로그인");
+            axios
+              .post(
+                "http://j6a304.p.ssafy.io:8080/api/auth",
+                  {
+                      email: email,
+                      password: password,
+                  },
+              )
+            .then((res) => {
+                console.log("res", res);
+                //토큰 찍어보기
+                console.log("토큰",res.headers.get("refreshToken"));
+                console.log("로그인 성공");
+                loginSuccess();
+                alert("로그인 성공");
+                //백에 닉네임, e-mail 같이 넘겨달라고 하기.
+                // if (state.length === 0) {
+                //   DispatchaddInfo({
+                //     seq: res.data.seq,
+                //     nickname: res.data.nickname,
+                //     token: res.data.token,
+                //     email: res.data.email,
+                //   });
+                // }
+                navigate("/");
+            })
+            .catch(error => {
+                const message = error.message;
+                console.log("error", error);
+                console.log("message", message);
+                alert("로그인 실패");
+                loginFail();
+              });
         }
     };
 
     //카톡 로그인
     const LoginWithKakao = () => {
-    //     Kakao.Auth.login({
-    //       success: (response) => {
-    //         axios
-    //           .post("", {
-    //             accessToken: response.access_token,
-    //             oauthType: "KAKAO",
-    //             refreshToken: response.refresh_token,
-    //           })
-    //           .then((res) => {
-    //             localStorage.setItem("token", res.data.token);
-    //             if (state.length === 0) {
-    //               DispatchaddInfo({
-    //                 seq: res.data.seq,
-    //                 nickname: res.data.nickname,
-    //                 token: res.data.token,
-    //                 email: res.data.email,
-    //               });
-    //             }
-    //             loginSuccess();
-    //             navigate("/");
-    //           });
-    //       },
-    //       fail: (error) => {
-    //         loginFail();
-    //         navigate("/");
-    //       },
-    //     });
+        Kakao.Auth.login({
+          success: (response) => {
+            axios
+              .post("http://j6a304.p.ssafy.io:8080/api/auth/social", {
+                // accessToken: response.access_token,
+                nickname: "KAKAO",
+                refreshToken: response.refresh_token,
+                phoneNumber: response.refresh_token,
+              })
+              .then((res) => {
+                console.log("res",res);
+                localStorage.setItem("token", res.data.token);
+                // if (state.length === 0) {
+                //   DispatchaddInfo({
+                //     seq: res.data.seq,
+                //     nickname: res.data.nickname,
+                //     token: res.data.token,
+                //     email: res.data.email,
+                //   });
+                // }
+                loginSuccess();
+                navigate("/");
+              });
+          },
+          fail: (error) => {
+            loginFail();
+            navigate("/");
+          },
+        });
       };
 
     return (
@@ -88,7 +135,8 @@ function Login2() {
             {/* <Nav/> */}
             <NewNav />
             {/* 로그인 */}
-            <div className={Styles2.container} onclick="onclick" >
+            {/* <div className={Styles2.container} onclick="onclick" > */}
+            <div className={Styles2.container} >
                 <div className={Styles2.top}></div>
                 <div className={Styles2.bottom}></div>
                 <div className={Styles2.center}>
@@ -96,11 +144,9 @@ function Login2() {
                     {/* <h2>Sign In &nbsp;</h2>  */}
                     {/* <input type="email" placeholder="email"/>
                     <input type="password" placeholder="password"/> */}
-                    <form>
                         <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
                         <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
                         <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button>
-                    </form>
                     <div>
                         <Link to="/Companylogin" className={Styles2.company}>기업회원 로그인 / </Link>
                         {/* <button className={Styles2.kakao}>

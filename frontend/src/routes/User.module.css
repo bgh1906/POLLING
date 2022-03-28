@@ -150,16 +150,16 @@ div .other:hover{
 
 .id {
     position: absolute;
-    width: 32vw;
+    width: 35vw;
     /* height: 6vh; */
-    height: 7vh;
+    height: 6vh;
     /* left: 24vw; */
     /* top: 60vh; */
-    left: 2.1vw;
-    top: 8vh;
+    left: 5vw;
+    top: 4vh;
     
     background: #FEFFF8;
-    background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
+    background-image: url(https://img.icons8.com/cotton/24/000000/name--v2.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 2.5vw;
@@ -168,15 +168,35 @@ div .other:hover{
     border-radius: 2vh;
 }
 
+.email {
+  position: absolute;
+  width: 35vw;
+  /* height: 6vh; */
+  height: 6vh;
+  /* left: 24vw; */
+  /* top: 60vh; */
+  left: 5vw;
+  top: 13vh;
+  
+  background: #FEFFF8;
+  background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw center;
+  padding-left: 2.5vw;
+  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
+  border-radius: 2vh;
+}
+
 .password {
     position: absolute;
-    width: 32vw;
+    width: 35vw;
     /* height: 6vh; */
-    height: 7vh;
+    height: 6vh;
     /* left: 24vw;
     top: 69vh; */
-    left: 2.1vw;
-    top: 18vh;
+    left: 5vw;
+    top: 22vh;
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/24/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
@@ -188,16 +208,36 @@ div .other:hover{
     border-radius: 2vh;
 }
 
+.phone {
+  position: absolute;
+  width: 35vw;
+  /* height: 6vh; */
+  height: 6vh;
+  /* left: 24vw;
+  top: 69vh; */
+  left: 5vw;
+  top: 31vh;
+  
+  background: #FEFFF8;
+  background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw center;
+  padding-left:2.3vw;
+  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
+  border-radius: 2vh;
+}
+
 .signinbtn {
     position: absolute;
     /* width: 15vw;
     height: 9vh;
     left: 60.5vw;
     top: 63.5vh; */
-    width: 15vw;
-    height: 9vh;
-    left: 38vw;
-    top: 11vh;
+    width: 10vw;
+    height: 5vh;
+    left: 42vw;
+    top: 35vh;
     
     background: #FFF9EE;
     mix-blend-mode: normal;
@@ -209,7 +249,7 @@ div .other:hover{
     font-style: normal;
     font-weight: 400;
     font-size: 1.5vw;
-    line-height: 5vh;
+    line-height: 4vh;
     /* identical to box height */
 
     text-align: center;
@@ -341,10 +381,10 @@ div .other:hover{
     /* width: 400px; */
     /* width: 35vw; */
     /* top: 49vh; */
-    top: 62vh;
+    top: 66vh;
     left: 49.5vw;
     width: 55vw;
-    height: 35vh;
+    height: 42vh;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);

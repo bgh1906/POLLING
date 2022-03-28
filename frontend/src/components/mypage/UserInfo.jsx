@@ -1,13 +1,18 @@
-import Nav from "../layout/Nav";
+import NewNav from "../layout/NewNav";
 
 
 
 function UserInfo() {
 
     return (
-        <div>
-            <Nav />
-        </div>
+        <>
+          {/* <h>Item One</h> */}
+          <input type={'text'} placeholder="Nickname"></input>
+          <button>수정</button>
+          <div>e-mail</div>
+          <input type={'password'} placeholder="password"></input>
+          <button>수정</button>
+        </>
     );
 }
 

@@ -17,6 +17,7 @@ import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 import Candidate2 from "./routes/Candidate2";
 import UpdatePoll from "./routes/UpdatePoll";
+import Qna from "./components/mypage/Qna";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/management" element={<Management />}></Route>
           <Route path="/user" element={<User />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
+          <Route path="/qna" element={<Qna />}></Route>
           <Route path="/createpoll" element={<CreatePoll />}></Route>
           <Route path="/polllist" element={<PollList />}></Route>
           <Route path="/history" element={<History />}></Route>
