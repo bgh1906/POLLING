@@ -12,8 +12,12 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
 
     const {memberNickname, content} = comment
     
-    const token = useSelector((state)=>(state[0].token));
-    const userid = useSelector((state)=>(state[0].userid)); 
+    // const token = useSelector((state)=>(state[0].token));
+    // const userid = useSelector((state)=>(state[0].userid)); 
+
+    const token = sessionStorage.getItem("token")
+    const userid = Number(sessionStorage.getItem("userid"))
+
 
     function deleteComment(){
         axios.delete(
@@ -40,10 +44,10 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
          <div>
             { commentId % 2 ===1?
             <p id={styles.nickname}><img id={styles.fight} src={fight} alt="fight"/>{memberNickname}
-             {userid ===memberId&& <img onClick={deleteComment} id={styles.delete_button} src={deleteimage2} alt='delete_icon'/>} 
+             {userid === memberId&& <img onClick={deleteComment} id={styles.delete_button} src={deleteimage2} alt='delete_icon'/>} 
              </p>
              :  <p id={styles.nickname}><img id={styles.fight} src={fight2} alt="fight2"/>{memberNickname}
-              {userid ===memberId&& <img onClick={deleteComment} id={styles.delete_button} src={deleteimage2} alt='delete_icon'/>}
+              {userid === memberId&& <img onClick={deleteComment} id={styles.delete_button} src={deleteimage2} alt='delete_icon'/>}
              </p>}
 
             

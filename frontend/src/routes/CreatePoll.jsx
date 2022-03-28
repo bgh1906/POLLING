@@ -32,7 +32,9 @@ function CreatePoll() {
     const [pollLatestTX, setpollLatestTX] = useState(false);
     const [pollAllTX, setpollAllTX] = useState(false);
 
-    const token = useSelector((state)=>(state[0].token));
+    // const token = useSelector((state)=>(state[0].token));
+    const token = sessionStorage.getItem("token")
+
     const navigate = useNavigate();
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{

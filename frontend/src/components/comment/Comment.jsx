@@ -11,8 +11,11 @@ import { useSelector } from 'react-redux'
 function Comment({candiId, data, renderCheck}) {
 
     const [ripple, setRipple] = useState("")
-    const token = useSelector((state)=>(state[0].token));
-    const nick = useSelector((state)=>(state[0].token));
+
+    // const token = useSelector((state)=>(state[0].token));
+    // const nick = useSelector((state)=>(state[0].token));
+
+    const token = sessionStorage.getItem("token")
 
     function changeInput(e){
         setRipple(e.target.value)

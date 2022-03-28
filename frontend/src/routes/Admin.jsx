@@ -25,11 +25,11 @@ function Admin() {
     const [polldata4, setPolldata4] = useState([]);
     const [rendernumber, setRendernumber] = useState(0);
 
-    const token = useSelector((state)=>(state[0].token));
+    // const token = useSelector((state)=>(state[0].token));
+    const token = sessionStorage.getItem("token")
 
 
     useEffect(()=>{
-
             axios
             .get("http://j6a304.p.ssafy.io:8080/api/polls/unapproved/0/50")
             .then((res) => {

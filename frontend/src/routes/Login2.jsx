@@ -79,7 +79,12 @@ function Login2() {
                 //토큰 찍어보기
                 // console.log("토큰",res.headers.get("refreshToken"));
                 console.log("로그인 성공");
-                localStorage.setItem("token", res.headers.refreshtoken);
+                
+                sessionStorage.setItem("token", res.headers.refreshtoken);
+                sessionStorage.setItem("userid", res.data.id);
+
+                // localStorage.setItem("token", res.headers.refreshtoken);
+                // localStorage.setItem("userid", res.data.id);
                 dispatch(actionCreators.addInfo(
                   {
                     token: res.headers.refreshtoken,
@@ -91,6 +96,7 @@ function Login2() {
                 
                 loginSuccess();
                 alert("로그인 성공");
+                navigate("/");
                 //백에 닉네임, e-mail 같이 넘겨달라고 하기.
                 // if (state.length === 0) {
                 //   DispatchaddInfo({
@@ -100,7 +106,7 @@ function Login2() {
                 //     email: res.data.email,
                 //   });
                 // }
-                navigate("/");
+                // navigate("/");
             })
             .catch(error => {
                 const message = error.message;
