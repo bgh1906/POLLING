@@ -49,9 +49,9 @@ public class MemberController {
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @GetMapping("/nickname/{n}")
+    @GetMapping("/nickname/{nickname}")
     @ApiOperation(value = "닉네임 중복체크")
-    public ResponseEntity<Void> checkNickname(@PathVariable("n") String nickname) {
+    public ResponseEntity<Void> checkNickname(@PathVariable("nickname") String nickname) {
         memberService.checkDuplicateMemberNickname(nickname);
         return ResponseEntity.status(200).build();
     }
