@@ -85,8 +85,9 @@ public class CandidateService {
 
     @Trace
     public void deleteCandidate(Long candidateId) {
-        if(candidateRepository.existsById(candidateId))
+        if(!candidateRepository.existsById(candidateId))
             throw  new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND);
+        candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
         candidateRepository.deleteById(candidateId);
     }
 

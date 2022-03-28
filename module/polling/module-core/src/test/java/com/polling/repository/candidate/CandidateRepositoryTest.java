@@ -20,7 +20,7 @@ public class CandidateRepositoryTest {
 
     @Autowired
     private CandidateRepository candidateRepository;
-    
+
     @Test
     public void candidateRepositoryIsNotNull() throws Exception{
         assertThat(candidateRepository).isNotNull();
@@ -30,6 +30,7 @@ public class CandidateRepositoryTest {
     public void 후보자투표수증가() throws Exception{
         //given
         Candidate candidate = createCandidate("suzy");
+        candidateRepository.save(candidate);
 
         //when
         candidate.addVoteTotal(1);
@@ -38,11 +39,12 @@ public class CandidateRepositoryTest {
         //then
         assertThat(findCandidate.getVoteTotalCount()).isEqualTo(1);
     }
-    
+
     @Test
     public void 후보자삭제() throws Exception{
         //given
         Candidate candidate = createCandidate("suzy");
+        candidateRepository.save(candidate);
 
         //when
         candidateRepository.delete(candidate);
@@ -59,10 +61,7 @@ public class CandidateRepositoryTest {
                 .poll(null)
                 .thumbnail("thumbnail")
                 .build();
-        candidate.addGallery(new CandidateGallery("123"));
-        candidate.addGallery(new CandidateGallery("456"));
-        candidate.addGallery(new CandidateGallery("789"));
 
-        return candidateRepository.save(candidate);
+        return candidate;
     }
 }
