@@ -48,15 +48,7 @@ public class PollService {
     validateRole(pollCreator.getMemberRole());
 
     // 투표 생성
-    Poll poll = pollRepository.save(Poll.builder()
-        .pollCreator(pollCreator)
-        .title(requestDto.getTitle())
-        .content(requestDto.getContent())
-        .thumbnail(requestDto.getThumbnail())
-        .openStatus(requestDto.getOpenStatus())
-        .startDate(requestDto.getStartDate())
-        .endDate(requestDto.getEndDate())
-        .build());
+    Poll poll = pollRepository.save(requestDto.toPollEntity());
 
     // 후보자 추가
     requestDto.getCandidateDtos().forEach(candidateDto -> {
@@ -108,9 +100,18 @@ public class PollService {
   public void modifyPoll(Long pollId, ModifyPollRequestDto requestDto) {
     Poll poll = getPoll(pollId);
     validateStatus(poll);
-    poll.changeDescription(requestDto.getTitle(), requestDto.getContent());
-    poll.changePeriod(requestDto.getStartDate(), requestDto.getEndDate());
-    poll.changeThumbnail(requestDto.getThumbnail());
+    if (requestDto.getTitle() != null && requestDto.getContent() != null) {
+      poll.changeDescription(requestDto.getTitle(), requestDto.getContent());
+    }
+    if (requestDto.getStartDate() != null && requestDto.getEndDate() != null) {
+      poll.changePeriod(requestDto.getStartDate(), requestDto.getEndDate());
+    }
+    if (requestDto.getThumbnail() != null) {
+      poll.changeThumbnail(requestDto.getThumbnail());
+    }
+    if (requestDto.getOpenStatus() != null) {
+      poll.changeOpenStatus(requestDto.getOpenStatus());
+    }
   }
 
   @Trace

@@ -60,13 +60,14 @@ public class PollServiceTest {
     String format = "2022-04-01";
     LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         .atStartOfDay();
-    SavePollRequestDto savePollRequestDto = SavePollRequestDto.builder()
-        .title("testTitle")
-        .content("testContent")
-        .startDate(current)
-        .endDate(current.plusDays(10))
-        .candidateDtos(candidateRequestDtos)
-        .build();
+    SavePollRequestDto requestDto = new SavePollRequestDto(
+        null,
+        "title",
+        "content",
+        "thumbnail",
+        true,
+        LocalDateTime.now(),
+        LocalDateTime.now().plusDays(10));
     Member pollCreator = Member.builder()
         .email("testEmail")
         .nickname("hostNickname")
@@ -76,7 +77,7 @@ public class PollServiceTest {
     //when
     doReturn(Optional.of(pollCreator)).when(memberRepository).findById(anyLong());
     Throwable exception = Assertions.assertThrows(CustomException.class, () -> {
-      target.savePoll(savePollRequestDto, 1L);
+      target.savePoll(requestDto, 1L);
     });
 
     //then
@@ -94,13 +95,14 @@ public class PollServiceTest {
     String format = "2022-04-01";
     LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         .atStartOfDay();
-    SavePollRequestDto savePollRequestDto = SavePollRequestDto.builder()
-        .title("testTitle")
-        .content("testContent")
-        .startDate(current)
-        .endDate(current.plusDays(10))
-        .candidateDtos(candidateRequestDtos)
-        .build();
+    SavePollRequestDto requestDto = new SavePollRequestDto(
+        candidateRequestDtos,
+        "title",
+        "content",
+        "thumbnail",
+        true,
+        LocalDateTime.now(),
+        LocalDateTime.now().plusDays(10));
     Member pollCreator = Member.builder()
         .email("testEmail")
         .nickname("hostNickname")
@@ -111,7 +113,7 @@ public class PollServiceTest {
     //when
     doReturn(Optional.of(pollCreator)).when(memberRepository).findById(anyLong());
     doReturn(Poll.builder().build()).when(pollRepository).save(any(Poll.class));
-    target.savePoll(savePollRequestDto, 1L);
+    target.savePoll(requestDto, 1L);
 
     //then
     verify(memberRepository, times(1)).findById(anyLong());

@@ -56,8 +56,8 @@ public class PollQueryRepositoryTest {
   public void 투표페이지조회_결과() throws Exception {
     //given
     String format = "2022-03-31 23:59";
-    LocalDateTime end = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-        .atStartOfDay();
+    LocalDateTime end = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     Poll poll1 = createPoll(end.minusDays(5), end);
     Poll poll2 = createPoll(end.minusDays(5), end);
 
@@ -78,11 +78,9 @@ public class PollQueryRepositoryTest {
   @Test
   public void 투표조회_종료시간이끝난() throws Exception {
     //given
-    String format = "2022-03-31";
-    LocalDateTime end = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        .atStartOfDay()
-        .plusHours(23)
-        .plusMinutes(59);
+    String format = "2022-03-31 23:59";
+    LocalDateTime end = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     log.trace("================================={}", end.plusMinutes(2));
     Poll poll1 = createPoll(end.minusDays(5), end);
     Poll poll2 = createPoll(end.minusDays(5), end.plusMinutes(2));

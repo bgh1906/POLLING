@@ -17,6 +17,9 @@ import com.polling.exception.CustomException;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.service.PollService;
 import com.polling.repository.member.MemberRepository;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +33,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+@Slf4j
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -52,30 +56,44 @@ public class SecurityAdminPollControllerTest {
     this.memberRepository.deleteAll();
   }
 
-//    @Test
-//    public void 투표생성_허용되지않은권한() throws Exception{
-//        //given
-//        final String url = "/api/polls/admin";
-//        SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
-//        Long id = 1L;
-//        doThrow(new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER))
-//                .when(pollService).savePoll(requestDto, id);
-//
-//        //when
-//        ResultActions resultActions = mockMvc.perform(post(url)
-//                .content(gson.toJson(requestDto))
-//                .contentType(MediaType.APPLICATION_JSON));
-//
-//        //then
-//        resultActions.andExpect(status().is4xxClientError());
-//    }
+  @Test
+  public void 투표생성_허용되지않은권한() throws Exception {
+    //given
+    final String url = "/api/polls/admin";
+    SavePollRequestDto requestDto = new SavePollRequestDto(
+        null,
+        "title",
+        "content",
+        "thumbnail",
+        true,
+        null,
+        null);
+    doThrow(new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER))
+        .when(pollService).savePoll(any(SavePollRequestDto.class), anyLong());
+
+    //when
+    ResultActions resultActions = mockMvc.perform(post(url)
+        .header(HttpHeaders.AUTHORIZATION, getJwtToken(1))
+        .content(gson.toJson(requestDto))
+        .contentType(MediaType.APPLICATION_JSON));
+
+    //then
+    resultActions.andExpect(status().is4xxClientError());
+  }
 
 
   @Test
   public void 투표생성_성공() throws Exception {
     //given
     final String url = "/api/polls/admin";
-    SavePollRequestDto requestDto = SavePollRequestDto.builder().build();
+    SavePollRequestDto requestDto = new SavePollRequestDto(
+        null,
+        "title",
+        "content",
+        "thumbnail",
+        true,
+        null,
+        null);
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)

@@ -99,4 +99,8 @@ public class Poll extends BaseTimeEntity {
   public void changeOpenStatus() {
     openStatus = !openStatus;
   }
+
+  public void changeOpenStatus(Boolean openStatus) {
+    this.openStatus = openStatus;
+  }
 }
