@@ -1,29 +1,27 @@
-plugins {
-    id 'com.google.protobuf' version '0.8.16'
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micrometer:micrometer-bom:1.7.4'
+        mavenBom 'io.netty:netty-bom:4.1.69.Final'
+        mavenBom 'com.linecorp.armeria:armeria-bom:1.13.2'
+        mavenBom 'org.junit:junit-bom:5.8.1'
+    }
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation project(':grpc-common')
+    /*grpc*/
+    implementation 'com.linecorp.armeria:armeria-grpc'
+    implementation 'com.linecorp.armeria:armeria-spring-boot2-webflux-starter'
 
-    implementation 'io.grpc:grpc-netty:1.38.0'
-    implementation 'io.grpc:grpc-protobuf:1.38.0'
-    implementation 'io.grpc:grpc-stub:1.38.0'
-    implementation 'com.google.protobuf:protobuf-java:3.17.3'
+    implementation 'com.linecorp.armeria:armeria'
+    implementation 'com.linecorp.armeria:armeria-brave'
+
+    implementation 'com.linecorp.armeria:armeria-spring-boot2-starter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
 }
 
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.17.3'
-    }
-    plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.38.0'
-        }
-    }
-    generateProtoTasks {
-        all()*.plugins {
-            grpc {}
-        }
-    }
-}
+

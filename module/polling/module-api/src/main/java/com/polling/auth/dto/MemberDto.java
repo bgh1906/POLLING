@@ -1,33 +1,33 @@
 package com.polling.auth.dto;
 
 import com.polling.entity.member.status.MemberRole;
-import lombok.Builder;
-import lombok.Getter;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Getter;
 
 @Getter
 @Builder
 public class MemberDto {
-    private Long id;
 
-    @NotNull
-    private String nickname;
+  private Long id;
 
-    @Email
-    private String email;
+  @NotNull
+  private String nickname;
 
-    @NotNull
-    private String password;
+  @Email
+  private String email;
 
-    @NotNull
-    private String phoneNumber;
+  @NotNull
+  private String password;
 
-    private Set<MemberRole> memberRole;
+  @NotNull
+  private String phoneNumber;
 
-    private LocalDateTime createDate;
+  private Set<MemberRole> memberRole;
+
+  private LocalDateTime createDate;
 
 }

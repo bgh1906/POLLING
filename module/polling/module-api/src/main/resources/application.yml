@@ -7,3 +7,12 @@ spring:
       - core-dev
       - common-local
       - commmon-dev
+server:
+  ssl:
+    key-alias: polling
+    key-store: classpath:keystore/polling.pkcs12
+    key-store-password: qwer1234
+    key-password: qwer1234
+    trust-store: classpath:keystore/pollingtrust.pkcs12
+    trust-store-password: qwer1234
+    key-store-type: PKCS12

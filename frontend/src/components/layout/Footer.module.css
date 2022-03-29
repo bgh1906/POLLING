@@ -1,0 +1,70 @@
+.footer {
+  border-top: 1px solid #eee;
+  background-color: rgb(32, 32, 32);
+  color: white;
+  padding: 80px 110px;
+  position: relative;
+  font-weight: 300;
+}
+
+.ci_contact {
+  font-size: 40px;
+  font-weight: 500;
+  font-family: "RussoOne";
+}
+
+.ci_phone {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "RussoOne";
+  margin-top: 22px;
+}
+
+.ci_contents {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 12px;
+}
+
+.ft_menu {
+  position: absolute;
+  display: flex;
+  font-size: 14px;
+  right: 110px;
+  top: 80px;
+  line-height: 24px;
+}
+
+.ft_subInfo {
+  margin-top: 40px;
+  font-size: 13px;
+  line-height: 24px;
+  width: 50%;
+}
+
+.ft_copyright {
+  margin-top: 15px;
+  font-size: 12px;
+  color: gray;
+}
+
+.backtotop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  padding: 2px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.ft_menu li {
+  list-style: none;
+}
+
+@font-face {
+  font-family: "RussoOne";
+  src: url(../../fonts/RussoOne-Regular.ttf);
+}

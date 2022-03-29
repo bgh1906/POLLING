@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class CustomException extends RuntimeException{
-    private final CustomErrorResult customErrorResult;
+public class CustomException extends RuntimeException {
+
+  private final CustomErrorResult customErrorResult;
 }

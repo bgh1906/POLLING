@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class ModifyCommentRequestDto {
-    private String content;
+
+  private String content;
 }

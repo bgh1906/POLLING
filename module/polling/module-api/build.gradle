@@ -1,13 +1,16 @@
 dependencies {
-    implementation project(':module-common')
-    implementation project(':module-core')
+    implementation project(path: ":module-common", configuration: 'default')
+    implementation project(path: ":module-core", configuration: 'default')
+    implementation project(path: ":grpc-common", configuration: 'default')
+
 
     /* Swagger */
     implementation "io.springfox:springfox-boot-starter:3.0.0"
     implementation "io.springfox:springfox-swagger-ui:3.0.0"
     /* JPA 얘 core에도 있는데 왜 여기도 써줘야 하냐*/
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
-    implementation 'com.querydsl:querydsl-jpa'
-    implementation 'com.querydsl:querydsl-apt'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
+//    implementation 'com.querydsl:querydsl-jpa'
+//    implementation 'com.querydsl:querydsl-apt'
+
 }

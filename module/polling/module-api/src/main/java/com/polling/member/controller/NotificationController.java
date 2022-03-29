@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/notify")
 public class NotificationController {
-    private final NotificationService notificationService;
 
-    @Retry
-    @PostMapping("/sms")
-    @ApiOperation(value = "휴대폰 인증")
-    public ResponseEntity<SMSCodeResponseDto> save(@RequestBody SendSMSRequestDto requestDto) {
-        SMSCodeResponseDto response = notificationService.sendSms(requestDto);
-        return ResponseEntity.status(200).body(response);
-    }
+  private final NotificationService notificationService;
+
+  @Retry
+  @PostMapping("/sms")
+  @ApiOperation(value = "휴대폰 인증")
+  public ResponseEntity<SMSCodeResponseDto> save(@RequestBody SendSMSRequestDto requestDto) {
+    SMSCodeResponseDto response = notificationService.sendSms(requestDto);
+    return ResponseEntity.status(200).body(response);
+  }
 }

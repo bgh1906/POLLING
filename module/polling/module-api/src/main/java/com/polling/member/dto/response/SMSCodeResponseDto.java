@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SMSCodeResponseDto {
-    private String code;
+
+  private String code;
 }
