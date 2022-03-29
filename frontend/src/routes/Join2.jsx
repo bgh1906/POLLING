@@ -7,9 +7,6 @@ import NewNav from "../components/layout/NewNav.jsx";
 import * as React from 'react';
 
 import Private2 from "../components/mypage/Private2";
-import { Tooltip } from "@mui/material/Tooltip";
-import IconButton from '@mui/material/IconButton';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -32,10 +29,11 @@ function Join2() {
         setPcheck(false);
     }, []);
     
+    //alert 창
     const joinSuccess = () => {
         Swal.fire({
           title: "회원가입 성공!!",
-          text: "Polling에 오신 것을 환영합니다!",
+          text: "POLLING에 오신 것을 환영합니다!",
           icon: "success",
           confirmButtonColor: "#73E0C1",
           confirmButtonText: "확인",
@@ -66,10 +64,12 @@ function Join2() {
             alert("Nickname을 입력해주세요.")
         } else {
             axios
-            .post(
-                `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+            .get(
+                `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+                // `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
                 {
-                    nickname: nickname,
+                    // nickname: nickname,
+                    n: nickname,
                     // n:n
                 }           
             )
@@ -81,7 +81,9 @@ function Join2() {
             .catch(error => {
                 console.log("error", error.response);
                 alert("동일 닉네임이 존재합니다.");
+                setNickname("");
             })
+            console.log("nickname",nickname);
         }
     }
 
@@ -123,7 +125,7 @@ function Join2() {
         else if(phone !== "") {
             axios
             .post(
-                "http://j6a304.p.ssafy.io:8080/api/notify/sms",
+                "https://j6a304.p.ssafy.io:8080/api/notify/sms",
                 {
                     content : "",
                     to : phone,
@@ -132,13 +134,14 @@ function Join2() {
             .then((res) => {
                 console.log("인증번호 발송", res);
                 alert("인증번호가 전송되었습니다!")
-                setRealNum(res.code);
                 setOpen(true);
                 setPhonelock(true);
+                setRealNum(res.data.code);
+                console.log(res.data.code);
             })
             .catch(error => {
                 const message = error.message;
-                console.log(error.response)
+                console.log("message",error.response)
                 console.log("message", message);
                 alert("인증번호 전송 실패!");
             }); 
@@ -152,7 +155,7 @@ function Join2() {
     //입력받은 인증번호 값
     const [checknum, setChecknum] = useState("");
     const getChecknum = (e) => {
-        setChecknum(e);
+        setChecknum(e.target.value);
         console.log(checknum);
     }
     //인증번호 맞는지 체크
@@ -167,7 +170,7 @@ function Join2() {
             if(checknum !== realNum ){
                 alert("인증번호가 틀렸습니다.")
             }
-            if(checknum === realNum ){
+            else if(checknum === realNum ){
                 alert("본인 확인 완료")
                 //정상 처리되면 true로 바꾸기 & 모달 종료
                 setPhonecheck(true);
@@ -193,19 +196,23 @@ function Join2() {
             e.preventDefault();
             alert("닉네임/이메일/비밀번호를 입력하세요.")
         } 
-        // else if( phonecheck === false){
-        //     e.preventDefault();
-        //     alert("휴대폰 인증을 진행해주세요.")
-        // } 
+        else if( phonecheck === false){
+            e.preventDefault();
+            alert("휴대폰 인증을 진행해주세요.")
+        } 
+        else if( checknick === false){
+            e.preventDefault();
+            alert("닉네임 중복체크를 진행해주세요.")
+        } 
         else if( pcheck===false ){
             e.preventDefault();
             alert("개인정보처리방침에 동의해주세요.")
         }
-        // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && phonecheck !== false && pcheck !== false ){
-        else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
+        else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && phonecheck !== false &&checknick !== false && pcheck !== false ){
+        // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
             axios
             .post(
-                "http://j6a304.p.ssafy.io:8080/api/members",
+                "https://j6a304.p.ssafy.io:8080/api/members",
                 {
                     email: email,
                     nickname: nickname,
@@ -216,7 +223,6 @@ function Join2() {
             )
             .then((res) => {
                 console.log("res", res);
-                // alert("회원가입 성공!")
                 joinSuccess();
                 console.log("회원가입")
                 navigate("/login");
@@ -225,7 +231,6 @@ function Join2() {
                 const message = error.message;
                 console.log("message", message);
                 console.log(error.response);
-                // alert("회원가입 실패");
                 joinFail();
             });
         }

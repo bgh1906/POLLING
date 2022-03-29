@@ -17,6 +17,7 @@ import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 import Candidate2 from "./routes/Candidate2";
 import Qna from "./components/mypage/Qna";
+import Kakaojoin from "./routes/Kakaojoin";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join2 />}></Route>
+          <Route path="/kakaojoin/:accessToken" element={<Kakaojoin />}></Route>
+          {/* <Route path="/kakaojoin" element={<Kakaojoin />}></Route> */}
           <Route path="/login" element={<Login2 />}></Route>
           <Route path="/Companylogin" element={<Companylogin2 />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
