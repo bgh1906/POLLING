@@ -79,4 +79,12 @@ public class AdminPollController {
     return ResponseEntity.status(200).build();
   }
 
+  @Trace
+  @PatchMapping("/open/{pollId}")
+  @ApiOperation(value = "투표 공개 옵션 변경", notes = "true면 false로 false면 true로 변경")
+  public ResponseEntity<Void> changeOpenStatus(@PathVariable Long pollId) {
+    pollService.changeOpenStatus(pollId);
+    return ResponseEntity.status(200).build();
+  }
+
 }

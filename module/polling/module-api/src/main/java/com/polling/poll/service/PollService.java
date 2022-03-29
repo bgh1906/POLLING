@@ -126,6 +126,12 @@ public class PollService {
     polls.forEach(poll -> poll.changePollStatus(PollStatus.DONE));
   }
 
+  @Trace
+  public void changeOpenStatus(Long pollId) {
+    Poll poll = getPoll(pollId);
+    poll.changeOpenStatus();
+  }
+
   private Poll getPoll(Long pollId) {
     return pollRepository.findById(pollId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.VOTE_NOT_FOUND));
