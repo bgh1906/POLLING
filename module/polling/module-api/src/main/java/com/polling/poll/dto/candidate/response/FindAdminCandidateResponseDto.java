@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FindAdminCandidateResponseDto {
 
-  private Long id;
+  private Long candidateId;
   private String name;
   private String profile;
   private String thumbnail;
@@ -20,9 +20,9 @@ public class FindAdminCandidateResponseDto {
   private String imagePath3;
 
   @Builder
-  public FindAdminCandidateResponseDto(Long id, String name, String thumbnail,
+  public FindAdminCandidateResponseDto(Long candidateId, String name, String thumbnail,
       List<CandidateGallery> galleries, String profile) {
-    this.id = id;
+    this.candidateId = candidateId;
     this.name = name;
     this.profile = profile;
     this.thumbnail = thumbnail;

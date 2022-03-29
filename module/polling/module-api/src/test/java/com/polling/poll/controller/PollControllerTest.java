@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.poll.service.PollService;
 import com.polling.queryrepository.PollQueryRepository;
 import java.util.ArrayList;
@@ -52,24 +51,6 @@ public class PollControllerTest {
   @Test
   public void pollControllerIsNotNull() throws Exception {
     Assertions.assertThat(target).isNotNull();
-  }
-
-  @Test
-  public void 득표현황랭킹조회() throws Exception {
-    //given
-    final String url = "/api/polls/ranking/{id}";
-    doReturn(new FindSimplePollResponseDto(null,
-        null,
-        null,
-        null,
-        null,
-        null)).when(pollService).findPollThumbnailSortByVoteCount(1L);
-
-    //when
-    ResultActions resultActions = mockMvc.perform(get(url, 1L));
-
-    //then
-    resultActions.andExpect(status().isOk());
   }
 
   @Test

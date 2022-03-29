@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SaveCandidateRequestDto {
 
-  private Long pollId;
+  private Long candidateIndex;
   private String name;
   private String profile;
   private String imagePath1;
@@ -20,9 +20,10 @@ public class SaveCandidateRequestDto {
   private String thumbnail;
 
   @Builder
-  public SaveCandidateRequestDto(Long pollId, String name, String profile, String imagePath1,
+  public SaveCandidateRequestDto(Long candidateIndex, String name, String profile,
+      String imagePath1,
       String imagePath2, String imagePath3, String thumbnail) {
-    this.pollId = pollId;
+    this.candidateIndex = candidateIndex;
     this.name = name;
     this.profile = profile;
     this.imagePath1 = imagePath1;
@@ -33,6 +34,7 @@ public class SaveCandidateRequestDto {
 
   public Candidate toEntity() {
     Candidate candidate = Candidate.builder()
+        .smartContractIndex(candidateIndex)
         .name(name)
         .profile(profile)
         .thumbnail(thumbnail)

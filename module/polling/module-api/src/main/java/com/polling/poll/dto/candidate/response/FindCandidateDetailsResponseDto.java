@@ -19,7 +19,6 @@ public class FindCandidateDetailsResponseDto {
   private String imagePath1;
   private String imagePath2;
   private String imagePath3;
-  private Integer voteTotalCount;
   private List<FindCommentResponseDto> comments;
 
   public static FindCandidateDetailsResponseDto of(Candidate candidate,
@@ -30,7 +29,6 @@ public class FindCandidateDetailsResponseDto {
         candidate.getGalleries().get(0).getImagePath(),
         candidate.getGalleries().get(1).getImagePath(),
         candidate.getGalleries().get(2).getImagePath(),
-        candidate.getVoteTotalCount(),
         comments);
   }
 }

@@ -16,11 +16,12 @@ import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
 import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
+import com.polling.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.service.CandidateService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CandidateQueryRepository;
+import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import java.time.LocalDateTime;
@@ -45,6 +46,8 @@ public class CandidateServiceTest {
   private MemberRepository memberRepository;
   @Mock
   private CandidateHistoryQueryRepository queryRepository;
+  @Mock
+  private CandidateHistoryRepository candidateHistoryRepository;
 
 
   @Test
@@ -55,14 +58,14 @@ public class CandidateServiceTest {
   @Test
   public void 후보자에투표실패_0이하의투표() throws Exception {
     //given
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder()
-        .candidateId(1L)
-        .voteCount(0)
-        .build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        0);
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addVoteCount(requestDto, 1L));
+        () -> target.addCandidateHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.INVALID_VOTES);
@@ -71,16 +74,17 @@ public class CandidateServiceTest {
   @Test
   public void 후보자에투표실패_없는유저() throws Exception {
     //given
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder()
-        .candidateId(1L)
-        .voteCount(1)
-        .build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
+
     doThrow(new CustomException(CustomErrorResult.USER_NOT_FOUND)).when(memberRepository)
         .findById(1L);
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addVoteCount(requestDto, 1L));
+        () -> target.addCandidateHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.USER_NOT_FOUND);
@@ -89,17 +93,17 @@ public class CandidateServiceTest {
   @Test
   public void 후보자에투표실패_없는후보자() throws Exception {
     //given
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder()
-        .candidateId(1L)
-        .voteCount(1)
-        .build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
     doReturn(Optional.of(Member.builder().build())).when(memberRepository).findById(1L);
     doThrow(new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND)).when(
         candidateRepository).findById(1L);
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addVoteCount(requestDto, 1L));
+        () -> target.addCandidateHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.CANDIDATE_NOT_FOUND);
@@ -108,10 +112,10 @@ public class CandidateServiceTest {
   @Test
   public void 후보자에투표실패_중복투표() throws Exception {
     //given
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder()
-        .candidateId(1L)
-        .voteCount(1)
-        .build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
 
     doReturn(Optional.of(Member.builder().build())).when(memberRepository).findById(1L);
     doReturn(Optional.of(Candidate.builder()
@@ -123,7 +127,7 @@ public class CandidateServiceTest {
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addVoteCount(requestDto, 1L));
+        () -> target.addCandidateHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.ALREADY_VOTES);
@@ -134,10 +138,10 @@ public class CandidateServiceTest {
     //given
     Long memberId = 1L;
     long candidateId = 1L;
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder()
-        .candidateId(candidateId)
-        .voteCount(1)
-        .build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
 
     doReturn(Optional.of(Member.builder().build())).when(memberRepository).findById(memberId);
     doReturn(Optional.of(Candidate.builder()
@@ -148,7 +152,7 @@ public class CandidateServiceTest {
             any(LocalDateTime.class));
 
     //when
-    target.addVoteCount(requestDto, memberId);
+    target.addCandidateHistory(requestDto, memberId);
 
     //then
     verify(memberRepository, times(1)).findById(memberId);

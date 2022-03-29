@@ -33,14 +33,6 @@ public class PollController {
     return ResponseEntity.status(200).body(responseDto);
   }
 
-  @GetMapping("/ranking/{pollId}")
-  @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 득표 순위를 기준으로 정렬해서 조회")
-  public ResponseEntity<FindSimplePollResponseDto> getRanking(@PathVariable Long pollId) {
-    FindSimplePollResponseDto responseDto = pollService.findPollThumbnailSortByVoteCount(
-        pollId);
-    return ResponseEntity.status(200).body(responseDto);
-  }
-
   @GetMapping("/{pollId}")
   @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 조회")
   public ResponseEntity<FindSimplePollResponseDto> getPoll(@PathVariable Long pollId) {
