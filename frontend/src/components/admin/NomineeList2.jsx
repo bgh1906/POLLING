@@ -1,9 +1,9 @@
-import Nominee from "./Nominee";
+import Nominee2 from "./Nominee2";
 import React, { useEffect } from "react";
 
 
 
-function NomineeList({ nomiList, onDel, onEdit }) {
+function NomineeList({ nomiList, onDel, onEdit, deleteCandi}) {
 
     useEffect(() =>{
 
@@ -15,7 +15,7 @@ function NomineeList({ nomiList, onDel, onEdit }) {
     return (
          <ul style={{ padding:"0" }}>
              {
-                 nomiList.map(nominee => <Nominee key={nominee.id} nominee={nominee} onDel={onDel} onEdit={onEdit}/>)
+                 nomiList.map(nominee => <Nominee2 key={nominee.id} nominee={nominee} onDel={onDel} onEdit={onEdit} deleteCandi={deleteCandi}/>)
              }
          </ul>
 

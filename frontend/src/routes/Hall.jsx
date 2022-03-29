@@ -1,10 +1,13 @@
-
+import Newnav from "../components/layout/NewNav";
 
 
 function Hall() {
 
     return (
-        <h1> Hello, Let's start </h1>
+        <>
+            <Newnav/>
+            <h1> 명예의 전당</h1>
+        </>
     );
 }
 

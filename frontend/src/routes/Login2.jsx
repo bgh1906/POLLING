@@ -9,6 +9,10 @@ import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import Kakaojoin from "./Kakaojoin.jsx";
+import { useDispatch } from 'react-redux'
+
+
+
 
 const { Kakao } = window;
 
@@ -18,7 +22,8 @@ function Login2() {
     setEmail("");
     setPassword("");
   }, []);
-
+  
+    const dispatch = useDispatch();
     const loginSuccess = () => {
         Swal.fire({
           title: "로그인 성공!",
@@ -71,12 +76,28 @@ function Login2() {
               )
             .then((res) => {
                 console.log("res", res);
+                console.log(res.headers.refreshtoken)
                 //토큰 찍어보기
                 console.log("토큰",res.headers.refreshToken);
                 // console.log("토큰",res.headers.get("refreshToken"));
                 console.log("로그인 성공");
+
+                sessionStorage.setItem("token", res.headers.refreshtoken);
+                sessionStorage.setItem("userid", res.data.id);
+
+                // localStorage.setItem("token", res.headers.refreshtoken);
+                // localStorage.setItem("userid", res.data.id);
+                dispatch(actionCreators.addInfo(
+                  {
+                    token: res.headers.refreshtoken,
+                    email: email,
+                    id: res.data.id,
+                    nickname: res.data.nickname
+                  }
+                ));
+                
                 loginSuccess();
-                alert("로그인 성공");
+                navigate("/");
                 //백에 닉네임, e-mail 같이 넘겨달라고 하기.
                 // if (state.length === 0) {
                 //   DispatchaddInfo({
@@ -86,7 +107,7 @@ function Login2() {
                 //     email: res.data.email,
                 //   });
                 // }
-                navigate("/");
+                // navigate("/");
             })
             .catch(error => {
                 const message = error.message;
@@ -108,8 +129,11 @@ function Login2() {
             const accessToken = response.access_token;
             axios
               .post("https://j6a304.p.ssafy.io:8080/api/auth/validate", {
-                accessToken: response.access_token,
                 // accessToken: response.refresh_token,
+                // accessToken: response.access_token,
+                nickname: "KAKAO",
+                refreshToken: response.refresh_token,
+                phoneNumber: response.refresh_token,
               })
               .then((res) => {
                 console.log("res",res);

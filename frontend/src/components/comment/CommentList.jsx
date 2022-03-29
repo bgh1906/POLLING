@@ -5,22 +5,16 @@ import CommentForm from "./CommentForm";
 
 
 
-function CommentList() {
+function CommentList({data, renderCheck}) {
 
-
-    const commentdata =[{"userName":"현우현우", "id": 1,
-"content":"수지 너무 이쁘다 화이팅~!수지 너무 이쁘다 화이팅~! 수지 너무 이쁘다 화이팅~! 수지 너무 이쁘다 화이팅~! 수지 너무 이쁘다 화이팅~! "},
-{"userName":"승원승원", "id": 2,
-"content":"수지짱 수지짱 수지짱 수지짱 수지짱 수지짱 수지짱 수지짱 "}]
-//    useEffect(()=> {
-//    })
+    const comment_data = [...data].reverse()
 
     return (
 
          <div className={styles.commentlist_box}>
             <ul style={{ padding:"0" }}>
              {
-                 commentdata.map(comment => <CommentForm key={comment.id} comment={comment}/>)
+                comment_data.map(comment => <CommentForm key={comment.commentId} commentId={comment.commentId} memberId={comment.memberId} comment={comment} renderCheck={renderCheck}/>)
              }
          </ul>
          </div>

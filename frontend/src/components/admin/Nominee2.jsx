@@ -2,7 +2,7 @@ import styles from "./Nominee.module.css";
 import Button from '@mui/material/Button';
 
 
-function Nominee({nominee, onDel, onEdit}) {
+function Nominee({nominee, onDel, onEdit, deleteCandi}) {
     const {id, name, profile, thumbnail, imagePath1,imagePath2,imagePath3} = nominee
 
     return (        
@@ -10,10 +10,12 @@ function Nominee({nominee, onDel, onEdit}) {
             <div id={styles.profile_div}>
                 <img id={styles.thumbnail} src={thumbnail} alt="thumbnail" />
                 <span id={styles.profile_name}> {name} </span>
-                <Button id={styles.profile_update} onClick={()=>onEdit(nominee)} variant="contained">수정</Button>
+                <Button id={styles.profile_update} onClick={()=>{
+                    onEdit(nominee)
+                   }
+                    } variant="contained">수정</Button>
                 <Button id={styles.profile_del} onClick={()=>{
-                onDel(id)
-                }
+                deleteCandi(id)}
                 } variant="contained">삭제</Button>
                 <div id={styles.profile_desc}>{profile} </div>
             </div>
