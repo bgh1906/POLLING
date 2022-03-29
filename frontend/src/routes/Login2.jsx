@@ -8,6 +8,7 @@ import NewNav from "../components/layout/NewNav.jsx";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
+import Kakaojoin from "./Kakaojoin.jsx";
 import { useDispatch } from 'react-redux'
 
 
@@ -26,7 +27,7 @@ function Login2() {
     const loginSuccess = () => {
         Swal.fire({
           title: "로그인 성공!",
-          text: "SSARAOKE에 오신 것을 환영합니다!",
+          text: "POLLING에 오신 것을 환영합니다!",
           icon: "success",
           confirmButtonColor: "#73E0C1",
           confirmButtonText: "확인",
@@ -77,6 +78,7 @@ function Login2() {
                 console.log("res", res);
                 console.log(res.headers.refreshtoken)
                 //토큰 찍어보기
+                console.log("토큰",res.headers.refreshToken);
                 // console.log("토큰",res.headers.get("refreshToken"));
                 console.log("로그인 성공");
 
@@ -119,10 +121,15 @@ function Login2() {
 
     //카톡 로그인
     const LoginWithKakao = () => {
-        Kakao.Auth.login({
+      
+      Kakao.Auth.login({
           success: (response) => {
+            // console.log(response.refresh_token);
+            console.log(response.access_token);
+            const accessToken = response.access_token;
             axios
-              .post("https://j6a304.p.ssafy.io:8080/api/auth/social", {
+              .post("https://j6a304.p.ssafy.io:8080/api/auth/validate", {
+                // accessToken: response.refresh_token,
                 // accessToken: response.access_token,
                 nickname: "KAKAO",
                 refreshToken: response.refresh_token,
@@ -130,22 +137,52 @@ function Login2() {
               })
               .then((res) => {
                 console.log("res",res);
-                localStorage.setItem("token", res.data.token);
-                // if (state.length === 0) {
-                //   DispatchaddInfo({
-                //     seq: res.data.seq,
-                //     nickname: res.data.nickname,
-                //     token: res.data.token,
-                //     email: res.data.email,
-                //   });
-                // }
-                loginSuccess();
-                navigate("/");
-              });
+                console.log("res",res.data.member);
+                console.log("token",res.data.token);
+                // const token 
+                
+                if(res.data.member === false){
+                  // localStorage.setItem("token", res.data.token);
+                  // if (state.length === 0) {
+                    //   DispatchaddInfo({
+                      //     id: res.data.seq,
+                      //     nickname: res.data.nickname,
+                      //     role: res.data.token,
+                      //     email: res.data.email,
+                      //   });
+                      // }
+                  // <Kakaojoin accessToken={accessToken}/>
+                  navigate(`/Kakaojoin/${accessToken}`);
+                } else if (res.data.member === true){
+                  // if (state.length === 0) {
+                  //   DispatchaddInfo({
+                  //     id: res.data.seq,
+                  //     nickname: res.data.nickname,
+                  //     role: res.data.token,
+                  //     email: res.data.email,
+                  //   });
+                  // }
+                  loginSuccess();
+                  navigate("/");
+                }
+                
+              })
+              // .catch(error => {
+              //   const message = error.message;
+              //   console.log("error", error);
+              //   console.log("message", message);
+              //   alert("로그인 실패");
+              //   loginFail();
+              // });
           },
           fail: (error) => {
+            console.log(error);
+            const message = error.message;
+            console.log("error", error);
+            console.log("message", message);
             loginFail();
             navigate("/");
+            
           },
         });
       };
@@ -181,6 +218,7 @@ function Login2() {
                 </div>
             </div>
 
+            
             {/* <Footer /> */}
         </div>
         </>
