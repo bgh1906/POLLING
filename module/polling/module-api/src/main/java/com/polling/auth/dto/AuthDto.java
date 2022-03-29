@@ -17,9 +17,5 @@ public class AuthDto {
   @NotNull
   private String accessToken;
   @NotNull
-  private OAuthType oAuthType;
-  //    @NotNull
-//    private String refreshToken;
-  @NotNull
   private String phoneNumber;
 }

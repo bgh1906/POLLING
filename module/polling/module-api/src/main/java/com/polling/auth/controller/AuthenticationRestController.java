@@ -64,7 +64,6 @@ public class AuthenticationRestController {
       HttpServletResponse response) {
     Member member = authService.auth(requestDto);
     setTokenHeaderAndRedis(member, response);
-    setTokenHeaderAndRedis(member, response);
     LoginResponseDto responseDto = new LoginResponseDto(member.getId(), member.getMemberRole().stream().findFirst().get(), member.getNickname());
     return ResponseEntity.status(200).body(responseDto);
   }

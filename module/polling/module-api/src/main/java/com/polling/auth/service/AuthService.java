@@ -29,8 +29,7 @@ public class AuthService {
   @Trace
   @Retry
   public Member auth(AuthDto requestDto) {
-    //OAuthType.KAKAO
-    if (requestDto.getOAuthType().equals(OAuthType.KAKAO)) {
+      System.out.println("accessToken: " + requestDto.getAccessToken());
       KaKaoOAuthResponse profile = oAuthClient.getInfo(
           requestDto.getAccessToken());    //kakao만 잡혀 있음
         Member member = Member.builder()
@@ -42,9 +41,6 @@ public class AuthService {
             .build();
         Member savedMember = memberRepository.save(member);
         return savedMember;
-    } else {
-        throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
-    }
   }
 
     @Trace
