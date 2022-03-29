@@ -61,25 +61,6 @@ public class PollService {
 
   @Retry
   @Transactional(readOnly = true)
-  public FindSimplePollResponseDto findPollThumbnailSortByVoteCount(Long pollId) {
-    Poll poll = getPoll(pollId);
-    List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllSimpleByPollIdOrderByVotesTotal(
-        pollId);
-
-    int rank = 0;
-    int prevTotal = -1;
-    for (FindAnonymousCandidateResponseDto dto : list) {
-      if (dto.getVotesTotalCount() != prevTotal) {
-        rank++;
-      }
-      dto.setRank(rank);
-      prevTotal = dto.getVotesTotalCount();
-    }
-    return FindSimplePollResponseDto.of(list, poll);
-  }
-
-  @Retry
-  @Transactional(readOnly = true)
   public FindSimplePollResponseDto findPollThumbnail(Long pollId) {
     Poll poll = getPoll(pollId);
     List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllSimpleByPollId(
@@ -95,7 +76,7 @@ public class PollService {
     List<Candidate> candidates = candidateQueryRepository.findAllByPollId(pollId);
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
-            .id(candidate.getId())
+            .candidateId(candidate.getId())
             .name(candidate.getName())
             .thumbnail(candidate.getThumbnail())
             .galleries(candidate.getGalleries())
@@ -114,7 +95,7 @@ public class PollService {
 
   @Trace
   public void addCandidate(SaveCandidateRequestDto requestDto) {
-    Poll poll = getPoll(requestDto.getPollId());
+    Poll poll = getPoll(requestDto.getCandidateIndex());
     poll.addCandidate(requestDto.toEntity());
   }
 

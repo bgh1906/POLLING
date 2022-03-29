@@ -3,9 +3,9 @@ package com.polling.poll.controller;
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
 import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
 import com.polling.poll.dto.candidate.response.FindCandidateHistoryResponseDto;
+import com.polling.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.service.CandidateService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.security.CurrentUser;
@@ -30,10 +30,10 @@ public class CandidateController {
 
   @Trace
   @PostMapping
-  @ApiOperation(value = "특정 후보자에게 투표")
-  public ResponseEntity<Void> addVoteCount(@CurrentUser MemberDto memberDto,
-      @RequestBody AddVoteCountRequestDto requestDto) {
-    candidateService.addVoteCount(requestDto, memberDto.getId());
+  @ApiOperation(value = "특정 후보자의 득표 내역 저장")
+  public ResponseEntity<Void> addVoteHistory(@CurrentUser MemberDto memberDto,
+      @RequestBody SaveCandidateHistoryRequestDto requestDto) {
+    candidateService.addCandidateHistory(requestDto, memberDto.getId());
     return ResponseEntity.status(200).build();
   }
 

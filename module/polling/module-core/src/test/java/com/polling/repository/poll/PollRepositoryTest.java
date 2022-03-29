@@ -33,12 +33,7 @@ public class PollRepositoryTest {
     String format = "2022-04-01";
     LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         .atStartOfDay();
-    Poll poll = Poll.builder()
-        .title(title)
-        .content("hello")
-        .startDate(current)
-        .endDate(current.plusDays(10))
-        .build();
+    Poll poll = createPoll(current, current.plusDays(10));
 
     //when
     Poll savedPoll = pollRepository.save(poll);
@@ -129,13 +124,13 @@ public class PollRepositoryTest {
         .startDate(start)
         .endDate(end)
         .build();
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
-    poll.addCandidate(Candidate.builder().build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(1L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(2L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(3L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(4L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(5L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(6L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(7L).build());
     return pollRepository.save(poll);
   }
 

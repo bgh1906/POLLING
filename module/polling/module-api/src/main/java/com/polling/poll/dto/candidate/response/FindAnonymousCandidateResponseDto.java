@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FindAnonymousCandidateResponseDto {
 
-  private Long id;
+  private Long candidateId;
   private String name;
   private String thumbnail;
   private Integer votesTotalCount;
   private Integer rank;
 
-  public FindAnonymousCandidateResponseDto(Long id, String name, String thumbnail,
+  public FindAnonymousCandidateResponseDto(Long candidateId, String name, String thumbnail,
       Integer votesTotalCount) {
-    this.id = id;
+    this.candidateId = candidateId;
     this.name = name;
     this.thumbnail = thumbnail;
     this.votesTotalCount = votesTotalCount;

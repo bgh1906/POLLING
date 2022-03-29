@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateGallery;
 import com.polling.entity.poll.Poll;
-import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.poll.PollRepository;
@@ -26,26 +25,6 @@ public class CandidateQueryRepositoryTest {
   @Autowired
   private CandidateQueryRepository candidateQueryRepository;
 
-
-  @Test
-  public void 후보자랭킹조회_득표순으로() throws Exception {
-    //given
-    Poll savedPoll = createPoll("test");
-    Candidate candidate1 = createCandidate(1L);
-    candidate1.addVoteTotal(1);
-    Candidate candidate2 = createCandidate(2L);
-    savedPoll.addCandidate(candidate1);
-    savedPoll.addCandidate(candidate2);
-    pollRepository.save(savedPoll);
-
-    //when
-    List<FindAnonymousCandidateResponseDto> responseDtos = candidateQueryRepository.findAllSimpleByPollIdOrderByVotesTotal(
-        savedPoll.getId());
-
-    //then
-    assertThat(responseDtos.get(0).getVotesTotalCount()).isEqualTo(1);
-    assertThat(responseDtos.get(1).getVotesTotalCount()).isEqualTo(0);
-  }
 
   @Test
   public void 후보자조회_모든정보() throws Exception {
@@ -98,6 +77,7 @@ public class CandidateQueryRepositoryTest {
   private Candidate createCandidate(Long index) {
     Candidate candidate = Candidate
         .builder()
+        .smartContractIndex(index)
         .name("Test" + index)
         .thumbnail("thumbNail")
         .build();

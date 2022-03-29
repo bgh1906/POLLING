@@ -29,8 +29,8 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class Candidate extends BaseTimeEntity {
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "candidate_id")
   private Long id;
 
@@ -43,26 +43,23 @@ public class Candidate extends BaseTimeEntity {
 
   private String profile;
 
-  private Integer voteTotalCount;
-
   @Column(length = 1000)
   private String thumbnail;
+
+  private Long smartContractIndex;
 
   @Column(length = 1000)
   @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST, orphanRemoval = true)
   private final List<CandidateGallery> galleries = new ArrayList<>();
 
   @Builder
-  public Candidate(Poll poll, String name, String profile, String thumbnail) {
+  public Candidate(Long smartContractIndex, Poll poll, String name, String profile,
+      String thumbnail) {
+    this.smartContractIndex = smartContractIndex;
     this.poll = poll;
     this.name = name;
     this.profile = profile;
     this.thumbnail = thumbnail;
-    voteTotalCount = 0;
-  }
-
-  public void addVoteTotal(int numOfVotes) {
-    voteTotalCount += numOfVotes;
   }
 
   public void changePoll(Poll poll) {

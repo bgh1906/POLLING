@@ -13,7 +13,7 @@ import com.polling.auth.dto.LoginDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.AddVoteCountRequestDto;
+import com.polling.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.service.CandidateService;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
@@ -59,9 +59,13 @@ public class SecurityCandidateControllerTest {
   public void 후보자에게투표_후보자찾기실패() throws Exception {
     //given
     final String url = "/api/polls/candidates";
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder().build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
     doThrow(new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND))
-        .when(candidateService).addVoteCount(any(AddVoteCountRequestDto.class), anyLong());
+        .when(candidateService)
+        .addCandidateHistory(any(SaveCandidateHistoryRequestDto.class), anyLong());
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)
@@ -77,7 +81,10 @@ public class SecurityCandidateControllerTest {
   public void 후보자에게투표_성공() throws Exception {
     //given
     final String url = "/api/polls/candidates";
-    final AddVoteCountRequestDto requestDto = AddVoteCountRequestDto.builder().build();
+    final SaveCandidateHistoryRequestDto requestDto = new SaveCandidateHistoryRequestDto(
+        1L,
+        "transaction_id",
+        1);
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)
@@ -87,7 +94,8 @@ public class SecurityCandidateControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(candidateService, times(1)).addVoteCount(any(AddVoteCountRequestDto.class),
+    verify(candidateService, times(1)).addCandidateHistory(
+        any(SaveCandidateHistoryRequestDto.class),
         anyLong());
 
   }

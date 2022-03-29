@@ -151,20 +151,6 @@ public class PollServiceTest {
     verify(candidateQueryRepository, times(1)).findAllSimpleByPollId(1L);
   }
 
-  @Test
-  public void 투표조회_득표수로정렬한간략정보() throws Exception {
-    //given
-    Poll poll = Poll.builder().build();
-
-    //when
-    doReturn(Optional.of(poll)).when(pollRepository).findById(anyLong());
-    target.findPollThumbnailSortByVoteCount(1L);
-
-    //then
-    verify(pollRepository, times(1)).findById(anyLong());
-    verify(candidateQueryRepository, times(1)).findAllSimpleByPollIdOrderByVotesTotal(1L);
-  }
-
   private Candidate createCandidate(String name) {
     Candidate candidate = Candidate.builder()
         .name(name)

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class FindCandidateHistoryResponseDto {
 
   private String nickname;
-  private int voteCount;
+  private Integer voteCount;
   private String transactionId;
 }

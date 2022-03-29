@@ -20,28 +20,12 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository {
   private final JPAQueryFactory query;
 
   @Override
-  public List<FindAnonymousCandidateResponseDto> findAllSimpleByPollIdOrderByVotesTotal(
-      Long pollId) {
-    return query
-        .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
-            candidate.id,
-            candidate.name,
-            candidate.thumbnail,
-            candidate.voteTotalCount)))
-        .from(candidate)
-        .where(candidate.poll.id.eq(pollId))
-        .orderBy(candidate.voteTotalCount.desc())
-        .fetch();
-  }
-
-  @Override
   public List<FindAnonymousCandidateResponseDto> findAllSimpleByPollId(Long pollId) {
     return query
         .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
             candidate.id,
             candidate.name,
-            candidate.thumbnail,
-            candidate.voteTotalCount)))
+            candidate.thumbnail)))
         .from(candidate)
         .where(candidate.poll.id.eq(pollId))
         .fetch();

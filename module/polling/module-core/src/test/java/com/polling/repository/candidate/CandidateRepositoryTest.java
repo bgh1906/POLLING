@@ -28,49 +28,37 @@ public class CandidateRepositoryTest {
     //given
 
     //when
-    Long saveCandidateId = candidateRepository.save(createCandidate("suzy")).getId();
+    Long saveCandidateId = candidateRepository.save(createCandidate(1L)).getId();
 
     //then
     Candidate candidate = candidateRepository.findById(saveCandidateId).orElseThrow();
+    assertThat(candidate.getId()).isEqualTo(1L);
     assertThat(candidate.getName()).isEqualTo("suzy");
   }
 
   @Test
   public void 후보자생성_이미지있음() throws Exception {
     //given
-    Candidate candidate = createCandidate("suzy");
+    Candidate candidate = createCandidate(1L);
     candidate.addGallery(new CandidateGallery("image1"));
     candidate.addGallery(new CandidateGallery("image2"));
     candidate.addGallery(new CandidateGallery("image3"));
 
     //when
-    Long saveCandidateId = candidateRepository.save(candidate).getId();
+    Candidate savedCandidate = candidateRepository.save(candidate);
+    Candidate findCandidate = candidateRepository.findById(savedCandidate.getId()).orElseThrow();
 
     //then
-    Candidate findCandidate = candidateRepository.findById(saveCandidateId).orElseThrow();
     assertThat(findCandidate.getGalleries().get(0).getImagePath()).isEqualTo("image1");
     assertThat(findCandidate.getGalleries().get(1).getImagePath()).isEqualTo("image2");
     assertThat(findCandidate.getGalleries().get(2).getImagePath()).isEqualTo("image3");
   }
 
-  @Test
-  public void 후보자투표수증가() throws Exception {
-    //given
-    Candidate candidate = createCandidate("suzy");
-    candidateRepository.save(candidate);
-
-    //when
-    candidate.addVoteTotal(1);
-    Candidate findCandidate = candidateRepository.findById(candidate.getId()).orElseThrow();
-
-    //then
-    assertThat(findCandidate.getVoteTotalCount()).isEqualTo(1);
-  }
 
   @Test
   public void 후보자삭제() throws Exception {
     //given
-    Candidate candidate = createCandidate("suzy");
+    Candidate candidate = createCandidate(1L);
     candidateRepository.save(candidate);
 
     //when
@@ -81,14 +69,14 @@ public class CandidateRepositoryTest {
 
   }
 
-  private Candidate createCandidate(String name) {
-    Candidate candidate = Candidate.builder()
-        .name(name)
+  private Candidate createCandidate(Long index) {
+
+    return Candidate.builder()
+        .smartContractIndex(index)
+        .name("suzy")
         .profile("profile")
         .poll(null)
         .thumbnail("thumbnail")
         .build();
-
-    return candidate;
   }
 }

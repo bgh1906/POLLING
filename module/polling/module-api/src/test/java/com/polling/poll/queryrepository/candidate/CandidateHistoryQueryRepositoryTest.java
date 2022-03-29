@@ -3,6 +3,7 @@ package com.polling.poll.queryrepository.candidate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import com.polling.entity.candidate.CandidateHistory;
 import com.polling.entity.member.Member;
 import com.polling.entity.poll.Poll;
@@ -37,8 +38,8 @@ public class CandidateHistoryQueryRepositoryTest {
   @Test
   public void 후보자투표내역조회() throws Exception {
     //given
-    Candidate savedCandidate = candidateRepository.save(Candidate.builder().build());
-    Candidate anotherCandidate = candidateRepository.save(Candidate.builder().build());
+    Candidate savedCandidate = candidateRepository.save(createCandidate(1L));
+    Candidate anotherCandidate = candidateRepository.save(createCandidate(2L));
     Member savedMember = memberRepository.save(Member.builder().build());
     vote(savedMember, savedCandidate, 1);
     vote(savedMember, savedCandidate, 1);
@@ -59,12 +60,12 @@ public class CandidateHistoryQueryRepositoryTest {
   @Test
   public void 후보자투표내역조회_오늘투표했는지() throws Exception {
     //given
-    Poll savedPoll = pollRepository.save(Poll.builder().build());
-    Candidate savedCandidate = candidateRepository.save(
-        Candidate.builder().poll(savedPoll).build());
+    Poll poll = Poll.builder().build();
+    Candidate savedCandidate = candidateRepository.save(createCandidate(1L));
+    poll.addCandidate(savedCandidate);
+    Long pollId = pollRepository.save(poll).getId();
     Member savedMember = memberRepository.save(Member.builder().build());
     vote(savedMember, savedCandidate, 1);
-    Long pollId = savedCandidate.getPoll().getId();
 
     //when
     boolean result = queryRepository.existsByMemberIdAndPollIdInToday(savedMember.getId(),
@@ -74,11 +75,25 @@ public class CandidateHistoryQueryRepositoryTest {
     assertThat(result).isTrue();
   }
 
-  public CandidateHistory vote(Member member, Candidate candidate, int count) {
-    return candidateHistoryRepository.save(CandidateHistory.builder()
+  public void vote(Member member, Candidate candidate, int count) {
+    candidateHistoryRepository.save(CandidateHistory.builder()
         .candidate(candidate)
         .member(member)
         .voteCount(1)
         .build());
+  }
+
+  public Candidate createCandidate(Long index) {
+    Candidate candidate = Candidate.builder()
+        .smartContractIndex(index)
+        .thumbnail("thumbnail")
+        .profile("profile")
+        .name("name" + index)
+        .build();
+    candidate.addGallery(new CandidateGallery("image1"));
+    candidate.addGallery(new CandidateGallery("image2"));
+    candidate.addGallery(new CandidateGallery("image3"));
+
+    return candidate;
   }
 }
