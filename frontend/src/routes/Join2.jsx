@@ -67,7 +67,7 @@ function Join2() {
         } else {
             axios
             .post(
-                `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+                `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
                 {
                     nickname: nickname,
                     // n:n
@@ -123,7 +123,7 @@ function Join2() {
         else if(phone !== "") {
             axios
             .post(
-                "http://j6a304.p.ssafy.io:8080/api/notify/sms",
+                "https://j6a304.p.ssafy.io:8080/api/notify/sms",
                 {
                     content : "",
                     to : phone,
@@ -205,7 +205,7 @@ function Join2() {
         else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
             axios
             .post(
-                "http://j6a304.p.ssafy.io:8080/api/members",
+                "https://j6a304.p.ssafy.io:8080/api/members",
                 {
                     email: email,
                     nickname: nickname,

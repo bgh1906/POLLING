@@ -67,7 +67,7 @@ function Login2() {
         } else if(email !== "" && password !==""){
             axios
               .post(
-                "http://j6a304.p.ssafy.io:8080/api/auth",
+                "https://j6a304.p.ssafy.io:8080/api/auth",
                   {
                       email: email,
                       password: password,
@@ -122,7 +122,7 @@ function Login2() {
         Kakao.Auth.login({
           success: (response) => {
             axios
-              .post("http://j6a304.p.ssafy.io:8080/api/auth/social", {
+              .post("https://j6a304.p.ssafy.io:8080/api/auth/social", {
                 // accessToken: response.access_token,
                 nickname: "KAKAO",
                 refreshToken: response.refresh_token,

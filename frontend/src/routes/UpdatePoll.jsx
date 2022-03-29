@@ -52,7 +52,7 @@ function UpdatePoll() {
     
 
     useEffect(()=> {
-        axios.get(`http://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`)
+        axios.get(`https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`)
             .then((res) => {
                 console.log("성공!");
                 console.log(res);
@@ -146,7 +146,7 @@ function UpdatePoll() {
         // console.log(pollInfo)
         
         axios.put(
-            `http://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
+            `https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
             {
                 "candidateDtos": nomiList,
                 "content":pollDescribe,
@@ -180,7 +180,7 @@ function UpdatePoll() {
 
     function deletePoll(){
         axios.delete(
-            `http://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
+            `https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
             {
                 headers: {
                     "Authorization": token,
@@ -204,7 +204,7 @@ function UpdatePoll() {
 
     function patchCandi(nominee){
         axios.put(
-            `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${nominee.id}`,
+            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${nominee.id}`,
             {
                 "imagePath1": nominee.imagePath1,
                 "imagePath2": nominee.imagePath2,
@@ -232,7 +232,7 @@ function UpdatePoll() {
 
     function deleteCandi(id){
         axios.delete(
-            `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${id}`,
+            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${id}`,
             {
                 headers: {
                     "Authorization": token,
@@ -251,7 +251,7 @@ function UpdatePoll() {
     function addCandi(form){
 
         axios.post(
-            `http://j6a304.p.ssafy.io:8080/api/polls/admin/candidate`,
+            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidate`,
             {
                 "imagePath1": form.imagePath1,
                 "imagePath2": form.imagePath2,

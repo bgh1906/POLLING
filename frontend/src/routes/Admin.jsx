@@ -31,7 +31,7 @@ function Admin() {
 
     useEffect(()=>{
             axios
-            .get("http://j6a304.p.ssafy.io:8080/api/polls/unapproved/0/50")
+            .get("https://j6a304.p.ssafy.io:8080/api/polls/unapproved/0/50")
             .then((res) => {
                 setPolldata(res.data);
             })
@@ -39,7 +39,7 @@ function Admin() {
                 console.log(error.response)
             });  
             axios
-            .get("http://j6a304.p.ssafy.io:8080/api/polls/wait/0/50")
+            .get("https://j6a304.p.ssafy.io:8080/api/polls/wait/0/50")
             .then((res) => {
                 setPolldata2(res.data);
             })
@@ -48,7 +48,7 @@ function Admin() {
             });  
     
             axios
-            .get("http://j6a304.p.ssafy.io:8080/api/polls/progress/0/50")
+            .get("https://j6a304.p.ssafy.io:8080/api/polls/progress/0/50")
             .then((res) => {
                 setPolldata3(res.data);
             })
@@ -57,7 +57,7 @@ function Admin() {
             });  
 
             axios
-            .get("http://j6a304.p.ssafy.io:8080/api/polls/done/0/50")
+            .get("https://j6a304.p.ssafy.io:8080/api/polls/done/0/50")
             .then((res) => {
                 setPolldata4(res.data);
             })
@@ -72,7 +72,7 @@ function Admin() {
         console.log(token)
 
         axios.patch(
-         `http://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/wait`,
+         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/wait`,
          {},
         {
             headers: {
@@ -87,7 +87,7 @@ function Admin() {
     function changeStatusprogress(e){
         const poll_id = e.target.name;        
         axios.patch(
-         `http://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/progress`,
+         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/progress`,
          {},
         {
             headers: {
@@ -102,7 +102,7 @@ function Admin() {
     function changeStatusdone(e){
         const poll_id = e.target.name;        
         axios.patch(
-         `http://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/done`,
+         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/done`,
          {},
         {
             headers: {

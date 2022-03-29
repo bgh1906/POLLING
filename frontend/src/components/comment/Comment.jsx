@@ -27,7 +27,7 @@ function Comment({candiId, data, renderCheck}) {
        
         axios
         .post(
-            "http://j6a304.p.ssafy.io:8080/api/polls/candidates/comments",
+            "https://j6a304.p.ssafy.io:8080/api/polls/candidates/comments",
             {
                 "candidateId": candiId,
                 "content": ripple
