@@ -33,13 +33,6 @@ public class AuthService {
     if (requestDto.getOAuthType().equals(OAuthType.KAKAO)) {
       KaKaoOAuthResponse profile = oAuthClient.getInfo(
           requestDto.getAccessToken());    //kakao만 잡혀 있음
-      Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());
-      //Login
-      if (existMember.isPresent()) {
-        return existMember.get();
-      }
-      //Join
-      else {
         Member member = Member.builder()
             .email(profile.getOAuthEmail())
             .nickname(requestDto.getNickname())
@@ -48,12 +41,10 @@ public class AuthService {
             .phoneNumber(requestDto.getPhoneNumber())
             .build();
         Member savedMember = memberRepository.save(member);
-        //LOGIN
         return savedMember;
-      }
-
+    } else {
+        throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
     }
-    throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
   }
 
     @Trace
