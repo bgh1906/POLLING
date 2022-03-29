@@ -5,6 +5,7 @@ import axios from "axios";
 import CommentList from "./CommentList";
 import cheer from "../../assets/cheer.png";
 import { useSelector } from 'react-redux'
+import Swal from "sweetalert2";
 
 
 
@@ -45,6 +46,10 @@ function Comment({candiId, data, renderCheck}) {
         })
         .catch((e) =>{
             console.error(e);
+            Swal.fire({
+                title: '로그인을 해주세요!',
+                icon: 'warning'                        
+            })
         });
 
     };
