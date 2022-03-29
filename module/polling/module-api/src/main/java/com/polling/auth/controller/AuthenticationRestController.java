@@ -37,7 +37,7 @@ public class AuthenticationRestController {
     @Trace
     @PostMapping
     @ApiOperation(value = "Native 로그인")
-    public ResponseEntity<Void> authorize(@RequestBody LoginDto loginDto,
+    public ResponseEntity<LoginResponseDto> authorize(@RequestBody LoginDto loginDto,
                                           HttpServletResponse response) {
         Member member = memberRepository.findByEmail(loginDto.getEmail())
                 .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
@@ -45,7 +45,10 @@ public class AuthenticationRestController {
             throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
         }
         setTokenHeaderAndRedis(member, response);
-        return ResponseEntity.status(200).build();
+        LoginResponseDto responseDto = new LoginResponseDto();
+        responseDto.setNickname(member.getNickname());
+        responseDto.setRole(member.getMemberRole().stream().findFirst().get());
+        return ResponseEntity.status(200).body(responseDto);
     }
 
     @Trace
@@ -68,6 +71,8 @@ public class AuthenticationRestController {
          responseDto.setMember(false);
       }else{
          responseDto.setMember(true);
+         responseDto.setNickname(member.getNickname());
+         responseDto.setRole(member.getMemberRole().stream().findFirst().get());
          setTokenHeaderAndRedis(member, response);
       }
       return ResponseEntity.status(200).body(responseDto);

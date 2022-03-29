@@ -6,8 +6,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class ValidateMemberResponseDto {
-    private boolean member;
+public class LoginResponseDto {
     private MemberRole role;
     private String nickname;
 }
