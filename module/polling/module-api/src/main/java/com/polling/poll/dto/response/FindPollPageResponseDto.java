@@ -15,6 +15,7 @@ public class FindPollPageResponseDto {
   Long id;
   String title;
   String thumbnail;
+  Boolean openStatus;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
   LocalDateTime startDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")

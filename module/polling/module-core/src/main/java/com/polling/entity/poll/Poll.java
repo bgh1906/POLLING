@@ -52,6 +52,8 @@ public class Poll extends BaseTimeEntity {
 
   private PollStatus pollStatus = PollStatus.UNAPPROVED;
 
+  private Boolean openStatus;
+
   @Column(length = 1000)
   private String thumbnail;
 
@@ -68,6 +70,7 @@ public class Poll extends BaseTimeEntity {
     this.startDate = startDate;
     this.endDate = endDate;
     this.thumbnail = thumbnail;
+    openStatus = true;
   }
 
   public void changePollStatus(PollStatus pollStatus) {
@@ -91,5 +94,9 @@ public class Poll extends BaseTimeEntity {
   public void addCandidate(Candidate candidate) {
     this.candidates.add(candidate);
     candidate.changePoll(this);
+  }
+
+  public void changeOpenStatus() {
+    openStatus = !openStatus;
   }
 }

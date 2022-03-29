@@ -30,6 +30,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
             poll.id,
             poll.title,
             poll.thumbnail,
+            poll.openStatus,
             poll.startDate,
             poll.endDate))
         .from(poll)

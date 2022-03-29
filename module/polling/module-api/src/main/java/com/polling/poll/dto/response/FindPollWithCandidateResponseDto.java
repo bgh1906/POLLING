@@ -21,6 +21,7 @@ public class FindPollWithCandidateResponseDto {
   String title;
   String content;
   String thumbnail;
+  Boolean openStatus;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
   LocalDateTime startDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
@@ -33,6 +34,7 @@ public class FindPollWithCandidateResponseDto {
         poll.getTitle(),
         poll.getContent(),
         poll.getThumbnail(),
+        poll.getOpenStatus(),
         poll.getStartDate(),
         poll.getEndDate(),
         candidates);

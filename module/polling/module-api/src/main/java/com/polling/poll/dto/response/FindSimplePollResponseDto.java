@@ -22,6 +22,7 @@ public class FindSimplePollResponseDto {
   LocalDateTime startDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
   LocalDateTime endDate;
+  Boolean openStatus;
   private List<FindAnonymousCandidateResponseDto> candidates;
 
   public static FindSimplePollResponseDto of(List<FindAnonymousCandidateResponseDto> candidates,
@@ -32,6 +33,7 @@ public class FindSimplePollResponseDto {
         poll.getThumbnail(),
         poll.getStartDate(),
         poll.getEndDate(),
+        poll.getOpenStatus(),
         candidates);
   }
 }
