@@ -18,12 +18,15 @@ import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
 import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
+import com.polling.queryrepository.PollQueryRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +38,7 @@ public class PollService {
   private final PollRepository pollRepository;
   private final MemberRepository memberRepository;
   private final CandidateQueryRepository candidateQueryRepository;
+  private final PollQueryRepository pollQueryRepository;
 
   @Trace
   public void savePoll(SavePollRequestDto requestDto, Long pollCreatorId) {
@@ -114,6 +118,12 @@ public class PollService {
     Poll poll = getPoll(pollId);
     validateStatus(poll);
     poll.changePollStatus(pollStatus);
+  }
+
+  @Scheduled(fixedRate = 60000)
+  public void checkPollEndTime() {
+    List<Poll> polls = pollQueryRepository.findByCurrentBeforeEndTime(LocalDateTime.now());
+    polls.forEach(poll -> poll.changePollStatus(PollStatus.DONE));
   }
 
   private Poll getPoll(Long pollId) {
