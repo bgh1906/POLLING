@@ -22,6 +22,8 @@ public class SavePollRequestDto {
   @NotNull
   String thumbnail;
   @NotNull
+  Boolean openStatus;
+  @NotNull
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
   LocalDateTime startDate;
   @NotNull
@@ -29,12 +31,14 @@ public class SavePollRequestDto {
   LocalDateTime endDate;
 
   @Builder
-  public SavePollRequestDto(List<SaveCandidateRequestDto> candidateDtos, String title,
-      String content, String thumbnail, LocalDateTime startDate, LocalDateTime endDate) {
+  public SavePollRequestDto(
+      List<SaveCandidateRequestDto> candidateDtos, String title, String content,
+      String thumbnail, Boolean openStatus, LocalDateTime startDate, LocalDateTime endDate) {
     this.candidateDtos = candidateDtos;
     this.title = title;
     this.content = content;
     this.thumbnail = thumbnail;
+    this.openStatus = openStatus;
     this.startDate = startDate;
     this.endDate = endDate;
   }

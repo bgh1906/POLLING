@@ -53,6 +53,7 @@ public class PollService {
         .title(requestDto.getTitle())
         .content(requestDto.getContent())
         .thumbnail(requestDto.getThumbnail())
+        .openStatus(requestDto.getOpenStatus())
         .startDate(requestDto.getStartDate())
         .endDate(requestDto.getEndDate())
         .build());

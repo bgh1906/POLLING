@@ -63,14 +63,14 @@ public class Poll extends BaseTimeEntity {
 
   @Builder
   public Poll(String title, Member pollCreator, String content, LocalDateTime startDate,
-      LocalDateTime endDate, String thumbnail) {
+      LocalDateTime endDate, String thumbnail, Boolean openStatus) {
     this.title = title;
     this.pollCreator = pollCreator;
     this.content = content;
     this.startDate = startDate;
     this.endDate = endDate;
     this.thumbnail = thumbnail;
-    openStatus = true;
+    this.openStatus = openStatus;
   }
 
   public void changePollStatus(PollStatus pollStatus) {
