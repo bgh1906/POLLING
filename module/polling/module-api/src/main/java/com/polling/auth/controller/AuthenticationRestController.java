@@ -42,29 +42,50 @@ public class AuthenticationRestController {
   private final MemberRepository memberRepository;
   private final AuthService authService;
 
-  @Trace
-  @PostMapping
-  @ApiOperation(value = "Native 로그인")
-  public ResponseEntity<Void> authorize(@RequestBody LoginDto loginDto,
-      HttpServletResponse response) {
-    Member member = memberRepository.findByEmail(loginDto.getEmail())
-        .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
-    if (!member.getPassword().equals(loginDto.getPassword())) {
-      throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
+    @Trace
+    @PostMapping
+    @ApiOperation(value = "Native 로그인")
+    public ResponseEntity<LoginResponseDto> authorize(@RequestBody LoginDto loginDto,
+                                          HttpServletResponse response) {
+        Member member = memberRepository.findByEmail(loginDto.getEmail())
+                .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
+        if (!member.getPassword().equals(loginDto.getPassword())) {
+            throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
+        }
+        setTokenHeaderAndRedis(member, response);
+        LoginResponseDto responseDto = new LoginResponseDto(member.getId(), member.getMemberRole().stream().findFirst().get(), member.getNickname());
+        return ResponseEntity.status(200).body(responseDto);
     }
-    setTokenHeaderAndRedis(member, response);
-    return ResponseEntity.status(200).build();
-  }
 
   @Trace
   @PostMapping("/social")
   @ApiOperation(value = "OAuth 회원 가입/로그인")
-  public ResponseEntity<Void> authorizeOAuth(@RequestBody AuthDto requestDto,
+  public ResponseEntity<LoginResponseDto> authorizeOAuth(@RequestBody AuthDto requestDto,
       HttpServletResponse response) {
     Member member = authService.auth(requestDto);
     setTokenHeaderAndRedis(member, response);
-    return ResponseEntity.status(200).build();
+    setTokenHeaderAndRedis(member, response);
+    LoginResponseDto responseDto = new LoginResponseDto(member.getId(), member.getMemberRole().stream().findFirst().get(), member.getNickname());
+    return ResponseEntity.status(200).body(responseDto);
   }
+
+
+   @Trace
+   @PostMapping("/validate")
+   @ApiOperation(value = "기존 카카오가입회원이면 jwt+member:true, 신입이면 member:false 반환")
+   public ResponseEntity<ValidateMemberResponseDto> ValidateMember(@RequestBody ValidateMemberRequestDto requestDto, HttpServletResponse response) {
+      ValidateMemberResponseDto responseDto = new ValidateMemberResponseDto();
+      Member member = authService.validate(requestDto);
+      if(member == null){
+         responseDto.setMember(false);
+      }else{
+         responseDto.setMember(true);
+         responseDto.setField(member.getMemberRole().stream().findFirst().get(), member.getNickname(), member.getId());
+         setTokenHeaderAndRedis(member, response);
+      }
+      return ResponseEntity.status(200).body(responseDto);
+   }
+
 
 
   @GetMapping("/logout")

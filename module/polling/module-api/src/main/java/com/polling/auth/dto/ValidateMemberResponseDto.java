@@ -11,4 +11,10 @@ public class ValidateMemberResponseDto {
     private MemberRole role;
     private String nickname;
     private Long id;
+
+    public void setField(MemberRole role, String nickname, Long id){
+        this.role = role;
+        this.nickname = nickname;
+        this.id = id;
+    }
 }
