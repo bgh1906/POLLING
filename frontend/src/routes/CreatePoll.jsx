@@ -98,7 +98,7 @@ function CreatePoll() {
         // console.log(token)
 
         axios.post(
-            "https://j6a304.p.ssafy.io:8080/api/polls/admin",
+            "https://j6a304.p.ssafy.io/api/polls/admin",
             {
                 "candidateDtos": nomiList,
                 "content":pollDescribe,

@@ -85,7 +85,7 @@ function NomineeInput({onAdd, current, isEdit, onUpdate}) {
                 <div id={styles.nomi_box}>
                     <p><label>이름 </label> : <input id={styles.nomi_input} type="text" onChange={changeInput} value={name} name="name"  placeholder="참가자 이름을 등록하세요."/> </p>
                     <p><label>사진 </label> : <input id={styles.nomi_input2} type="text" onChange={changeInput} value={thumbnail} name="thumbnail" placeholder="참가자 사진을 등록하세요."/> </p>
-                    <p>프로필 소개</p>  <p><textarea id={styles.nomi_input3} type="text" onChange={changeInput} value={profile} name="profile" maxLength="200"
+                    <p>프로필 소개</p>  <p><textarea id={styles.nomi_input3} type="text" onChange={changeInput} value={profile} name="profile" maxLength="150"
                     placeholder="참가자 프로필 소개
                     EX) 수지 프로필
                     출생: 1994.10.10.     소속사: 매니지먼트 숲
