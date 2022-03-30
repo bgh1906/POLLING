@@ -1,12 +1,17 @@
 import styles from "./Poll.module.css";
 import Footer from "../components/layout/Footer";
 import Newnav from "../components/layout/NewNav";
-import fox from "../assets/fox.PNG";
+import produce from "../assets/produce.PNG";
 import Countdown from "react-countdown";
 import CandList from "../components/poll/CandList";
 import VotePaper from "../components/poll/VotePaper";
+import { useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Poll() {
+  const params = useParams();
+  console.log("파라미터", params);
   const itemDetail = {
     candidates: [
       {
@@ -56,14 +61,25 @@ function Poll() {
     endDate: "2022-07-13 23:59",
     name: "Fox Painting",
     startDate: "2022-04-29 00:00",
-    thumbnail: fox,
+    thumbnail: produce,
   };
+  useEffect(() => {
+    axios
+      .get(`https://j6a304.p.ssafy.io/api/polls/${params.pollnum}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }, []);
+
   // 후보들 득표 순으로 정렬하기
   itemDetail.candidates.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   const startYMD = itemDetail.startDate.slice(0, 10).replaceAll("-", ".");
   const endYMD = itemDetail.endDate.slice(0, 10).replaceAll("-", ".");
 
-  const endDay = new Date(2022, 2, 30, 23, 59, 0, 0);
+  const endDay = new Date(2022, 3, 30, 23, 59, 0, 0);
   const renderCounter = ({ days, hours, minutes, seconds }) => (
     <div className={styles.timer}>
       투표 종료까지 남은 시간
@@ -78,12 +94,13 @@ function Poll() {
         <div className={styles.pl_left}>
           <div className={styles.left_title}>Selected Poll</div>
           <div className={styles.poll_Info}>
+            <Countdown date={endDay} renderer={renderCounter} />
             <img
               src={itemDetail.thumbnail}
               alt="fox"
               className={styles.pollImg}
             />
-            <VotePaper />
+            <VotePaper itemDetail={itemDetail} />
             <div
               style={{
                 display: "flex",
@@ -98,7 +115,6 @@ function Poll() {
                 <span>{itemDetail.name}</span>
                 <br />
               </figcaption>
-              <Countdown date={endDay} renderer={renderCounter} />
               <div>{itemDetail.content}</div>
             </div>
           </div>

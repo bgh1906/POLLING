@@ -48,6 +48,25 @@ export default function CandList() {
           "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTEhIVFhUXFxUVFRUVFxUVFRcYFhUYFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIARMAtwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAADAAECBAYFB//EADkQAAEDAQQHBwMEAgEFAAAAAAEAAhEDBAUhMQYSQVFhcZEigaGxwdHwEzLhI0JS8TNyFAcWU4Ky/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AM2Gpw1SAUgEEQE8KQapQghC5t7W4shjI13bf4ja4hdC01dVpO4LH1Ldi52bneA2IC1XNpzPaefuc7PvPouRaqusfX2CVZ5J9UJw3IIVKRQ9VdGzEavazHWEY0WzGczj7IOXTYc0WowjaclaaGtcBsIHnPujucw4cJ8/ZBQsNsqMMtJ5bCtZdl7h5hwgrPajWgkY7eXyE312ggt2f2g3Up1k6F+PbniF1bLfjXZiOIxQdeEiFGlUDhIMhTQRhPCcJ0EIUSFMhMghCSmQkgIApAJwFIBBGEjhmpOwWd0hvOBqgwDM+UfNxQc+/wC9HVexTwZtP8t3dwXGawJfVLjlPkpa5Ger4oF9LbPUeoRDVaeB3Hb3oLrUNwPn1QahacpBQFqnaOR4cwhtqHKcvZSpWZx+eCvWW7jtCDnCZUgD4Qu827o2KDrKAg5LaZIjzRfoQJInvPkFbfS5KraKZH2k9Z8EAJB3hSa4tUG2k5OAd5qeu05COGCC/YrxewyDzByK1VgtjarZGe0blhCDs7/mxX7stxY4Y/OKDbJ0Ky1w9ocEZBEhNCkkgYhJShJAWE4CkAnAQc+87TqiNpWDt73VKjscB0AGC019Vz2ndzfIevfCzlOlGHXiUEW0xGGSq2oK7aHao+Zq5o1cptDtd/2g4cUFO6blfVIMEBbGwaJNAxErUXZdjWgABdujZ4QZKlo4wDBqjWuvVmBlB+eK2v8Axwk6wAoPNrTZDjGO2N+3DoeioVKa9Atd1QYI3wfTxwXFt1yYEj8HegxtWlGeCpVqYOBw4hd232YtwIPzKFwbYwg+yCo+j/7eDvY+CTbLP2ux3O+e6VTWOPgcOiFru2A9/vsQMZacRB8PypFk4tzGz586Ks+udvT23IlGr+EGjuC2wccjn7rUrAWOpBkYbfdbO57Rrsjd5ILaQCkQnaEChMpwkgKAmquhpO4E9FMBCtg/Td/qfJBkb2wDQf4hx5xj4lcxgwlXb2qzUPCPx5quBkOKDn2tus5rd5j3XqGjNhDKbRC84u9mtaGDdj4r1u6KcNCDrWemrjGoVEKw1BJjVZaxCotVloQV61CVUr2LaBx5rovMZlMIORCDG3zdIc04b49lgrZYInhmPUL2urQDhiO9ZLSG5AZIGe7I+xQeWVqWrl0keRVWo8jEZ8s+BXZvqwPYcis1UqEHb5HqgHaKwdmMd4QGmCpvqTn86IaDo0n4Ajn86haG4rTqVBud+VnLCJafnFX7PV1Y+bUG+LUgEK7a4qUwe48wrOqgjCSnCSCcKNYdk8j5IiDbHQxx4HyQef1Xy8g746CfQJNOZ4x4II/ykbiT5flTYOznv+eCCxo8ybQODY8V6vdTMAvJrktQp1zrbPXFbqhpWBADMN6Dc0wiAriXXfQqBdkO1m4IA2i92052xuXLr6SVHfayNwzKnaLBrEl3ehs1GHARs+FA1H/k1cxq8ziOYx81fpXLW/8AKBynwUGXvTZ9zgOZA8yr1mvqm77XA94I6hAWy2eswQ5weOMgo1alIxCJSrSiliDJ33c4c04fgryrSC6i1xjBe72inIXm2lVjhxwlB5U4QVFdi8bIMSB3LqaFXLRquqPtLXOa0N1WNmXEyf2mcgg4l2fa75s/KLTGsxx2gz88F07+s9GnUcKDS1sYtdIIOMjHuXOu39w4INRopapJZvAcOmK0kLB3PW1KrOBI8fYrfhANOpEJIHVS9f8AG7p1KtqteTZpu7j0IKDzeof1kSkcCOB8zCHb8KgPHzQ3uI8R86IL91WVtS0w4wIBw2yAvQrNc1GBDR34rzGw2rVrNdwj1C2NitterZ6tdha1tMGBq6znEZ8gEGrZdwpiWjBdq5KutgsBo9pcS5lKpLg/BxDAwMOMEds6wwxMNidsLc6ONiq4bAg6150CGl0LD3m59So2nTcW62LnDNrRnHHYvTKwkQsheFwnXlvKMQCASRlzQYfSnR91KrTfRofWYWwQ81KkvxkvAcDtBzjBXrj0Yfql1QalVzteKZLQ0H9oDTAGeAwGC1tkupwOTepO2cF2rLZA3PEoKt02R7AAXuOH7oJ6rtRgmpUkSqICCnVWN0tsuscMDGHNa+oVntIhgDzPQIPMm3e91QtImOnNbTR2yUaTT+oBUnFu2CM/NPdtIGoZGZaJ5q9abtaHVJH2w4O4RkUHnWnMfXdq5EA9ZlcS7zie71V3SarrVnRyHcqdgGJQXKggzxBW9uyrrU2nhHRYauMJAxjrthajRi06zNWdxHl7IOyQkpJIIodqZLHDeCipiEHmN7szVcnWaTt1dbvGY811L7pwSOK5VinFu4yPZBVs57beY6SvRNGWupazWHAkzOPzNeeVW6rh3eBXslw2MajXRsCCVguxjZIY0TiYaBJXd0cp9p54whvZAV/RunDCTtJQdtqhaKQUTVhNaKpIQB+kjUqaFRfKvUggm2AqtdysVCqlVBSrOXJvhms3vXWqrl3nVAbj3eqDNWet9NziR/HDwjz6qhel81GtLjhrfY05gZCeA4pW61AOgHORPsuFfFTAee/DIe6DO2xxJLjtJ6pWI4pWt+A7k1Exjxn1QdV7s+U9M1f0cr6r+Zj54LmT85p7FUh3PEcxgg9DCSDYa2swHgkgKlCdJBjdI7NDjxBPQ+xWbsp1akb/AFWz0oZBa7YsVaAA6enRAa8rNiePn8BXpWhV4CpQYdsAHmMCsFVOtTB2q9oZeP0qxpE9l/abz2jp5IPVa9SGk7gSmubSGmGgSJGBB3oVJ+s1Z+3XSNbJp3HJw5EINVeGkdUSaFmNYCCcQ3PY0nMq5Yr0+s1pLCxxzY7MbwYkdFWuSkGNa3eAcV2qNBoxAE7wMeqALWwVcpvUajENqCw5yrvUy5QKClanQJKxN+XgXOIGe4bAu/pHbtVpA3H2gccgsvTbqAudi449/sPPkEGX0ibqiHk6xEwNkeqo0K7xZcWjVDy5z3HtF1QBtOm3GTAD3wJzM5BC0otwdVIaZjM8SuR9UkCTMZeaCTjKMx2zj5qu04Ig80HRpuwHKPD3BSDoIO4+aBZHyDyMeaMzEEdOeY9EGw0etMgt7wkuFdVr1IdO/wAkkG4SSSQcPSsfpcdncQVhK2fIlbzSwforCnbyPkgs2Z/Yjn4YhValQiHAwQQQeWKNY/t+fNiq2gxI3E+qD1LRm9xVpNdtyI3EZhXbztwa0uXl2i97mhV1XHsOwPA7D6Lb3tRdVpwwic+aDoWPSWRA+5sAclfs2mLm5gHvgrDXVYyXS4jDDVxjPbGa0lCx047QHKBCDv8A/fTP4O7u14BaKyWnXaHAQCJWfui62uxLRq7BEStKGQMEEy5V7VXhpUyudeb4aSUGRvm2az4OQ7WOWBgT1CzGkF9QC1mJ37ABmeO3FWNIrygy2JyE5Zh2Pishb6pdjJM5k7Y28twQc+o6STv+SmaVFyUoCgotMTh0+fNqrlEadqA1mqQY5j19+iuUXeXkufVOMhHpvQdCzu2bM0kBhxgcxyToPTkkkyDkaT/4SsLVbgfnBbvSL/HCwtqEA9/gUD0jDe755qtbcz1Vqjl3Ktbxj3H0KDnuW30RvzWApPPaGR3j3WKqhNRqlrg5pggyCg9ZNzaztZji2cSNkruXbo6BBc4uPFZzQ+/m1WicHDBw3H2W9slcIOlZLMGtACM4BBZaAg2m2gCZQPaKwCw+l+kbabSAZJwAGZ9hxVTS3TANllM6zuHqsjd9B1Z/1KpkoAfTfVOs/uGQiMB4Zqje1duAH9BdzSKsKTQZAceyG7xvjgsxIdiTjv8AwgrPaoEK2aSf/jE7D3QUFYZJwUR1nI2FDjFA4KNSyQCiMO3r8+ZoLTX+HkUkPiPnBJB6ykkmQcu/x2FhrYdm8H/6C3N+HsnkVibY3Hu9fwgTW4Ab4Ve3Nl5/1Vmce7Doq1d0udyjp8KCpbKcR82KoupeA7I5H09lzzTME7kBbvtr6Lw9hx2jYRuK3N2aetaBrAg9V5+xsmEzhiUHpdo/6jtGQJWcvbTWvW7IOo3bGayySDUWCzBw1s+K61Kq2k0uOQxWauW26gMnDx7kS1Wwv4Dd770Fa8Kj69QveYn7Rjg0ZCFBlkaOKKw4lSJQD+mNidjY9vZThJAUtkZn55KlWo/ArLXEZJOfOY70HNcOqQP5VuqwHgeirlqAlN0Z5HwSUW4JIPXUycpkHJv89ju9Vh7Y7LitrpH9k8vMLDW04DgfdA9Oph4eUquH4md591FlT5zzTPOA5lAe0nWLBvGPX2QLa+JaO9PrQ9s7ICq1DJJQKmcVJ8EE8VFmYSBwKCJTsZJTQrLBAQGpsAGCnggh+5EYzegQfipfUKmGJw1BH6h3KTagKlqqD6aCZTFCkhSD5QJwUDuPcVJyG4oHNLekp0KwODjHHd+EkHqiSSSDi6Uuil83hYK8TGHBpW20zP6I/wBgsdfTILDvaPAflBQBxhTIw+bZQhmFYiQe70QBqux6KDWp6m3n7qbBgEAyFBHqDBAKAlIbVOUzclKkgPSYjhQYpwgfWSCg4IeuQgsgp0FtVEBQOQhPpbkVIlAAlDcjvQXoAVRuTKTkkHryZJMgzumh/TaOM+nqsnfp/wAY4QtTpeeyOGPiFkb0frVBwH49EFHePm5W7PlHz5iFVAxPej0iRigG9vDIpIzm4nv8P6VV5yQTqIQzRC7yKGwIJSp0kGUWmUFhrkQPVYlTa9BYFTenLQUCE2uQgd9OFH6kIzKwOad9IHagELWpi1goZsg3oZsh2FBcD2namcxUHUnBSp2kjNASo2EkUVA5JB6solOoPKDPaRYh/wDq7yKx9cSdbfPzxWyvOmXa4G4DqCsjanE6oO7W7zHsgofu+bVY1VXj2V1gkdR5FBXa7EfNn9qtVzKM45c/KPdDtAx7gghKnRQ1OnmgZ4U6SeoFCmUBHqIKmmLUEm1EUEFVi1MHFAd1Lco65CdldEBBQRbUlSKg+juUQ4jNAZtQpnNDkzXApFqATqRGSZHDt6SD1WUKq7BTJQqp/pBQqs7J3uPhtWGtAxdwMegW5tx1WEncsfWpzPX2QcymMD0R6ZwQ9SDG2Z7lDWg8vQoAvOfPzSq5BRcc0xOCBgpU1FSpoCuCEc0ZCqBA7XIjCq4KLTcgLCYsTgp0AjTUcQrCYtQDbWIRW1QVB1JDdTQWDT3FRkjNBa8hFbX3oH106fVBSQeoqJSlM470HIv+sI1N+J5LJl/acu9eNYkOqEZmG92Sz+rv5n1QAtGc7v7VLWVq0uho3mZ7lTKBJJJBAinYoqTUFgKD1Nqi4IAFOCncFBAdjkQFVgURr0BpSlRBSlBOU6Gn1kEi0KBpJ9ZProB6hCSJrJ0Hp6p3oexzgHqkkg418N7PKIXGtQgdEkkHMt33KqmSQJPsSSQMnakkgsNTFJJANygUySB0kkkBGoiZJBJMUySBk0pJIHKSSSD/2Q==",
         votesTotalCount: 45264,
       },
+      {
+        id: 7,
+        name: "임윤아",
+        thumbnail:
+          "https://file.mk.co.kr/meet/neds/2019/07/image_readtop_2019_573268_15642684623837739.jpg",
+        votesTotalCount: 84615,
+      },
+      {
+        id: 8,
+        name: "박신혜",
+        thumbnail: "http://topclass.chosun.com/news_img/2008/2008_050.jpg",
+        votesTotalCount: 34253,
+      },
+      {
+        id: 9,
+        name: "서현진",
+        thumbnail: "https://img.wkorea.com/w/2021/10/style_616ea4c010854.jpg",
+        votesTotalCount: 25264,
+      },
     ],
     content: "투표에 대한 Optional한 설명이 여기에 들어갈 예정입니다.",
     endDate: "2022-07-13 23:59",
@@ -55,12 +74,7 @@ export default function CandList() {
     startDate: "2022-04-29 00:00",
     thumbnail: fox,
   };
-  const [picked, setPicked] = useState(false);
-  // useEffect(() => console.log("클릭후", picked));
-  const voteToCand = () => {
-    // console.log("클릭전", picked);
-    setPicked((prev) => !prev);
-  };
+
   return (
     <>
       <div className={styles.right_title}>Candidates</div>
@@ -68,7 +82,7 @@ export default function CandList() {
         style={{
           position: "absolute",
           right: 0,
-          top: "-2.6vw",
+          top: "-50px",
           fontSize: "0.9vw",
         }}
       >
@@ -84,21 +98,12 @@ export default function CandList() {
               className={styles.CandImg}
             />
             <figcaption>
-              {item.name}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.name}
               <br />
               득표수 : {item.votesTotalCount}표
               <br />
-              현재 순위 : {index + 1}위
+              &nbsp;현재 순위 : {index + 1}위
             </figcaption>
-            {/* <div className={styles.voteBox} onClick={voteToCand}>
-              {picked && (
-                <img
-                  src={pollinglogo}
-                  alt="pollinglogo"
-                  className={styles.stampImg}
-                />
-              )}
-            </div> */}
           </div>
         ))}
       </div>

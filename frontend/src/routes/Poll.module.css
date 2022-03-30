@@ -2,16 +2,16 @@
   max-width: 80vw;
   display: flex;
   justify-content: space-between;
-  padding-top: 300px;
+  padding-top: 250px;
 }
 
 .pl_left {
-  width: 50%;
+  width: 40%;
   position: relative;
 }
 
 .pl_right {
-  width: 45%;
+  width: 50%;
   position: relative;
 }
 
@@ -22,7 +22,8 @@
 }
 
 .poll_Info .pollImg {
-  width: 35%;
+  width: 65%;
+  max-height: 20vw;
   margin: 0 1vw 1vw 0;
 }
 
@@ -37,9 +38,10 @@
 
 .left_title {
   font-family: "Baskervville", serif;
-  font-size: 3vw;
+  font-size: 4vw;
   position: absolute;
-  top: -4.3vw;
+  top: -90px;
+  font-weight: 700;
 }
 
 .timer {
