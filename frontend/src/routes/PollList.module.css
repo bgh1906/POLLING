@@ -5,7 +5,8 @@
 }
 
 .list_title {
-  font-family: "Bitter", serif;
+  /* font-family: "Bitter", serif; */
+  font-family: "Baskervville", serif;
   font-size: 7vw;
   font-weight: 900;
   padding-top: 200px;
@@ -31,7 +32,8 @@
   text-align: center;
   line-height: normal;
   width: fit-content;
-  font-family: "Bitter", serif;
+  /* font-family: "Bitter", serif; */
+  font-family: "Baskervville", serif;
 }
 
 .opened_button {
@@ -56,6 +58,8 @@
 .opened_item:hover .opened_button {
   opacity: 1;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
 
 /* .list_container {
   display: grid;

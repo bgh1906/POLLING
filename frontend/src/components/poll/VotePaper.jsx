@@ -1,12 +1,21 @@
-import styles from "./Poll.module.css";
-import Footer from "../components/layout/Footer";
-import Newnav from "../components/layout/NewNav";
-import fox from "../assets/fox.PNG";
-import Countdown from "react-countdown";
-import CandList from "../components/poll/CandList";
-import VotePaper from "../components/poll/VotePaper";
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
+import fox from "../../assets/fox.PNG";
+import pollinglogo from "../../assets/pollinglogo.png";
+import leftarrow from "../../assets/left-arrow.png";
+import rightarrow from "../../assets/right-arrow.png";
+import votebox from "../../assets/votebox2.png";
+import styles from "./VotePaper.module.css";
+import { styled } from "@mui/material/styles";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { Button } from "@mui/material";
+import Zoom from "@mui/material/Zoom";
 
-function Poll() {
+export default function VotePaper() {
   const itemDetail = {
     candidates: [
       {
@@ -58,58 +67,107 @@ function Poll() {
     startDate: "2022-04-29 00:00",
     thumbnail: fox,
   };
-  // 후보들 득표 순으로 정렬하기
-  itemDetail.candidates.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
-  const startYMD = itemDetail.startDate.slice(0, 10).replaceAll("-", ".");
-  const endYMD = itemDetail.endDate.slice(0, 10).replaceAll("-", ".");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [picked, setPicked] = useState(false);
+  // useEffect(() => console.log("클릭후", picked));
+  const voteToCand = () => {
+    // console.log("클릭전", picked);
+    setPicked((prev) => !prev);
+  };
 
-  const endDay = new Date(2022, 2, 30, 23, 59, 0, 0);
-  const renderCounter = ({ days, hours, minutes, seconds }) => (
-    <div className={styles.timer}>
-      투표 종료까지 남은 시간
-      <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
-    </div>
-  );
-
+  const LightTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.white,
+      color: "rgba(0, 0, 0, 0.87)",
+      boxShadow: theme.shadows[1],
+      fontSize: 13,
+    },
+  }));
   return (
     <>
-      <Newnav />
-      <div className={styles.poll_container}>
-        <div className={styles.pl_left}>
-          <div className={styles.left_title}>Selected Poll</div>
-          <div className={styles.poll_Info}>
-            <img
-              src={itemDetail.thumbnail}
-              alt="fox"
-              className={styles.pollImg}
-            />
-            <VotePaper />
-            <div
+      <LightTooltip
+        title="투표하기"
+        placement="top"
+        TransitionComponent={Zoom}
+        arrow
+      >
+        <img
+          src={votebox}
+          alt="votebox"
+          className={styles.boxImg}
+          onClick={handleOpen}
+        />
+      </LightTooltip>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <Box className={styles.modal}>
+            <Typography id="transition-modal-title" variant="h4" component="h2">
+              {itemDetail.name}
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 4 }}>
+              {/* <img
+                src={leftarrow}
+                alt="leftarrow"
+                className={styles.leftarrow}
+              /> */}
+              <img
+                src={itemDetail.candidates[0].thumbnail}
+                alt={itemDetail.candidates[0].name}
+                className={styles.CandImg}
+              />
+              {/* <img
+                src={rightarrow}
+                alt="rightarrow"
+                className={styles.rightarrow}
+              /> */}
+            </Typography>
+            <LightTooltip title="한 번 더 눌러 투표/취소" placement="top" arrow>
+              <div className={styles.voteBox} onClick={voteToCand}>
+                {picked && (
+                  <img
+                    src={pollinglogo}
+                    alt="pollinglogo"
+                    className={styles.stampImg}
+                  />
+                )}
+              </div>
+            </LightTooltip>
+            <Button
+              className={styles.voteSubmitBtn}
+              color="error"
+              onClick={handleClose}
+            >
+              투표하기
+            </Button>
+            <span
               style={{
-                display: "flex",
-                flexDirection: "column",
+                fontSize: 10,
+                color: "GrayText",
+                textAlign: "center",
+                marginTop: "1vw",
               }}
             >
-              <figcaption>
-                <span style={{ fontSize: "1vw" }}>
-                  {startYMD} ~ {endYMD}
-                </span>
-                <br />
-                <span>{itemDetail.name}</span>
-                <br />
-              </figcaption>
-              <Countdown date={endDay} renderer={renderCounter} />
-              <div>{itemDetail.content}</div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.pl_right}>
-          <CandList itemDetail={itemDetail} />
-        </div>
-      </div>
-      <Footer />
+              신중하게 투표하세요.
+              <br />
+              해당 컨테스트에는 하루 한 번만 투표 가능합니다.
+            </span>
+          </Box>
+        </Fade>
+      </Modal>
     </>
   );
 }
-
-export default Poll;

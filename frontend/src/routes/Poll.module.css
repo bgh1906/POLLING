@@ -1,6 +1,53 @@
-.poll_title {
-  font-family: "RussoOne";
-  font-size: 60px;
-  padding-left: 110px;
-  padding-top: 100px;
+.poll_container {
+  max-width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 300px;
+}
+
+.pl_left {
+  width: 50%;
+  position: relative;
+}
+
+.pl_right {
+  width: 45%;
+  position: relative;
+}
+
+.poll_Info {
+  position: sticky;
+  top: 170px;
+  /* display: flex; */
+}
+
+.poll_Info .pollImg {
+  width: 35%;
+  margin: 0 1vw 1vw 0;
+}
+
+.poll_Info figcaption {
+  font-size: 1.4vw;
+  margin-bottom: 2vw;
+}
+
+.poll_Info figcaption span {
+  font-size: 2.5vw;
+}
+
+.left_title {
+  font-family: "Baskervville", serif;
+  font-size: 3vw;
+  position: absolute;
+  top: -4.3vw;
+}
+
+.timer {
+  width: 100%;
+  background-color: #77a3a9;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 1vw;
+  padding: 1vw 2vw;
 }

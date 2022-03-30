@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import ArrowUp from "../../assets/up-arrow.png";
 
 function Footer() {
   const [showButton, setShowButton] = useState(false);
@@ -82,10 +83,11 @@ function Footer() {
         </div>
       </div>
       {showButton && (
-        <FontAwesomeIcon
-          icon={faArrowUp}
-          onClick={scrollToTop}
+        <img
+          src={ArrowUp}
+          alt="BackToTop"
           className={styles.backtotop}
+          onClick={scrollToTop}
         />
       )}
     </>

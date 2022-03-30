@@ -1,12 +1,9 @@
-import styles from "./Poll.module.css";
-import Footer from "../components/layout/Footer";
-import Newnav from "../components/layout/NewNav";
-import fox from "../assets/fox.PNG";
-import Countdown from "react-countdown";
-import CandList from "../components/poll/CandList";
-import VotePaper from "../components/poll/VotePaper";
+import { useState } from "react";
+import styles from "./CandList.module.css";
+import pollinglogo from "../../assets/pollinglogo.png";
+import fox from "../../assets/fox.PNG";
 
-function Poll() {
+export default function CandList() {
   const itemDetail = {
     candidates: [
       {
@@ -58,58 +55,53 @@ function Poll() {
     startDate: "2022-04-29 00:00",
     thumbnail: fox,
   };
-  // 후보들 득표 순으로 정렬하기
-  itemDetail.candidates.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
-  const startYMD = itemDetail.startDate.slice(0, 10).replaceAll("-", ".");
-  const endYMD = itemDetail.endDate.slice(0, 10).replaceAll("-", ".");
-
-  const endDay = new Date(2022, 2, 30, 23, 59, 0, 0);
-  const renderCounter = ({ days, hours, minutes, seconds }) => (
-    <div className={styles.timer}>
-      투표 종료까지 남은 시간
-      <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
-    </div>
-  );
-
+  const [picked, setPicked] = useState(false);
+  // useEffect(() => console.log("클릭후", picked));
+  const voteToCand = () => {
+    // console.log("클릭전", picked);
+    setPicked((prev) => !prev);
+  };
   return (
     <>
-      <Newnav />
-      <div className={styles.poll_container}>
-        <div className={styles.pl_left}>
-          <div className={styles.left_title}>Selected Poll</div>
-          <div className={styles.poll_Info}>
-            <img
-              src={itemDetail.thumbnail}
-              alt="fox"
-              className={styles.pollImg}
-            />
-            <VotePaper />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <figcaption>
-                <span style={{ fontSize: "1vw" }}>
-                  {startYMD} ~ {endYMD}
-                </span>
-                <br />
-                <span>{itemDetail.name}</span>
-                <br />
-              </figcaption>
-              <Countdown date={endDay} renderer={renderCounter} />
-              <div>{itemDetail.content}</div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.pl_right}>
-          <CandList itemDetail={itemDetail} />
-        </div>
+      <div className={styles.right_title}>Candidates</div>
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: "-2.6vw",
+          fontSize: "0.9vw",
+        }}
+      >
+        <span style={{ cursor: "pointer" }}>등록순</span>&nbsp;|&nbsp;
+        <span style={{ cursor: "pointer" }}>득표순</span>
       </div>
-      <Footer />
+      <div className={styles.Cand_list}>
+        {itemDetail.candidates.map((item, index) => (
+          <div className={styles.poll_Cand} key={item.id}>
+            <img
+              src={item.thumbnail}
+              alt={item.name}
+              className={styles.CandImg}
+            />
+            <figcaption>
+              {item.name}
+              <br />
+              득표수 : {item.votesTotalCount}표
+              <br />
+              현재 순위 : {index + 1}위
+            </figcaption>
+            {/* <div className={styles.voteBox} onClick={voteToCand}>
+              {picked && (
+                <img
+                  src={pollinglogo}
+                  alt="pollinglogo"
+                  className={styles.stampImg}
+                />
+              )}
+            </div> */}
+          </div>
+        ))}
+      </div>
     </>
   );
 }
-
-export default Poll;
