@@ -10,15 +10,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.google.gson.Gson;
-import com.polling.auth.dto.LoginDto;
+import com.polling.auth.dto.request.LoginRequestDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.service.PollService;
 import com.polling.repository.member.MemberRepository;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -149,7 +147,7 @@ public class SecurityAdminPollControllerTest {
 
   public String getJwtToken(int index) throws Exception {
     Member member = joinMember(index);
-    LoginDto loginDto = new LoginDto();
+    LoginRequestDto loginDto = new LoginRequestDto();
     loginDto.setEmail(member.getEmail());
     loginDto.setPassword(member.getPassword());
 

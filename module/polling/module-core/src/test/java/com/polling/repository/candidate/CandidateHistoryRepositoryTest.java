@@ -2,7 +2,7 @@ package com.polling.repository.candidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.polling.config.JpaConfig;
+import com.polling.web.config.JpaConfig;
 import com.polling.entity.candidate.CandidateHistory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

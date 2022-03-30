@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.google.gson.Gson;
-import com.polling.auth.dto.LoginDto;
+import com.polling.auth.dto.request.LoginRequestDto;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
@@ -112,7 +112,7 @@ public class SecurityCandidateControllerTest {
 
   public String getJwtToken(int index) throws Exception {
     Member member = joinMember(index);
-    LoginDto loginDto = new LoginDto();
+    LoginRequestDto loginDto = new LoginRequestDto();
     loginDto.setEmail(member.getEmail());
     loginDto.setPassword(member.getPassword());
 
