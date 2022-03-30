@@ -44,12 +44,12 @@ public class Candidate extends BaseTimeEntity {
   private String profile;
   @Column(length = 1000)
   private String thumbnail;
-  private Integer smartContractIndex;
+  private Integer contractIndex;
 
   @Builder
-  public Candidate(Integer smartContractIndex, Poll poll, String name, String profile,
+  public Candidate(Integer contractIndex, Poll poll, String name, String profile,
       String thumbnail) {
-    this.smartContractIndex = smartContractIndex;
+    this.contractIndex = contractIndex;
     this.poll = poll;
     this.name = name;
     this.profile = profile;
@@ -75,5 +75,9 @@ public class Candidate extends BaseTimeEntity {
   public void addGallery(CandidateGallery gallery) {
     this.galleries.add(gallery);
     gallery.changeCandidate(this);
+  }
+
+  public void changeContractIndex(Integer contractIndex) {
+    this.contractIndex = contractIndex;
   }
 }

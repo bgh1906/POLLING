@@ -3,7 +3,7 @@ package com.polling.poll.controller;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
 import com.polling.poll.dto.candidate.request.AddCandidateRequestDto;
-import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
+import com.polling.poll.dto.request.ApprovePollRequestDto;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
@@ -72,11 +72,10 @@ public class AdminPollController {
   }
 
   @Trace
-  @PatchMapping("/{pollId}/{status}")
-  @ApiOperation(value = "투표 status 변경")
-  public ResponseEntity<Void> changeStatus(@PathVariable Long pollId,
-      @PathVariable String status) {
-    pollService.modifyStatus(pollId, status);
+  @PatchMapping("/wait")
+  @ApiOperation(value = "투표 승인")
+  public ResponseEntity<Void> approvePoll(@RequestBody ApprovePollRequestDto requestDto) {
+    pollService.approvePoll(requestDto);
     return ResponseEntity.status(200).build();
   }
 

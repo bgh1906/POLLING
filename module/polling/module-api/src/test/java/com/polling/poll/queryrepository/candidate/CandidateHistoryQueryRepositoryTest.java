@@ -85,7 +85,7 @@ public class CandidateHistoryQueryRepositoryTest {
 
   public Candidate createCandidate(Integer index) {
     Candidate candidate = Candidate.builder()
-        .smartContractIndex(index)
+        .contractIndex(index)
         .thumbnail("thumbnail")
         .profile("profile")
         .name("name" + index)

@@ -72,7 +72,7 @@ public class CandidateRepositoryTest {
   private Candidate createCandidate(Integer index) {
 
     return Candidate.builder()
-        .smartContractIndex(index)
+        .contractIndex(index)
         .name("suzy")
         .profile("profile")
         .poll(null)

@@ -51,4 +51,14 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
         .fetch();
   }
 
+  @Override
+  public List<Poll> findByCurrentBeforeStartTime(LocalDateTime current) {
+    return query
+        .select(poll)
+        .from(poll)
+        .where(poll.startDate.before(current)
+            .and(poll.pollStatus.eq(PollStatus.WAIT)))
+        .fetch();
+  }
+
 }

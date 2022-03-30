@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SaveCandidateRequestDto {
 
-  private Integer dummy;
   @NotNull
   private String name;
   @NotNull

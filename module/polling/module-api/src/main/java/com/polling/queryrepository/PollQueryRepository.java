@@ -14,4 +14,6 @@ public interface PollQueryRepository {
       int limit);
 
   List<Poll> findByCurrentBeforeEndTime(LocalDateTime current);
+
+  List<Poll> findByCurrentBeforeStartTime(LocalDateTime current);
 }
