@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindContactResponseDto {
+public class FindAllContactResponseDto {
     private Long id;
     private ContactStatus contactStatus;
     private ContactType contactType;
     private String title;
     private String content;
+    private Long memberId;
     private String answer;
 }

@@ -38,17 +38,24 @@ public class Contact extends BaseTimeEntity {
     @Column
     private String title;
 
-    @Column(length = 1000)
+    @Column(length = 2000)
     private String content;
+
+    @Column(length = 2000)
+    private String answer;
 
     @Builder
     public Contact(Member member, ContactStatus contactStatus, ContactType contactType,
-                            String title, String content) {
+                   String title, String content, String answer) {
         this.member = member;
         this.contactStatus = contactStatus;
         this.contactType = contactType;
         this.title = title;
         this.content = content;
+        this.answer = answer;
     }
 
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 }
