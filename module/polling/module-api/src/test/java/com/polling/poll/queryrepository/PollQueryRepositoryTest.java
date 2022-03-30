@@ -128,6 +128,33 @@ public class PollQueryRepositoryTest {
     assertThat(findList.get(0).getEndDate()).isEqualTo(end);
   }
 
+  @Test
+  public void 투표조회_시작시간이된_데이터있음() throws Exception {
+    //given
+    String format = "2022-03-31 23:59";
+    LocalDateTime start = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    log.trace("================================={}", start.plusMinutes(2));
+    Poll poll1 = createPoll(start, start.plusDays(3));
+    Poll poll2 = createPoll(start.plusDays(1), start.plusDays(3));
+    poll1.changePollStatus(PollStatus.WAIT);
+    poll2.changePollStatus(PollStatus.WAIT);
+
+    pollRepository.save(poll1);
+    pollRepository.save(poll2);
+
+    format = "2022-04-01 00:00";
+    LocalDateTime current = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+    //when
+    List<Poll> findList = pollQueryRepository.findByCurrentBeforeStartTime(current);
+
+    //then
+    assertThat(findList.size()).isEqualTo(1);
+    assertThat(findList.get(0).getStartDate()).isEqualTo(start);
+  }
+
   private Poll createPoll(LocalDateTime start, LocalDateTime end) {
     return Poll.builder()
         .title("title")

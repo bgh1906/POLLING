@@ -37,7 +37,7 @@ public class CommentQueryRepositoryTest {
         .nickname("testName")
         .build());
     Candidate savedCandidate = candidateRepository.save(Candidate.builder()
-        .smartContractIndex(1)
+        .contractIndex(1)
         .name("suzy")
         .profile("hello")
         .build());

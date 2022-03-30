@@ -21,7 +21,8 @@ public class FindAdminCandidateResponseDto {
   private String imagePath3;
 
   @Builder
-  public FindAdminCandidateResponseDto(Long candidateId, Integer candidateIndex, String name, String thumbnail,
+  public FindAdminCandidateResponseDto(Long candidateId, Integer candidateIndex, String name,
+      String thumbnail,
       List<CandidateGallery> galleries, String profile) {
     this.candidateId = candidateId;
     this.candidateIndex = candidateIndex;

@@ -77,7 +77,7 @@ public class CandidateQueryRepositoryTest {
   private Candidate createCandidate(Integer index) {
     Candidate candidate = Candidate
         .builder()
-        .smartContractIndex(index)
+        .contractIndex(index)
         .name("Test" + index)
         .thumbnail("thumbNail")
         .build();

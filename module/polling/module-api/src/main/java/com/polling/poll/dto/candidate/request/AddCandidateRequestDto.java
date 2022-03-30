@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class AddCandidateRequestDto {
+
   private Long pollId;
   private String name;
   private String profile;

@@ -11,9 +11,9 @@ import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.poll.dto.candidate.request.AddCandidateRequestDto;
-import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.poll.dto.candidate.response.FindAdminCandidateResponseDto;
 import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
+import com.polling.poll.dto.request.ApprovePollRequestDto;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
@@ -75,7 +75,7 @@ public class PollService {
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
             .candidateId(candidate.getId())
-            .candidateIndex(candidate.getSmartContractIndex())
+            .candidateIndex(candidate.getContractIndex())
             .name(candidate.getName())
             .thumbnail(candidate.getThumbnail())
             .galleries(candidate.getGalleries())
@@ -118,11 +118,16 @@ public class PollService {
   }
 
   @Trace
-  public void modifyStatus(Long pollId, String status) {
-    PollStatus pollStatus = PollStatus.findStatusByName(status);
-    Poll poll = getPoll(pollId);
+  public void approvePoll(ApprovePollRequestDto requestDto) {
+    Poll poll = getPoll(requestDto.getPollId());
     validateStatus(poll);
-    poll.changePollStatus(pollStatus);
+    int size = poll.getCandidates().size();
+
+    for (int i = 0; i < size; i++) {
+      poll.getCandidates().get(i).changeContractIndex(requestDto.getListCandidateIndex().get(i));
+    }
+
+    poll.changePollStatus(PollStatus.WAIT);
   }
 
   @Scheduled(fixedRate = 60000)
@@ -130,6 +135,14 @@ public class PollService {
     List<Poll> polls = pollQueryRepository.findByCurrentBeforeEndTime(LocalDateTime.now());
     if (!polls.isEmpty()) {
       polls.forEach(poll -> poll.changePollStatus(PollStatus.DONE));
+    }
+  }
+
+  @Scheduled(fixedRate = 60000)
+  public void checkPollStartTime() {
+    List<Poll> polls = pollQueryRepository.findByCurrentBeforeStartTime(LocalDateTime.now());
+    if (!polls.isEmpty()) {
+      polls.forEach(poll -> poll.changePollStatus(PollStatus.IN_PROGRESS));
     }
   }
 

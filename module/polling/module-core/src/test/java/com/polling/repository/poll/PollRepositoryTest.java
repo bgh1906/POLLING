@@ -124,13 +124,13 @@ public class PollRepositoryTest {
         .startDate(start)
         .endDate(end)
         .build();
-    poll.addCandidate(Candidate.builder().smartContractIndex(1).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(2).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(3).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(4).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(5).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(6).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(7).build());
+    poll.addCandidate(Candidate.builder().contractIndex(1).build());
+    poll.addCandidate(Candidate.builder().contractIndex(2).build());
+    poll.addCandidate(Candidate.builder().contractIndex(3).build());
+    poll.addCandidate(Candidate.builder().contractIndex(4).build());
+    poll.addCandidate(Candidate.builder().contractIndex(5).build());
+    poll.addCandidate(Candidate.builder().contractIndex(6).build());
+    poll.addCandidate(Candidate.builder().contractIndex(7).build());
     return pollRepository.save(poll);
   }
 
