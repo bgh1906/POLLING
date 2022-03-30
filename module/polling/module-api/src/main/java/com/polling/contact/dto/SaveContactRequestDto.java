@@ -1,16 +1,19 @@
 package com.polling.contact.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.polling.entity.contact.status.ContactType;
+import lombok.*;
 
 @Data
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 public class SaveContactRequestDto {
-    private String contactStatus;
-    private String contactType;
+    private ContactType contactType;
     private String title;
     private String content;
+
+    @Builder
+    public SaveContactRequestDto(ContactType contactType, String title, String content){
+        this.contactType = contactType;
+        this.title = title;
+        this.content = content;
+    }
 }

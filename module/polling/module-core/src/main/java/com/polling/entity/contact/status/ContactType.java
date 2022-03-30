@@ -23,5 +23,8 @@ public enum ContactType {
             .orElseThrow(IllegalArgumentException::new);
   }
 
+  public String getDescription() {
+    return this.description;
+  }
 }
 
