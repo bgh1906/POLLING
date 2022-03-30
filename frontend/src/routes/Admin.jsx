@@ -73,7 +73,7 @@ function Admin() {
         console.log(token)
 
         axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/wait`,
+         `https://j6a304.p.ssafy.io:8080/api/polls/admin/wait/${poll_id}`,
          {},
         {
             headers: {
@@ -85,41 +85,15 @@ function Admin() {
         })
     }
 
-    function changeStatusprogress(e){
-        const poll_id = e.target.name;        
-        axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/progress`,
-         {},
-        {
-            headers: {
-                "Authorization":token,
-            },
-        })
-        .then(()=>{
-            setRendernumber(rendernumber+1);
-        })
-    }
-
-    function changeStatusdone(e){
-        const poll_id = e.target.name;        
-        axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/done`,
-         {},
-        {
-            headers: {
-                "Authorization":token,
-            },
-        })
-        .then(()=>{
-            setRendernumber(rendernumber+1);
-        })
-    }
     
     function moveToUpdate(e){
         const poll_id = e.target.name;
         navigate(`/poll/update/${poll_id}`);
     }
       
+    function changePollOption(){
+
+    }
 
     return (
         <div>
@@ -172,8 +146,7 @@ function Admin() {
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.pollId} variant="contained">투표 수정하기</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatusprogress} name={poll.pollId} variant="contained">투표 시작하기</Button></div>
+                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>
@@ -187,8 +160,7 @@ function Admin() {
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} onClick={changeStatusprogress} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatusdone} name={poll.pollId} variant="contained">투표 종료하기</Button></div>
+                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>     
