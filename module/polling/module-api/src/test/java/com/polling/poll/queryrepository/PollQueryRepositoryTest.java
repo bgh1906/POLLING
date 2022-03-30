@@ -2,6 +2,8 @@ package com.polling.poll.queryrepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.polling.entity.candidate.Candidate;
+import com.polling.entity.candidate.CandidateGallery;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class PollQueryRepositoryTest {
   private PollRepository pollRepository;
   @Autowired
   private PollQueryRepository pollQueryRepository;
+  @Autowired
+  private EntityManager em;
 
 
   @Test
@@ -153,6 +158,39 @@ public class PollQueryRepositoryTest {
     //then
     assertThat(findList.size()).isEqualTo(1);
     assertThat(findList.get(0).getStartDate()).isEqualTo(start);
+  }
+  
+  @Test
+  public void 투표삭제_단일() throws Exception{
+      //given
+    String format = "2022-03-31 23:59";
+    LocalDateTime start = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    log.trace("================================={}", start.plusMinutes(2));
+    Poll poll1 = createPoll(start, start.plusDays(3));
+    poll1.changePollStatus(PollStatus.WAIT);
+    Candidate candidate = Candidate.builder().build();
+    candidate.addGallery(new CandidateGallery("image1"));
+    candidate.addGallery(new CandidateGallery("image2"));
+    candidate.addGallery(new CandidateGallery("image3"));
+    poll1.addCandidate(Candidate.builder().build());
+    poll1.addCandidate(Candidate.builder().build());
+    poll1.addCandidate(Candidate.builder().build());
+    poll1.addCandidate(Candidate.builder().build());
+    poll1.addCandidate(Candidate.builder().build());
+    poll1.addCandidate(Candidate.builder().build());
+
+    Long id = pollRepository.save(poll1).getId();
+    em.flush();
+    em.clear();
+
+      //when
+    pollQueryRepository.deleteImageByPollId(id);
+    pollQueryRepository.deleteCandidateByPollId(id);
+    pollRepository.deleteById(id);
+
+      //then
+    assertThat(pollRepository.count()).isEqualTo(0);
   }
 
   private Poll createPoll(LocalDateTime start, LocalDateTime end) {

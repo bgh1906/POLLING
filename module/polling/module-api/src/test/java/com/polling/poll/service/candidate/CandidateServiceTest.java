@@ -21,6 +21,7 @@ import com.polling.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.service.CandidateService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CandidateQueryRepository;
+import com.polling.queryrepository.PollQueryRepository;
 import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
@@ -186,7 +187,7 @@ public class CandidateServiceTest {
     //then
     verify(candidateRepository, times(1)).existsById(1L);
     verify(candidateRepository, times(1)).deleteById(1L);
-    verify(candidateQueryRepository, times(1)).deleteGalleriesByCandidateId(1L);
+    verify(candidateQueryRepository, times(1)).deleteGalleryById(1L);
   }
 
   @Test
@@ -259,7 +260,7 @@ public class CandidateServiceTest {
 
     //then
     verify(candidateRepository, times(1)).findById(1L);
-    verify(candidateQueryRepository, times(1)).deleteGalleriesByCandidateId(1L);
+    verify(candidateQueryRepository, times(1)).deleteGalleryById(1L);
   }
 
 

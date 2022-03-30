@@ -77,7 +77,7 @@ public class CandidateService {
     Candidate candidate = getCandidate(candidateId);
     validateStatus(candidate.getPoll().getPollStatus());
 
-    candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
+    candidateQueryRepository.deleteGalleryById(candidateId);
     candidate.addGallery(new CandidateGallery(requestDto.getImagePath1()));
     candidate.addGallery(new CandidateGallery(requestDto.getImagePath2()));
     candidate.addGallery(new CandidateGallery(requestDto.getImagePath3()));
@@ -91,7 +91,7 @@ public class CandidateService {
     if (!candidateRepository.existsById(candidateId)) {
       throw new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND);
     }
-    candidateQueryRepository.deleteGalleriesByCandidateId(candidateId);
+    candidateQueryRepository.deleteGalleryById(candidateId);
     candidateRepository.deleteById(candidateId);
   }
 

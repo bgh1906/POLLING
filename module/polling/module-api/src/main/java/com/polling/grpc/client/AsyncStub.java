@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * AsyncStub
- *
- * @author akageun
- * @since 2021-12-01
- */
+
 @Slf4j
 @RestController
 @RequestMapping("/async")
