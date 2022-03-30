@@ -84,6 +84,7 @@ function Login2() {
 
                 sessionStorage.setItem("token", res.headers.refreshtoken);
                 sessionStorage.setItem("userid", res.data.id);
+                sessionStorage.setItem("role", res.data.role);
 
                 // localStorage.setItem("token", res.headers.refreshtoken);
                 // localStorage.setItem("userid", res.data.id);
