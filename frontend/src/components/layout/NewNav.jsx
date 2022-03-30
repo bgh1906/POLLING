@@ -5,6 +5,8 @@ import Hamburger from "./Hamburger";
 
 function NewNav() {
 
+    const role = sessionStorage.getItem("role")
+
     return (
         <div >
             <div className={Styles.outbox}></div>
@@ -23,9 +25,20 @@ function NewNav() {
             <div className={Styles.user}>
                 <div className={Styles.userNav}>
                     <Link to="/" className={Styles.text}> {" "}Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
-                    {/* <Link to="/login" className={Styles.text}> {" "}Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link> */}
-                    {/* <Link to="/mypage" className={Styles.text}> Mypage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link> */}
-                    <Link to="/management" className={Styles.text}> admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                    {
+                        role !== "" ?
+                        <Link to="/login" className={Styles.text}> {" "}Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
+                        : (
+                            role === "ROLE_USER"?
+                            <Link to="/mypage" className={Styles.text}> Mypage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                            : (
+                                role === "ROLE_ADMIN" ?
+                                <Link to="/management" className={Styles.text}> admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                                : 
+                                <Link to="/management" className={Styles.text}> Company&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                            )
+                        )
+                    }
                     <Link to="/notice" className={Styles.text}> {" "}FAQ{" "} </Link>
                 </div>
             </div>
