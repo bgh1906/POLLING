@@ -1,4 +1,4 @@
-package com.polling.web.config;
+package com.polling.security.config;
 
 import com.polling.security.jwt.JwtAuthenticationFilter;
 import com.polling.security.jwt.JwtTokenProvider;
