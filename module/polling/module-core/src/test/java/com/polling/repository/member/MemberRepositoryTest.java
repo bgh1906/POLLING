@@ -2,7 +2,7 @@ package com.polling.repository.member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.polling.config.JpaConfig;
+import com.polling.web.config.JpaConfig;
 import com.polling.entity.member.Member;
 import com.polling.entity.member.status.MemberRole;
 import javax.persistence.EntityManager;
