@@ -18,5 +18,6 @@ public interface PollQueryRepository {
   List<Poll> findByCurrentBeforeStartTime(LocalDateTime current);
 
   void deleteImageByPollId(Long pollId);
+
   void deleteCandidateByPollId(Long pollId);
 }

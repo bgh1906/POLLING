@@ -5,8 +5,6 @@ import static com.polling.entity.candidate.QCandidate.*;
 import static com.polling.entity.candidate.QCandidateGallery.*;
 import static com.polling.entity.poll.QPoll.poll;
 
-import com.polling.entity.candidate.QCandidate;
-import com.polling.entity.candidate.QCandidateGallery;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.response.FindPollPageResponseDto;

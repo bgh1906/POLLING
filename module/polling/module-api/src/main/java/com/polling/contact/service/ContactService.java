@@ -18,30 +18,31 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 public class ContactService {
-    private final ContactRepository contactRepository;
-    private final MemberRepository memberRepository;
 
-    @Trace
-    @Transactional
-    public void save(SaveContactRequestDto requestDto, Long id) {
-        Member member = memberRepository.findById(id)
-                .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
-        Contact contact = Contact.builder()
-                .contactStatus(ContactStatus.UNANSWERED)
-                .contactType(requestDto.getContactType())
-                .title(requestDto.getTitle())
-                .content(requestDto.getContent())
-                .member(member)
-                .build();
-        contactRepository.save(contact);
-    }
+  private final ContactRepository contactRepository;
+  private final MemberRepository memberRepository;
 
-    @Trace
-    @Transactional
-    public void saveAnswer(SaveAnswerRequestDto requestDto) {
-        Contact contact = contactRepository.findById(requestDto.getContactId())
-                .orElseThrow(() -> new CustomException(CustomErrorResult.CONTACT_NOT_FOUND));
-        contact.setAnswer(requestDto.getAnswer());
+  @Trace
+  @Transactional
+  public void save(SaveContactRequestDto requestDto, Long id) {
+    Member member = memberRepository.findById(id)
+        .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
+    Contact contact = Contact.builder()
+        .contactStatus(ContactStatus.UNANSWERED)
+        .contactType(requestDto.getContactType())
+        .title(requestDto.getTitle())
+        .content(requestDto.getContent())
+        .member(member)
+        .build();
+    contactRepository.save(contact);
+  }
 
-    }
+  @Trace
+  @Transactional
+  public void saveAnswer(SaveAnswerRequestDto requestDto) {
+    Contact contact = contactRepository.findById(requestDto.getContactId())
+        .orElseThrow(() -> new CustomException(CustomErrorResult.CONTACT_NOT_FOUND));
+    contact.setAnswer(requestDto.getAnswer());
+
+  }
 }

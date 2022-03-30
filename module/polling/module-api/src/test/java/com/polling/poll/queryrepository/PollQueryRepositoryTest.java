@@ -159,10 +159,10 @@ public class PollQueryRepositoryTest {
     assertThat(findList.size()).isEqualTo(1);
     assertThat(findList.get(0).getStartDate()).isEqualTo(start);
   }
-  
+
   @Test
-  public void 투표삭제_단일() throws Exception{
-      //given
+  public void 투표삭제_단일() throws Exception {
+    //given
     String format = "2022-03-31 23:59";
     LocalDateTime start = LocalDateTime.parse(format,
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
@@ -184,12 +184,12 @@ public class PollQueryRepositoryTest {
     em.flush();
     em.clear();
 
-      //when
+    //when
     pollQueryRepository.deleteImageByPollId(id);
     pollQueryRepository.deleteCandidateByPollId(id);
     pollRepository.deleteById(id);
 
-      //then
+    //then
     assertThat(pollRepository.count()).isEqualTo(0);
   }
 

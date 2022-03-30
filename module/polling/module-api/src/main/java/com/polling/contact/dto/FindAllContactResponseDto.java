@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FindAllContactResponseDto {
-    private Long id;
-    private ContactStatus contactStatus;
-    private ContactType contactType;
-    private String title;
-    private String content;
-    private Long memberId;
-    private String answer;
+
+  private Long id;
+  private ContactStatus contactStatus;
+  private ContactType contactType;
+  private String title;
+  private String content;
+  private Long memberId;
+  private String answer;
 }

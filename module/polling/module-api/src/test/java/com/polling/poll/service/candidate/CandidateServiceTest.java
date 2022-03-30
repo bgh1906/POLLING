@@ -21,7 +21,6 @@ import com.polling.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.service.CandidateService;
 import com.polling.queryrepository.CandidateHistoryQueryRepository;
 import com.polling.queryrepository.CandidateQueryRepository;
-import com.polling.queryrepository.PollQueryRepository;
 import com.polling.repository.candidate.CandidateHistoryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
