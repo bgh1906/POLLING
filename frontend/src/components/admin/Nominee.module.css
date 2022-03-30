@@ -134,6 +134,7 @@
 #no_pro2{
     position: absolute;
     width: 13vw;
+    max-height: 15vw;
     padding:1px;
     border:3px solid #021a40;
 }

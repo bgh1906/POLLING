@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 
 function Nominee({nominee, onDel, onEdit, deleteCandi}) {
-    const {id, name, profile, thumbnail, imagePath1,imagePath2,imagePath3} = nominee
+    const { id, candidateId, name, profile, thumbnail, imagePath1,imagePath2,imagePath3} = nominee
 
     return (        
         <div>
@@ -15,7 +15,7 @@ function Nominee({nominee, onDel, onEdit, deleteCandi}) {
                    }
                     } variant="contained">수정</Button>
                 <Button id={styles.profile_del} onClick={()=>{
-                deleteCandi(id)}
+                deleteCandi(candidateId)}
                 } variant="contained">삭제</Button>
                 <div id={styles.profile_desc}>{profile} </div>
             </div>

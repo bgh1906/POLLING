@@ -29,8 +29,7 @@ function CreatePoll() {
     const [pollEnd, setpollEnd] = useState("");
     const [pollDescribe, setpollDescribe] = useState("");    
     const [pollRealtime, setpollRealtime] = useState(false);
-    const [pollLatestTX, setpollLatestTX] = useState(false);
-    const [pollAllTX, setpollAllTX] = useState(false);
+
 
     // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
@@ -92,20 +91,7 @@ function CreatePoll() {
             setpollRealtime(false);
         }
     }
-    function changepollLatestTX(e) {
-        if (e.target.checked === true){
-            setpollLatestTX(true);
-        } else {
-            setpollLatestTX(false);
-        }
-    }
-    function changepollAllTX(e) {
-        if (e.target.checked === true){
-            setpollAllTX(true);
-        } else {
-            setpollAllTX(false);
-        }
-    }
+    
 
     function savePolldata(){
               
@@ -117,6 +103,7 @@ function CreatePoll() {
                 "candidateDtos": nomiList,
                 "content":pollDescribe,
                 "endDate":pollEnd,
+                "openStatus": pollRealtime,
                 "startDate":pollStart,
                 "thumbnail":pollImage,
                 "title":pollName
@@ -203,12 +190,6 @@ function CreatePoll() {
                                 <input id={styles.poll_input3} type="checkbox" value="now"
                                 onChange={changepollRealtime}/> 
                                 <span id={styles.check_text}>실시간 투표 수 공개</span>
-                                <input id={styles.poll_input3} type="checkbox" value="recent" 
-                                onChange={changepollLatestTX}/> 
-                                <span id={styles.check_text}>투표 내역 공개 (최근 50건)</span>
-                                <input id={styles.poll_input3} type="checkbox" value="all"
-                                onChange={changepollAllTX}/> 
-                                <span id={styles.check_text}>전체 투표 내역 공개</span>
                         </div>
                     </div>
                     <div id={styles.poll_title5}>
@@ -221,7 +202,7 @@ function CreatePoll() {
                             placeholder="투표에 대한 설명을 입력하세요."
                             />
                     </div>
-                    <div id={styles.input_name6}> Candidate Registration </div> 
+                    <div id={styles.poll_title6}> <span id={styles.input_name6}>Candidate Registration</span> </div> 
                 </div>
 
                 <NomineeInput onAdd={onAdd} current={current} isEdit={isEdit} onUpdate={onUpdate}/>

@@ -15,7 +15,7 @@ function NomineeList({ nomiList, onDel, onEdit, deleteCandi}) {
     return (
          <ul style={{ padding:"0" }}>
              {
-                 nomiList.map(nominee => <Nominee2 key={nominee.id} nominee={nominee} onDel={onDel} onEdit={onEdit} deleteCandi={deleteCandi}/>)
+                 nomiList.map(nominee => <Nominee2 key={nominee.candidateId} nominee={nominee} onDel={onDel} onEdit={onEdit} deleteCandi={deleteCandi}/>)
              }
          </ul>
 

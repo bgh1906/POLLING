@@ -19,7 +19,7 @@ function NomineeInput({onAdd, current, isEdit, onUpdate, patchCandi, addCandi}) 
     useEffect(()=>{
         if(isEdit){
             setForm({
-                id: current.id,
+                candidateId: current.candidateId,
                 name: current.name,
                 profile: current.profile,
                 thumbnail: current.thumbnail,
