@@ -50,8 +50,7 @@ public class NotificationService {
     messages.add(requestDto);
     try {
       sendSmsServer(messages);
-      SMSCodeResponseDto response = new SMSCodeResponseDto("testcode");
-      return response;
+      return new SMSCodeResponseDto("testcode");
     } catch (Exception e) {
       throw new CustomException(CustomErrorResult.FAIL_SEND_SMS);
     }

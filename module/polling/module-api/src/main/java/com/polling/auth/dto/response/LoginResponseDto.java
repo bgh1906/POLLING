@@ -17,5 +17,4 @@ public class LoginResponseDto {
 
   private String nickname;
 
-
 }

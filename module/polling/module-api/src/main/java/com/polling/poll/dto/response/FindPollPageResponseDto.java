@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FindPollPageResponseDto {
 
-  Long id;
+  Long pollId;
   String title;
   String thumbnail;
   Boolean openStatus;

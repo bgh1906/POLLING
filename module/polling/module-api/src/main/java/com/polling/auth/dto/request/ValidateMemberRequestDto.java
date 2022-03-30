@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ValidateMemberRequestDto {
-    private String accessToken;
-    private String oAuthType;
+
+  private String accessToken;
+  private String oAuthType;
 }

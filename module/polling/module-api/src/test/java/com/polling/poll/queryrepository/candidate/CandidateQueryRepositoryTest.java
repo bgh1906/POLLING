@@ -30,8 +30,8 @@ public class CandidateQueryRepositoryTest {
   public void 후보자조회_모든정보() throws Exception {
     //given
     Poll savedPoll = createPoll("test");
-    Candidate candidate1 = createCandidate(1L);
-    Candidate candidate2 = createCandidate(2L);
+    Candidate candidate1 = createCandidate(1);
+    Candidate candidate2 = createCandidate(2);
     savedPoll.addCandidate(candidate1);
     savedPoll.addCandidate(candidate2);
     pollRepository.save(savedPoll);
@@ -51,8 +51,8 @@ public class CandidateQueryRepositoryTest {
   public void 후보자전체삭제_투표단위() throws Exception {
     //given
     Poll poll = createPoll("test");
-    Candidate candidate1 = createCandidate(1L);
-    Candidate candidate2 = createCandidate(2L);
+    Candidate candidate1 = createCandidate(1);
+    Candidate candidate2 = createCandidate(2);
     poll.addCandidate(candidate1);
     poll.addCandidate(candidate2);
     Poll savedPoll = pollRepository.save(poll);
@@ -74,7 +74,7 @@ public class CandidateQueryRepositoryTest {
         .build();
   }
 
-  private Candidate createCandidate(Long index) {
+  private Candidate createCandidate(Integer index) {
     Candidate candidate = Candidate
         .builder()
         .smartContractIndex(index)

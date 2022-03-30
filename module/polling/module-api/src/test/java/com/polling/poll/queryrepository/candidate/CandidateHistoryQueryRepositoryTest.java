@@ -38,8 +38,8 @@ public class CandidateHistoryQueryRepositoryTest {
   @Test
   public void 후보자투표내역조회() throws Exception {
     //given
-    Candidate savedCandidate = candidateRepository.save(createCandidate(1L));
-    Candidate anotherCandidate = candidateRepository.save(createCandidate(2L));
+    Candidate savedCandidate = candidateRepository.save(createCandidate(1));
+    Candidate anotherCandidate = candidateRepository.save(createCandidate(2));
     Member savedMember = memberRepository.save(Member.builder().build());
     vote(savedMember, savedCandidate, 1);
     vote(savedMember, savedCandidate, 1);
@@ -61,7 +61,7 @@ public class CandidateHistoryQueryRepositoryTest {
   public void 후보자투표내역조회_오늘투표했는지() throws Exception {
     //given
     Poll poll = Poll.builder().build();
-    Candidate savedCandidate = candidateRepository.save(createCandidate(1L));
+    Candidate savedCandidate = candidateRepository.save(createCandidate(1));
     poll.addCandidate(savedCandidate);
     Long pollId = pollRepository.save(poll).getId();
     Member savedMember = memberRepository.save(Member.builder().build());
@@ -83,7 +83,7 @@ public class CandidateHistoryQueryRepositoryTest {
         .build());
   }
 
-  public Candidate createCandidate(Long index) {
+  public Candidate createCandidate(Integer index) {
     Candidate candidate = Candidate.builder()
         .smartContractIndex(index)
         .thumbnail("thumbnail")

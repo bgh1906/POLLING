@@ -1,10 +1,7 @@
 package com.polling.entity.contact.status;
 
-import com.polling.entity.member.status.MemberRole;
-import com.polling.entity.poll.status.PollStatus;
-import lombok.Getter;
-
 import java.util.Arrays;
+import lombok.Getter;
 
 @Getter
 public enum ContactStatus {
@@ -19,9 +16,9 @@ public enum ContactStatus {
 
   public static ContactStatus findByMethod(String description) {
     return Arrays.stream(values())
-            .filter(m -> m.description.equals(description))
-            .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
+        .filter(m -> m.description.equals(description))
+        .findFirst()
+        .orElseThrow(IllegalArgumentException::new);
   }
 
 }

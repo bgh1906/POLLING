@@ -24,6 +24,7 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository {
     return query
         .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
             candidate.id,
+            candidate.smartContractIndex,
             candidate.name,
             candidate.thumbnail)))
         .from(candidate)

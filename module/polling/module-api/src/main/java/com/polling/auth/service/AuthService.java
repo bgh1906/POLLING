@@ -26,30 +26,25 @@ public class AuthService {
   @Trace
   @Retry
   public Member auth(AuthRequestDto requestDto) {
-      System.out.println("accessToken: " + requestDto.getAccessToken());
-      KaKaoOAuthResponse profile = oAuthClient.getInfo(
-          requestDto.getAccessToken());    //kakao만 잡혀 있음
-        Member member = Member.builder()
-            .email(profile.getOAuthEmail())
-            .nickname(requestDto.getNickname())
-            .oauthType(OAuthType.KAKAO)
-            .oauthId(profile.getId())
-            .phoneNumber(requestDto.getPhoneNumber())
-            .build();
-        Member savedMember = memberRepository.save(member);
-        return savedMember;
+    System.out.println("accessToken: " + requestDto.getAccessToken());
+    KaKaoOAuthResponse profile = oAuthClient.getInfo(
+        requestDto.getAccessToken());    //kakao만 잡혀 있음
+    Member member = Member.builder()
+        .email(profile.getOAuthEmail())
+        .nickname(requestDto.getNickname())
+        .oauthType(OAuthType.KAKAO)
+        .oauthId(profile.getId())
+        .phoneNumber(requestDto.getPhoneNumber())
+        .build();
+    return memberRepository.save(member);
   }
 
-    @Trace
-    @Retry
-    public Member validate(ValidateMemberRequestDto requestDto) {
-        KaKaoOAuthResponse profile = oAuthClient.getInfo(requestDto.getAccessToken());    //kakao만 잡혀 있음
-        Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());
-        if (existMember.isPresent()) {
-            return existMember.get();
-        } else {
-            return null;
-        }
-    }
+  @Trace
+  @Retry
+  public Member validate(ValidateMemberRequestDto requestDto) {
+    KaKaoOAuthResponse profile = oAuthClient.getInfo(requestDto.getAccessToken());    //kakao만 잡혀 있음
+    Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());
+    return existMember.orElse(null);
+  }
 
 }

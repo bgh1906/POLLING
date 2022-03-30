@@ -2,6 +2,7 @@ package com.polling.poll.controller;
 
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
+import com.polling.poll.dto.candidate.request.AddCandidateRequestDto;
 import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.dto.request.SavePollRequestDto;
@@ -48,7 +49,7 @@ public class AdminPollController {
   @Trace
   @PostMapping("/candidate")
   @ApiOperation(value = "후보자 추가", notes = "상태가 unapproved, wait인 경우에만 가능")
-  public ResponseEntity<Void> addCandidate(@RequestBody SaveCandidateRequestDto requestDto) {
+  public ResponseEntity<Void> addCandidate(@RequestBody AddCandidateRequestDto requestDto) {
     pollService.addCandidate(requestDto);
     return ResponseEntity.status(200).build();
   }

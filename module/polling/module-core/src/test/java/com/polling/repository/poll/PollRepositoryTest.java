@@ -2,10 +2,10 @@ package com.polling.repository.poll;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.polling.web.config.JpaConfig;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
+import com.polling.web.config.JpaConfig;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -124,13 +124,13 @@ public class PollRepositoryTest {
         .startDate(start)
         .endDate(end)
         .build();
-    poll.addCandidate(Candidate.builder().smartContractIndex(1L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(2L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(3L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(4L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(5L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(6L).build());
-    poll.addCandidate(Candidate.builder().smartContractIndex(7L).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(1).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(2).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(3).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(4).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(5).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(6).build());
+    poll.addCandidate(Candidate.builder().smartContractIndex(7).build());
     return pollRepository.save(poll);
   }
 
