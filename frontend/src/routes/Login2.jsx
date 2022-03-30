@@ -68,7 +68,7 @@ function Login2() {
         } else if(email !== "" && password !==""){
             axios
               .post(
-                "https://j6a304.p.ssafy.io:8080/api/auth",
+                "https://j6a304.p.ssafy.io/api/auth",
                   {
                       email: email,
                       password: password,
@@ -129,7 +129,7 @@ function Login2() {
             console.log(response.access_token);
             const accessToken = response.access_token;
             axios
-              .post("https://j6a304.p.ssafy.io:8080/api/auth/validate", {
+              .post("https://j6a304.p.ssafy.io/api/auth/validate", {
                 // accessToken: response.refresh_token,
                 // accessToken: response.access_token,
                 nickname: "KAKAO",

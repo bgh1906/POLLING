@@ -44,8 +44,6 @@ function App() {
           <Route path="/poll/:pollnum" element={<Poll />}></Route>
           <Route path="/poll/:pollnum/:id/1" element={<Candidate />}></Route>
           <Route path="/poll/:pollnum/:id/2" element={<Candidate2 />}></Route>
-          <Route path="/nominee" element={<Candidate />}></Route>
-          <Route path="/nominee2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
           <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
         </Routes>

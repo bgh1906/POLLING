@@ -21,7 +21,7 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
 
     function deleteComment(){
         axios.delete(
-            `https://j6a304.p.ssafy.io:8080/api/polls/candidates/comments/${commentId}`,
+            `https://j6a304.p.ssafy.io/api/polls/candidates/comments/${commentId}`,
             {
                 headers: {
                     "Authorization": token,
