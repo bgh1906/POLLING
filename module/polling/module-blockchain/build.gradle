@@ -1,4 +1,3 @@
-
 dependencyManagement {
     imports {
         mavenBom 'io.micrometer:micrometer-bom:1.7.4'

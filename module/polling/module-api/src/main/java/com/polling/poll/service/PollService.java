@@ -125,7 +125,9 @@ public class PollService {
   @Scheduled(fixedRate = 60000)
   public void checkPollEndTime() {
     List<Poll> polls = pollQueryRepository.findByCurrentBeforeEndTime(LocalDateTime.now());
-    polls.forEach(poll -> poll.changePollStatus(PollStatus.DONE));
+    if (!polls.isEmpty()) {
+      polls.forEach(poll -> poll.changePollStatus(PollStatus.DONE));
+    }
   }
 
   @Trace

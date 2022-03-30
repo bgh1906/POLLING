@@ -1,8 +1,7 @@
 package com.polling.entity.contact.status;
 
-import lombok.Getter;
-
 import java.util.Arrays;
+import lombok.Getter;
 
 @Getter
 public enum ContactType {
@@ -18,9 +17,9 @@ public enum ContactType {
 
   public static ContactType findByMethod(String description) {
     return Arrays.stream(values())
-            .filter(m -> m.description.equals(description))
-            .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
+        .filter(m -> m.description.equals(description))
+        .findFirst()
+        .orElseThrow(IllegalArgumentException::new);
   }
 
 }

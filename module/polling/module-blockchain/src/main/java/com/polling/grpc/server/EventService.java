@@ -19,112 +19,114 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventService extends EventServiceGrpc.EventServiceImplBase {
 
-    @Override
-    public void sendEvent(EventRequest request, StreamObserver<EventResponse> responseObserver) {
-        try {
-            log.info("sendEvent : {}", request.toString());
+  @Override
+  public void sendEvent(EventRequest request, StreamObserver<EventResponse> responseObserver) {
+    try {
+      log.info("sendEvent : {}", request.toString());
 
-            responseObserver.onNext(
-                EventResponse.newBuilder()
-                    .setStatus(ResultStatus.newBuilder()
-                        .setCode(Status.OK.getCode().value())
-                        .setMessage("SUCCESS!!!")
-                        .build())
-                    .setResult("Success Event")
-                    .build()
-            );
-            responseObserver.onCompleted();
+      responseObserver.onNext(
+          EventResponse.newBuilder()
+              .setStatus(ResultStatus.newBuilder()
+                  .setCode(Status.OK.getCode().value())
+                  .setMessage("SUCCESS!!!")
+                  .build())
+              .setResult("Success Event")
+              .build()
+      );
+      responseObserver.onCompleted();
 
-        } catch (Exception e) {
-            responseObserver.onError(e);
+    } catch (Exception e) {
+      responseObserver.onError(e);
+    }
+
+  }
+
+  @Override
+  public void sendEventServerStream(EventRequest request,
+      StreamObserver<EventResponse> responseObserver) {
+    try {
+      log.info("sendEventServerStream : {}", request.toString());
+
+      for (int i = 0; i < 10; i++) {
+        responseObserver.onNext(
+            EventResponse.newBuilder()
+                .setStatus(ResultStatus.newBuilder()
+                    .setCode(Status.OK.getCode().value())
+                    .setMessage("SUCCESS!!!")
+                    .build())
+                .setResult("Success Event " + i)
+                .build()
+        );
+      }
+
+      responseObserver.onCompleted();
+
+    } catch (Exception e) {
+      responseObserver.onError(e);
+    }
+  }
+
+  @Override
+  public StreamObserver<EventRequest> sendEventClientStream(
+      StreamObserver<EventResponse> responseObserver) {
+    return new StreamObserver<EventRequest>() {
+      @Override
+      public void onNext(EventRequest value) {
+        log.info("sendEventClientStream request onNext : {}", value.toString());
+      }
+
+      @Override
+      public void onError(Throwable t) {
+        log.info("sendEventClientStream request onError : {}", t.getMessage());
+      }
+
+      @Override
+      public void onCompleted() {
+        responseObserver.onNext(
+            EventResponse.newBuilder()
+                .setStatus(ResultStatus.newBuilder()
+                    .setCode(Status.OK.getCode().value())
+                    .setMessage("SUCCESS!!!")
+                    .build())
+                .setResult("Success Event")
+                .build()
+        );
+        responseObserver.onCompleted();
+      }
+    };
+  }
+
+
+  @Override
+  public StreamObserver<EventRequest> sendEventStream(
+      StreamObserver<EventResponse> responseObserver) {
+    StreamObserver<EventRequest> requestStreamObserver = new StreamObserver<EventRequest>() {
+      @Override
+      public void onNext(EventRequest value) {
+        for (int i = 0; i < 10; i++) {
+          responseObserver.onNext(
+              EventResponse.newBuilder()
+                  .setStatus(ResultStatus.newBuilder()
+                      .setCode(Status.OK.getCode().value())
+                      .setMessage("SUCCESS!!!")
+                      .build())
+                  .setResult("Success Event " + i)
+                  .build()
+          );
         }
+      }
 
-    }
+      @Override
+      public void onError(Throwable t) {
+        log.info("sendEventClientStream request onError : {}", t.getMessage());
+      }
 
-    @Override
-    public void sendEventServerStream(EventRequest request, StreamObserver<EventResponse> responseObserver) {
-        try {
-            log.info("sendEventServerStream : {}", request.toString());
+      @Override
+      public void onCompleted() {
+        responseObserver.onCompleted();
+      }
+    };
 
-            for (int i = 0; i < 10; i++) {
-                responseObserver.onNext(
-                    EventResponse.newBuilder()
-                        .setStatus(ResultStatus.newBuilder()
-                            .setCode(Status.OK.getCode().value())
-                            .setMessage("SUCCESS!!!")
-                            .build())
-                        .setResult("Success Event " + i)
-                        .build()
-                );
-            }
-
-
-            responseObserver.onCompleted();
-
-        } catch (Exception e) {
-            responseObserver.onError(e);
-        }
-    }
-
-    @Override
-    public StreamObserver<EventRequest> sendEventClientStream(StreamObserver<EventResponse> responseObserver) {
-        return new StreamObserver<EventRequest>() {
-            @Override
-            public void onNext(EventRequest value) {
-                log.info("sendEventClientStream request onNext : {}", value.toString());
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                log.info("sendEventClientStream request onError : {}", t.getMessage());
-            }
-
-            @Override
-            public void onCompleted() {
-                responseObserver.onNext(
-                    EventResponse.newBuilder()
-                        .setStatus(ResultStatus.newBuilder()
-                            .setCode(Status.OK.getCode().value())
-                            .setMessage("SUCCESS!!!")
-                            .build())
-                        .setResult("Success Event")
-                        .build()
-                );
-                responseObserver.onCompleted();
-            }
-        };
-    }
-
-
-    @Override
-    public StreamObserver<EventRequest> sendEventStream(StreamObserver<EventResponse> responseObserver) {
-        StreamObserver<EventRequest> requestStreamObserver = new StreamObserver<EventRequest>() {
-            @Override
-            public void onNext(EventRequest value) {
-                for (int i = 0; i < 10; i++) {
-                    responseObserver.onNext(
-                        EventResponse.newBuilder()
-                            .setStatus(ResultStatus.newBuilder()
-                                .setCode(Status.OK.getCode().value())
-                                .setMessage("SUCCESS!!!")
-                                .build())
-                            .setResult("Success Event " + i)
-                            .build()
-                    );
-                }
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                log.info("sendEventClientStream request onError : {}", t.getMessage());
-            }
-
-            @Override
-            public void onCompleted() {
-                responseObserver.onCompleted();
-            }
-        };
-
-        return requestStreamObserver;
-    }
+    return requestStreamObserver;
+  }
 }

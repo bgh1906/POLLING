@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 public class SaveContactRequestDto {
-    private String contactStatus;
-    private String contactType;
-    private String title;
-    private String content;
+
+  private String contactStatus;
+  private String contactType;
+  private String title;
+  private String content;
 }

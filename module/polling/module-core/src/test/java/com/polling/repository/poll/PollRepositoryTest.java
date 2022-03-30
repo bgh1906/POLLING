@@ -2,10 +2,10 @@ package com.polling.repository.poll;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.polling.web.config.JpaConfig;
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
+import com.polling.web.config.JpaConfig;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

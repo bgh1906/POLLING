@@ -76,7 +76,34 @@ public class PollQueryRepositoryTest {
   }
 
   @Test
-  public void 투표조회_종료시간이끝난() throws Exception {
+  public void 투표조회_종료시간이끝난_데이터없음() throws Exception {
+    //given
+    String format = "2022-03-31 23:59";
+    LocalDateTime end = LocalDateTime.parse(format,
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    log.trace("================================={}", end.plusMinutes(2));
+    Poll poll1 = createPoll(end.minusDays(5), end.plusMinutes(3));
+    Poll poll2 = createPoll(end.minusDays(5), end.plusMinutes(2));
+    poll1.changePollStatus(PollStatus.IN_PROGRESS);
+    poll2.changePollStatus(PollStatus.IN_PROGRESS);
+
+    pollRepository.save(poll1);
+    pollRepository.save(poll2);
+    format = "2022-04-01 00:00";
+    LocalDateTime current = LocalDate.parse(format, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+        .atStartOfDay();
+
+    //when
+    List<Poll> findList = pollQueryRepository.findByCurrentBeforeEndTime(current);
+
+    //then
+    assertThat(findList.size()).isEqualTo(0);
+    assertThat(findList.isEmpty()).isTrue();
+  }
+
+
+  @Test
+  public void 투표조회_종료시간이끝난_데이터있음() throws Exception {
     //given
     String format = "2022-03-31 23:59";
     LocalDateTime end = LocalDateTime.parse(format,

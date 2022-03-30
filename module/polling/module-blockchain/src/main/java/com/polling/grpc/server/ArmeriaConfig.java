@@ -19,23 +19,23 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ArmeriaConfig {
 
-    @Autowired
-    private EventService eventService;
+  @Autowired
+  private EventService eventService;
 
-    @Bean
-    public ArmeriaServerConfigurator armeriaServerConfigurator() {
-        return serverBuilder -> {
-            serverBuilder.decorator(LoggingService.newDecorator());
-            serverBuilder.accessLogWriter(AccessLogWriter.combined(), false);
+  @Bean
+  public ArmeriaServerConfigurator armeriaServerConfigurator() {
+    return serverBuilder -> {
+      serverBuilder.decorator(LoggingService.newDecorator());
+      serverBuilder.accessLogWriter(AccessLogWriter.combined(), false);
 
-            serverBuilder
-                .service(GrpcService.builder()
+      serverBuilder
+          .service(GrpcService.builder()
 //                    .addService(eventService)
-                    .supportedSerializationFormats(GrpcSerializationFormats.values())
-                    .enableUnframedRequests(true)
-                    .build());
+              .supportedSerializationFormats(GrpcSerializationFormats.values())
+              .enableUnframedRequests(true)
+              .build());
 
-            serverBuilder.serviceUnder("/docs", new DocService());
-        };
-    }
+      serverBuilder.serviceUnder("/docs", new DocService());
+    };
+  }
 }
