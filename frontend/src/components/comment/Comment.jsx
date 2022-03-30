@@ -3,53 +3,67 @@ import styles from "./Comment.module.css"
 import Button from '@mui/material/Button';
 import axios from "axios";
 import CommentList from "./CommentList";
+import cheer from "../../assets/cheer.png";
+import { useSelector } from 'react-redux'
+import Swal from "sweetalert2";
 
 
 
-function Comment() {
+function Comment({candiId, data, renderCheck}) {
 
     const [ripple, setRipple] = useState("")
-  
+
+    // const token = useSelector((state)=>(state[0].token));
+    // const nick = useSelector((state)=>(state[0].token));
+
+    const token = sessionStorage.getItem("token")
+
     function changeInput(e){
         setRipple(e.target.value)
     }
 
     function onSubmit(e){
         e.preventDefault()
-        console.log(ripple)
-        setRipple("")
+       
         axios
         .post(
-            "http://j6a304.p.ssafy.io:8080/api/candidates/comment",
+            "https://j6a304.p.ssafy.io:8080/api/polls/candidates/comments",
             {
-                "candidateId": 0,
-                "content": {ripple}
+                "candidateId": candiId,
+                "content": ripple
             },
             {
                 headers: {
-                    Authorization:"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODA1ODk2NSwiZXhwIjoxNjQ4MDYwNzY1fQ.8o-Qm4UN9gvc0Jsb6LU5Ge7pHvAHL2HrD3W3BQ6W2RM"
+                    Authorization: token
                 },
             }
         )
         .then((res) =>{
-            console.log(res)
+            console.log("댓글작성!")
+            setRipple("")
+            renderCheck()
+            
         })
         .catch((e) =>{
             console.error(e);
+            Swal.fire({
+                title: '로그인을 해주세요!',
+                icon: 'warning'                        
+            })
         });
 
     };
 
     return (
         <div className={styles.comment_box}> 
-            <div id={styles.message}>응원 메시지</div>
+            <div id={styles.message}><img id={styles.cheer} src={cheer} alt="cheer"/>응원 메시지</div>
             <form id={styles.comment_form} onSubmit={onSubmit}>
                 <textarea id={styles.comment_input} type="text" onChange={changeInput} value={ripple} name="ripple" maxLength="100"
                     placeholder="응원 메시지를 적어주세요~!"
                 ></textarea>
                 <Button id={styles.register_button} type="submit" variant="contained">댓글 등록</Button>
             </form>
-            <CommentList></CommentList>
+            <CommentList data={data} renderCheck={renderCheck}></CommentList>
         </div>
     );
 }

@@ -1,0 +1,53 @@
+.boxImg {
+  width: 20%;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500;
+  background-color: white;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.voteBox {
+  border: 2px solid black;
+  background-color: rgb(212, 212, 212);
+  width: 60px;
+  height: 60px;
+  margin-top: 43px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voteBox .stampImg {
+  width: 80%;
+  height: 80%;
+}
+
+.voteSubmitBtn {
+  margin-top: 1vw;
+  font-size: 18px;
+}
+
+.leftarrow,
+.rightarrow {
+  width: 8%;
+  margin: 20px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.CandImg {
+  vertical-align: middle;
+}

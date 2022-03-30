@@ -41,12 +41,18 @@ function User() {
         }
 
     }
+    // 담당자 이메일 받아오기
+    const [email, setEmail] = useState("");
+    const getEmail = (e) => {
+        setEmail(e.target.value);
+        console.log(email);
+    };
 
-    //id 받아오기
-    const [id, setId] = useState("");
+    //nickname -> 회사명 받아오기
+    const [nickname, setId] = useState("");
     const getId = (e) => {
         setId(e.target.value);
-        console.log(id);
+        console.log(nickname);
     };
 
     //비밀번호 받아오기
@@ -56,27 +62,57 @@ function User() {
         console.log(password);
     };
 
+    //담당자 번호
+    const [phone, setPhone] = useState("");
+    const getPhone = (e) => {
+        setPhone(e.target.value);
+        console.log(phone);
+    };
+
+
     //페이지 이동
     const navigate = useNavigate();
 
     // 회원가입하기
     const onLogin = (e) => {
-        if(id === "" || password ===""){
+        if(nickname ===" " || email === " " || password === " " || phone === " "){
             e.preventDefault();
-            alert("이메일/비밀번호를 입력해주세요");
-        } else if(id !== "" && password !==""){
-    //         axios
-    //           .post(
-    //               "",
-    //               {
-    //                   email: email,
-    //                   password: password,
-    //               },
-    //           )
-    //         .then((res) => {
-    //            navigate("/");
-    //         })
-            alert("회원가입");
+            alert("닉네임/이메일/비밀번호를 입력하세요.")
+        } 
+        else if(nickname !== " " && email !== " " && password !== " " ){
+            axios
+            .post(
+                "http://j6a304.p.ssafy.io:8080/api/members",
+                {
+                    email: email,
+                    nickname: nickname,
+                    password: password,
+                    phoneNumber: phone,
+                    role: "ROLE_COMPANY"
+                },
+            )
+            // const res = await api.authApi
+            //  .login(values)
+            .then((res) => {
+                console.log("res", res);
+                alert("회원가입 성공!")
+                // navigate("/login");
+            })
+            // .catch((e) => {
+            //     console.log(e);
+            //     console.log("회원가입 실패");
+            //     // e.preventDefault();
+            // });
+            .catch(error => {
+                const message = error.message;
+                console.log("message", message);
+                alert("회원가입 실패");
+                // setSubmitError(message);
+                // setTimeout(() => {
+                //   setSubmitError(null);
+                // }, 3000);
+              });
+    
         }
     };
 
@@ -93,19 +129,21 @@ function User() {
                     </div>
                 </div>
 
-                <form hidden={open}>
+                <div hidden={open}>
                     {/* <div className={Styles.userbg}> </div>
                     <input type="text" placeholder="ID" className={Styles.id} onChange={getId} name="id"/>
                     <input type="password" placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
                     <button className={Styles.signinbtn}>Create</button> */}
                     <div className={Styles.login}>
-                        <form >
-                            <input type={"text"} placeholder=" ID" className={Styles.id} onChange={getId} name="Id"/>
+                        <div>
+                            <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname"/>
+                            <input type={"email"} placeholder=" email" className={Styles.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
+                            <input type={"text"} placeholder=" PhoneNumber(01012345678) " className={Styles.phone} onChange={getPhone} name="phone"/>
                             <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
-                        </form>
+                        </div>
                     </div>
-                </form>
+                </div>
 
                 
                 <div hidden={openO}>
@@ -113,28 +151,8 @@ function User() {
                     {/* <input className={Styles.userEmail} type="text" placeholder="회원 이메일" />
                     <button className={Styles.searchbtn}></button> */}
                     {/* <UserSearch /> */}
-                    <UserSearch2 />
                     {/* 회원리스트 주루륵 */}
-                    {/* <div>
-                        <Table className={Styles.table}>
-                            <thead className={Styles.thead}>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nickname</th>
-                                    <th>E-mail</th>
-                                    <th>휴대폰 인증여부</th>
-                                </tr>
-                            </thead>
-                            <tbody className={Styles.tbody}>
-                                <tr>
-                                    <td>{""}1</td>
-                                    <td>신짱아 짱</td>
-                                    <td>ssafy@ssafy</td>
-                                    <td>인증</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </div> */}
+                    <UserSearch2 />
                 </div>
                 
 

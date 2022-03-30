@@ -4,8 +4,8 @@
 .mypage {
     z-index: 5;
     position: absolute;
-    left: 9vw;
-    top: 30vh;
+    left: 13vw;
+    top: 20vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -15,6 +15,12 @@
     
     color: #000000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tabs{
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-weight: bold;
+    font-size: 1.5vw;  
 }
 
 .info{

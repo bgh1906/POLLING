@@ -376,7 +376,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
                     &nbsp;&nbsp;7. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 몰에 공개 또는 게시하는 행위 
                 </Typography>
-                        <br /><br />
+                    <br /><br />
                 <Typography gutterBottom>
                     제21조&#40;연결“몰”과 피연결“몰” 간의 관계&#41; <br />
 
@@ -411,7 +411,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
                     &nbsp;&nbsp;① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다. 
                     <br /><br />
                     &nbsp;&nbsp;② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
-                    </Typography>
+                </Typography>
             </DialogContent>
         </Dialog>
         {/* <DialogActions>

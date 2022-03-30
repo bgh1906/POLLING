@@ -1,0 +1,37 @@
+.right_title {
+  font-family: "Baskervville", serif;
+  font-size: 3vw;
+  position: absolute;
+  top: -4.3vw;
+}
+
+.Cand_list {
+  margin-top: -2vw;
+}
+
+.poll_Cand {
+  display: flex;
+  align-items: center;
+  margin: 2vw 0;
+}
+
+.poll_Cand:nth-child(1) {
+  border: 4px solid gold;
+}
+
+.poll_Cand:nth-child(2) {
+  border: 5px solid silver;
+}
+
+.poll_Cand:nth-child(3) {
+  border: 5px solid brown;
+}
+
+.poll_Cand .CandImg {
+  width: 30%;
+  padding: 1vw;
+}
+
+.poll_Cand figcaption {
+  text-align: center;
+}

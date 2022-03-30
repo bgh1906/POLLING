@@ -1,7 +1,9 @@
 .history_title {
   /* font-family: "Bitter", serif; */
   font-family: "Baskervville", serif;
-  font-size: 60px;
+  font-size: 6vw;
+  font-weight: 900;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-right: 270px;
   padding-top: 150px;
   text-align: right;
@@ -11,7 +13,7 @@
   text-align: right;
   padding-right: 270px;
   padding-top: 20px;
-  font-size: 20px;
+  font-size: 1.3vw;
 }
 
 .history_container {
