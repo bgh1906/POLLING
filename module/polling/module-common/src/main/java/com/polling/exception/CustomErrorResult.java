@@ -32,6 +32,7 @@ public enum CustomErrorResult {
   TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "요청 헤더에 토큰이 없습니다"),
   REFRESH_TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "로그아웃 된 사용자입니다"),
   ROLE_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 권한 정보를 찾을 수 없습니다"),
+  CONTACT_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 1:1 문의를 찾을 수 없습니다"),
 
   /*406*/
   INVALID_USER_BANNED(HttpStatus.NOT_ACCEPTABLE, "차단된 유저입니다."),

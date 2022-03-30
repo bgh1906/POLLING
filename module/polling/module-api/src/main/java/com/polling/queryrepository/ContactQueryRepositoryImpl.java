@@ -1,8 +1,7 @@
 package com.polling.queryrepository;
 
+import com.polling.contact.dto.FindAllContactResponseDto;
 import com.polling.contact.dto.FindContactResponseDto;
-import com.polling.entity.contact.status.ContactType;
-import com.polling.poll.dto.comment.response.FindCommentResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.polling.entity.comment.QComment.comment;
 import static com.polling.entity.contact.QContact.contact;
-import static com.polling.entity.member.QMember.member;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -33,6 +30,20 @@ public class ContactQueryRepositoryImpl implements ContactQueryRepository {
                         contact.content)))
                 .from(contact)
                 .where(contact.member.id.eq(memberId))
+                .fetch();
+    }
+
+    @Override
+    public List<FindAllContactResponseDto> findAllContact() {
+        return query
+                .select((Projections.constructor(FindAllContactResponseDto.class,
+                        contact.id,
+                        contact.contactStatus,
+                        contact.contactType,
+                        contact.title,
+                        contact.content,
+                        contact.member.id)))
+                .from(contact)
                 .fetch();
     }
 }
