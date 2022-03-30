@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class FindAdminCandidateResponseDto {
 
   private Long candidateId;
+  private Integer candidateIndex;
   private String name;
   private String profile;
   private String thumbnail;
@@ -20,9 +21,10 @@ public class FindAdminCandidateResponseDto {
   private String imagePath3;
 
   @Builder
-  public FindAdminCandidateResponseDto(Long candidateId, String name, String thumbnail,
+  public FindAdminCandidateResponseDto(Long candidateId, Integer candidateIndex, String name, String thumbnail,
       List<CandidateGallery> galleries, String profile) {
     this.candidateId = candidateId;
+    this.candidateIndex = candidateIndex;
     this.name = name;
     this.profile = profile;
     this.thumbnail = thumbnail;

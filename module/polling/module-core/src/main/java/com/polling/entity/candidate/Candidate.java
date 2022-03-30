@@ -44,10 +44,10 @@ public class Candidate extends BaseTimeEntity {
   private String profile;
   @Column(length = 1000)
   private String thumbnail;
-  private Long smartContractIndex;
+  private Integer smartContractIndex;
 
   @Builder
-  public Candidate(Long smartContractIndex, Poll poll, String name, String profile,
+  public Candidate(Integer smartContractIndex, Poll poll, String name, String profile,
       String thumbnail) {
     this.smartContractIndex = smartContractIndex;
     this.poll = poll;

@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ModifyPollRequestDto {
-
-  List<SaveCandidateRequestDto> candidateDtos;
   String title;
   String content;
   String thumbnail;

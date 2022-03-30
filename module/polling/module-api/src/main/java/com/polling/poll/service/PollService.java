@@ -10,6 +10,7 @@ import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
+import com.polling.poll.dto.candidate.request.AddCandidateRequestDto;
 import com.polling.poll.dto.candidate.request.SaveCandidateRequestDto;
 import com.polling.poll.dto.candidate.response.FindAdminCandidateResponseDto;
 import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
@@ -74,6 +75,7 @@ public class PollService {
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
             .candidateId(candidate.getId())
+            .candidateIndex(candidate.getSmartContractIndex())
             .name(candidate.getName())
             .thumbnail(candidate.getThumbnail())
             .galleries(candidate.getGalleries())
@@ -91,8 +93,9 @@ public class PollService {
   }
 
   @Trace
-  public void addCandidate(SaveCandidateRequestDto requestDto) {
-    Poll poll = getPoll(requestDto.getCandidateIndex());
+  public void addCandidate(AddCandidateRequestDto requestDto) {
+    Poll poll = getPoll(requestDto.getPollId());
+    validateStatus(poll);
     poll.addCandidate(requestDto.toEntity());
   }
 

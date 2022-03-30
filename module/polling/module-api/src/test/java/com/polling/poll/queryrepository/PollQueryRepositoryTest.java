@@ -49,7 +49,7 @@ public class PollQueryRepositoryTest {
 
     //then
     assertThat(result.size()).isEqualTo(1);
-    assertThat(result.get(0).getId()).isEqualTo(savedPoll2.getId());
+    assertThat(result.get(0).getPollId()).isEqualTo(savedPoll2.getId());
   }
 
   @Test
@@ -72,7 +72,7 @@ public class PollQueryRepositoryTest {
 
     //then
     assertThat(result.size()).isEqualTo(1);
-    assertThat(result.get(0).getId()).isEqualTo(savedPoll.getId());
+    assertThat(result.get(0).getPollId()).isEqualTo(savedPoll.getId());
   }
 
   @Test

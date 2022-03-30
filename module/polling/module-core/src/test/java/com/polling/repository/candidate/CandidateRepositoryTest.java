@@ -28,7 +28,7 @@ public class CandidateRepositoryTest {
     //given
 
     //when
-    Long saveCandidateId = candidateRepository.save(createCandidate(1L)).getId();
+    Long saveCandidateId = candidateRepository.save(createCandidate(1)).getId();
 
     //then
     Candidate candidate = candidateRepository.findById(saveCandidateId).orElseThrow();
@@ -39,7 +39,7 @@ public class CandidateRepositoryTest {
   @Test
   public void 후보자생성_이미지있음() throws Exception {
     //given
-    Candidate candidate = createCandidate(1L);
+    Candidate candidate = createCandidate(1);
     candidate.addGallery(new CandidateGallery("image1"));
     candidate.addGallery(new CandidateGallery("image2"));
     candidate.addGallery(new CandidateGallery("image3"));
@@ -58,7 +58,7 @@ public class CandidateRepositoryTest {
   @Test
   public void 후보자삭제() throws Exception {
     //given
-    Candidate candidate = createCandidate(1L);
+    Candidate candidate = createCandidate(1);
     candidateRepository.save(candidate);
 
     //when
@@ -69,7 +69,7 @@ public class CandidateRepositoryTest {
 
   }
 
-  private Candidate createCandidate(Long index) {
+  private Candidate createCandidate(Integer index) {
 
     return Candidate.builder()
         .smartContractIndex(index)
