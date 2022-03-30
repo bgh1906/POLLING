@@ -20,6 +20,7 @@ import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
 import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.queryrepository.PollQueryRepository;
+import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import java.time.LocalDateTime;
@@ -39,6 +40,7 @@ public class PollService {
   private final PollRepository pollRepository;
   private final MemberRepository memberRepository;
   private final CandidateQueryRepository candidateQueryRepository;
+  private final CandidateRepository candidateRepository;
   private final PollQueryRepository pollQueryRepository;
 
   @Trace
@@ -86,9 +88,9 @@ public class PollService {
 
   @Trace
   public void deletePoll(Long pollId) {
-    if (!pollRepository.existsById(pollId)) {
-      throw new CustomException(CustomErrorResult.VOTE_NOT_FOUND);
-    }
+    getPoll(pollId);
+    pollQueryRepository.deleteImageByPollId(pollId);
+    pollQueryRepository.deleteCandidateByPollId(pollId);
     pollRepository.deleteById(pollId);
   }
 

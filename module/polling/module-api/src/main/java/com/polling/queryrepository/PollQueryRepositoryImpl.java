@@ -1,12 +1,17 @@
 package com.polling.queryrepository;
 
 
+import static com.polling.entity.candidate.QCandidate.*;
+import static com.polling.entity.candidate.QCandidateGallery.*;
 import static com.polling.entity.poll.QPoll.poll;
 
+import com.polling.entity.candidate.QCandidate;
+import com.polling.entity.candidate.QCandidateGallery;
 import com.polling.entity.poll.Poll;
 import com.polling.entity.poll.status.PollStatus;
 import com.polling.poll.dto.response.FindPollPageResponseDto;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -61,4 +66,30 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
         .fetch();
   }
 
+  @Override
+  public void deleteImageByPollId(Long pollId) {
+    query.delete(candidateGallery)
+        .where(candidateGallery.in(
+            JPAExpressions
+                .select(candidateGallery)
+                .from(candidateGallery)
+                .where(candidate.in(
+                    JPAExpressions
+                        .select(candidate)
+                        .from(candidate)
+                        .where(candidate.poll.id.eq(pollId))
+                ))
+        )).execute();
+  }
+
+  @Override
+  public void deleteCandidateByPollId(Long pollId) {
+    query.delete(candidate)
+        .where(candidate.in(
+            JPAExpressions
+                .select(candidate)
+                .from(candidate)
+                .where(candidate.poll.id.eq(pollId))
+        )).execute();
+  }
 }

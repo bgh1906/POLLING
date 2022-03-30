@@ -6,6 +6,7 @@ import static com.polling.entity.candidate.QCandidateGallery.candidateGallery;
 import com.polling.entity.candidate.Candidate;
 import com.polling.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -42,17 +43,15 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository {
   }
 
   @Override
-  public void deleteByPollId(Long pollId) {
-    query.delete(candidate)
-        .where(candidate.poll.id.eq(pollId))
-        .execute();
+  public void deleteGalleryById(Long id) {
+    query.delete(candidateGallery)
+        .where(candidateGallery.in(
+            JPAExpressions
+                .select(candidateGallery)
+                .from(candidateGallery)
+                .where(candidateGallery.candidate.id.eq(id))
+        )).execute();
   }
 
-  @Override
-  public void deleteGalleriesByCandidateId(Long candidateId) {
-    query.delete(candidateGallery)
-        .where(candidateGallery.candidate.id.eq(candidateId))
-        .execute();
-  }
 
 }

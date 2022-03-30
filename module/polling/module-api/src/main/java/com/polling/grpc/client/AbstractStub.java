@@ -3,12 +3,7 @@ package com.polling.grpc.client;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-/**
- * AbstractStub
- *
- * @author akageun
- * @since 2021-12-01
- */
+
 abstract class AbstractStub {
 
   private ManagedChannel managedChannel;

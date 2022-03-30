@@ -9,11 +9,14 @@ import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.poll.PollRepository;
 import java.util.List;
+import javax.persistence.EntityManager;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Transactional
 @SpringBootTest
 public class CandidateQueryRepositoryTest {
@@ -24,6 +27,8 @@ public class CandidateQueryRepositoryTest {
   private CandidateRepository candidateRepository;
   @Autowired
   private CandidateQueryRepository candidateQueryRepository;
+  @Autowired
+  private EntityManager em;
 
 
   @Test
@@ -48,19 +53,15 @@ public class CandidateQueryRepositoryTest {
   }
 
   @Test
-  public void 후보자전체삭제_투표단위() throws Exception {
+  public void 후보자삭제_단일() throws Exception {
     //given
-    Poll poll = createPoll("test");
-    Candidate candidate1 = createCandidate(1);
-    Candidate candidate2 = createCandidate(2);
-    poll.addCandidate(candidate1);
-    poll.addCandidate(candidate2);
-    Poll savedPoll = pollRepository.save(poll);
-    candidateQueryRepository.deleteGalleriesByCandidateId(candidate1.getId());
-    candidateQueryRepository.deleteGalleriesByCandidateId(candidate2.getId());
+    Long id = candidateRepository.save(createCandidate(1)).getId();
+    em.flush();
+    em.clear();
 
     //when
-    candidateQueryRepository.deleteByPollId(savedPoll.getId());
+    candidateQueryRepository.deleteGalleryById(id);
+    candidateRepository.deleteById(id);
 
     //then
     assertThat(candidateRepository.count()).isEqualTo(0);

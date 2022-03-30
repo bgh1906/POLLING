@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: test
   redis:
-    host: redis
+    host: 127.0.0.1
     port: 6379
 sms:
   serviceid: ncp:sms:kr:282615511747:validation_sms

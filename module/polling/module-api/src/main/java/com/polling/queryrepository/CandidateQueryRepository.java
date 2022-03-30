@@ -10,7 +10,5 @@ public interface CandidateQueryRepository {
 
   List<Candidate> findAllByPollId(Long pollId);
 
-  void deleteByPollId(Long pollId);
-
-  void deleteGalleriesByCandidateId(Long candidateId);
+  void deleteGalleryById(Long id);
 }

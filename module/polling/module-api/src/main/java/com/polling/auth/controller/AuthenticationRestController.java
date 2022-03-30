@@ -1,5 +1,6 @@
 package com.polling.auth.controller;
 
+import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.request.ValidateMemberRequestDto;
 import com.polling.auth.dto.response.ValidateMemberResponseDto;
