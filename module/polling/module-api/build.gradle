@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(path: ":module-common", configuration: 'default')
+    implementation project(path: ":module-core", configuration: 'default')
+    implementation project(path: ":grpc-common", configuration: 'default')
+
+
+    /* Swagger */
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+    implementation "io.springfox:springfox-swagger-ui:3.0.0"
+
+    /* scheduled 테스트 */
+    testImplementation 'org.awaitility:awaitility:4.2.0'
+}

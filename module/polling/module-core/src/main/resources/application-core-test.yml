@@ -1,0 +1,32 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    hikari:
+      maximum-pool-size: 30
+      max-lifetime: 60000
+      jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
+      username: sa
+      password:
+      connection-timeout: 5000
+      pool-name: Spring-HikariPool
+
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+        use_sql_comments: true
