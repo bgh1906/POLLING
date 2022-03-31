@@ -74,10 +74,6 @@ public class Member extends BaseTimeEntity {
     this.password = password;
   }
 
-  public void changeMemberRole(Set<MemberRole> memberRole) {
-    this.memberRole = memberRole;
-  }
-
   public void addRole(MemberRole role) {
     this.memberRole.add(role);
   }

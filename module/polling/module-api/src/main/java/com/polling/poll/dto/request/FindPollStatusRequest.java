@@ -6,6 +6,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 요청된 투표의 상태에 맞는 모든 투표 요청 DTO
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class FindPollStatusRequest {

@@ -20,7 +20,6 @@ import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
 import com.polling.poll.dto.response.FindSimplePollResponseDto;
 import com.polling.queryrepository.CandidateQueryRepository;
 import com.polling.queryrepository.PollQueryRepository;
-import com.polling.repository.candidate.CandidateRepository;
 import com.polling.repository.member.MemberRepository;
 import com.polling.repository.poll.PollRepository;
 import java.time.LocalDateTime;
@@ -73,6 +72,8 @@ public class PollService {
   public FindPollWithCandidateResponseDto findPollAllInfo(Long pollId) {
     Poll poll = getPoll(pollId);
     List<Candidate> candidates = candidateQueryRepository.findAllByPollId(pollId);
+
+    // entity to dto
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
             .candidateId(candidate.getId())
@@ -131,6 +132,9 @@ public class PollService {
     poll.changePollStatus(PollStatus.WAIT);
   }
 
+  /**
+   * 1분 단위로 IN_PROGRESS 상태의 투표를 점검하고 종료 시간이 됐으면 DONE으로 변경
+   */
   @Scheduled(fixedRate = 60000)
   public void checkPollEndTime() {
     List<Poll> polls = pollQueryRepository.findByCurrentBeforeEndTime(LocalDateTime.now());
@@ -139,6 +143,9 @@ public class PollService {
     }
   }
 
+  /**
+   * 1분 단위로 WAIT 상태의 투표를 점검하고 시작 시간이 됐으면 IN_PROGRESS로 변경
+   */
   @Scheduled(fixedRate = 60000)
   public void checkPollStartTime() {
     List<Poll> polls = pollQueryRepository.findByCurrentBeforeStartTime(LocalDateTime.now());

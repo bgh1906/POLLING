@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
- * DTO for storing a user's credentials.
+ * Native 로그인 요청 DTO
  */
 @Data
 public class LoginRequestDto {

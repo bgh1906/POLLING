@@ -15,6 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Auth 서비스
+ */
 @Transactional
 @RequiredArgsConstructor
 @Service
@@ -23,6 +26,9 @@ public class AuthService {
   private final MemberRepository memberRepository;
   private final OAuthClient oAuthClient;
 
+  /**
+   * Auth 회원 등록
+   */
   @Trace
   @Retry
   public Member auth(AuthRequestDto requestDto) {
@@ -40,8 +46,10 @@ public class AuthService {
     return memberRepository.save(member);
   }
 
+  /**
+   * 등록된 Auth 회원인지 검증
+   */
   @Trace
-  @Retry
   public Member validate(ValidateMemberRequestDto requestDto) {
     KaKaoOAuthResponse profile = oAuthClient.getInfo(requestDto.getAccessToken());    //kakao만 잡혀 있음
     Optional<Member> existMember = memberRepository.findByOauthId(profile.getId());

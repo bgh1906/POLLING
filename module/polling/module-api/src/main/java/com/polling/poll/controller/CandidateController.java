@@ -33,7 +33,7 @@ public class CandidateController {
   @ApiOperation(value = "특정 후보자의 득표 내역 저장")
   public ResponseEntity<Void> addVoteHistory(@CurrentUser MemberDto memberDto,
       @RequestBody SaveCandidateHistoryRequestDto requestDto) {
-    candidateService.addCandidateHistory(requestDto, memberDto.getId());
+    candidateService.saveVoteHistory(requestDto, memberDto.getId());
     return ResponseEntity.status(200).build();
   }
 

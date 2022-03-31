@@ -8,6 +8,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * Native 회원 가입 요청 DTO
+ */
 @Builder
 @Getter
 @NoArgsConstructor
@@ -27,7 +30,7 @@ public class SaveNativeMemberRequestDto {
 
   private MemberRole role;
 
-  public Member toEntity(){
+  public Member toEntity() {
     Member member = Member.builder()
         .nickname(nickname)
         .wallet(wallet)

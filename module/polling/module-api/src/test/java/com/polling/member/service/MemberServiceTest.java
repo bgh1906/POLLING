@@ -43,12 +43,12 @@ public class MemberServiceTest {
     //given
     doReturn(true).when(memberRepository).existsByEmail(email);
     SaveNativeMemberRequestDto requestDto =
-        new SaveNativeMemberRequestDto(nickname,"wallet", email, "test", "01012345678",
+        new SaveNativeMemberRequestDto(nickname, "wallet", email, "test", "01012345678",
             MemberRole.ROLE_USER);
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addMember(requestDto));
+        () -> target.join(requestDto));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.DUPLICATE_EMAIL);
@@ -59,11 +59,12 @@ public class MemberServiceTest {
     //given
     doReturn(false).when(memberRepository).existsByEmail(email);
     doReturn(createMember()).when(memberRepository).save(any(Member.class));
-    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, "wallet", email,
+    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, "wallet",
+        email,
         "test", "01012345678", MemberRole.ROLE_USER);
 
     //when
-    target.addMember(requestDto);
+    target.join(requestDto);
 
     //then
     verify(memberRepository, times(1)).existsByEmail(email);

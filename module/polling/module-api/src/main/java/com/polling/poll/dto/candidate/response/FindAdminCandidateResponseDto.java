@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 관리자가 볼 수 있는 후보자의 모든 정보를 반환하는 DTO
+ */
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FindAdminCandidateResponseDto {

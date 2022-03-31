@@ -65,7 +65,7 @@ public class SecurityCandidateControllerTest {
         1);
     doThrow(new CustomException(CustomErrorResult.CANDIDATE_NOT_FOUND))
         .when(candidateService)
-        .addCandidateHistory(any(SaveCandidateHistoryRequestDto.class), anyLong());
+        .saveVoteHistory(any(SaveCandidateHistoryRequestDto.class), anyLong());
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)
@@ -94,7 +94,7 @@ public class SecurityCandidateControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(candidateService, times(1)).addCandidateHistory(
+    verify(candidateService, times(1)).saveVoteHistory(
         any(SaveCandidateHistoryRequestDto.class),
         anyLong());
 

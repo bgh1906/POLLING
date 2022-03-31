@@ -38,7 +38,7 @@ public class Contact extends BaseTimeEntity {
 
   @Column
   @Enumerated
-  private ContactStatus contactStatus;
+  private ContactStatus contactStatus = ContactStatus.UNANSWERED;
 
   @Column
   @Enumerated
@@ -54,14 +54,17 @@ public class Contact extends BaseTimeEntity {
   private String answer;
 
   @Builder
-  public Contact(Member member, ContactStatus contactStatus, ContactType contactType,
+  public Contact(Member member, ContactType contactType,
       String title, String content, String answer) {
     this.member = member;
-    this.contactStatus = contactStatus;
     this.contactType = contactType;
     this.title = title;
     this.content = content;
     this.answer = answer;
+  }
+
+  public void changeMember(Member member){
+    this.member = member;
   }
 
   public void setAnswer(String answer) {

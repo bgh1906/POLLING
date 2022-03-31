@@ -14,6 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 1:1 문의 서비스
+ */
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -24,25 +27,27 @@ public class ContactService {
 
   @Trace
   @Transactional
-  public void save(SaveContactRequestDto requestDto, Long id) {
-    Member member = memberRepository.findById(id)
-        .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
-    Contact contact = Contact.builder()
-        .contactStatus(ContactStatus.UNANSWERED)
-        .contactType(requestDto.getContactType())
-        .title(requestDto.getTitle())
-        .content(requestDto.getContent())
-        .member(member)
-        .build();
+  public void save(SaveContactRequestDto requestDto, Long memberId) {
+    Member member = getMember(memberId);
+    Contact contact = requestDto.toEntity();
+    contact.changeMember(member);
     contactRepository.save(contact);
   }
 
   @Trace
   @Transactional
   public void saveAnswer(SaveAnswerRequestDto requestDto) {
-    Contact contact = contactRepository.findById(requestDto.getContactId())
-        .orElseThrow(() -> new CustomException(CustomErrorResult.CONTACT_NOT_FOUND));
+    Contact contact = getContact(requestDto.getContactId());
     contact.setAnswer(requestDto.getAnswer());
+  }
 
+  private Member getMember(Long memberId) {
+    return memberRepository.findById(memberId)
+        .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
+  }
+
+  private Contact getContact(Long contactId){
+    return contactRepository.findById(contactId)
+        .orElseThrow(() -> new CustomException(CustomErrorResult.CONTACT_NOT_FOUND));
   }
 }

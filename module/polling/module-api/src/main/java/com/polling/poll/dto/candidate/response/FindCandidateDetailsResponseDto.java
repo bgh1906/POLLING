@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 일반 유저가 볼 수 있는 후보자의 모든 정보를 반환하는 DTO
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

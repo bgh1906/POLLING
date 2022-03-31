@@ -48,7 +48,7 @@ public class CandidateService {
 
   @Trace
   @Retry
-  public void addCandidateHistory(SaveCandidateHistoryRequestDto requestDto, Long id) {
+  public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, Long id) {
     if (requestDto.getVoteCount() <= 0) {
       throw new CustomException(CustomErrorResult.INVALID_VOTES);
     }
