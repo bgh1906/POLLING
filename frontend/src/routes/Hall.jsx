@@ -1,13 +1,19 @@
 import Newnav from "../components/layout/NewNav";
-
+import styles from "./Hall.module.css";
+import dark from "../assets/darklogo.png"
 
 function Hall() {
 
     return (
-        <>
+        <div style={{height:'100vh'}}>
             <Newnav/>
-            <h1> 명예의 전당</h1>
-        </>
+            <div className={styles.container} >
+                <img id={styles.dark} src={dark} alt="dark"></img>
+                <p className={styles.title}> 
+                Hall &nbsp;of &nbsp;Fame</p>
+                <div className={styles.cardbox}></div>
+            </div>
+        </div>
     );
 }
 
