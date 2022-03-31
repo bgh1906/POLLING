@@ -1,13 +1,38 @@
+/* 강원교육체 */
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .poll_container {
   max-width: 80vw;
   display: flex;
   justify-content: space-between;
-  padding-top: 250px;
+  padding-top: 25vh;
 }
 
 .pl_left {
   width: 40%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pl_right {
@@ -18,14 +43,19 @@
 .poll_Info {
   position: sticky;
   top: 170px;
+  font-family: 'GangwonEdu_OTFBoldA';
   /* display: flex; */
 }
 
-.poll_Info .pollImg {
+.poll_Info {
   width: 75%;
-  height: 40vh;
   margin: 0 1vw 1vw 0;
 }
+
+.pollImg {
+  width: 70%;
+}
+
 
 .poll_Info figcaption {
   font-family: "Bitter", serif;
@@ -37,11 +67,12 @@
 }
 
 .left_title {
-  font-family: "Baskervville", serif;
-  font-size: 4vw;
-  position: absolute;
+  font-family: 'ROKAFSansBold';
+  text-align: center;
+  font-size: 2.5vw;
   top: -90px;
   font-weight: 700;
+  margin-bottom: 2vh;
 }
 
 .timer {
@@ -52,4 +83,10 @@
   text-align: center;
   margin-bottom: 1vw;
   padding: 1vw 2vw;
+}
+
+
+#img_box{
+  display: flex;
+  justify-content: center;
 }

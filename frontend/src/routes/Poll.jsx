@@ -1,7 +1,6 @@
 import styles from "./Poll.module.css";
 import Footer from "../components/layout/Footer";
 import Newnav from "../components/layout/NewNav";
-import produce from "../assets/produce.PNG";
 import Countdown from "react-countdown";
 import CandList from "../components/poll/CandList";
 import VotePaper from "../components/poll/VotePaper";
@@ -54,14 +53,18 @@ function Poll() {
       <Newnav />
       <div className={styles.poll_container}>
         <div className={styles.pl_left}>
-          <div className={styles.left_title}>Selected Poll</div>
           <div className={styles.poll_Info}>
-            <Countdown date={endDay} renderer={renderCounter} />
+          <div className={styles.left_title}>{itemDetail.title}</div>
+          <div id={styles.img_box}>
             <img
               src={itemDetail.thumbnail}
-              alt="fox"
+              alt="main"
               className={styles.pollImg}
             />
+          </div>
+            
+            
+            <Countdown date={endDay} renderer={renderCounter} />
             {/* <VotePaper cand={cand} /> */}
             <div
               style={{

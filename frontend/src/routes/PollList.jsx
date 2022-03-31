@@ -48,9 +48,9 @@ export default function PollList() {
         <Box sx={{ width: "80vw", height: "auto" }}>
           {isDesktop && (
             <ImageList variant="masonry" cols={4} gap={28}>
-              {itemData.map((item) => (
+              {itemData.map((item,index) => (
                 <ImageListItem
-                  key={item.thumbnail}
+                  key={index}
                   className={styles.opened_item}
                 >
                   <img
@@ -61,18 +61,18 @@ export default function PollList() {
                     className={styles.opened_img}
                   />
                   <div className={styles.opened_info}>
-                    <div style={{ fontSize: "2vw", fontWeight: 700 }}>
+                    <div style={{ fontSize: "2vw", fontWeight: 900 }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: "1vw" }}>
-                      2022.03.03 ~ 2022.05.10
+                    <div id={styles.poll_date}>
+                    시작: {item.startDate}<br/>
+                    종료: {item.endDate}
                     </div>
                   </div>
                   <div className={styles.opened_button}>
                     <Button
+                      id={styles.poll_button}
                       variant="contained"
-                      size="large"
-                      style={{ backgroundColor: "#77A3A9" }}
                       onClick={() => {
                         navigate(`/poll/${item.pollId}`);
                       }}
@@ -86,8 +86,8 @@ export default function PollList() {
           )}
           {isLabtop && (
             <ImageList variant="masonry" cols={3} gap={28}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img} className={styles.opened_item}>
+              {itemData.map((item, index) => (
+                <ImageListItem key={index} className={styles.opened_item}>
                   <img
                     src={`${item.img}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -96,16 +96,18 @@ export default function PollList() {
                     className={styles.opened_img}
                   />
                   <div className={styles.opened_info}>
-                    <div>제 91회 춘향제</div>
-                    <div>2022.03.03 ~ 2022.05.10</div>
+                    <div>{item.title}</div>
+                    <div id={styles.poll_date}>
+                    시작: {item.startDate}<br/>
+                    종료: {item.endDate}
+                    </div>
                   </div>
                   <div className={styles.opened_button}>
-                    <Button
+                  <Button
+                      id={styles.poll_button}
                       variant="contained"
-                      size="large"
-                      style={{ backgroundColor: "#77A3A9" }}
                       onClick={() => {
-                        navigate("/poll/:pollnum");
+                        navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
@@ -117,8 +119,8 @@ export default function PollList() {
           )}
           {isTablet && (
             <ImageList variant="masonry" cols={2} gap={28}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img} className={styles.opened_item}>
+              {itemData.map((item, index) => (
+                <ImageListItem key={index} className={styles.opened_item}>
                   <img
                     src={`${item.img}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -127,16 +129,18 @@ export default function PollList() {
                     className={styles.opened_img}
                   />
                   <div className={styles.opened_info}>
-                    <div>제 91회 춘향제</div>
-                    <div>2022.03.03 ~ 2022.05.10</div>
+                    <div>{item.title}</div>
+                    <div id={styles.poll_date}>
+                    시작: {item.startDate}<br/>
+                    종료: {item.endDate}
+                    </div>
                   </div>
                   <div className={styles.opened_button}>
-                    <Button
+                  <Button
+                      id={styles.poll_button}
                       variant="contained"
-                      size="large"
-                      style={{ backgroundColor: "#77A3A9" }}
                       onClick={() => {
-                        navigate("/poll/:pollnum");
+                        navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
@@ -148,8 +152,8 @@ export default function PollList() {
           )}
           {isMobile && (
             <ImageList variant="masonry" cols={1} gap={28}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img} className={styles.opened_item}>
+              {itemData.map((item, index) => (
+                <ImageListItem key={index} className={styles.opened_item}>
                   <img
                     src={`${item.img}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -158,16 +162,18 @@ export default function PollList() {
                     className={styles.opened_img}
                   />
                   <div className={styles.opened_info}>
-                    <div>제 91회 춘향제</div>
-                    <div>2022.03.03 ~ 2022.05.10</div>
+                    <div>{item.title}</div>
+                    <div id={styles.poll_date}>
+                    시작: {item.startDate}<br/>
+                    종료: {item.endDate}
+                    </div>
                   </div>
                   <div className={styles.opened_button}>
-                    <Button
+                  <Button
+                      id={styles.poll_button}
                       variant="contained"
-                      size="large"
-                      style={{ backgroundColor: "#77A3A9" }}
                       onClick={() => {
-                        navigate("/poll/:pollnum");
+                        navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
