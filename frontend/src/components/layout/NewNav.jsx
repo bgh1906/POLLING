@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 function NewNav() {
 
     const role = sessionStorage.getItem("role")
-    
+    const [rendering, setRendering] = useState(0)
     //햄버그에서 로그아웃할때 네브도 리랜더해야함... 어떻게??
+    
 
     return (
         <div >
@@ -20,7 +21,7 @@ function NewNav() {
 
                 {/* <Link to="/login" className={Styles.hamNav1}></Link> */}
             <div>
-                <Hamburger />
+                <Hamburger setRendering={setRendering} />
                 {/* <button className={Styles.hamNav1}></button>
                 <button className={Styles.hamNav2}></button>
                 <button className={Styles.hamNav3}></button> */}

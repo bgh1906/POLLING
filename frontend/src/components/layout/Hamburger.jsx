@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-function Hamburger({ state, DispatchdeleteInfo }) {
+function Hamburger({ state, DispatchdeleteInfo, setRendering }) {
 // function Hamburger() {
 
     // const [sstoken, setToken] = useState(false);
@@ -66,6 +66,7 @@ function Hamburger({ state, DispatchdeleteInfo }) {
             sessionStorage.clear();
             DispatchdeleteInfo();
             logoutSuccess();
+            setRendering(+1);
             navigation("/");
             
         })

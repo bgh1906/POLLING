@@ -23,6 +23,7 @@
     "dayjs": "^1.11.0",
     "eth-lib": "^0.1.29",
     "moment": "^2.29.1",
+    "node-rest-client-promise": "^3.1.1",
     "react": "^17.0.2",
     "react-animation-on-scroll": "^5.0.0",
     "react-awesome-reveal": "^3.8.1",
