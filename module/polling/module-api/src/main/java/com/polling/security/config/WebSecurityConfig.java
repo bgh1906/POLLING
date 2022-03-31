@@ -97,7 +97,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         /*front 권한 아무도 통과 못하셔서 일단 작업하시게 열어뒀습니다*/
         .antMatchers("/api/**").permitAll()
-        .antMatchers("/future/**").permitAll()
+        .antMatchers("/grpc/**").permitAll()
 
         .antMatchers(SWAGGER_URL_PATHS).permitAll()
 

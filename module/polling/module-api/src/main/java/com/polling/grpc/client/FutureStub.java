@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/winning")
+@RequestMapping("/grpc/future")
 public class FutureStub extends AbstractStub {
 
   private EventServiceGrpc.EventServiceFutureStub stub() {
@@ -45,7 +45,7 @@ public class FutureStub extends AbstractStub {
     return "OK";
   }
 
-  @PostMapping()
+  @PostMapping("/winning")
   public String winning(@RequestBody WinningRequestDto requestDto) {
 
     EventServiceGrpc.EventServiceFutureStub stub = stub();
@@ -59,7 +59,7 @@ public class FutureStub extends AbstractStub {
     ListenableFuture<WinningResponse> responseFuture = stub.winning(request);
 
     try {
-      WinningResponse response = responseFuture.get(5000, TimeUnit.MILLISECONDS); //5 sec
+      WinningResponse response = responseFuture.get(300000, TimeUnit.MILLISECONDS); //300 sec
       log.info("response : {}", response.toString());
 
     } catch (Exception e) {
