@@ -1,7 +1,15 @@
-bootJar { enabled = false }
-jar { enabled = true }
+
 
 apply plugin: 'com.google.protobuf'
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 
 dependencies {
     implementation 'io.grpc:grpc-netty:1.45.0'
