@@ -1,16 +1,5 @@
 import Footer from "../components/layout/Footer";
 import styles from "./PollList.module.css";
-import chunhyang from "../assets/chunhyang.PNG";
-import ocean from "../assets/ocean.PNG";
-import cybertruck from "../assets/cybertruck.PNG";
-import kClassic from "../assets/kClassic.PNG";
-import contest from "../assets/contest.PNG";
-import missKorea from "../assets/missKorea.PNG";
-import eyes from "../assets/eyes.PNG";
-import fox from "../assets/fox.PNG";
-import gogh from "../assets/gogh.PNG";
-import monarisa from "../assets/monarisa.PNG";
-import hair from "../assets/hair.PNG";
 import { useNavigate } from "react-router-dom";
 import Newnav from "../components/layout/NewNav";
 import Box from "@mui/material/Box";
@@ -18,55 +7,25 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Button from "@mui/material/Button";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function PollList() {
   const navigate = useNavigate();
-  const itemData = [
-    {
-      img: chunhyang,
-      title: "chunhyang",
-    },
-    {
-      img: ocean,
-      title: "ocean",
-    },
-    {
-      img: cybertruck,
-      title: "cybertruck",
-    },
-    {
-      img: kClassic,
-      title: "kClassic",
-    },
-    {
-      img: contest,
-      title: "contest",
-    },
-    {
-      img: missKorea,
-      title: "missKorea",
-    },
-    {
-      img: eyes,
-      title: "eyes",
-    },
-    {
-      img: fox,
-      title: "fox",
-    },
-    {
-      img: gogh,
-      title: "gogh",
-    },
-    {
-      img: monarisa,
-      title: "monarisa",
-    },
-    {
-      img: hair,
-      title: "hair",
-    },
-  ];
+
+  const [itemData, setItemData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
+      .then((res) => {
+        console.log(res);
+        setItemData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }, []);
+
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -90,10 +49,13 @@ export default function PollList() {
           {isDesktop && (
             <ImageList variant="masonry" cols={4} gap={28}>
               {itemData.map((item) => (
-                <ImageListItem key={item.img} className={styles.opened_item}>
+                <ImageListItem
+                  key={item.thumbnail}
+                  className={styles.opened_item}
+                >
                   <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
                     className={styles.opened_img}
@@ -112,7 +74,7 @@ export default function PollList() {
                       size="large"
                       style={{ backgroundColor: "#77A3A9" }}
                       onClick={() => {
-                        navigate("/poll/:pollnum");
+                        navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
