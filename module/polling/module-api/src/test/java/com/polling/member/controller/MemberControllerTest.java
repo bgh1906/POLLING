@@ -61,8 +61,7 @@ public class MemberControllerTest {
   public void 회원가입실패_이메일중복() throws Exception {
     //given
     final String url = "/api/members";
-    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email,
-        "test", "01012345678", MemberRole.ROLE_USER);
+    SaveNativeMemberRequestDto requestDto = SaveNativeMemberRequestDto.builder().build();
     doThrow(new CustomException(CustomErrorResult.DUPLICATE_EMAIL))
         .when(memberService)
         .addMember(any(SaveNativeMemberRequestDto.class));
@@ -80,8 +79,7 @@ public class MemberControllerTest {
   public void 회원가입성공() throws Exception {
     //given
     final String url = "/api/members";
-    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email,
-        "test", "01012345678", MemberRole.ROLE_USER);
+    SaveNativeMemberRequestDto requestDto = SaveNativeMemberRequestDto.builder().build();
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)

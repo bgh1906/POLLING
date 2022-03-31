@@ -40,7 +40,6 @@ public class PollService {
   private final PollRepository pollRepository;
   private final MemberRepository memberRepository;
   private final CandidateQueryRepository candidateQueryRepository;
-  private final CandidateRepository candidateRepository;
   private final PollQueryRepository pollQueryRepository;
 
   @Trace

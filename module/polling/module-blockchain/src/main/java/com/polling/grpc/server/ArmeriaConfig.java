@@ -6,21 +6,17 @@ import com.linecorp.armeria.server.grpc.GrpcService;
 import com.linecorp.armeria.server.logging.AccessLogWriter;
 import com.linecorp.armeria.server.logging.LoggingService;
 import com.linecorp.armeria.spring.ArmeriaServerConfigurator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * ArmeriaConfig
- *
- * @author akageun
- * @since 2021-12-01
- */
+
+@RequiredArgsConstructor
 @Configuration
 public class ArmeriaConfig {
 
-  @Autowired
-  private EventService eventService;
+  private final EventService eventService;
 
   @Bean
   public ArmeriaServerConfigurator armeriaServerConfigurator() {
@@ -30,7 +26,7 @@ public class ArmeriaConfig {
 
       serverBuilder
           .service(GrpcService.builder()
-//                    .addService(eventService)
+              .addService(eventService)
               .supportedSerializationFormats(GrpcSerializationFormats.values())
               .enableUnframedRequests(true)
               .build());

@@ -26,17 +26,7 @@ MemberService {
   @Transactional
   public void addMember(SaveNativeMemberRequestDto requestDto) {
     checkDuplicateMemberEmail(requestDto.getEmail());
-
-    Member member = Member.builder()
-        .nickname(requestDto.getNickname())
-        .email(requestDto.getEmail())
-        .password(requestDto.getPassword())
-        .phoneNumber(requestDto.getPhoneNumber())
-        .build();
-
-    member.addRole(requestDto.getRole());
-
-    memberRepository.save(member);
+    memberRepository.save(requestDto.toEntity());
   }
 
   private void checkDuplicateMemberEmail(String email) {

@@ -1,5 +1,6 @@
 package com.polling.auth.dto.request;
 
+import com.polling.entity.member.Member;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,8 @@ public class AuthRequestDto {
 
   @NotNull
   private String nickname;
+  @NotNull
+  private String wallet;
   @NotNull
   private String accessToken;
   @NotNull

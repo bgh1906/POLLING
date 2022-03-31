@@ -43,7 +43,7 @@ public class MemberServiceTest {
     //given
     doReturn(true).when(memberRepository).existsByEmail(email);
     SaveNativeMemberRequestDto requestDto =
-        new SaveNativeMemberRequestDto(nickname, email, "test", "01012345678",
+        new SaveNativeMemberRequestDto(nickname,"wallet", email, "test", "01012345678",
             MemberRole.ROLE_USER);
 
     //when
@@ -59,7 +59,7 @@ public class MemberServiceTest {
     //given
     doReturn(false).when(memberRepository).existsByEmail(email);
     doReturn(createMember()).when(memberRepository).save(any(Member.class));
-    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, email,
+    SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, "wallet", email,
         "test", "01012345678", MemberRole.ROLE_USER);
 
     //when

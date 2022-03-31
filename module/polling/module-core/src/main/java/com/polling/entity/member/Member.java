@@ -33,6 +33,8 @@ public class Member extends BaseTimeEntity {
   @Column(name = "user_id")
   private Long id;
 
+  private String wallet;
+
   private String nickname;
 
   private String email;
@@ -51,9 +53,10 @@ public class Member extends BaseTimeEntity {
   private Set<MemberRole> memberRole;
 
   @Builder
-  public Member(String nickname, String email, String password, String phoneNumber,
+  public Member(String nickname, String wallet, String email, String password, String phoneNumber,
       OAuthType oauthType, String oauthId) {
     this.nickname = nickname;
+    this.wallet = wallet;
     this.email = email;
     this.password = password;
     this.phoneNumber = phoneNumber;

@@ -21,12 +21,14 @@ public class FindMemberResponseDto {
   @NotNull
   private String nickname;
   @NotNull
+  private String wallet;
+  @NotNull
   private String email;
-  //private OAuthType oAuthType;
 
   public static FindMemberResponseDto of(Member member) {
     return new FindMemberResponseDto(
         member.getId(),
+        member.getWallet(),
         member.getNickname(),
         member.getEmail()
     );
