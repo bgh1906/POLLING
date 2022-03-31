@@ -5,7 +5,7 @@
     z-index: 5;
     position: absolute;
     left: 13vw;
-    top: 20vh;
+    top: 18vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -20,183 +20,47 @@
 .tabs{
     font-family: 'GangwonEdu_OTFBoldA';
     font-weight: bold;
-    font-size: 1.5vw;  
+    /* font-size: 1.5vw;   */
 }
 
-.info{
-    position: absolute;
-    width: 281px;
-    height: 20px;
-    left: 113px;
-    top: 606px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #00A3FF;
+.qna {
+    position: relative;
+    /* position: absolute; */
+    width: 3.6vw;
+    height: 4vh;
+    left: 0vw;
+    /* top: 0vh; */
+    top: -1vh;
+
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    line-height: 3.5vh;
+
+    border-radius: 0.7vw;
+    /* background-color: rgba(36, 235, 241, 0.342); */
+    background-color: #FFE29A;
+    border-color: rgba(36, 235, 241, 0.342);
+    /* border-color: rgba(0, 0, 0, 0.329); */
 }
 
-.poll {
-    position: absolute;
-    width: 281px;
-    height: 20px;
-    left: 430px;
-    top: 606px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
+.list {
+    position: relative;
+    /* position: absolute; */
+    width: 3.5vw;
+    height: 4vh;
+    left: 0.5vw;
+    top: -1vh;
+    margin-bottom: 1vw;
+
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    line-height: 3.5vh;
+
+    border-radius: 0.7vw;
+    background-color: rgba(36, 235, 241, 0.342);
+    border-color: rgba(36, 235, 241, 0.342);
+    /* border-color: rgba(0, 0, 0, 0.329); */
 }
-
-.qna{
-    position: absolute;
-    width: 282px;
-    height: 20px;
-    left: 711px;
-    top: 606px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
-}
-
-.nav {
-    position: absolute;
-    width: 2063px;
-    height: 0px;
-    left: 95px;
-    top: 642px;
-    
-    border: 5px solid #000000;
-}
-
-.nicknameText {
-    position: absolute;
-    width: 290px;
-    height: 26px;
-    left: 174px;
-    top: 773px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
-}
-
-.nickname{
-    position: absolute;
-    width: 290px;
-    height: 26px;
-    left: 174px;
-    top: 773px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
-}
-
-.nicknamebtn {
-    position: absolute;
-    width: 184.48px;
-    height: 42px;
-    left: 1726.3px;
-    top: 765px;
-
-    background: #C4C4C4;
-    border-radius: 20px;
-}
-
-.emailtext {
-    position: absolute;
-    width: 290px;
-    height: 26px;
-    left: 174px;
-    top: 835px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
-    
-}
-
-.email {
-    position: absolute;
-    width: 1395px;
-    height: 42px;
-    left: 505px;
-    top: 869px;
-    
-    background: #EEEEEE;
-    transform: matrix(1, 0, 0, -1, 0, 0);
-}
-
-.passwordtext {
-    position: absolute;
-    width: 290px;
-    height: 26px;
-    left: 174px;
-    top: 897px;
-    
-    font-family: 'Risque';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    
-    color: #000000;
-}
-
-.password {
-    position: absolute;
-    width: 290px;
-    height: 26px;
-    left: 505px;
-    top: 931px;
-    
-    background: #EEEEEE;
-    transform: matrix(1, 0, 0, -1, 0, 0);
-}
-
-.passwordbtn {
-    position: absolute;
-    width: 184.48px;
-    height: 42px;
-    left: 1727px;
-    top: 889px;
-    
-    background: #C4C4C4;
-    border-radius: 20px;
-}
-
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');

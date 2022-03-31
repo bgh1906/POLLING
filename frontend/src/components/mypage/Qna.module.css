@@ -1,0 +1,145 @@
+.div{
+    position: relative;
+    top: 0vh;
+}
+
+.title {
+    position: relative;
+    left: 9vw;
+    /* top: 0vh; */
+    top: -3vh;
+    font-family: "RussoOne";
+}
+
+.titleC {
+    position: relative;
+    width: 39vw;
+    height: 4vh;
+    left: 10vw;
+    /* top: 1vh; */
+    top: -2vh;
+    border-color: rgba(0, 0, 0, 0.329);
+    border-radius: 0.7vw;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.titleC:focus, .emailC:focus, .contentC:focus {
+    background-color: rgba(173, 217, 255, 0.116);
+}
+
+.email {
+    position: relative;
+    left: 9vw;
+    /* top: 1vh; */
+    top: -2vh;
+    padding-top: 2vh;
+    font-family: "RussoOne";
+}
+
+.emailC {
+    position: relative;
+    /* width: 39vw; */
+    width: 20vw;
+    height: 4vh;
+    left: 10vw;
+    /* top: 1vh; */
+    top: -1vh;
+    border-radius: 0.7vw;
+    border-color: rgba(0, 0, 0, 0.329);
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.type {
+    position: relative;
+    width: 15vw;
+    left: 12vw;
+    /* top: 1vh; */
+    top: -7vh;
+    padding-top: 2vh;
+    font-family: "RussoOne";
+}
+
+.typetitle {
+    font-family: "RussoOne";
+}
+.typetext {
+    font-family: "GangwonEdu_OTFBoldA";
+}
+
+.content {
+    position: relative;
+    left: 9vw;
+    /* top: 1vh; */
+    /* top: 0vh; */
+    top: -4vh;
+    padding-top: 2vh;
+    font-family: "RussoOne";
+}
+
+.contentC {
+    position: relative;
+    width: 39vw;
+    height: 20vh;
+    left: 10vw;
+    /* top: 1vh; */
+    /* top: 0vh; */
+    top: -3vh;
+    border-radius: 0.7vw;
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(0, 0, 0, 0.329);
+    /* 크기고정 */ 
+    /* resize:none; */
+    /* 가로크기만 조절가능  */
+    /* resize: horizontal;  */
+  /* 세로크기만 조절가능  */
+	/* resize: vertical; */
+}
+
+.list {
+    position: relative;
+    width: 3vw;
+    height: 4vh;
+    left: 49vw;
+    top: 1vh;
+    border-radius: 0.7vw;
+    background-color: rgba(36, 235, 241, 0.342);
+    border-color: rgba(36, 235, 241, 0.342);
+    /* border-color: rgba(0, 0, 0, 0.329); */
+}
+
+.list:hover, .list:active{
+    background-color: rgba(44, 233, 240, 0.527);
+}
+
+.save {
+    position: relative;
+    width: 4.5vw;
+    height: 4vh;
+    /* left: 42.5vw; */
+    left: 50vw;
+    top: -8vh;
+    border-radius: 0.7vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.3vw;
+    line-height: 3.8vh;
+    /* background-color: rgba(255, 111, 44, 0.5); */
+    background-color: #fd343481;
+    border-color: #9c393981;
+    /* border-color: rgba(0, 0, 0, 0.329); */
+}
+
+.save:hover{
+    background-color: #fa1919a4;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../../fonts/RussoOne-Regular.ttf);
+  }

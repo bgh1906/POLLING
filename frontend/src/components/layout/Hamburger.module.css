@@ -150,6 +150,22 @@ label ul {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.logout{
+  display: block;
+  color: #fff;
+  text-decoration: none;
+
+  font-family: "RussoOne";
+  font-size: 6vh;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  background:rgba(255, 255, 255, 0);
+  border-color:rgba(255, 255, 255, 0);
+
+  margin-bottom: 1em;
+  /* margin-left:-0.7vw; */
+}
+
 .poll{
     margin-bottom: 1em;
     display: block;
