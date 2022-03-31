@@ -2,14 +2,19 @@ package com.polling.poll.dto.candidate.request;
 
 import com.polling.entity.candidate.Candidate;
 import com.polling.entity.candidate.CandidateGallery;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 특정 투표에 후보자 추가 요청 DTO
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class AddCandidateRequestDto {
 
+  @NotNull
   private Long pollId;
   private String name;
   private String profile;

@@ -65,7 +65,7 @@ public class CandidateServiceTest {
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addCandidateHistory(requestDto, 1L));
+        () -> target.saveVoteHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.INVALID_VOTES);
@@ -84,7 +84,7 @@ public class CandidateServiceTest {
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addCandidateHistory(requestDto, 1L));
+        () -> target.saveVoteHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.USER_NOT_FOUND);
@@ -103,7 +103,7 @@ public class CandidateServiceTest {
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addCandidateHistory(requestDto, 1L));
+        () -> target.saveVoteHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.CANDIDATE_NOT_FOUND);
@@ -127,7 +127,7 @@ public class CandidateServiceTest {
 
     //when
     final CustomException result = assertThrows(CustomException.class,
-        () -> target.addCandidateHistory(requestDto, 1L));
+        () -> target.saveVoteHistory(requestDto, 1L));
 
     //then
     assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.ALREADY_VOTES);
@@ -152,7 +152,7 @@ public class CandidateServiceTest {
             any(LocalDateTime.class));
 
     //when
-    target.addCandidateHistory(requestDto, memberId);
+    target.saveVoteHistory(requestDto, memberId);
 
     //then
     verify(memberRepository, times(1)).findById(memberId);

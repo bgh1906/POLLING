@@ -10,7 +10,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.google.gson.Gson;
-import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.exception.CustomExceptionHandler;
@@ -64,7 +63,7 @@ public class MemberControllerTest {
     SaveNativeMemberRequestDto requestDto = SaveNativeMemberRequestDto.builder().build();
     doThrow(new CustomException(CustomErrorResult.DUPLICATE_EMAIL))
         .when(memberService)
-        .addMember(any(SaveNativeMemberRequestDto.class));
+        .join(any(SaveNativeMemberRequestDto.class));
 
     //when
     ResultActions resultActions = mockMvc.perform(post(url)
@@ -88,7 +87,7 @@ public class MemberControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(memberService, times(1)).addMember(any(SaveNativeMemberRequestDto.class));
+    verify(memberService, times(1)).join(any(SaveNativeMemberRequestDto.class));
   }
 
   @Test

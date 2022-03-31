@@ -8,13 +8,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 이거 나중에 지워야함
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class SaveCandidateRequestDto {
 
   @NotNull
   private String name;
-  @NotNull
   private String profile;
   private String imagePath1;
   private String imagePath2;

@@ -9,12 +9,13 @@ import com.polling.member.dto.request.ChangePasswordRequestDto;
 import com.polling.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.member.dto.response.FindMemberResponseDto;
 import com.polling.repository.member.MemberRepository;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 회원 관련 서비스
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -24,26 +25,13 @@ MemberService {
   private final MemberRepository memberRepository;
 
   @Transactional
-  public void addMember(SaveNativeMemberRequestDto requestDto) {
+  public void join(SaveNativeMemberRequestDto requestDto) {
     checkDuplicateMemberEmail(requestDto.getEmail());
     memberRepository.save(requestDto.toEntity());
   }
 
-  private void checkDuplicateMemberEmail(String email) {
-    if (memberRepository.existsByEmail(email)) {
-      throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
-    }
-  }
-
-  public void checkDuplicateMemberNickname(String nickname) {
-    if (memberRepository.existsByNickname(nickname)) {
-      throw new CustomException(CustomErrorResult.DUPLICATE_NICKNAME);
-    }
-  }
-
   public FindMemberResponseDto findMember(Long memberId) {
     Member member = getMember(memberId);
-
     return FindMemberResponseDto.of(member);
   }
 
@@ -64,22 +52,24 @@ MemberService {
 
   @Trace
   @Transactional
-  public void changeRole(Long memberId, Set<MemberRole> memberRole) {
-    Member member = getMember(memberId);
-    member.changeMemberRole(memberRole);
-  }
-
-  @Trace
-  @Transactional
   public void addAdminRole(Long memberId) {
     Member member = getMember(memberId);
-    Set<MemberRole> memberRoles = new HashSet<>();
-    memberRoles.add(MemberRole.ROLE_ADMIN);
-    memberRoles.add(MemberRole.ROLE_USER);
-    member.changeMemberRole(memberRoles);
+    member.addRole(MemberRole.ROLE_ADMIN);
   }
 
-  public Member getMember(Long memberId) {
+  private void checkDuplicateMemberEmail(String email) {
+    if (memberRepository.existsByEmail(email)) {
+      throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
+    }
+  }
+
+  public void checkDuplicateMemberNickname(String nickname) {
+    if (memberRepository.existsByNickname(nickname)) {
+      throw new CustomException(CustomErrorResult.DUPLICATE_NICKNAME);
+    }
+  }
+
+  private Member getMember(Long memberId) {
     return memberRepository.findById(memberId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
   }

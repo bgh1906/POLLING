@@ -35,7 +35,7 @@ public class MemberController {
   @PostMapping
   @ApiOperation(value = "회원 가입")
   public ResponseEntity<Void> save(@RequestBody SaveNativeMemberRequestDto requestDto) {
-    memberService.addMember(requestDto);
+    memberService.join(requestDto);
     return ResponseEntity.status(200).build();
   }
 

@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 투표 정보 및 참가한 후보자 정보 조회
+ * 관리자가 볼 수 있는 해당 투표의 모든 정보
  */
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

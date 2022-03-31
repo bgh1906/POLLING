@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 특정 회원의 FAQ 정보를 반환하는 DTO
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

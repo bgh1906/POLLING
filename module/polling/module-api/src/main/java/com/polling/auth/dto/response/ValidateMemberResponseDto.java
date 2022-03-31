@@ -6,12 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Auth 회원 검증 후 유저 정보 반환 DTO
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ValidateMemberResponseDto {
 
-  private boolean member;
+  private boolean existMember;
   private MemberRole role;
   private String nickname;
   private Long id;

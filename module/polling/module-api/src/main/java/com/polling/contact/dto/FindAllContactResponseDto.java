@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Contact Entity의 모든 정보를 반환하는 DTO
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 
+/**
+ * Security 세션에 저장되어있는 로그인된 사용자 정보
+ */
 @Getter
 @Builder
 public class MemberDto {

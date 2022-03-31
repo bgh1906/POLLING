@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller to authenticate users.
+ * 사용자 SNS 및 네이티브 로그인 관련 컨트롤러
  */
 @CrossOrigin("*")
 @RestController
@@ -82,9 +82,9 @@ public class AuthenticationRestController {
     ValidateMemberResponseDto responseDto = new ValidateMemberResponseDto();
     Member member = authService.validate(requestDto);
     if (member == null) {
-      responseDto.setMember(false);
+      responseDto.setExistMember(false);
     } else {
-      responseDto.setMember(true);
+      responseDto.setExistMember(true);
       responseDto.setField(findHighestRole(member.getMemberRole()), member.getNickname(),
           member.getId());
       setTokenHeaderAndRedis(member, response);
@@ -93,6 +93,7 @@ public class AuthenticationRestController {
   }
 
   @GetMapping("/logout")
+  @ApiOperation(value = "로그아웃")
   public ResponseEntity<Void> logout(HttpServletRequest request) {
     redisService.delValues(request.getHeader("refreshToken"));
     return ResponseEntity.status(200).build();
@@ -111,6 +112,10 @@ public class AuthenticationRestController {
     redisService.setValues(refreshToken, memberDto.getId());
   }
 
+  /**
+   * 멤버의 최상위 권한을 찾는 로직
+   * ADMIN > COMPNAY > USER
+   */
   private MemberRole findHighestRole(Set<MemberRole> roles) {
     if (roles.contains(MemberRole.ROLE_ADMIN)) {
       return MemberRole.ROLE_ADMIN;
