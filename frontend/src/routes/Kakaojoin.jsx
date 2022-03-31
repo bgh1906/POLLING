@@ -60,8 +60,8 @@ function Kakaojoin() {
         } else {
             axios
             .get(
-                `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
-                // `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+                `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+                // `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
                 {
                     n: nickname,
                 }           
@@ -104,7 +104,8 @@ function Kakaojoin() {
         else if(phone !== "") {
             axios
             .post(
-                "https://j6a304.p.ssafy.io:8080/api/notify/sms",
+                "https://j6a304.p.ssafy.io/api/notify/sms",
+                // "https://j6a304.p.ssafy.io:8080/api/notify/sms",
                 {
                     content : "",
                     to : phone,
@@ -190,7 +191,8 @@ function Kakaojoin() {
         else if( nickname !== " " && phone !== " " && phonecheck !== false &&checknick !== false && pcheck !== false ){
         // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){      
             axios
-            .post("https://j6a304.p.ssafy.io:8080/api/auth/social", {
+            .post("https://j6a304.p.ssafy.io/api/auth/social", {
+            // .post("https://j6a304.p.ssafy.io:8080/api/auth/social", {
                 // accessToken: response.access_token,
                 accessToken: params.accessToken,
                 nickname: nickname,

@@ -28,8 +28,8 @@ function Candidate() {
 
 
     useEffect(()=>{
-        axios.get(`https://j6a304.p.ssafy.io:8080/api/polls/candidates/${params.id}`)
-        .then((res) => {
+        axios.get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
+        .then((res) => {  
             console.log(res)
             setProfile_image(res.data.thumbnail)
             setPhoto1(res.data.imagePath1)
@@ -62,7 +62,7 @@ function Candidate() {
     }
 
     function gotoList(){
-        navigate("/poll/:pollnum")
+        navigate(`/poll/${params.pollnum}`)
     }
 
 

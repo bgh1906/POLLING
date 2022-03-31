@@ -30,7 +30,7 @@
 #nomi_box2{
     position: relative;
     /* top: -18vh; */
-    bottom: 4vh;
+    bottom: 3vh;
 }
 
 #nomi_tag{
@@ -98,7 +98,6 @@
 }
 
 #register_button {
-    margin-top: 1.5vh;
     width: 13vw;
     height: 4vh;
     font-size: 1.3vw;
@@ -134,7 +133,7 @@
 #no_pro2{
     position: absolute;
     width: 13vw;
-    max-height: 15vw;
+    max-height: 18vw;
     padding:1px;
     border:3px solid #021a40;
 }
@@ -149,7 +148,7 @@
 
 #thumbnail{
     width: 11vw;
-    height: 12vw;
+    max-height: 14vw;
     margin: 2vw;
     padding:1px;
     margin-left: 7vw;
@@ -160,7 +159,7 @@
     font-size: 2vw;
     position: relative;
     /* top: 1vh; */
-    bottom: 22vh;
+    bottom: 23vh;
     
 }
 
@@ -195,7 +194,7 @@
     font-family: 'GangwonEdu_OTFBoldA';
     position:relative;
     color: black;
-    bottom: 22vh;
+    bottom: 23vh;
     left: 1vw;
 }
 #profile_del{
@@ -208,7 +207,7 @@
     color: black;
     font-family: 'GangwonEdu_OTFBoldA';
     position:relative;
-    bottom: 22vh;
+    bottom: 23vh;
     left: 2vw;
 }
 

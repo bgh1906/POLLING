@@ -65,8 +65,8 @@ function Join2() {
         } else {
             axios
             .get(
-                `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
-                // `http://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
+                `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+                // `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
                 {
                     // nickname: nickname,
                     n: nickname,
@@ -80,7 +80,10 @@ function Join2() {
             })
             .catch(error => {
                 console.log("error", error.response);
-                alert("동일 닉네임이 존재합니다.");
+                if(error.code === 409){
+                    alert("동일 닉네임이 존재합니다.");
+                }
+                alert(error);
                 setNickname("");
             })
             console.log("nickname",nickname);
@@ -125,7 +128,8 @@ function Join2() {
         else if(phone !== "") {
             axios
             .post(
-                "https://j6a304.p.ssafy.io:8080/api/notify/sms",
+                "https://j6a304.p.ssafy.io/api/notify/sms",
+                // "https://j6a304.p.ssafy.io:8080/api/notify/sms",
                 {
                     content : "",
                     to : phone,
@@ -212,7 +216,8 @@ function Join2() {
         // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
             axios
             .post(
-                "https://j6a304.p.ssafy.io:8080/api/members",
+                "https://j6a304.p.ssafy.io/api/members",
+                // "https://j6a304.p.ssafy.io:8080/api/members",
                 {
                     email: email,
                     nickname: nickname,

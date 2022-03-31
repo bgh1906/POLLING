@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import Styles from "./Newnav.module.css";
 import mark_slim from "../../assets/mark_slim.png";
 import Hamburger from "./Hamburger";
+import { useEffect, useState } from "react";
 
 function NewNav() {
 
     const role = sessionStorage.getItem("role")
+    const [rendering, setRendering] = useState(0)
+    //햄버그에서 로그아웃할때 네브도 리랜더해야함... 어떻게??
+    
 
     return (
         <div >
@@ -17,7 +21,7 @@ function NewNav() {
 
                 {/* <Link to="/login" className={Styles.hamNav1}></Link> */}
             <div>
-                <Hamburger />
+                <Hamburger setRendering={setRendering} />
                 {/* <button className={Styles.hamNav1}></button>
                 <button className={Styles.hamNav2}></button>
                 <button className={Styles.hamNav3}></button> */}
@@ -26,7 +30,8 @@ function NewNav() {
                 <div className={Styles.userNav}>
                     <Link to="/" className={Styles.text}> {" "}Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
                     {
-                        role !== "" ?
+                        // role === "" ?
+                        role === null ?
                         <Link to="/login" className={Styles.text}> {" "}Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
                         : (
                             role === "ROLE_USER"?
@@ -35,7 +40,11 @@ function NewNav() {
                                 role === "ROLE_ADMIN" ?
                                 <Link to="/management" className={Styles.text}> admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                                 : 
+                                ( role === "ROLE_COMPANY"?
                                 <Link to="/management" className={Styles.text}> Company&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                                :
+                                <Link to="/login" className={Styles.text}> {" "}Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
+                                )
                             )
                         )
                     }

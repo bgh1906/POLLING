@@ -1,7 +1,7 @@
 .textNickname {
     position: absolute;
     left: 25vw;
-    top: 48vh;
+    top: 50vh;
 
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
@@ -11,7 +11,7 @@
     position: absolute;
     /* left: 25vw; */
     left: 26.7vw;
-    top: 57vh;
+    top: 59vh;
 
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
@@ -20,7 +20,7 @@
 .textPassword {
     position: absolute;
     left: 25vw;
-    top: 66vh;
+    top: 68vh;
 
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
@@ -28,18 +28,54 @@
 .nickname {
     position: absolute;
     width: 26vw;
-    height: 5vh;
+    height: 6vh;
     left: 32.5vw;
-    top: 47.5vh;
-
+    top: 48.5vh;
+    
     border-radius: 0.5vw;
+    /* border: 0.3vh solid #000000; */
+    background-color: #3afaca00;
     /* background-color: rgba(190, 237, 252, 0.74); */
     /* background-color: #3afaca3d; */
     /* background-color: #3afaca1a; */
-    background-color: #3afaca00;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    line-height: 6vh;
+    text-align: center;
 }
 
-.nickname:focus, .password:focus{
+.nicknamelabel {
+    position: absolute;
+    width: 26vw;
+    height: 6vh;
+    left: 32.5vw;
+    top: 48.5vh;
+    
+    border-radius: 0.5vw;
+    /* border: 0.3vh solid #000000; */
+    background-color: #3afaca00;
+    /* background-color: rgba(190, 237, 252, 0.74); */
+    /* background-color: #3afaca3d; */
+    /* background-color: #3afaca1a; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    line-height: 6vh;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.397);
+}
+
+
+.nickname:focus, .nicknamelabel::after{
+    /* background-color: #3afaca5b; */
+    background-color: #3afaca31;
+    /* color: rgba(0, 0, 0, 0); */
+}
+.nicknamelabel:focus{
+    /* background-color: #3afaca5b; */
+    /* background-color: #3afaca31; */
+    color: rgba(0, 0, 0, 0);
+}
+.password:focus{
     /* background-color: #3afaca5b; */
     background-color: #3afaca31;
 }
@@ -47,15 +83,15 @@
 .nicknamebtn {
     position: absolute;
     width: 4vw;
-    height: 4vh;
+    height: 5vh;
     left: 60vw;
-    top: 48vh;
+    top: 49vh;
 
     border-radius: 1vw;
     background-color: #fb71aa44;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.2vw;
-    line-height: 4vh;
+    line-height: 5vh;
 
 }
 
@@ -67,21 +103,32 @@
 .email {
     position: absolute;
     width: 26vw;
-    height: 5vh;
+    height: 6vh;
     left: 32.5vw;
-    top: 56.5vh;
+    top: 57.5vh;
 
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    text-align: center;
+
+    border: 0.3vh solid #000000;
     border-radius: 0.5vw;
     /* background-color: #3afaca1a; */
     background-color: #3afaca00;
+    font-size: 1.4vw;
+    line-height: 6vh;
 }
 
 .password {
     position: absolute;
     width: 26vw;
-    height: 5vh;
+    height: 6vh;
     left: 32.5vw;
-    top: 65vh;
+    top: 66.5vh;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    text-align: center;
 
     border-radius: 0.5vw;
     /* background-color: #3afaca1a; */
@@ -91,31 +138,32 @@
 .passwordbtn{
     position: absolute;
     width: 4vw;
-    height: 4vh;
+    height: 5vh;
     left: 60vw;
-    top: 65.5vh;
+    top: 67vh;
 
     border-radius: 1vw;
     background-color: #fb71aa44;
 
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.2vw;
-    line-height: 4vh;
+    line-height: 5vh;
 }
 
 .logout{
     position: absolute;
+    /* position: flex; */
     width: 5vw;
     height: 4vh;
     left: 65vw;
-    top: 72.5vh;
+    top: 74.5vh;
 
     border-radius: 0.5vw;
     /* background-color: #fb71aa98; */
     background-color: #FFE29A;
     font-family: 'GangwonEdu_OTFBoldA';
-
-    font-size: 1.2vw;
+    /* flex-wrap: wrap; */
+    font-size: 1.1vw;
     line-height: 4vh;
 }
 
@@ -128,7 +176,7 @@
     width: 4vw;
     height: 4vh;
     left: 71.5vw;
-    top: 72.5vh;
+    top: 74.5vh;
 
     border-radius: 0.5vw;
     /* background-color: #ff006a5b; */

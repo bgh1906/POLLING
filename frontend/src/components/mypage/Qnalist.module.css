@@ -1,0 +1,33 @@
+.accordion {
+    width: 45vw;
+    left: 8vw;
+    font-family:'GangwonEdu_OTFBoldA';
+    background-color: rgba(250, 235, 215, 0.521);
+}
+
+.typotype {
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    /* text-align: center; */
+    line-height: 4vh;
+}
+.typoTitle {
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.3vw;
+}
+.typoContent {
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1vw;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../../fonts/RussoOne-Regular.ttf);
+  }
