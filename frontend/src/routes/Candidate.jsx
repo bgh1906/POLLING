@@ -92,15 +92,15 @@ function Candidate() {
                 <Button id={styles.con_button} variant="contained">투표내역</Button>
                 <Button id={styles.back_button} onClick={gotoList} variant="contained">참가자 목록</Button>
                 <div id={styles.photobox}>
-                    <img id={styles.photo1} 
+                    {photo1? <img id={styles.photo1} 
                     onClick={changePhoto1}
-                    src={photo1} alt="photo1" />
-                    <img id={styles.photo2} 
+                    src={photo1} alt="photo1" />: null }
+                    {photo2? <img id={styles.photo2} 
                     onClick={changePhoto2}
-                    src={photo2} alt="photo2" />
-                    <img id={styles.photo3} 
+                    src={photo2} alt="photo2" />: null }
+                    {photo3? <img id={styles.photo3} 
                     onClick={changePhoto3}
-                    src={photo3} alt="photo3" />
+                    src={photo3} alt="photo3" />: null }
                 </div>
 
                 <Comment candiId={params.id} data={commentdata} renderCheck={renderCheck}></Comment>

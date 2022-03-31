@@ -54,7 +54,8 @@ export default function PollList() {
                   className={styles.opened_item}
                 >
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    // src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"

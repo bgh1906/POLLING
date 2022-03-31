@@ -55,7 +55,7 @@
     top: 11vh;
     margin: 0;
     z-index: 1;
-    color:black
+    color:#1d1b1bf3
 }
 
 #main_text_about2 {
@@ -69,7 +69,7 @@
     left: 13vw;
     top: 28vh;
     margin: 0;
-    color:black
+    color:#1d1b1bf3
 }
 
 #main_text_about3 {
@@ -83,7 +83,7 @@
     left: 24vw;
     top: 46vh;
     margin: 0;
-    color:black
+    color:#1d1b1bf3
 }
 
 #main_image {
@@ -103,7 +103,7 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     top: -5vh;
     left: 3vw;
-    color:black
+    color:#201e1ef1
 }
 
 #sub_text_about2{
@@ -118,7 +118,7 @@
     left: 3vw;
     text-decoration: underline solid rgb(255, 0, 0);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: black;
+    color: #201e1ef1
 }
 
 #sub_text_about2:hover{
@@ -157,6 +157,7 @@
     position: absolute;
     bottom: 11vh;
     left: 2vw;
+    color: #201e1ef1
 }
 
 
@@ -176,6 +177,8 @@
     top: 21vh;
     margin: 0;
     transform: rotate(90deg);
+    color: #201e1ef1
+    
 }
 
 #main_text_compe2 {
@@ -190,6 +193,7 @@
     top: 31vh;
     margin: 0;
     transform: rotate(90deg);
+    color: #201e1ef1
 }
 
 #main_image5 {
@@ -209,6 +213,7 @@
     position: absolute;
     top: 1vh;
     left: 6vw;
+    color: #201e1ef1
 }
 
 #sub_text_compe2{
@@ -223,7 +228,7 @@
     left: 8vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: underline solid rgb(255, 0, 0);
-    color: black;
+    color: #201e1ef1
 }
 
 #sub_text_compe2:hover{
@@ -238,6 +243,7 @@
     bottom: 28vh;
     left: 5.5vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 
@@ -264,6 +270,7 @@
     top: 20vh;
     margin: 0;
     z-index: 1;
+    color: #201e1ef1
 }
 
 #main_text_history2 {
@@ -278,6 +285,7 @@
     top: 33vh;
     margin: 0;
     z-index: 1;
+    color: #201e1ef1
 }
 
 #sub_text_history{
@@ -289,6 +297,7 @@
     top: -5vh;
     left: 6vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 #click2 {
@@ -299,6 +308,7 @@
     bottom: 7vh;
     left: 10vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 
@@ -314,7 +324,7 @@
     bottom: 5vh;
     left: 12vw;
     text-decoration: underline solid rgb(255, 0, 0);
-    color: black;
+    color: #201e1ef1;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -343,6 +353,7 @@
     top: -5vh;
     left: 36vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 #main_text_hall {
@@ -357,6 +368,7 @@
     top: 20vh;
     margin: 0;
     z-index: 1;
+    color: #201e1ef1
 }
 
 #main_text_hall2 {
@@ -371,6 +383,7 @@
     top: 33vh;
     margin: 0;
     z-index: 1;
+    color: #201e1ef1
 }
 
 #click3 {
@@ -381,6 +394,7 @@
     bottom: 7vh;
     left: 41vw;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 
@@ -398,6 +412,7 @@
     text-decoration: underline solid rgb(255, 0, 0);
     color: black;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1
 }
 
 

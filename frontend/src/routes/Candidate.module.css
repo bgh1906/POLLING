@@ -41,9 +41,11 @@
 
 #profile_image {
     position: relative;
-    width: 32vw;
-    height: 32vw;
-    left: 33vw;
+    /* width: 30vw; */
+    width: 30vw;
+    /* max-height: 35vw; */
+    height: 30vw;
+    left: 35vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
@@ -62,13 +64,14 @@
 
 #profile {
     position: absolute;
-    width: 20vw;
+    width: 22vw;
     /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
-    font-size: 1.5vw;
-    left: 12vw;
-    top: 26vh;
+    font-size: 1.3vw;
+    left: 11vw;
+    top: 28vh;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 #nowrank {
@@ -159,9 +162,8 @@
     cursor: pointer; 
     border-radius: 10px;
     color: black;
-    right: 7vw;
-    top: 64vh;
-    transform: rotate(90deg);
+    right: 1vw;
+    top: 72vh;
 }
 #list_button {
     position:relative;
@@ -175,7 +177,7 @@
     border-radius: 10px;
     color: black;
     top: 1.5vh;
-    left: 65vw;
+    left: 65.5vw;
     padding-top: 1vh;
 }
 
@@ -184,8 +186,8 @@
     border: solid;
     border-radius: 10px;
     border-width: 0.1vw;
-    width: 32vw;
-    left: 33vw;
+    width: 30vw;
+    left: 35vw;
     display: flex;
     justify-content: center;
     margin-bottom: 5vh;
@@ -233,9 +235,10 @@
 
 #profile_image2 {
     position: relative;
-    width: 32vw;
-    /* height: 32vw; */
-    left: 12vw;
+    width: 30vw;
+    /* max-height: 37vw; */
+    height: 30vw;
+    left: 13vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
@@ -248,10 +251,11 @@
     /* height: 10vh; */
     /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
-    font-size: 1.5vw;
+    font-size: 1.4vw;
     left: 47vw;
-    top: 26vh;
+    top: 27vh;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 #nowrank2 {
@@ -338,9 +342,8 @@
     cursor: pointer; 
     border-radius: 10px;
     color: black;
-    left: 4.5vw;
-    top: 64vh;
-    transform: rotate(270deg);
+    right: 1vw;
+    top: 72vh;
 }
 
 #photobox2{
@@ -348,8 +351,8 @@
     border: solid;
     border-radius: 10px;
     border-width: 0.1vw;
-    width: 32vw;
-    left: 12vw;
+    width: 30vw;
+    left: 13vw;
     display: flex;
     justify-content: center;
     margin-bottom: 5vh;
@@ -388,7 +391,8 @@
 
 #tx2 {
     position: absolute;
-    width: 3.5vw;
-    top: 63vh;
-    right: 8vw;
+    width: 2vw;
+    top: 64.5vh;
+    right: 14vw;
+    z-index: 5;
 }
