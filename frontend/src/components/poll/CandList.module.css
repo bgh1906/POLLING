@@ -75,6 +75,7 @@
 .poll_Cand .CandImg {
   width: 11vw;
   height: 14vw;
+  cursor: pointer;
 }
 
 .poll_Cand figcaption {

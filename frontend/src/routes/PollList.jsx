@@ -12,52 +12,7 @@ import axios from "axios";
 
 export default function PollList() {
   const navigate = useNavigate();
-  // const itemData = [
-  //   {
-  //     img: chunhyang,
-  //     title: "chunhyang",
-  //   },
-  //   {
-  //     img: ocean,
-  //     title: "ocean",
-  //   },
-  //   {
-  //     img: cybertruck,
-  //     title: "cybertruck",
-  //   },
-  //   {
-  //     img: kClassic,
-  //     title: "kClassic",
-  //   },
-  //   {
-  //     img: contest,
-  //     title: "contest",
-  //   },
-  //   {
-  //     img: missKorea,
-  //     title: "missKorea",
-  //   },
-  //   {
-  //     img: eyes,
-  //     title: "eyes",
-  //   },
-  //   {
-  //     img: fox,
-  //     title: "fox",
-  //   },
-  //   {
-  //     img: gogh,
-  //     title: "gogh",
-  //   },
-  //   {
-  //     img: monarisa,
-  //     title: "monarisa",
-  //   },
-  //   {
-  //     img: hair,
-  //     title: "hair",
-  //   },
-  // ];
+
   const [itemData, setItemData] = useState([]);
   useEffect(() => {
     axios
