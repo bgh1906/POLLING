@@ -1,12 +1,13 @@
 package com.polling.grpc.server;
 
-import com.polling.grpc.EventRequest;
-import com.polling.grpc.EventResponse;
-import com.polling.grpc.EventServiceGrpc;
-import com.polling.grpc.ResultStatus;
+import com.polling.grpc.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +17,14 @@ import org.springframework.stereotype.Service;
  * @since 2021-12-01
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class EventService extends EventServiceGrpc.EventServiceImplBase {
+
+  private final JavaMailSender mailSender;
+
+  @Value("${spring.mail.username}")
+  private String FROM_ADDRESS;
 
   @Override
   public void sendEvent(EventRequest request, StreamObserver<EventResponse> responseObserver) {
@@ -129,4 +136,40 @@ public class EventService extends EventServiceGrpc.EventServiceImplBase {
 
     return requestStreamObserver;
   }
+
+  @Override
+  public void winning(WinningRequest request,
+                      StreamObserver<WinningResponse> responseObserver) {
+    try {
+      log.info("winning : {}", request.toString());
+      sendMail(request.getEmail(), request.getGiftType());
+      responseObserver.onNext(
+              WinningResponse.newBuilder()
+                      .setStatus(ResultStatus.newBuilder()
+                              .setCode(Status.OK.getCode().value())
+                              .setMessage("Winning SUCCESS!!!")
+                              .build())
+                      .setResult("Success Event")
+                      .build()
+      );
+      responseObserver.onCompleted();
+
+    } catch (Exception e) {
+      responseObserver.onError(e);
+    }
+  }
+
+  public void sendMail(String userEmail, GiftType giftType){
+    SimpleMailMessage message = new SimpleMailMessage();
+    message.setTo(userEmail);
+    message.setFrom(FROM_ADDRESS);
+    log.info("FROM: " + FROM_ADDRESS);
+    message.setSubject("경품당첨");
+    log.info("GIFTTYPE: " + giftType);
+    message.setText(giftType + "에 당첨되셨습니다");
+
+    mailSender.send(message);
+  }
+
+
 }
