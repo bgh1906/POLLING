@@ -75,7 +75,7 @@ function Admin() {
         axios.patch(
          `https://j6a304.p.ssafy.io/api/polls/admin/wait`,
          {
-            "listCandidateIndex": [ 0 ],
+            "listCandidateIndex": [ 0,1,2,3,4,5,6,7,8,9,10 ],
             "pollId": poll_id
          },
         {
@@ -163,7 +163,7 @@ function Admin() {
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             {poll.openStatus? <div id={styles.list_datefont}> 실시간 투표수 공개</div> :
                             <div id={styles.list_datefont}> 실시간 투표수 비공개</div>}
-                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경 </Button></div>
+                            <div><Button id={styles.status_button2} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경 </Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>
@@ -179,7 +179,7 @@ function Admin() {
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             {poll.openStatus? <div id={styles.list_datefont}> 실시간 투표수 공개</div> :
                             <div id={styles.list_datefont}> 실시간 투표수 비공개</div>}
-                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
+                            <div><Button id={styles.status_button2} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>     
