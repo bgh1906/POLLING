@@ -1,26 +1,189 @@
+import { useState } from "react";
 import NewNav from "../layout/NewNav";
 import Styles from "./UserInfo.module.css"
+import { connect } from "react-redux";
+import { actionCreators } from "../../store";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
-function UserInfo() {
+function UserInfo({ state, DispatchdeleteInfo }) {
+
+  const logoutSuccess = () => {
+    Swal.fire({
+      title: "로그아웃!",
+      // text: "POLLING을 이용해주셔서 감사합니다.",
+      text: "오늘도 좋은 하루 보내세요",
+      icon: "success",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    })
+  };
+
+  const logoutFail = () => {
+      Swal.fire({
+        title: "로그아웃 실패",
+      //   text: "POLLING을 이용해주셔서 감사합니다.",
+        icon: "error",
+        confirmButtonColor: "#73E0C1",
+        confirmButtonText: "확인",
+      })
+  };
+
+  const DeleteSuccess = () => {
+    Swal.fire({
+      title: "탈퇴 완료",
+      text: "그동안 POLLING을 이용해주셔서 감사합니다.",
+      icon: "success",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    })
+  };
+
+  const DeleteFail = () => {
+    Swal.fire({
+      title: "탈퇴 실패",
+    //   text: "POLLING을 이용해주셔서 감사합니다.",
+      icon: "error",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    })
+  };
+
+  const NickSuccess = () => {
+    Swal.fire({
+      title: "Nickname 변경 성공!",
+      // text: "POLLING을 이용해주셔서 감사합니다.",
+      icon: "success",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    })
+  };
+
+  const NickFail = () => {
+      Swal.fire({
+        title: "동일 Nickname 존재",
+      //   text: "POLLING을 이용해주셔서 감사합니다.",
+        icon: "error",
+        confirmButtonColor: "#73E0C1",
+        confirmButtonText: "확인",
+      })
+  };
+
+  const PassSuccess = () => {
+    Swal.fire({
+      title: "Password 변경 성공!",
+      // text: "POLLING을 이용해주셔서 감사합니다.",
+      icon: "success",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    })
+  };
+
+  const PassFail = () => {
+      Swal.fire({
+        title: "Password 변경 실패",
+      //   text: "POLLING을 이용해주셔서 감사합니다.",
+        icon: "error",
+        confirmButtonColor: "#73E0C1",
+        confirmButtonText: "확인",
+      })
+  };
+
+  console.log("state",state);
+  const token = sessionStorage.getItem("token")
+
+  //닉네임 받아오기
+  const [nickname, setNickname] = useState();
+  const getNickname = (e) => {
+    setNickname(e.target.value);
+    console.log(e.target.value);
+  }
+
+  const nick = state[0].nickname;
+  console.log(nick);
+
+  //닉네임 수정
+  const getNickchange = () => {
+
+  }
+
+
+  //비번 받아오기
+  const [password, setPassword] = useState();
+  const getPassword = (e) => {
+    setPassword(e.target.value);
+    console.log(e.target.value);
+  }
+
+  //비번 수정
+  const getPasschange = () => {
+    
+  }
+
+  const navigation = useNavigate();
+  //로그아웃
+  const logout = () => {
+    axios
+    .get(
+        "https://j6a304.p.ssafy.io/api/auth/logout",
+        // {},
+        {
+            headers: {
+                // "Authorization":token,
+                refreshToken: token,
+            },
+        })
+    .then((res) => {
+        console.log("res", res);
+        console.log("로그아웃");
+        sessionStorage.clear();
+        DispatchdeleteInfo();
+        logoutSuccess();
+        navigation("/");
+        
+    })
+    .catch(error => {
+        console.log("error",error);
+        logoutFail();
+        console.log("로그아웃 실패");
+    })
+}
+
+
+  //탈퇴
+  const getDelete = () => {
+
+  }
 
     return (
         <>
           {/* <h>Item One</h> */}
           <span className={Styles.textNickname}>Nickname : </span>
-          <input type={'text'} placeholder="Nickname" className={Styles.nickname}></input>
+          {/* <input type={'text'} placeholder="" className={Styles.nickname} onChange={getNickname}></input> */}
+          <label type={'text'} for="nick" className={Styles.nicknamelabel} onChange={getNickname}>{nick}</label>
+          <input type={'text'} id="nick" className={Styles.nickname} onChange={getNickname}></input>
           <button className={Styles.nicknamebtn}>수정</button>
           <div className={Styles.textEmail}>e-mail : </div>
-          <input type={'email'} placeholder="E-mail" className={Styles.email} value="{}" readOnly></input>
+          <div className={Styles.email}>{state[0].email}</div>
           <span className={Styles.textPassword}>Password : </span>
-          <input type={'password'} placeholder="password" className={Styles.password}></input>
+          <input type={'password'} placeholder="password" className={Styles.password} onChange={getPassword}></input>
           <button className={Styles.passwordbtn}>수정</button>
           <br />
-          <button className={Styles.logout}>로그아웃</button>
+          <button className={Styles.logout} onClick={logout}>로그아웃</button>
           <button className={Styles.out}>탈퇴</button>
 
         </>
     );
 }
 
-export default UserInfo;
+function mapStateToProps(state) {
+  return { state };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    DispatchdeleteInfo: () => dispatch(actionCreators.deleteInfo()),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);

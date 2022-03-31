@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Qna from "./Qna";
+import Qna from "./Qnawrite";
 
 function createData(name, calories, fat) {
     return { name, calories, fat };
@@ -46,7 +46,7 @@ function createData(name, calories, fat) {
   const Root = styled('div')(
     ({ theme }) => `
     table {
-      font-family: IBM Plex Sans, sans-serif;
+      font-family: 'GangwonEdu_OTFBoldA';
       font-size: 0.875rem;
       border-collapse: collapse;
       width: 50vw;
@@ -60,6 +60,7 @@ function createData(name, calories, fat) {
     }
   
     th {
+      font-family: "RussoOne";
       background-color: ${theme.palette.mode === 'dark' ? grey[900] : grey[100]};
     }
     `,
@@ -142,6 +143,7 @@ function QnaList() {
         setPage(0);
     };
 
+    //작성페이지로 이동
     const [write, setWrite] = useState(false);
     const getWrite = () => {
         setWrite(!write);
@@ -150,15 +152,14 @@ function QnaList() {
     return (
         <>
             {/* <Link to='/qna'>작성</Link> */}
-            <button onClick={getWrite} hidden={write === true}>작성</button>
-            {write === false? 
+            {/* <button onClick={getWrite} hidden={write === true}>작성</button> */}
             
-            <Root sx={{ width: '50vw', maxWidth: '100%', paddingLeft:'5vw' }}>
+            <Root sx={{ width: '50vw', maxWidth: '100%', paddingLeft:'5vw', fontFamily:"GangwonEdu_OTFBoldA" }}>
                 <table aria-label="custom pagination table">
                     <thead>
                     <tr>
-                        <th>제목</th>
-                        <th>작성일시</th>
+                        <th>TITLE</th>
+                        <th>DATE</th>
                         {/* <th>Fat</th> */}
                     </tr>
                     </thead>
@@ -168,7 +169,9 @@ function QnaList() {
                         : rows
                         ).map((row) => (
                             <tr key={row.name}>
-                            <td>{row.name}</td>
+                            <td>
+                              {row.name}
+                            </td>
                             <td style={{ width: 120 }} align="right">
                                 {row.calories}
                             </td>
@@ -208,8 +211,6 @@ function QnaList() {
                     </tfoot>
                 </table>
                 </Root>
-                :
-                <Qna wirte={write}/>    }
         </>
     );
 }

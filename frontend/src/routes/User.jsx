@@ -82,7 +82,8 @@ function User() {
         else if(nickname !== " " && email !== " " && password !== " " ){
             axios
             .post(
-                "http://j6a304.p.ssafy.io:8080/api/members",
+                // "http://j6a304.p.ssafy.io:8080/api/members",
+                "http://j6a304.p.ssafy.io/api/members",
                 {
                     email: email,
                     nickname: nickname,

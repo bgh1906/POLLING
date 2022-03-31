@@ -11,9 +11,6 @@ import { actionCreators } from "../store";
 import Kakaojoin from "./Kakaojoin.jsx";
 import { useDispatch } from 'react-redux'
 
-
-
-
 const { Kakao } = window;
 
 function Login2() {
@@ -69,6 +66,7 @@ function Login2() {
             axios
               .post(
                 "https://j6a304.p.ssafy.io/api/auth",
+                // "https://j6a304.p.ssafy.io:8080/api/auth",
                   {
                       email: email,
                       password: password,
@@ -130,11 +128,12 @@ function Login2() {
             const accessToken = response.access_token;
             axios
               .post("https://j6a304.p.ssafy.io/api/auth/validate", {
+              // .post("https://j6a304.p.ssafy.io:8080/api/auth/validate", {
                 // accessToken: response.refresh_token,
-                // accessToken: response.access_token,
-                nickname: "KAKAO",
-                refreshToken: response.refresh_token,
-                phoneNumber: response.refresh_token,
+                accessToken: response.access_token,
+                // nickname: "KAKAO",
+                // refreshToken: response.refresh_token,
+                // phoneNumber: response.refresh_token,
               })
               .then((res) => {
                 console.log("res",res);

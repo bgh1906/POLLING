@@ -33,7 +33,8 @@ function Companylogin2() {
         } else if(email !== "" && password !==""){
             axios
               .post(
-                "http://j6a304.p.ssafy.io:8080/api/auth",
+                // "http://j6a304.p.ssafy.io:8080/api/auth",
+                "http://j6a304.p.ssafy.io/api/auth",
                   {
                     email: email,
                     password: password,
