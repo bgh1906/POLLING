@@ -43,8 +43,6 @@ function Hamburger({ state, DispatchdeleteInfo, setRendering }) {
 
     // const token2 = state[0].token;
 
-    console.log(token);
-
     const navigation = useNavigate();
 
     //로그아웃
