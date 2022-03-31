@@ -2,8 +2,20 @@ spring:
   profiles:
     active: local
     default: local
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gojung.xyz@gmail.com
+    password: u201502113
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 server:
   port: 8090
+
 armeria:
   ports:
     - port: 8099

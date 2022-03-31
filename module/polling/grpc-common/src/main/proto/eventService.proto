@@ -21,6 +21,13 @@ service EventService {
   rpc sendEvent(EventRequest) returns (EventResponse) {}
 
   /**
+ * Server(1) : Client(1)
+ * - unary RPC
+ * - Client 가 요청을 보내고 Server 가 응답하는 형태
+ */
+  rpc winning(WinningRequest) returns (WinningResponse) {}
+
+  /**
    * Server(N) : Client(1)
    * - Server Streaming RPC
    * - Client 가 요청을 보내고 Server로 부터 더이상 메시지가 없을 때까지 스트림을 읽음.
@@ -48,12 +55,29 @@ enum Type {
   BLOCK = 2;
 }
 
+enum GiftType {
+  FREE_TICKET = 0;
+  FREE_PHOTO = 1;
+  FREE_PARTICLE = 2;
+}
+
 message EventRequest {
   int64 id = 1;
   Type type = 2;
 }
 
 message EventResponse {
+  ResultStatus status = 1;
+  string result = 2;
+}
+
+message WinningRequest {
+  string email = 1;
+  GiftType giftType = 2;
+  Type type = 3;
+}
+
+message WinningResponse {
   ResultStatus status = 1;
   string result = 2;
 }
