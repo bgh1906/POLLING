@@ -85,8 +85,10 @@
 
 #poll_image {
     width: 15vw;
+    max-height: 16vw;
     margin-left: 5vw;
     border-radius: 10px;
+    margin-top: 2.5vh;
 }
 
 #poll_title {
@@ -122,8 +124,8 @@
     font-weight: 900;
     /* right: 6vw; */
     width: 100%;
-    top: 60vh;
-    left: 1vw;
+    top: 57vh;
+    left: 18.5vw;
 }
 
 #poll_title5 {
@@ -135,6 +137,17 @@
     width: 100%;
     top: 68vh;
     left: -1vw;
+}
+
+#poll_title6 {
+    position: absolute;
+    font-family: 'Bitter', serif !important;
+    font-size: 1.5vw;
+    font-weight: 900;
+    /* right: 6vw; */
+    width: 100%;
+    top: 68vh;
+    left: 3vw;
 }
 
 
@@ -186,7 +199,7 @@
     margin: 1vw;
     margin-left: 5vw;
     vertical-align: middle;
-    top:32vh;
+    top: 20vh;
     font-family: 'Bitter', serif !important;
     font-size: 1.5vw;
     font-weight: 900;
@@ -206,7 +219,7 @@
     position: absolute;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
-    left: 19.5vw;
+    left: 24vw;
     bottom: -1vh;
 }
 

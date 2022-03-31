@@ -8,9 +8,6 @@ import Moment from 'react-moment';
 import logo from "../assets/mark_slim.png"
 import Button from '@mui/material/Button';
 import axios from "axios";
-import { useSelector } from 'react-redux'
-
-
 
 function Admin() {
 
@@ -28,19 +25,22 @@ function Admin() {
     // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
-
     useEffect(()=>{
+            // console.log(ENDPOINT)
+
             axios
-            .get("https://j6a304.p.ssafy.io:8080/api/polls/unapproved/0/50")
+            .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")
             .then((res) => {
+                console.log(res);
                 setPolldata(res.data);
             })
             .catch(error => {
                 console.log(error.response)
             });  
             axios
-            .get("https://j6a304.p.ssafy.io:8080/api/polls/wait/0/50")
+            .get("https://j6a304.p.ssafy.io/api/polls/wait/0/50")
             .then((res) => {
+                console.log(res);
                 setPolldata2(res.data);
             })
             .catch(error => {
@@ -48,8 +48,9 @@ function Admin() {
             });  
     
             axios
-            .get("https://j6a304.p.ssafy.io:8080/api/polls/progress/0/50")
+            .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
             .then((res) => {
+                console.log(res);
                 setPolldata3(res.data);
             })
             .catch(error => {
@@ -57,8 +58,9 @@ function Admin() {
             });  
 
             axios
-            .get("https://j6a304.p.ssafy.io:8080/api/polls/done/0/50")
+            .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
             .then((res) => {
+                console.log(res);
                 setPolldata4(res.data);
             })
             .catch(error => {
@@ -69,11 +71,13 @@ function Admin() {
 
     function changeStatuswait(e){
         const poll_id = e.target.name;
-        console.log(token)
 
         axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/wait`,
-         {},
+         `https://j6a304.p.ssafy.io/api/polls/admin/wait`,
+         {
+            "listCandidateIndex": [ 0 ],
+            "pollId": poll_id
+         },
         {
             headers: {
                 "Authorization":token,
@@ -84,41 +88,27 @@ function Admin() {
         })
     }
 
-    function changeStatusprogress(e){
-        const poll_id = e.target.name;        
-        axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/progress`,
-         {},
-        {
-            headers: {
-                "Authorization":token,
-            },
-        })
-        .then(()=>{
-            setRendernumber(rendernumber+1);
-        })
-    }
-
-    function changeStatusdone(e){
-        const poll_id = e.target.name;        
-        axios.patch(
-         `https://j6a304.p.ssafy.io:8080/api/polls/admin/${poll_id}/done`,
-         {},
-        {
-            headers: {
-                "Authorization":token,
-            },
-        })
-        .then(()=>{
-            setRendernumber(rendernumber+1);
-        })
-    }
     
     function moveToUpdate(e){
         const poll_id = e.target.name;
         navigate(`/poll/update/${poll_id}`);
     }
       
+    function changePollOption(e){
+        const poll_id = e.target.name;
+        axios.patch(
+            `https://j6a304.p.ssafy.io/api/polls/admin/open/${poll_id}`,
+            {},
+           {
+               headers: {
+                   "Authorization":token,
+               },
+           })
+           .then(()=>{
+               setRendernumber(rendernumber+1);
+               console.log('투표 옵션 변경!')
+           })
+    }
 
     return (
         <div>
@@ -152,12 +142,12 @@ function Admin() {
                 </div>
                 <Grid id={styles.poll_container} container>
                 {polldata.map((poll)=> (
-                    <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
+                    <Grid key={poll.pollId} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.id} variant="contained">투표 수정하기</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatuswait} name={poll.id} variant="contained">투표 승인하기</Button></div>
+                            <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.pollId} variant="contained">투표 수정하기</Button></div>
+                            <div><Button id={styles.status_button2} onClick={changeStatuswait} name={poll.pollId} variant="contained">투표 승인하기</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>  
@@ -167,12 +157,13 @@ function Admin() {
                 </div>
                 <Grid id={styles.poll_container} container>
                 {polldata2.map((poll)=> (
-                    <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
+                    <Grid key={poll.pollId} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.id} variant="contained">투표 수정하기</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatusprogress} name={poll.id} variant="contained">투표 시작하기</Button></div>
+                            {poll.openStatus? <div id={styles.list_datefont}> 실시간 투표수 공개</div> :
+                            <div id={styles.list_datefont}> 실시간 투표수 비공개</div>}
+                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경 </Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>
@@ -182,12 +173,13 @@ function Admin() {
                 </div>
                 <Grid id={styles.poll_container} container>
                 {polldata3.map((poll)=> (
-                    <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
+                    <Grid key={poll.pollId} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} onClick={changeStatusprogress} name={poll.id} variant="contained">투표 옵션변경</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatusdone} name={poll.id} variant="contained">투표 종료하기</Button></div>
+                            {poll.openStatus? <div id={styles.list_datefont}> 실시간 투표수 공개</div> :
+                            <div id={styles.list_datefont}> 실시간 투표수 비공개</div>}
+                            <div><Button id={styles.status_button1} onClick={changePollOption} name={poll.pollId} variant="contained">투표 옵션변경</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>     
@@ -197,7 +189,7 @@ function Admin() {
                 </div>
                 <Grid id={styles.poll_container} container>
                 {polldata4.map((poll)=> (
-                    <Grid key={poll.id} id={styles.pollbox} item xs={12} sm={6} lg={3}>
+                    <Grid key={poll.pollId} id={styles.pollbox} item xs={12} sm={6} lg={3}>
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>

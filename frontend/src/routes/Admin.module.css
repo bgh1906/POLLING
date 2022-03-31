@@ -144,9 +144,10 @@
 
 #list_img {
     width: 70%;
-    border:5px solid #ffcbcb;
+    /* border:5px solid #ffcbcb; */
     margin: auto;
-    margin-bottom: 2vh;
+    margin-bottom: 2.5vh;
+    
 }
 
 

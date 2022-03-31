@@ -29,8 +29,6 @@ function UpdatePoll() {
     const [pollEnd, setpollEnd] = useState("");
     const [pollDescribe, setpollDescribe] = useState("");    
     const [pollRealtime, setpollRealtime] = useState(false);
-    const [pollLatestTX, setpollLatestTX] = useState(false);
-    const [pollAllTX, setpollAllTX] = useState(false);
 
     const params = useParams();
 
@@ -41,6 +39,7 @@ function UpdatePoll() {
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
         id: 0,
+        candidateIndex: 0,
         name: "",
         profile: "",
         thumbnail: "",
@@ -52,7 +51,7 @@ function UpdatePoll() {
     
 
     useEffect(()=> {
-        axios.get(`https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`)
+        axios.get(`https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`)
             .then((res) => {
                 console.log("성공!");
                 console.log(res);
@@ -62,11 +61,13 @@ function UpdatePoll() {
                 setpollEnd(res.data.endDate)
                 setpollDescribe(res.data.content)
                 setnomiList(res.data.candidates)
+                setpollRealtime(res.data.openStatus)
             })
             .catch(error => {
                 console.log(error.response)
             });  
     },[])
+
 
 
     const [current, setCurrent] = useState({})
@@ -82,13 +83,13 @@ function UpdatePoll() {
     }
 
     const onUpdate=(nominee)=>{
-        setnomiList(nomiList.map(nomilist=> nomilist.id===nominee.id ? nominee : nomilist ))
+        setnomiList(nomiList.map(nomilist=> nomilist.candidateId===nominee.candidateId ? nominee : nomilist ))
         setIsEdit(false);        
     }
 
 
     const onDel=(id)=>{
-        setnomiList(nomiList.filter(nomiList => nomiList.id !== id))
+        setnomiList(nomiList.filter(nomiList => nomiList.candidateId !== id))
     }
     const onAdd=(form)=>{
         form.id = no.current++;
@@ -126,31 +127,18 @@ function UpdatePoll() {
             setpollRealtime(false);
         }
     }
-    function changepollLatestTX(e) {
-        if (e.target.checked === true){
-            setpollLatestTX(true);
-        } else {
-            setpollLatestTX(false);
-        }
-    }
-    function changepollAllTX(e) {
-        if (e.target.checked === true){
-            setpollAllTX(true);
-        } else {
-            setpollAllTX(false);
-        }
-    }
+    
 
     function updatePolldata(){
         
         // console.log(pollInfo)
         
         axios.put(
-            `https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
+            `https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
             {
-                "candidateDtos": nomiList,
                 "content":pollDescribe,
                 "endDate":pollEnd,
+                "openStatus":pollRealtime,
                 "startDate":pollStart,
                 "thumbnail":pollImage,
                 "title":pollName
@@ -180,7 +168,7 @@ function UpdatePoll() {
 
     function deletePoll(){
         axios.delete(
-            `https://j6a304.p.ssafy.io:8080/api/polls/admin/${params.pollnum}`,
+            `https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
             {
                 headers: {
                     "Authorization": token,
@@ -204,7 +192,7 @@ function UpdatePoll() {
 
     function patchCandi(nominee){
         axios.put(
-            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${nominee.id}`,
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidates/${nominee.candidateId}`,
             {
                 "imagePath1": nominee.imagePath1,
                 "imagePath2": nominee.imagePath2,
@@ -232,7 +220,7 @@ function UpdatePoll() {
 
     function deleteCandi(id){
         axios.delete(
-            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidates/${id}`,
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidates/${id}`,
             {
                 headers: {
                     "Authorization": token,
@@ -251,7 +239,7 @@ function UpdatePoll() {
     function addCandi(form){
 
         axios.post(
-            `https://j6a304.p.ssafy.io:8080/api/polls/admin/candidate`,
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidate`,
             {
                 "imagePath1": form.imagePath1,
                 "imagePath2": form.imagePath2,
@@ -334,15 +322,10 @@ function UpdatePoll() {
                         <span id={styles.input_name4}> Poll Option </span>
                     
                         <div id={styles.check_div}>
-                                <input id={styles.poll_input3} type="checkbox" value="now"
+                            <input id={styles.poll_input3} checked={pollRealtime} type="checkbox" 
                                 onChange={changepollRealtime}/> 
                                 <span id={styles.check_text}>실시간 투표 수 공개</span>
-                                <input id={styles.poll_input3} type="checkbox" value="recent" 
-                                onChange={changepollLatestTX}/> 
-                                <span id={styles.check_text}>투표 내역 공개 (최근 50건)</span>
-                                <input id={styles.poll_input3} type="checkbox" value="all"
-                                onChange={changepollAllTX}/> 
-                                <span id={styles.check_text}>전체 투표 내역 공개</span>
+                                
                         </div>
                     </div>
                     <div id={styles.poll_title5}>

@@ -130,10 +130,10 @@ function Login2() {
               .post("https://j6a304.p.ssafy.io/api/auth/validate", {
               // .post("https://j6a304.p.ssafy.io:8080/api/auth/validate", {
                 // accessToken: response.refresh_token,
-                // accessToken: response.access_token,
-                nickname: "KAKAO",
-                refreshToken: response.refresh_token,
-                phoneNumber: response.refresh_token,
+                accessToken: response.access_token,
+                // nickname: "KAKAO",
+                // refreshToken: response.refresh_token,
+                // phoneNumber: response.refresh_token,
               })
               .then((res) => {
                 console.log("res",res);
