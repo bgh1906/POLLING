@@ -1,16 +1,5 @@
 import Footer from "../components/layout/Footer";
 import styles from "./PollList.module.css";
-import chunhyang from "../assets/chunhyang.PNG";
-import ocean from "../assets/ocean.PNG";
-import cybertruck from "../assets/cybertruck.PNG";
-import kClassic from "../assets/kClassic.PNG";
-import contest from "../assets/contest.PNG";
-import missKorea from "../assets/missKorea.PNG";
-import eyes from "../assets/eyes.PNG";
-import fox from "../assets/fox.PNG";
-import gogh from "../assets/gogh.PNG";
-import monarisa from "../assets/monarisa.PNG";
-import hair from "../assets/hair.PNG";
 import { useNavigate } from "react-router-dom";
 import Newnav from "../components/layout/NewNav";
 import Box from "@mui/material/Box";

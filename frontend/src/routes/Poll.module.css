@@ -22,18 +22,18 @@
 }
 
 .poll_Info .pollImg {
-  width: 65%;
-  max-height: 20vw;
+  width: 75%;
+  height: 40vh;
   margin: 0 1vw 1vw 0;
 }
 
 .poll_Info figcaption {
-  font-size: 1.4vw;
+  font-family: "Bitter", serif;
   margin-bottom: 2vw;
 }
 
 .poll_Info figcaption span {
-  font-size: 2.5vw;
+  font-size: 2.8vw;
 }
 
 .left_title {

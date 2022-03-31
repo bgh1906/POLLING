@@ -60,12 +60,12 @@
 
 .poll_Cand:nth-child(3n + 5) {
   align-items: center;
-  margin-top: -19.28vw;
+  margin-top: -20.28vw;
 }
 
 .poll_Cand:nth-child(3n + 6) {
   align-items: flex-end;
-  margin-top: -19.28vw;
+  margin-top: -20.28vw;
 }
 
 .poll_Cand:nth-child(3n + 6) figcaption {
@@ -78,6 +78,11 @@
 }
 
 .poll_Cand figcaption {
-  display: flex;
-  /* justify-content: center; */
+  padding-top: 0.5vw;
+}
+
+.captionName {
+  font-size: 1.5vw;
+  font-family: "Bitter", serif;
+  font-weight: 700;
 }

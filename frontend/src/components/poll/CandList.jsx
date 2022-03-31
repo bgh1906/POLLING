@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./CandList.module.css";
 import pollinglogo from "../../assets/pollinglogo.png";
 import fox from "../../assets/fox.PNG";
+import { Button } from "@mui/material";
 
 export default function CandList() {
   const itemDetail = {
@@ -18,7 +19,7 @@ export default function CandList() {
         name: "박민영",
         thumbnail:
           "data:image/jpeg;base64,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",
-        votesTotalCount: 15472,
+        votesTotalCount: 55472,
       },
       {
         id: 3,
@@ -53,7 +54,7 @@ export default function CandList() {
         name: "임윤아",
         thumbnail:
           "https://file.mk.co.kr/meet/neds/2019/07/image_readtop_2019_573268_15642684623837739.jpg",
-        votesTotalCount: 84615,
+        votesTotalCount: 44615,
       },
       {
         id: 8,
@@ -74,7 +75,7 @@ export default function CandList() {
     startDate: "2022-04-29 00:00",
     thumbnail: fox,
   };
-
+  itemDetail.candidates.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
     <>
       <div className={styles.right_title}>Candidates</div>
@@ -97,12 +98,12 @@ export default function CandList() {
               alt={item.name}
               className={styles.CandImg}
             />
+
             <figcaption>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.name}
-              <br />
+              <div className={styles.captionName}>{item.name}</div>
               득표수 : {item.votesTotalCount}표
               <br />
-              &nbsp;현재 순위 : {index + 1}위
+              현재 순위 : {index + 1}위
             </figcaption>
           </div>
         ))}
