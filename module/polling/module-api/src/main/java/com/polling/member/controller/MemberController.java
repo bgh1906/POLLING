@@ -83,8 +83,8 @@ public class MemberController {
   @Trace
   @PatchMapping("/role/{id}")
   @ApiOperation(value = "회원 권한 수정")
-  public ResponseEntity<Void> changeRole(@PathVariable Long id, Set<MemberRole> memberRole) {
-    memberService.changeRole(id, memberRole);
+  public ResponseEntity<Void> changeRole(@PathVariable Long id, String memberRole) {
+    memberService.addRole(id, memberRole);
     return ResponseEntity.status(200).build();
   }
 

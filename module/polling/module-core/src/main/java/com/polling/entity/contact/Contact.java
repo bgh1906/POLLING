@@ -53,14 +53,18 @@ public class Contact extends BaseTimeEntity {
   @Column(length = 2000)
   private String answer;
 
+  @Column(name = "response_email")
+  private String email;
+
   @Builder
   public Contact(Member member, ContactType contactType,
-      String title, String content, String answer) {
+      String title, String content, String answer, String email) {
     this.member = member;
     this.contactType = contactType;
     this.title = title;
     this.content = content;
     this.answer = answer;
+    this.email = email;
   }
 
   public void changeMember(Member member){

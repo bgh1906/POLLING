@@ -5,9 +5,11 @@ import lombok.Getter;
 
 @Getter
 public enum ContactType {
-  COMPANY("company"),
-  POLL("poll"),
-  TICKET("ticket");
+  CONTACT_COMPANY("기업"),
+  CONTACT_POLL("투표"),
+  CONTACT_USER("회원"),
+  CONTACT_NFT("NFT"),
+  CONTACT_OTHER("기타");
 
   private String description;
 

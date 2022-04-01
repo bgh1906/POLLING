@@ -30,8 +30,8 @@ class ContactServiceTest {
         .password("asda")
         .phoneNumber("11114444124")
         .build();
-    SaveContactRequestDto requestDto = new SaveContactRequestDto(ContactType.TICKET, "title",
-        "content");
+    SaveContactRequestDto requestDto = new SaveContactRequestDto("회원", "title",
+        "content", member.getEmail());
 
     Member savedMember = memberRepository.save(member);
     contactService.save(requestDto, savedMember.getId());

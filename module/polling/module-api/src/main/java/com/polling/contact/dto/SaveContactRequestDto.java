@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * USER 회원의 문의 요청 DTO
  */
@@ -15,15 +17,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SaveContactRequestDto {
 
-  private ContactType contactType;
+  @NotNull
+  private String contactType;
+  @NotNull
   private String title;
+  @NotNull
   private String content;
+  @NotNull
+  private String email;
 
   public Contact toEntity(){
+    ContactType ct = ContactType.findByMethod(contactType);
     return Contact.builder()
         .title(title)
         .content(content)
-        .contactType(contactType)
+        .contactType(ct)
+        .email(email)
         .build();
   }
 }

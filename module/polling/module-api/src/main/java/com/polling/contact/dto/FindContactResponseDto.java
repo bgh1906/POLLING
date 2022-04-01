@@ -20,4 +20,5 @@ public class FindContactResponseDto {
   private String title;
   private String content;
   private String answer;
+  private String email;
 }

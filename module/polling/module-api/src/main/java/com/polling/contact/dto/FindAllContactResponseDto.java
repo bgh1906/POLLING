@@ -21,4 +21,5 @@ public class FindAllContactResponseDto {
   private String content;
   private Long memberId;
   private String answer;
+  private String email;
 }
