@@ -41,18 +41,6 @@ function QnaList2() {
     //   })
     // }
 
-    // axios
-    // .get(
-    //   "https://j6a304.p.ssafy.io/api/contact"
-    // )
-    // .then((res) => {
-    //   console.log(res);
-    //   setQnalist(res.data);
-    // })
-    // .catch(error => {
-    //   console.log("res",error.response);
-    //   console.log("error",error);
-    // })
     useEffect(() => {
       // const getlist = () =>{
         axios
@@ -76,8 +64,36 @@ function QnaList2() {
       // }
     },[]);
 
+    //1:1문의 삭제
+    const qnadelet = (id) => {
+      axios
+        .delete(
+          `https://i6a306.p.ssafy.io:8080/api/contact/${id}`,
+        //   {
+        //     id: id,
+        //     nickname: nickname,
+        //     password: email,
+        //     phoneNumber: title,
+        // },
+          {
+              headers: {
+                "Authorization":token,
+              // refreshToken: token,
+              },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+                  
+        })
+        .catch((e) => {
+          console.log(e);
+      });
+    }
+
     return (
         <>
+          {/* <button></button> */}
             {/* <Accordion style={{width:"45vw", left:"8vw"}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}> */}
             {/* {(qnalist).map((qna) => ( */}
             {qnalist.map((index, key) => (
@@ -89,7 +105,7 @@ function QnaList2() {
                     // id="panel${index.id}bh-header"
                   >
                     <Typography key={index.contactType} className={Styles.typotype} sx={{ width: '33%', flexShrink: 0 }}>
-                      {index.contactType}
+                      {index.contactType.slice(8, 14)}
                     </Typography>
                     <Typography key={index.title} className={Styles.typoTitle} sx={{ color: 'text.secondary' }}>{index.title}</Typography>
                   </AccordionSummary>
@@ -97,9 +113,15 @@ function QnaList2() {
                     <Typography key={index.content} className={Styles.typoTitle} >
                     {index.content}
                     </Typography>
+                    <button value={index.id} onClick={ () => {qnadelet(index.id)}} className={Styles.listbtn}>
+                      삭제
+                    </button>
                   </AccordionDetails>
                 </Accordion>
-                <button></button>
+                {/* <input type={"checkbox"} /> */} 
+                {/* <button value={index.id} onClick={ () => {qnadelet(index.id)}} className={Styles.listbtn}>
+                  삭제
+                </button> */}
               </div>
             ))}
             {/* ))} */}

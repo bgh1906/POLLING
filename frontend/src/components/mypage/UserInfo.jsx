@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewNav from "../layout/NewNav";
 import Styles from "./UserInfo.module.css"
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
+function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
 
   const id = sessionStorage.getItem("userid")
   console.log("state",state);
@@ -98,7 +98,7 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
   
 
   //닉네임 받아오기
-  const [nickname, setNickname] = useState();
+  const [nickname, setNickname] = useState("");
   const getNickname = (e) => {
     setNickname(e.target.value);
     console.log(e.target.value);
@@ -106,6 +106,10 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
 
   const nick = state[0].nickname;
   console.log(nick);
+
+  useEffect(() => {
+
+  },[nick])
 
   //닉네임 수정
   const getNickchange = () => {
@@ -123,7 +127,7 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
         }
       )
       .then((res) => {
-        // modifyNickname(nickname);
+        DispatchmodifyNickname(nickname);
         console.log("res",res);
         NickSuccess();
       })
@@ -135,7 +139,7 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
 
 
   //비번 받아오기
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const getPassword = (e) => {
     setPassword(e.target.value);
     console.log(e.target.value);
@@ -184,6 +188,7 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
         console.log("로그아웃");
         sessionStorage.clear();
         DispatchdeleteInfo();
+        setNickname("");
         logoutSuccess();
         navigation("/");
         
@@ -241,14 +246,14 @@ function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
           <span className={Styles.textNickname}>Nickname : </span>
           {/* <input type={'text'} placeholder="" className={Styles.nickname} onChange={getNickname}></input> */}
           <label type={'text'} for="nick" className={Styles.nicknamelabel} onChange={getNickname} maxLength="12">{nick}</label>
-          <input type={'text'} id="nick" className={Styles.nickname} onChange={getNickname} onKeyPress={entermodifyN}></input>
+          <input type={'text'} value={nickname} id="nick" className={Styles.nickname} onChange={getNickname} onKeyPress={entermodifyN}></input>
           <button className={Styles.nicknamebtn} onClick={getNickchange}>수정</button>
           <div className={Styles.textEmail}>e-mail : </div>
           <div className={Styles.email}>{state[0].email}</div>
           <span className={Styles.textPassword}>Password : </span>
           <input type={'password'} placeholder="password" className={Styles.password} onChange={getPassword} onKeyPress={entermodifyP} maxLength="13"></input>
           <button className={Styles.passwordbtn} onClick={getPasschange}>수정</button>
-          <br />
+          {/* <br /> */}
           <button className={Styles.logout} onClick={logout}>로그아웃</button>
           <button className={Styles.out} onClick={getDelete}>탈퇴</button>
 
@@ -262,6 +267,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     DispatchdeleteInfo: () => dispatch(actionCreators.deleteInfo()),
+    DispatchmodifyNickname: (nickname) =>
+      dispatch(actionCreators.modifyNickname(nickname)),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
