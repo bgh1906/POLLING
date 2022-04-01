@@ -27,7 +27,8 @@ function NewNav() {
             </div>
             <div className={Styles.user}>
                 <div className={Styles.userNav}>
-                    <Link to="/" className={Styles.text}> {" "}Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
+                    {/* <Link to="/" className={Styles.text}> {" "}Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link> */}
+                    <Link to="/whypolling" className={Styles.text}> {" "}About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
                     {
                         // role === "" ?
                         role === null ?

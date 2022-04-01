@@ -11,6 +11,7 @@ import UserSearch from "../components/admin/Usesearch.jsx";
 
 import * as React from 'react';
 import UserSearch2 from "../components/admin/Usesearch2.jsx";
+import Userqnalist from "../components/admin/Userqnalist.jsx";
 
 
 function User() {
@@ -22,12 +23,21 @@ function User() {
         setClickCom('#caceb7');
     }
 
-    //기업 회원가입 띄우기
+    //기업 회원가입 띄우기_기본값은 true로 hidden
     const [open, setOpen] = useState(true);
     const getOpen = () => {
+        //기업관리 값 변경시
         setOpen(!open);
+        //회원관리가 켜져있다면
         if(openO === false){
+            //hidden처리 하기.
             setOpenO(true);
+            // setOpenL(true);
+        }
+        if(openL === false){
+            //hidden처리 하기.
+            setOpenO(true);
+            // setOpenL(true);
         }
     }
 
@@ -39,8 +49,24 @@ function User() {
         if(open === false){
             setOpen(true);
         }
-
+        if(openL === false){
+            setOpenL(true);
+        }
     }
+
+    //회원 문의 리스트
+    const [openL, setOpenL] = useState(true);
+    const getOpenL = () => {
+        setOpenL(!openL);
+        // if(open === false){
+        if(open === false){
+            setOpen(true);
+        }
+        if(openO === false){
+            setOpenO(true);
+        }
+    }
+
     // 담당자 이메일 받아오기
     const [email, setEmail] = useState("");
     const getEmail = (e) => {
@@ -92,18 +118,11 @@ function User() {
                     role: "ROLE_COMPANY"
                 },
             )
-            // const res = await api.authApi
-            //  .login(values)
             .then((res) => {
                 console.log("res", res);
                 alert("회원가입 성공!")
                 // navigate("/login");
             })
-            // .catch((e) => {
-            //     console.log(e);
-            //     console.log("회원가입 실패");
-            //     // e.preventDefault();
-            // });
             .catch(error => {
                 const message = error.message;
                 console.log("message", message);
@@ -128,13 +147,12 @@ function User() {
                     <div className={Styles.other} onClick={getOpenO}>
                     <summary>회원 관리</summary>
                     </div>
+                    <div className={Styles.qna} onClick={getOpenL}>
+                    <summary>1:1 문의</summary>
+                    </div>
                 </div>
 
                 <div hidden={open}>
-                    {/* <div className={Styles.userbg}> </div>
-                    <input type="text" placeholder="ID" className={Styles.id} onChange={getId} name="id"/>
-                    <input type="password" placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
-                    <button className={Styles.signinbtn}>Create</button> */}
                     <div className={Styles.login}>
                         <div>
                             <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname"/>
@@ -146,24 +164,15 @@ function User() {
                     </div>
                 </div>
 
-                
                 <div hidden={openO}>
-                    {/* <button className={Styles.search}><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></button> */}
-                    {/* <input className={Styles.userEmail} type="text" placeholder="회원 이메일" />
-                    <button className={Styles.searchbtn}></button> */}
-                    {/* <UserSearch /> */}
                     {/* 회원리스트 주루륵 */}
                     <UserSearch2 />
                 </div>
                 
-
-            {/* <div className={Styles.other}>
-               <span id="more" style={{CURSOR: "hand"}} onclick={(story.style.display=='none')? (story.style.display='none' && more.innerText='>접기') : (story.style.display='none';more.innerText='>펼치기')}>펼치기</span>
-                <div id="story" style={{display: ""}}><h>이곳에 필요한 내용을 입력하면 된다.</h></div>
-            </div> */}
-
-
-            {/* <Footer /> */}
+                <div hidden={openL}>
+                    {/* 1:1문의 내용 주르륵 */}
+                    <Userqnalist />
+                </div>
         </div>
     );
 }

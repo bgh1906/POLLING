@@ -1,4 +1,4 @@
-import Nav from "../components/layout/Nav.jsx"
+import NewNav from "../components/layout/NewNav.jsx";
 
 
 function WhyPolling() {
@@ -6,10 +6,7 @@ function WhyPolling() {
     return (
 
         <div>
-            <div>
-                <Nav />
-            </div>
-
+            <NewNav />
             <h1> hi </h1>
         </div>
     );

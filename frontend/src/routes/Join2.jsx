@@ -29,7 +29,7 @@ function Join2() {
         setPcheck(false);
     }, []);
     
-    //alert 창
+    //alert 창_회원가입 
     const joinSuccess = () => {
         Swal.fire({
           title: "회원가입 성공!!",
@@ -38,16 +38,16 @@ function Join2() {
           confirmButtonColor: "#73E0C1",
           confirmButtonText: "확인",
         })
-      };
+    };
     
-      const joinFail = () => {
+    const joinFail = () => {
         Swal.fire({
           title:"회원가입 실패!",
           icon: 'error',
           confirmButtonColor: '#73E0C1',
           confirmButtonText: '확인'
         })
-      }
+    }
 
     //닉네임 받아오기
     const [nickname, setNickname] = useState("");

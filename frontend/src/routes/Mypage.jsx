@@ -74,6 +74,7 @@ function Mypage() {
         setValue(newValue);
     };
 
+
     return (
         <div>
             <NewNav />
@@ -104,7 +105,7 @@ function Mypage() {
                     </div>
                     <div hidden={listopen}>
                         {/* <QnaList /> */}
-                        <QnaList2 />
+                          <QnaList2 />
                     </div>
                 </TabPanel>
             </Box>

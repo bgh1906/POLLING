@@ -8,7 +8,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-function UserInfo({ state, DispatchdeleteInfo }) {
+function UserInfo({ state, DispatchdeleteInfo, modifyNickname }) {
+
+  const id = sessionStorage.getItem("userid")
+  console.log("state",state);
+  const token = sessionStorage.getItem("token")
 
   const logoutSuccess = () => {
     Swal.fire({
@@ -91,8 +95,7 @@ function UserInfo({ state, DispatchdeleteInfo }) {
       })
   };
 
-  console.log("state",state);
-  const token = sessionStorage.getItem("token")
+  
 
   //닉네임 받아오기
   const [nickname, setNickname] = useState();
@@ -106,7 +109,28 @@ function UserInfo({ state, DispatchdeleteInfo }) {
 
   //닉네임 수정
   const getNickchange = () => {
-
+    axios
+      .patch(
+        `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+        {
+          nickname:nickname,
+        },
+        {
+          headers: {
+            "Authorization":token,
+            // refreshToken: token,
+          },
+        }
+      )
+      .then((res) => {
+        // modifyNickname(nickname);
+        console.log("res",res);
+        NickSuccess();
+      })
+      .catch(error => {
+        console.log("error",error);
+        NickFail();
+      })
   }
 
 
@@ -119,7 +143,27 @@ function UserInfo({ state, DispatchdeleteInfo }) {
 
   //비번 수정
   const getPasschange = () => {
-    
+    axios
+      .patch(
+        `https://j6a304.p.ssafy.io/api/members/password/${id}`,
+        {
+          password:password,
+        },
+        {
+          headers: {
+            "Authorization":token,
+            // refreshToken: token,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("res",res);
+        PassSuccess();
+      })
+      .catch(error => {
+        console.log("error",error);
+        PassFail();
+      })
   }
 
   const navigation = useNavigate();
@@ -134,7 +178,7 @@ function UserInfo({ state, DispatchdeleteInfo }) {
                 // "Authorization":token,
                 refreshToken: token,
             },
-        })
+    })
     .then((res) => {
         console.log("res", res);
         console.log("로그아웃");
@@ -154,25 +198,59 @@ function UserInfo({ state, DispatchdeleteInfo }) {
 
   //탈퇴
   const getDelete = () => {
-
+    axios
+      .delete(
+        "https://j6a304.p.ssafy.io//api/members",
+      {
+        headers: {
+            "Authorization":token,
+            // refreshToken: token,
+        },
+    })
+    .then((res) => {
+      console.log("res", res);
+      console.log("탈퇴");
+      sessionStorage.clear();
+      DispatchdeleteInfo();
+      DeleteSuccess();
+      navigation("/");
+      
+  })
+  .catch(error => {
+      console.log("error",error);
+      DeleteFail();
+      console.log("탈퇴 실패");
+  })
   }
+
+  //엔터로 작동하기
+  const entermodifyN = (e) => {
+    if (e.key === "Enter") {
+      getNickchange();
+    }
+  };
+  const entermodifyP = (e) => {
+    if (e.key === "Enter") {
+      getPasschange();
+    }
+  };
 
     return (
         <>
           {/* <h>Item One</h> */}
           <span className={Styles.textNickname}>Nickname : </span>
           {/* <input type={'text'} placeholder="" className={Styles.nickname} onChange={getNickname}></input> */}
-          <label type={'text'} for="nick" className={Styles.nicknamelabel} onChange={getNickname}>{nick}</label>
-          <input type={'text'} id="nick" className={Styles.nickname} onChange={getNickname}></input>
-          <button className={Styles.nicknamebtn}>수정</button>
+          <label type={'text'} for="nick" className={Styles.nicknamelabel} onChange={getNickname} maxLength="12">{nick}</label>
+          <input type={'text'} id="nick" className={Styles.nickname} onChange={getNickname} onKeyPress={entermodifyN}></input>
+          <button className={Styles.nicknamebtn} onClick={getNickchange}>수정</button>
           <div className={Styles.textEmail}>e-mail : </div>
           <div className={Styles.email}>{state[0].email}</div>
           <span className={Styles.textPassword}>Password : </span>
-          <input type={'password'} placeholder="password" className={Styles.password} onChange={getPassword}></input>
-          <button className={Styles.passwordbtn}>수정</button>
+          <input type={'password'} placeholder="password" className={Styles.password} onChange={getPassword} onKeyPress={entermodifyP} maxLength="13"></input>
+          <button className={Styles.passwordbtn} onClick={getPasschange}>수정</button>
           <br />
           <button className={Styles.logout} onClick={logout}>로그아웃</button>
-          <button className={Styles.out}>탈퇴</button>
+          <button className={Styles.out} onClick={getDelete}>탈퇴</button>
 
         </>
     );
