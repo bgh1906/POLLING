@@ -25,11 +25,7 @@ public class ArmeriaConfig {
 
       serverBuilder
           .service(GrpcService.builder()
-              << <<<<<HEAD
           .addService(eventService)
-          =======
-                    .addService(eventService)
-          >>>>>>>e5e28acc21788e53b0c903883377e9dfb54a4ab6
           .supportedSerializationFormats(GrpcSerializationFormats.values())
           .enableUnframedRequests(true)
           .build());

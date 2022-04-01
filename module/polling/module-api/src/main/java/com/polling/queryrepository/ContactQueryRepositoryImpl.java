@@ -26,7 +26,9 @@ public class ContactQueryRepositoryImpl implements ContactQueryRepository {
             contact.contactStatus,
             contact.contactType,
             contact.title,
-            contact.content)))
+            contact.content,
+            contact.answer,
+            contact.email)))
         .from(contact)
         .where(contact.member.id.eq(memberId))
         .fetch();
@@ -41,7 +43,9 @@ public class ContactQueryRepositoryImpl implements ContactQueryRepository {
             contact.contactType,
             contact.title,
             contact.content,
-            contact.member.id)))
+            contact.member.id,
+            contact.answer,
+            contact.email)))
         .from(contact)
         .fetch();
   }
