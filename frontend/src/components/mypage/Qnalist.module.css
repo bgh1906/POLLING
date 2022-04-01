@@ -1,8 +1,9 @@
 .accordion {
+    margin-bottom: 0vh;
     width: 45vw;
     left: 8vw;
     font-family:'GangwonEdu_OTFBoldA';
-    background-color: rgba(250, 235, 215, 0.521);
+    background-color: rgba(250, 235, 215, 0.541);
 }
 
 .typotype {
@@ -18,6 +19,16 @@
 .typoContent {
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1vw;
+}
+
+.listbtn {
+    position: relative;
+    left: 39vw;
+    top: 0vh;
+    font-family: 'GangwonEdu_OTFBoldA';
+    border-radius: 30vw;
+    /* background-color:rgba(176, 224, 230, 0.596);  */
+    background-color:rgba(255, 194, 113, 0.452);
 }
 
 @font-face {

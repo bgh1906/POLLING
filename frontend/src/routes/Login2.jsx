@@ -22,23 +22,23 @@ function Login2() {
   
     const dispatch = useDispatch();
     const loginSuccess = () => {
-        Swal.fire({
+      Swal.fire({
           title: "로그인 성공!",
           text: "POLLING에 오신 것을 환영합니다!",
           icon: "success",
           confirmButtonColor: "#73E0C1",
           confirmButtonText: "확인",
-        })
-      };
+      })
+    };
     
-      const loginFail = () => {
-        Swal.fire({
+    const loginFail = () => {
+      Swal.fire({
           title:"로그인 실패!",
           icon: 'error',
           confirmButtonColor: '#73E0C1',
           confirmButtonText: '확인'
-        })
-      }
+      })
+    }
 
     //이메일 받아오기
     const [email, setEmail] = useState("");
@@ -73,12 +73,12 @@ function Login2() {
                   },
               )
             .then((res) => {
-                console.log("res", res);
-                console.log(res.headers.refreshtoken)
+                // console.log("res", res);
+                // console.log(res.headers.refreshtoken)
                 //토큰 찍어보기
-                console.log("토큰",res.headers.refreshToken);
+                // console.log("토큰",res.headers.refreshToken);
                 // console.log("토큰",res.headers.get("refreshToken"));
-                console.log("로그인 성공");
+                // console.log("로그인 성공");
 
                 sessionStorage.setItem("token", res.headers.refreshtoken);
                 sessionStorage.setItem("userid", res.data.id);
@@ -111,7 +111,7 @@ function Login2() {
             .catch(error => {
                 const message = error.message;
                 console.log("error", error);
-                console.log("message", message);
+                // console.log("message", message);
                 alert("로그인 실패");
                 loginFail();
               });
@@ -152,6 +152,11 @@ function Login2() {
                       //   });
                       // }
                   // <Kakaojoin accessToken={accessToken}/>
+                  dispatch(actionCreators.addInfo(
+                    {
+                      email: email,
+                    }
+                  ));
                   navigate(`/Kakaojoin/${accessToken}`);
                 } else if (res.data.member === true){
                   // if (state.length === 0) {
@@ -162,6 +167,14 @@ function Login2() {
                   //     email: res.data.email,
                   //   });
                   // }
+                  dispatch(actionCreators.addInfo(
+                    {
+                      token: res.headers.refreshtoken,
+                      email: email,
+                      id: res.data.id,
+                      nickname: res.data.nickname
+                    }
+                  ));
                   loginSuccess();
                   navigate("/");
                 }

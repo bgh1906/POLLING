@@ -17,11 +17,11 @@
     #8ac1be8c,
     #c399b48c,
     #fb71aa8c
-  );
-  /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
-  /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
-  border-image-slice: 1;
-}
+    );
+    /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
+    /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
+    border-image-slice: 1;
+  }
 
 .mark{
     position: fixed;

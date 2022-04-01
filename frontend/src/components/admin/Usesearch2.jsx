@@ -3,26 +3,27 @@ import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import Styles from "./Usesearch.module.css";
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+import axios from 'axios';
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
 }
 
-const rows = [
-  createData('사랑해요신짱아', 'shinjja@naver.com', 3.7),
-  createData('오마이걸짱', 'loveomg@omg.com', 25.0),
-  createData('아이유아니유', 'iuau@iuana.com', 16.0),
-  createData('갓구아짱', 'guajjang@gua', 6.0),
-  createData('이부장님', 'bujanglee@ssafy.com', 16.0),
-  createData('서대리', 'whydearee@ssafy.com', 3.2),
-  createData('배수지환', 'BsuzyH@ssafy.com', 9.0),
-  createData('저스트 비버', 'fakebieber@singer.com', 0.0),
-  createData('능력주헌', 'superjung@ssafy', 26.0),
-  createData('승진원츄', 'teamkim@ssafy.com', 0.2),
-  createData('Marshmallow', 318, 0),
-  createData('Nougat', 360, 19.0),
-  createData('Oreo', 437, 18.0),
-];
+// const rows = [
+//   createData('사랑해요신짱아', 'shinjja@naver.com', 3.7),
+//   createData('오마이걸짱', 'loveomg@omg.com', 25.0),
+//   createData('아이유아니유', 'iuau@iuana.com', 16.0),
+//   createData('갓구아짱', 'guajjang@gua', 6.0),
+//   createData('이부장님', 'bujanglee@ssafy.com', 16.0),
+//   createData('서대리', 'whydearee@ssafy.com', 3.2),
+//   createData('배수지환', 'BsuzyH@ssafy.com', 9.0),
+//   createData('저스트 비버', 'fakebieber@singer.com', 0.0),
+//   createData('능력주헌', 'superjung@ssafy', 26.0),
+//   createData('승진원츄', 'teamkim@ssafy.com', 0.2),
+//   createData('Marshmallow', 318, 0),
+//   createData('Nougat', 360, 19.0),
+//   createData('Oreo', 437, 18.0),
+// ];
 // ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 const Root = styled('div')`
@@ -95,6 +96,9 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
 `;
 
 export default function UserSearch2() {
+  const token = sessionStorage.getItem("token")
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -111,6 +115,30 @@ export default function UserSearch2() {
     setPage(0);
   };
 
+  //유저목록 받기
+  const [rows, setRows] = React.useState([]);
+
+  // React.useEffect(() => {
+  //   axios
+  //   .get(
+  //     "https://j6a304.p.ssafy.io/api/members",
+  //     {
+  //       headers: {
+  //         "Authorization":token,
+  //         // refreshToken: token,
+  //       },
+  //     }
+  //   )
+  //   .then((res) => {
+  //     console.log("data",res.data);
+  //     setRows(res.data);
+  //   })
+  //   .catch(error => {
+  //     // console.log("res,userlist",error.response);
+  //     // console.log("error,userlist",error);
+  //   })
+  // },[])
+
   return (
     <Root>
       <div style={{top: '30vh'}}>
@@ -123,9 +151,9 @@ export default function UserSearch2() {
         <table style={{top: '30vh'}} aria-label="custom pagination table">
           <thead>
             <tr>
+              <th>Id</th>
               <th>Nickname</th>
               <th>E-mail</th>
-              <th>???</th>
             </tr>
           </thead>
           <tbody>
@@ -134,12 +162,12 @@ export default function UserSearch2() {
               : rows
             ).map((row) => (
               <tr key={row.name}>
-                <td style={{ width: '10vw' }}>{row.name}</td>
-                <td style={{ width: '14vw' }} align="right">
-                  {row.calories}
+                <td style={{ width: '7vw' }}>{row.id}</td>
+                <td style={{ width: '13vw' }} align="right">
+                  {row.nickname}
                 </td>
-                <td style={{ width: '10vw' }} align="right">
-                  {row.fat}
+                <td style={{ width: '14vw' }} align="right">
+                  {row.email}
                 </td>
               </tr>
             ))}

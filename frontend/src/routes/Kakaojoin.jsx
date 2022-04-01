@@ -12,8 +12,11 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Private2 from "../components/mypage/Private2";
+import { connect } from "react-redux";
+import { actionCreators } from "../store";
+import { useDispatch } from 'react-redux'
 
-function Kakaojoin() {
+function Kakaojoin({ DispatchdeleteInfo }) {
 
     React.useEffect(() => {
         setNickname("");
@@ -23,6 +26,7 @@ function Kakaojoin() {
     const params = useParams();
 
     // console.log(params.accessToken);
+    const dispatch = useDispatch();
 
     //alert 창
     const joinSuccess = () => {
@@ -210,6 +214,16 @@ function Kakaojoin() {
                 //     email: res.data.email,
                 //   });
                 // }
+                sessionStorage.setItem("token", res.headers.refreshtoken);
+                sessionStorage.setItem("userid", res.data.id);
+                sessionStorage.setItem("role", res.data.role);
+                dispatch(actionCreators.addInfo(
+                    {
+                      token: res.headers.refreshtoken,
+                      id: res.data.id,
+                      nickname: res.data.nickname
+                    }
+                  ));
                 joinSuccess();
                 console.log("회원가입")
                 navigate("/");
@@ -219,6 +233,7 @@ function Kakaojoin() {
                 console.log("error", error);
                 console.log("message", message);
                 alert("로그인 실패");
+                DispatchdeleteInfo();
                 joinFail();
             });
         }
