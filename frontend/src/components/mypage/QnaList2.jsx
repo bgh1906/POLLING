@@ -77,8 +77,8 @@ function QnaList2() {
         // },
           {
               headers: {
-                "Authorization":token,
-              // refreshToken: token,
+                // "Authorization":token,
+              refreshToken: token,
               },
           }
         )
@@ -96,7 +96,7 @@ function QnaList2() {
           {/* <button></button> */}
             {/* <Accordion style={{width:"45vw", left:"8vw"}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}> */}
             {/* {(qnalist).map((qna) => ( */}
-            {qnalist.map((index, key) => (
+            {qnalist.map((index) => (
               <div>
                 <Accordion className={Styles.accordion} expanded={expanded === `panel${index.id}`} onChange={handleChange(`panel${index.id}`)}>
                   <AccordionSummary
@@ -105,15 +105,15 @@ function QnaList2() {
                     // id="panel${index.id}bh-header"
                   >
                     <Typography key={index.contactType} className={Styles.typotype} sx={{ width: '33%', flexShrink: 0 }}>
-                      {index.contactType.slice(8, 14)}
+                    [ {index.contactType.slice(8, 14)} ]
                     </Typography>
                     <Typography key={index.title} className={Styles.typoTitle} sx={{ color: 'text.secondary' }}>{index.title}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography key={index.content} className={Styles.typoTitle} >
-                    {index.content}
+                      {index.content}
                     </Typography>
-                    <button value={index.id} onClick={ () => {qnadelet(index.id)}} className={Styles.listbtn}>
+                    <button value={index.id} onClick={() => {qnadelet(index.id)}} className={Styles.listbtn}>
                       삭제
                     </button>
                   </AccordionDetails>

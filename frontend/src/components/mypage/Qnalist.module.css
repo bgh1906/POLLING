@@ -15,6 +15,7 @@
 .typoTitle {
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
+    /* font-weight: 400; */
 }
 .typoContent {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -23,7 +24,7 @@
 
 .listbtn {
     position: relative;
-    left: 39vw;
+    left: 39vw; 
     top: 0vh;
     font-family: 'GangwonEdu_OTFBoldA';
     border-radius: 30vw;

@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import Styles from "./Usesearch.module.css";
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
@@ -99,8 +99,8 @@ export default function UserSearch2() {
   const token = sessionStorage.getItem("token")
 
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -116,28 +116,51 @@ export default function UserSearch2() {
   };
 
   //유저목록 받기
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = useState([]);
+  const axios2 = axios;
 
-  // React.useEffect(() => {
-  //   axios
-  //   .get(
-  //     "https://j6a304.p.ssafy.io/api/members",
-  //     {
-  //       headers: {
-  //         "Authorization":token,
-  //         // refreshToken: token,
-  //       },
-  //     }
-  //   )
-  //   .then((res) => {
-  //     console.log("data",res.data);
-  //     setRows(res.data);
-  //   })
-  //   .catch(error => {
-  //     // console.log("res,userlist",error.response);
-  //     // console.log("error,userlist",error);
-  //   })
-  // },[])
+  const getUsers = () => {
+    axios
+    .get(
+      "https://j6a304.p.ssafy.io/api/members",
+      {
+        headers: {
+          "Authorization":token,
+          // refreshToken: token,
+        },
+      }
+    )
+    .then((res) => {
+      console.log("data",res.data);
+      setRows(res.data);
+    })
+    .catch(error => {
+      console.log("res,userlist",error.response);
+      console.log("error,userlist",error);
+    })
+  }
+
+  // refreshToken: token,
+  useEffect(() => {
+    // axios
+    // .get(
+    //   "https://j6a304.p.ssafy.io/api/members",
+    //   {
+    //     headers: {
+    //       "Authorization":token,
+    //     },
+    //   }
+    // )
+    // .then((res) => {
+    //   console.log("data",res.data);
+    //   setRows(res.data);
+    // })
+    // .catch(error => {
+    //   console.log("res,userlist",error.response);
+    //   console.log("error,userlist",error);
+    // })
+    getUsers();
+  },[])
 
   return (
     <Root>
