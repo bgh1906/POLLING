@@ -7,7 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import rank1 from "../../assets/rank1.png"
 import rank2 from "../../assets/rank2.png"
 import rank3 from "../../assets/rank3.png"
-import dark from "../../assets/pollinglogo.png"
+import dark from "../../assets/logowhite.png"
+import podium from "../../assets/podium.png"
 
 export default function CandList({ cand }) {
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ export default function CandList({ cand }) {
           <img id={styles.rank1} src={rank1} alt="rank1" />
           <img id={styles.rank2} src={rank2} alt="rank2" />
           <img id={styles.rank3} src={rank3} alt="rank3" />
+          <img id={styles.podium} src={podium} alt="podium" />
+          
       </div>
       <div className={styles.Cand_list}>
         {cand.map((item, index) => (
@@ -78,7 +81,7 @@ export default function CandList({ cand }) {
         <div id={styles.cand_background2}></div>
             <div className={styles.Cand_list2}>
               {cand.map((item, index) => (
-                <div className={styles.poll_Cand2}>
+                <div className={styles.poll_Cand2} key={index}>
                   <img className={styles.CandImg2} 
                   src={item.thumbnail} 
                   alt="thumbnail" 

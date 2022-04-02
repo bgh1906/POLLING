@@ -13,8 +13,15 @@ import Newnav from "../components/layout/NewNav";
 import { Button } from "@mui/material";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function History() {
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+}, [])
+
+
   const [modalShow, setModalShow] = useState(false);
   const endItemData = [
     {
@@ -75,9 +82,7 @@ function History() {
       <Newnav />
       <div className={styles.history_title}>History</div>
       <div className={styles.history_desc}>
-        종료된 투표를 확인하고 전체 투표 내역을
-        <br />
-        조회할 수 있습니다.
+        종료된 투표를 확인하고 전체 투표 내역을 조회할 수 있습니다.
       </div>
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>

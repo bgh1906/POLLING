@@ -49,26 +49,32 @@
   flex-direction: column;
   /* align-items: center; */
   margin: 2vw 0;
+
+  overflow: hidden;
+
 }
 
 .poll_Cand:nth-child(1) {
   align-items: center;
-  margin-top: 7vw;
+  margin-top: 8vw;
 }
 
 .poll_Cand:nth-child(1) .CandImg {
-  border: 4px solid gold;
-  
+  border: 4px solid #FFD700;
+  filter: brightness(110%);
   padding: 5px;
+  
+  
 }
 
 .poll_Cand:nth-child(2) {
-  margin-top: -14.5vw;
+  margin-top: -17.5vw;
   margin-left: 1vw;
 }
 
 .poll_Cand:nth-child(2) .CandImg {
-  border: 5px solid silver;
+  border: 5px solid #C0C0C0;
+  filter: brightness(110%);
   padding: 5px;
 }
 
@@ -80,12 +86,13 @@
 
 .poll_Cand:nth-child(3) {
   align-items: flex-end;
-  margin-top: -17.5vw;
+  margin-top: -19vw;
   margin-right: 1vw;
 }
 
 .poll_Cand:nth-child(3) .CandImg {
-  border: 5px solid brown;
+  border: 5px solid #CD7F32;
+  filter: brightness(110%);
   padding: 5px;
 }
 
@@ -98,6 +105,10 @@
   
 }
 
+.poll_Cand:nth-child(4) {
+  margin-top: 28vh;
+}
+
 .poll_Cand:nth-child(3n + 5) {
   align-items: center;
   margin-top: -20.72vw;
@@ -105,7 +116,7 @@
 
 .poll_Cand:nth-child(3n + 6) {
   align-items: flex-end;
-  margin-top: -20.73vw;
+  margin-top: -20.9vw;
 }
 
 .poll_Cand:nth-child(3n + 6) figcaption {
@@ -116,7 +127,12 @@
   width: 13vw;
   height: 13vw;
   cursor: pointer;
+
+
 }
+
+
+
 
 .poll_Cand figcaption {
   padding-top: 0.5vw;
@@ -148,7 +164,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(31, 31, 31);
   border-radius: 10px;
   top: 9vh;
   right: 1.5vw;
@@ -161,22 +177,22 @@
 #rank1 {
   position:absolute;
   width: 2vw;
-  top: 32.8vh;
-  left: 19.1vw;
+  top: 34.5vh;
+  left: 19.2vw;
 }
 
 #rank2 {
   position:absolute;
   width: 2vw;
-  top: 45.8vh;
-  left: 4.5vw;
+  top: 41.2vh;
+  left: 4.6vw;
 }
 
 #rank3 {
   position:absolute;
   width: 2vw;
-  top: 52.6vh;
-  right: 11.1vw;
+  top: 44.8vh;
+  right: 10.8vw;
 }
 
 #dark {
@@ -191,7 +207,20 @@
   width: 13vw;
   height: 13vw;
   cursor: pointer;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
+
+.CandImg2:hover {
+  width: 16vw;
+  height: 16vw;
+  cursor: pointer;
+  z-index: 5;
+}
+
+
 
 .poll_Cand2 {
   display: flex;
@@ -247,4 +276,10 @@
   border-style: groove;
   border-color: red;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#podium{
+  position: absolute;
+  width: 47.5vw;
+  top: 42vh;
 }

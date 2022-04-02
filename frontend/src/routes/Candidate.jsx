@@ -39,7 +39,6 @@ function Candidate() {
             setProfile(res.data.profile)
             setVoteCount(res.data.voteTotalCount)
             setCommentdata(res.data.comments)
-
         })
         .catch(error => {
             console.log(error.response)
