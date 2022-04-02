@@ -1,6 +1,6 @@
 /* Russo One */
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
 /* 강원교육체 */
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -43,11 +43,14 @@
 
 .title{
     position: relative;
-    font-family: 'Bitter', serif;
+    /* font-family: 'Yellowtail', cursive; */
+    font-family: 'Dancing Script', cursive;
+    /* font-family: 'Bitter', serif; */
     text-align: center;
     color: white;
-    font-size: 5vw;
-    top: -3vh;
+    font-size: 6vw;
+    font-weight: 500;
+    top: -10vh;
     text-shadow: 0px 4px 4px rgba(250, 250, 250, 0.603);
 }
 
@@ -60,9 +63,145 @@
 
 .cardbox{
     position: relative;
-    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
     width: 60vw;
     height:45vh;
     left: 9vw;
-    bottom:8.7vh;
+    bottom:9.7vh;
+    top: -17vh;
+}
+
+#card{
+    position:absolute;
+    width: 12vw;
+    height: 11vw;
+    padding: 1px;
+    text-align: center;
+    /* background-color: ; */
+    border: solid #98846B;
+    /* box-shadow: rgba(255, 226, 99, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+    /* box-shadow: rgba(82, 75, 44, 0.3) 0px 5px 15px; */
+    box-shadow: #5D5447 0px 2px 4px 0px, #5D5447 0px 2px 16px 0px;
+    transition: all 0.3s ease-in-out; 
+    cursor: pointer;
+}
+
+#card:nth-child(10n+1){
+}
+
+#card:nth-child(10n+2){
+    right:11.5vw;
+}
+
+#card:nth-child(10n+3){
+    left:-1vw;
+}
+
+#card:nth-child(10n+4){
+    right: -1vw;
+}
+
+#card:nth-child(10n+5){
+    left:11.5vw;
+}
+#card:nth-child(10n+6){
+    top: 12vw;
+}
+#card:nth-child(10n+7){
+    top: 12vw;
+    right:11.5vw;
+}
+#card:nth-child(10n+8){
+    top: 12vw;
+    left:11.5vw;
+}
+#card:nth-child(10n+9){
+    top: 12vw;
+    left:-1vw;
+}
+#card:nth-child(10n){
+    top: 12vw;
+    right: -1vw;
+}
+
+
+#card:hover {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    z-index:5;
+  }
+
+
+
+
+
+#profile_image{
+    width: 70%;
+    
+}
+
+#text_box{
+    /* font-family: 'ROKAFSansBold'; */
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background: -moz-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#f2000000',GradientType=0 ); /* IE6-9 */
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20vh;
+}
+
+#name{
+    font-family: 'GangwonEdu_OTFBoldA';
+    position: relative;
+    color: white;
+    top: 11vh;
+    font-size: 1.5vw;
+}
+
+#poll{
+    position: relative;
+    color: white;
+    top: 11vh;
+}
+
+#polling{
+    font-family: 'ROKAFSansMedium';
+    position: relative;
+    color: rgb(255, 196, 196);
+    border: solid #98846B;
+    top: 2.1vh;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    
+}
+
+#dark2{
+    position: absolute;
+    width: 1.7vw;
+    right: 0;
+
 }
