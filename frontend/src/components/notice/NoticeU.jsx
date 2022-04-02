@@ -34,7 +34,7 @@ function NoticeU () {
                     <Typography style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
                     기업 회원은 관리자를 통해서만 가입이 가능합니다.<br/> 
                     사이트 하단의 이메일로 양식에 맞춰 연락 주시면 기업 회원 계정을 답신으로 받으실 수 있습니다. <br />
-                    기업회원이 투표를 개설한 경우, 관리자의 승인 전까지는 사이트에 노출되지 않습니다
+                    기업회원이 투표를 개설한 경우, 관리자의 승인 전까지는 사이트에 노출되지 않습니다.
                     </Typography>
                 </AccordionDetails>
             </Accordion>

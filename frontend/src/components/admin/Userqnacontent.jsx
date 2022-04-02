@@ -72,16 +72,16 @@ function Userqnacontent({content,title}) {
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <DialogTitle id="customized-dialog-title" onClose={handleClose} className={Styles.contentTitle}>
+        <DialogTitle id="customized-dialog-title" onClose={handleClose} style={{fontFamily:'ROKAFSansMedium'}} className={Styles.contentTitle}>
           {title}
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom className={Styles.contentC}>
+          <Typography gutterBottom className={Styles.contentC} style={{wordBreak:'break-all',width:'35vw',height:'30vh',fontSize:'1.3vw',fontFamily:'GangwonEdu_OTFBoldA'}}>
           {content}
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} className={Styles.close}>
+          <Button autoFocus onClick={handleClose} className={Styles.close} style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw', color:'#155041e7'}}>
             close
           </Button>
         </DialogActions>

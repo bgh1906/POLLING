@@ -5,9 +5,9 @@ import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
-}
+// function createData(name, calories, fat) {
+//   return { name, calories, fat };
+// }
 
 // const rows = [
 //   createData('사랑해요신짱아', 'shinjja@naver.com', 3.7),
@@ -95,7 +95,7 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
   }
 `;
 
-export default function UserSearch2() {
+function UserSearch2() {
   const token = sessionStorage.getItem("token")
 
 
@@ -120,24 +120,24 @@ export default function UserSearch2() {
   const axios2 = axios;
 
   const getUsers = () => {
-    axios
-    .get(
-      "https://j6a304.p.ssafy.io/api/members",
-      {
-        headers: {
-          "Authorization":token,
-          // refreshToken: token,
-        },
-      }
-    )
-    .then((res) => {
-      console.log("data",res.data);
-      setRows(res.data);
-    })
-    .catch(error => {
-      console.log("res,userlist",error.response);
-      console.log("error,userlist",error);
-    })
+  //   axios
+  //   .get(
+  //     "https://j6a304.p.ssafy.io/api/members",
+  //     {
+  //       headers: {
+  //         "Authorization":token,
+  //         // refreshToken: token,
+  //       },
+  //     }
+  //   )
+  //   .then((res) => {
+  //     console.log("data",res.data);
+  //     setRows(res.data);
+  //   })
+  //   .catch(error => {
+  //     console.log("res,userlist",error.response);
+  //     console.log("error,userlist",error);
+  //   })
   }
 
   // refreshToken: token,
@@ -159,12 +159,13 @@ export default function UserSearch2() {
     //   console.log("res,userlist",error.response);
     //   console.log("error,userlist",error);
     // })
-    getUsers();
+    // getUsers();
   },[])
 
   return (
     <Root>
       <div style={{top: '30vh'}}>
+        <button onClick={getUsers} className={Styles.userlistbtn}> 회원 불러오기 </button>
         <div>
           <input className={Styles.userEmail} type="text" placeholder="회원 이메일"/>
           <img src='https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/20/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png' className={Styles.emailicon}></img>
@@ -228,3 +229,4 @@ export default function UserSearch2() {
     </Root>
   );
 }
+export default UserSearch2;
