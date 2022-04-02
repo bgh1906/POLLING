@@ -109,7 +109,6 @@ function Userqnalist () {
 
     //list 저장할 배열
     const [rows , setRows] = useState([]);
-
     // const getrows =() =>  {
     //     axios
     //       .get("http://j6a304.p.ssafy.io//api/contact/admin",
@@ -134,7 +133,8 @@ function Userqnalist () {
     useEffect (() => {
         // getrows();
         axios
-          .get("http://j6a304.p.ssafy.io/api/contact/admin",
+        //   .get("http://j6a304.p.ssafy.io/api/contact/admin",
+          .get("/api/contact/admin",
             {
                 headers:{
                     // refreshToken: token,
@@ -202,7 +202,7 @@ function Userqnalist () {
                             {(rowsPerPage > 0
                             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             : rows
-                            ).map((row) => (
+                            ).map((row, key) => (
                                 <tr key={row.name}>
                                     <td style={{ width: '6vw' }} onclick={getShowcontent}>{row.contactType}</td>
                                     <td style={{ width: '10vw' }} align="right" onclick={getShowcontent}>

@@ -16,6 +16,9 @@ import Userqnalist from "../components/admin/Userqnalist.jsx";
 
 function User() {
 
+    const token = sessionStorage.getItem("token")
+
+
     const [clickCom, setClickCom] = useState('#FEFFF8');
     // const [clickUser, setClickUser] = useState(Styles.other);
     
@@ -132,9 +135,33 @@ function User() {
                 //   setSubmitError(null);
                 // }, 3000);
               });
-    
         }
     };
+
+    //   //유저목록 받기
+    // const [rows, setRows] = useState([]);
+
+
+    // //회원리스트 뽑기
+    // React.useEffect(() => {
+    //     axios
+    //     .get(
+    //       "https://j6a304.p.ssafy.io/api/members",
+    //       {
+    //         headers: {
+    //           "Authorization":token,
+    //         },
+    //       }
+    //     )
+    //     .then((res) => {
+    //       console.log("data",res.data);
+    //       setRows(res.data);
+    //     })
+    //     .catch(error => {
+    //       console.log("res,userlist",error.response);
+    //       console.log("error,userlist",error);
+    //     })
+    //   },[])
 
     return (
         <div style={{height:'100vh'}}>
@@ -154,10 +181,10 @@ function User() {
 
                 <div hidden={open}>
                     <div className={Styles.login}>
-                        <div>
-                            <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname"/>
+                        <div> 
+                            <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname" maxLength="12"/>
                             <input type={"email"} placeholder=" email" className={Styles.email} onChange={getEmail} name="email"/>
-                            <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password"/>
+                            <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password" maxLength="13"/>
                             <input type={"text"} placeholder=" PhoneNumber(01012345678) " className={Styles.phone} onChange={getPhone} name="phone"/>
                             <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
                         </div>
@@ -166,6 +193,8 @@ function User() {
 
                 <div hidden={openO}>
                     {/* 회원리스트 주루륵 */}
+
+                    {/* <UserSearch2 id={rows.id} nickname={rows.nickname} email={rows.email} /> */}
                     <UserSearch2 />
                 </div>
                 

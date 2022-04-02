@@ -54,7 +54,7 @@ function QnaList2() {
           }
         )
         .then((res) => {
-          console.log("data",res.data);
+          // console.log("data",res.data);
           setQnalist(res.data);
         })
         .catch(error => {
@@ -62,13 +62,14 @@ function QnaList2() {
           console.log("error",error);
         })
       // }
-    },[]);
+    },[qnalist]);
 
     //1:1문의 삭제
     const qnadelet = (id) => {
       axios
         .delete(
-          `https://i6a306.p.ssafy.io:8080/api/contact/${id}`,
+          // `https://i6a306.p.ssafy.io:8080/api/contact/${id}`,
+          `/api/contact/${id}`,
         //   {
         //     id: id,
         //     nickname: nickname,
@@ -77,8 +78,8 @@ function QnaList2() {
         // },
           {
               headers: {
-                // "Authorization":token,
-              refreshToken: token,
+                "Authorization":token,
+                // refreshToken: token,
               },
           }
         )
@@ -87,7 +88,9 @@ function QnaList2() {
                   
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
+          console.log("error,qnadelet",e);
+          console.log("res,qnadelet",e.response);
       });
     }
 
@@ -98,22 +101,50 @@ function QnaList2() {
             {/* {(qnalist).map((qna) => ( */}
             {qnalist.map((index) => (
               <div>
-                <Accordion className={Styles.accordion} expanded={expanded === `panel${index.id}`} onChange={handleChange(`panel${index.id}`)}>
+                <Accordion 
+                  className={Styles.accordion}
+                  style={{marginBottom:'0vh', width:'45vw', left:'8vw', fontFamily:'GangwonEdu_OTFBoldA', backgroundColor:'rgba(250, 235, 215, 0.541)'}} 
+                  expanded={expanded === `panel${index.id}`} 
+                  onChange={handleChange(`panel${index.id}`)}
+                >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     // aria-controls="panel${index.id}bh-content"
                     // id="panel${index.id}bh-header"
                   >
-                    <Typography key={index.contactType} className={Styles.typotype} sx={{ width: '33%', flexShrink: 0 }}>
+                    <Typography 
+                      key={index.contactType}
+                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.4vw', lineHeight:'4vh'}} 
+                      className={Styles.typotype} 
+                      sx={{ width: '33%', flexShrink: 0 }}
+                    >
                     [ {index.contactType.slice(8, 14)} ]
                     </Typography>
-                    <Typography key={index.title} className={Styles.typoTitle} sx={{ color: 'text.secondary' }}>{index.title}</Typography>
+                    <Typography 
+                      key={index.title}
+                      maxLength="20"
+                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw'}}  
+                      className={Styles.typoTitle} 
+                      sx={{ color: 'text.secondary' }}
+                    >
+                      {index.title}
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography key={index.content} className={Styles.typoTitle} >
+                    <Typography 
+                      key={index.content} 
+                      className={Styles.typoTitle} 
+                      style={{wordBreak:'break-all', fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw'}} 
+                    >
                       {index.content}
                     </Typography>
-                    <button value={index.id} onClick={() => {qnadelet(index.id)}} className={Styles.listbtn}>
+                    <button 
+                      key={index.id} 
+                      value={index.id} 
+                      onClick={() => {qnadelet(index.id)}} 
+                      className={Styles.listbtn}
+                      style={{fontFamily:'GangwonEdu_OTFBoldA', left:'39vw',borderRadius:'30vw', backgroundColor:'rgba(255, 194, 113, 0.452)'}} 
+                    >
                       삭제
                     </button>
                   </AccordionDetails>
