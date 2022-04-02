@@ -4,26 +4,53 @@ import pollinglogo from "../../assets/pollinglogo.png";
 import fox from "../../assets/fox.PNG";
 import { Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
+import rank1 from "../../assets/rank1.png"
+import rank2 from "../../assets/rank2.png"
+import rank3 from "../../assets/rank3.png"
+import dark from "../../assets/logowhite.png"
+import podium from "../../assets/podium.png"
 
 export default function CandList({ cand }) {
   const navigate = useNavigate();
   const params = useParams();
-  console.log(params);
+
+  const [listType, setlistType]=useState("rank")
+  
+  function changelistType() {
+    setlistType("rank");
+  }
+  
+  function changelistType2(){
+    setlistType("register")
+  }
+  
+  
   // 득표순정렬
   // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
     <>
-      <div className={styles.right_title}>Candidates</div>
+      <div className={styles.right_title}>참가자 리스트</div>
       <div
+      className={styles.right_title2}
         style={{
           position: "absolute",
-          right: 0,
-          top: "-50px",
-          fontSize: "0.9vw",
+          right: "3vw",
+          top: "4vh",
+          fontSize: "1.5vw",
         }}
       >
-        <span style={{ cursor: "pointer" }}>등록순</span>&nbsp;|&nbsp;
-        <span style={{ cursor: "pointer" }}>득표순</span>
+        <span onClick={changelistType} style={{ cursor: "pointer" }}>득표순</span>&nbsp;|&nbsp;
+        <span onClick={changelistType2} style={{ cursor: "pointer" }}>등록순</span>
+      </div>
+      {listType==="rank"? 
+      <>
+      <div id={styles.cand_background}>
+          <img id={styles.dark} src={dark} alt="dark"></img>
+          <img id={styles.rank1} src={rank1} alt="rank1" />
+          <img id={styles.rank2} src={rank2} alt="rank2" />
+          <img id={styles.rank3} src={rank3} alt="rank3" />
+          <img id={styles.podium} src={podium} alt="podium" />
+          
       </div>
       <div className={styles.Cand_list}>
         {cand.map((item, index) => (
@@ -40,13 +67,48 @@ export default function CandList({ cand }) {
             />
             <figcaption>
               <div className={styles.captionName}>{item.name}</div>
-              득표수 : {item.votesTotalCount}표
-              <br />
-              현재 순위 : {index + 1}위
+              <div className={styles.captionName2}>
+                득표수 : {item.votesTotalCount}표
+                <br />
+                현재 순위 : {index + 1}위
+                
+              </div>
             </figcaption>
           </div>
         ))}
-      </div>
+      </div> </>:
+      <>
+        <div id={styles.cand_background2}></div>
+            <div className={styles.Cand_list2}>
+              {cand.map((item, index) => (
+                <div className={styles.poll_Cand2} key={index}>
+                  <img className={styles.CandImg2} 
+                  src={item.thumbnail} 
+                  alt="thumbnail" 
+                  onClick={() => {
+                    item.candidateId % 2
+                      ? navigate(`/poll/${params.pollnum}/${item.candidateId}/1`)
+                      : navigate(`/poll/${params.pollnum}/${item.candidateId}/2`);
+                  }}
+                  />
+                  <figcaption>
+                <div className={styles.captionName}>{item.name}</div>
+                <div className={styles.captionName2}>
+                득표수 : {item.votesTotalCount}표
+                <br />
+                현재 순위 : {index + 1}위
+                      </div>
+                  </figcaption>
+
+                </div>
+              ))}
+              
+
+            </div>
+
+        
+      </>
+      }
     </>
   );
 }

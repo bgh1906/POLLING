@@ -7,6 +7,8 @@ import VotePaper from "../components/poll/VotePaper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import FlipCountdown from '@rumess/react-flip-countdown';
+import Votebox from "../assets/votebox2.png"
 
 function Poll() {
   const params = useParams();
@@ -41,16 +43,22 @@ function Poll() {
   const endYMD = end.slice(0, 10).replaceAll("-", ".");
 
   const endDay = new Date(2022, 3, 30, 23, 59, 0, 0);
-  const renderCounter = ({ days, hours, minutes, seconds }) => (
-    <div className={styles.timer}>
-      투표 종료까지 남은 시간
-      <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
-    </div>
-  );
+  // const renderCounter = ({ days, hours, minutes, seconds }) => (
+  //   <div className={styles.timer}>
+  //     투표 종료까지 남은 시간
+  //     <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
+  //   </div>
+  // );
 
   return (
     <>
       <Newnav />
+      <div id={styles.flip}>
+        <p id={styles.flip_text}> 투표 종료까지 남은 시간</p>
+        <FlipCountdown  size='medium' endAt={end} />
+      </div>
+      {/* <img id={styles.votebox} src={Votebox} alt="votebox"/> */}
+      {/* <Countdown date={endDay} renderer={renderCounter} /> */}
       <div className={styles.poll_container}>
         <div className={styles.pl_left}>
           <div className={styles.poll_Info}>
@@ -64,23 +72,18 @@ function Poll() {
           </div>
             
             
-            <Countdown date={endDay} renderer={renderCounter} />
             {/* <VotePaper cand={cand} /> */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center"
               }}
             >
-              <figcaption>
-                <span style={{ fontSize: "1vw" }}>
-                  {startYMD} ~ {endYMD}
-                </span>
-                <br />
-                <span>{itemDetail.title}</span>
-                <br />
-              </figcaption>
-              <div>{itemDetail.content}</div>
+                <div id={styles.poll_date}>
+                  {startYMD} - {endYMD}
+                </div>
+                <div id={styles.poll_content}>{itemDetail.content}</div>
             </div>
           </div>
         </div>

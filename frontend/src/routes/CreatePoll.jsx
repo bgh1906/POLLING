@@ -197,7 +197,7 @@ function CreatePoll() {
                         <TextField
                             id={styles.poll_input2}
                             multiline
-                            rows={4}
+                            rows={4} maxRows={6}
                             onChange={changepollDescribe}
                             placeholder="투표에 대한 설명을 입력하세요."
                             />

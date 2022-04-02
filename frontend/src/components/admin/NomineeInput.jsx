@@ -40,7 +40,7 @@ function NomineeInput({onAdd, current, isEdit, onUpdate}) {
 
     const onSubmit=(e)=>{
         e.preventDefault()
-        if(name !== "" || profile !== "" || thumbnail !== ""){
+        if(name !== "" && profile !== "" && thumbnail !== "" && imagePath1 !== ""){
             if(isEdit){
                 onUpdate(form)
                 setForm({
@@ -92,9 +92,9 @@ function NomineeInput({onAdd, current, isEdit, onUpdate}) {
                     데뷔: 2010년 MISSA 싱글[Bad But Good]"/></p>
                 </div>
                 <div id={styles.nomi_box2}>
-                    <p>참가자 갤러리</p><p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath1} name="imagePath1" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
-                    <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath2} name="imagePath2" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
-                    <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath3} name="imagePath3" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요. (필수X)"/></p>
+                    <p>참가자 갤러리</p><p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath1} name="imagePath1" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요."/></p>
+                    <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath2} name="imagePath2" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요."/></p>
+                    <p><input id={styles.nomi_input4} type="text" onChange={changeInput} value={imagePath3} name="imagePath3" placeholder="참가자의 매력을 보여주는 다양한 사진을 등록해주세요."/></p>
                     <p id={styles.form_buttonbox}>
                         {isEdit ? <Button id={styles.register_button} type="submit" variant="contained"> 수정하기</Button>:
                         <Button id={styles.register_button} type="submit" variant="contained"> 참가자 등록</Button>}

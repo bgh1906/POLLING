@@ -15,7 +15,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { Button } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
 
-export default function VotePaper(cand) {
+export default function VotePaper({cand}) {
   console.log(cand);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

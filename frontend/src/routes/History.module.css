@@ -1,23 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
+
+/* font-family: 'Courgette', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Yellowtail', cursive; */
+
+
+/* 강원교육체 */
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .history_title {
+  position:fixed;
   /* font-family: "Bitter", serif; */
-  font-family: "Baskervville", serif;
-  font-size: 6vw;
+  /* font-family: 'Dancing Script', cursive; */
+  font-family: 'Yellowtail', cursive;
+  /* font-family: 'Dancing Script', cursive; */
+  font-size: 24vw;
   font-weight: 900;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-right: 270px;
   padding-top: 150px;
   text-align: right;
+  color: #201e1ef1;
+  left: 13vw;
+  top: -1vh;
 }
 
 .history_desc {
+  position: fixed;
   text-align: right;
   padding-right: 270px;
   padding-top: 20px;
-  font-size: 1.3vw;
+  font-size: 2.3vw;
+  top: 20vh;
+  right: 10vw;
+  font-family: 'GangwonEdu_OTFBoldA';
 }
 
 .history_container {
-  padding-top: 150px;
+  /* padding-top: -10vh; */
   max-width: 1024px;
   /* max-width: 53vw; */
   margin: 0 auto;
@@ -28,6 +55,7 @@
 .history_itemlist {
   padding: 0;
   margin: 0;
+  margin-top: 60vh;
   position: relative;
   width: 100%;
 }
@@ -40,10 +68,10 @@
 .history_item:nth-child(7n + 3),
 .history_item:nth-child(7n + 5) {
   transition: all 0.5s;
-  /* width: 35.7vw;
-  height: 21.7vw; */
-  width: 690px;
-  height: 420px;
+  width: 35.7vw;
+  height: 21.7vw;
+  /* width: 690px;
+  height: 420px; */
   float: left;
   margin-top: -130px;
   position: relative;
@@ -53,10 +81,10 @@
 .history_item:nth-child(7n + 2),
 .history_item:nth-child(7n + 6) {
   transition: all 0.5s;
-  /* width: 21.7vw;
-  height: 35.7vw; */
-  width: 420px;
-  height: 690px;
+  width: 21.7vw;
+  height: 35.7vw;
+  /* width: 420px;
+  height: 690px; */
   float: right;
   margin-top: -190px;
   position: relative;
@@ -66,10 +94,10 @@
 .history_item:nth-child(7n),
 .history_item:nth-child(7n + 4) {
   transition: all 0.5s;
-  /* width: 21.7vw;
-  height: 35.7vw; */
-  width: 420px;
-  height: 690px;
+  width: 23vw;
+  height: 35.7vw;
+  /* width: 420px;
+  height: 690px; */
   float: left;
   margin-top: -80px;
   margin-left: -4.14vw;

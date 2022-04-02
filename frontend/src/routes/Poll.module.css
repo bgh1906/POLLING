@@ -25,7 +25,7 @@
   max-width: 80vw;
   display: flex;
   justify-content: space-between;
-  padding-top: 25vh;
+  padding-top: 30vh;
 }
 
 .pl_left {
@@ -36,7 +36,7 @@
 }
 
 .pl_right {
-  width: 50%;
+  width: 60%;
   position: relative;
 }
 
@@ -44,6 +44,7 @@
   position: sticky;
   top: 170px;
   font-family: 'GangwonEdu_OTFBoldA';
+  color: #201e1ef1
   /* display: flex; */
 }
 
@@ -73,20 +74,66 @@
   top: -90px;
   font-weight: 700;
   margin-bottom: 2vh;
+  color: #201e1ef1
 }
 
 .timer {
-  width: 100%;
-  background-color: #77a3a9;
-  color: white;
-  border-radius: 10px;
+  position: absolute;
+  width: 50%;
+  font-size: 2vw;
+  background-color: transparent;
+  color: black;
   text-align: center;
-  margin-bottom: 1vw;
-  padding: 1vw 2vw;
+  left: 25vw;
+  top:9vh;
 }
 
 
 #img_box{
   display: flex;
   justify-content: center;
+}
+
+#countdown{
+  position: absolute;
+  width: 10vw;
+
+}
+
+#poll_date{
+  font-size: 1.5vw;
+  margin: 1vw;
+}
+
+#poll_content{
+  font-size: 1.6vw;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+#flip {
+  font-family: 'ROKAFSansBold';
+  position: absolute;
+  left: 31vw;
+  top: 8vh;
+  
+}
+
+#flip_text{
+  position: relative;
+  font-size: 1.5vw;
+  margin: 0;
+  left:10.6vw;
+}
+
+.flip-countdown {
+  position:absolute; 
+}
+
+#votebox{
+  position: absolute;
+  top: 9vh;
+  right: 20vw;
+  width: 8vw;
+  cursor: pointer;
 }

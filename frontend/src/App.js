@@ -19,6 +19,7 @@ import Candidate2 from "./routes/Candidate2";
 import UpdatePoll from "./routes/UpdatePoll";
 import Qna from "./components/mypage/Qna";
 import Kakaojoin from "./routes/Kakaojoin";
+import NotFound from "./routes/NotFound";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/poll/:pollnum/:id/2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
           <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
+          <Route path={"*"} element={<NotFound/>}/>
         </Routes>
       </HashRouter>
     </div>
