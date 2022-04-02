@@ -65,13 +65,4 @@ public class ContactController {
     List<FindAllContactResponseDto> list = contactQueryRepository.findAllContact();
     return ResponseEntity.status(200).body(list);
   }
-
-  @Trace
-  @PostMapping("/admin")
-  @ApiOperation(value = "1:1문의 답변")
-  public ResponseEntity<Void> response(@CurrentUser MemberDto memberDto,
-      SaveAnswerRequestDto requestDto) {
-    contactService.saveAnswer(requestDto);
-    return ResponseEntity.status(200).build();
-  }
 }
