@@ -29,7 +29,7 @@ function Join2() {
         setPcheck(false);
     }, []);
     
-    //alert 창
+    //alert 창_회원가입 
     const joinSuccess = () => {
         Swal.fire({
           title: "회원가입 성공!!",
@@ -38,16 +38,16 @@ function Join2() {
           confirmButtonColor: "#73E0C1",
           confirmButtonText: "확인",
         })
-      };
+    };
     
-      const joinFail = () => {
+    const joinFail = () => {
         Swal.fire({
           title:"회원가입 실패!",
           icon: 'error',
           confirmButtonColor: '#73E0C1',
           confirmButtonText: '확인'
         })
-      }
+    }
 
     //닉네임 받아오기
     const [nickname, setNickname] = useState("");
@@ -254,10 +254,10 @@ function Join2() {
                         {/* <h2>Join us &nbsp;</h2>  */}
                         {/* <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/> */}
-                            <input type={"text"} placeholder="Nickname" className={Styles2.nickname} name="nickname" onChange={getNickname}  />
+                            <input type={"text"} placeholder="Nickname" className={Styles2.nickname} name="nickname" onChange={getNickname} maxLength="12" />
                             <button className={Styles2.nicknameCheck} onClick={getChecknick} disabled={checknick === true}>중복확인</button>
                             <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
-                            <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
+                            <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password" maxLength="13"/>
                             <input type={"text"} placeholder="PhoneNumber" className={Styles2.phonenum} onChange={getPhonenum} name="phone"/>
                             <button className={Styles2.phonebtn} onClick={handleClickOpen} disabled={phonelock === true}>본인인증</button>
                             <Dialog open={open} onClose={handleClose}>

@@ -55,7 +55,16 @@ div .other:hover{
     background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
-    padding-left: 5vw;
+    padding-left: 6.5vw;
+}
+
+div .qna:hover{
+  background: #fdeac7;
+  /* transition: all 0.3s ease-out; */
+  background-image: url(https://img.icons8.com/external-tal-revivo-light-tal-revivo/40/000000/external-question-and-answer-session-with-speech-bubble-school-light-tal-revivo.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw center;
+  padding-left:6.5vw;
 }
 
 .nav{
@@ -90,7 +99,8 @@ div .other:hover{
     height: 7vh;
     left: 22vw;
     top: 33vh; */
-    width: 27.5vw;
+    /* width: 27.5vw; */
+    width: 18.3vw;
     height: 7vh;
     left: 0vw;
     
@@ -122,20 +132,23 @@ div .other:hover{
     height: 7vh;
     left: 53vw;
     top: 33vh; */
-    width: 27.5vw;
+    /* width: 27.5vw; */
+    width: 18.3vw;
     height: 7vh;
-    left: 27.5vw;
+    left: 18.3vw;
+    /* left: 27.5vw; */
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
-    padding-left:5vw;
+    padding-left:6.5vw;
     /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    border-radius: 2vh;
-    border-top-left-radius: 0vh;
-    border-bottom-left-radius: 0vh;
+    /* border-radius: 2vh; */
+    /* border-top-left-radius: 0vh; */
+    /* border-bottom-left-radius: 0vh; */
     border-left: 0.25vh dotted #f1d2a1;
+    border-right: 0.25vh dotted #f1d2a1;
 
     font-family: 'GangwonEdu_OTFBoldA';
     text-decoration: none;
@@ -146,6 +159,39 @@ div .other:hover{
     text-align: start;
 
     color: #000000;
+}
+
+.qna {
+  position: absolute;
+  /* width: 24vw;
+  height: 7vh;
+  left: 53vw;
+  top: 33vh; */
+  /* width: 27.5vw; */
+  width: 18.3vw;
+  height: 7vh;
+  left: 36.6vw;
+  
+  background: #FEFFF8;
+  background-image: url(https://img.icons8.com/external-tal-revivo-light-tal-revivo/40/000000/external-question-and-answer-session-with-speech-bubble-school-light-tal-revivo.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw center;
+  padding-left:6.5vw;
+  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
+  border-radius: 2vh;
+  border-top-left-radius: 0vh;
+  border-bottom-left-radius: 0vh;
+  border-left: 0.25vh dotted #f1d2a1;
+
+  font-family: 'GangwonEdu_OTFBoldA';
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.7vw;
+  line-height: 9vh;
+  text-align: start;
+
+  color: #000000;
 }
 
 .id {
@@ -413,7 +459,10 @@ div .other:hover{
   .login::before {
     left: 40%;
     bottom: -130%;
-    background-color: rgba(69, 105, 144, 0.15);
+    /* 옅은색 */
+    /* background-color: rgba(69, 105, 144, 0.15); */
+    /* background-color: #3afaca21; */
+    background-color: #8ac1be52;
     -webkit-animation: wawes 6s infinite linear;
     -moz-animation: wawes 6s infinite linear;
     animation: wawes 6s infinite linear;
@@ -421,7 +470,9 @@ div .other:hover{
   .login::after {
     left: 35%;
     bottom: -125%;
-    background-color: rgba(2, 128, 144, 0.2);
+    /* 진한색 */
+    /* background-color: rgba(2, 128, 144, 0.2); */
+    background-color: #3afaca2a;
     -webkit-animation: wawes 7s infinite;
     -moz-animation: wawes 7s infinite;
     animation: wawes 7s infinite;
