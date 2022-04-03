@@ -3,6 +3,10 @@ spring:
     activate:
       on-profile: dev
 
+  redis:
+    host: redis
+    port: 6379
+
   datasource:
     url: jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
     username: root
@@ -22,3 +26,7 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
         use_sql_comments: true
+sms:
+  serviceid: ncp:sms:kr:282615511747:validation_sms
+  secretkey: Lf4Oqy1Ebsn9ecds1XC6RopnLodw9NG4z2b3EKLC
+  accesskey: oekTboQ7Jao7JPzE8omf

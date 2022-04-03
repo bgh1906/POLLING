@@ -1,6 +1,5 @@
 package com.polling.grpc.server;
 
-import com.polling.grpc.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
@@ -139,18 +138,18 @@ public class EventService extends EventServiceGrpc.EventServiceImplBase {
 
   @Override
   public void winning(WinningRequest request,
-                      StreamObserver<WinningResponse> responseObserver) {
+      StreamObserver<WinningResponse> responseObserver) {
     try {
       log.info("winning : {}", request.toString());
       sendMail(request.getEmail(), request.getGiftType());
       responseObserver.onNext(
-              WinningResponse.newBuilder()
-                      .setStatus(ResultStatus.newBuilder()
-                              .setCode(Status.OK.getCode().value())
-                              .setMessage("Winning SUCCESS!!!")
-                              .build())
-                      .setResult("Success Event")
-                      .build()
+          WinningResponse.newBuilder()
+              .setStatus(ResultStatus.newBuilder()
+                  .setCode(Status.OK.getCode().value())
+                  .setMessage("Winning SUCCESS!!!")
+                  .build())
+              .setResult("Success Event")
+              .build()
       );
       responseObserver.onCompleted();
 
@@ -159,7 +158,7 @@ public class EventService extends EventServiceGrpc.EventServiceImplBase {
     }
   }
 
-  public void sendMail(String userEmail, GiftType giftType){
+  public void sendMail(String userEmail, GiftType giftType) {
     SimpleMailMessage message = new SimpleMailMessage();
     message.setTo(userEmail);
     message.setFrom(FROM_ADDRESS);

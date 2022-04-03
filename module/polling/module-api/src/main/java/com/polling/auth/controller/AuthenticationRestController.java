@@ -113,8 +113,7 @@ public class AuthenticationRestController {
   }
 
   /**
-   * 멤버의 최상위 권한을 찾는 로직
-   * ADMIN > COMPNAY > USER
+   * 멤버의 최상위 권한을 찾는 로직 ADMIN > COMPNAY > USER
    */
   private MemberRole findHighestRole(Set<MemberRole> roles) {
     if (roles.contains(MemberRole.ROLE_ADMIN)) {

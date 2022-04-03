@@ -28,11 +28,11 @@ public class ArmeriaConfig {
 
       serverBuilder
           .service(GrpcService.builder()
-          .addService(eventService)
-          .addService(notificationService)
-          .supportedSerializationFormats(GrpcSerializationFormats.values())
-          .enableUnframedRequests(true)
-          .build());
+              .addService(eventService)
+              .addService(notificationService)
+              .supportedSerializationFormats(GrpcSerializationFormats.values())
+              .enableUnframedRequests(true)
+              .build());
 
       serverBuilder.serviceUnder("/docs", new DocService());
     };

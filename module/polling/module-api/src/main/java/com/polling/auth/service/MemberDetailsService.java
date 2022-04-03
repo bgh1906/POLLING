@@ -4,8 +4,8 @@ import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.adapter.MemberAndDtoAdapter;
 import com.polling.auth.adapter.MemberAndUserAdapter;
-import com.polling.entity.member.Member;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,7 +22,7 @@ public class MemberDetailsService implements UserDetailsService {
   private final MemberRepository memberRepository;
 
   /**
-   *  인가된 사용자를 DB에서 불러와 UserDetails 형태로 반환한다.
+   * 인가된 사용자를 DB에서 불러와 UserDetails 형태로 반환한다.
    */
   @Retry
   @Trace

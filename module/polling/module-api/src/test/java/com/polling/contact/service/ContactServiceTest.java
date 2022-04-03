@@ -1,10 +1,7 @@
 package com.polling.contact.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.polling.contact.dto.SaveContactRequestDto;
 import com.polling.entity.contact.Contact;
-import com.polling.entity.contact.status.ContactType;
 import com.polling.entity.member.Member;
 import com.polling.repository.contact.ContactRepository;
 import com.polling.repository.member.MemberRepository;

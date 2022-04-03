@@ -4,7 +4,6 @@ import com.polling.aop.annotation.Trace;
 import com.polling.contact.dto.SaveAnswerRequestDto;
 import com.polling.contact.dto.SaveContactRequestDto;
 import com.polling.entity.contact.Contact;
-import com.polling.entity.contact.status.ContactStatus;
 import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
@@ -46,7 +45,7 @@ public class ContactService {
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
   }
 
-  private Contact getContact(Long contactId){
+  private Contact getContact(Long contactId) {
     return contactRepository.findById(contactId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.CONTACT_NOT_FOUND));
   }

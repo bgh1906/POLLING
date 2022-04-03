@@ -1,11 +1,16 @@
 spring:
+  config:
+    activate:
+      on-profile: test
+
   h2:
     console:
       enabled: true
       path: /h2-console
-  config:
-    activate:
-      on-profile: test
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
   datasource:
     hikari:

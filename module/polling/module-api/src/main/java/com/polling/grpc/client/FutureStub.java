@@ -1,7 +1,6 @@
 package com.polling.grpc.client;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.polling.grpc.*;
 import com.polling.grpc.client.dto.request.WinningRequestDto;
 import io.grpc.Deadline;
 import java.util.concurrent.TimeUnit;
@@ -51,10 +50,10 @@ public class FutureStub extends AbstractStub {
     EventServiceGrpc.EventServiceFutureStub stub = stub();
 
     WinningRequest request = WinningRequest.newBuilder()
-            .setType(Type.NORMAL)
-            .setEmail(requestDto.getUserEmail())
-            .setGiftType(requestDto.getGiftType())
-            .build();
+        .setType(Type.NORMAL)
+        .setEmail(requestDto.getUserEmail())
+        .setGiftType(requestDto.getGiftType())
+        .build();
 
     ListenableFuture<WinningResponse> responseFuture = stub.winning(request);
 
