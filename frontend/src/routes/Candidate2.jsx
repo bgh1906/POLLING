@@ -8,6 +8,10 @@ import mark from "../assets/mark_slim.png"
 import crown from "../assets/crown.png"
 import tx from "../assets/tx.png"
 import axios from "axios";
+import Modal from '@mui/material/Modal';
+import Swal from "sweetalert2";
+import x from "../assets/x.png";
+import stamp from "../assets/stamp.png";
 
 
 function Candidate2() {
@@ -24,10 +28,17 @@ function Candidate2() {
     const [voteCount, setVoteCount] = useState(0)
     const [commentdata, setCommentdata] = useState([])
     const [renderCount, setRenderCount] = useState(0)
+    const [modalOpen, setmodalOpen] = useState(false);
+    const [picked, setPicked] = useState(false);
+    const [modalOpen2, setmodalOpen2] = useState(false);
 
     const pollOpen = sessionStorage.getItem("open")
+    const polltitle = sessionStorage.getItem("poll")
 
-
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, [])
+    
     useEffect(()=>{
         axios.get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
         .then((res) => {
@@ -70,6 +81,49 @@ function Candidate2() {
         setRenderCount((renderCount)=>(renderCount+1))
     }
 
+    function handleOpen(){
+        setmodalOpen(true);
+    }
+
+    function handleClose(){
+        setmodalOpen(false);
+        setPicked(false);
+    }
+    
+    function handlePicked(){
+        if (picked){
+            setPicked(false);
+        } else{
+            setPicked(true);
+        }
+    }
+
+    function handlepoll(){
+        if (picked){
+
+            // 블록체인 투표 하는 부분
+            Swal.fire({
+                title: '투표가 완료되었습니다.',
+                icon: 'success'                        
+            })
+            handleClose();
+        } else {
+            Swal.fire({
+                title: '투표 도장을 찍어주세요.',
+                icon: 'error'                        
+            })
+        }
+    }
+
+    function handleOpen2(){
+        setmodalOpen2(true);
+    }
+
+    function handleClose2(){
+        setmodalOpen2(false);
+    }
+
+
 
     return (
 
@@ -92,8 +146,41 @@ function Candidate2() {
                 현재 투표수:???표 </p> }    
 
        
-                <Button id={styles.poll_button2} variant="contained">투표하기</Button>
-                <Button id={styles.con_button2} variant="contained">투표내역</Button>
+                <Button id={styles.poll_button2} onClick={handleOpen} variant="contained">투표하기</Button>
+                
+                <Modal open={modalOpen} onClose={handleClose}>
+                    <div id={styles.poll_paper}>
+                        <div id={styles.poll_paper2}>
+                            <img onClick={handleClose} id={styles.x_button} src={x} alt="x" />
+                             <p id={styles.poll_title}>{polltitle}</p>
+                             <p id={styles.paper_image}>
+                                <img id={styles.paper_image} src={profile_image} alt='profile'></img>
+                                {candi_name}
+                             </p>
+                             <p id={styles.stamp_box} onClick={handlePicked}>
+                                {picked? <img id={styles.stamp} src={mark} alt="mark2"/> : null}
+                             </p>
+                             <p id={styles.paper_button}>
+                                <Button onClick={handlepoll} id={styles.paper_button2} variant="contained"> 투표하기</Button>
+                             </p>
+                             <p id={styles.stamp_box2}>
+                                <img id={styles.stamp2} src={stamp} alt='stamp' />
+                             </p>
+                             <p id={styles.paper_text}>해당 투표는 하루에 한 번만 가능합니다. </p>
+                             <p id={styles.paper_text2}>투표관리관 </p>
+                             </div>
+                    </div>
+                </Modal>
+
+                <Button id={styles.con_button2} onClick={handleOpen2} variant="contained">투표내역</Button>
+                <Modal open={modalOpen2} onClose={handleClose2}>
+                    <div  id={styles.tran_box}>
+                            거래내역
+                    </div> 
+                </Modal>
+                
+                
+                
                 <Button id={styles.back_button2} onClick={gotoList} variant="contained">참가자 목록</Button>
                 <div id={styles.photobox2}>
                 {photo1? <img id={styles.photo1} 
