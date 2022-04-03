@@ -66,7 +66,7 @@ export default function CandList({ cand, countOpen }) {
       </div>
       <div className={styles.Cand_list}>
         {cand.map((item, index) => (
-          <div className={styles.poll_Cand} key={item.index}>
+          <div className={styles.poll_Cand} key={item.candidateId}>
             <img
               src={item.thumbnail}
               alt={item.name}
@@ -101,7 +101,7 @@ export default function CandList({ cand, countOpen }) {
         <div id={styles.cand_background2}></div>
             <div className={styles.Cand_list2}>
               {cand.map((item, index) => (
-                <div className={styles.poll_Cand2} key={index}>
+                <div className={styles.poll_Cand2} key={item.candidateId}>
                   <img className={styles.CandImg2} 
                   src={item.thumbnail} 
                   alt="thumbnail" 

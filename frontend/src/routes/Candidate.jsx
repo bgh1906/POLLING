@@ -10,6 +10,7 @@ import tx from "../assets/tx.png"
 import axios from "axios";
 
 
+
 function Candidate() {
 
     const navigate = useNavigate();
