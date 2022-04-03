@@ -4,13 +4,6 @@ spring:
     default: test
     include:
       - core-test
-      - common-test
-logging:
-  file.name: ./PJT-web.log
-  level:
-    root: INFO
-    org.hibernate.SQL: debug
-    org.hibernate.type: trace
 
 jwt:
   secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
@@ -18,3 +11,9 @@ jwt:
     authentication:
       path: auth
       refresh: refresh
+
+sms:
+  serviceid: ncp:sms:kr:282615511747:validation_sms
+  secretkey: Lf4Oqy1Ebsn9ecds1XC6RopnLodw9NG4z2b3EKLC
+  accesskey: oekTboQ7Jao7JPzE8omf
+

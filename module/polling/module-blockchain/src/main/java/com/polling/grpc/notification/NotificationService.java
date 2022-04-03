@@ -1,9 +1,17 @@
 package com.polling.grpc.notification;
 
 import com.google.gson.Gson;
-import com.polling.grpc.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -14,16 +22,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Service
@@ -47,29 +45,30 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
 
   @Override
   public void sendNotification(ListOfNotificationRequest request,
-                               StreamObserver<NotificationResponse> responseObserver) {
+      StreamObserver<NotificationResponse> responseObserver) {
     try {
       log.info("sendNotification : {}", request.toString());
 
       //proto를 arrayList로 매핑하고
       int size = request.getNotificationRequestCount();
       List<SendSMSRequestDto> message = new ArrayList<>();
-      for(int i = 0; i < size; i++){
+      for (int i = 0; i < size; i++) {
         NotificationRequest notificationRequest = request.getNotificationRequest(i);
-        SendSMSRequestDto requestDto = new SendSMSRequestDto(notificationRequest.getTo(), notificationRequest.getContent());
+        SendSMSRequestDto requestDto = new SendSMSRequestDto(notificationRequest.getTo(),
+            notificationRequest.getContent());
         message.add(requestDto);
       }
       //SMS 서버
       sendSmsServer(message);
 
       responseObserver.onNext(
-              NotificationResponse.newBuilder()
-                      .setStatus(ResultStatus.newBuilder()
-                              .setCode(Status.OK.getCode().value())
-                              .setMessage("Notification SUCCESS!!!")
-                              .build())
-                      .setResult("Success Notification")
-                      .build()
+          NotificationResponse.newBuilder()
+              .setStatus(ResultStatus.newBuilder()
+                  .setCode(Status.OK.getCode().value())
+                  .setMessage("Notification SUCCESS!!!")
+                  .build())
+              .setResult("Success Notification")
+              .build()
       );
       responseObserver.onCompleted();
 

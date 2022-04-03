@@ -1,6 +1,6 @@
 package com.polling.auth.dto.response;
 
-import com.polling.entity.member.status.MemberRole;
+import com.polling.member.entity.status.MemberRole;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

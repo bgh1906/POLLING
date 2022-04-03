@@ -9,12 +9,12 @@ import com.polling.auth.dto.request.ValidateMemberRequestDto;
 import com.polling.auth.dto.response.LoginResponseDto;
 import com.polling.auth.dto.response.ValidateMemberResponseDto;
 import com.polling.auth.service.AuthService;
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.MemberRole;
+import com.polling.common.JwtTokenProvider;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.repository.member.MemberRepository;
-import com.polling.security.jwt.JwtTokenProvider;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
+import com.polling.member.repository.MemberRepository;
 import com.polling.security.service.RedisService;
 import io.swagger.annotations.ApiOperation;
 import java.util.Set;
@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 사용자 SNS 및 네이티브 로그인 관련 컨트롤러
  */
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -113,8 +111,7 @@ public class AuthenticationRestController {
   }
 
   /**
-   * 멤버의 최상위 권한을 찾는 로직
-   * ADMIN > COMPNAY > USER
+   * 멤버의 최상위 권한을 찾는 로직 ADMIN > COMPNAY > USER
    */
   private MemberRole findHighestRole(Set<MemberRole> roles) {
     if (roles.contains(MemberRole.ROLE_ADMIN)) {

@@ -1,6 +1,6 @@
 package com.polling.auth.dto;
 
-import com.polling.entity.member.status.MemberRole;
+import com.polling.member.entity.status.MemberRole;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.validation.constraints.Email;

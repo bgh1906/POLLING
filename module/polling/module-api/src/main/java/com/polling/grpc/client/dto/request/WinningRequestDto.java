@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WinningRequestDto {
-    String userEmail;
-    GiftType giftType;
+
+  String userEmail;
+  GiftType giftType;
 }

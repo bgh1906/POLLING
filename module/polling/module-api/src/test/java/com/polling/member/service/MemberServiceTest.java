@@ -8,13 +8,13 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.member.dto.response.FindMemberResponseDto;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
+import com.polling.member.repository.MemberRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

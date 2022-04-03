@@ -1,13 +1,11 @@
 package com.polling.contact.dto;
 
-import com.polling.entity.contact.Contact;
-import com.polling.entity.contact.status.ContactType;
+import com.polling.contact.entity.Contact;
+import com.polling.contact.entity.status.ContactType;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * USER 회원의 문의 요청 DTO
@@ -26,7 +24,7 @@ public class SaveContactRequestDto {
   @NotNull
   private String email;
 
-  public Contact toEntity(){
+  public Contact toEntity() {
     ContactType ct = ContactType.findByMethod(contactType);
     return Contact.builder()
         .title(title)

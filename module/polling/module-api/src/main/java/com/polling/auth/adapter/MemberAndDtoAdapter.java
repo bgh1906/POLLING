@@ -1,7 +1,7 @@
 package com.polling.auth.adapter;
 
 import com.polling.auth.dto.MemberDto;
-import com.polling.entity.member.Member;
+import com.polling.member.entity.Member;
 
 /**
  * Member Entity를 Dto로 변환시켜주는 Adapter

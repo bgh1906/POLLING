@@ -3,11 +3,10 @@ package com.polling.contact.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.polling.contact.dto.SaveContactRequestDto;
-import com.polling.entity.contact.Contact;
-import com.polling.entity.contact.status.ContactType;
-import com.polling.entity.member.Member;
-import com.polling.repository.contact.ContactRepository;
-import com.polling.repository.member.MemberRepository;
+import com.polling.contact.entity.Contact;
+import com.polling.contact.repository.ContactRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
