@@ -1,4 +1,4 @@
-package com.polling.util.notification;
+package com.polling.grpc.notification;
 
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;

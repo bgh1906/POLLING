@@ -1,4 +1,4 @@
-package com.polling.util.notification;
+package com.polling.member.dto.notification.reqeust;
 
 import java.util.List;
 import lombok.AccessLevel;

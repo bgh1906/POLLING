@@ -1,4 +1,4 @@
-package com.polling.config.scheduler;
+package com.polling.poll.poll.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;

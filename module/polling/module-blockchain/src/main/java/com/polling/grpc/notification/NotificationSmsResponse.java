@@ -1,4 +1,4 @@
-package com.polling.util.notification;
+package com.polling.grpc.notification;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

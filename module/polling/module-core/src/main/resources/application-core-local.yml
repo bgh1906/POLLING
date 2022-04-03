@@ -13,7 +13,6 @@ spring:
     password: root!
     driver-class-name: org.mariadb.jdbc.Driver
 
-
   jpa:
     generate-ddl: true
     hibernate:
@@ -26,7 +25,3 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
         use_sql_comments: true
-sms:
-  serviceid: ncp:sms:kr:282615511747:validation_sms
-  secretkey: Lf4Oqy1Ebsn9ecds1XC6RopnLodw9NG4z2b3EKLC
-  accesskey: oekTboQ7Jao7JPzE8omf

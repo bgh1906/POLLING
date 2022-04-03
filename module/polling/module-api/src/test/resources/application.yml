@@ -5,35 +5,6 @@ spring:
     include:
       - core-test
 
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-  datasource:
-    hikari:
-      maximum-pool-size: 30
-      max-lifetime: 60000
-      jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
-      username: sa
-      password:
-      connection-timeout: 5000
-      pool-name: Spring-HikariPool
-
-
-  jpa:
-    generate-ddl: true
-    hibernate:
-      ddl-auto: create
-      naming:
-        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-        use_sql_comments: true
-
 jwt:
   secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
   route:

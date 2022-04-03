@@ -4,4 +4,3 @@ spring:
     default: local
     include:
       - core-local
-      - core-dev

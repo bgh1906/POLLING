@@ -1,4 +1,4 @@
-package com.polling.util.oauth;
+package com.polling.auth.oauth;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

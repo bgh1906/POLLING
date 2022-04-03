@@ -1,4 +1,4 @@
-package com.polling.util.notification;
+package com.polling.member.dto.notification.reqeust;
 
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
