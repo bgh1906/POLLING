@@ -32,7 +32,6 @@ public class CandidateRepositoryTest {
 
     //then
     Candidate candidate = candidateRepository.findById(saveCandidateId).orElseThrow();
-    assertThat(candidate.getId()).isEqualTo(1L);
     assertThat(candidate.getName()).isEqualTo("suzy");
   }
 

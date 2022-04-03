@@ -11,6 +11,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,22 +31,31 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class Poll extends BaseTimeEntity {
 
-  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
-  private final List<Candidate> candidates = new ArrayList<>();
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "poll_id")
   private Long id;
-  @Column(name = "poll_name")
+
   private String title;
+
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "host_id")
+  @JoinColumn(name = "member_id")
   private Member pollCreator;
+
   private String content;
+
+  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  private final List<Candidate> candidates = new ArrayList<>();
+
   private LocalDateTime startDate;
+
   private LocalDateTime endDate;
+
+  @Enumerated(EnumType.STRING)
   private PollStatus pollStatus = PollStatus.UNAPPROVED;
+
   private Boolean openStatus;
+
   @Column(length = 1000)
   private String thumbnail;
 

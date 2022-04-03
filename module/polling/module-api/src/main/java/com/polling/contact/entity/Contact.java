@@ -7,6 +7,7 @@ import com.polling.member.entity.Member;
 import com.querydsl.core.annotations.QueryEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "TB_CONTACT")
 @Entity
 @QueryEntity
 public class Contact extends BaseTimeEntity {
@@ -33,15 +33,15 @@ public class Contact extends BaseTimeEntity {
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "member_id")
   private Member member;
 
   @Column
-  @Enumerated
+  @Enumerated(EnumType.STRING)
   private ContactStatus contactStatus = ContactStatus.UNANSWERED;
 
   @Column
-  @Enumerated
+  @Enumerated(EnumType.STRING)
   private ContactType contactType;
 
   @Column
@@ -53,7 +53,6 @@ public class Contact extends BaseTimeEntity {
   @Column(length = 2000)
   private String answer;
 
-  @Column(name = "response_email")
   private String email;
 
   @Builder

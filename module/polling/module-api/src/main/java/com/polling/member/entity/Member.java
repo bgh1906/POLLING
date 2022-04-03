@@ -23,14 +23,13 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "TB_USER")
 @Entity
 @QueryEntity
 public class Member extends BaseTimeEntity {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  @Column(name = "user_id")
+  @Column(name = "member_id")
   private Long id;
 
   private String wallet;

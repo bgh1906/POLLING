@@ -26,21 +26,26 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class Candidate extends BaseTimeEntity {
 
-  @Column(length = 1000)
-  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST, orphanRemoval = true)
-  private final List<CandidateGallery> galleries = new ArrayList<>();
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "candidate_id")
   private Long id;
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "vote_id")
   private Poll poll;
-  @Column(name = "candidate_name")
+
+  @Column(length = 1000)
+  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
+  private final List<CandidateGallery> galleries = new ArrayList<>();
+
   private String name;
+
   private String profile;
+
   @Column(length = 1000)
   private String thumbnail;
+
   private Integer contractIndex;
 
   @Builder

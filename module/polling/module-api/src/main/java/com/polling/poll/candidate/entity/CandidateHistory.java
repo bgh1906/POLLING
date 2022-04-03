@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "TB_CANDIDATEHISTORY")
 @Entity
 @QueryEntity
 public class CandidateHistory extends BaseTimeEntity {
@@ -30,17 +29,15 @@ public class CandidateHistory extends BaseTimeEntity {
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "member_id")
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;
 
-  @Column
   private Integer voteCount;
 
-  @Column
   private String transactionId;
 
   @Builder

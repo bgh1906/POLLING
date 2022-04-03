@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "TB_COMMENT")
 @Entity
 @QueryEntity
 public class Comment extends BaseTimeEntity {
@@ -31,14 +30,13 @@ public class Comment extends BaseTimeEntity {
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "member_id")
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;
 
-  @Column
   private String content;
 
   @Builder
