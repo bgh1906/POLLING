@@ -1,10 +1,11 @@
 package com.polling.poll.poll.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.polling.entity.poll.Poll;
-import com.polling.poll.poll.dto.candidate.response.FindAnonymousCandidateResponseDto;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.polling.poll.candidate.dto.response.FindAnonymousCandidateResponseDto;
+import com.polling.poll.poll.entity.Poll;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

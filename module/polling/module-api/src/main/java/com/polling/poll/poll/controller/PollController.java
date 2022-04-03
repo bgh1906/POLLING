@@ -1,10 +1,10 @@
 package com.polling.poll.poll.controller;
 
-import com.polling.entity.poll.status.PollStatus;
-import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.poll.dto.response.FindSimplePollResponseDto;
-import com.polling.poll.service.PollService;
-import com.polling.queryrepository.PollQueryRepository;
+import com.polling.poll.poll.dto.response.FindPollPageResponseDto;
+import com.polling.poll.poll.dto.response.FindSimplePollResponseDto;
+import com.polling.poll.poll.entity.status.PollStatus;
+import com.polling.poll.poll.repository.PollQueryRepository;
+import com.polling.poll.poll.service.PollService;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

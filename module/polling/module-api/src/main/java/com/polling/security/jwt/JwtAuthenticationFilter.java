@@ -1,5 +1,6 @@
 package com.polling.security.jwt;
 
+import com.polling.common.JwtTokenProvider;
 import com.polling.entity.member.status.MemberRole;
 import java.io.IOException;
 import java.util.Set;
@@ -7,6 +8,8 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.polling.member.entity.status.MemberRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

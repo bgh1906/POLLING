@@ -1,9 +1,9 @@
 package com.polling.contact.entity;
 
+import com.polling.common.entity.BaseTimeEntity;
 import com.polling.contact.entity.status.ContactStatus;
 import com.polling.contact.entity.status.ContactType;
-import com.polling.entity.common.BaseTimeEntity;
-import com.polling.entity.member.Member;
+import com.polling.member.entity.Member;
 import com.querydsl.core.annotations.QueryEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;

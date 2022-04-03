@@ -13,12 +13,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.google.gson.Gson;
 import com.polling.auth.dto.request.LoginRequestDto;
-import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
-import com.polling.poll.service.CandidateService;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.repository.MemberRepository;
+import com.polling.poll.candidate.dto.request.ModifyCandidateRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,8 +1,9 @@
 package com.polling.member.dto.request;
 
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.MemberRole;
 import javax.validation.constraints.NotNull;
+
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

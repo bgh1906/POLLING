@@ -1,6 +1,6 @@
-plugins {
-    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
-}
+//plugins {
+//    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+//}
 
 bootJar {
     enabled = false
@@ -24,22 +24,9 @@ dependencies {
 
     /* maria */
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-}
 
-/*queryDsl*/
-def querydslDir = "$buildDir/generated/querydsl"
-querydsl {
-    library = "com.querydsl:querydsl-apt"
-    jpa = true
-    querydslSourcesDir = querydslDir
-}
-sourceSets {
-    main.java.srcDir querydslDir
-}
-configurations {
-    querydsl.extendsFrom compileClasspath
-}
-compileQuerydsl {
-    options.annotationProcessorPath = configurations.querydsl
-    doFirst { if (file(querydslDir).exists()) delete(file(querydslDir)) }
+
+    /* Swagger */
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+    implementation "io.springfox:springfox-swagger-ui:3.0.0"
 }

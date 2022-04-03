@@ -1,10 +1,8 @@
-package com.polling.security.config;
+package com.polling.common;
 
 import com.polling.auth.service.MemberDetailsService;
 import com.polling.security.jwt.JwtAccessDeniedHandler;
 import com.polling.security.jwt.JwtAuthenticationEntryPoint;
-import com.polling.security.jwt.JwtAuthenticationFilter;
-import com.polling.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

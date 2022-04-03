@@ -2,15 +2,15 @@ package com.polling.poll.comment.service;
 
 
 import com.polling.aop.annotation.Trace;
-import com.polling.entity.candidate.Candidate;
-import com.polling.entity.comment.Comment;
-import com.polling.entity.member.Member;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.poll.dto.comment.request.SaveCommentRequestDto;
-import com.polling.repository.candidate.CandidateRepository;
-import com.polling.repository.comment.CommentRepository;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.repository.MemberRepository;
+import com.polling.poll.candidate.entity.Candidate;
+import com.polling.poll.candidate.repository.CandidateRepository;
+import com.polling.poll.comment.dto.request.SaveCommentRequestDto;
+import com.polling.poll.comment.entity.Comment;
+import com.polling.poll.comment.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

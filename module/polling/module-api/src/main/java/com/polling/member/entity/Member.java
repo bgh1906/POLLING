@@ -1,6 +1,6 @@
 package com.polling.member.entity;
 
-import com.polling.entity.common.BaseTimeEntity;
+import com.polling.common.entity.BaseTimeEntity;
 import com.polling.member.entity.status.MemberRole;
 import com.polling.member.entity.status.OAuthType;
 import com.querydsl.core.annotations.QueryEntity;

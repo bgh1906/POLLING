@@ -1,8 +1,8 @@
 package com.polling.poll.comment.entity;
 
-import com.polling.entity.candidate.Candidate;
-import com.polling.entity.common.BaseTimeEntity;
-import com.polling.entity.member.Member;
+import com.polling.common.entity.BaseTimeEntity;
+import com.polling.member.entity.Member;
+import com.polling.poll.candidate.entity.Candidate;
 import com.querydsl.core.annotations.QueryEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;

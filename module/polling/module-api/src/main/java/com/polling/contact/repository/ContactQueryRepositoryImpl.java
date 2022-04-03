@@ -1,7 +1,5 @@
 package com.polling.contact.repository;
 
-import static com.polling.entity.contact.QContact.contact;
-
 import com.polling.contact.dto.FindAllContactResponseDto;
 import com.polling.contact.dto.FindContactResponseDto;
 import com.querydsl.core.types.Projections;
@@ -10,6 +8,9 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import static com.polling.contact.entity.QContact.contact;
+
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor

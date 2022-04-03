@@ -1,11 +1,12 @@
 package com.polling.poll.poll.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.polling.entity.poll.Poll;
-import com.polling.poll.poll.dto.candidate.request.SaveCandidateRequestDto;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotNull;
+
+import com.polling.poll.candidate.dto.request.SaveCandidateRequestDto;
+import com.polling.poll.poll.entity.Poll;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

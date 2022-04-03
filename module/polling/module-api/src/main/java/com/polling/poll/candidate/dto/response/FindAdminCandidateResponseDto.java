@@ -1,7 +1,8 @@
 package com.polling.poll.candidate.dto.response;
 
-import com.polling.entity.candidate.CandidateGallery;
 import java.util.List;
+
+import com.polling.poll.candidate.entity.CandidateGallery;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +26,8 @@ public class FindAdminCandidateResponseDto {
 
   @Builder
   public FindAdminCandidateResponseDto(Long candidateId, Integer candidateIndex, String name,
-      String thumbnail,
-      List<CandidateGallery> galleries, String profile) {
+                                       String thumbnail,
+                                       List<CandidateGallery> galleries, String profile) {
     this.candidateId = candidateId;
     this.candidateIndex = candidateIndex;
     this.name = name;

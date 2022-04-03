@@ -1,8 +1,10 @@
 package com.polling.poll.candidate.dto.request;
 
-import com.polling.entity.candidate.Candidate;
-import com.polling.entity.candidate.CandidateGallery;
+
 import javax.validation.constraints.NotNull;
+
+import com.polling.poll.candidate.entity.Candidate;
+import com.polling.poll.candidate.entity.CandidateGallery;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

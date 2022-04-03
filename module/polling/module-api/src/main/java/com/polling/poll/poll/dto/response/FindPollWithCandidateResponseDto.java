@@ -1,10 +1,11 @@
 package com.polling.poll.poll.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.polling.entity.poll.Poll;
-import com.polling.poll.poll.dto.candidate.response.FindAdminCandidateResponseDto;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.polling.poll.candidate.dto.response.FindAdminCandidateResponseDto;
+import com.polling.poll.poll.entity.Poll;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class FindPollWithCandidateResponseDto {
   private List<FindAdminCandidateResponseDto> candidates;
 
   public static FindPollWithCandidateResponseDto of(
-      List<FindAdminCandidateResponseDto> candidates, Poll poll) {
+          List<FindAdminCandidateResponseDto> candidates, Poll poll) {
     return new FindPollWithCandidateResponseDto(
         poll.getTitle(),
         poll.getContent(),

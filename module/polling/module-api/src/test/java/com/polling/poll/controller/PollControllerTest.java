@@ -6,11 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.polling.entity.poll.status.PollStatus;
 import com.polling.exception.CustomExceptionHandler;
-import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.poll.service.PollService;
-import com.polling.queryrepository.PollQueryRepository;
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

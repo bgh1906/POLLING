@@ -2,12 +2,12 @@ package com.polling.poll.poll.controller;
 
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
-import com.polling.poll.dto.candidate.request.AddCandidateRequestDto;
-import com.polling.poll.dto.request.ApprovePollRequestDto;
-import com.polling.poll.dto.request.ModifyPollRequestDto;
-import com.polling.poll.dto.request.SavePollRequestDto;
-import com.polling.poll.dto.response.FindPollWithCandidateResponseDto;
-import com.polling.poll.service.PollService;
+import com.polling.poll.candidate.dto.request.AddCandidateRequestDto;
+import com.polling.poll.poll.dto.request.ApprovePollRequestDto;
+import com.polling.poll.poll.dto.request.ModifyPollRequestDto;
+import com.polling.poll.poll.dto.request.SavePollRequestDto;
+import com.polling.poll.poll.dto.response.FindPollWithCandidateResponseDto;
+import com.polling.poll.poll.service.PollService;
 import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

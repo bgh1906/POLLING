@@ -2,18 +2,19 @@ package com.polling.poll.queryrepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.polling.entity.candidate.Candidate;
-import com.polling.entity.candidate.CandidateGallery;
-import com.polling.entity.poll.Poll;
-import com.polling.entity.poll.status.PollStatus;
-import com.polling.poll.dto.response.FindPollPageResponseDto;
-import com.polling.queryrepository.PollQueryRepository;
-import com.polling.repository.poll.PollRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.EntityManager;
+
+import com.polling.poll.candidate.entity.Candidate;
+import com.polling.poll.candidate.entity.CandidateGallery;
+import com.polling.poll.poll.dto.response.FindPollPageResponseDto;
+import com.polling.poll.poll.entity.Poll;
+import com.polling.poll.poll.entity.status.PollStatus;
+import com.polling.poll.poll.repository.PollQueryRepository;
+import com.polling.poll.poll.repository.PollRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.polling.poll.candidate.controller;
 
 import com.polling.aop.annotation.Trace;
-import com.polling.poll.dto.candidate.request.ModifyCandidateRequestDto;
-import com.polling.poll.dto.candidate.response.FindCandidateDetailsResponseDto;
-import com.polling.poll.service.CandidateService;
+import com.polling.poll.candidate.dto.request.ModifyCandidateRequestDto;
+import com.polling.poll.candidate.dto.response.FindCandidateDetailsResponseDto;
+import com.polling.poll.candidate.service.CandidateService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

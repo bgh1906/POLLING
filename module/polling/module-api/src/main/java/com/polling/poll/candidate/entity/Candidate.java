@@ -1,8 +1,7 @@
 package com.polling.poll.candidate.entity;
 
-
-import com.polling.entity.common.BaseTimeEntity;
-import com.polling.entity.poll.Poll;
+import com.polling.common.entity.BaseTimeEntity;
+import com.polling.poll.poll.entity.Poll;
 import com.querydsl.core.annotations.QueryEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "TB_CANDIDATE")
 @Entity
 @QueryEntity
 public class Candidate extends BaseTimeEntity {

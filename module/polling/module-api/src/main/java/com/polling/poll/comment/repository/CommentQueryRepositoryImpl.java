@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.polling.member.entity.QMember.member;
+import static com.polling.poll.comment.entity.QComment.comment;
+
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor

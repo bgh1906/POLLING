@@ -1,14 +1,14 @@
 package com.polling.member.service;
 
 import com.polling.aop.annotation.Trace;
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.dto.request.ChangePasswordRequestDto;
 import com.polling.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.member.dto.response.FindMemberResponseDto;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
+import com.polling.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

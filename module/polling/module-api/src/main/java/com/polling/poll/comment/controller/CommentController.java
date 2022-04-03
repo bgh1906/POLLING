@@ -2,11 +2,10 @@ package com.polling.poll.comment.controller;
 
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.MemberDto;
-import com.polling.poll.dto.comment.request.ModifyCommentRequestDto;
-import com.polling.poll.dto.comment.request.SaveCommentRequestDto;
-import com.polling.poll.dto.comment.response.FindCommentResponseDto;
-import com.polling.poll.service.CommentService;
-import com.polling.queryrepository.CommentQueryRepository;
+import com.polling.poll.comment.dto.request.ModifyCommentRequestDto;
+import com.polling.poll.comment.dto.request.SaveCommentRequestDto;
+import com.polling.poll.comment.dto.response.FindCommentResponseDto;
+import com.polling.poll.comment.repository.CommentQueryRepository;
 import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;

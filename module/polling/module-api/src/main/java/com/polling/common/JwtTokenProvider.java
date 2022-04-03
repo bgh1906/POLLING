@@ -1,12 +1,11 @@
-package com.polling.security.jwt;
-
+package com.polling.common;
 
 import com.polling.auth.service.MemberDetailsService;
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.MemberRole;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
-import com.polling.repository.member.MemberRepository;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
+import com.polling.member.repository.MemberRepository;
 import com.polling.security.service.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
