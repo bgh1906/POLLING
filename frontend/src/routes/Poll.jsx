@@ -17,6 +17,7 @@ function Poll() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [cand, setCand] = useState([]);
+  const [countOpen, setcountOpen] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
@@ -29,6 +30,8 @@ function Poll() {
         setStart(res.data.startDate);
         setEnd(res.data.endDate);
         setCand(res.data.candidates);
+        setcountOpen(res.data.openStatus);
+        sessionStorage.setItem("open", res.data.openStatus);
       })
       .catch((error) => {
         console.log(error.response);
@@ -95,7 +98,7 @@ function Poll() {
 
 
         <div className={styles.pl_bottom}>
-          <CandList cand={cand} />
+          <CandList cand={cand} countOpen={countOpen} />
         </div>
       </div>
       <Footer />

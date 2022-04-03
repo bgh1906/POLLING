@@ -10,7 +10,7 @@ import rank3 from "../../assets/rank3.png"
 import dark from "../../assets/logowhite.png"
 import podium from "../../assets/podium.png"
 
-export default function CandList({ cand }) {
+export default function CandList({ cand, countOpen }) {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -67,12 +67,20 @@ export default function CandList({ cand }) {
             />
             <figcaption>
               <div className={styles.captionName}>{item.name}</div>
+              
+              {countOpen === true && 
               <div className={styles.captionName2}>
                 득표수 : {item.votesTotalCount}표
                 <br />
                 현재 순위 : {index + 1}위
-                
-              </div>
+              </div>}
+              {countOpen === false &&
+                <div className={styles.captionName2}>
+                득표수 : ???표
+                <br />
+                현재 순위 : {index + 1}위
+              </div>}
+
             </figcaption>
           </div>
         ))}
@@ -94,7 +102,7 @@ export default function CandList({ cand }) {
                   <figcaption>
                 <div className={styles.captionName}>{item.name}</div>
                 <div className={styles.captionName2}>
-                득표수 : {item.votesTotalCount}표
+                득표수 : {countOpen}? {item.votesTotalCount}표 : ??? 표
                 <br />
                 현재 순위 : {index + 1}위
                       </div>

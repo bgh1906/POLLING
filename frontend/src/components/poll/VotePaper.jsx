@@ -4,7 +4,6 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import fox from "../../assets/fox.PNG";
 import pollinglogo from "../../assets/pollinglogo.png";
 import leftarrow from "../../assets/left-arrow.png";
 import rightarrow from "../../assets/right-arrow.png";

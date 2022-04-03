@@ -65,13 +65,22 @@
   margin-top: 8vw;
 }
 
+
 .poll_Cand:nth-child(1) .CandImg {
-  border: 4px solid #FFD700;
+  border: 5px solid #FFD700;
   filter: brightness(110%);
   padding: 5px;
   
+}
+
+.poll_Cand:nth-child(1) .CandImg:hover {
+  border: 10px solid #FFD700;
+  filter: brightness(130%);
+  padding: 5px;
   
 }
+
+
 
 .poll_Cand:nth-child(2) {
   margin-top: -19vw;
@@ -83,6 +92,13 @@
   filter: brightness(110%);
   padding: 5px;
 }
+
+.poll_Cand:nth-child(2) .CandImg:hover {
+  border: 10px solid #C0C0C0;
+  filter: brightness(130%);
+  padding: 5px;
+}
+
 
 
 
@@ -99,6 +115,12 @@
 .poll_Cand:nth-child(3) .CandImg {
   border: 5px solid #CD7F32;
   filter: brightness(110%);
+  padding: 5px;
+}
+
+.poll_Cand:nth-child(3) .CandImg:hover {
+  border: 10px solid #CD7F32;
+  filter: brightness(130%);
   padding: 5px;
 }
 
@@ -140,12 +162,15 @@
   width: 15vw;
   height: 15vw;
   cursor: pointer;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.2s ease-in-out; 
 
-
+  
 }
 
-
+.CandImg:hover{
+  border: solid red;
+  border-width: 6px;
+}
 
 
 
@@ -228,6 +253,7 @@
 }
 
 .CandImg2:hover {
+  border: solid red;
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
