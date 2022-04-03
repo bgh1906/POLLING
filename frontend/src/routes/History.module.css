@@ -6,6 +6,12 @@
 font-family: 'Dancing Script', cursive;
 font-family: 'Yellowtail', cursive; */
 
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* 강원교육체 */
 @font-face {
@@ -118,7 +124,7 @@ font-family: 'Yellowtail', cursive; */
   width: fit-content;
   /* font-family: "Bitter", serif; */
   font-family: "Baskervville", serif;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .ended_button {
@@ -133,11 +139,12 @@ font-family: 'Yellowtail', cursive; */
 }
 
 .history_item:hover img {
-  /* opacity: 0.3; */
+
 }
 
 .history_item:hover .ended_info {
   opacity: 1;
+  /* background-color: #ffffff; */
 }
 
 .history_item:hover .ended_button {
@@ -158,4 +165,30 @@ font-family: 'Yellowtail', cursive; */
   /* transform: scale(1.025); */
   box-shadow: 25px 25px 55px -5px rgb(0 0 0 / 75%);
   transition: all 0.5s;
+}
+
+
+#name_info {
+  font-family: 'ROKAFSansBold';
+  font-size: 3.2vw;
+  font-weight: 700;
+}
+
+#date_info {
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1.6vw;
+
+}
+
+#button_info{
+  padding-top: 1.5vh;
+  background-color: #FB71AB;
+  width: 9vw;
+  height: 5vh;
+  font-size: 1.5vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+#button_info:hover{
+  background-color: red;
 }

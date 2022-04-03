@@ -25,6 +25,8 @@ function Candidate2() {
     const [commentdata, setCommentdata] = useState([])
     const [renderCount, setRenderCount] = useState(0)
 
+    const pollOpen = sessionStorage.getItem("open")
+
 
     useEffect(()=>{
         axios.get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
@@ -82,7 +84,14 @@ function Candidate2() {
                 </p>
                 <img id={styles.profile_image2} src={profile_image} alt="profile_image" />
                 <p id={styles.nowrank2}> 현재 순위: 1위 </p>
-                <p id={styles.nowpoll2}> <img id={styles.mark} src={mark} alt={mark}/>현재 투표수: {voteCount}표 </p>
+                {pollOpen === "true" && 
+                <p id={styles.nowpoll2}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수: {voteCount}표 </p> }
+                {pollOpen === "false" && 
+                <p id={styles.nowpoll2}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수:???표 </p> }    
+
+       
                 <Button id={styles.poll_button2} variant="contained">투표하기</Button>
                 <Button id={styles.con_button2} variant="contained">투표내역</Button>
                 <Button id={styles.back_button2} onClick={gotoList} variant="contained">참가자 목록</Button>

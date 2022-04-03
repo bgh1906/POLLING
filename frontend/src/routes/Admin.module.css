@@ -1,6 +1,6 @@
 /* Russo One */
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
 /* 강원교육체 */
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -38,7 +38,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Bitter', serif;;
+    font-family: 'Bitter', serif;
     font-size: 7vw;
     top: 3vh;
     font-weight: 900;

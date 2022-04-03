@@ -24,6 +24,8 @@ function Candidate() {
     const [voteCount, setVoteCount] = useState(0)
     const [commentdata, setCommentdata] = useState([])
     const [renderCount, setRenderCount] = useState(0)
+
+    const pollOpen = sessionStorage.getItem("open")
     
 
 
@@ -86,7 +88,13 @@ function Candidate() {
                 </p>
                 <img id={styles.profile_image} src={profile_image} alt="profile_image" />
                 <p id={styles.nowrank}> 현재 순위: 1위 </p>
-                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>현재 투표수: {voteCount}표 </p>
+                {pollOpen === "true" && 
+                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수: {voteCount}표 </p> }
+                {pollOpen === "false" && 
+                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수:???표 </p> }                        
+
                 <Button id={styles.poll_button} variant="contained">투표하기</Button>
                 <Button id={styles.con_button} variant="contained">투표내역</Button>
                 <Button id={styles.back_button} onClick={gotoList} variant="contained">참가자 목록</Button>

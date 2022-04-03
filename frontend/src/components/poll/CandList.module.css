@@ -20,16 +20,22 @@
   font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
+
 
 
 .right_title {
-  font-family: 'ROKAFSansBold';
+  /* font-family: 'ROKAFSansBold'; */
+  /* font-family: 'Dancing Script', cursive; */
+  /* font-family: 'Yellowtail', cursive; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-family: "Bitter", serif; */
   position: absolute;
-  font-size: 2.5vw;
-  left: 15vw;
-  /* top: -90px; */
-  font-weight: 700;
-  color: #201e1ef1
+  font-size: 3vw;
+  top: 1.5vh;
+  left: -2vw;
+  font-weight: 900;
+  color: #201e1ef1;
 }
 
 .right_title2 {
@@ -59,17 +65,26 @@
   margin-top: 8vw;
 }
 
+
 .poll_Cand:nth-child(1) .CandImg {
-  border: 4px solid #FFD700;
+  border: 5px solid #FFD700;
   filter: brightness(110%);
   padding: 5px;
   
+}
+
+.poll_Cand:nth-child(1) .CandImg:hover {
+  border: 10px solid #FFD700;
+  filter: brightness(130%);
+  padding: 5px;
   
 }
 
+
+
 .poll_Cand:nth-child(2) {
-  margin-top: -17.5vw;
-  margin-left: 1vw;
+  margin-top: -19vw;
+  margin-left: 3.5vw;
 }
 
 .poll_Cand:nth-child(2) .CandImg {
@@ -78,16 +93,23 @@
   padding: 5px;
 }
 
+.poll_Cand:nth-child(2) .CandImg:hover {
+  border: 10px solid #C0C0C0;
+  filter: brightness(130%);
+  padding: 5px;
+}
+
+
 
 
 .poll_Cand:nth-child(2) figcaption {
-  padding-left: 3.2vw;
+  padding-left: 3.8vw;
 }
 
 .poll_Cand:nth-child(3) {
   align-items: flex-end;
-  margin-top: -19vw;
-  margin-right: 1vw;
+  margin-top: -21vw;
+  margin-right: 3.5vw;
 }
 
 .poll_Cand:nth-child(3) .CandImg {
@@ -96,39 +118,58 @@
   padding: 5px;
 }
 
+.poll_Cand:nth-child(3) .CandImg:hover {
+  border: 10px solid #CD7F32;
+  filter: brightness(130%);
+  padding: 5px;
+}
+
 .poll_Cand:nth-child(3) figcaption {
-  padding-right: 2.45vw;
+  padding-right: 3.8vw;
 }
 
 .poll_Cand:nth-child(3n + 4) figcaption {
-  padding-left: 3vw;
+  padding-left: 3.8vw;
   
 }
 
 .poll_Cand:nth-child(4) {
-  margin-top: 28vh;
+  margin-top: 30vh;
+  margin-left: 2.5vw;
+}
+
+.poll_Cand:nth-child(3n+ 4) {
+  margin-left: 2.5vw;
 }
 
 .poll_Cand:nth-child(3n + 5) {
   align-items: center;
-  margin-top: -20.72vw;
+  margin-top: -22.8vw;
 }
 
 .poll_Cand:nth-child(3n + 6) {
   align-items: flex-end;
-  margin-top: -20.9vw;
+  margin-top: -22.8vw;
+  margin-right: 2.5vw;
+  margin-bottom: 15vh;
 }
 
 .poll_Cand:nth-child(3n + 6) figcaption {
-  padding-right: 3vw;
+  padding-right: 4vw;
 }
 
 .poll_Cand .CandImg {
-  width: 13vw;
-  height: 13vw;
+  width: 15vw;
+  height: 15vw;
   cursor: pointer;
+  transition: all 0.2s ease-in-out; 
 
+  
+}
 
+.CandImg:hover{
+  border: solid red;
+  border-width: 6px;
 }
 
 
@@ -177,22 +218,22 @@
 #rank1 {
   position:absolute;
   width: 2vw;
-  top: 34.5vh;
-  left: 19.2vw;
+  top: 38.5vh;
+  left: 26.5vw;
 }
 
 #rank2 {
   position:absolute;
   width: 2vw;
-  top: 41.2vh;
-  left: 4.6vw;
+  top: 46.4vh;
+  left: 7.3vw;
 }
 
 #rank3 {
   position:absolute;
   width: 2vw;
-  top: 44.8vh;
-  right: 10.8vw;
+  top: 49.9vh;
+  right: 14.9vw;
 }
 
 #dark {
@@ -204,20 +245,21 @@
 
 
 .CandImg2 {
-  width: 13vw;
-  height: 13vw;
+  width: 15vw;
+  height: 15vw;
   cursor: pointer;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out; 
+
 }
 
 .CandImg2:hover {
-  width: 16vw;
-  height: 16vw;
-  cursor: pointer;
-  z-index: 5;
+  border: solid red;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  z-index:5;
 }
 
 
@@ -231,16 +273,17 @@
 
 .poll_Cand2:nth-child(3n + 1) {
   margin-top: 15vh;
+  margin-left: 2.5vw;
 }
 
 .poll_Cand2:nth-child(3n + 1) figcaption{
-  padding-left: 2.8vw;
+  padding-left: 4vw;
   padding-top: 2vh;
 }
 
 .poll_Cand2:nth-child(3n + 2) {
   align-items: center;
-  margin-top: -21.3vw;
+  margin-top: -23.1vw;
   margin-left: -2.9vw;
 }
 
@@ -250,13 +293,13 @@
 
 .poll_Cand2:nth-child(3n + 3) {
   align-items: flex-end;
-  margin-top: -21.3vw;
-  margin-right: 3vw;
+  margin-top: -23.1vw;
+  margin-right: 5vw;
 }
 
 .poll_Cand2:nth-child(3n + 3) figcaption{
   padding-top: 2vh;
-  padding-right: 3vw;
+  padding-right: 3.9vw;
 }
 
 .Cand_list2 {
@@ -280,6 +323,14 @@
 
 #podium{
   position: absolute;
-  width: 47.5vw;
-  top: 42vh;
+  width: 56vw;
+  top: 45vh;
+  left: 3vw;
+}
+
+.heart{
+  position:absolute;
+  width: 3vw;
+  left: 29.3vw;
+  top: 0.8vh;
 }

@@ -14,6 +14,7 @@ import { Button } from "@mui/material";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import axios from "axios";
 
 function History() {
 
@@ -21,6 +22,19 @@ function History() {
     window.scrollTo(0,0);
 }, [])
 
+const [itemData, setItemData] = useState([]);
+
+useEffect(() => {
+  axios
+    .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
+    .then((res) => {
+      console.log(res);
+      setItemData(res.data);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+}, []);
 
   const [modalShow, setModalShow] = useState(false);
   const endItemData = [
@@ -57,6 +71,10 @@ function History() {
       title: "hair",
     },
   ];
+
+
+
+
   Aos.init({
     // Global settings:
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -86,25 +104,25 @@ function History() {
       </div>
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
-          {endItemData.map((item) => (
+          {itemData.map((item, index) => (
             // <div className={styles.history_item}>
             <div
               className={styles.history_item}
-              key={item.img}
+              key={index}
               data-aos="fade-up"
             >
-              <img src={item.img} alt={item.title} />
+              <img src={item.thumbnail} alt={item.title} />
               <div className={styles.ended_info}>
-                <div style={{ fontSize: "3vw", fontWeight: 700 }}>
+                <div id={styles.name_info}>
                   {item.title}
                 </div>
-                <div style={{ fontSize: "1.2vw" }}>2022.03.03 ~ 2022.05.10</div>
+                <div id={styles.date_info}>{item.startDate} <br/> {item.endDate}</div>
               </div>
               <div className={styles.ended_button}>
                 <Button
+                  id={styles.button_info}
                   variant="contained"
                   size="large"
-                  style={{ backgroundColor: "#FB71AB" }}
                   onClick={() => setModalShow(true)}
                 >
                   투표결과
