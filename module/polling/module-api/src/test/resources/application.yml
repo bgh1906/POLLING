@@ -1,16 +1,14 @@
 spring:
-  config:
-    activate:
-      on-profile: test
+  profiles:
+    active: test
+    default: test
+    include:
+      - core-test
 
   h2:
     console:
       enabled: true
       path: /h2-console
-
-  redis:
-    host: 127.0.0.1
-    port: 6379
 
   datasource:
     hikari:
@@ -35,3 +33,16 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
         use_sql_comments: true
+
+jwt:
+  secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+
+sms:
+  serviceid: ncp:sms:kr:282615511747:validation_sms
+  secretkey: Lf4Oqy1Ebsn9ecds1XC6RopnLodw9NG4z2b3EKLC
+  accesskey: oekTboQ7Jao7JPzE8omf
+
