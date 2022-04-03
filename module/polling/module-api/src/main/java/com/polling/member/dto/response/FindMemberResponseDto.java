@@ -1,8 +1,7 @@
 package com.polling.member.dto.response;
 
-import javax.validation.constraints.NotNull;
-
 import com.polling.member.entity.Member;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

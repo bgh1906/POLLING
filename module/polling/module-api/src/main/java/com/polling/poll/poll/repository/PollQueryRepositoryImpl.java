@@ -1,5 +1,9 @@
 package com.polling.poll.poll.repository;
 
+import static com.polling.poll.candidate.entity.QCandidate.candidate;
+import static com.polling.poll.candidate.entity.QCandidateGallery.candidateGallery;
+import static com.polling.poll.poll.entity.QPoll.poll;
+
 import com.polling.poll.poll.dto.response.FindPollPageResponseDto;
 import com.polling.poll.poll.entity.Poll;
 import com.polling.poll.poll.entity.status.PollStatus;
@@ -12,10 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.polling.poll.candidate.entity.QCandidate.candidate;
-import static com.polling.poll.candidate.entity.QCandidateGallery.candidateGallery;
-import static com.polling.poll.poll.entity.QPoll.poll;
-
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Repository
@@ -25,7 +25,7 @@ public class PollQueryRepositoryImpl implements PollQueryRepository {
 
   @Override
   public List<FindPollPageResponseDto> findPollPageByStatus(PollStatus pollStatus, int offset,
-                                                            int limit) {
+      int limit) {
     return query
         .select(Projections.constructor(FindPollPageResponseDto.class,
             poll.id,

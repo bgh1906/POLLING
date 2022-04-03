@@ -3,9 +3,6 @@ package com.polling.poll.candidate.service;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.entity.Member;
@@ -23,6 +20,8 @@ import com.polling.poll.comment.dto.response.FindCommentResponseDto;
 import com.polling.poll.comment.repository.CommentQueryRepository;
 import com.polling.poll.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.poll.entity.status.PollStatus;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

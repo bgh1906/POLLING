@@ -6,6 +6,7 @@ import com.polling.poll.comment.dto.request.ModifyCommentRequestDto;
 import com.polling.poll.comment.dto.request.SaveCommentRequestDto;
 import com.polling.poll.comment.dto.response.FindCommentResponseDto;
 import com.polling.poll.comment.repository.CommentQueryRepository;
+import com.polling.poll.comment.service.CommentService;
 import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;

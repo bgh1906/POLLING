@@ -1,13 +1,12 @@
 package com.polling.common;
 
+import com.polling.member.entity.status.MemberRole;
 import java.io.IOException;
 import java.util.Set;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.polling.member.entity.status.MemberRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

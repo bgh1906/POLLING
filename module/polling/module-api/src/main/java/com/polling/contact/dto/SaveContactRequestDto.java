@@ -1,9 +1,8 @@
 package com.polling.contact.dto;
 
-import javax.validation.constraints.NotNull;
-
 import com.polling.contact.entity.Contact;
 import com.polling.contact.entity.status.ContactType;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,10 @@
 package com.polling.poll.candidate.repository;
 
 
+import static com.polling.member.entity.QMember.member;
+import static com.polling.poll.candidate.entity.QCandidate.candidate;
+import static com.polling.poll.candidate.entity.QCandidateHistory.candidateHistory;
+
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -9,10 +13,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import static com.polling.member.entity.QMember.member;
-import static com.polling.poll.candidate.entity.QCandidate.candidate;
-import static com.polling.poll.candidate.entity.QCandidateHistory.candidateHistory;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -23,7 +23,7 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
 
   @Override
   public List<FindCandidateHistoryResponseDto> findByCandidateId(Long candidateId, int offset,
-                                                                 int limit) {
+      int limit) {
     return query
         .select((Projections.constructor(FindCandidateHistoryResponseDto.class,
             member.nickname,

@@ -1,11 +1,10 @@
 package com.polling.auth.adapter;
 
 import com.polling.auth.dto.MemberDto;
+import com.polling.member.entity.status.MemberRole;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import com.polling.member.entity.status.MemberRole;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,6 +1,6 @@
 package com.polling.member.controller.integrated;
 
-import com.polling.entity.member.status.MemberRole;
+import com.polling.member.entity.status.MemberRole;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import org.springframework.security.test.context.support.WithSecurityContext;

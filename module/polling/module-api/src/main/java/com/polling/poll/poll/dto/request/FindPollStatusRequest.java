@@ -1,6 +1,6 @@
 package com.polling.poll.poll.dto.request;
 
-import com.polling.entity.poll.status.PollStatus;
+import com.polling.poll.poll.entity.status.PollStatus;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;

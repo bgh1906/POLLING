@@ -1,6 +1,9 @@
 package com.polling.poll.candidate.repository;
 
 
+import static com.polling.poll.candidate.entity.QCandidate.candidate;
+import static com.polling.poll.candidate.entity.QCandidateGallery.candidateGallery;
+
 import com.polling.poll.candidate.dto.response.FindAnonymousCandidateResponseDto;
 import com.polling.poll.candidate.entity.Candidate;
 import com.querydsl.core.types.Projections;
@@ -10,9 +13,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import static com.polling.poll.candidate.entity.QCandidate.candidate;
-import static com.polling.poll.candidate.entity.QCandidateGallery.candidateGallery;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
