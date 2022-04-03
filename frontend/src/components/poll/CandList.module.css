@@ -327,3 +327,10 @@
   top: 45vh;
   left: 3vw;
 }
+
+.heart{
+  position:absolute;
+  width: 3vw;
+  left: 29.3vw;
+  top: 0.8vh;
+}

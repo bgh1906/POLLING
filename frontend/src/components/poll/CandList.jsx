@@ -9,6 +9,8 @@ import rank2 from "../../assets/rank2.png"
 import rank3 from "../../assets/rank3.png"
 import dark from "../../assets/logowhite.png"
 import podium from "../../assets/podium.png"
+import heart from "../../assets/heart.png"
+import { fontSize } from "@mui/system";
 
 export default function CandList({ cand, countOpen }) {
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ export default function CandList({ cand, countOpen }) {
   return (
     <>
       <div className={styles.right_title}>당신의 스타에게 투표하세요.</div>
+      <img className={styles.heart} src={heart} alt="heart" />
       <div
       className={styles.right_title2}
         style={{
@@ -39,8 +42,17 @@ export default function CandList({ cand, countOpen }) {
           fontSize: "1.5vw",
         }}
       >
-        <span onClick={changelistType} style={{ cursor: "pointer" }}>득표순</span>&nbsp;|&nbsp;
-        <span onClick={changelistType2} style={{ cursor: "pointer" }}>등록순</span>
+      {listType==="rank"? 
+      <>
+      <span onClick={changelistType} style={{ cursor: "pointer", fontSize: "2vw" }}>득표순</span>&nbsp;|&nbsp;
+      <span onClick={changelistType2} style={{ cursor: "pointer" }}>등록순</span>
+      </>:
+      <>
+      <span onClick={changelistType} style={{ cursor: "pointer" }}>득표순</span>&nbsp;|&nbsp;
+      <span onClick={changelistType2} style={{ cursor: "pointer", fontSize: "2vw" }}>등록순</span>
+      </>}
+        {/* <span onClick={changelistType} style={{ cursor: "pointer" }}>득표순</span>&nbsp;|&nbsp;
+        <span onClick={changelistType2} style={{ cursor: "pointer" }}>등록순</span> */}
       </div>
       {listType==="rank"? 
       <>
@@ -101,11 +113,18 @@ export default function CandList({ cand, countOpen }) {
                   />
                   <figcaption>
                 <div className={styles.captionName}>{item.name}</div>
-                <div className={styles.captionName2}>
-                득표수 : {countOpen}? {item.votesTotalCount}표 : ??? 표
+                {countOpen === true && 
+              <div className={styles.captionName2}>
+                득표수 : {item.votesTotalCount}표
                 <br />
                 현재 순위 : {index + 1}위
-                      </div>
+              </div>}
+              {countOpen === false &&
+                <div className={styles.captionName2}>
+                득표수 : ???표
+                <br />
+                현재 순위 : {index + 1}위
+              </div>}
                   </figcaption>
 
                 </div>
