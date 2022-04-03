@@ -396,3 +396,143 @@
     right: 14vw;
     z-index: 5;
 }
+
+#poll_paper{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 15vh;
+    background-color: white;
+    width: 24vw;
+    height: 72vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#poll_paper2{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 3px solid black;
+}
+
+
+#poll_title{
+    position: relative;
+    font-family: 'ROKAFSansBold';
+    font-size: 2.2vw;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+#paper_image{
+    margin: 0 auto;
+    width: 12vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 2vw;
+    text-align: center;
+}
+
+#stamp_box{
+    width: 3.5vw;
+    height: 3.5vw;
+    background-color: rgb(236, 236, 233);
+    border: 3px solid black;
+    margin: 2vh auto;
+    cursor: pointer;
+}
+
+#stamp{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_button{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#paper_button2{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+    background-color: black;
+}
+
+#paper_button2:hover{
+    background-color: red;
+}
+
+.swal2-container {
+    z-index: 1500 !important;
+}
+
+#x_button{
+    position: absolute;
+    width: 1vw;
+    right: 0;
+    margin: 0.6vw;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.css-79ws1d-MuiModal-root{
+    z-index: 500 !important;
+}
+
+#stamp_box2{
+    position:absolute;
+    width: 5vw;
+    height: 5vw;
+    right: 0.4vw;
+    bottom: -1.1vh;
+    border: 3px solid black;
+    margin: 2vh auto;
+    cursor: pointer;
+}
+
+#stamp2{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_text{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1vw;
+    bottom: -1vh;
+    left: 1.6vw;
+}
+
+#paper_text2{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+    bottom: 8.3vh;
+    right: 0.5vw;
+    font-weight: 700;
+}
+
+
+
+/* 트랜잭션 모달 */
+
+#tran_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 23vh;
+    background-color: white;
+    width: 40vw;
+    height: 60vh;
+    border: 5px solid black;
+    padding: 3px;
+}

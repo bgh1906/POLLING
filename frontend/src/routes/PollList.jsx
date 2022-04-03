@@ -14,6 +14,11 @@ export default function PollList() {
   const navigate = useNavigate();
 
   const [itemData, setItemData] = useState([]);
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+}, [])
+
   useEffect(() => {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")

@@ -32,6 +32,7 @@ function Poll() {
         setCand(res.data.candidates);
         setcountOpen(res.data.openStatus);
         sessionStorage.setItem("open", res.data.openStatus);
+        sessionStorage.setItem("poll", res.data.title);
       })
       .catch((error) => {
         console.log(error.response);

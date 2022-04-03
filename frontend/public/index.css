@@ -34,3 +34,7 @@
     height:100%;
 } */
 
+
+.swal2-container {
+  z-index: 1500 !important;
+}
