@@ -48,11 +48,11 @@ public class CandidateService {
 
   @Trace
   @Retry
-  public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, Long id) {
+  public void saveVoteHistory(SaveCandidateHistoryRequestDto requestDto, Long memberId) {
     if (requestDto.getVoteCount() <= 0) {
       throw new CustomException(CustomErrorResult.INVALID_VOTES);
     }
-    Member member = getMember(id);
+    Member member = getMember(memberId);
     Candidate candidate = getCandidate(requestDto.getCandidateId());
 
     if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(
@@ -70,6 +70,18 @@ public class CandidateService {
         .build();
 
     candidateHistoryRepository.save(history);
+  }
+
+  @Trace
+  public void didVoteToday(Long candidateId, Long memberId) {
+    Member member = getMember(memberId);
+    Candidate candidate = getCandidate(candidateId);
+    if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(
+        member.getId(),
+        candidate.getPoll().getId(),
+        LocalDateTime.now())) {
+      throw new CustomException(CustomErrorResult.ALREADY_VOTES);
+    }
   }
 
   @Trace

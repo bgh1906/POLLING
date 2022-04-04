@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,9 +55,7 @@ public class AuthenticationRestController {
       throw new CustomException(CustomErrorResult.USER_NOT_FOUND);
     }
     setTokenHeaderAndRedis(member, response);
-    LoginResponseDto responseDto = new LoginResponseDto(member.getId(),
-        findHighestRole(member.getMemberRole()), member.getNickname());
-    return ResponseEntity.status(200).body(responseDto);
+    return ResponseEntity.status(200).body(LoginResponseDto.of(member));
   }
 
   @Trace
@@ -66,9 +65,7 @@ public class AuthenticationRestController {
       HttpServletResponse response) {
     Member member = authService.auth(requestDto);
     setTokenHeaderAndRedis(member, response);
-    LoginResponseDto responseDto = new LoginResponseDto(member.getId(),
-        findHighestRole(member.getMemberRole()), member.getNickname());
-    return ResponseEntity.status(200).body(responseDto);
+    return ResponseEntity.status(200).body(LoginResponseDto.of(member));
   }
 
 
@@ -79,14 +76,11 @@ public class AuthenticationRestController {
       @RequestBody ValidateMemberRequestDto requestDto, HttpServletResponse response) {
     ValidateMemberResponseDto responseDto = new ValidateMemberResponseDto();
     Member member = authService.validate(requestDto);
-    if (member == null) {
-      responseDto.setExistMember(false);
-    } else {
-      responseDto.setExistMember(true);
-      responseDto.setField(findHighestRole(member.getMemberRole()), member.getNickname(),
-          member.getId());
-      setTokenHeaderAndRedis(member, response);
+
+    if (member != null) {
+      responseDto = ValidateMemberResponseDto.of(member);
     }
+
     return ResponseEntity.status(200).body(responseDto);
   }
 
@@ -108,18 +102,5 @@ public class AuthenticationRestController {
 
     // Redis 인메모리에 리프레시 토큰 저장
     redisService.setValues(refreshToken, memberDto.getId());
-  }
-
-  /**
-   * 멤버의 최상위 권한을 찾는 로직 ADMIN > COMPNAY > USER
-   */
-  private MemberRole findHighestRole(Set<MemberRole> roles) {
-    if (roles.contains(MemberRole.ROLE_ADMIN)) {
-      return MemberRole.ROLE_ADMIN;
-    } else if (roles.contains(MemberRole.ROLE_COMPANY)) {
-      return MemberRole.ROLE_COMPANY;
-    } else {
-      return MemberRole.ROLE_USER;
-    }
   }
 }

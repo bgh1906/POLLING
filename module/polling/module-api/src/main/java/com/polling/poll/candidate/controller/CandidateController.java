@@ -37,6 +37,14 @@ public class CandidateController {
     return ResponseEntity.status(200).build();
   }
 
+  @Trace
+  @GetMapping("/limit/{candidateId}")
+  @ApiOperation(value = "오늘 투표 했는지 안 했는지 조회", notes = "투표 안 했으면 200, 투표 했으면 에러 코드 전송")
+  public ResponseEntity<Void> didPollToday(@CurrentUser MemberDto memberDto, @PathVariable Long candidateId) {
+    candidateService.didVoteToday(candidateId, memberDto.getId());
+    return ResponseEntity.status(200).build();
+  }
+
   @GetMapping("/{candidatesId}")
   @ApiOperation(value = "특정 후보자 정보 조회")
   public ResponseEntity<FindCandidateDetailsResponseDto> getProfile(
