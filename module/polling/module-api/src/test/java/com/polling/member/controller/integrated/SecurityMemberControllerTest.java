@@ -14,6 +14,7 @@ import com.polling.auth.dto.request.LoginRequestDto;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
 import com.polling.member.repository.MemberRepository;
 import com.polling.member.service.MemberService;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,13 +86,15 @@ public class SecurityMemberControllerTest {
   }
 
   public Member joinMember(int index) {
-    return memberRepository.save(Member
+    Member member = Member
         .builder()
         .email("test" + index + "@email.com")
         .nickname("test" + index + "nickname")
         .password("test")
         .phoneNumber("0122345678")
-        .build());
+        .build();
+    member.addRole(MemberRole.ROLE_ADMIN);
+    return memberRepository.save(member);
   }
 
   public String getJwtToken(int index) throws Exception {

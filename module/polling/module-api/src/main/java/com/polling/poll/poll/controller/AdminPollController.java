@@ -3,6 +3,10 @@ package com.polling.poll.poll.controller;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
 import com.polling.poll.candidate.dto.request.AddCandidateRequestDto;
 import com.polling.poll.poll.dto.request.ApprovePollRequestDto;
 import com.polling.poll.poll.dto.request.ModifyPollRequestDto;
@@ -34,6 +38,7 @@ public class AdminPollController {
   @ApiOperation(value = "투표 생성")
   public ResponseEntity<Void> save(@CurrentUser MemberDto memberDto,
       @RequestBody SavePollRequestDto requestDto) {
+    validateMemberRole(memberDto);
     pollService.savePoll(requestDto, memberDto.getId());
     return ResponseEntity.status(200).build();
   }
@@ -41,7 +46,8 @@ public class AdminPollController {
   @Trace
   @GetMapping("/{pollId}")
   @ApiOperation(value = "해당 투표의 정보 및 후보자 정보를 조회")
-  public ResponseEntity<FindPollWithCandidateResponseDto> getPollInfo(@PathVariable Long pollId) {
+  public ResponseEntity<FindPollWithCandidateResponseDto> getPollInfo(@CurrentUser MemberDto memberDto, @PathVariable Long pollId) {
+    validateMemberRole(memberDto);
     FindPollWithCandidateResponseDto responseDto = pollService.findPollAllInfo(pollId);
     return ResponseEntity.status(200).body(responseDto);
   }
@@ -49,7 +55,8 @@ public class AdminPollController {
   @Trace
   @PostMapping("/candidate")
   @ApiOperation(value = "후보자 추가", notes = "상태가 unapproved, wait인 경우에만 가능")
-  public ResponseEntity<Void> addCandidate(@RequestBody AddCandidateRequestDto requestDto) {
+  public ResponseEntity<Void> addCandidate(@CurrentUser MemberDto memberDto, @RequestBody AddCandidateRequestDto requestDto) {
+    validateMemberRole(memberDto);
     pollService.addCandidate(requestDto);
     return ResponseEntity.status(200).build();
   }
@@ -57,8 +64,9 @@ public class AdminPollController {
   @Trace
   @PutMapping("/{pollId}")
   @ApiOperation(value = "투표 수정", notes = "상태가 unapproved, wait인 경우에만 가능")
-  public ResponseEntity<Void> modifyPollInfo(@PathVariable Long pollId,
+  public ResponseEntity<Void> modifyPollInfo(@CurrentUser MemberDto memberDto, @PathVariable Long pollId,
       @RequestBody ModifyPollRequestDto requestDto) {
+    validateMemberRole(memberDto);
     pollService.modifyPoll(pollId, requestDto);
     return ResponseEntity.status(200).build();
   }
@@ -66,7 +74,8 @@ public class AdminPollController {
   @Trace
   @DeleteMapping("/{pollId}")
   @ApiOperation(value = "투표 삭제")
-  public ResponseEntity<Void> delete(@PathVariable Long pollId) {
+  public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto, @PathVariable Long pollId) {
+    validateMemberRole(memberDto);
     pollService.deletePoll(pollId);
     return ResponseEntity.status(200).build();
   }
@@ -74,7 +83,8 @@ public class AdminPollController {
   @Trace
   @PatchMapping("/wait")
   @ApiOperation(value = "투표 승인")
-  public ResponseEntity<Void> approvePoll(@RequestBody ApprovePollRequestDto requestDto) {
+  public ResponseEntity<Void> approvePoll(@CurrentUser MemberDto memberDto, @RequestBody ApprovePollRequestDto requestDto) {
+    validateMemberRole(memberDto);
     pollService.approvePoll(requestDto);
     return ResponseEntity.status(200).build();
   }
@@ -82,9 +92,16 @@ public class AdminPollController {
   @Trace
   @PatchMapping("/open/{pollId}")
   @ApiOperation(value = "투표 공개 옵션 변경", notes = "true면 false로 false면 true로 변경")
-  public ResponseEntity<Void> changeOpenStatus(@PathVariable Long pollId) {
+  public ResponseEntity<Void> changeOpenStatus(@CurrentUser MemberDto memberDto, @PathVariable Long pollId) {
+    validateMemberRole(memberDto);
     pollService.changeOpenStatus(pollId);
     return ResponseEntity.status(200).build();
+  }
+
+  private void validateMemberRole(MemberDto memberDto){
+    if(!(memberDto.getMemberRole().contains(MemberRole.ROLE_ADMIN) || memberDto.getMemberRole().contains(MemberRole.ROLE_COMPANY))){
+      throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER_ROLE);
+    }
   }
 
 }

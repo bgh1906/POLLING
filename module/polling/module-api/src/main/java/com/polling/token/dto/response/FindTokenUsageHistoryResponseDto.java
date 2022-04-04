@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FindTokenUsageHistoryResponseDto {
 
-  private String imagePath;
+  private String imagePath3;
 }

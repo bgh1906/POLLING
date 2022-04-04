@@ -16,6 +16,7 @@ import com.polling.auth.dto.request.LoginRequestDto;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.entity.Member;
+import com.polling.member.entity.status.MemberRole;
 import com.polling.member.repository.MemberRepository;
 import com.polling.poll.comment.dto.request.ModifyCommentRequestDto;
 import com.polling.poll.comment.dto.request.SaveCommentRequestDto;
@@ -79,7 +80,7 @@ public class SecurityCommentControllerTest {
     final Long commentId = 1L;
     final ModifyCommentRequestDto requestDto = new ModifyCommentRequestDto("content");
     doThrow(new CustomException(CustomErrorResult.COMMENT_NOT_FOUND))
-        .when(commentService).changeContent(anyLong(), anyString());
+        .when(commentService).changeContent(anyLong(), anyLong(), anyString());
 
     //when
     ResultActions resultActions = mockMvc.perform(put(url, commentId)
@@ -106,7 +107,7 @@ public class SecurityCommentControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(commentService, times(1)).changeContent(anyLong(), anyString());
+    verify(commentService, times(1)).changeContent(anyLong(), anyLong(), anyString());
   }
 
   @Test
@@ -115,7 +116,7 @@ public class SecurityCommentControllerTest {
     final String url = "/api/polls/candidates/comments/{commentId}";
     final Long commentId = 1L;
     doThrow(new CustomException(CustomErrorResult.COMMENT_NOT_FOUND))
-        .when(commentService).deleteComment(anyLong());
+        .when(commentService).deleteComment(anyLong(), anyLong());
 
     //when
     ResultActions resultActions = mockMvc.perform(delete(url, commentId)
@@ -137,18 +138,20 @@ public class SecurityCommentControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(commentService, times(1)).deleteComment(anyLong());
+    verify(commentService, times(1)).deleteComment(anyLong(), anyLong());
   }
 
 
   public Member joinMember(int index) {
-    return memberRepository.save(Member
+    Member member = Member
         .builder()
         .email("test" + index + "@email.com")
         .nickname("test" + index + "nickname")
         .password("test")
         .phoneNumber("0122345678")
-        .build());
+        .build();
+    member.addRole(MemberRole.ROLE_ADMIN);
+    return memberRepository.save(member);
   }
 
   public String getJwtToken(int index) throws Exception {

@@ -37,14 +37,20 @@ public class CommentService {
   }
 
   @Trace
-  public void changeContent(Long commentId, String content) {
+  public void changeContent(Long memberId, Long commentId, String content) {
+    Member member = getMember(memberId);
     Comment comment = getComment(commentId);
+    if(comment.getMember() != member)
+      throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
     comment.updateContent(content);
   }
 
   @Trace
-  public void deleteComment(Long commentId) {
+  public void deleteComment(Long memberId, Long commentId) {
+    Member member = getMember(memberId);
     Comment comment = getComment(commentId);
+    if(comment.getMember() != member)
+      throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
     commentRepository.delete(comment);
   }
 
