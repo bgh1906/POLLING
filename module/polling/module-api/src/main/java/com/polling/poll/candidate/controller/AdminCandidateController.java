@@ -1,6 +1,11 @@
 package com.polling.poll.candidate.controller;
 
 import com.polling.aop.annotation.Trace;
+import com.polling.auth.CurrentUser;
+import com.polling.auth.dto.MemberDto;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
+import com.polling.member.entity.status.MemberRole;
 import com.polling.poll.candidate.dto.request.ModifyCandidateRequestDto;
 import com.polling.poll.candidate.dto.response.FindCandidateDetailsResponseDto;
 import com.polling.poll.candidate.service.CandidateService;
@@ -24,8 +29,9 @@ public class AdminCandidateController {
   @Trace
   @PutMapping("/{candidateId}")
   @ApiOperation(value = "특정 후보자 정보 수정", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
-  public ResponseEntity<FindCandidateDetailsResponseDto> modifyCandidate(
+  public ResponseEntity<FindCandidateDetailsResponseDto> modifyCandidate(@CurrentUser MemberDto memberDto,
       @PathVariable Long candidateId, @RequestBody ModifyCandidateRequestDto requestDto) {
+    validateMemberRole(memberDto);
     candidateService.modifyCandidate(candidateId, requestDto);
     return ResponseEntity.status(200).build();
   }
@@ -33,9 +39,16 @@ public class AdminCandidateController {
   @Trace
   @DeleteMapping("/{candidateId}")
   @ApiOperation(value = "특정 후보자 삭제", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
-  public ResponseEntity<FindCandidateDetailsResponseDto> deleteCandidate(
+  public ResponseEntity<FindCandidateDetailsResponseDto> deleteCandidate(@CurrentUser MemberDto memberDto,
       @PathVariable Long candidateId) {
+    validateMemberRole(memberDto);
     candidateService.deleteCandidate(candidateId);
     return ResponseEntity.status(200).build();
+  }
+
+  private void validateMemberRole(MemberDto memberDto){
+    if(!(memberDto.getMemberRole().contains(MemberRole.ROLE_ADMIN) || memberDto.getMemberRole().contains(MemberRole.ROLE_COMPANY))){
+      throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER_ROLE);
+    }
   }
 }

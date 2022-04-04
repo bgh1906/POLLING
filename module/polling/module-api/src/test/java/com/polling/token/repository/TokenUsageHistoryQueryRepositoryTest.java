@@ -68,7 +68,7 @@ public class TokenUsageHistoryQueryRepositoryTest {
 
     //then
     assertThat(responseDtos.size()).isEqualTo(2);
-    assertThat(responseDtos.get(0).getImagePath()).isEqualTo("image1");
-    assertThat(responseDtos.get(1).getImagePath()).isEqualTo("image3");
+    assertThat(responseDtos.get(0).getImagePath3()).isEqualTo("image1");
+    assertThat(responseDtos.get(1).getImagePath3()).isEqualTo("image3");
   }
 }
