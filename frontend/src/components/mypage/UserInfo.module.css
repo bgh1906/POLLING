@@ -158,7 +158,8 @@
     left: 65vw;
     top: 74.5vh;
 
-    border-radius: 0.5vw;
+    /* border-radius: 0.5vw; */
+    border-radius: 1vh;
     /* background-color: #fb71aa98; */
     background-color: #FFE29A;
     font-family: 'GangwonEdu_OTFBoldA';

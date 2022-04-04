@@ -134,7 +134,7 @@ function CreatePoll() {
     }
 
     return (
-        <div >
+        <div>
               <NewNav  />
             <div className={styles.title}> CREATE A POLL </div>
             

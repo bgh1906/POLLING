@@ -1,13 +1,13 @@
 .background_test {
   background: linear-gradient(
       180deg,
-      rgba(251, 217, 233, 0.2) 0%,
-      rgba(242, 248, 170, 0.2) 60.79%
+      rgba(242, 248, 170, 0.2) 0%,
+      rgba(251, 217, 233, 0.2) 60.79%
     ),
     linear-gradient(
-      180deg,
-      rgba(213, 255, 245, 0.8) 0%,
-      rgba(255, 219, 234, 0.8) 100%
+      120deg,
+      rgba(255, 215, 232, 0.8) 0%,
+      rgba(219, 255, 247, 0.8) 100%
     );
   margin: 0;
 }
@@ -34,3 +34,7 @@
     height:100%;
 } */
 
+
+.swal2-container {
+  z-index: 1500 !important;
+}

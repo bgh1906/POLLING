@@ -21,22 +21,29 @@
   font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 
 .polllist {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin-top: 15vw; */
 }
 
 .list_title {
-  font-family: "Bitter", serif;
+  /* font-family: "Bitter", serif; */
+  /* position: absolute; */
+  /* font-family: 'Yellowtail', cursive; */
+  font-family: 'Dancing Script', cursive;
   /* font-family: "Baskervville", serif; */
-  font-size: 7vw;
+  font-size: 10vw;
   font-weight: 900;
-  padding-top: 200px;
+  padding-top: 100px;
   padding-bottom: 100px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #201e1ef1;
+  /* transform: rotate(100deg); */
   /* text-align: center; */
 }
 
@@ -100,7 +107,7 @@
     font-size: 1.2vw;
     font-family: 'ROKAFSansMedium';
     text-align: center;
-    background-color: #77A3A9;
+    background-color: #77a3a9;
     cursor: pointer; 
     border-radius: 10px;
     color: white;
@@ -108,7 +115,7 @@
 
 #poll_button:hover{
   background-color: blue;
-  
+
 }
 
 /* .list_container {

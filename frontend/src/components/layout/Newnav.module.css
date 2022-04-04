@@ -13,10 +13,10 @@
   border-radius: 1vh;
   border-image: linear-gradient(
     120deg,
-    #3afaca8c,
-    #8ac1be8c,
+     #fb71aa8c,
     #c399b48c,
-    #fb71aa8c
+    #8ac1be8c,
+    #3afaca8c
   );
   /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
   /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
@@ -25,11 +25,11 @@
 
 .mark{
     position: fixed;
-    left: 3vw;
-    top: 5vh;
+    left: 2.5vw;
+    top: 5.5vh;
     max-width: 100%;
     max-height: 100%;
-    width: 4vw;
+    width: 3vw;
     /* height: 7vh; */
     height: auto;
     /* padding-right: 1vw; */
@@ -44,15 +44,15 @@
     height: auto;
     /* width: 9vw;
     height: 9vh; */
-    left: 7vw;
-    top: 5vh;
+    left: 5.6vw;
+    top: 5.3vh;
     display: block;
     /* padding-left: 1vw; */
 
     text-decoration: none;
     text-align: center;
     /* font-size: 6vh; */
-    font-size: 3vw;
+    font-size: 2.5vw;
     /* font-size: 6vmin; */
     font-family: 'RussoOne';
     /* font-family: 'Bitter', serif; */

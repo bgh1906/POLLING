@@ -153,92 +153,72 @@ function UserSearch() {
             <input className={Styles.userEmail} type="text" placeholder="회원 이메일" />
             <button className={Styles.searchbtn}></button>
             <div>
-            <TableContainer component={Paper} style={{width:'48vw', height:'50vh', marginTop:'45vh', marginLeft: '25vw', position: 'fixed' }}>
-                {/* <Table sx={{ minWidth: '20vw' }} aria-label="custom pagination table"> */}
-                <Table style={{width:'45vw', top:'50vh'}}  aria-label="custom pagination table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center" style={{fontWeight:'bold'}}>
-                                Nickname
-                            </TableCell>
-                            <TableCell align="center" style={{fontWeight:'bold'}}>
-                                E-mail
-                            </TableCell>
-                            <TableCell align="center" style={{fontWeight:'bold'}}>
-                                1:1 문의 여부
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody style={{height:'3vh' }}>
-                        {(rowsPerPage > 0
-                            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : rows
-                        ).map((row) => (
-                            <TableRow key={row.name}>
-                                <TableCell component="th" style={{ width: '15vw'}} align="center">
-                                {/* <TableCell component="th" align="center"> */}
-                                    {row.name}
-                                </TableCell>
-                                <TableCell style={{ width: '15vw' }} align="center">
-                                {/* <TableCell align="center"> */}
-                                    {row.calories}
-                                </TableCell>
-                                <TableCell style={{ width: '15vw' }} align="center">
-                                {/* <TableCell align="center"> */}
-                                    {row.fat}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+              <TableContainer component={Paper} style={{width:'48vw', height:'50vh', marginTop:'45vh', marginLeft: '25vw', position: 'fixed' }}>
+                  {/* <Table sx={{ minWidth: '20vw' }} aria-label="custom pagination table"> */}
+                  <Table style={{width:'45vw', top:'50vh'}}  aria-label="custom pagination table">
+                      <TableHead>
+                          <TableRow>
+                              <TableCell align="center" style={{fontWeight:'bold'}}>
+                                  Nickname
+                              </TableCell>
+                              <TableCell align="center" style={{fontWeight:'bold'}}>
+                                  E-mail
+                              </TableCell>
+                              <TableCell align="center" style={{fontWeight:'bold'}}>
+                                  1:1 문의 여부
+                              </TableCell>
+                          </TableRow>
+                      </TableHead>
+                      <TableBody style={{height:'3vh' }}>
+                          {(rowsPerPage > 0
+                              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                              : rows
+                          ).map((row) => (
+                              <TableRow key={row.name}>
+                                  <TableCell component="th" style={{ width: '15vw'}} align="center">
+                                  {/* <TableCell component="th" align="center"> */}
+                                      {row.name}
+                                  </TableCell>
+                                  <TableCell style={{ width: '15vw' }} align="center">
+                                  {/* <TableCell align="center"> */}
+                                      {row.calories}
+                                  </TableCell>
+                                  <TableCell style={{ width: '15vw' }} align="center">
+                                  {/* <TableCell align="center"> */}
+                                      {row.fat}
+                                  </TableCell>
+                              </TableRow>
+                          ))}
 
-                        {emptyRows > 0 && (
-                            <TableRow style={{ height: '30vh' * emptyRows }}>
-                                <TableCell colSpan={6} />
-                            </TableRow>
-                        )}
-                    </TableBody>
-                    <TableFooter>
-                        <TableRow>
-                            <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                            colSpan={3}
-                            count={rows.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            SelectProps={{
-                                inputProps: {
-                                'aria-label': 'rows per page',
-                                },
-                                native: true,
-                            }}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
-                            />
-                        </TableRow>
-                    </TableFooter>
-                </Table>
-            </TableContainer>
+                          {emptyRows > 0 && (
+                              <TableRow style={{ height: '30vh' * emptyRows }}>
+                                  <TableCell colSpan={6} />
+                              </TableRow>
+                          )}
+                      </TableBody>
+                      <TableFooter>
+                          <TableRow>
+                              <TablePagination
+                              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                              colSpan={3}
+                              count={rows.length}
+                              rowsPerPage={rowsPerPage}
+                              page={page}
+                              SelectProps={{
+                                  inputProps: {
+                                  'aria-label': 'rows per page',
+                                  },
+                                  native: true,
+                              }}
+                              onPageChange={handleChangePage}
+                              onRowsPerPageChange={handleChangeRowsPerPage}
+                              ActionsComponent={TablePaginationActions}
+                              />
+                          </TableRow>
+                      </TableFooter>
+                  </Table>
+              </TableContainer>
             </div>
-            {/* <div>
-                <Table className={Styles.table}>
-                    <thead className={Styles.thead}>
-                        <tr>
-                            <th>#</th>
-                            <th>Nickname</th>
-                            <th>E-mail</th>
-                            <th>휴대폰 인증여부</th>
-                        </tr>
-                    </thead>
-                    <tbody className={Styles.tbody}>
-                        <tr>
-                            <td>{""}1</td>
-                            <td>신짱아 짱</td>
-                            <td>ssafy@ssafy</td>
-                            <td>인증</td>
-                         </tr>
-                    </tbody>
-                </Table>
-            </div> */}
         </>
     )
 }

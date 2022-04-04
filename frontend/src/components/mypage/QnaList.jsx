@@ -130,7 +130,6 @@ function QnaList() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -151,16 +150,13 @@ function QnaList() {
 
     return (
         <>
-            {/* <Link to='/qna'>작성</Link> */}
-            {/* <button onClick={getWrite} hidden={write === true}>작성</button> */}
             
-            <Root sx={{ width: '50vw', maxWidth: '100%', paddingLeft:'5vw', fontFamily:"GangwonEdu_OTFBoldA" }}>
+            {/* <Root sx={{ width: '50vw', maxWidth: '100%', paddingLeft:'5vw', fontFamily:"GangwonEdu_OTFBoldA" }}>
                 <table aria-label="custom pagination table">
                     <thead>
                     <tr>
                         <th>TITLE</th>
                         <th>DATE</th>
-                        {/* <th>Fat</th> */}
                     </tr>
                     </thead>
                     <tbody>
@@ -175,9 +171,7 @@ function QnaList() {
                             <td style={{ width: 120 }} align="right">
                                 {row.calories}
                             </td>
-                            {/* <td style={{ width: 120 }} align="right">
-                                {row.fat}
-                            </td> */}
+                            
                         </tr>
                     ))}
 
@@ -210,7 +204,7 @@ function QnaList() {
                     </tr>
                     </tfoot>
                 </table>
-                </Root>
+                </Root> */}
         </>
     );
 }

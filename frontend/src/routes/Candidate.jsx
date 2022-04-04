@@ -8,6 +8,11 @@ import mark from "../assets/mark_slim.png"
 import crown from "../assets/crown.png"
 import tx from "../assets/tx.png"
 import axios from "axios";
+import Modal from '@mui/material/Modal';
+import Swal from "sweetalert2";
+import x from "../assets/x.png";
+import stamp from "../assets/stamp.png";
+import Lock from "../assets/Lock.png"
 
 
 function Candidate() {
@@ -24,8 +29,19 @@ function Candidate() {
     const [voteCount, setVoteCount] = useState(0)
     const [commentdata, setCommentdata] = useState([])
     const [renderCount, setRenderCount] = useState(0)
-    
+    const [modalOpen, setmodalOpen] = useState(false);
+    const [picked, setPicked] = useState(false);
+    const [modalOpen2, setmodalOpen2] = useState(false);
+    const [imageLock, setimageLock] = useState(true);
+    const [modalOpen3, setmodalOpen3] = useState(false);
 
+    const pollOpen = sessionStorage.getItem("open")
+    const polltitle = sessionStorage.getItem("poll")
+    const token = sessionStorage.getItem("token")
+    
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, [])
 
     useEffect(()=>{
         axios.get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
@@ -39,12 +55,38 @@ function Candidate() {
             setProfile(res.data.profile)
             setVoteCount(res.data.voteTotalCount)
             setCommentdata(res.data.comments)
-
         })
         .catch(error => {
             console.log(error.response)
         });  
     }, [renderCount]);
+
+
+    useEffect(()=> {
+        axios
+        .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token,
+                "Accept" : "*/*",
+            },
+        }
+        )
+        .then((res) =>{
+            console.log(res)
+            console.log(res.data)
+            const imagebuy = res.data[0]
+            if (imagebuy) {
+                setimageLock(false);
+            } else{
+                setimageLock(true);
+            }
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+        }, [])
 
     function changePhoto1(){
         setProfile_image(photo1)
@@ -70,8 +112,83 @@ function Candidate() {
         setRenderCount((renderCount)=>(renderCount+1))
     }
 
-    
+    function handleOpen(){
+        setmodalOpen(true);
+    }
 
+    function handleClose(){
+        setmodalOpen(false);
+        setPicked(false);
+    }
+    
+    function handlePicked(){
+        if (picked){
+            setPicked(false);
+        } else{
+            setPicked(true);
+        }
+    }
+
+    function handlepoll(){
+        if (picked){
+
+            // 블록체인 투표 하는 부분
+            Swal.fire({
+                title: '투표가 완료되었습니다.',
+                icon: 'success'                        
+            })
+            handleClose();
+        } else {
+            Swal.fire({
+                title: '투표 도장을 찍어주세요.',
+                icon: 'error'                        
+            })
+        }
+    }
+
+    function handleOpen2(){
+        setmodalOpen2(true);
+    }
+
+    function handleClose2(){
+        setmodalOpen2(false);
+    }
+
+    function handleLock(){
+
+        axios.post(
+            "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
+            {
+                "candidateId": params.id
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                },
+            }
+        )
+        .then((res) =>{
+            console.log("사진 공개 성공")
+            Swal.fire({
+                title: '사진이 공개 되었습니다.',
+                icon: 'success'                        
+            })
+            setimageLock(false);
+            handleClose3()
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+    }
+
+    function handleOpen3(){
+        setmodalOpen3(true);
+    }
+    function handleClose3(){
+        setmodalOpen3(false);
+    }
 
 
     return (
@@ -87,20 +204,73 @@ function Candidate() {
                 </p>
                 <img id={styles.profile_image} src={profile_image} alt="profile_image" />
                 <p id={styles.nowrank}> 현재 순위: 1위 </p>
-                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>현재 투표수: {voteCount}표 </p>
-                <Button id={styles.poll_button} variant="contained">투표하기</Button>
-                <Button id={styles.con_button} variant="contained">투표내역</Button>
+                {pollOpen === "true" && 
+                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수: {voteCount}표 </p> }
+                {pollOpen === "false" && 
+                <p id={styles.nowpoll}> <img id={styles.mark} src={mark} alt={mark}/>               
+                현재 투표수:???표 </p> }                        
+
+                <Button id={styles.poll_button} onClick={handleOpen} variant="contained">투표하기</Button>
+                <Modal open={modalOpen} onClose={handleClose}>
+                    <div id={styles.poll_paper}>
+                        <div id={styles.poll_paper2}>
+                            <img onClick={handleClose} id={styles.x_button} src={x} alt="x" />
+                             <p id={styles.poll_title}>{polltitle}</p>
+                             <p id={styles.paper_image}>
+                                <img id={styles.paper_image} src={profile_image} alt='profile'></img>
+                                {candi_name}
+                             </p>
+                             <p id={styles.stamp_box} onClick={handlePicked}>
+                                {picked? <img id={styles.stamp} src={mark} alt="mark2"/> : null}
+                             </p>
+                             <p id={styles.paper_button}>
+                                <Button onClick={handlepoll} id={styles.paper_button2} variant="contained"> 투표하기</Button>
+                             </p>
+                             <p id={styles.stamp_box2}>
+                                <img id={styles.stamp2} src={stamp} alt='stamp' />
+                             </p>
+                             <p id={styles.paper_text}>해당 투표는 하루에 한 번만 가능합니다. </p>
+                             <p id={styles.paper_text2}>투표관리관 </p>
+                             </div>
+                    </div>
+                </Modal>
+
+                <Button id={styles.con_button} onClick={handleOpen2} variant="contained">투표내역</Button>
+                <Modal open={modalOpen2} onClose={handleClose2}>
+                    <div  id={styles.tran_box}>
+                            거래내역
+                    </div> 
+                </Modal>
+
+
+
                 <Button id={styles.back_button} onClick={gotoList} variant="contained">참가자 목록</Button>
                 <div id={styles.photobox}>
-                    <img id={styles.photo1} 
+                    {photo1? <img id={styles.photo1} 
                     onClick={changePhoto1}
-                    src={photo1} alt="photo1" />
-                    <img id={styles.photo2} 
+                    src={photo1} alt="photo1" />: null }
+                    {photo2? <img id={styles.photo2} 
                     onClick={changePhoto2}
-                    src={photo2} alt="photo2" />
-                    <img id={styles.photo3} 
+                    src={photo2} alt="photo2" />: null }
+
+                    {photo3 && imageLock? <img id={styles.photo3} 
+                    onClick={handleOpen3}
+                    src={Lock} alt="Lock" />: null }
+
+                    <Modal open={modalOpen3} onClose={handleClose3}>
+                    <div  id={styles.behind_box}>
+                        <img id={styles.behind_mark} src={mark} alt="mark" />
+                        <p id={styles.behind_marktext}>POLLING</p>
+                        <p id={styles.behind_text} > POL 토큰 500개를 사용하여 <br/>미공개 사진을 여시겠습니까?</p>
+                        <Button id={styles.behind_btn} onClick={handleLock} variant="contained"> 예 </Button>
+                        <Button id={styles.behind_btn2} onClick={handleClose3} variant="contained"> 아니오 </Button>
+                    </div> 
+                    </Modal>
+
+                    {photo3 && imageLock===false? <img id={styles.photo3}
                     onClick={changePhoto3}
-                    src={photo3} alt="photo3" />
+                    src={photo3} alt="photo3"/>: null}
                 </div>
 
                 <Comment candiId={params.id} data={commentdata} renderCheck={renderCheck}></Comment>

@@ -14,6 +14,11 @@ export default function PollList() {
   const navigate = useNavigate();
 
   const [itemData, setItemData] = useState([]);
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+}, [])
+
   useEffect(() => {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
@@ -54,7 +59,8 @@ export default function PollList() {
                   className={styles.opened_item}
                 >
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    // src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
