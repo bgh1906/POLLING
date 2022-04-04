@@ -6,6 +6,7 @@ import com.polling.security.jwt.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,15 +15,21 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @RequiredArgsConstructor
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig{
 
   public static String[] SWAGGER_URL_PATHS = new String[]{"/swagger-ui.html**",
       "/swagger-resources/**",
@@ -31,73 +38,52 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final CorsFilter corsFilter;
   private final JwtAuthenticationEntryPoint authenticationErrorHandler;
   private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-  private final MemberDetailsService detailsService;
-  private final PasswordEncoder passwordEncoder;
 
   @Bean
-  @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
+  @Order(0)
+  SecurityFilterChain resources(HttpSecurity http) throws Exception {
+    http
+        .requestMatchers((matchers) ->
+            matchers
+                .antMatchers(HttpMethod.OPTIONS, "/**")
+                .antMatchers("/")
+                .antMatchers("/*.html")
+                .antMatchers("/favicon.ico")
+                .antMatchers("/**/*.html")
+                .antMatchers("/**/*.css")
+                .antMatchers("/**/*.js")
+                .antMatchers("/h2-console/**"))
+        .authorizeHttpRequests((authorize) -> authorize.anyRequest().permitAll())
+        .requestCache().disable()
+        .securityContext().disable()
+        .sessionManagement().disable();
+    return http.build();
   }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth
-        .userDetailsService(detailsService)
-        .passwordEncoder(passwordEncoder);
-  }
-
-  @Override
-  public void configure(WebSecurity web) {
-    web.ignoring()
-        .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-        .antMatchers(HttpMethod.OPTIONS, "/**")
-        .antMatchers(
-            "/",
-            "/*.html",
-            "/favicon.ico",
-            "/**/*.html",
-            "/**/*.css",
-            "/**/*.js",
-            "/h2-console/**"
-        );
-    web.ignoring().mvcMatchers(HttpMethod.OPTIONS, "/**");
-    web.ignoring().mvcMatchers(SWAGGER_URL_PATHS);
-
-  }
-
-  @Override
-  protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity
-        // we don't need CSRF because our token is invulnerable
+  @Bean
+  @Order(1)
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
         .csrf().disable()
         .httpBasic().disable()
-
         .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
             UsernamePasswordAuthenticationFilter.class)
-
         .exceptionHandling()
         .authenticationEntryPoint(authenticationErrorHandler)
         .accessDeniedHandler(jwtAccessDeniedHandler) // https 접근 제어
-
         // create no session
         .and()
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
-        .and()
-        .authorizeRequests()
-        .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-        .antMatchers(HttpMethod.POST, "/api/members/**").permitAll()
-        .antMatchers("/api/auth/**").permitAll()
-        .antMatchers("/api/notify/**").permitAll()
-        .antMatchers("/grpc/**").permitAll()
-
-        .antMatchers(SWAGGER_URL_PATHS).permitAll()
-        .anyRequest().authenticated()
-
-        .and().cors();
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeRequests((auth) -> auth
+            .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/members/**").permitAll()
+            .antMatchers("/api/auth/**").permitAll()
+            .antMatchers("/api/notify/**").permitAll()
+            .antMatchers("/grpc/**").permitAll()
+            .antMatchers(SWAGGER_URL_PATHS).permitAll()
+            .anyRequest().authenticated())
+        .cors();
+    return http.build();
   }
-
 }
