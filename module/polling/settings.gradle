@@ -1,2 +1,2 @@
 rootProject.name = 'polling'
-include 'grpc-common', 'module-api', 'module-core', 'module-common', 'module-blockchain'
+include 'grpc-common', 'module-api', 'module-core', 'module-blockchain'

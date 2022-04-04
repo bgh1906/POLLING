@@ -27,7 +27,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-//        maven { url 'https://jitpack.io' }
     }
 
     allprojects {
@@ -65,7 +64,6 @@ subprojects {
         testImplementation('io.projectreactor:reactor-test')
 
         /* yaml-importer */
-//        implementation 'com.github.kingbbode:spring-boot-custom-yaml-importer:0.1.0'
         implementation 'javax.annotation:javax.annotation-api:1.2'
     }
 
@@ -95,12 +93,6 @@ project(':module-api') {
 project(':module-blockchain') {
     dependencies {
         implementation project(':grpc-common')
-    }
-}
-
-project(':module-common') {
-    dependencies {
-        implementation project(':module-core')
     }
 }
 
