@@ -187,7 +187,7 @@ function UserSearch2() {
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row, index) => (
-              <tr key={row.name}>
+              <tr key={index}>
                 <td style={{ width: '7vw' }} >{row.id}</td>
                 <td style={{ width: '13vw' }} align="right">
                   {row.nickname}
