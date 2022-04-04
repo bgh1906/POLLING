@@ -536,3 +536,81 @@
     border: 5px solid black;
     padding: 3px;
 }
+
+#behind_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 26vh;
+    background-color: white;
+    width: 30vw;
+    height: 40vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#behind_mark{
+    position: absolute;
+    width: 3vw;
+    /* right: -0.2vw; */
+    /* bottom: 0; */
+    margin: 0.3vw;
+}
+
+#behind_text{
+    position: relative;
+    text-align: center;
+    font-family: 'ROKAFSansMedium';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    font-size: 1.9vw;
+    top: 6vh;
+}
+
+#behind_btn{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    left: 6vw;
+}
+
+#behind_btn2{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    right: 6vw;
+}
+
+#behind_btn:hover{
+    background-color: blue;
+    color: white;
+}
+
+#behind_btn2:hover{
+    background-color: red;
+    color: white;
+}
+
+#behind_marktext{
+    position: absolute;
+    font-family: 'Russo One';
+    font-size: 1.9vw;
+    top: -2.5vh;
+    left: 3.5vw;    
+}
+    
+   
+    

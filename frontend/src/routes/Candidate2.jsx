@@ -12,6 +12,7 @@ import Modal from '@mui/material/Modal';
 import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
+import Lock from "../assets/Lock.png"
 
 
 function Candidate2() {
@@ -31,16 +32,20 @@ function Candidate2() {
     const [modalOpen, setmodalOpen] = useState(false);
     const [picked, setPicked] = useState(false);
     const [modalOpen2, setmodalOpen2] = useState(false);
+    const [imageLock, setimageLock] = useState(true);
+    const [modalOpen3, setmodalOpen3] = useState(false);
 
     const pollOpen = sessionStorage.getItem("open")
     const polltitle = sessionStorage.getItem("poll")
+    const token = sessionStorage.getItem("token")
 
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
     
     useEffect(()=>{
-        axios.get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
+        axios
+        .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
         .then((res) => {
             console.log(res)
             setProfile_image(res.data.thumbnail)
@@ -51,12 +56,37 @@ function Candidate2() {
             setProfile(res.data.profile)
             setVoteCount(res.data.voteTotalCount)
             setCommentdata(res.data.comments)
-
         })
         .catch(error => {
             console.log(error.response)
         });  
     }, [renderCount]);
+
+    useEffect(()=> {
+        axios
+        .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token,
+                "Accept" : "*/*",
+            },
+        }
+        )
+        .then((res) =>{
+            console.log(res)
+            console.log(res.data)
+            const imagebuy = res.data[0]
+            if (imagebuy) {
+                setimageLock(false);
+            } else{
+                setimageLock(true);
+            }
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+        }, []);
 
     function changePhoto1(){
         setProfile_image(photo1)
@@ -123,7 +153,41 @@ function Candidate2() {
         setmodalOpen2(false);
     }
 
+    function handleLock(){
 
+        axios.post(
+            "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
+            {
+                "candidateId": params.id
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                },
+            }
+        )
+        .then((res) =>{
+            console.log("사진 공개 성공")
+            Swal.fire({
+                title: '사진이 공개 되었습니다.',
+                icon: 'success'                        
+            })
+            setimageLock(false);
+            handleClose3()
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+    }
+
+    function handleOpen3(){
+        setmodalOpen3(true);
+    }
+    function handleClose3(){
+        setmodalOpen3(false);
+    }
 
     return (
 
@@ -189,9 +253,23 @@ function Candidate2() {
                     {photo2? <img id={styles.photo2} 
                     onClick={changePhoto2}
                     src={photo2} alt="photo2" />: null }
-                    {photo3? <img id={styles.photo3} 
+                    {photo3 && imageLock? <img id={styles.photo3} 
+                    onClick={handleOpen3}
+                    src={Lock} alt="Lock" />: null }
+
+                    <Modal open={modalOpen3} onClose={handleClose3}>
+                    <div  id={styles.behind_box}>
+                        <img id={styles.behind_mark} src={mark} alt="mark" />
+                        <p id={styles.behind_marktext}>POLLING</p>
+                        <p id={styles.behind_text} > POL 토큰 500개를 사용하여 <br/>미공개 사진을 여시겠습니까?</p>
+                        <Button id={styles.behind_btn} onClick={handleLock} variant="contained"> 예 </Button>
+                        <Button id={styles.behind_btn2} onClick={handleClose3} variant="contained"> 아니오 </Button>
+                    </div> 
+                    </Modal>
+
+                    {photo3 && imageLock===false? <img id={styles.photo3}
                     onClick={changePhoto3}
-                    src={photo3} alt="photo3" />: null }
+                    src={photo3} alt="photo3"/>: null}
                 </div>
 
                 <Comment candiId={params.id} data={commentdata} renderCheck={renderCheck}></Comment>
