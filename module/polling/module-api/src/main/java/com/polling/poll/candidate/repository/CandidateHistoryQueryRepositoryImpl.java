@@ -4,6 +4,7 @@ package com.polling.poll.candidate.repository;
 import static com.polling.member.entity.QMember.member;
 import static com.polling.poll.candidate.entity.QCandidate.candidate;
 import static com.polling.poll.candidate.entity.QCandidateHistory.candidateHistory;
+import static com.polling.poll.poll.entity.QPoll.poll;
 
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.querydsl.core.types.Projections;
@@ -36,6 +37,39 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
         .offset(offset)
         .limit(limit)
         .fetch();
+  }
+
+  @Override
+  public List<FindCandidateHistoryResponseDto> findByCandidateByMemberId(Long memberId, int offset, int limit) {
+    return query
+            .select((Projections.constructor(FindCandidateHistoryResponseDto.class,
+                    member.nickname,
+                    candidateHistory.voteCount,
+                    candidateHistory.transactionId)))
+            .from(candidateHistory)
+            .innerJoin(candidateHistory.member, member)
+            .where(candidateHistory.member.id.eq(memberId))
+            .orderBy(candidateHistory.createdDate.desc())
+            .offset(offset)
+            .limit(limit)
+            .fetch();
+  }
+
+  @Override
+  public List<FindCandidateHistoryResponseDto> findByCandidateByPollId(Long pollId, int offset, int limit) {
+    return query
+            .select((Projections.constructor(FindCandidateHistoryResponseDto.class,
+                    member.nickname,
+                    candidateHistory.voteCount,
+                    candidateHistory.transactionId)))
+            .from(candidateHistory)
+            .innerJoin(candidateHistory.member, member)
+            .innerJoin(candidateHistory.candidate, candidate)
+            .where(candidate.poll.id.eq(pollId))
+            .orderBy(candidateHistory.createdDate.desc())
+            .offset(offset)
+            .limit(limit)
+            .fetch();
   }
 
   @Override

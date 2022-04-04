@@ -55,4 +55,25 @@ public class CandidateController {
         .findByCandidateId(candidateId, page, limit);
     return ResponseEntity.status(200).body(responseDto);
   }
+
+  @Retry
+  @GetMapping("/members/{page}/{limit}")
+  @ApiOperation(value = "해당 유저의 후보자 투표 내역 조회")
+  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(@CurrentUser MemberDto memberDto,
+                                                                                @PathVariable int page, @PathVariable int limit){
+    List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
+            .findByCandidateByMemberId(memberDto.getId(), page, limit);
+    return ResponseEntity.status(200).body(responseDto);
+  }
+
+  @Retry
+  @GetMapping("/polls/{pollsId}/{page}/{limit}")
+  @ApiOperation(value = "해당 투표의 후보자 투표 내역 조회")
+  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(@CurrentUser MemberDto memberDto,
+                                                                                @PathVariable(value = "pollsId") Long pollsId, @PathVariable int page,
+                                                                                @PathVariable int limit){
+    List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
+            .findByCandidateByPollId(pollsId, page, limit);
+    return ResponseEntity.status(200).body(responseDto);
+  }
 }
