@@ -1,16 +1,12 @@
-package com.polling.member.service;
+package com.polling.grpc.notification;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-public class NotificationServiceTest {
+class NotificationServiceTest {
 
-  @Autowired
-  private NotificationService smsService;
-
-//    @Test
+    //    @Test
 //    public void 휴대폰인증문자보내기_restTemplate() throws Exception{
 //        //given
 //        SendSMSRequestDto requestDto = new SendSMSRequestDto("01065752938", "테스트");
@@ -28,6 +24,5 @@ public class NotificationServiceTest {
 //        smsService.sendSms_webClient(requestDto);
 //        //then
 //    }
-
 
 }

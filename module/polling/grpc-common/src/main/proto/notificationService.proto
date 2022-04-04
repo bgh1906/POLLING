@@ -30,5 +30,7 @@ message NotificationRequest{
 message NotificationResponse{
   ResultStatus status = 1;
   string result = 2;
+  string randomCode = 3;
+
 }
 
