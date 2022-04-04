@@ -8,7 +8,12 @@ export const web3 = new Web3(new Web3.providers.HttpProvider(ENDPOINT));
 
 //컨트랙트 배포주소
 
-const abi = [
+export const abi = [
+  {
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
   {
     inputs: [
       {
@@ -35,25 +40,28 @@ const abi = [
   },
   {
     inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
+    name: "candidateIndexEnd",
+    outputs: [
       {
-        internalType: "uint8",
-        name: "candidateIndex",
-        type: "uint8",
-      },
-      {
-        internalType: "uint8",
-        name: "voteCount",
-        type: "uint8",
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
-    name: "voteForCandidate",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "candidateIndexStart",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -73,6 +81,42 @@ const abi = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "checkCandidateIndex",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "candidateIndex",
+        type: "uint8",
+      },
+      {
+        internalType: "uint8",
+        name: "voteCount",
+        type: "uint8",
+      },
+    ],
+    name: "voteForCandidate",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -96,14 +140,14 @@ const abi = [
   },
 ];
 
-const CONTRACT_ADDRESS = "0x4cFB3F70BF6a80397C2e634e5bDd85BC0bb189EE";
+export const CONTRACT_ADDRESS = "0x9a74f110586971345A396C74228094A04f5A5eA6";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
-const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+export const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
 
 //후보자 인덱스와 후보자명 확인
 // 프론트와 연동할 때는 안쓸 함수, 단순 체크용
-export const getCandInfo = () => {
+export const getCandInfoBlock = () => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   testContract.methods
     .candidateList(1)
@@ -113,21 +157,19 @@ export const getCandInfo = () => {
 // getCandInfo();
 
 //후보자 등록
-export const add = () => {
+export const registerBlock = (num) => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  testContract.methods
-    // 파라미터는 등록할 후보자 수
-    .addCandidates(10)
-    // 네트워크에서 반환해주는 값이 0, 9
-    // 이걸 받아서 백엔드로 보내잖아요
-    // 배지환 이현우 서승원 0, 1, 2 > candidateIndex
-    .send({ from: account })
-    .then(console.log);
+  const regi = testContract.methods
+    .addCandidates(num)
+    .send({ from: account, gas: 1000000 });
+  // .then(console.log);
+  return regi;
 };
 // add 에서 return값 0,9 받아오는 함수 지환님이  새로 작성해서 넘겨주실 예정
+// send();
 
 //투표 후보자 인덱스에게 몇표 투표 진행
-export const vote = () => {
+export const voteBlock = () => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   testContract.methods
     .voteForCandidate(0, 5)
@@ -140,7 +182,7 @@ export const vote = () => {
 // vote();
 
 //후보자 인덱스 입력시 득표수 반환
-export const votesReceived = () => {
+export const totalVotesBlock = () => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   testContract.methods
     .votesReceived(0)
@@ -150,12 +192,12 @@ export const votesReceived = () => {
 // votesReceived();
 
 //후보자 인덱스 반환
-export const candidateIndexStart = () => {
+export const getStartIndexBlock = () => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  testContract.methods
+  const Index = testContract.methods
     .candidateIndexStart()
-    .call({ from: account })
-    .then(console.log);
+    .call({ from: account });
+  return Index;
 };
 // candidateIndexStart();
 
@@ -185,16 +227,17 @@ export const lockAccount = () => {
   web3.eth.personal.lockAccount(account).then(console.log("Account locked!"));
 };
 
+// 코인 발급 CA : 0xC89Ce4735882C9F0f0FE26686c53074E09B0D550
 //이더 전송해주기
-//투표시 소요되는 이더만큼 전송해줌?
-// baseAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
-// userAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3";
+export const sendEth = () => {
+  const baseAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  const userAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3";
 
-// //트랜잭션 생성 보내는주소, 받는주소, 이더수량
-// tx = { from: baseAddress, to: userAddress, value: 1e16 }
-// //트랜잭션 전송
-// web3.eth.sendTransaction(tx);
-// //투표할때 잠깐열어주기
+  //트랜잭션 생성 보내는주소, 받는주소, 이더수량
+  const tx = { from: baseAddress, to: userAddress, value: 1e16 };
+  //트랜잭션 전송
+  web3.eth.sendTransaction(tx);
+};
 
 // send();
 // call();
