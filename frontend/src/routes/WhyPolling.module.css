@@ -1,0 +1,285 @@
+.WhyPolling{
+    z-index: 5;
+    position: absolute;
+    /* width: 200px; */
+    /* height: 62px; */
+    left: 13vw;
+    top: 18vh;
+    
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: "RussoOne";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    /* line-height: 60px; */
+    text-align: center;
+    
+    color: #000000;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.longtext{
+    position: absolute;
+    width: 80vw;
+    height: 10vh;
+    left: 15vw;
+    top: 27vh;
+    
+    font-family: 'bitter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1vw;
+    line-height: 3vh;
+    
+    color: #000000;
+}
+
+.box{
+    position: absolute;
+    width: 65vw;
+    height: 6vh;
+    left: 17vw;
+    top: 39vh;
+    
+    background: #c4c4c400;
+    border: 0.4vw solid #000000;
+    border-bottom: none;
+    box-sizing: border-box;
+    border-start-end-radius: 1.3vw;
+    border-top-left-radius: 1.3vw;
+}
+
+.boxinbox{
+    position: absolute;
+    width: 34vw;
+    height: 7vh;
+    left: 15vw;
+    top: -4vh;
+    
+    background: #77A3A9;
+    border-radius: 20px;
+
+    font-family: "ROKAFSansMedium";
+    font-size: 2vw;
+    text-align: center;
+    line-height: 3.5vw;
+
+    
+}
+
+.outlinecircle1{
+    z-index: -10;
+    position: absolute;
+    width: 15vw;
+    height: 30vh;
+    left: 18vw;
+    top: 49vh;
+
+    
+    border-radius: 7vw;
+    border: 0.5vw solid #FFFFFF;
+    box-sizing: border-box;
+    /* filter: blur(4px); */
+    box-shadow: 0 0 4vw #FFFFFF;
+}
+
+.inlinecircle1{
+    position: absolute;
+    width: 12vw;
+    height: 24vh;
+    left: 1vw;
+    top: 2vh;
+    
+    background: rgba(255, 255, 255, 0.9);
+    background-image: url(https://img.icons8.com/external-flaticons-lineal-color-flat-icons/150/000000/external-voter-politics-flaticons-lineal-color-flat-icons.png);
+    background-repeat: no-repeat;
+    background-position: 0.9vw center;
+    border: 0.3vw solid #FFFFFF;
+    /* box-sizing: border-box; */
+    /* filter: blur(1vh); */
+    box-shadow: 0 0 4vw #FFFFFF;
+    border-radius: 7vw;
+}
+
+.voterimg{
+    z-index: 10;
+    position: absolute;
+    /* width: 12vw;
+    height: 24vh; */
+    left: 1vw;
+    top: 2vh;
+    /* filter: blur(-10vh); */
+}
+
+.voter{
+    position: absolute;
+    width: 4.5vw;
+    height: 2vh;
+    left: 24vw;
+    top: 80vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    /* line-height: 35px; */
+    
+    color: #000000;
+}
+
+.text{
+    position: absolute;
+    width: 7vw;
+    height: 2vh;
+    left: 36vw;
+    top: 67vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1vw;
+    /* line-height: 35px; */
+    
+    color: #000000;
+}
+
+.arrow{
+    position: absolute;
+    /* width: 7vw; */
+    /* height: 2vh; */
+    left: 35.5vw;
+    top: 59vh;
+}
+
+.outlinecircle2{
+    position: absolute;
+    width: 15vw;
+    height: 30vh;
+    left: 42vw;
+    top: 49vh;
+    
+    border-radius: 7vw;
+    border: 0.5vw solid #FFFFFF;
+
+    box-sizing: border-box;
+    /* filter: blur(4px); */
+    box-shadow: 0 0 4vw #FFFFFF;
+}
+
+.inlinecircle2{
+    position: absolute;
+    width: 12vw;
+    height: 24vh;
+    left: 1vw;
+    top: 2vh;
+    
+    background: rgba(255, 255, 255, 0.9);
+    background-image: url(https://img.icons8.com/external-colorful-filled-outline-dmitry-mirolyubov/130/000000/external-blockchain-bitcoin-and-mining-colorful-filled-outline-dmitry-mirolyubov-10.png);
+    background-repeat: no-repeat;
+    background-position: 1.4vw center;
+    border: 0.3vw solid #FFFFFF;
+    box-sizing: border-box;
+    /* filter: blur(4px); */
+    box-shadow: 0 0 4vw #FFFFFF;
+    border-radius: 7vw;
+}
+
+.block{
+    position: absolute;
+    width: 13vw;
+    height: 2vh;
+    left: 43.3vw;
+    top: 80vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    /* line-height: 35px; */
+    
+    color: #000000;
+    text-align: center;
+}
+
+.arrow2{
+    position: absolute;
+    /* width: 7vw; */
+    /* height: 2vh; */
+    left: 59.3vw;
+    top: 59vh;
+}
+
+.outlinecircle3{
+    position: absolute;
+    width: 15vw;
+    height: 30vh;
+    left: 66vw;
+    top: 49vh;
+    
+    border-radius: 7vw;
+    border: 0.5vw solid #FFFFFF;
+    box-sizing: border-box;
+    /* filter: blur(4px); */
+    box-shadow: 0 0 4vw #FFFFFF;
+}
+
+.inlinecircle3{
+    position: absolute;
+    width: 12vw;
+    height: 24vh;
+    left: 1vw;
+    top: 2vh;
+    
+    background: rgba(255, 255, 255, 0.9);
+    border: 0.3vw solid #FFFFFF;
+    background-image: url(https://img.icons8.com/external-ddara-flat-ddara/140/000000/external-verification-fintech-ddara-flat-ddara.png);
+    background-repeat: no-repeat;
+    background-position: 1.4vw center;
+    box-sizing: border-box;
+    /* filter: blur(4px); */
+    box-shadow: 0 0 4vw #FFFFFF;
+    border-radius: 7vw;
+}
+
+.result{
+    position: absolute;
+    width: 7vw;
+    height: 2vh;
+    left: 71.3vw;
+    top: 80vh;
+    
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    /* line-height: 35px; */
+    
+    color: #000000;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

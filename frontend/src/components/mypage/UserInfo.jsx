@@ -12,6 +12,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
 
   const id = sessionStorage.getItem("userid")
   console.log("state",state);
+  console.log("email",state[0].email);
   const token = sessionStorage.getItem("token")
 
   const logoutSuccess = () => {
@@ -104,7 +105,8 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
     console.log(e.target.value);
   }
 
-  const nick = state[0].nickname;
+  // const nick = state[0].nickname;
+  const nick = sessionStorage.getItem("nickname");
   console.log(nick);
 
   useEffect(() => {
@@ -170,12 +172,25 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
       })
   }
 
+  //지갑 발급/수정
+  const [wallet, setWallet] = useState("");
+  const getWallet = (e) => {
+    setWallet(e.target.value);
+    console.log(e.target.value);
+  }
+
+  const getnewWallet = () => {
+
+  }
+
+
   const navigation = useNavigate();
   //로그아웃
   const logout = () => {
     axios
     .get(
         "https://j6a304.p.ssafy.io/api/auth/logout",
+        // "/api/auth/logout",
         // {},
         {
             headers: {
@@ -245,14 +260,17 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
           {/* <h>Item One</h> */}
           <span className={Styles.textNickname}>Nickname : </span>
           {/* <input type={'text'} placeholder="" className={Styles.nickname} onChange={getNickname}></input> */}
-          <label type={'text'} for="nick" className={Styles.nicknamelabel} onChange={getNickname} maxLength="12">{nick}</label>
-          <input type={'text'} value={nickname} id="nick" className={Styles.nickname} onChange={getNickname} onKeyPress={entermodifyN}></input>
+          <label type={'text'} htmlFor="nick" className={Styles.nicknamelabel} onChange={getNickname} maxLength="12">{nick}</label>
+          <input type={'text'} value={nickname} to="nick" id="nick" className={Styles.nickname} onChange={getNickname} onKeyPress={entermodifyN}></input>
           <button className={Styles.nicknamebtn} onClick={getNickchange}>수정</button>
           <div className={Styles.textEmail}>e-mail : </div>
           <div className={Styles.email}>{state[0].email}</div>
           <span className={Styles.textPassword}>Password : </span>
           <input type={'password'} placeholder="password" className={Styles.password} onChange={getPassword} onKeyPress={entermodifyP} maxLength="13"></input>
           <button className={Styles.passwordbtn} onClick={getPasschange}>수정</button>
+          <span className={Styles.textwallet}>Wallet : </span>
+          <div type={'text'} placeholder="Wallet" className={Styles.wallet} onChange={getWallet}></div>
+          {/* <button className={Styles.walletbtn} onClick={getnewWallet}>수정</button> */}
           {/* <br /> */}
           <button className={Styles.logout} onClick={logout}>로그아웃</button>
           <button className={Styles.out} onClick={getDelete}>탈퇴</button>

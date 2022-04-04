@@ -1,7 +1,7 @@
 import NewNav from "../components/layout/NewNav";
 import Styles from "./Notice.module.css";
 //tabs
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -27,7 +27,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <div>{children}</div>
           </Box>
         )}
       </div>
@@ -79,9 +79,9 @@ function Notice() {
                           aria-label="full width tabs example"
                           className={Styles.tab}
                         >
-                        <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="Poll" {...a11yProps(0)} />
-                        <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="Hall" {...a11yProps(1)} />
-                        <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="User" {...a11yProps(2)} />
+                          <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="Poll" {...a11yProps(0)} />
+                          <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="Hall" {...a11yProps(1)} />
+                          <Tab className={Styles.tab} style={{fontFamily:'RussoOne', fontSize:'1.5vw'}} label="User" {...a11yProps(2)} />
                         </Tabs>
                     </AppBar>
                     <SwipeableViews

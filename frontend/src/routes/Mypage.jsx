@@ -86,7 +86,7 @@ function Mypage() {
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab label="정보 수정" {...a11yProps(0)} style={{fontFamily:"GangwonEdu_OTFBoldA", fontSize:'1.4vw'}} className={Styles.tabs}/>
-                        <Tab label="투표 내역" {...a11yProps(1)} style={{fontFamily:"GangwonEdu_OTFBoldA", fontSize:'1.4vw'}}v className={Styles.tabs}/>
+                        <Tab label="투표 내역" {...a11yProps(1)} style={{fontFamily:"GangwonEdu_OTFBoldA", fontSize:'1.4vw'}} className={Styles.tabs}/>
                         <Tab label="1:1 문의" {...a11yProps(2)} style={{fontFamily:"GangwonEdu_OTFBoldA", fontSize:'1.4vw'}} className={Styles.tabs}/>
                     </Tabs>
                 </Box>

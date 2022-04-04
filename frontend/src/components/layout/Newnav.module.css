@@ -186,6 +186,14 @@
     /* margin-right: 1vh; */
 }
 
+.mininick{
+  display: flex;
+  position: fixed;
+  right: 7vw;
+  /* left: 8vw; */
+  top: 5.5vh;
+  font-family: 'ROKAFSansMedium';
+}
 
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
@@ -193,4 +201,18 @@
 @font-face {
   font-family: "RussoOne";
   src: url(../../fonts/RussoOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

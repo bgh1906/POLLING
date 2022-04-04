@@ -214,14 +214,15 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 //     email: res.data.email,
                 //   });
                 // }
-                sessionStorage.setItem("token", res.headers.refreshtoken);
+                sessionStorage.setItem("token", params.accessToken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
                 dispatch(actionCreators.addInfo(
                     {
-                      token: res.headers.refreshtoken,
+                      token: params.accessToken,
                       id: res.data.id,
-                      nickname: res.data.nickname
+                      nickname: res.data.nickname,
+                      wallet: res.data.wallet
                     }
                   ));
                 joinSuccess();

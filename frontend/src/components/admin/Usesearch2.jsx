@@ -120,24 +120,25 @@ function UserSearch2() {
   const axios2 = axios;
 
   const getUsers = () => {
-  //   axios
-  //   .get(
-  //     "https://j6a304.p.ssafy.io/api/members",
-  //     {
-  //       headers: {
-  //         "Authorization":token,
-  //         // refreshToken: token,
-  //       },
-  //     }
-  //   )
-  //   .then((res) => {
-  //     console.log("data",res.data);
-  //     setRows(res.data);
-  //   })
-  //   .catch(error => {
-  //     console.log("res,userlist",error.response);
-  //     console.log("error,userlist",error);
-  //   })
+    axios
+    .get(
+      `https://j6a304.p.ssafy.io/api/admin/members/0/50`,
+      // `https://j6a304.p.ssafy.io/api/admin/members/${page}/${limit}`,
+      {
+        headers: {
+          "Authorization":token,
+          // refreshToken: token,
+        },
+      }
+    )
+    .then((res) => {
+      console.log("data",res.data);
+      setRows(res.data);
+    })
+    .catch(error => {
+      console.log("res,userlist",error.response);
+      console.log("error,userlist",error);
+    })
   }
 
   // refreshToken: token,
@@ -178,20 +179,24 @@ function UserSearch2() {
               <th>Id</th>
               <th>Nickname</th>
               <th>E-mail</th>
+              <th>Wallet</th>
             </tr>
           </thead>
           <tbody>
             {(rowsPerPage > 0
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-            ).map((row) => (
+            ).map((row, index) => (
               <tr key={row.name}>
-                <td style={{ width: '7vw' }}>{row.id}</td>
-                <td style={{ width: '13vw' }} align="right">
+                <td style={{ width: '7vw' }} key={row.id}>{row.id}</td>
+                <td style={{ width: '13vw' }} align="right" key={row.nickname}>
                   {row.nickname}
                 </td>
-                <td style={{ width: '14vw' }} align="right">
+                <td style={{ width: '14vw' }} align="right" key={row.email}>
                   {row.email}
+                </td>
+                <td style={{ width: '13vw' }} align="right" key={row.wallet}>
+                  {row.wallet}
                 </td>
               </tr>
             ))}
@@ -206,7 +211,7 @@ function UserSearch2() {
             <tr>
               <CustomTablePagination
                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                colSpan={3}
+                colSpan={4}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}

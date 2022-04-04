@@ -19,11 +19,13 @@ import Candidate2 from "./routes/Candidate2";
 import UpdatePoll from "./routes/UpdatePoll";
 import Qna from "./components/mypage/Qna";
 import Kakaojoin from "./routes/Kakaojoin";
+import { Switch } from "@mui/material";
 
 function App() {
   return (
     <div>
       <HashRouter>
+      {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join2 />}></Route>
@@ -47,6 +49,7 @@ function App() {
           <Route path="/whypolling" element={<WhyPolling />}></Route>
           <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
         </Routes>
+      {/* </BrowserRouter> */}
       </HashRouter>
     </div>
   );

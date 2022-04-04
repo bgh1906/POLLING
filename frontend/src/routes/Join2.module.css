@@ -32,8 +32,8 @@
     transform-origin: -13vw 50%;
     transition-delay: 0s;
   }
-  /* .container .center, .container:active .center { */
-  .container:hover .center, .container:active .center {
+  .container .center, .container:active .center {
+  /* .container:hover .center, .container:active .center { */
     z-index: 10;
     opacity: 1;
     transition-delay: 0.2s;
@@ -60,6 +60,7 @@
     /* background: #e46569; */
     /* background: #FB71AB; */
     background: #FEA6CB;
+    /* background: #f12b5c; */
   }
   .top:after {
     transform: rotate(135deg);
@@ -248,15 +249,38 @@
     padding-left:2.3vw;
 
     font-family: 'Roboto';
-    /* font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 41px;
-    text-align: center; */
     line-height: 10vh;
     font-size: 0.9vw;
+}
 
-    /* color: #A5B8C2; */
+.walletpassword {
+    position: absolute;
+    width: 17vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 31vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
+
+    font-family: 'Roboto';
+    line-height: 10vh;
+    font-size: 0.9vw;
+}
+
+.walletimg{
+    position: absolute;
+    /* width: 7vw; */
+    /* height: 4vh; */
+    left: 20.5vw;
+    top: 31.5vh;
+    color: #FF5656;
 }
 
 .phonenum {
@@ -264,7 +288,7 @@
     width: 15.5vw;
     height: 4vh;
     left: 2.5vw;
-    top: 31vh;
+    top: 38vh;
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -291,7 +315,7 @@
   width: 4vw;
   height: 4.8vh;
   left: 18.8vw;
-  top: 31.3vh;
+  top: 38.3vh;
   
   background: #FEFFF8;
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -342,7 +366,7 @@
     /* width:18vw; */
     left:7.5vw;
     /* top: 32.7vh; */
-    top: 36.7vh;
+    top: 43.7vh;
 }
 
 .privatecheck {
@@ -355,7 +379,7 @@
     /* left:10.3vw; */
     /* top: 32.9vh; */
     left:6vw;
-    top: 36.9vh;
+    top: 43.9vh;
     
     border: 3px solid #9F824D;
     border-radius: 5px;
@@ -405,7 +429,7 @@
     width: 10vw;
     height: 5vh;
     left: 8.2vw;
-    top: 42vh;
+    top: 49vh;
     
     background: #FEFFF8;
     mix-blend-mode: normal;
@@ -430,8 +454,8 @@
     position: absolute;
     /* width: 343px;
     height: 28px; */
-    left: 6.5vw;
-    top: 48vh;
+    left: 7vw;
+    top: 55vh;
     
     font-family: 'Russo One';
     font-style: normal;
@@ -450,8 +474,8 @@
     /* height: 28px; */
     /* left: 11vw; */
     /* top: 49vh; */
-    left: 15.7vw;
-    top: 47.4vh;
+    left: 16.2vw;
+    top: 54.4vh;
     
     font-family: 'Russo One';
     font-style: normal;

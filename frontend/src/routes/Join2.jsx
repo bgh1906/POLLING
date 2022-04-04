@@ -15,6 +15,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
+
 import Swal from "sweetalert2";
 
 function Join2() {
@@ -183,6 +188,43 @@ function Join2() {
         }
     }
 
+    // 계좌 비밀번호 입력 -> 회원가입 -> 자동 계정 생성, 화면에 그 사람 (join에 인풋 만들기)
+    const [walletpw, setWalletpw] = useState("");
+    const getWalletpw = (e) => {
+        setWalletpw(e.target.value);
+        console.log(walletpw);
+    }
+    //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함. 
+    //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
+    //그때 일시적으로 풀때 필요함. 그떄 동일 값 넣어야 계정이 일시적으로 열리면서 투표 진행, 진행 후 다시 잠김.
+    //주의사항 명시 계좌 비밀번호는 사이트에서 관리하지않습니다 잊어버리는경우 알수없으니 보관시 주의 바랍니다.
+
+    //계좌 비밀번호 툴팁용
+    const [openW, setOpenW] = React.useState(false);
+
+    const handleTooltipClose = () => {
+        setOpenW(false);
+    };
+
+    const handleTooltipOpen = () => {
+        setOpenW(true);
+    };
+
+    const HtmlTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+        // backgroundColor: "#f5f5f9",
+        backgroundColor: "#ffe6f1",
+        // color: "rgba(0, 0, 0, 0.87)",
+        color: "rgba(51, 51, 51, 0.87)",
+        maxWidth: 300,
+        fontSize: theme.typography.pxToRem(14),
+        border: "1px solid #dadde9",
+        fontFamily: 'GangwonEdu_OTFBoldA',
+        }
+    }));
+
     //개인정보처리방침 동의 여부
     const [pcheck, setPcheck] = useState(false);
 
@@ -196,9 +238,9 @@ function Join2() {
 
     //회원가입
     const joinus = (e) => {
-        if(nickname ===" " || email === " " || password === " "){
+        if(nickname ===" " || email === " " || password === " " || walletpw === ""){
             e.preventDefault();
-            alert("닉네임/이메일/비밀번호를 입력하세요.")
+            alert("닉네임/이메일/비밀번호/계좌 비밀번호를 입력하세요.")
         } 
         else if( phonecheck === false){
             e.preventDefault();
@@ -222,6 +264,7 @@ function Join2() {
                     email: email,
                     nickname: nickname,
                     password: password,
+                    wallet: "",
                     phoneNumber: phone,
                     role: "ROLE_USER",
                 },
@@ -240,6 +283,8 @@ function Join2() {
             });
         }
     }
+
+    //
         
         return (
             <div>
@@ -258,6 +303,41 @@ function Join2() {
                             <button className={Styles2.nicknameCheck} onClick={getChecknick} disabled={checknick === true}>중복확인</button>
                             <input type={"email"} placeholder=" E-mail" className={Styles2.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password" maxLength="13"/>
+                            <input 
+                                
+                                type={"password"} 
+                                placeholder=" Wallet Password" 
+                                className={Styles2.walletpassword} 
+                                onChange={getWalletpw} 
+                                name="walletpassword" 
+                                maxLength="13"
+                            />
+                            {/* <ClickAwayListener onClickAway={handleTooltipClose}> */}
+                                {/* <div> */}
+                                    <HtmlTooltip
+                                        // PopperProps={{
+                                        //     disablePortal: true
+                                        // }}
+                                        // onClose={handleTooltipClose}
+                                        // open={openW}
+                                        // disableFocusListener
+                                        // disableHoverListener
+                                        // disableTouchListener
+                                        title={
+                                            <React.Fragment>
+                                            <Typography color="#f12b5c" fontWeight="800" fontFamily="GangwonEdu_OTFBoldA">주의</Typography>
+                                            <b>{"계좌 비밀번호는 사이트에서 관리하지 않습니다."}</b> <br/> 
+                                                {"잊어버리는 경우, 알 수 없으니 보관시 주의 바랍니다."}
+                                            </React.Fragment>
+                                        }
+                                        placement="top"
+                                    >
+                                        <img className={Styles2.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/stickers/30/000000/high-importance.png"/>
+                                        {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/material-outlined/30/000000/box-important--v1.png"/> */}
+                                        {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen}  src="https://img.icons8.com/color/30/000000/high-priority.png"/> */}
+                                    </HtmlTooltip>
+                                {/* </div> */}
+                            {/* </ClickAwayListener>    */}
                             <input type={"text"} placeholder="PhoneNumber" className={Styles2.phonenum} onChange={getPhonenum} name="phone"/>
                             <button className={Styles2.phonebtn} onClick={handleClickOpen} disabled={phonelock === true}>본인인증</button>
                             <Dialog open={open} onClose={handleClose}>
@@ -283,7 +363,6 @@ function Join2() {
                                 <button onClick={getPhone} className={Styles2.phonemodalSubscribe}>Subscribe</button>
                                 </DialogActions>
                             </Dialog>
-                            
                             <input type={"checkbox"} className={Styles2.privatecheck} onClick={getPcheck} />
                             <div className={Styles2.privateset}>
                                 <span>
