@@ -73,6 +73,7 @@ function Qnawrite() {
             axios
             .post(
                 "https://j6a304.p.ssafy.io/api/contact",
+                // "/api/contact",
                 {
                     contactType: type,
                     content: content,
@@ -82,7 +83,7 @@ function Qnawrite() {
                 {
                     headers: {
                       "Authorization":token,
-                    // refreshToken: token,
+                    //    refreshToken: token,
                     },
                 }
             )
@@ -116,7 +117,7 @@ function Qnawrite() {
                 <input type={"email"} value={email} className={Styles.emailC} onChange={getEmail} placeholder="답변 받을 메일을 적어주세요"></input>
                     {/* <FormControl variant="standard" sx={{ minWidth: 250 }} className={Styles.type}> */}
                     <FormControl variant="standard" className={Styles.type}>
-                        <InputLabel id="demo-simple-select-standard-label" className={Styles.typetitle}  >type</InputLabel>
+                        <InputLabel id="demo-simple-select-standard-label" className={Styles.typetitle} >type</InputLabel>
                         <Select
                             labelId="demo-simple-select-standard-label"
                             id="demo-simple-select-standard"
@@ -129,11 +130,11 @@ function Qnawrite() {
                             <em>None</em>
                         </MenuItem> */}
                         {/* ContactType은 한글 String으로 보내주시면 됩니당 */}
-                        <MenuItem value='기업' className={Styles.typetext}>기업</MenuItem>
-                        <MenuItem value='투표' className={Styles.typetext}>투표</MenuItem>
-                        <MenuItem value='회원' className={Styles.typetext}>회원</MenuItem>
-                        <MenuItem value='NFT' className={Styles.typetext}>NFT</MenuItem>
-                        <MenuItem value='기타' className={Styles.typetext}>기타</MenuItem>
+                            <MenuItem value='기업' className={Styles.typetext}>기업</MenuItem>
+                            <MenuItem value='투표' className={Styles.typetext}>투표</MenuItem>
+                            <MenuItem value='회원' className={Styles.typetext}>회원</MenuItem>
+                            <MenuItem value='NFT' className={Styles.typetext}>NFT</MenuItem>
+                            <MenuItem value='기타' className={Styles.typetext}>기타</MenuItem>
                         </Select>
                     </FormControl>
             </div>
