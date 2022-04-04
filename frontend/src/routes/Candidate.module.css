@@ -41,9 +41,11 @@
 
 #profile_image {
     position: relative;
-    width: 32vw;
-    height: 32vw;
-    left: 33vw;
+    /* width: 30vw; */
+    width: 30vw;
+    /* max-height: 35vw; */
+    height: 30vw;
+    left: 35vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
@@ -62,13 +64,14 @@
 
 #profile {
     position: absolute;
-    width: 20vw;
+    width: 22vw;
     /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
-    font-size: 1.5vw;
-    left: 12vw;
-    top: 26vh;
+    font-size: 1.3vw;
+    left: 11vw;
+    top: 28vh;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 #nowrank {
@@ -159,9 +162,8 @@
     cursor: pointer; 
     border-radius: 10px;
     color: black;
-    right: 7vw;
-    top: 64vh;
-    transform: rotate(90deg);
+    right: 1vw;
+    top: 72vh;
 }
 #list_button {
     position:relative;
@@ -175,7 +177,7 @@
     border-radius: 10px;
     color: black;
     top: 1.5vh;
-    left: 65vw;
+    left: 65.5vw;
     padding-top: 1vh;
 }
 
@@ -184,8 +186,8 @@
     border: solid;
     border-radius: 10px;
     border-width: 0.1vw;
-    width: 32vw;
-    left: 33vw;
+    width: 30vw;
+    left: 35vw;
     display: flex;
     justify-content: center;
     margin-bottom: 5vh;
@@ -225,7 +227,7 @@
     position: absolute;
     font-family: 'ROKAFSansBold';
     font-size: 9vw;
-    left: 48vw;
+    left: 46vw;
     top: 5vh;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     z-index: 5;
@@ -233,9 +235,10 @@
 
 #profile_image2 {
     position: relative;
-    width: 32vw;
-    /* height: 32vw; */
-    left: 12vw;
+    width: 30vw;
+    /* max-height: 37vw; */
+    height: 30vw;
+    left: 13vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
@@ -248,10 +251,11 @@
     /* height: 10vh; */
     /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
-    font-size: 1.5vw;
+    font-size: 1.4vw;
     left: 47vw;
-    top: 26vh;
+    top: 27vh;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 #nowrank2 {
@@ -338,9 +342,8 @@
     cursor: pointer; 
     border-radius: 10px;
     color: black;
-    left: 4.5vw;
-    top: 64vh;
-    transform: rotate(270deg);
+    right: 1vw;
+    top: 72vh;
 }
 
 #photobox2{
@@ -348,8 +351,8 @@
     border: solid;
     border-radius: 10px;
     border-width: 0.1vw;
-    width: 32vw;
-    left: 12vw;
+    width: 30vw;
+    left: 13vw;
     display: flex;
     justify-content: center;
     margin-bottom: 5vh;
@@ -388,7 +391,226 @@
 
 #tx2 {
     position: absolute;
-    width: 3.5vw;
-    top: 63vh;
-    right: 8vw;
+    width: 2vw;
+    top: 64.5vh;
+    right: 14vw;
+    z-index: 5;
 }
+
+#poll_paper{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 15vh;
+    background-color: white;
+    width: 24vw;
+    height: 72vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#poll_paper2{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 3px solid black;
+}
+
+
+#poll_title{
+    position: relative;
+    font-family: 'ROKAFSansBold';
+    font-size: 2.2vw;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+#paper_image{
+    margin: 0 auto;
+    width: 12vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 2vw;
+    text-align: center;
+}
+
+#stamp_box{
+    width: 3.5vw;
+    height: 3.5vw;
+    background-color: rgb(236, 236, 233);
+    border: 3px solid black;
+    margin: 2vh auto;
+    cursor: pointer;
+}
+
+#stamp{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_button{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#paper_button2{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+    background-color: black;
+}
+
+#paper_button2:hover{
+    background-color: red;
+}
+
+.swal2-container {
+    z-index: 1500 !important;
+}
+
+#x_button{
+    position: absolute;
+    width: 1vw;
+    right: 0;
+    margin: 0.6vw;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.css-79ws1d-MuiModal-root{
+    z-index: 500 !important;
+}
+
+#stamp_box2{
+    position:absolute;
+    width: 5vw;
+    height: 5vw;
+    right: 0.4vw;
+    bottom: -1.1vh;
+    border: 3px solid black;
+    margin: 2vh auto;
+    cursor: pointer;
+}
+
+#stamp2{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_text{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1vw;
+    bottom: -1vh;
+    left: 1.6vw;
+}
+
+#paper_text2{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+    bottom: 8.3vh;
+    right: 0.5vw;
+    font-weight: 700;
+}
+
+
+
+/* 트랜잭션 모달 */
+
+#tran_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 23vh;
+    background-color: white;
+    width: 40vw;
+    height: 60vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#behind_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 26vh;
+    background-color: white;
+    width: 30vw;
+    height: 40vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#behind_mark{
+    position: absolute;
+    width: 3vw;
+    /* right: -0.2vw; */
+    /* bottom: 0; */
+    margin: 0.3vw;
+}
+
+#behind_text{
+    position: relative;
+    text-align: center;
+    font-family: 'ROKAFSansMedium';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    font-size: 1.9vw;
+    top: 6vh;
+}
+
+#behind_btn{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    left: 6vw;
+}
+
+#behind_btn2{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    right: 6vw;
+}
+
+#behind_btn:hover{
+    background-color: blue;
+    color: white;
+}
+
+#behind_btn2:hover{
+    background-color: red;
+    color: white;
+}
+
+#behind_marktext{
+    position: absolute;
+    font-family: 'Russo One';
+    font-size: 1.9vw;
+    top: -2.5vh;
+    left: 3.5vw;    
+}
+    
+   
+    

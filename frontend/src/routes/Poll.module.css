@@ -22,39 +22,63 @@
 
 
 .poll_container {
-  max-width: 80vw;
+  
+  width: 70vw;
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-top: 25vh;
 }
 
-.pl_left {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pl_right {
-  width: 50%;
+.pl_top {
+  width: 90%;
+  padding: 0.5vh;
+  border: solid 7px;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
 }
 
-.poll_Info {
-  position: sticky;
-  top: 170px;
-  font-family: 'GangwonEdu_OTFBoldA';
-  /* display: flex; */
+.pl_top2 {
+  width: 100%;
+  border: solid 3px;
+  position: relative;
+  background-color: white;
+  /* background-color: #F9F7F1; */
+
 }
 
-.poll_Info {
-  width: 75%;
-  margin: 0 1vw 1vw 0;
+.pl_bottom {
+  width: 90%;
+  height: 100%;
+  position: relative;
+  left: 1.9vw;
+  top: 20vh;
+  margin-bottom: 20vw;
+}
+
+#poll_box {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+
+}
+
+#poll_box2{
+  padding: 1vw;
 }
 
 .pollImg {
-  width: 70%;
+  position: relative;
+  width: 20vw;  
+  margin: 2vw;
 }
+
+
+
+
 
 
 .poll_Info figcaption {
@@ -67,26 +91,71 @@
 }
 
 .left_title {
+  position: relative;
   font-family: 'ROKAFSansBold';
   text-align: center;
-  font-size: 2.5vw;
-  top: -90px;
+  font-size: 3vw;
   font-weight: 700;
-  margin-bottom: 2vh;
+  color: #201e1ef1;
 }
 
 .timer {
-  width: 100%;
-  background-color: #77a3a9;
-  color: white;
-  border-radius: 10px;
+  position: absolute;
+  width: 50%;
+  font-size: 2vw;
+  background-color: transparent;
+  color: black;
   text-align: center;
+  left: 25vw;
+  top:9vh;
+}
+
+
+
+#countdown{
+  position: absolute;
+  width: 10vw;
+
+}
+
+#poll_date{
+  font-size: 2vw;
+  margin: 1vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+#poll_content{
+  font-size: 1.6vw;
+  white-space: pre-wrap;
+  text-align: center;
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+#flip {
+  font-family: 'ROKAFSansBold';
+  position: relative;
+  bottom: 3vh;
   margin-bottom: 1vw;
-  padding: 1vw 2vw;
+  
+}
+
+#flip_text{
+  position: relative;
+  font-size: 2vw;
+  margin-bottom: 1vh;
+  text-align: center;
+}
+
+.flip-countdown {
+  position:absolute; 
+}
+
+#votebox{
+  position: absolute;
+  top: 9vh;
+  right: 20vw;
+  width: 8vw;
+  cursor: pointer;
 }
 
 
-#img_box{
-  display: flex;
-  justify-content: center;
-}

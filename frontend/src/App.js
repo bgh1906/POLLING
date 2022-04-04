@@ -20,6 +20,9 @@ import UpdatePoll from "./routes/UpdatePoll";
 import Qna from "./components/mypage/Qna";
 import Kakaojoin from "./routes/Kakaojoin";
 import { Switch } from "@mui/material";
+import Blocktest from "./routes/Blocktest";
+import NotFound from "./routes/NotFound";
+import Company from "./routes/Company";
 
 function App() {
   return (
@@ -48,6 +51,9 @@ function App() {
           <Route path="/poll/:pollnum/:id/2" element={<Candidate2 />}></Route>
           <Route path="/whypolling" element={<WhyPolling />}></Route>
           <Route path="/poll/update/:pollnum" element={<UpdatePoll />}></Route>
+          <Route path="/blocktest" element={<Blocktest />}></Route>
+          <Route path={"*"} element={<NotFound />} />
+          <Route path="/company" element={<Company />}></Route>
         </Routes>
       {/* </BrowserRouter> */}
       </HashRouter>

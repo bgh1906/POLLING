@@ -4,7 +4,6 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import fox from "../../assets/fox.PNG";
 import pollinglogo from "../../assets/pollinglogo.png";
 import leftarrow from "../../assets/left-arrow.png";
 import rightarrow from "../../assets/right-arrow.png";
@@ -15,7 +14,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { Button } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
 
-export default function VotePaper(cand) {
+export default function VotePaper({cand}) {
   console.log(cand);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

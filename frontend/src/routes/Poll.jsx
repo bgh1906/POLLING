@@ -7,6 +7,8 @@ import VotePaper from "../components/poll/VotePaper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import FlipCountdown from '@rumess/react-flip-countdown';
+import Votebox from "../assets/votebox2.png"
 
 function Poll() {
   const params = useParams();
@@ -15,6 +17,7 @@ function Poll() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [cand, setCand] = useState([]);
+  const [countOpen, setcountOpen] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
@@ -27,6 +30,9 @@ function Poll() {
         setStart(res.data.startDate);
         setEnd(res.data.endDate);
         setCand(res.data.candidates);
+        setcountOpen(res.data.openStatus);
+        sessionStorage.setItem("open", res.data.openStatus);
+        sessionStorage.setItem("poll", res.data.title);
       })
       .catch((error) => {
         console.log(error.response);
@@ -41,51 +47,59 @@ function Poll() {
   const endYMD = end.slice(0, 10).replaceAll("-", ".");
 
   const endDay = new Date(2022, 3, 30, 23, 59, 0, 0);
-  const renderCounter = ({ days, hours, minutes, seconds }) => (
-    <div className={styles.timer}>
-      투표 종료까지 남은 시간
-      <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
-    </div>
-  );
+  // const renderCounter = ({ days, hours, minutes, seconds }) => (
+  //   <div className={styles.timer}>
+  //     투표 종료까지 남은 시간
+  //     <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
+  //   </div>
+  // );
 
   return (
     <>
       <Newnav />
+      {/* <img id={styles.votebox} src={Votebox} alt="votebox"/> */}
+      {/* <Countdown date={endDay} renderer={renderCounter} /> */}
       <div className={styles.poll_container}>
-        <div className={styles.pl_left}>
-          <div className={styles.poll_Info}>
-          <div className={styles.left_title}>{itemDetail.title}</div>
-          <div id={styles.img_box}>
-            <img
-              src={itemDetail.thumbnail}
-              alt="main"
-              className={styles.pollImg}
-            />
-          </div>
-            
-            
-            <Countdown date={endDay} renderer={renderCounter} />
-            {/* <VotePaper cand={cand} /> */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <figcaption>
-                <span style={{ fontSize: "1vw" }}>
-                  {startYMD} ~ {endYMD}
-                </span>
-                <br />
-                <span>{itemDetail.title}</span>
-                <br />
-              </figcaption>
-              <div>{itemDetail.content}</div>
+        <div className={styles.pl_top}>
+          <div className={styles.pl_top2}>
+            <div id={styles.poll_box}>
+                  <img
+                    src={itemDetail.thumbnail}
+                    alt="main"
+                    className={styles.pollImg}
+                    col={4}
+                  />
+              <div id={styles.poll_box2} col={8}>
+                <div className={styles.left_title}>{itemDetail.title}</div>
+                  
+                  
+                  {/* <VotePaper cand={cand} /> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center"
+                    }}
+                  >
+                      <div id={styles.poll_date}>
+                        {startYMD} - {endYMD}
+                      </div>
+                      <div id={styles.poll_content}>{itemDetail.content}</div>
+                  </div>
+              </div>
+
             </div>
+          <div id={styles.flip}>
+            <p id={styles.flip_text}> 투표 종료까지 남은 시간</p>
+            <FlipCountdown  size='medium' endAt={end} />
           </div>
         </div>
-        <div className={styles.pl_right}>
-          <CandList cand={cand} />
+        </div>
+
+
+
+        <div className={styles.pl_bottom}>
+          <CandList cand={cand} countOpen={countOpen} />
         </div>
       </div>
       <Footer />

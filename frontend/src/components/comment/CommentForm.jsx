@@ -2,7 +2,6 @@ import styles from "./Comment.module.css"
 import fight from "../../assets/fight.png";
 import fight2 from "../../assets/fight2.png";
 import { useState, useEffect } from "react";
-import deleteimage from "../../assets/delete.png";
 import deleteimage2 from "../../assets/delete2.png";
 import axios from "axios";
 import { useSelector } from 'react-redux'

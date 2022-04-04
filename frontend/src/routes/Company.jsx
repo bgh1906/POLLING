@@ -9,7 +9,7 @@ import logo from "../assets/mark_slim.png"
 import Button from '@mui/material/Button';
 import axios from "axios";
 
-function Admin() {
+function Company() {
 
     useEffect(()=>{
         window.scrollTo(0,0);
@@ -80,8 +80,8 @@ function Admin() {
          },
         {
             headers: {
-            "Authorization":token,
-         },
+                "Authorization":token,
+            },
         })
         .then(()=>{
             setRendernumber(rendernumber+1);
@@ -147,7 +147,6 @@ function Admin() {
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
                             <div><Button id={styles.status_button1} onClick={moveToUpdate} name={poll.pollId} variant="contained">투표 수정하기</Button></div>
-                            <div><Button id={styles.status_button2} onClick={changeStatuswait} name={poll.pollId} variant="contained">투표 승인하기</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>  
@@ -193,8 +192,6 @@ function Admin() {
                             <img id={styles.list_img} src={poll.thumbnail} alt="main" />
                             <div id={styles.list_pollname}> {poll.title} </div>
                             <div id={styles.list_datefont}> 시작: {poll.startDate} <br/>종료: {poll.endDate} </div>
-                            <div><Button id={styles.status_button1} variant="contained">NFT 발급</Button></div>
-                            <div><Button id={styles.status_button2} variant="contained">HISTORY 추가</Button></div>
                     </Grid>))}
                 </Grid>
                 <div id={styles.status_under}></div>     
@@ -206,4 +203,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default Company;

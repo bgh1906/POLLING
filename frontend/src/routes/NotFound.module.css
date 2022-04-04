@@ -1,0 +1,63 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+.error_icon{
+    position: absolute;
+    top: 23vh;
+    left: 13vw;
+
+}
+.error1{
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 7vw;
+    color: red;
+    top: 24vh;
+    left: 43vw;
+}
+
+.error2{
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 6vw;
+    font-weight: 900;
+    color: black;
+    top: 43vh;
+    left: 43vw;
+}
+
+.error3{
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 3vw;
+    font-weight: 900;
+    color: black;
+    top: 60vh;
+    left: 52vw;
+}

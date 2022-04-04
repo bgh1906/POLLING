@@ -1,13 +1,53 @@
-.right_title {
-  font-family: "Baskervville", serif;
-  font-size: 4vw;
-  position: absolute;
-  top: -90px;
-  font-weight: 700;
+/* 강원교육체 */
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
+
+
+
+.right_title {
+  /* font-family: 'ROKAFSansBold'; */
+  /* font-family: 'Dancing Script', cursive; */
+  /* font-family: 'Yellowtail', cursive; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-family: "Bitter", serif; */
+  position: absolute;
+  font-size: 3vw;
+  top: 1.5vh;
+  left: -2vw;
+  font-weight: 900;
+  color: #201e1ef1;
+}
+
+.right_title2 {
+  position: "absolute";
+  font-size: 1.5vw;  
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+
 .Cand_list {
-  margin-top: -2vw;
+  margin-top: 10vh;
+  margin-right: 3vw;
 }
 
 .poll_Cand {
@@ -15,75 +55,282 @@
   flex-direction: column;
   /* align-items: center; */
   margin: 2vw 0;
+
+  overflow: hidden;
+
 }
 
 .poll_Cand:nth-child(1) {
   align-items: center;
-  margin-top: 3.65vw;
+  margin-top: 8vw;
 }
+
 
 .poll_Cand:nth-child(1) .CandImg {
-  border: 4px solid gold;
+  border: 5px solid #FFD700;
+  filter: brightness(110%);
   padding: 5px;
+  
 }
 
+.poll_Cand:nth-child(1) .CandImg:hover {
+  border: 10px solid #FFD700;
+  filter: brightness(130%);
+  padding: 5px;
+  
+}
+
+
+
 .poll_Cand:nth-child(2) {
-  margin-top: -11vw;
+  margin-top: -19vw;
+  margin-left: 3.5vw;
 }
 
 .poll_Cand:nth-child(2) .CandImg {
-  border: 5px solid silver;
+  border: 5px solid #C0C0C0;
+  filter: brightness(110%);
   padding: 5px;
 }
 
+.poll_Cand:nth-child(2) .CandImg:hover {
+  border: 10px solid #C0C0C0;
+  filter: brightness(130%);
+  padding: 5px;
+}
+
+
+
+
 .poll_Cand:nth-child(2) figcaption {
-  padding-left: 2.45vw;
+  padding-left: 3.8vw;
 }
 
 .poll_Cand:nth-child(3) {
   align-items: flex-end;
-  margin-top: -15vw;
+  margin-top: -21vw;
+  margin-right: 3.5vw;
 }
 
 .poll_Cand:nth-child(3) .CandImg {
-  border: 5px solid brown;
+  border: 5px solid #CD7F32;
+  filter: brightness(110%);
+  padding: 5px;
+}
+
+.poll_Cand:nth-child(3) .CandImg:hover {
+  border: 10px solid #CD7F32;
+  filter: brightness(130%);
   padding: 5px;
 }
 
 .poll_Cand:nth-child(3) figcaption {
-  padding-right: 2vw;
+  padding-right: 3.8vw;
 }
 
 .poll_Cand:nth-child(3n + 4) figcaption {
-  padding-left: 2.45vw;
+  padding-left: 3.8vw;
+  
+}
+
+.poll_Cand:nth-child(4) {
+  margin-top: 30vh;
+  margin-left: 2.5vw;
+}
+
+.poll_Cand:nth-child(3n+ 4) {
+  margin-left: 2.5vw;
 }
 
 .poll_Cand:nth-child(3n + 5) {
   align-items: center;
-  margin-top: -20.28vw;
+  margin-top: -22.8vw;
 }
 
 .poll_Cand:nth-child(3n + 6) {
   align-items: flex-end;
-  margin-top: -20.28vw;
+  margin-top: -22.8vw;
+  margin-right: 2.5vw;
+  margin-bottom: 15vh;
 }
 
 .poll_Cand:nth-child(3n + 6) figcaption {
-  padding-right: 2vw;
+  padding-right: 3.1vw;
 }
 
 .poll_Cand .CandImg {
-  width: 11vw;
-  height: 14vw;
+  width: 15vw;
+  height: 15vw;
   cursor: pointer;
+  transition: all 0.2s ease-in-out; 
+
+  
 }
+
+.CandImg:hover{
+  border: solid red;
+  border-width: 6px;
+}
+
+
+
 
 .poll_Cand figcaption {
   padding-top: 0.5vw;
 }
 
 .captionName {
-  font-size: 1.5vw;
-  font-family: "Bitter", serif;
+  position: relative;
+  font-size: 2vw;
+  font-family: 'GangwonEdu_OTFBoldA';
   font-weight: 700;
+  left: 1.3vw;
+  /* color: #201e1ef1; */
+  color: white;
+}
+
+.captionName2 {
+  position: relative;
+  font-size: 1.3vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-weight: 700;
+  /* color: #201e1ef1 */
+  color: white;
+  margin-top: 0.5vh;
+}
+
+
+
+#cand_background{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(31, 31, 31);
+  border-radius: 10px;
+  top: 9vh;
+  right: 1.5vw;
+  z-index: -5;
+  border-style: groove;
+  border-color: red;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#rank1 {
+  position:absolute;
+  width: 2vw;
+  top: 38.5vh;
+  left: 26.5vw;
+}
+
+#rank2 {
+  position:absolute;
+  width: 2vw;
+  top: 46.4vh;
+  left: 7.3vw;
+}
+
+#rank3 {
+  position:absolute;
+  width: 2vw;
+  top: 49.9vh;
+  right: 14.9vw;
+}
+
+#dark {
+  position:absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 1vw;
+}
+
+
+.CandImg2 {
+  width: 15vw;
+  height: 15vw;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; 
+
+}
+
+.CandImg2:hover {
+  border: solid red;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  z-index:5;
+}
+
+
+
+.poll_Cand2 {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin: 2vw 0;
+}
+
+.poll_Cand2:nth-child(3n + 1) {
+  margin-top: 15vh;
+  margin-left: 2.5vw;
+}
+
+.poll_Cand2:nth-child(3n + 1) figcaption{
+  padding-left: 4vw;
+  padding-top: 2vh;
+}
+
+.poll_Cand2:nth-child(3n + 2) {
+  align-items: center;
+  margin-top: -23.1vw;
+  margin-left: -2.9vw;
+}
+
+.poll_Cand2:nth-child(3n + 2) figcaption{
+  padding-top: 2vh;
+}
+
+.poll_Cand2:nth-child(3n + 3) {
+  align-items: flex-end;
+  margin-top: -23.1vw;
+  margin-right: 5vw;
+}
+
+.poll_Cand2:nth-child(3n + 3) figcaption{
+  padding-top: 2vh;
+  padding-right: 3.9vw;
+}
+
+.Cand_list2 {
+  margin-top: 7vh;
+}
+
+
+#cand_background2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(32, 32, 32);
+  border-radius: 10px;
+  top: 9vh;
+  right: 1.5vw;
+  z-index: -5;
+  border-style: groove;
+  border-color: red;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#podium{
+  position: absolute;
+  width: 56vw;
+  top: 45vh;
+  left: 3vw;
+}
+
+.heart{
+  position:absolute;
+  width: 3vw;
+  left: 29.3vw;
+  top: 0.8vh;
 }
