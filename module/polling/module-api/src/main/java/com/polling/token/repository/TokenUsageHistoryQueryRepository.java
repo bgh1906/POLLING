@@ -1,5 +1,8 @@
 package com.polling.token.repository;
 
-public class TokenUsageHistoryQueryRepository {
+import com.polling.token.dto.response.FindTokenUsageHistoryResponseDto;
+import java.util.List;
 
+public interface TokenUsageHistoryQueryRepository {
+  List<FindTokenUsageHistoryResponseDto> findSecretByMemberIdAndCandidateId(Long memberId, Long candidateId);
 }
