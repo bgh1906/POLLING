@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FindCandidateDetailsResponseDto {
 
+  private Integer candidateIndex;
   private String name;
   private String profile;
   private String thumbnail;
@@ -26,7 +27,9 @@ public class FindCandidateDetailsResponseDto {
 
   public static FindCandidateDetailsResponseDto of(Candidate candidate,
       List<FindCommentResponseDto> comments) {
-    return new FindCandidateDetailsResponseDto(candidate.getName(),
+    return new FindCandidateDetailsResponseDto(
+        candidate.getContractIndex(),
+        candidate.getName(),
         candidate.getProfile(),
         candidate.getThumbnail(),
         candidate.getGalleries().get(0).getImagePath(),

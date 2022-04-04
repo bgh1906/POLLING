@@ -9,6 +9,8 @@ spring:
   profiles:
     active: local
     default: local
+    include:
+      - core-local
   mail:
     host: smtp.gmail.com
     port: 587
