@@ -50,7 +50,8 @@ public class CommentController {
   @Trace
   @PutMapping("/{commentId}")
   @ApiOperation(value = "응원 댓글 수정")
-  public ResponseEntity<Void> updateComment(@CurrentUser MemberDto memberDto, @PathVariable Long commentId,
+  public ResponseEntity<Void> updateComment(@CurrentUser MemberDto memberDto,
+      @PathVariable Long commentId,
       @RequestBody ModifyCommentRequestDto requestDto) {
     commentService.changeContent(memberDto.getId(), commentId, requestDto.getContent());
     return ResponseEntity.status(200).build();
@@ -59,7 +60,8 @@ public class CommentController {
   @Trace
   @DeleteMapping("/{commentId}")
   @ApiOperation(value = "응원 댓글 삭제")
-  public ResponseEntity<Void> deleteComment(@CurrentUser MemberDto memberDto, @PathVariable Long commentId) {
+  public ResponseEntity<Void> deleteComment(@CurrentUser MemberDto memberDto,
+      @PathVariable Long commentId) {
     commentService.deleteComment(memberDto.getId(), commentId);
     return ResponseEntity.status(200).build();
   }

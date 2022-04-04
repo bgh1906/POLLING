@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 public class SaveNativeMemberRequestDto {
 
   @NotNull
-  private String nickname;
-  @NotNull
   private String wallet;
+  @NotNull
+  private String nickname;
   @NotNull
   private String email;
   @NotNull
@@ -32,8 +32,8 @@ public class SaveNativeMemberRequestDto {
 
   public Member toEntity() {
     Member member = Member.builder()
-        .nickname(nickname)
         .wallet(wallet)
+        .nickname(nickname)
         .email(email)
         .password(password)
         .phoneNumber(phoneNumber)

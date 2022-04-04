@@ -37,7 +37,6 @@ public class AuthService {
         requestDto.getAccessToken());    //kakao만 잡혀 있음
     Member member = Member.builder()
         .email(profile.getOAuthEmail())
-        .wallet(requestDto.getWallet())
         .nickname(requestDto.getNickname())
         .oauthType(OAuthType.KAKAO)
         .oauthId(profile.getId())

@@ -9,7 +9,6 @@ import com.polling.poll.candidate.entity.CandidateGallery;
 import com.polling.poll.candidate.repository.CandidateGalleryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
 import com.polling.token.dto.request.SaveTokenUsageHistoryRequestDto;
-import com.polling.token.dto.response.FindTokenUsageHistoryResponseDto;
 import com.polling.token.entity.TokenUsageHistory;
 import com.polling.token.repository.TokenUsageHistoryRepository;
 import lombok.RequiredArgsConstructor;

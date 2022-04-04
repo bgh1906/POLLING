@@ -2,11 +2,10 @@ package com.polling.grpc.notification;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class NotificationServiceTest {
 
-    //    @Test
+  //    @Test
 //    public void 휴대폰인증문자보내기_restTemplate() throws Exception{
 //        //given
 //        SendSMSRequestDto requestDto = new SendSMSRequestDto("01065752938", "테스트");

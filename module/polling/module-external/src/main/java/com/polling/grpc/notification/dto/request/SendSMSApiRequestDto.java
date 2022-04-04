@@ -1,4 +1,4 @@
-package com.polling.grpc.notification;
+package com.polling.grpc.notification.dto.request;
 
 import java.util.List;
 import lombok.AccessLevel;

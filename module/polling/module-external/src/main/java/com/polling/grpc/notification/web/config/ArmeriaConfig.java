@@ -1,4 +1,4 @@
-package com.polling.grpc.config;
+package com.polling.grpc.notification.web.config;
 
 import com.linecorp.armeria.common.grpc.GrpcSerializationFormats;
 import com.linecorp.armeria.server.docs.DocService;
@@ -6,8 +6,8 @@ import com.linecorp.armeria.server.grpc.GrpcService;
 import com.linecorp.armeria.server.logging.AccessLogWriter;
 import com.linecorp.armeria.server.logging.LoggingService;
 import com.linecorp.armeria.spring.ArmeriaServerConfigurator;
-import com.polling.grpc.notification.NotificationService;
-import com.polling.grpc.server.EventService;
+import com.polling.grpc.notification.service.NotificationMailService;
+import com.polling.grpc.notification.service.NotificationSmsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +17,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ArmeriaConfig {
 
-  private final EventService eventService;
-  private final NotificationService notificationService;
+  private final NotificationMailService notificationMailService;
+  private final NotificationSmsService NotificationSmsService;
 
   @Bean
   public ArmeriaServerConfigurator armeriaServerConfigurator() {
@@ -28,8 +28,8 @@ public class ArmeriaConfig {
 
       serverBuilder
           .service(GrpcService.builder()
-              .addService(eventService)
-              .addService(notificationService)
+              .addService(notificationMailService)
+              .addService(NotificationSmsService)
               .supportedSerializationFormats(GrpcSerializationFormats.values())
               .enableUnframedRequests(true)
               .build());

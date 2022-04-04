@@ -40,8 +40,9 @@ public class CommentService {
   public void changeContent(Long memberId, Long commentId, String content) {
     Member member = getMember(memberId);
     Comment comment = getComment(commentId);
-    if(comment.getMember() != member)
+    if (comment.getMember() != member) {
       throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
+    }
     comment.updateContent(content);
   }
 
@@ -49,8 +50,9 @@ public class CommentService {
   public void deleteComment(Long memberId, Long commentId) {
     Member member = getMember(memberId);
     Comment comment = getComment(commentId);
-    if(comment.getMember() != member)
+    if (comment.getMember() != member) {
       throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER);
+    }
     commentRepository.delete(comment);
   }
 

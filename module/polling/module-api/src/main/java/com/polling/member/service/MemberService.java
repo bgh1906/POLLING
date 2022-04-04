@@ -52,14 +52,6 @@ MemberService {
 
   @Trace
   @Transactional
-  public void addRole(Long memberId, String memberRole) {
-    Member member = getMember(memberId);
-    MemberRole role = MemberRole.findByMethod(memberRole);
-    member.addRole(role);
-  }
-
-  @Trace
-  @Transactional
   public void addAdminRole(Long memberId) {
     Member member = getMember(memberId);
     member.addRole(MemberRole.ROLE_ADMIN);
@@ -81,4 +73,5 @@ MemberService {
     return memberRepository.findById(memberId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
   }
+
 }

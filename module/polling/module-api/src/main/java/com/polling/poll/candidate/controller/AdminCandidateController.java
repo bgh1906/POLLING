@@ -29,7 +29,8 @@ public class AdminCandidateController {
   @Trace
   @PutMapping("/{candidateId}")
   @ApiOperation(value = "특정 후보자 정보 수정", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
-  public ResponseEntity<FindCandidateDetailsResponseDto> modifyCandidate(@CurrentUser MemberDto memberDto,
+  public ResponseEntity<FindCandidateDetailsResponseDto> modifyCandidate(
+      @CurrentUser MemberDto memberDto,
       @PathVariable Long candidateId, @RequestBody ModifyCandidateRequestDto requestDto) {
     validateMemberRole(memberDto);
     candidateService.modifyCandidate(candidateId, requestDto);
@@ -39,15 +40,17 @@ public class AdminCandidateController {
   @Trace
   @DeleteMapping("/{candidateId}")
   @ApiOperation(value = "특정 후보자 삭제", notes = "투표 상태가 unapproved or wait인 경우에만 가능")
-  public ResponseEntity<FindCandidateDetailsResponseDto> deleteCandidate(@CurrentUser MemberDto memberDto,
+  public ResponseEntity<FindCandidateDetailsResponseDto> deleteCandidate(
+      @CurrentUser MemberDto memberDto,
       @PathVariable Long candidateId) {
     validateMemberRole(memberDto);
     candidateService.deleteCandidate(candidateId);
     return ResponseEntity.status(200).build();
   }
 
-  private void validateMemberRole(MemberDto memberDto){
-    if(!(memberDto.getMemberRole().contains(MemberRole.ROLE_ADMIN) || memberDto.getMemberRole().contains(MemberRole.ROLE_COMPANY))){
+  private void validateMemberRole(MemberDto memberDto) {
+    if (!(memberDto.getMemberRole().contains(MemberRole.ROLE_ADMIN) || memberDto.getMemberRole()
+        .contains(MemberRole.ROLE_COMPANY))) {
       throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER_ROLE);
     }
   }

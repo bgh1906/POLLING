@@ -65,7 +65,6 @@ public class TokenUsageHistoryQueryRepositoryTest {
     List<FindTokenUsageHistoryResponseDto> responseDtos = historyQueryRepository
         .findSecretByMemberIdAndCandidateId(savedMember.getId(), savedCandidate.getId());
 
-
     //then
     assertThat(responseDtos.size()).isEqualTo(2);
     assertThat(responseDtos.get(0).getImagePath3()).isEqualTo("image1");

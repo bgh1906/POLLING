@@ -1,4 +1,4 @@
-package com.polling.grpc.notification;
+package com.polling.grpc.notification.dto.request;
 
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;

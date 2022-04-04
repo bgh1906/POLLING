@@ -1,11 +1,13 @@
-package com.polling.grpc.notification;
+package com.polling.grpc.notification.service;
 
 import com.google.gson.Gson;
 import com.polling.grpc.ListOfNotificationRequest;
-import com.polling.grpc.NotificationRequest;
-import com.polling.grpc.NotificationResponse;
-import com.polling.grpc.NotificationServiceGrpc;
+import com.polling.grpc.NotificationSmsServiceGrpc;
 import com.polling.grpc.ResultStatus;
+import com.polling.grpc.SMSRequest;
+import com.polling.grpc.SMSResponse;
+import com.polling.grpc.notification.dto.request.SendSMSApiRequestDto;
+import com.polling.grpc.notification.dto.request.SendSMSRequestDto;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import java.io.UnsupportedEncodingException;
@@ -32,11 +34,12 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class NotificationService extends NotificationServiceGrpc.NotificationServiceImplBase {
+public class NotificationSmsService extends
+    NotificationSmsServiceGrpc.NotificationSmsServiceImplBase {
 
   //    private final NotificationClient notificationClient;
   private final Gson gson;
-
+  private final String FROM = "01065752938";
   @Value("${sms.serviceid}")
   private String serviceId;
   @Value("${sms.accesskey}")
@@ -44,7 +47,6 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
   @Value("${sms.secretkey}")
   private String secretKey;
 
-  private final String FROM = "01065752938";
 
   /*WebClient*/
 //    public void sendSms_webClient(SendSMSRequestDto requestDto) {
@@ -52,16 +54,14 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
 //    }
 
   @Override
-  public void sendNotification(ListOfNotificationRequest request,
-      StreamObserver<NotificationResponse> responseObserver) {
+  public void sendSms(ListOfNotificationRequest request,
+      StreamObserver<SMSResponse> responseObserver) {
     try {
-      log.info("sendNotification : {}", request.toString());
-
-      //proto를 arrayList로 매핑하고
-      int size = request.getNotificationRequestCount();
+      //protobuf를 arrayList로 매핑
+      int size = request.getSmsRequestCount();
       List<SendSMSRequestDto> message = new ArrayList<>();
       for (int i = 0; i < size; i++) {
-        NotificationRequest notificationRequest = request.getNotificationRequest(i);
+        SMSRequest notificationRequest = request.getSmsRequest(i);
         SendSMSRequestDto requestDto = new SendSMSRequestDto(notificationRequest.getTo(),
             notificationRequest.getContent());
         message.add(requestDto);
@@ -70,7 +70,7 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
       String randomCode = sendSmsServer(message);
 
       responseObserver.onNext(
-          NotificationResponse.newBuilder()
+          SMSResponse.newBuilder()
               .setStatus(ResultStatus.newBuilder()
                   .setCode(Status.OK.getCode().value())
                   .setMessage("Notification SUCCESS!!!")
@@ -94,7 +94,7 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
     String randomCode = (RandomStringUtils.randomNumeric(6));
 
     SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82",
-            FROM, randomCode, messages);
+        FROM, randomCode, messages);
     String jsonBody = gson.toJson(smsRequest);
 
     HttpHeaders headers = new HttpHeaders();

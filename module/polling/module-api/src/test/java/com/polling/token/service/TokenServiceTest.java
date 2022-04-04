@@ -11,7 +11,6 @@ import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
 import com.polling.poll.candidate.entity.Candidate;
 import com.polling.poll.candidate.entity.CandidateGallery;
-import com.polling.poll.candidate.repository.CandidateGalleryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
 import com.polling.token.dto.request.SaveTokenUsageHistoryRequestDto;
 import com.polling.token.entity.TokenUsageHistory;
