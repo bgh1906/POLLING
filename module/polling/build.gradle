@@ -90,7 +90,7 @@ project(':module-api') {
     }
 }
 
-project(':module-blockchain') {
+project(':module-external') {
     dependencies {
         implementation project(':grpc-common')
     }
