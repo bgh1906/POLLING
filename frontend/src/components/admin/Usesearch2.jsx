@@ -188,14 +188,14 @@ function UserSearch2() {
               : rows
             ).map((row, index) => (
               <tr key={row.name}>
-                <td style={{ width: '7vw' }} key={row.id}>{row.id}</td>
-                <td style={{ width: '13vw' }} align="right" key={row.nickname}>
+                <td style={{ width: '7vw' }} >{row.id}</td>
+                <td style={{ width: '13vw' }} align="right">
                   {row.nickname}
                 </td>
-                <td style={{ width: '14vw' }} align="right" key={row.email}>
+                <td style={{ width: '14vw' }} align="right">
                   {row.email}
                 </td>
-                <td style={{ width: '13vw' }} align="right" key={row.wallet}>
+                <td style={{ width: '13vw' }} align="right">
                   {row.wallet}
                 </td>
               </tr>
