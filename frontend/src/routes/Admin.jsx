@@ -80,8 +80,8 @@ function Admin() {
          },
         {
             headers: {
-                "Authorization":token,
-            },
+            "Authorization":token,
+         },
         })
         .then(()=>{
             setRendernumber(rendernumber+1);
