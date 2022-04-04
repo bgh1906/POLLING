@@ -1,4 +1,4 @@
-package com.polling.common;
+package com.polling.common.web;
 
 import com.polling.auth.service.MemberDetailsService;
 import com.polling.exception.CustomErrorResult;

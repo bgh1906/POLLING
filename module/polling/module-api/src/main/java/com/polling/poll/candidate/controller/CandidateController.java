@@ -8,7 +8,7 @@ import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
 import com.polling.poll.candidate.service.CandidateService;
 import com.polling.poll.poll.dto.request.SaveCandidateHistoryRequestDto;
-import com.polling.security.CurrentUser;
+import com.polling.auth.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

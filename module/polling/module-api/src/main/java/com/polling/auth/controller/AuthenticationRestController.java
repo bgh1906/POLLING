@@ -9,7 +9,7 @@ import com.polling.auth.dto.request.ValidateMemberRequestDto;
 import com.polling.auth.dto.response.LoginResponseDto;
 import com.polling.auth.dto.response.ValidateMemberResponseDto;
 import com.polling.auth.service.AuthService;
-import com.polling.common.JwtTokenProvider;
+import com.polling.common.web.JwtTokenProvider;
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.member.entity.Member;

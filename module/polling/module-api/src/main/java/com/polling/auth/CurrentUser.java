@@ -1,4 +1,4 @@
-package com.polling.security;
+package com.polling.auth;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -9,7 +9,7 @@ import com.polling.contact.dto.SaveContactRequestDto;
 import com.polling.contact.repository.ContactQueryRepository;
 import com.polling.contact.repository.ContactRepository;
 import com.polling.contact.service.ContactService;
-import com.polling.security.CurrentUser;
+import com.polling.auth.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

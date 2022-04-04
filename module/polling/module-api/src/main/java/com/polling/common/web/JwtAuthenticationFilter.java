@@ -1,4 +1,4 @@
-package com.polling.common;
+package com.polling.common.web;
 
 import com.polling.member.entity.status.MemberRole;
 import java.io.IOException;

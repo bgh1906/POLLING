@@ -8,7 +8,7 @@ import com.polling.poll.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.poll.dto.request.SavePollRequestDto;
 import com.polling.poll.poll.dto.response.FindPollWithCandidateResponseDto;
 import com.polling.poll.poll.service.PollService;
-import com.polling.security.CurrentUser;
+import com.polling.auth.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

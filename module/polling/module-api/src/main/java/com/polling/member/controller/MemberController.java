@@ -8,7 +8,7 @@ import com.polling.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.member.dto.response.FindMemberResponseDto;
 import com.polling.member.repository.MemberRepository;
 import com.polling.member.service.MemberService;
-import com.polling.security.CurrentUser;
+import com.polling.auth.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
