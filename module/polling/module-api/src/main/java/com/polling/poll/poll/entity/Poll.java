@@ -31,22 +31,17 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class Poll extends BaseTimeEntity {
 
+  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  private final List<Candidate> candidates = new ArrayList<>();
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "poll_id")
   private Long id;
-
   private String title;
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "member_id")
   private Member pollCreator;
-
   private String content;
-
-  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
-  private final List<Candidate> candidates = new ArrayList<>();
-
   private LocalDateTime startDate;
 
   private LocalDateTime endDate;

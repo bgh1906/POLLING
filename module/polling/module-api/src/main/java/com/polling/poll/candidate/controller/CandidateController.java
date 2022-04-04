@@ -2,13 +2,13 @@ package com.polling.poll.candidate.controller;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
+import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
 import com.polling.poll.candidate.dto.response.FindCandidateDetailsResponseDto;
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
 import com.polling.poll.candidate.service.CandidateService;
 import com.polling.poll.poll.dto.request.SaveCandidateHistoryRequestDto;
-import com.polling.auth.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +40,8 @@ public class CandidateController {
   @Trace
   @GetMapping("/limit/{candidateId}")
   @ApiOperation(value = "오늘 투표 했는지 안 했는지 조회", notes = "투표 안 했으면 200, 투표 했으면 에러 코드 전송")
-  public ResponseEntity<Void> didPollToday(@CurrentUser MemberDto memberDto, @PathVariable Long candidateId) {
+  public ResponseEntity<Void> didPollToday(@CurrentUser MemberDto memberDto,
+      @PathVariable Long candidateId) {
     candidateService.didVoteToday(candidateId, memberDto.getId());
     return ResponseEntity.status(200).build();
   }
@@ -67,21 +68,23 @@ public class CandidateController {
   @Retry
   @GetMapping("/members/{page}/{limit}")
   @ApiOperation(value = "해당 유저의 후보자 투표 내역 조회")
-  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(@CurrentUser MemberDto memberDto,
-                                                                                @PathVariable int page, @PathVariable int limit){
+  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(
+      @CurrentUser MemberDto memberDto,
+      @PathVariable int page, @PathVariable int limit) {
     List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
-            .findByCandidateByMemberId(memberDto.getId(), page, limit);
+        .findByCandidateByMemberId(memberDto.getId(), page, limit);
     return ResponseEntity.status(200).body(responseDto);
   }
 
   @Retry
   @GetMapping("/polls/{pollsId}/{page}/{limit}")
   @ApiOperation(value = "해당 투표의 후보자 투표 내역 조회")
-  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(@CurrentUser MemberDto memberDto,
-                                                                                @PathVariable(value = "pollsId") Long pollsId, @PathVariable int page,
-                                                                                @PathVariable int limit){
+  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(
+      @CurrentUser MemberDto memberDto,
+      @PathVariable(value = "pollsId") Long pollsId, @PathVariable int page,
+      @PathVariable int limit) {
     List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
-            .findByCandidateByPollId(pollsId, page, limit);
+        .findByCandidateByPollId(pollsId, page, limit);
     return ResponseEntity.status(200).body(responseDto);
   }
 }

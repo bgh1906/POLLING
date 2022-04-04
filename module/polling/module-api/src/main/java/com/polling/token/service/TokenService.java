@@ -25,7 +25,8 @@ public class TokenService {
   private final CandidateRepository candidateRepository;
   private final CandidateGalleryRepository candidateGalleryRepository;
 
-  public void saveMemberTokenUsageToCandidate(SaveTokenUsageHistoryRequestDto requestDto, Long memberId) {
+  public void saveMemberTokenUsageToCandidate(SaveTokenUsageHistoryRequestDto requestDto,
+      Long memberId) {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(requestDto.getCandidateId());
     CandidateGallery gallery = candidateGalleryRepository.findById(

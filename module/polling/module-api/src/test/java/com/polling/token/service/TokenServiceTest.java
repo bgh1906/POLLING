@@ -17,7 +17,6 @@ import com.polling.token.dto.request.SaveTokenUsageHistoryRequestDto;
 import com.polling.token.entity.TokenUsageHistory;
 import com.polling.token.repository.TokenUsageHistoryRepository;
 import java.util.Optional;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

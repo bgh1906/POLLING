@@ -10,9 +10,10 @@ public interface CandidateHistoryQueryRepository {
       int limit);
 
   List<FindCandidateHistoryResponseDto> findByCandidateByMemberId(Long memberId, int offset,
-                                                          int limit);
+      int limit);
 
   List<FindCandidateHistoryResponseDto> findByCandidateByPollId(Long pollId, int offset,
-                                                          int limit);
+      int limit);
+
   Boolean existsByMemberIdAndPollIdInToday(Long memberId, Long pollId, LocalDateTime today);
 }

@@ -1,6 +1,6 @@
 package com.polling.token.repository;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
@@ -12,7 +12,6 @@ import com.polling.token.entity.TokenUsageHistory;
 import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @Slf4j
 public class TokenUsageHistoryQueryRepositoryTest {
+
   @Autowired
   private TokenUsageHistoryRepository tokenUsageHistoryRepository;
   @Autowired
@@ -34,7 +34,7 @@ public class TokenUsageHistoryQueryRepositoryTest {
   private EntityManager em;
 
   @Test
-  public void 특정후보자의시크릿이미지를구매한내역조회() throws Exception{
+  public void 특정후보자의시크릿이미지를구매한내역조회() throws Exception {
     //given
     Member savedMember = memberRepository.save(Member.builder().build());
     Candidate candidate = Candidate.builder().build();

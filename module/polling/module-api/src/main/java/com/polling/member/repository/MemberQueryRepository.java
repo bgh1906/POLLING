@@ -6,5 +6,5 @@ import java.util.List;
 public interface MemberQueryRepository {
 
   List<FindMemberResponseDto> findAll(int offset,
-                                                int limit);
+      int limit);
 }

@@ -1,25 +1,14 @@
 package com.polling.member.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.polling.member.dto.response.FindMemberResponseDto;
 import com.polling.member.entity.Member;
-import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
-import com.polling.poll.candidate.entity.Candidate;
-import com.polling.poll.candidate.entity.CandidateGallery;
-import com.polling.poll.candidate.entity.CandidateHistory;
-import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
-import com.polling.poll.candidate.repository.CandidateHistoryRepository;
-import com.polling.poll.candidate.repository.CandidateRepository;
-import com.polling.poll.poll.entity.Poll;
-import com.polling.poll.poll.repository.PollRepository;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest

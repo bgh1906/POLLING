@@ -69,7 +69,7 @@ public class CandidateHistoryQueryRepositoryTest {
 
     //when
     List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateByMemberId(
-            savedMember.getId(), 0, 10);
+        savedMember.getId(), 0, 10);
 
     //then
     assertThat(result.size()).isEqualTo(5);
@@ -92,7 +92,7 @@ public class CandidateHistoryQueryRepositoryTest {
 
     //when
     List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateByPollId(
-            savedpoll.getId(), 0, 10);
+        savedpoll.getId(), 0, 10);
 
     //then
     assertThat(result.size()).isEqualTo(5);
@@ -140,12 +140,12 @@ public class CandidateHistoryQueryRepositoryTest {
 
   public Candidate createCandidateWithPoll(Integer index, Poll poll) {
     Candidate candidate = Candidate.builder()
-            .contractIndex(index)
-            .thumbnail("thumbnail")
-            .profile("profile")
-            .name("name" + index)
-            .poll(poll)
-            .build();
+        .contractIndex(index)
+        .thumbnail("thumbnail")
+        .profile("profile")
+        .name("name" + index)
+        .poll(poll)
+        .build();
     candidate.addGallery(new CandidateGallery("image1"));
     candidate.addGallery(new CandidateGallery("image2"));
     candidate.addGallery(new CandidateGallery("image3"));
