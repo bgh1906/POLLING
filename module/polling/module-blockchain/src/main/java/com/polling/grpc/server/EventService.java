@@ -1,5 +1,12 @@
 package com.polling.grpc.server;
 
+import com.polling.grpc.EventRequest;
+import com.polling.grpc.EventResponse;
+import com.polling.grpc.EventServiceGrpc;
+import com.polling.grpc.GiftType;
+import com.polling.grpc.ResultStatus;
+import com.polling.grpc.WinningRequest;
+import com.polling.grpc.WinningResponse;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,11 @@
 package com.polling.grpc.notification;
 
 import com.google.gson.Gson;
+import com.polling.grpc.ListOfNotificationRequest;
+import com.polling.grpc.NotificationRequest;
+import com.polling.grpc.NotificationResponse;
+import com.polling.grpc.NotificationServiceGrpc;
+import com.polling.grpc.ResultStatus;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import java.io.UnsupportedEncodingException;

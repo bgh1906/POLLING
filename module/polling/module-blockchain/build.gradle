@@ -8,6 +8,8 @@ dependencyManagement {
 }
 
 dependencies {
+
+    implementation project(path: ":module-core", configuration: 'default')
     implementation project(':grpc-common')
     /*grpc*/
     implementation 'com.linecorp.armeria:armeria-grpc'
