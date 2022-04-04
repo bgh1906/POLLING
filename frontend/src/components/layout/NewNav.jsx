@@ -36,7 +36,7 @@ function NewNav({state}) {
                     :
                     <div className={Styles.mininick}>
                         {/* <Avatar sx={{ bgcolor: "Highlight"[400], width: 24, height: 24}}>{""}{firstnick}</Avatar>{nickname} */}
-                        <Avatar sx={{ width: 24, height: 24}} style={{backgroundColor:'#77a3a9'}}>{""}{firstnick}</Avatar>&nbsp;{nickname}
+                        <Avatar sx={{ width: 35, height: 35}} style={{backgroundColor:'#77a3a9'}}>{""}{firstnick}</Avatar>&nbsp;{nickname}
                     </div>
                     
                 }
