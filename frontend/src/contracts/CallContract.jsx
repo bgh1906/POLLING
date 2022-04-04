@@ -169,14 +169,15 @@ export const registerBlock = (num) => {
 // send();
 
 //투표 후보자 인덱스에게 몇표 투표 진행
-export const voteBlock = () => {
+export const voteBlock = (idx) => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  testContract.methods
-    .voteForCandidate(0, 5)
+  const vote = testContract.methods
+    .voteForCandidate(idx, 1)
     // 여기서 2가 candidateIndex
     // 투표하기전에 특정후보자 조회에서 Index 받아오기
-    .send({ from: account })
-    .then(console.log);
+    .send({ from: account });
+  return vote;
+  // .then(console.log);
   // 트랜잭션 id 리턴해줌 = transaction hash
 };
 // vote();

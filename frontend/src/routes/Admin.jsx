@@ -8,11 +8,7 @@ import Moment from "react-moment";
 import logo from "../assets/mark_slim.png";
 import Button from "@mui/material/Button";
 import axios from "axios";
-import {
-  registerBlock,
-  account,
-  getStartIndexBlock,
-} from "../contracts/CallContract";
+import { registerBlock, getStartIndexBlock } from "../contracts/CallContract";
 
 function Admin() {
   useEffect(() => {
