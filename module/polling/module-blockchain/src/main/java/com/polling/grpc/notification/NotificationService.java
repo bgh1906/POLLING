@@ -19,6 +19,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -43,6 +44,8 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
   @Value("${sms.secretkey}")
   private String secretKey;
 
+  private final String FROM = "01065752938";
+
   /*WebClient*/
 //    public void sendSms_webClient(SendSMSRequestDto requestDto) {
 //        notificationClient.sendSMS(requestDto);
@@ -64,7 +67,7 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
         message.add(requestDto);
       }
       //SMS 서버
-      sendSmsServer(message);
+      String randomCode = sendSmsServer(message);
 
       responseObserver.onNext(
           NotificationResponse.newBuilder()
@@ -73,6 +76,7 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
                   .setMessage("Notification SUCCESS!!!")
                   .build())
               .setResult("Success Notification")
+              .setRandomCode(randomCode)
               .build()
       );
       responseObserver.onCompleted();
@@ -83,12 +87,14 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
 
   }
 
-  private void sendSmsServer(List<SendSMSRequestDto> messages)
+  private String sendSmsServer(List<SendSMSRequestDto> messages)
       throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
     Long time = System.currentTimeMillis();
 
+    String randomCode = (RandomStringUtils.randomNumeric(6));
+
     SendSMSApiRequestDto smsRequest = new SendSMSApiRequestDto("SMS", "COMM", "82",
-        "01065752938", "테스트", messages);
+            FROM, randomCode, messages);
     String jsonBody = gson.toJson(smsRequest);
 
     HttpHeaders headers = new HttpHeaders();
@@ -103,6 +109,7 @@ public class NotificationService extends NotificationServiceGrpc.NotificationSer
     restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
     /* 실제 요청 날리는 부분 주석 처리 */
 //        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
+    return randomCode;
   }
 
   private String makeSignature(Long time)
