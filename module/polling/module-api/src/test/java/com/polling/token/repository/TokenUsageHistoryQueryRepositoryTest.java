@@ -40,6 +40,7 @@ public class TokenUsageHistoryQueryRepositoryTest {
     Candidate candidate = Candidate.builder().build();
     candidate.addGallery(new CandidateGallery("image1"));
     candidate.addGallery(new CandidateGallery("image2"));
+    candidate.addGallery(new CandidateGallery("image3"));
     Candidate savedCandidate = candidateRepository.save(candidate);
     em.flush();
     em.clear();
@@ -53,7 +54,7 @@ public class TokenUsageHistoryQueryRepositoryTest {
     tokenUsageHistoryRepository.save(TokenUsageHistory.builder()
         .candidate(savedCandidate)
         .member(savedMember)
-        .gallery(savedCandidate.getGalleries().get(1))
+        .gallery(savedCandidate.getGalleries().get(2))
         .build());
 
     tokenUsageHistoryRepository.save(TokenUsageHistory.builder()
@@ -63,11 +64,11 @@ public class TokenUsageHistoryQueryRepositoryTest {
     //when
     List<FindTokenUsageHistoryResponseDto> responseDtos = historyQueryRepository
         .findSecretByMemberIdAndCandidateId(savedMember.getId(), savedCandidate.getId());
-    log.info("=========================== member_id {}, candidate_id {}",
-        savedMember.getId(), savedCandidate.getId());
+
 
     //then
     assertThat(responseDtos.size()).isEqualTo(2);
     assertThat(responseDtos.get(0).getImagePath()).isEqualTo("image1");
+    assertThat(responseDtos.get(1).getImagePath()).isEqualTo("image3");
   }
 }

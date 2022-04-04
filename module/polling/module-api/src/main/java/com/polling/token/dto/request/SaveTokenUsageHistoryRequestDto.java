@@ -12,7 +12,5 @@ public class SaveTokenUsageHistoryRequestDto {
 
   @NotNull
   private Long candidateId;
-  @NotNull
-  private Long candidateGalleryId;
 
 }

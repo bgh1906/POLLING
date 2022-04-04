@@ -34,8 +34,6 @@ public class TokenServiceTest {
   @Mock
   private MemberRepository memberRepository;
   @Mock
-  private CandidateGalleryRepository candidateGalleryRepository;
-  @Mock
   private CandidateRepository candidateRepository;
 
   @Test
@@ -44,14 +42,16 @@ public class TokenServiceTest {
   }
 
   @Test
-  public void 유저가시크릿이미지에토큰사용() throws Exception {
+  public void 유저가시크릿이미지에토큰사용_심플버전() throws Exception {
     //given
     SaveTokenUsageHistoryRequestDto requestDto =
-        new SaveTokenUsageHistoryRequestDto(1L, 1L);
+        new SaveTokenUsageHistoryRequestDto(1L);
+    Candidate candidate = Candidate.builder().build();
+    candidate.addGallery(new CandidateGallery("image1"));
+    candidate.addGallery(new CandidateGallery("image2"));
+    candidate.addGallery(new CandidateGallery("image3"));
     doReturn(Optional.of(Member.builder().build())).when(memberRepository).findById(anyLong());
-    doReturn(Optional.of(Candidate.builder().build())).when(candidateRepository)
-        .findById(anyLong());
-    doReturn(Optional.of(new CandidateGallery("image"))).when(candidateGalleryRepository)
+    doReturn(Optional.of(candidate)).when(candidateRepository)
         .findById(anyLong());
 
     //when

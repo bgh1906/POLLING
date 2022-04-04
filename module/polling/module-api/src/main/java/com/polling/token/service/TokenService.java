@@ -9,6 +9,7 @@ import com.polling.poll.candidate.entity.CandidateGallery;
 import com.polling.poll.candidate.repository.CandidateGalleryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
 import com.polling.token.dto.request.SaveTokenUsageHistoryRequestDto;
+import com.polling.token.dto.response.FindTokenUsageHistoryResponseDto;
 import com.polling.token.entity.TokenUsageHistory;
 import com.polling.token.repository.TokenUsageHistoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,11 @@ public class TokenService {
       Long memberId) {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(requestDto.getCandidateId());
-    CandidateGallery gallery = candidateGalleryRepository.findById(
-        requestDto.getCandidateGalleryId()).orElseThrow(IllegalStateException::new);
+//    CandidateGallery gallery = candidateGalleryRepository.findById(
+//        requestDto.getCandidateGalleryId()).orElseThrow(IllegalStateException::new);
+
+    // simple API
+    CandidateGallery gallery = candidate.getGalleries().get(2);
 
     TokenUsageHistory tokenUsageHistory = TokenUsageHistory.builder()
         .member(member)

@@ -41,5 +41,4 @@ public class TokenController {
         memberDto.getId(), candidateId);
     return ResponseEntity.status(200).body(responseDtos);
   }
-
 }

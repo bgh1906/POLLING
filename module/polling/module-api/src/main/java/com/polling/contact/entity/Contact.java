@@ -35,15 +35,12 @@ public class Contact extends BaseTimeEntity {
   @JoinColumn(name = "member_id")
   private Member member;
 
-  @Column
   @Enumerated(EnumType.STRING)
   private ContactStatus contactStatus = ContactStatus.UNANSWERED;
 
-  @Column
   @Enumerated(EnumType.STRING)
   private ContactType contactType;
 
-  @Column
   private String title;
 
   @Column(length = 2000)
