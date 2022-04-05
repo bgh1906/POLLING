@@ -1,9 +1,11 @@
 server:
   port: 8090
-
 armeria:
   ports:
     - port: 8099
+      protocols:
+        - http
+        - proxy
 
 spring:
   profiles:
