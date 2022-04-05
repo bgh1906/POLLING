@@ -20,12 +20,14 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class CandidateGallery extends BaseTimeEntity {
 
-  @Column(length = 1000)
-  String imagePath;
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "image_id")
   private Long id;
+
+  @Column(length = 1000)
+  String imagePath;
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;

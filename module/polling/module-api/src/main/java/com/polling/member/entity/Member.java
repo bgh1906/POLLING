@@ -26,19 +26,27 @@ import lombok.NoArgsConstructor;
 @QueryEntity
 public class Member extends BaseTimeEntity {
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @Enumerated(EnumType.STRING)
-  private final Set<MemberRole> memberRole = new HashSet<>();
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "member_id")
   private Long id;
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Enumerated(EnumType.STRING)
+  private final Set<MemberRole> memberRole = new HashSet<>();
+
   private String wallet;
+
   private String nickname;
+
   private String email;
+
   private String password;
+
   private String phoneNumber;
+
   private String oauthId;
+
   @Enumerated(EnumType.STRING)
   private OAuthType oauthType;
 
@@ -65,9 +73,5 @@ public class Member extends BaseTimeEntity {
 
   public void addRole(MemberRole role) {
     this.memberRole.add(role);
-  }
-
-  public void changeWallet(String wallet) {
-    this.wallet = wallet;
   }
 }
