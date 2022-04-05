@@ -202,19 +202,19 @@ function Userqnalist () {
                             {(rowsPerPage > 0
                             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             : rows
-                            ).map((row, key) => (
-                                <tr key={row.name}>
-                                    <td style={{ width: '6vw' }} onclick={getShowcontent}>{row.contactType}</td>
-                                    <td style={{ width: '10vw' }} align="right" onclick={getShowcontent}>
+                            ).map((row, index) => (
+                                <tr key={index}>
+                                    <td style={{ width: '6vw' }} >{row.contactType}</td>
+                                    <td style={{ width: '10vw' }} align="right">
                                     {row.id}
                                     </td>
-                                    <td style={{ width: '13vw' }} align="right" onclick={getShowcontent}>
+                                    <td style={{ width: '13vw' }} align="right">
                                     {row.email}
                                     </td>
-                                    <td style={{ width: '16vw' }} align="right" onclick={getShowcontent}>
+                                    <td style={{ width: '16vw' }} align="right">
                                     {row.title}
                                     </td>
-                                    <td style={{ width: '6vw' }} align="right" onclick={getShowcontent}>
+                                    <td style={{ width: '6vw' }} align="right">
                                         {/* <button className={Styles.button}> </button> */}
                                         <Userqnacontent content={row.content} title={row.title}/>
                                     </td>

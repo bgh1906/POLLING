@@ -43,6 +43,9 @@ function QnaList2() {
 
     useEffect(() => {
       // const getlist = () =>{
+      let iscompomount = true;
+
+      if( iscompomount === true ){
         axios
         .get(
           "https://j6a304.p.ssafy.io/api/contact",
@@ -61,7 +64,10 @@ function QnaList2() {
           console.log("res",error.response);
           console.log("error",error);
         })
-      // }
+      };
+      return() => {
+        iscompomount = false;
+      };
     },[qnalist]);
 
     //1:1문의 삭제
@@ -99,45 +105,47 @@ function QnaList2() {
           {/* <button></button> */}
             {/* <Accordion style={{width:"45vw", left:"8vw"}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}> */}
             {/* {(qnalist).map((qna) => ( */}
-            {qnalist.map((index) => (
-              <div>
+            {qnalist.map((index, key) => (
+              <div key={index.id}>
                 <Accordion 
                   className={Styles.accordion}
                   style={{marginBottom:'0vh', width:'45vw', left:'8vw', fontFamily:'GangwonEdu_OTFBoldA', backgroundColor:'rgba(250, 235, 215, 0.541)'}} 
                   expanded={expanded === `panel${index.id}`} 
                   onChange={handleChange(`panel${index.id}`)}
+                  key={index}
                 >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     // aria-controls="panel${index.id}bh-content"
                     // id="panel${index.id}bh-header"
+                    key={key}
                   >
-                    <Typography 
+                    <div 
                       key={index.contactType}
                       style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.4vw', lineHeight:'4vh'}} 
                       className={Styles.typotype} 
                       sx={{ width: '33%', flexShrink: 0 }}
                     >
-                    [ {index.contactType.slice(8, 14)} ]
-                    </Typography>
-                    <Typography 
+                      [ {index.contactType.slice(8, 14)} ]
+                    </div>
+                    <div 
                       key={index.title}
                       maxLength="20"
-                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw'}}  
+                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw', paddingLeft:'5vw', fontWeight:'5vh'}}  
                       className={Styles.typoTitle} 
                       sx={{ color: 'text.secondary' }}
                     >
                       {index.title}
-                    </Typography>
+                    </div>
                   </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography 
+                  <AccordionDetails key={index}>
+                    <div 
                       key={index.content} 
                       className={Styles.typoTitle} 
                       style={{wordBreak:'break-all', fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw'}} 
                     >
                       {index.content}
-                    </Typography>
+                    </div>
                     <button 
                       key={index.id} 
                       value={index.id} 

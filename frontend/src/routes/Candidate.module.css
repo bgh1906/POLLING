@@ -441,7 +441,7 @@
     height: 3.5vw;
     background-color: rgb(236, 236, 233);
     border: 3px solid black;
-    margin: 2vh auto;
+    margin: 0.8vh auto;
     cursor: pointer;
 }
 
@@ -460,9 +460,9 @@
 
 #paper_button2{
     font-family: 'ROKAFSansMedium';
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin: auto;
-    margin-top: 2vh;
+    margin-top: 5vh;
     text-align: center;
     background-color: black;
 }
@@ -612,5 +612,17 @@
     left: 3.5vw;    
 }
     
-   
+#wallet_box{
+    position: absolute;
+    text-align: center;
+    width: 8.8vw;
+    bottom: 12vh;
+    left: 6.9vw;
+}
+
+#wallet_password{
+    font-family: 'ROKAFSansBold';
+    margin: auto;
+    text-align: center;
+}
     

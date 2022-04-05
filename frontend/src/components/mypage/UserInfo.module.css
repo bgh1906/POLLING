@@ -25,6 +25,16 @@
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
 }
+
+.textwallet {
+    position: absolute;
+    left: 26.7vw;
+    top: 77vh;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.5vw;
+}
+
 .nickname {
     position: absolute;
     width: 26vw;
@@ -150,13 +160,47 @@
     line-height: 5vh;
 }
 
+.wallet{
+    position: absolute;
+    width: 26vw;
+    height: 6vh;
+    left: 32.5vw;
+    top: 75.5vh;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.4vw;
+    text-align: center;
+
+    border: 0.3vh solid #000000;
+    border-radius: 0.5vw;
+    border-radius: 0.5vw;
+    /* background-color: #3afaca1a; */
+    background-color: #3afaca00;
+}
+
+.walletbtn{
+    position: absolute;
+    width: 4vw;
+    height: 5vh;
+    left: 60vw;
+    top: 76vh;
+
+    border-radius: 1vw;
+    background-color: #fb71aa44;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+    line-height: 5vh;
+}
+
 .logout{
     position: absolute;
     /* position: flex; */
     width: 5vw;
     height: 4vh;
     left: 65vw;
-    top: 74.5vh;
+    /* top: 74.5vh; */
+    top: 82.5vh;
 
     /* border-radius: 0.5vw; */
     border-radius: 1vh;
@@ -177,7 +221,8 @@
     width: 4vw;
     height: 4vh;
     left: 71.5vw;
-    top: 74.5vh;
+    /* top: 74.5vh; */
+    top: 82.5vh;
 
     border-radius: 0.5vw;
     /* background-color: #ff006a5b; */

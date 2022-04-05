@@ -51,7 +51,15 @@ function UpdatePoll() {
     
 
     useEffect(()=> {
-        axios.get(`https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`)
+        axios.get(`https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token,
+                "Accept" : "*/*",
+            },
+        }
+        )
             .then((res) => {
                 console.log("성공!");
                 console.log(res);

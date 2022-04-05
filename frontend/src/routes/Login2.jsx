@@ -73,7 +73,7 @@ function Login2() {
                   },
               )
             .then((res) => {
-                // console.log("res", res);
+                console.log("res", res.data);
                 // console.log(res.headers.refreshtoken)
                 //토큰 찍어보기
                 // console.log("토큰",res.headers.refreshToken);
@@ -83,6 +83,7 @@ function Login2() {
                 sessionStorage.setItem("token", res.headers.refreshtoken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
+                sessionStorage.setItem("nickname", res.data.nickname);
 
                 // localStorage.setItem("token", res.headers.refreshtoken);
                 // localStorage.setItem("userid", res.data.id);
@@ -91,10 +92,11 @@ function Login2() {
                     token: res.headers.refreshtoken,
                     email: email,
                     id: res.data.id,
-                    nickname: res.data.nickname
+                    nickname: res.data.nickname,
+                    wallet: res.data.wallet
                   }
                 ));
-                
+                console.log("res", res.data.nickname);
                 loginSuccess();
                 navigate("/");
                 //백에 닉네임, e-mail 같이 넘겨달라고 하기.
@@ -137,11 +139,12 @@ function Login2() {
               })
               .then((res) => {
                 console.log("res",res);
-                console.log("res",res.data.member);
+                // console.log("res",res.data.member);
+                console.log("res",res.data.existMember);
                 console.log("token",res.data.token);
                 // const token 
                 
-                if(res.data.member === false){
+                if(res.data.existMember === false){
                   // localStorage.setItem("token", res.data.token);
                   // if (state.length === 0) {
                     //   DispatchaddInfo({
@@ -156,9 +159,9 @@ function Login2() {
                     {
                       email: email,
                     }
-                  ));
-                  navigate(`/Kakaojoin/${accessToken}`);
-                } else if (res.data.member === true){
+                    ));
+                    navigate(`/Kakaojoin/${accessToken}`);
+                } else if (res.data.existMember === true){
                   // if (state.length === 0) {
                   //   DispatchaddInfo({
                   //     id: res.data.seq,
@@ -167,14 +170,20 @@ function Login2() {
                   //     email: res.data.email,
                   //   });
                   // }
+                  sessionStorage.setItem("token", accessToken);
+                  sessionStorage.setItem("userid", res.data.id);
+                  sessionStorage.setItem("role", res.data.role);
                   dispatch(actionCreators.addInfo(
                     {
-                      token: res.headers.refreshtoken,
+                      token: response.access_token,
                       email: email,
                       id: res.data.id,
-                      nickname: res.data.nickname
+                      nickname: res.data.nickname,
+                      wallet: res.data.wallet
                     }
                   ));
+                  console.log("카톡 로그인 토큰-response.access_token,", response.access_token)
+                  console.log("카톡 로그인 토큰-accessToken", accessToken)
                   loginSuccess();
                   navigate("/");
                 }

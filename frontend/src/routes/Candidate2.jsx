@@ -14,6 +14,7 @@ import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
 import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
+import TextField from "@mui/material/TextField";
 
 function Candidate2() {
   const navigate = useNavigate();
@@ -275,6 +276,14 @@ function Candidate2() {
                 {picked ? (
                   <img id={styles.stamp} src={mark} alt="mark2" />
                 ) : null}
+              </p>
+              <p id={styles.wallet_box}>
+                <TextField
+                  id={styles.wallet_password}
+                  placeholder="Wallet Password"
+                  variant="standard"
+                  type="password"
+                />
               </p>
               <p id={styles.paper_button}>
                 <Button

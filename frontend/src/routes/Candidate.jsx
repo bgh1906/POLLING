@@ -14,6 +14,7 @@ import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
 import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
+import TextField from "@mui/material/TextField";
 
 function Candidate() {
   const navigate = useNavigate();
@@ -255,7 +256,6 @@ function Candidate() {
             현재 투표수:???표{" "}
           </p>
         )}
-
         <Button
           id={styles.poll_button}
           onClick={handleOpen}
@@ -280,6 +280,14 @@ function Candidate() {
                 {picked ? (
                   <img id={styles.stamp} src={mark} alt="mark2" />
                 ) : null}
+              </p>
+              <p id={styles.wallet_box}>
+                <TextField
+                  id={styles.wallet_password}
+                  placeholder="Wallet Password"
+                  variant="standard"
+                  type="password"
+                />
               </p>
               <p id={styles.paper_button}>
                 <Button
