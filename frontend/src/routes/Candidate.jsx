@@ -16,7 +16,8 @@ import Lock from "../assets/Lock.png";
 import {
   voteBlock,
   totalVotesBlock,
-  approveAccount,
+  unlockAccount,
+  lockAccount,
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
@@ -43,11 +44,14 @@ function Candidate({ state }) {
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
-  // const wallet = state[0].wallet;
+  const [inputWalletPw, setInputWalletPw] = useState("");
+
+  // 사용자 지갑주소
+  const wallet = state[0].wallet;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("store에서 가져온 wallet:", state[0].wallet);
+    // console.log("store에서 가져온 wallet:", wallet);
     // console.log(params);
     // {pollnum: '1', id: '5'}
   }, []);
@@ -144,13 +148,18 @@ function Candidate({ state }) {
   //   function votesRerender() {
   //     setVotesRender((prev) => !prev);
   //   }
+  function getWalletPw(e) {
+    setInputWalletPw(e.target.value);
+  }
 
   async function handlepoll() {
     if (picked) {
       // 블록체인 투표 하는 부분
       //   1. Unlock 해준다.(비밀번호 입력받아서)
+      unlockAccount(wallet, inputWalletPw);
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
-      const res = await voteBlock(candIdx);
+      console.log("candIdx:", candIdx);
+      const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
       console.log(txId);
       axios
@@ -178,6 +187,7 @@ function Candidate({ state }) {
             icon: "success",
           });
           handleClose();
+          lockAccount(wallet);
         })
         .catch((error) => {
           console.log(error.response);
@@ -294,6 +304,7 @@ function Candidate({ state }) {
                   placeholder="Wallet Password"
                   variant="standard"
                   type="password"
+                  onChange={getWalletPw}
                 />
               </p>
               <p id={styles.paper_button}>

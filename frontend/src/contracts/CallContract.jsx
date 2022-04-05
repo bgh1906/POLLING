@@ -208,19 +208,17 @@ export const getStartIndexBlock = (account) => {
 // 2 - 1.블록체인서버와 통신하여 지갑주소를 생성하고 계좌주소를 받아온다.
 // 2-2.유저 정보를 회원가입 api에 넣어준다.
 // account = "0x82769faAC683cF4AE8A5846B49e83414772686D3";
-export const unlockAccount = (account) => {
+export const unlockAccount = (account, password) => {
   //계정 UNLOCK
   //db에서 유저와 연동된 지갑주소를 가지고와서 account에 넣어준다.
 
   // password = "123";
-  web3.eth.personal
-    .unlockAccount(account, 123)
-    .catch(console.log("Account unlocked!"));
+  web3.eth.personal.unlockAccount(account, password).then(console.log);
 };
 export const lockAccount = (account) => {
   //계정 LOCK
   //투표가 끝나면 해당유저의 지갑주소를 LOCK하여 트랜잭션을 날리지 못하게 변경한다.
-  web3.eth.personal.lockAccount(account).then(console.log("Account locked!"));
+  web3.eth.personal.lockAccount(account).then(console.log);
 };
 
 // 코인 발급 CA : 0xC89Ce4735882C9F0f0FE26686c53074E09B0D550
