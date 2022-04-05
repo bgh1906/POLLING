@@ -13,7 +13,11 @@ import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
-import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
+import {
+  voteBlock,
+  totalVotesBlock,
+  approveAccount,
+} from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 
 function Candidate() {
