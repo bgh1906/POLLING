@@ -11,7 +11,7 @@ public interface CandidateHistoryQueryRepository {
       int limit);
 
   List<FindCandidateHistoryByMemberResponseDto> findByCandidateByMemberId(Long memberId, int offset,
-                                                                                      int limit);
+      int limit);
 
   List<FindCandidateHistoryResponseDto> findByCandidateByPollId(Long pollId, int offset,
       int limit);

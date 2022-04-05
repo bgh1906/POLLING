@@ -17,7 +17,7 @@ public enum ContactType {
     this.description = description;
   }
 
-  public static ContactType findByMethod(String description) {
+  public static ContactType findByKeyword(String description) {
     return Arrays.stream(values())
         .filter(m -> m.description.equals(description))
         .findFirst()

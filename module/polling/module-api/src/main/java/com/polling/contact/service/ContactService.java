@@ -1,7 +1,6 @@
 package com.polling.contact.service;
 
 import com.polling.aop.annotation.Trace;
-import com.polling.contact.dto.SaveAnswerRequestDto;
 import com.polling.contact.dto.SaveContactRequestDto;
 import com.polling.contact.entity.Contact;
 import com.polling.contact.repository.ContactRepository;
@@ -31,13 +30,6 @@ public class ContactService {
     Contact contact = requestDto.toEntity();
     contact.changeMember(member);
     contactRepository.save(contact);
-  }
-
-  @Trace
-  @Transactional
-  public void saveAnswer(SaveAnswerRequestDto requestDto) {
-    Contact contact = getContact(requestDto.getContactId());
-    contact.setAnswer(requestDto.getAnswer());
   }
 
   private Member getMember(Long memberId) {

@@ -41,8 +41,9 @@ public class CandidateHistoryQueryRepositoryImpl implements CandidateHistoryQuer
   }
 
   @Override
-  public List<FindCandidateHistoryByMemberResponseDto> findByCandidateByMemberId(Long memberId, int offset,
-                                                                                             int limit) {
+  public List<FindCandidateHistoryByMemberResponseDto> findByCandidateByMemberId(Long memberId,
+      int offset,
+      int limit) {
     return query
         .select((Projections.constructor(FindCandidateHistoryByMemberResponseDto.class,
             candidateHistory.voteCount,
