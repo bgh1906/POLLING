@@ -34,12 +34,23 @@ function NewNav({state}) {
                     {/* {state[0].nickname}님, 안녕하세요. */}
                     </div>
                     :
-                    <div className={Styles.mininick}>
-                        {/* <Avatar sx={{ bgcolor: "Highlight"[400], width: 24, height: 24}}>{""}{firstnick}</Avatar>{nickname} */}
-                        <Avatar sx={{ width: 35, height: 35}} style={{backgroundColor:'#77a3a9'}}>{""}{firstnick}</Avatar>&nbsp;{nickname}
-                    </div>
-                    
+                    (
+                        <div>
+                            <div className={Styles.mininick}>
+                                {/* <Avatar sx={{ bgcolor: "Highlight"[400], width: 24, height: 24}}>{""}{firstnick}</Avatar>{nickname} */}
+                                <Avatar  style={{backgroundColor:'#77a3a9', width:'2vw', height:'4vh'}}>{""}{firstnick}</Avatar>&nbsp;{nickname}
+                                {/* sx={{ width: 35, height: 35}} */}
+                            </div>
+                            <div>
+                                {/* <div> </div> */}
+                                <img className={Styles.tokenimg} src="https://img.icons8.com/external-flat-wichaiwi/30/000000/external-gamefi-gamefi-flat-wichaiwi-3.png"/>
+                                <div className={Styles.token}>{"보유토큰 값"}</div>
+                            </div>
+                        </div>
+                    )
                 }
+                {/* 토큰이미지와 토큰값 */}
+                
             </div>
             <div>
                 <Hamburger setRendering={setRendering} />

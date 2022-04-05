@@ -1,32 +1,77 @@
 import Styles from "./Mypoll.module.css"
-
+import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Mypoll() {
 
+    const token = sessionStorage.getItem("token")
+
+    //투표 내역문의 저장
+    const [polllist, setPolllist] = useState([]);
+
+    //투표 내역 받아오기
+    useEffect(() => {
+        // const getlist = () =>{
+        let iscompomount = true;
+  
+        if( iscompomount === true ){
+          axios
+          .get(
+            // `https://j6a304.p.ssafy.io/api/polls/candidates/members/${page}/${limit}`,
+            `https://j6a304.p.ssafy.io/api/polls/candidates/members/0/50`,
+            {
+              headers: {
+                "Authorization":token,
+                // refreshToken: token,
+              },
+            }
+          )
+          .then((res) => {
+            // console.log("data",res.data);
+            setPolllist(res.data);
+          })
+          .catch(error => {
+            console.log("res",error.response);
+            console.log("error",error);
+          })
+        };
+        return() => {
+          iscompomount = false;
+        };
+      },[polllist]);
+
     return (
-        <div className={Styles.firstdiv}>
-            <div className={Styles.date}>투표일시 {""}</div>
-            <div className={Styles.line}>
-            {/* <div> */}
-                <img src="???" className={Styles.img}></img>
-                <div className={Styles.seconddiv}>
-                    <div className={Styles.thirddiv}>
-                        <span className={Styles.competition}>투표명 {""}</span>
-                        <br/>
-                        {/* <br/> */}
-                        <span className={Styles.nominee}>후보명 {""}</span>
-                        <br/>
-                        {/* <br/> */}
-                        <div className={Styles.fourthdiv}>
-                            <span className={Styles.txid}>TXID : {""}</span>
-                            <span className={Styles.totalPoll}>총: nn{""}표</span>
+        <>
+            {polllist.map((index, key) => (
+                <div className={Styles.firstdiv} key={index}>
+                {/* <div className={Styles.firstdiv} > */}
+                    <div className={Styles.date}>투표일시 {""}</div>
+                    <div className={Styles.line}>
+                    {/* <div> */}
+                        <img src="???" className={Styles.img}></img>
+                        <div className={Styles.seconddiv}>
+                            <div className={Styles.thirddiv}>
+                                <span className={Styles.competition}>투표명 {""}</span>
+                                <br/>
+                                {/* <br/> */}
+                                <span className={Styles.nominee}>후보명 {""}</span>
+                                <br/>
+                                {/* <br/> */}
+                                <div className={Styles.fourthdiv}>
+                                    <span className={Styles.txid}>TXID : {index.transactionId}</span>
+                                    <span className={Styles.totalPoll}>총: {index.voteCount}표</span>
+                                    {/* <span className={Styles.txid}>TXID : nn</span> */}
+                                    {/* <span className={Styles.totalPoll}>총: nn표</span> */}
+                                </div>
+                            </div>
                         </div>
+                    {/* </div> */}
                     </div>
+                    {/* <div className={Styles.line2}></div> */}
                 </div>
-            {/* </div> */}
-            </div>
-            {/* <div className={Styles.line2}></div> */}
-        </div>
+            ))}
+        </>
     );
 }
 
