@@ -1,36 +1,193 @@
+/* 바른공군체 */
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 강원교육체 */
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
 .polllist {
-  /* background-color: #f5f4ee; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 15vw; */
 }
 
 .list_title {
-  font-family: "RussoOne";
-  font-size: 60px;
-  padding-left: 110px;
+  /* font-family: "Bitter", serif; */
+  /* position: absolute; */
+  /* font-family: 'Yellowtail', cursive; */
+  font-family: 'Dancing Script', cursive;
+  /* font-family: "Baskervville", serif; */
+  font-size: 10vw;
+  font-weight: 900;
   padding-top: 100px;
+  padding-bottom: 100px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #201e1ef1;
+  /* transform: rotate(100deg); */
   /* text-align: center; */
 }
 
-.list_container {
+.opened_img {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.opened_info {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: normal;
+  width: fit-content;
+  /* font-family: "Bitter", serif; */
+  font-family: 'ROKAFSansBold';
+  
+}
+
+.opened_button {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.opened_item:hover .opened_img {
+  opacity: 0.3;
+}
+
+.opened_item:hover .opened_info {
+  opacity: 1;
+}
+
+.opened_item:hover .opened_button {
+  opacity: 1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
+
+
+#poll_date {
+  font-size: 1.5vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  margin-top: 2vh;
+}
+
+#poll_button{
+    width: 9vw;
+    height: 5vh;
+    font-size: 1.2vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #77a3a9;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: white;
+}
+
+#poll_button:hover{
+  background-color: blue;
+
+}
+
+/* .list_container {
   display: grid;
-  padding: 80px 370px;
+  padding: 80px 270px;
   position: relative;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(13, 5vw);
-  gap: 10px;
+  gap: 6px;
 }
 
 .list_item {
   object-fit: cover;
-  /* object-fit: fill; */
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.list_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bottom {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.button {
+  background-color: #fd2842;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.list_item:hover .image {
+  opacity: 0.3;
+}
+
+.list_item:hover .middle {
+  opacity: 1;
+}
+
+.list_item:hover .bottom {
+  opacity: 1;
 }
 
 .list_item:nth-child(1) {
   grid-column: 1 / 6;
   grid-row: 1 / 6;
-  /* align-self: flex-start;
-  justify-self: flex-end; */
 }
 
 .list_item:nth-child(2) {
@@ -81,20 +238,4 @@
 .list_item:nth-child(11) {
   grid-column: 6 / 9;
   grid-row: 13 / 16;
-}
-
-@font-face {
-  font-family: "RussoOne";
-  src: url(../fonts/RussoOne-Regular.ttf);
-}
-
-img {
-  /* filter: grayscale(1);
-  transition: all 0.4s ease-in-out; */
-}
-
-img:hover {
-  /* filter: grayscale(0);
-  transform: scale(1.025); */
-  cursor: pointer;
-}
+} */

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 
 
-function NomineeList({ nomiList, onDel}) {
+function NomineeList({ nomiList, onDel, onEdit }) {
 
     useEffect(() =>{
 
@@ -15,7 +15,7 @@ function NomineeList({ nomiList, onDel}) {
     return (
          <ul style={{ padding:"0" }}>
              {
-                 nomiList.map(nominee => <Nominee key={nominee.id} nominee={nominee} onDel={onDel}/>)
+                 nomiList.map((nominee,index) => <Nominee key={index} nominee={nominee} onDel={onDel} onEdit={onEdit}/>)
              }
          </ul>
 

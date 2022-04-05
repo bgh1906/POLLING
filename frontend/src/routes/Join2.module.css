@@ -1,0 +1,545 @@
+/* 
+*, *:before, *:after {
+    box-sizing: border-box;
+  } */
+  
+  /* body {
+    min-height: 100vh;
+    font-family: "Raleway", sans-serif;
+  } */
+  
+  .container {
+      z-index: -1;
+    position: absolute;
+    /* width: 95vw;
+    height: 92vh;
+    left: 2vw;
+    top: 4.5vh; */
+    width: 96.2vw;
+    height: 92vh;
+    left: 1.9vw;
+    top: 4vh;
+    overflow: hidden;
+  }
+  
+  /* margin-left: 200px; */
+  /* transform-origin: -200px 50%; */
+  /* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after { */
+/* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after { */
+.container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after {
+/* .container:active .top:before, .container:active  .top:after, .container:active  .bottom:before, .container:active  .bottom:after, .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after { */
+    margin-left: 13vw;
+    transform-origin: -13vw 50%;
+    transition-delay: 0s;
+  }
+  .container .center, .container:active .center {
+  /* .container:hover .center, .container:active .center { */
+    z-index: 10;
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+  
+  .top:before, .top:after, .bottom:before, .bottom:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 200vmax;
+    height: 200vmax;
+    top: 50%;
+    left: 50%;
+    margin-top: -100vmax;
+    transform-origin: 0 50%;
+    transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    z-index: 10;
+    opacity: 0.65;
+    transition-delay: 0.2s;
+  }
+  
+  .top:before {
+    transform: rotate(45deg);
+    /* background: #e46569; */
+    /* background: #FB71AB; */
+    background: #FEA6CB;
+    /* background: #f12b5c; */
+  }
+  .top:after {
+    transform: rotate(135deg);
+    background: #FEA6CB;
+  }
+  /* background: #ecaf81; */
+  
+  .bottom:before {
+    transform: rotate(-45deg);
+    /* background: #60b8d4; */
+    background: #BAF0E8;
+  }
+  .bottom:after {
+      transform: rotate(-135deg);
+      background: #BAF0E8;
+  }
+  /* background: #3745b5; */
+  /* background: #3AFACB; */
+  
+  .center {
+    position: absolute;
+    /* width: 400px;
+    height: 400px; */
+    width: 26vw;
+    height: 26vh;
+    top: 50%;
+    left: 50%;
+    /* top: 100%; */
+    /* left: 100%; */
+    /* margin-left: -200px; */
+    /* margin-top: -200px; */
+    margin-left: -13vw;
+    margin-top: -26vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 30px; */
+    padding: 3vh;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    transition-delay: 0s;
+    color: #333;
+  }
+  .center input {
+    /* width:100%; */
+    /* width:50vw; */
+    /* padding: 15px; */
+    /* padding: 1.5vh; */
+    margin: 5px;
+    border-radius: 0.5vh;
+    /* border: 1px solid #ccc; */
+    border: 1px solid rgba(204, 204, 204, 0);
+    /* font-family: inherit; */
+     /* font-family: 'Bitter', serif; */
+  }
+
+.joinus {
+    /* z-index: 5; */
+    position: absolute;
+    width: 10vw;
+    height: 3vh;
+    left: 8.1vw;
+    top: 2vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.3vw;
+    /* line-height: 60px; */
+    text-align: center;
+    
+    color: #000000;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.joinbg {
+    position: absolute;
+    width: 78vw;
+    height: 59vh;
+    left: 11vw;
+    top: 33vh;
+    
+    background: #FFF9EE;
+    border-radius: 7vh;
+}
+
+.nickname {
+    position: absolute;
+    /* width: 19vw; */
+    width: 15.5vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 10vh;
+    
+    background: #FEFFF8;
+    background-image: url(https://img.icons8.com/cotton/24/000000/name--v2.png);
+    background-repeat: no-repeat;
+    background-position: 0.3vw center;
+    padding-left:2.3vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+
+    font-family: 'Roboto';
+    /* font-style: normal; */
+    /* font-weight: 400; */
+    /* line-height: 41px; */
+    /* text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
+
+    /* color: #A5B8C2; */
+}
+
+.nicknameCheck{
+  position: absolute;
+  width: 4vw;
+  height: 4.8vh;
+  left: 18.8vw;
+  top: 10vh;
+  
+  background: #FEFFF8;
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+  border-radius: 3vh;
+  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+  background-repeat: no-repeat;
+  background-position: 0.3vw center;
+  padding-left:1vw; */
+
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-style: normal;
+  font-weight: 400;
+  text-align: center; */
+  line-height: 1vh;
+  font-size: 0.9vw;
+
+  color: #496370;
+}
+
+.email {
+    position: absolute;
+    width: 20vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 17vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/20/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left: 2.3vw;
+
+    font-family: 'Roboto';
+    /* font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 41px;
+    text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
+
+    /* color: #A5B8C2; */
+}
+
+.password {
+    position: absolute;
+    width: 20vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 24vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
+
+    font-family: 'Roboto';
+    line-height: 10vh;
+    font-size: 0.9vw;
+}
+
+.walletpassword {
+    position: absolute;
+    width: 17vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 31vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
+
+    font-family: 'Roboto';
+    line-height: 10vh;
+    font-size: 0.9vw;
+}
+
+.walletimg{
+    position: absolute;
+    /* width: 7vw; */
+    /* height: 4vh; */
+    left: 20.5vw;
+    top: 31.5vh;
+    color: #FF5656;
+}
+
+.phonenum {
+    position: absolute;
+    width: 15.5vw;
+    height: 4vh;
+    left: 2.5vw;
+    top: 38vh;
+    
+    background: #FEFFF8;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 3vh;
+    background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+    background-repeat: no-repeat;
+    background-position: 0.5vw center;
+    padding-left:2.3vw;
+
+    font-family: 'Roboto';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    /* font-style: normal;
+    font-weight: 400;
+    text-align: center; */
+    line-height: 10vh;
+    font-size: 0.9vw;
+
+    color: #496370;
+}
+
+.phonebtn {
+  position: absolute;
+  width: 4vw;
+  height: 4.8vh;
+  left: 18.8vw;
+  top: 38.3vh;
+  
+  background: #FEFFF8;
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+  border-radius: 3vh;
+  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
+  background-repeat: no-repeat;
+  background-position: 0.3vw center;
+  padding-left:1vw; */
+
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  /* font-style: normal;
+  font-weight: 400;
+  text-align: center; */
+  line-height: 1vh;
+  font-size: 0.9vw;
+
+  color: #496370;
+}
+
+.phonetitle {
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.phonemodalclose:hover, .phonemodalSubscribe:hover{
+  background-color: #bedae7b2 ;
+}
+.phonemodalclose {
+  border: none;
+  background-color: #00000000;
+  border-radius: 3vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1.1vw;
+}
+
+.phonemodalSubscribe {
+  border: none;
+  background-color: #00000000;
+  border-radius: 3vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1.1vw;
+}
+
+.privateset{
+    position: absolute;
+    width:20vw;
+    /* width:18vw; */
+    left:7.5vw;
+    /* top: 32.7vh; */
+    top: 43.7vh;
+}
+
+.privatecheck {
+    z-index: 1;
+    position: absolute;
+    /* width: 2vw; */
+    /* height: 3vh; */
+    width: 1vw;
+    height: 3vh;
+    /* left:10.3vw; */
+    /* top: 32.9vh; */
+    left:6vw;
+    top: 43.9vh;
+    
+    border: 3px solid #9F824D;
+    border-radius: 5px;
+}
+
+.privatebtn{
+    position: absolute;
+    width: 15vw;
+    /* height: 29px; */
+    left: -2.6vw;
+    top: 1.3vh;
+    
+    /* font-family: 'Roboto'; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    /* line-height: 5vh; */
+    text-align: center;
+    border: none;
+    background-color: #9f824d00;
+
+    color: #9F824D;
+}
+
+.private{
+    position: absolute;
+    width: 2.5vw;
+    /* height: 26px; */
+    left:9.6vw;
+    top: -0.6vh;
+
+    /* font-family: 'Roboto'; */
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    /* line-height: 5.5vh; */
+    text-align: center;
+
+    color: #000000;
+}
+
+/* 회원가입 버튼 */
+.create {
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    left: 8.2vw;
+    top: 49vh;
+    
+    background: #FEFFF8;
+    mix-blend-mode: normal;
+    box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8;
+    /* box-shadow: 0px 5px 5px 5px #F5EAD8; */
+    border-radius: 3vh;
+
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    /* line-height: 3vh; */
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #9F824D;
+}
+
+/* 이미 계정이 있는지 확인 질문 */
+.signinQ {
+    position: absolute;
+    /* width: 343px;
+    height: 28px; */
+    left: 7vw;
+    top: 55vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7vw;
+    /* line-height: 30px; */
+    /* text-align: center; */
+    text-decoration: none;
+    color: #000000;
+}
+
+/* 로그인페이지 이동 버튼 */
+.signin {
+    position: absolute;
+    /* width: 107px; */
+    /* height: 28px; */
+    /* left: 11vw; */
+    /* top: 49vh; */
+    left: 16.2vw;
+    top: 54.4vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    /* line-height: 30px;
+    text-align: center;
+    */
+    text-decoration: none;
+    color: #9F824D;
+}
+
+/* 개인정보처리방침 모달*/
+.privacybtn{
+  position: absolute;
+  width: 15vw;
+  /* height: 29px; */
+  left: 5vw;
+  top: 5vh;
+  
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5vw;
+  line-height: 5vh;
+  text-align: center;
+  border: none;
+  background-color: #9f824d00;
+
+  color: #115a64f1;
+  /* color: #f8f2f5; */
+  /* color: #03333af1; */
+}
+
+/* 서비스 이용약관 모달*/
+.servicebtn{
+  position: absolute;
+  width: 15vw;
+  /* height: 29px; */
+  left: 5vw;
+  top: 15vh;
+  
+  /* font-family: 'Roboto'; */
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5vw;
+  line-height: 5vh;
+  text-align: center;
+  border: none;
+  background-color: #9f824d00;
+
+  color: #115a64f1;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../fonts/RussoOne-Regular.ttf);
+}

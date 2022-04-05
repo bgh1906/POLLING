@@ -1,43 +1,109 @@
 import styles from "./CreatePoll.module.css";
-import Nav from "../components/layout/Nav.jsx"
-import React, { useRef, useState } from "react";
-import NomineeInput from "../components/admin/NomineeInput"
-import NomineeList from "../components/admin/NomineeList"
-import { Link, useNavigate } from "react-router-dom";
+import NewNav  from "../components/layout/NewNav.jsx"
+import React, { useRef, useState, useEffect } from "react";
+import NomineeInput2 from "../components/admin/NomineeInput2"
+import NomineeList2 from "../components/admin/NomineeList2"
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { actionCreators } from "../store"
+import Footer from "../components/layout/Footer";
+import logo from "../assets/mark_slim.png"
+import nonono from "../assets/nonono.png"
+import TextField from '@mui/material/TextField';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateTimePicker from '@mui/lab/DateTimePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import dayjs from "dayjs";
+import axios from "axios";
 
 
-function CreatePoll() {
+
+
+
+
+function UpdatePoll() {
     const [pollImage, setpollImage] = useState("");
     const [pollName, setpollName] = useState("");
-    const [pollPeriod, setpollPeriod] = useState("");
+    const [pollStart, setpollStart] = useState("");
+    const [pollEnd, setpollEnd] = useState("");
     const [pollDescribe, setpollDescribe] = useState("");    
     const [pollRealtime, setpollRealtime] = useState(false);
-    const [pollLatestTX, setpollLatestTX] = useState(false);
-    const [pollAllTX, setpollAllTX] = useState(false);
 
-    const dispatch = useDispatch();
-    const state = useSelector((state) => state);
+    const params = useParams();
+
+    // const token = useSelector((state)=>(state[0].token));
+    const token = sessionStorage.getItem("token")
+
     const navigate = useNavigate();
     const no = useRef(1)
     const [nomiList, setnomiList] = useState([{
         id: 0,
-        name: '',
-        profile: '',
-        profile_image: '',
-        additional_image1: '',
-        additional_image2: '',
-        additional_image3: '',
+        candidateIndex: 0,
+        name: "",
+        profile: "",
+        thumbnail: "",
+        imagePath1: "",
+        imagePath2: "",
+        imagePath3: ""
     }])
 
+    
+
+    useEffect(()=> {
+        axios.get(`https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token,
+                "Accept" : "*/*",
+            },
+        }
+        )
+            .then((res) => {
+                console.log("성공!");
+                console.log(res);
+                setpollName(res.data.title)
+                setpollImage(res.data.thumbnail)
+                setpollStart(res.data.startDate)
+                setpollEnd(res.data.endDate)
+                setpollDescribe(res.data.content)
+                setnomiList(res.data.candidates)
+                setpollRealtime(res.data.openStatus)
+            })
+            .catch(error => {
+                console.log(error.response)
+            });  
+    },[])
+
+
+
+    const [current, setCurrent] = useState({})
+    const [isEdit, setIsEdit] = useState(false)
+
+
+    
+    const onEdit=(nominee)=>{
+        setCurrent(nominee)    
+        console.log(current)
+        setIsEdit(true) 
+        console.log(nomiList)
+    }
+
+    const onUpdate=(nominee)=>{
+        setnomiList(nomiList.map(nomilist=> nomilist.candidateId===nominee.candidateId ? nominee : nomilist ))
+        setIsEdit(false);        
+    }
+
+
     const onDel=(id)=>{
-        setnomiList(nomiList.filter(nomiList => nomiList.id !== id))
+        setnomiList(nomiList.filter(nomiList => nomiList.candidateId !== id))
     }
     const onAdd=(form)=>{
         form.id = no.current++;
-        setnomiList(nomiList.concat(form));
+        setnomiList((nomiList)=> nomiList.concat(form));
+        addCandi(form)
+        console.log("추가")
     }
 
     
@@ -48,8 +114,16 @@ function CreatePoll() {
     function changePollName(e) {
         setpollName(e.target.value);
     }
-    function changePollPeriod(e) {
-        setpollPeriod(e.target.value);
+    function changePollStart(e) {
+        const startdate = dayjs(e).format("YYYY-MM-DD HH:mm")
+        setpollStart(String(startdate));
+        // console.log(String(startdate))
+    }
+    function changePollEnd(e) {
+        const enddate = dayjs(e).format("YYYY-MM-DD HH:mm")
+        setpollEnd(String(enddate));
+        // console.log(enddate)
+        
     }
     function changepollDescribe(e) {
         setpollDescribe(e.target.value);
@@ -61,134 +135,245 @@ function CreatePoll() {
             setpollRealtime(false);
         }
     }
-    function changepollLatestTX(e) {
-        if (e.target.checked === true){
-            setpollLatestTX(true);
-        } else {
-            setpollLatestTX(false);
-        }
-    }
-    function changepollAllTX(e) {
-        if (e.target.checked === true){
-            setpollAllTX(true);
-        } else {
-            setpollAllTX(false);
-        }
-    }
-    function savePolldate(){
-        const pollInfo = {
-            pollName: {pollName},
-            pollPeriod: {pollPeriod},
-            pollDescribe: {pollDescribe},
-            pollRealtime: {pollRealtime},
-            pollLatestTX: {pollLatestTX},
-            pollAllTX: {pollAllTX},
-            nomiList: {nomiList},
-            status: "standby"
-        }
-        console.log(pollInfo)
-        dispatch(actionCreators.addInfo(pollInfo));
+    
+
+    function updatePolldata(){
+        
+        // console.log(pollInfo)
+        
+        axios.put(
+            `https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
+            {
+                "content":pollDescribe,
+                "endDate":pollEnd,
+                "openStatus":pollRealtime,
+                "startDate":pollStart,
+                "thumbnail":pollImage,
+                "title":pollName
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                },
+            }
+        )
+        .then((res) =>{
+            Swal.fire({
+                title: '투표가 수정되었습니다.',
+                icon: 'success'                        
+            })
+        })
+        .then(()=>{
+            navigate("/admin");
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+
     }
 
-    
+    function deletePoll(){
+        axios.delete(
+            `https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
+            {
+                headers: {
+                    "Authorization": token,
+                }
+            }
+        )
+        .then(() =>{
+            Swal.fire({
+                title: '투표가 삭제되었습니다.',
+                icon: 'success'                        
+            })
+        })
+        .then(()=>{
+            navigate("/admin");
+        })
+        .catch(error => {
+            console.log(error.response)
+        });
+    }
+
+
+    function patchCandi(nominee){
+        axios.put(
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidates/${nominee.candidateId}`,
+            {
+                "imagePath1": nominee.imagePath1,
+                "imagePath2": nominee.imagePath2,
+                "imagePath3": nominee.imagePath3,
+                "name": nominee.name,
+                "profile": nominee.profile,
+                "thumbnail": nominee.thumbnail
+              },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                },
+            }
+        )
+        .then((res) =>{
+            console.log("후보자 정보 수정 성공!!")
+        })
+        .catch(error => {
+            console.log(error.response)
+        });  
+
+    }
+
+    function deleteCandi(id){
+        axios.delete(
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidates/${id}`,
+            {
+                headers: {
+                    "Authorization": token,
+                }
+            }
+        )
+        .then(() =>{
+            console.log("delete 성공!!")
+            onDel(id)
+        })
+        .catch(error => {
+            console.log(error.response)
+        });
+    }
+
+    function addCandi(form){
+
+        axios.post(
+            `https://j6a304.p.ssafy.io/api/polls/admin/candidate`,
+            {
+                "imagePath1": form.imagePath1,
+                "imagePath2": form.imagePath2,
+                "imagePath3": form.imagePath3,
+                "name": form.name,
+                "pollId":params.pollnum,
+                "profile": form.profile,
+                "thumbnail": form.thumbnail
+              },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                    "Accept" : "*/*",
+                } 
+            })
+            .then(() =>{
+                console.log("후보자 추가 성공!!")
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+        
+    }
+
 
 
 
     return (
-        <div>
-            <div>
-              <Nav />
-            </div>
-            <div style={{ margin: "0 10vw"}}>
-                <h1 className={styles.title}> CREATE A POLL </h1>
-            </div>
-            <div className={styles.container}>
-                <div id={styles.subtitle}> MAIN IMAGE </div>
-                <div  id={styles.main_div}>
-                    <span>이미지(URL)주소: </span> 
-                    <input id={styles.poll_input} type="text" placeholder="이미지 주소를 입력하세요."
-                    onChange={changeUrl}
-                    />
-                </div>
-                    {/* <button id={styles.image_button} onClick={register_image}> 등록 </button> */}
-                <div style={{ display:"flex", justifyContent:"center"}}>
+        <div >
+              <NewNav  />
+            <div className={styles.title}> UPDATE THE POLL </div>
+            
+            <div className={styles.container} style={{marginBottom: "1vw"}}>
+                <div id={styles.info}> POLL&nbsp;&nbsp;INFORMATION </div>
+                <img id={styles.logo} src={logo} alt="logo" /> 
+                <div id={styles.box1}></div>
+                <div id={styles.box2}>
+                    {pollImage === "" && (
+                        <img src={nonono} alt="noimage" id={styles.no_image} />
+                        )}
                     {pollImage !== "" && (
                         <img src={pollImage} alt="pollimage" id={styles.poll_image} />
                         )}
-                </div>
-
-                <div id={styles.subtitle}> POLL TITLE </div>   
-                <div  id={styles.main_div}>
-                    <span>투표(대회) 이름:</span>
-                    <input id={styles.poll_input} type="text" placeholder="투표 이름을 입력하세요. EX) 프로듀스 101"
-                    onChange={changePollName}
-                    />
-                </div> 
-
-                <div id={styles.subtitle}> POLLING PERIOD </div>   
-                <div  id={styles.main_div}>
-                    <span>투표(대회) 기간:</span>
-                    <input id={styles.poll_input} type="text" placeholder="투표 기간을 입력하세요. EX) 2022.03.14 - 2022.04.17"
-                    onChange={changePollPeriod}
-                    />
-                </div> 
-
-                <div id={styles.subtitle}> DESCRIPTION </div>   
-                <div  id={styles.main_div}>
-                    <div>투표(대회) 설명:</div>
-                    <textarea id={styles.poll_input2} type="text" placeholder="투표에 대한 설명을 입력하세요. 
-                    EX) 마침내 세계가 놀랄 글로벌 아이돌을 탄생시킬 X의 베일이 벗겨진다. 
-                    글로벌 아이돌 육성 프로젝트! 프로듀스 X 101"
-                    onChange={changepollDescribe}
-                    />
-                </div> 
-
-                <div id={styles.subtitle}> OPTION </div>   
-                <div  id={styles.main_div}>
-                    <div>투표(대회) 옵션:</div> 
-                    <div id={styles.check_div}>
-                        <div>
-                            <input id={styles.poll_input3} type="checkbox" value="now"
-                            onChange={changepollRealtime}/> 
-                            <span id={styles.check_text}>실시간 투표 수 공개</span>
-                        </div>
-                        <div>
-                            <input id={styles.poll_input3} type="checkbox" value="recent"
-                            onChange={changepollLatestTX}/> 
-                            <span id={styles.check_text}>투표 내역 공개 (최근 1 시간)</span>
-                        </div>
-                        <div>
-                            <input id={styles.poll_input3} type="checkbox" value="all"
-                            onChange={changepollAllTX}/> 
-                            <span id={styles.check_text}>전체 투표 내역 공개</span>
+                    <div id={styles.poll_title}>
+                        <span id={styles.input_name3}>Poll Title</span>
+                        <TextField id={styles.title_input}
+                        onChange={changePollName} value={pollName}
+                        variant="standard" placeholder="투표 이름을 입력하세요."/>
+                    </div>
+                    <div id={styles.poll_title2}>
+                        <span id={styles.input_name}>Main Image</span>
+                        <TextField id={styles.title_input}
+                        onChange={changeUrl} value={pollImage}
+                        variant="standard" placeholder="이미지 주소를 입력하세요."/>
+                    </div>
+                    <div id={styles.poll_title3}>
+                        <span id={styles.input_name2}> Deadline </span>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DateTimePicker
+                            id={styles.datepick}
+                            label="투표 시작일"
+                            value={pollStart}
+                            onChange={changePollStart}
+                            inputFormat={"yyyy-MM-dd HH:mm"}
+                            mask={"____-__-__"}
+                            renderInput={(params) => <TextField {...params} />}/>
+                        &nbsp;&nbsp;&nbsp;
+                        <DateTimePicker
+                            id={styles.datepick}
+                            label="투표 종료일"
+                            value={pollEnd}
+                            onChange={changePollEnd}
+                            inputFormat={"yyyy-MM-dd HH:mm"}
+                            mask={"____-__-__"}
+                            renderInput={(params) => <TextField {...params} />}/>
+                        </LocalizationProvider>
+                    </div>
+                    <div id={styles.poll_title4}>
+                        <span id={styles.input_name4}> Poll Option </span>
+                    
+                        <div id={styles.check_div}>
+                            <input id={styles.poll_input3} checked={pollRealtime} type="checkbox" 
+                                onChange={changepollRealtime}/> 
+                                <span id={styles.check_text}>실시간 투표 수 공개</span>
+                                
                         </div>
                     </div>
-                </div> 
-                <div id={styles.subtitle}> NOMINEE </div> 
+                    <div id={styles.poll_title5}>
+                        <span id={styles.input_name5}> Description </span>
+                        <TextField
+                            id={styles.poll_input2}
+                            multiline
+                            rows={4}
+                            onChange={changepollDescribe}
+                            value={pollDescribe}
+                            placeholder="투표에 대한 설명을 입력하세요."
+                            />
+                    </div>
+                    <div id={styles.input_name6}> Candidate Registration </div> 
+                </div>
 
-                <NomineeInput onAdd={onAdd}/>
-                <NomineeList nomiList={nomiList} onDel={onDel}/>
+                <NomineeInput2 onAdd={onAdd} current={current} isEdit={isEdit} onUpdate={onUpdate} patchCandi={patchCandi} addCandi={addCandi}/>
+                <NomineeList2 nomiList={nomiList} onDel={onDel} onEdit={onEdit} deleteCandi={deleteCandi}/>
                 
                 <div id={styles.poll_savebox}>
                     <button id={styles.poll_save} onClick={()=>{
-                        if (pollImage !=='' || pollName !=='' || pollPeriod !==''){
-                            savePolldate();
-                            navigate("/admin");
+                        if (pollImage !=='' || pollName !=='' || pollStart !==''){
+                            updatePolldata();
+                            
                         } else {
                             Swal.fire({
-                                title: '투표 정보를 입력해주세요!!',
+                                title: '투표 정보를 입력해주세요.',
                                 icon: 'error'                        
                             })
                         }
-                    }}>투표 생성하기</button>
+                    }}>수정하기</button>
+                    <button id={styles.poll_delete} onClick={deletePoll}>삭제하기</button>
                     <Link to="/admin" id={styles.poll_back}> <span>돌아가기</span></Link>
 
                 </div>
-                        
             </div>
 
+        <Footer></Footer>
         </div>
     );
 }
 
-export default CreatePoll;
+export default UpdatePoll;

@@ -9,17 +9,40 @@
     font-style: normal;
 }
 
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
 
 .form_box {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
+    margin: 0 6vw;
 }
 
+#nomi_box{
+    position: relative;
+    /* top: -18vh; */
+    left: 15vw;
+}
+
+#nomi_box2{
+    position: relative;
+    /* top: -18vh; */
+    bottom: 3vh;
+}
+
+#nomi_tag{
+    position: relative;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    top: 1.5vh;
+    left: -1vw;
+}
 
 #nomi_input {
-    width: 10vw;
+    width: 30vw;
     height: 4vh;
     margin: 0 1vw;
     font-size: 1.3vw;
@@ -27,10 +50,11 @@
     text-align: center;
     padding-top: 1vh;
     margin-right: 1.5vw;
+    left: 5vw;
 }
 
 #nomi_input2 {
-    width: 40vw;
+    width: 30vw;
     height: 4vh;
     margin: 0 1vw;
     font-size: 1.3vw;
@@ -40,7 +64,7 @@
 }
 
 #nomi_input3 {
-    width: 60vw;
+    width: 33.3vw;
     height: 15vh;
     margin: 0 1vw;
     font-size: 1.3vw;
@@ -50,7 +74,7 @@
 
 }
 #nomi_input4 {
-    width: 60vw;
+    width: 48vw;
     height: 4vh;
     margin: 0 1vw;
     font-size: 1.3vw;
@@ -62,7 +86,7 @@
 #form_buttonbox {
     display: flex;
     justify-content: center;
-    height: 4vh;
+    height: 1.3vh;
 }
 
 #form_button {
@@ -73,10 +97,47 @@
     padding-top: 1vh;
 }
 
+#register_button {
+    width: 13vw;
+    height: 4vh;
+    font-size: 1.3vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    padding-top: 1.5vh;
+}
+
+#register_button:hover{
+    background-color: #ff0000;
+    color: rgb(255, 255, 255);
+}
+
+
 #nomi_form {
     border: solid rgb(96, 95, 97);
-    padding: 3vh;
+    padding: 5vh;
+    padding-bottom: 0;
 }
+
+#no_pro{
+    position: absolute;
+    width: 13vw;
+    height: 11vw;
+    padding:1px;
+    border:3px solid #021a40;
+}
+
+#no_pro2{
+    position: absolute;
+    width: 13vw;
+    max-height: 18vw;
+    padding:1px;
+    border:3px solid #021a40;
+}
+
 
 #profile_div{
     font-size: 1.3vw;
@@ -85,9 +146,9 @@
     bottom: 10vh;
 }
 
-#profile_image{
+#thumbnail{
     width: 11vw;
-    height: 12vw;
+    max-height: 14vw;
     margin: 2vw;
     padding:1px;
     margin-left: 7vw;
@@ -98,7 +159,7 @@
     font-size: 2vw;
     position: relative;
     /* top: 1vh; */
-    bottom: 22vh;
+    bottom: 23vh;
     
 }
 
@@ -118,25 +179,56 @@
 
 #profile_desc{
     position: relative;
-    width: 52vw;
+    width: 40vw;
     left: 20vw;
     bottom: 20vh;
 }
 
+#profile_update{
+    width: 4vw;
+    height: 4vh;
+    padding-top: 1.5vh;
+    font-size: 1.3vw;
+    background-color: #FFE29A;
+    border-radius: 10px;
+    font-family: 'GangwonEdu_OTFBoldA';
+    position:relative;
+    color: black;
+    bottom: 23vh;
+    left: 1vw;
+}
 #profile_del{
     width: 4vw;
     height: 4vh;
-    padding-top: 1vh;
+    padding-top: 1.5vh;
     font-size: 1.3vw;
+    background-color: #FFE29A;
+    border-radius: 10px;
+    color: black;
     font-family: 'GangwonEdu_OTFBoldA';
     position:relative;
-    bottom: 22vh;
-    left: 1vw;
+    bottom: 23vh;
+    left: 2vw;
 }
+
+
+#profile_update:hover{
+    background-color: blue;
+    color: white;
+}
+
+#profile_del:hover{
+    background-color: red;
+    color: white;
+}
+
+
+
 
 #profile_gallery{
     display: flex;
     justify-content: center;
+    border-radius: 10px;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
     color: blue;
@@ -146,7 +238,7 @@
 #distinct_box{
     position: relative;
     height: 1vh;
-    width: 62vw;
+    width: 52vw;
     left: 7.7vw;
     border-bottom: dashed;
     margin-bottom: 4vh;
