@@ -19,8 +19,9 @@ import {
   approveAccount,
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
+import { connect } from "react-redux";
 
-function Candidate() {
+function Candidate({ state }) {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -42,9 +43,11 @@ function Candidate() {
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
+  // const wallet = state[0].wallet;
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log("store에서 가져온 wallet:", state[0].wallet);
     // console.log(params);
     // {pollnum: '1', id: '5'}
   }, []);
@@ -406,4 +409,8 @@ function Candidate() {
   );
 }
 
-export default Candidate;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps, null)(Candidate);

@@ -143,13 +143,13 @@ const abi = [
 const CONTRACT_ADDRESS = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
-const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+// const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
 
 //후보자 인덱스와 후보자명 확인
 // 프론트와 연동할 때는 안쓸 함수, 단순 체크용
-const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-export const getCandInfoBlock = () => {
-  testContract.methods
+const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+export const getCandInfoBlock = (account) => {
+  pollContract.methods
     .candidateList(1)
     .call({ from: account })
     .then(console.log);
@@ -157,9 +157,9 @@ export const getCandInfoBlock = () => {
 // getCandInfo();
 
 //후보자 등록
-export const registerBlock = (num) => {
-  // const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  return testContract.methods
+export const registerBlock = (num, account) => {
+  // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+  return pollContract.methods
     .addCandidates(num)
     .send({ from: account, gas: 1000000 });
   // .then(console.log);
@@ -168,10 +168,10 @@ export const registerBlock = (num) => {
 // send();
 
 //투표 후보자 인덱스에게 몇표 투표 진행
-export const voteBlock = (idx) => {
-  // const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+export const voteBlock = (idx, account) => {
+  // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   return (
-    testContract.methods
+    pollContract.methods
       .voteForCandidate(idx, 1)
       // 여기서 2가 candidateIndex
       // 투표하기전에 특정후보자 조회에서 Index 받아오기
@@ -183,17 +183,17 @@ export const voteBlock = (idx) => {
 // vote();
 
 //후보자 인덱스 입력시 득표수 반환
-export const totalVotesBlock = (idx) => {
-  // const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  return testContract.methods.votesReceived(idx).call({ from: account });
+export const totalVotesBlock = (idx, account) => {
+  // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+  return pollContract.methods.votesReceived(idx).call({ from: account });
   // .then(console.log);
 };
 // votesReceived();
 
 //후보자 인덱스 반환
-export const getStartIndexBlock = () => {
-  // const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  return testContract.methods.candidateIndexStart().call({ from: account });
+export const getStartIndexBlock = (account) => {
+  // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+  return pollContract.methods.candidateIndexStart().call({ from: account });
 };
 // candidateIndexStart();
 
@@ -208,7 +208,7 @@ export const getStartIndexBlock = () => {
 // 2 - 1.블록체인서버와 통신하여 지갑주소를 생성하고 계좌주소를 받아온다.
 // 2-2.유저 정보를 회원가입 api에 넣어준다.
 // account = "0x82769faAC683cF4AE8A5846B49e83414772686D3";
-export const unlockAccount = () => {
+export const unlockAccount = (account) => {
   //계정 UNLOCK
   //db에서 유저와 연동된 지갑주소를 가지고와서 account에 넣어준다.
 
@@ -217,7 +217,7 @@ export const unlockAccount = () => {
     .unlockAccount(account, 123)
     .catch(console.log("Account unlocked!"));
 };
-export const lockAccount = () => {
+export const lockAccount = (account) => {
   //계정 LOCK
   //투표가 끝나면 해당유저의 지갑주소를 LOCK하여 트랜잭션을 날리지 못하게 변경한다.
   web3.eth.personal.lockAccount(account).then(console.log("Account locked!"));
@@ -529,7 +529,7 @@ const tokenAbi = [
 const tokenContract = new web3.eth.Contract(tokenAbi, CONTRACT_ADDRESS);
 
 //보낼주소에서 val만큼의 토큰을 전송가능하도록 승인해준다.
-export const approveAccount = (val) => {
+export const approveAccount = (val, account) => {
   // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보낼주소
   // const val = 100; //보내는것을 승인할 금액
   //account는 관리자주소
@@ -540,7 +540,7 @@ export const approveAccount = (val) => {
 };
 
 //보내는주소에서 받는주소로 val만큼의 POL토큰을 보내준다.
-export const sendPOL = (val) => {
+export const sendPOL = (val, account) => {
   // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
   // toAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //받는주소
   //account는 관리자주소
@@ -551,7 +551,7 @@ export const sendPOL = (val) => {
 };
 
 // 사용자 주소의 잔액 확인 (잔액 바뀔때마다 리렌더링 필요)
-export const checkPOL = () => {
+export const checkPOL = (account) => {
   // Address = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //POL 토큰 잔액 조회할 주소
   //account는 관리자주소
   return tokenContract.methods.balanceOf("Address").call({ from: account });

@@ -15,8 +15,9 @@ import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
 import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
+import { connect } from "react-redux";
 
-function Candidate2() {
+function Candidate2({ state }) {
   const navigate = useNavigate();
   const params = useParams();
   const [candIdx, setCandIdx] = useState(0);
@@ -41,6 +42,8 @@ function Candidate2() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    console.log("store에서 가져온 wallet:", state[0].wallet);
   }, []);
 
   useEffect(() => {
@@ -397,4 +400,8 @@ function Candidate2() {
   );
 }
 
-export default Candidate2;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps, null)(Candidate2);
