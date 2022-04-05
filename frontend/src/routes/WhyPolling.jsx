@@ -19,6 +19,7 @@ function WhyPolling() {
             </div>
             <div className={Styles.outlinecircle1}>
                 <div className={Styles.inlinecircle1}>
+                    <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/150/000000/external-voter-politics-flaticons-lineal-color-flat-icons.png" className={Styles.img1} />
                 </div>
                 {/* <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/90/000000/external-voter-politics-flaticons-lineal-color-flat-icons.png" className={Styles.voterimg}/> */}
             </div>
@@ -28,6 +29,7 @@ function WhyPolling() {
             <div className={Styles.text}>본인 인증</div>
             <div className={Styles.outlinecircle2}>
                 <div className={Styles.inlinecircle2}>
+                    <img src="https://img.icons8.com/external-colorful-filled-outline-dmitry-mirolyubov/130/000000/external-blockchain-bitcoin-and-mining-colorful-filled-outline-dmitry-mirolyubov-10.png" className={Styles.img2} />
                 </div>
             </div>
             <div className={Styles.block}>
@@ -39,6 +41,7 @@ function WhyPolling() {
             <img src="https://img.icons8.com/ios/70/000000/long-arrow-right.png" className={Styles.arrow2}/>
             <div className={Styles.outlinecircle3}>
                 <div className={Styles.inlinecircle3}>
+                    <img src="https://img.icons8.com/external-ddara-flat-ddara/140/000000/external-verification-fintech-ddara-flat-ddara.png" className={Styles.img3}  />
                 </div>
             </div>
             <div className={Styles.result}>

@@ -7,12 +7,11 @@ import { useState } from "react";
 import { Button } from "bootstrap";
 import axios from "axios";
 // import { Table } from "react-bootstrap";
-import UserSearch from "../components/admin/Usesearch.jsx";
 
 import * as React from 'react';
 import UserSearch2 from "../components/admin/Usesearch2.jsx";
 import Userqnalist from "../components/admin/Userqnalist.jsx";
-
+import Swal from "sweetalert2";
 
 function User() {
 
@@ -98,6 +97,35 @@ function User() {
         console.log(phone);
     };
 
+    //alert 창_회원가입 
+    const joinSuccess = () => {
+        Swal.fire({
+          title: "회원가입 성공!!",
+          text: "POLLING에 오신 것을 환영합니다!",
+          icon: "success",
+          confirmButtonColor: "#73E0C1",
+          confirmButtonText: "확인",
+        })
+    };
+    
+    const joinFail = () => {
+        Swal.fire({
+          title:"회원가입 실패!",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //빈칸확인
+    const inputnull = () => {
+        Swal.fire({
+          text:"닉네임/이메일/비밀번호/휴대폰번호를 입력하세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
 
     //페이지 이동
     const navigate = useNavigate();
@@ -106,7 +134,8 @@ function User() {
     const onLogin = (e) => {
         if(nickname ===" " || email === " " || password === " " || phone === " "){
             e.preventDefault();
-            alert("닉네임/이메일/비밀번호를 입력하세요.")
+            // alert("닉네임/이메일/비밀번호/휴대폰번호를 입력하세요.")
+            inputnull();
         } 
         else if(nickname !== " " && email !== " " && password !== " " ){
             axios
@@ -123,13 +152,15 @@ function User() {
             )
             .then((res) => {
                 console.log("res", res);
-                alert("회원가입 성공!")
+                // alert("회원가입 성공!")
+                joinSuccess();
                 // navigate("/login");
             })
             .catch(error => {
                 const message = error.message;
                 console.log("message", message);
-                alert("회원가입 실패");
+                // alert("회원가입 실패");
+                joinFail();
                 // setSubmitError(message);
                 // setTimeout(() => {
                 //   setSubmitError(null);
