@@ -1,0 +1,31 @@
+server:
+  port: 8090
+armeria:
+  ports:
+    - port: 8099
+      protocols:
+        - http
+        - proxy
+
+spring:
+  profiles:
+    active: local
+    default: local
+    include:
+      - core-local
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gojung.xyz@gmail.com
+    password: u201502113
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+sms:
+  serviceid: ncp:sms:kr:282615511747:validation_sms
+  secretkey: Lf4Oqy1Ebsn9ecds1XC6RopnLodw9NG4z2b3EKLC
+  accesskey: oekTboQ7Jao7JPzE8omf

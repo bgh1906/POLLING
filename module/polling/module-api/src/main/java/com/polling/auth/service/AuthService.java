@@ -5,11 +5,11 @@ import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.dto.request.AuthRequestDto;
 import com.polling.auth.dto.request.ValidateMemberRequestDto;
-import com.polling.entity.member.Member;
-import com.polling.entity.member.status.OAuthType;
-import com.polling.repository.member.MemberRepository;
-import com.polling.util.oauth.KaKaoOAuthResponse;
-import com.polling.util.oauth.OAuthClient;
+import com.polling.auth.oauth.KaKaoOAuthResponse;
+import com.polling.auth.oauth.OAuthClient;
+import com.polling.member.entity.Member;
+import com.polling.member.entity.status.OAuthType;
+import com.polling.member.repository.MemberRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,6 @@ public class AuthService {
         requestDto.getAccessToken());    //kakao만 잡혀 있음
     Member member = Member.builder()
         .email(profile.getOAuthEmail())
-        .wallet(requestDto.getWallet())
         .nickname(requestDto.getNickname())
         .oauthType(OAuthType.KAKAO)
         .oauthId(profile.getId())

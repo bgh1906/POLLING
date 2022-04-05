@@ -10,19 +10,19 @@ jar {
 
 
 dependencies {
-    implementation 'io.grpc:grpc-netty:1.45.0'
-    implementation 'io.grpc:grpc-protobuf:1.45.0'
-    implementation 'io.grpc:grpc-stub:1.45.0'
-    implementation 'com.google.protobuf:protobuf-java:3.19.4'
+    implementation 'io.grpc:grpc-netty:1.42.1'
+    implementation 'io.grpc:grpc-protobuf:1.42.1'
+    implementation 'io.grpc:grpc-stub:1.42.1'
+    implementation 'com.google.protobuf:protobuf-java:3.17.3'
 }
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.19.4'
+        artifact = 'com.google.protobuf:protoc:3.17.3'
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.45.0'
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.42.1'
         }
     }
     generateProtoTasks {

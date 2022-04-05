@@ -2,16 +2,14 @@ package com.polling.member.controller;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
+import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
-import com.polling.entity.member.status.MemberRole;
 import com.polling.member.dto.request.ChangePasswordRequestDto;
 import com.polling.member.dto.request.SaveNativeMemberRequestDto;
 import com.polling.member.dto.response.FindMemberResponseDto;
+import com.polling.member.repository.MemberRepository;
 import com.polling.member.service.MemberService;
-import com.polling.repository.member.MemberRepository;
-import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,18 +79,11 @@ public class MemberController {
   }
 
   @Trace
-  @PatchMapping("/role/{id}")
-  @ApiOperation(value = "회원 권한 수정")
-  public ResponseEntity<Void> changeRole(@PathVariable Long id, Set<MemberRole> memberRole) {
-    memberService.changeRole(id, memberRole);
-    return ResponseEntity.status(200).build();
-  }
-
-  @Trace
   @PatchMapping("/role/admin/{id}")
   @ApiOperation(value = "임시용 멤버에 어드민 권한 추가")
   public ResponseEntity<Void> changeRole(@PathVariable Long id) {
     memberService.addAdminRole(id);
     return ResponseEntity.status(200).build();
   }
+
 }

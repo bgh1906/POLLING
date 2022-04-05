@@ -1,0 +1,35 @@
+syntax = "proto3";
+package com.polling.grpc.notification.service;
+
+option java_multiple_files = true;
+
+option java_package = "com.polling.grpc";
+
+import "common.proto";
+
+service NotificationSmsService {
+
+  /**
+   * Server(1) : Client(1)
+   * - unary RPC
+   * - Client 가 요청을 보내고 Server 가 응답하는 형태
+   */
+  rpc sendSms(ListOfNotificationRequest) returns (SMSResponse) {}
+
+}
+
+message ListOfNotificationRequest{
+  repeated SMSRequest smsRequest = 1;
+}
+
+message SMSRequest{
+  string to = 2;
+  string content = 3;
+}
+
+message SMSResponse{
+  ResultStatus status = 1;
+  string result = 2;
+  string randomCode = 3;
+
+}

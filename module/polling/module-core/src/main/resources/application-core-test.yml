@@ -1,11 +1,11 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
   config:
     activate:
       on-profile: test
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
   datasource:
     hikari:
@@ -16,7 +16,6 @@ spring:
       password:
       connection-timeout: 5000
       pool-name: Spring-HikariPool
-
 
   jpa:
     generate-ddl: true

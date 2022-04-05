@@ -1,9 +1,9 @@
 package com.polling.contact.dto;
 
-import com.polling.entity.contact.Contact;
-import com.polling.entity.contact.status.ContactType;
+import com.polling.contact.entity.Contact;
+import com.polling.contact.entity.status.ContactType;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,15 +15,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SaveContactRequestDto {
 
-  private ContactType contactType;
+  @NotNull
+  private String contactType;
+  @NotNull
   private String title;
+  @NotNull
   private String content;
+  @NotNull
+  private String email;
 
-  public Contact toEntity(){
+  public Contact toEntity() {
+    ContactType ct = ContactType.findByMethod(contactType);
     return Contact.builder()
         .title(title)
         .content(content)
-        .contactType(contactType)
+        .contactType(ct)
+        .email(email)
         .build();
   }
 }

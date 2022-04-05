@@ -1,7 +1,7 @@
 package com.polling.contact.dto;
 
-import com.polling.entity.contact.status.ContactStatus;
-import com.polling.entity.contact.status.ContactType;
+import com.polling.contact.entity.status.ContactStatus;
+import com.polling.contact.entity.status.ContactType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +21,5 @@ public class FindAllContactResponseDto {
   private String content;
   private Long memberId;
   private String answer;
+  private String email;
 }

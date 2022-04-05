@@ -1,7 +1,7 @@
 package com.polling.auth.adapter;
 
 import com.polling.auth.dto.MemberDto;
-import com.polling.entity.member.status.MemberRole;
+import com.polling.member.entity.status.MemberRole;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;

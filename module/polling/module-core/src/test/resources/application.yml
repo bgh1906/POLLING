@@ -4,9 +4,3 @@ spring:
     default: test
     include:
       - core-test
-logging:
-  file.name: ./PJT-web.log
-  level:
-    root: INFO
-    org.hibernate.SQL: debug
-    org.hibernate.type: trace

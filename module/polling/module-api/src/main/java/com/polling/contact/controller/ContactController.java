@@ -2,15 +2,14 @@ package com.polling.contact.controller;
 
 import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
+import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
 import com.polling.contact.dto.FindAllContactResponseDto;
 import com.polling.contact.dto.FindContactResponseDto;
-import com.polling.contact.dto.SaveAnswerRequestDto;
 import com.polling.contact.dto.SaveContactRequestDto;
+import com.polling.contact.repository.ContactQueryRepository;
+import com.polling.contact.repository.ContactRepository;
 import com.polling.contact.service.ContactService;
-import com.polling.queryrepository.ContactQueryRepository;
-import com.polling.repository.contact.ContactRepository;
-import com.polling.security.CurrentUser;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -69,14 +68,5 @@ public class ContactController {
       @CurrentUser MemberDto memberDto) {
     List<FindAllContactResponseDto> list = contactQueryRepository.findAllContact();
     return ResponseEntity.status(200).body(list);
-  }
-
-  @Trace
-  @PostMapping("/admin")
-  @ApiOperation(value = "1:1문의 답변")
-  public ResponseEntity<Void> response(@CurrentUser MemberDto memberDto,
-      SaveAnswerRequestDto requestDto) {
-    contactService.saveAnswer(requestDto);
-    return ResponseEntity.status(200).build();
   }
 }
