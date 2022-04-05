@@ -1,0 +1,116 @@
+.management {
+    z-index: 5;
+    position: absolute;
+    /* width: 200px; */
+    /* height: 62px; */
+    left: 13vw;
+    top: 23vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    /* line-height: 60px; */
+    text-align: center;
+    
+    color: #000000;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+} 
+
+.managementbg {
+    position: absolute;
+    width: 78vw;
+    height: 50vh;
+    left: 11vw;
+    top: 33vh;
+    
+    background: #FFF9EE;
+    border-radius: 7vh;
+}
+ 
+.user {
+    position: absolute;
+    width: 20vw;
+    height: 30vh;
+    left: 26vw;
+    top: 40vh;
+    
+    /* background: #FEFFF8; */
+    background: #fefff873;
+    /* background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/160/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png); */
+    background-repeat: no-repeat;
+    background-position: 5.5vw top;
+    padding-left: 0vw;
+    padding-bottom: 1vh;
+    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 2vh;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.7vw;
+    line-height: 53vh;
+    text-align: center;
+
+    color: #000000;
+}
+
+div .user:hover{
+    background: #FEFFF8;
+    /* background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/160/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png); */
+    background-repeat: no-repeat;
+    background-position: 5.5vw top;
+}
+
+div .poll:hover{
+    background: #FEFFF8;
+    /* background-image: url(https://img.icons8.com/ios/160/000000/ballot--v2.png); */
+    background-repeat: no-repeat;
+    background-position: 5vw top;
+}
+
+.poll {
+    position: absolute;
+    width: 20vw;
+    height: 30vh;
+    left: 55vw;
+    top: 40vh;
+    
+    /* background: #FEFFF8; */
+    background: #fefff873;
+    /* background-image: url(https://img.icons8.com/ios/160/000000/ballot--v2.png); */
+    background-repeat: no-repeat;
+    background-position: 5vw top;
+    /* padding-left:2.3vw; */
+    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
+    /* box-shadow: 0.0vw 0.1vw 0.5vw 0.1vw #f1d2a1; */
+    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+    border-radius: 2vh;
+
+    font-family: 'GangwonEdu_OTFBoldA';
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.7vw;
+    line-height: 53vh;
+    text-align: center;
+
+    color: #000000;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../fonts/RussoOne-Regular.ttf);
+  }

@@ -1,0 +1,101 @@
+.faq {
+    z-index: 5;
+    position: absolute;
+    left: 13vw;
+    top: 18vh;
+    
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    text-align: center;
+    
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.accordion {
+    /* position: relative; */
+    position: absolute;
+    width: 50vw;
+    height: 30vh;
+    top: 35vh;
+    left: 23vw;
+    /* font-family:'GangwonEdu_OTFBoldA'; */
+    /* background-color: rgba(250, 235, 215, 0.521); */
+    /* background-color: #ffffff00 */
+}
+
+.appbar {
+    /* position: relative; */
+    /* background-color: rgba(250, 235, 215, 0.521); */
+    background-color: #ffffff00;
+    box-shadow: none;
+    /* style={{backgroundColor:'#ffffff00'}} */
+}
+
+.tab{
+    color: #000000;
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    font-family: "RussoOne";
+    font-size: 1.5vw;
+}
+
+.aaccordiontitle {
+    /* font-family: "Bitter"; */
+    font-family: "ROKAFSansMedium";
+    font-weight: bold;
+    font-size: 0.9vw;
+
+    /* background-color: #3afaca31; */
+    /* border: 0.2vh solid #000000; */
+}
+
+.aaccordioncontent {
+    font-family: "GangwonEdu_OTFBoldA";
+    font-weight: bold;
+
+    background-color: rgba(173, 217, 255, 0.164);
+    /* background-color: #3afaca31; */
+    border-radius: 1vh;
+    /* border: 0.2vh solid #000000; */
+    /* border: 0.2vh solid rgba(173, 217, 255, 0.301); */
+}
+
+.aaccordioncolor {
+    /* background-color: #00000000; */
+    /* background-color: rgba(171, 213, 250, 0.322); */
+    /* background-color: rgba(173, 217, 255, 0.116); */
+    /* background-color: #3afaca31; */
+    background-color: #3afaca15;
+    border: 0.2vh solid #000000;
+}
+.aaccordioncolor2 {
+    /* background-color: #00000000; */
+    /* background-color: rgba(171, 213, 250, 0.322); */
+    background-color: rgba(173, 217, 255, 0.116);
+    /* background-color: #3afaca31; */
+    border: 0.1vh solid #000000;
+}
+
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RussoOne";
+    src: url(../fonts/RussoOne-Regular.ttf);
+}
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');

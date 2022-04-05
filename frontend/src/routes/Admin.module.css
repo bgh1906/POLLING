@@ -1,0 +1,219 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap');
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+#title_header{
+    position: relative;
+    margin: 5vh;
+}
+
+.title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    font-family: 'Bitter', serif;
+    font-size: 7vw;
+    top: 3vh;
+    font-weight: 900;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1;
+    
+}
+
+.create {
+    display: flex;
+    position: relative;
+    justify-content: end;
+    font-family: 'Bitter', serif;;
+    font-size: 4vw;
+    top: 3vh;
+    right: 1vw;
+    font-weight: 900;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1;
+}
+
+.create:hover {
+    color:blue;
+}
+
+#moment {
+    position: absolute;
+    font-family: 'Bitter', serif;
+    font-size: 1.8vw;
+    font-weight: 900;
+    bottom: -15vh;
+    left: 8vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #F9F7F1;
+    margin-top: 17vh;
+    border-style: double;
+    border-width: 0.5vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+
+}
+
+#status{
+    position: relative;
+    font-size: 4vw;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    text-align: center;
+    margin: 5vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #201e1ef1;
+}
+
+#logo{
+    position: absolute;
+    width: 6vw;
+    top: 1vh;
+    right: 0.5vw;
+}
+
+#status_title {
+    position: relative;
+    font-family: 'Bitter', serif;
+    font-weight: 900;
+    font-size: 2.5vw;
+    margin: 2vw;
+    margin-top: 4vw;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom-style: double;
+    border-width: 0.3vw;
+    color: #201e1ef1;
+}
+
+#status_kor{
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 1.6vw;
+    right: 0.5vw;
+    top: 1.5vh;
+    color: #201e1ef1;
+}
+
+#poll_container{
+    justify-content: center;
+}
+
+
+#pollbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'ROKAFSansBold';
+    font-size: 1vw;
+    border-left-style: dashed ;
+    border-right-style: dashed ;
+    border-width: 0.1vw;
+}
+
+
+
+
+#list_img {
+    width: 70%;
+    /* border:5px solid #ffcbcb; */
+    margin: auto;
+    margin-bottom: 2.5vh;
+    
+}
+
+
+#status_button1 {
+    margin-top: 1.5vh;
+    width: 8vw;
+    height: 4vh;
+    font-size: 0.9vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+}
+
+#status_button2 {
+    margin: 1vh;
+    margin-bottom: 2.5vh;
+    width: 8vw;
+    height: 4vh;
+    font-size: 0.9vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+}
+
+#status_button1:hover{
+    color:#fff;
+    background-color: rgb(255, 0, 0);
+}
+
+#status_button2:hover{
+    color:#fff;
+    background-color: rgb(0, 26, 255);
+}
+
+
+#status_under {
+    margin: 1vw;
+
+    border-top-style: solid;
+    border-width: 0.3vw;
+}
+
+
+
+
+
+#list_pollname{
+    font-size: 1.6vw;
+    font-family: 'ROKAFSansBold';
+    color: black;
+}
+
+#list_datefont{
+    margin-top: 2vh;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+}

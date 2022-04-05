@@ -1,0 +1,100 @@
+buildscript {
+    ext {
+        springBootVersion = '2.6.4'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.17'
+    }
+}
+
+ext['log4j2.version'] = '2.17.1'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+
+
+    group = 'com.polling'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
+
+    repositories {
+        mavenCentral()
+    }
+
+    allprojects {
+
+    }
+
+    dependencies {
+        /* Spring */
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        /* WEB */
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+        /* mokito */
+        testImplementation 'org.mockito:mockito-core:4.4.0'
+
+        /* gson */
+        implementation 'com.google.code.gson:gson:2.8.7'
+        implementation 'org.apache.httpcomponents:httpclient:4.5'
+
+        /* lombok */
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        /* webflux */
+        implementation('org.springframework.boot:spring-boot-starter-webflux')
+        testImplementation('io.projectreactor:reactor-test')
+
+        /* yaml-importer */
+        implementation 'javax.annotation:javax.annotation-api:1.2'
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "failed"
+            exceptionFormat "full"
+        }
+    }
+}
+
+
+project(':module-api') {
+    dependencies {
+        implementation project(':module-core')
+        implementation project(':grpc-common')
+    }
+}
+
+project(':module-external') {
+    dependencies {
+        implementation project(':grpc-common')
+    }
+}
+
+project(':grpc-common') {
+    dependencies {
+        implementation project(':module-core')
+    }
+}
+

@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Cutive+Mono");
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* html {
+  font-size: 18px;
+} */
+/* 
+body {
+  font-family: "Cutive Mono", serif;
+  font-size: 1.2em;
+  line-height: 1.6;
+  background: #CCC;
+  overflow-x: hidden;
+} */
+
+/* label .menu { */
+.menu {
+  position: absolute;
+  /* right: -100px; */
+  right: 2.5vw;
+  top: 4vh;
+  z-index: 100;
+  width: 2.5vw;
+  height: 5vh;
+  /* background: rgba(255, 255, 255, 0.452); */
+  /* background: #77a3a9; */
+  border-radius: 50% 50% 50% 50%;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  /* 모달 클릭시 버튼쪽 모양생기는거 */
+  /* -webkit-box-shadow: 0 0 0 0 #77a3a9, 0 0 0 0 #77a3a9; */
+          /* box-shadow: 0 0 0 0 #77a3a9, 0 0 0 0 #77a3a9; */
+  cursor: pointer;
+}
+
+/* label .hamburger { */
+.hamburger {
+  /* position: absolute; */
+  /* right: 0.4vw;
+  top: 2.5vh;
+  width: 2.5vw;
+  height: 0.6vh; */
+  position: fixed;
+  right: 2.5vw;
+  top: 7vh;
+  width: 2.5vw;
+  height: 0.6vh;
+  background: #77a3a9;
+  display: block;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+label .hamburger:after, label .hamburger:before {
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  /* height: 90%; */
+  height: 100%;
+  background: #77a3a9;
+}
+label .hamburger:before {
+  top: -10px;
+}
+label .hamburger:after {
+  bottom: -10px;
+}
+label input {
+  display: none;
+}
+label input:checked + .menu {
+  /* 스크롤해도 전체 덮기 */
+  position: fixed;
+  /* -webkit-box-shadow: 0 0 0 100vw #FFF, 0 0 0 100vh #FFF; */
+  /* box-shadow: 0 0 0 100vw #FFF, 0 0 0 100vh #FFF; */
+  /* -webkit-box-shadow: 0 0 0 100vw #77a3a9, 0 0 0 0 rgba(255, 255, 255, 0.452);
+          box-shadow: 0 0 0 100vw rgba(255, 255, 255, 0.452), 0 0 0 0 rgba(255, 255, 255, 0.452); */
+    -webkit-box-shadow: 0 0 0 100vw #77a3a9f1, 0 0 0 0 #77a3a9f1;
+    /* -webkit-box-shadow: 0 0 0 100vw #77a3a9d5, 0 0 0 0 #77a3a9d5; */
+            /* box-shadow: 0 0 0 100vw #77a3a9d5, 0 0 0 0 #77a3a9d5; */
+            box-shadow: 0 0 0 100vw #77a3a9f1, 0 0 0 0 #77a3a9f1;
+    border-radius: 0;
+    background: #77a3a9f1;
+}
+label input:checked + .menu .hamburger {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background: #2e5d63;
+}
+label input:checked + .menu .hamburger:after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  bottom: 0;
+  background: #2e5d63;
+}
+label input:checked + .menu .hamburger:before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: 0;
+  background: #2e5d63;
+}
+label input:checked + .menu + ul {
+/* label input:checked + .menu + div { */
+  position: fixed;
+  opacity: 1;
+  z-index: 200;
+  visibility: visible;
+}
+label ul {
+/* label div { */
+  /* z-index: 200; */
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: .25s 0s ease-in-out;
+  transition: .25s 0s ease-in-out;
+}
+/* label a { */
+/* label Link {
+  margin-bottom: 1em;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-family: "RussoOne";
+  font-size: 6vh;
+} */
+
+.home{
+  margin-bottom: 1em;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-family: "RussoOne";
+  font-size: 6vh;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logout{
+  display: block;
+  color: #fff;
+  text-decoration: none;
+
+  font-family: "RussoOne";
+  font-size: 6vh;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  background:rgba(255, 255, 255, 0);
+  border-color:rgba(255, 255, 255, 0);
+
+  margin-bottom: 1em;
+  /* margin-left:-0.7vw; */
+}
+
+.poll{
+    margin-bottom: 1em;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: "RussoOne";
+    font-size: 6vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+.hall{
+    margin-bottom: 1em;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: "RussoOne";
+    font-size: 6vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.history{
+    margin-bottom: 1em;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: "RussoOne";
+    font-size: 6vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+/* h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+} */
+
+
+/* credit: https://codemyui.com/pure-css-fullscreen-navigation-menu/ */
+@font-face {
+    font-family: "RussoOne";
+    src: url(../../fonts/RussoOne-Regular.ttf);
+  }

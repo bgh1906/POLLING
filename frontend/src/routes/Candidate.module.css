@@ -1,0 +1,628 @@
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 강원교육체 */
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 바른공군체 */
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROKAFSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bitter */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
+/* font-family: 'Bitter', serif; */
+
+
+
+
+
+
+.container {
+    position: relative;
+    margin: 8vw 10vw;
+    /* border-style: double; */
+}
+
+
+#profile_image {
+    position: relative;
+    /* width: 30vw; */
+    width: 30vw;
+    /* max-height: 35vw; */
+    height: 30vw;
+    left: 35vw;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0.4vw;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+}
+
+#name {
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 9vw;
+    left: 5.5vw;
+    top: 5vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+#profile {
+    position: absolute;
+    width: 22vw;
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.3vw;
+    left: 11vw;
+    top: 28vh;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+#nowrank {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    right: -0.5vw;
+    top: 24vh;
+    text-align: center;
+    transform: rotate(90deg);
+}
+
+#nowpoll {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    right: 2.5vw;
+    top: 21vh;
+    text-align: center;
+    transform: rotate(90deg);
+}
+
+
+#poll_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    left: 9vw;
+    top: 57vh;
+    padding-top: 1vh;
+}
+
+#poll_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#back_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+#list_button:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    left: 9vw;
+    top: 64vh;
+    padding-top: 1vh;
+}
+
+#back_button {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 1vw;
+    top: 72vh;
+}
+#list_button {
+    position:relative;
+    width: 13vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    top: 1.5vh;
+    left: 65.5vw;
+    padding-top: 1vh;
+}
+
+#photobox{
+    position: relative;
+    border: solid;
+    border-radius: 10px;
+    border-width: 0.1vw;
+    width: 30vw;
+    left: 35vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    
+}
+
+#photo1 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+
+#photo2 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+#photo3 {
+    /* width: 8vw; */
+    height: 6vw;
+    margin: 1vh 1vw;
+    cursor: pointer; 
+}
+
+
+
+
+
+
+
+/* Candidate2 */
+
+
+#name2 {
+    position: absolute;
+    font-family: 'ROKAFSansBold';
+    font-size: 9vw;
+    left: 46vw;
+    top: 5vh;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+#profile_image2 {
+    position: relative;
+    width: 30vw;
+    /* max-height: 37vw; */
+    height: 30vw;
+    left: 13vw;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0.4vw;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#profile2 {
+    position: absolute;
+    width: 30vw;
+    /* height: 10vh; */
+    /* font-family: 'ROKAFSansBold'; */
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.4vw;
+    left: 47vw;
+    top: 27vh;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+#nowrank2 {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    left: -3vw;
+    top: 24vh;
+    text-align: center;
+    transform: rotate(270deg);
+}
+
+#nowpoll2 {
+    position: absolute;
+    width: 20vw;
+    font-family: 'ROKAFSansMedium';
+    font-size: 2vw;
+    left: vw;
+    top: 25vh;
+    text-align: center;
+    transform: rotate(270deg);
+}
+
+
+#poll_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 12vw;
+    top: 57vh;
+    padding-top: 1vh;
+}
+
+#poll_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#back_button2:hover{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#con_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 12vw;
+    top: 64vh;
+    padding-top: 1vh;
+}
+
+#back_button2 {
+    /* margin-top: 1.5vh; */
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    font-family: 'ROKAFSansMedium';
+    text-align: center;
+    background-color: #FFE29A;
+    cursor: pointer; 
+    border-radius: 10px;
+    color: black;
+    right: 1vw;
+    top: 72vh;
+}
+
+#photobox2{
+    position: relative;
+    border: solid;
+    border-radius: 10px;
+    border-width: 0.1vw;
+    width: 30vw;
+    left: 13vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    
+}
+
+#mark{
+    width: 3vw;
+    position: relative;
+    top: 1.3vh;
+    right: 0.5vh;
+}
+
+#crown {
+    position: absolute;
+    width: 4vw;
+    top: 3vh;
+    left: 2vw;
+    transform: rotate(320deg);
+}
+
+#crown2 {
+    position: absolute;
+    width: 4vw;
+    right: 28vw;
+}
+
+
+#tx {
+    position: absolute;
+    width: 2vw;
+    top: 64.5vh;
+    left: 20vw;
+    z-index: 5;
+}
+
+#tx2 {
+    position: absolute;
+    width: 2vw;
+    top: 64.5vh;
+    right: 14vw;
+    z-index: 5;
+}
+
+#poll_paper{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 15vh;
+    background-color: white;
+    width: 24vw;
+    height: 72vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#poll_paper2{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 3px solid black;
+}
+
+
+#poll_title{
+    position: relative;
+    font-family: 'ROKAFSansBold';
+    font-size: 2.2vw;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+#paper_image{
+    margin: 0 auto;
+    width: 12vw;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 2vw;
+    text-align: center;
+}
+
+#stamp_box{
+    width: 3.5vw;
+    height: 3.5vw;
+    background-color: rgb(236, 236, 233);
+    border: 3px solid black;
+    margin: 0.8vh auto;
+    cursor: pointer;
+}
+
+#stamp{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_button{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1.5vw;
+    margin: auto;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#paper_button2{
+    font-family: 'ROKAFSansMedium';
+    font-size: 1vw;
+    margin: auto;
+    margin-top: 5vh;
+    text-align: center;
+    background-color: black;
+}
+
+#paper_button2:hover{
+    background-color: red;
+}
+
+.swal2-container {
+    z-index: 1500 !important;
+}
+
+#x_button{
+    position: absolute;
+    width: 1vw;
+    right: 0;
+    margin: 0.6vw;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.css-79ws1d-MuiModal-root{
+    z-index: 500 !important;
+}
+
+#stamp_box2{
+    position:absolute;
+    width: 5vw;
+    height: 5vw;
+    right: 0.4vw;
+    bottom: -1.1vh;
+    border: 3px solid black;
+    margin: 2vh auto;
+    cursor: pointer;
+}
+
+#stamp2{
+    width: 100%;
+    height: 100%;
+}
+
+#paper_text{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1vw;
+    bottom: -1vh;
+    left: 1.6vw;
+}
+
+#paper_text2{
+    position: absolute;
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 1.2vw;
+    bottom: 8.3vh;
+    right: 0.5vw;
+    font-weight: 700;
+}
+
+
+
+/* 트랜잭션 모달 */
+
+#tran_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 23vh;
+    background-color: white;
+    width: 40vw;
+    height: 60vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#behind_box{
+    /* position: absolute; */
+    position: relative;
+    margin: auto;
+    top: 26vh;
+    background-color: white;
+    width: 30vw;
+    height: 40vh;
+    border: 5px solid black;
+    padding: 3px;
+}
+
+#behind_mark{
+    position: absolute;
+    width: 3vw;
+    /* right: -0.2vw; */
+    /* bottom: 0; */
+    margin: 0.3vw;
+}
+
+#behind_text{
+    position: relative;
+    text-align: center;
+    font-family: 'ROKAFSansMedium';
+    /* font-family: 'GangwonEdu_OTFBoldA'; */
+    font-size: 1.9vw;
+    top: 6vh;
+}
+
+#behind_btn{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    left: 6vw;
+}
+
+#behind_btn2{
+    position: absolute;
+    width: 8vw;
+    height: 5vh;
+    font-size: 1.4vw;
+    font-family: 'ROKAFSansBold';
+    background-color: #FFE29A;
+    cursor: pointer; 
+    color: black;
+    padding-top: 1vh;
+    bottom: 7vh;
+    right: 6vw;
+}
+
+#behind_btn:hover{
+    background-color: blue;
+    color: white;
+}
+
+#behind_btn2:hover{
+    background-color: red;
+    color: white;
+}
+
+#behind_marktext{
+    position: absolute;
+    font-family: 'Russo One';
+    font-size: 1.9vw;
+    top: -2.5vh;
+    left: 3.5vw;    
+}
+    
+#wallet_box{
+    position: absolute;
+    text-align: center;
+    width: 8.8vw;
+    bottom: 12vh;
+    left: 6.9vw;
+}
+
+#wallet_password{
+    font-family: 'ROKAFSansBold';
+    margin: auto;
+    text-align: center;
+}
+    
