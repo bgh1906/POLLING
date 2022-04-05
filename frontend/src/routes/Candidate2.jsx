@@ -13,10 +13,12 @@ import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
+import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
 
 function Candidate2() {
   const navigate = useNavigate();
   const params = useParams();
+  const [candIdx, setCandIdx] = useState(0);
   const [candi_name, setCandi_name] = useState("");
   const [profile, setProfile] = useState("");
   const [profile_image, setProfile_image] = useState("");
@@ -45,14 +47,16 @@ function Candidate2() {
       .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
       .then((res) => {
         console.log(res);
+        setCandIdx(res.data.candidateIndex);
         setProfile_image(res.data.thumbnail);
         setPhoto1(res.data.imagePath1);
         setPhoto2(res.data.imagePath2);
         setPhoto3(res.data.imagePath3);
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
-        setVoteCount(res.data.voteTotalCount);
         setCommentdata(res.data.comments);
+        console.log(params.id);
+        console.log("이 후보의 IDX:", candIdx);
       })
       .catch((error) => {
         console.log(error.response);
@@ -82,6 +86,14 @@ function Candidate2() {
         console.log(error.response);
       });
   }, []);
+
+  getTotalVotes(candIdx);
+
+  async function getTotalVotes(idx) {
+    const totalVotes = await totalVotesBlock(idx);
+    // console.log(idx, totalVotes);
+    setVoteCount(totalVotes);
+  }
 
   function changePhoto1() {
     setProfile_image(photo1);
@@ -116,21 +128,47 @@ function Candidate2() {
   }
 
   function handlePicked() {
-    if (picked) {
-      setPicked(false);
-    } else {
-      setPicked(true);
-    }
+    setPicked((prev) => !prev);
   }
 
-  function handlepoll() {
+  async function handlepoll() {
     if (picked) {
       // 블록체인 투표 하는 부분
-      Swal.fire({
-        title: "투표가 완료되었습니다.",
-        icon: "success",
-      });
-      handleClose();
+      //   1. Unlock 해준다.(비밀번호 입력받아서)
+      // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
+      const res = await voteBlock(candIdx);
+      const txId = res.transactionHash;
+      console.log(txId);
+      axios
+        .post(
+          `https://j6a304.p.ssafy.io/api/polls/candidates`,
+          {
+            candidateId: params.id,
+            transactionId: txId,
+            voteCount: 1,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+              Accept: "*/*",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
+          renderCheck();
+          Swal.fire({
+            title: "투표가 완료되었습니다.",
+            icon: "success",
+          });
+          handleClose();
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+      // 3. 다시 lock 한다.
     } else {
       Swal.fire({
         title: "투표 도장을 찍어주세요.",

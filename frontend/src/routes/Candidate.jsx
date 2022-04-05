@@ -34,8 +34,6 @@ function Candidate() {
   const [modalOpen2, setmodalOpen2] = useState(false);
   const [imageLock, setimageLock] = useState(true);
   const [modalOpen3, setmodalOpen3] = useState(false);
-  const [loading, setLoading] = useState(false);
-  //   const [votesRender, setVotesRender] = useState(false);
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
@@ -59,8 +57,8 @@ function Candidate() {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        getTotalVotes(candIdx);
-        // setVoteCount(res.data.voteTotalCount);
+        console.log(params.id);
+        console.log("이 후보의 IDX:", candIdx);
       })
       .catch((error) => {
         console.log(error.response);
@@ -69,7 +67,13 @@ function Candidate() {
 
   useEffect(() => {
     axios
-      .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`)
+      .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+          Accept: "*/*",
+        },
+      })
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -84,6 +88,8 @@ function Candidate() {
         console.log(error.response);
       });
   }, []);
+
+  getTotalVotes(candIdx);
 
   async function getTotalVotes(idx) {
     const totalVotes = await totalVotesBlock(idx);
