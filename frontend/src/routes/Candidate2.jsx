@@ -56,13 +56,15 @@ function Candidate2() {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        console.log(params.id);
-        console.log("이 후보의 IDX:", candIdx);
+        console.log("이 후보의 id:", params.id);
+        console.log("이 후보의 IDX:", res.data.candidateIndex);
       })
       .catch((error) => {
         console.log(error.response);
       });
   }, [renderCount]);
+
+  getTotalVotes(candIdx);
 
   useEffect(() => {
     axios
@@ -87,8 +89,6 @@ function Candidate2() {
         console.log(error.response);
       });
   }, []);
-
-  getTotalVotes(candIdx);
 
   async function getTotalVotes(idx) {
     const totalVotes = await totalVotesBlock(idx);
