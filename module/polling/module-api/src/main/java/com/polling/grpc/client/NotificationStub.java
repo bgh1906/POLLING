@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationStub extends AbstractStub {
 
   @Trace
-  @PostMapping("/sms")
+  @PostMapping("/deprecated/sms/")
   public ResponseEntity<SMSCodeResponseDto> sendEventTest(
       @RequestBody SendSMSRequestDto requestDto) {
     NotificationSmsServiceGrpc.NotificationSmsServiceFutureStub stub = smsStub();
