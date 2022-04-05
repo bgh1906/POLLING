@@ -12,7 +12,8 @@ import Modal from '@mui/material/Modal';
 import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
-import Lock from "../assets/Lock.png"
+import Lock from "../assets/Lock.png";
+import TextField from '@mui/material/TextField';
 
 
 function Candidate() {
@@ -224,6 +225,10 @@ function Candidate() {
                              <p id={styles.stamp_box} onClick={handlePicked}>
                                 {picked? <img id={styles.stamp} src={mark} alt="mark2"/> : null}
                              </p>
+                             <p id={styles.wallet_box}>
+                             <TextField id={styles.wallet_password} placeholder="Wallet Password"
+                                variant="standard" type= "password" />
+                                </p>
                              <p id={styles.paper_button}>
                                 <Button onClick={handlepoll} id={styles.paper_button2} variant="contained"> 투표하기</Button>
                              </p>
