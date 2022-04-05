@@ -42,3 +42,8 @@
 <img src="https://img.shields.io/badge/-Doamin%20Driven%20Desigin-181717?style=flat-square"/> <img src="https://img.shields.io/badge/-SOLID-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Test%20Driven%20Design-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Agile-181717?style=flat-square"/>
+
+
+![Main](https://lab.ssafy.com/s06-blockchain-sub2/S06P22A304/uploads/93d5963b53fd6f05d812b5da05bf25b3/image.png)
+
+![Project Structure](https://lab.ssafy.com/s06-blockchain-sub2/S06P22A304/uploads/03da5ab405cf4103d404b22f5067e07e/%EA%B7%B8%EB%A6%BC2.png)
