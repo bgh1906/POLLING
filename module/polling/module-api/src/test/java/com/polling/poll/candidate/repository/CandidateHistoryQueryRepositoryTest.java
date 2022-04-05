@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
+import com.polling.poll.candidate.dto.response.FindCandidateHistoryByMemberResponseDto;
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.entity.Candidate;
 import com.polling.poll.candidate.entity.CandidateGallery;
@@ -57,7 +58,8 @@ public class CandidateHistoryQueryRepositoryTest {
   @Test
   public void 후보자투표내역조회_유저id기준() throws Exception {
     //given
-    Candidate savedCandidate = candidateRepository.save(createCandidate(1));
+    Poll savedpoll = pollRepository.save(Poll.builder().build());
+    Candidate savedCandidate = candidateRepository.save(createCandidateWithPoll(1, savedpoll));
     Member savedMember = memberRepository.save(Member.builder().build());
     Member anotherMember = memberRepository.save(Member.builder().build());
     vote(savedMember, savedCandidate, 1);
@@ -68,7 +70,7 @@ public class CandidateHistoryQueryRepositoryTest {
     vote(anotherMember, savedCandidate, 1);
 
     //when
-    List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateByMemberId(
+    List<FindCandidateHistoryByMemberResponseDto> result = queryRepository.findByCandidateByMemberId(
         savedMember.getId(), 0, 10);
 
     //then
