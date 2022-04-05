@@ -532,37 +532,34 @@ const tokenAbi = [
 ];
 
 //POL토큰 전송 과정
-const tokenContract = new web3.eth.Contract(tokenAbi, CONTRACT_ADDRESS);
+export const tokenContract = new web3.eth.Contract(tokenAbi, CONTRACT_ADDRESS);
 
 //보낼주소에서 val만큼의 토큰을 전송가능하도록 승인해준다.
-const approveAccount = () => {
+export const approveAccount = (val) => {
   // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보낼주소
-  const val = 100; //보내는것을 승인할 금액
+  // const val = 100; //보내는것을 승인할 금액
   //account는 관리자주소
-  tokenContract.methods
+  return tokenContract.methods
     .approve("fromAddress", val)
-    .send({ from: account })
-    .then(console.log);
+    .send({ from: account });
+  // .then(console.log);
 };
 
 //보내는주소에서 받는주소로 val만큼의 POL토큰을 보내준다.
-const sendPOL = () => {
+export const sendPOL = (val) => {
   // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
   // toAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //받는주소
-  const val = 100; //보낼금액
   //account는 관리자주소
-  tokenContract.methods
+  return tokenContract.methods
     .transferFrom("fromAddress", "toAddress", val)
-    .send({ from: account })
-    .then(console.log);
+    .send({ from: account });
+  // .then(console.log);
 };
 
 // 사용자 주소의 잔액 확인 (잔액 바뀔때마다 리렌더링 필요)
-const checkPOL = () => {
+export const checkPOL = () => {
   // Address = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //POL 토큰 잔액 조회할 주소
   //account는 관리자주소
-  tokenContract.methods
-    .balanceOf("Address")
-    .call({ from: account })
-    .then(console.log);
+  return tokenContract.methods.balanceOf("Address").call({ from: account });
+  // .then(console.log);
 };
