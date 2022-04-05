@@ -2,8 +2,8 @@ const Web3 = require("web3");
 // import Web3 from "web3";
 
 /* REPLACE: 노드 엔드포인트 문자열 */
-const ENDPOINT = "http://localhost:7545";
-
+// const ENDPOINT = "http://localhost:7545";
+const ENDPOINT = "http://j6a304.p.ssafy.io:7545";
 export const web3 = new Web3(new Web3.providers.HttpProvider(ENDPOINT));
 
 //컨트랙트 배포주소
@@ -140,7 +140,7 @@ export const abi = [
   },
 ];
 
-export const CONTRACT_ADDRESS = "0x9a74f110586971345A396C74228094A04f5A5eA6";
+export const CONTRACT_ADDRESS = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
 export const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
