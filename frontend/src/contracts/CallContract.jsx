@@ -183,12 +183,13 @@ export const voteBlock = (idx) => {
 // vote();
 
 //후보자 인덱스 입력시 득표수 반환
-export const totalVotesBlock = () => {
+export const totalVotesBlock = (idx) => {
   const testContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-  testContract.methods
-    .votesReceived(0)
-    .call({ from: account })
-    .then(console.log);
+  const totalVotes = testContract.methods
+    .votesReceived(idx)
+    .call({ from: account });
+  // .then(console.log);
+  return totalVotes;
 };
 // votesReceived();
 
@@ -230,6 +231,7 @@ export const lockAccount = () => {
 
 // 코인 발급 CA : 0xC89Ce4735882C9F0f0FE26686c53074E09B0D550
 //이더 전송해주기
+// 가스비가 든다는 가정 하에 사용자가 투표하기 누를 때마다 잔고 확인해서 부족하면 보내주는 함수
 export const sendEth = () => {
   const baseAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
   const userAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3";

@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
-import { voteBlock } from "../contracts/CallContract";
+import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
 
 function Candidate() {
   const navigate = useNavigate();
@@ -34,7 +34,8 @@ function Candidate() {
   const [modalOpen2, setmodalOpen2] = useState(false);
   const [imageLock, setimageLock] = useState(true);
   const [modalOpen3, setmodalOpen3] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  //   const [votesRender, setVotesRender] = useState(false);
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
@@ -57,8 +58,9 @@ function Candidate() {
         setPhoto3(res.data.imagePath3);
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
-        setVoteCount(res.data.voteTotalCount);
         setCommentdata(res.data.comments);
+        getTotalVotes(candIdx);
+        // setVoteCount(res.data.voteTotalCount);
       })
       .catch((error) => {
         console.log(error.response);
@@ -67,13 +69,7 @@ function Candidate() {
 
   useEffect(() => {
     axios
-      .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-          Accept: "*/*",
-        },
-      })
+      .get(`https://j6a304.p.ssafy.io/api/use-tokens/candidates/${params.id}`)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -88,6 +84,12 @@ function Candidate() {
         console.log(error.response);
       });
   }, []);
+
+  async function getTotalVotes(idx) {
+    const totalVotes = await totalVotesBlock(idx);
+    // console.log(idx, totalVotes);
+    setVoteCount(totalVotes);
+  }
 
   function changePhoto1() {
     setProfile_image(photo1);
@@ -125,6 +127,10 @@ function Candidate() {
     setPicked((prev) => !prev);
   }
 
+  //   function votesRerender() {
+  //     setVotesRender((prev) => !prev);
+  //   }
+
   async function handlepoll() {
     if (picked) {
       // 블록체인 투표 하는 부분
@@ -133,27 +139,36 @@ function Candidate() {
       const res = await voteBlock(candIdx);
       const txId = res.transactionHash;
       console.log(txId);
-      axios.post(
-        `https://j6a304.p.ssafy.io/api/polls/candidates`,
-        {
-          candidateId: params.id,
-          transactionId: txId,
-          voteCount: 1,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-            Accept: "*/*",
+      axios
+        .post(
+          `https://j6a304.p.ssafy.io/api/polls/candidates`,
+          {
+            candidateId: params.id,
+            transactionId: txId,
+            voteCount: 1,
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+              Accept: "*/*",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
+          renderCheck();
+          Swal.fire({
+            title: "투표가 완료되었습니다.",
+            icon: "success",
+          });
+          handleClose();
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
       // 3. 다시 lock 한다.
-      Swal.fire({
-        title: "투표가 완료되었습니다.",
-        icon: "success",
-      });
-      handleClose();
     } else {
       Swal.fire({
         title: "투표 도장을 찍어주세요.",
