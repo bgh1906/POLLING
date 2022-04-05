@@ -21,6 +21,7 @@ import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
 import Swal from "sweetalert2";
+import { web3 } from "../contracts/CallContract";
 
 function Join2() {
   //리로딩할 때마다 값 리셋
@@ -186,9 +187,16 @@ function Join2() {
 
   // 계좌 비밀번호 입력 -> 회원가입 -> 자동 계정 생성, 화면에 그 사람 (join에 인풋 만들기)
   const [walletpw, setWalletpw] = useState("");
+  const [userAccount, setUserAccount] = useState("");
   const getWalletpw = (e) => {
     setWalletpw(e.target.value);
-    console.log(walletpw);
+  };
+  const createWallet = async () => {
+    let userAccount = await web3.eth.personal.newAccount(walletpw);
+    // console.log("accounts : ", accounts);
+    return userAccount;
+    // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
+    // console.log("userAccount : ", userAccount);
   };
   //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함.
   //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
@@ -233,7 +241,7 @@ function Join2() {
   const navigate = useNavigate();
 
   //회원가입
-  const joinus = (e) => {
+  const joinus = async (e) => {
     if (
       nickname === " " ||
       email === " " ||
@@ -261,6 +269,8 @@ function Join2() {
       pcheck !== false
     ) {
       // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
+      const wallet = await createWallet();
+      //   console.log(wallet);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/members",
@@ -269,9 +279,9 @@ function Join2() {
             email: email,
             nickname: nickname,
             password: password,
-            wallet: "",
             phoneNumber: phone,
             role: "ROLE_USER",
+            wallet: wallet,
           }
         )
         .then((res) => {
@@ -371,6 +381,7 @@ function Join2() {
               className={Styles2.walletimg}
               onClick={handleTooltipOpen}
               src="https://img.icons8.com/stickers/30/000000/high-importance.png"
+              alt=""
             />
             {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/material-outlined/30/000000/box-important--v1.png"/> */}
             {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen}  src="https://img.icons8.com/color/30/000000/high-priority.png"/> */}
