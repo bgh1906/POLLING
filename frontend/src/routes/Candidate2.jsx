@@ -13,7 +13,12 @@ import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
-import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
+import {
+  voteBlock,
+  totalVotesBlock,
+  unlockAccount,
+  lockAccount,
+} from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
 
@@ -39,11 +44,15 @@ function Candidate2({ state }) {
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
+  const [inputWalletPw, setInputWalletPw] = useState("");
+
+  // const wallet = state[0].wallet;
+  const wallet = sessionStorage.getItem("wallet");
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    console.log("store에서 가져온 wallet:", state[0].wallet);
+    // console.log("store에서 가져온 wallet:", state[0].wallet);
   }, []);
 
   useEffect(() => {
@@ -94,7 +103,7 @@ function Candidate2({ state }) {
   }, []);
 
   async function getTotalVotes(idx) {
-    const totalVotes = await totalVotesBlock(idx);
+    const totalVotes = await totalVotesBlock(idx, wallet);
     // console.log(idx, totalVotes);
     setVoteCount(totalVotes);
   }
@@ -135,14 +144,19 @@ function Candidate2({ state }) {
     setPicked((prev) => !prev);
   }
 
+  function getWalletPw(e) {
+    setInputWalletPw(e.target.value);
+  }
+
   async function handlepoll() {
     if (picked) {
       // 블록체인 투표 하는 부분
       //   1. Unlock 해준다.(비밀번호 입력받아서)
+      unlockAccount(wallet, inputWalletPw);
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
-      const res = await voteBlock(candIdx);
+      const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
-      console.log(txId);
+      // console.log(txId);
       axios
         .post(
           `https://j6a304.p.ssafy.io/api/polls/candidates`,
@@ -168,6 +182,7 @@ function Candidate2({ state }) {
             icon: "success",
           });
           handleClose();
+          lockAccount(wallet);
         })
         .catch((error) => {
           console.log(error.response);
@@ -286,6 +301,7 @@ function Candidate2({ state }) {
                   placeholder="Wallet Password"
                   variant="standard"
                   type="password"
+                  onChange={getWalletPw}
                 />
               </p>
               <p id={styles.paper_button}>

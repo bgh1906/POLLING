@@ -47,8 +47,8 @@ function Candidate({ state }) {
   const [inputWalletPw, setInputWalletPw] = useState("");
 
   // 사용자 지갑주소
-  const wallet = state[0].wallet;
-
+  // const wallet = state[0].wallet;
+  const wallet = sessionStorage.getItem("wallet");
   useEffect(() => {
     window.scrollTo(0, 0);
     // console.log("store에서 가져온 wallet:", wallet);
@@ -104,7 +104,7 @@ function Candidate({ state }) {
   }, []);
 
   async function getTotalVotes(idx) {
-    const totalVotes = await totalVotesBlock(idx);
+    const totalVotes = await totalVotesBlock(idx, wallet);
     // console.log(idx, totalVotes);
     setVoteCount(totalVotes);
   }
@@ -145,9 +145,6 @@ function Candidate({ state }) {
     setPicked((prev) => !prev);
   }
 
-  //   function votesRerender() {
-  //     setVotesRender((prev) => !prev);
-  //   }
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
   }
@@ -158,10 +155,9 @@ function Candidate({ state }) {
       //   1. Unlock 해준다.(비밀번호 입력받아서)
       unlockAccount(wallet, inputWalletPw);
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
-      console.log("candIdx:", candIdx);
       const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
-      console.log(txId);
+      // console.log(txId);
       axios
         .post(
           `https://j6a304.p.ssafy.io/api/polls/candidates`,
