@@ -1,4 +1,4 @@
-package com.polling.grpc.client;
+package com.polling.grpc.client.stub;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.polling.aop.annotation.Trace;
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationStub extends AbstractStub {
 
   @Trace
-  @PostMapping("/sms")
+  @PostMapping("/deprecated/sms/")
   public ResponseEntity<SMSCodeResponseDto> sendEventTest(
       @RequestBody SendSMSRequestDto requestDto) {
     NotificationSmsServiceGrpc.NotificationSmsServiceFutureStub stub = smsStub();

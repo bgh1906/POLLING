@@ -10,23 +10,29 @@ contract Polling {
 
     uint candidateIndexValue;
 
+    uint public candidateIndexStart;
+    uint public candidateIndexEnd;
+
+
     //mapping으로 득표수를 계속 추적함
     mapping (uint8 => uint8) public votesReceived;
 
     //초기 생성자
-    constructor() public {
+    constructor() {
         candidateIndexValue = 0;
+        candidateIndexStart = 0;
+        candidateIndexEnd = 0;
     }
 
     //다중후보자추가
-    function addCandidates(uint candidateNum) public returns (uint, uint) {
+    function addCandidates(uint candidateNum) public {
         for(uint i = candidateIndexValue; i < candidateIndexValue + candidateNum; i++) {
         candidateList.push(i);
         }
 
         candidateIndexValue = candidateList.length;
-
-        return (candidateList.length-candidateNum, candidateList.length-1);
+        candidateIndexStart = candidateList.length-candidateNum;
+        candidateIndexEnd = candidateList.length-1;
     }
 
     //현재 후보자 인덱스 보다 큰값인경우 실행하지않음

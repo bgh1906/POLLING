@@ -5,6 +5,7 @@ import com.polling.aop.annotation.Trace;
 import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
 import com.polling.poll.candidate.dto.response.FindCandidateDetailsResponseDto;
+import com.polling.poll.candidate.dto.response.FindCandidateHistoryByMemberResponseDto;
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
 import com.polling.poll.candidate.service.CandidateService;
@@ -68,10 +69,10 @@ public class CandidateController {
   @Retry
   @GetMapping("/members/{page}/{limit}")
   @ApiOperation(value = "해당 유저의 후보자 투표 내역 조회")
-  public ResponseEntity<List<FindCandidateHistoryResponseDto>> getHistoryByUser(
+  public ResponseEntity<List<FindCandidateHistoryByMemberResponseDto>> getHistoryByUser(
       @CurrentUser MemberDto memberDto,
       @PathVariable int page, @PathVariable int limit) {
-    List<FindCandidateHistoryResponseDto> responseDto = candidateHistoryQueryRepository
+    List<FindCandidateHistoryByMemberResponseDto> responseDto = candidateHistoryQueryRepository
         .findByCandidateByMemberId(memberDto.getId(), page, limit);
     return ResponseEntity.status(200).body(responseDto);
   }

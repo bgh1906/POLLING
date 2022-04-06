@@ -2,7 +2,7 @@ package com.polling.contact.repository;
 
 import static com.polling.contact.entity.QContact.contact;
 
-import com.polling.contact.dto.FindAllContactResponseDto;
+import com.polling.contact.dto.FindContactPageResponseDto;
 import com.polling.contact.dto.FindContactResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -20,7 +20,7 @@ public class ContactQueryRepositoryImpl implements ContactQueryRepository {
   private final JPAQueryFactory query;
 
   @Override
-  public List<FindContactResponseDto> findContactByMemberId(Long memberId) {
+  public List<FindContactResponseDto> findByMemberId(Long memberId) {
     return query
         .select((Projections.constructor(FindContactResponseDto.class,
             contact.id,
@@ -36,18 +36,21 @@ public class ContactQueryRepositoryImpl implements ContactQueryRepository {
   }
 
   @Override
-  public List<FindAllContactResponseDto> findAllContact() {
+  public List<FindContactPageResponseDto> findPageOrderByCreateDate(int page, int limit) {
     return query
-        .select((Projections.constructor(FindAllContactResponseDto.class,
+        .select((Projections.constructor(FindContactPageResponseDto.class,
             contact.id,
+            contact.member.id,
             contact.contactStatus,
             contact.contactType,
             contact.title,
             contact.content,
-            contact.member.id,
             contact.answer,
             contact.email)))
         .from(contact)
+        .orderBy(contact.createdDate.desc())
+        .offset(page)
+        .limit(limit)
         .fetch();
   }
 }
