@@ -41,7 +41,7 @@ function CandList({ state, cand, countOpen }) {
     console.log(totalVotes);
     return totalVotes;
   }
-  console.log(getTotalVotes(1));
+  // console.log(getTotalVotes(1));
   // 득표순정렬
   // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
@@ -118,7 +118,7 @@ function CandList({ state, cand, countOpen }) {
 
                   {countOpen === true && (
                     <div className={styles.captionName2}>
-                      득표수 : {getTotalVotes(item.candidateIndex)}표
+                      {/* 득표수 : {getTotalVotes(item.candidateIndex)}표 */}
                       <br />
                       현재 순위 : {index + 1}위
                     </div>

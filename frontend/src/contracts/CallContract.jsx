@@ -140,7 +140,7 @@ const abi = [
   },
 ];
 
-const CONTRACT_ADDRESS = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
+const CONTRACT_ADDRESS = "0x0A46cD0544ef510437f4d74Aa57640aEa20852a3";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
 // const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
@@ -157,11 +157,11 @@ export const getCandInfoBlock = (account) => {
 // getCandInfo();
 
 //후보자 등록
-export const registerBlock = (num, account) => {
+export const registerBlock = (num) => {
   // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   return pollContract.methods
     .addCandidates(num)
-    .send({ from: account, gas: 1000000 });
+    .send({ from: "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328", gas: 1000000 });
   // .then(console.log);
 };
 // add 에서 return값 0,9 받아오는 함수 지환님이  새로 작성해서 넘겨주실 예정
@@ -221,7 +221,7 @@ export const lockAccount = (account) => {
   web3.eth.personal.lockAccount(account).then(console.log);
 };
 
-// 코인 발급 CA : 0xC89Ce4735882C9F0f0FE26686c53074E09B0D550
+// 코인 발급 CA : 0x946E9E14A281A8F69A2a248EE0575a2b76D69D45
 //이더 전송해주기
 // 가스비가 든다는 가정 하에 사용자가 투표하기 누를 때마다 잔고 확인해서 부족하면 보내주는 함수
 export const sendEth = () => {
