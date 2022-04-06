@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CandList.module.css";
 import pollinglogo from "../../assets/pollinglogo.png";
 import fox from "../../assets/fox.PNG";
@@ -30,11 +30,18 @@ function CandList({ state, cand, countOpen }) {
   // 유저 지갑 주소
   // const wallet = state[0].wallet;
   const wallet = sessionStorage.getItem("wallet");
-  // function getTotalVotes(idx) {
-  //   const totalVotes = totalVotesBlock(idx, wallet);
-  //   return totalVotes;
-  // }
-  // console.log(getTotalVotes(1));
+  // const [nomiIndex, setNomiIndex] = useState([]);
+  // useEffect(() => {
+  //   cand.map((item) => {
+  //     nomiIndex.push();
+  //   });
+  // });
+  async function getTotalVotes(idx) {
+    const totalVotes = await totalVotesBlock(idx, wallet);
+    console.log(totalVotes);
+    return totalVotes;
+  }
+  console.log(getTotalVotes(1));
   // 득표순정렬
   // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
@@ -111,7 +118,7 @@ function CandList({ state, cand, countOpen }) {
 
                   {countOpen === true && (
                     <div className={styles.captionName2}>
-                      {/* 득표수 : {getTotalVotes(item.candidateIndex)}표 */}
+                      득표수 : {getTotalVotes(item.candidateIndex)}표
                       <br />
                       현재 순위 : {index + 1}위
                     </div>
