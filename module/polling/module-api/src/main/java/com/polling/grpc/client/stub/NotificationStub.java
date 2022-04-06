@@ -1,4 +1,4 @@
-package com.polling.grpc.client;
+package com.polling.grpc.client.stub;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.polling.aop.annotation.Trace;
