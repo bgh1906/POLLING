@@ -162,7 +162,7 @@
 
 .wallet{
     position: absolute;
-    width: 26vw;
+    width: 31.5vw;
     height: 6vh;
     left: 32.5vw;
     top: 75.5vh;
@@ -176,21 +176,6 @@
     border-radius: 0.5vw;
     /* background-color: #3afaca1a; */
     background-color: #3afaca00;
-}
-
-.walletbtn{
-    position: absolute;
-    width: 4vw;
-    height: 5vh;
-    left: 60vw;
-    top: 76vh;
-
-    border-radius: 1vw;
-    background-color: #fb71aa44;
-
-    font-family: 'GangwonEdu_OTFBoldA';
-    font-size: 1.2vw;
-    line-height: 5vh;
 }
 
 .logout{
