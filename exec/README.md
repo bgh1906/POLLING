@@ -1,6 +1,6 @@
 ## ⚙️ 환경
 JVM : Open jdk 11 <br>
-Spring : 2.5.9 <br>
+Spring : 2.6.4 <br>
 Node.js : 16.13.2 <br>
 React : 17.0 <br>
 ubuntu : 20.04 <br>
@@ -9,39 +9,61 @@ ubuntu : 20.04 <br>
 #### backend
 ```
 .
-└── main
-    ├── generated
-    ├── java
-    │   └── com
-    │       └── glanner
-    │           ├── api
-    │           │   ├── controller
-    │           │   ├── service
-    │           │   ├── queryrepository
-    │           │   ├── exception
-    │           │   │   └── handler
-    │           │   ├── dto
-    │           │   │   ├── request
-    │           │   │   └── response
-    │           ├── core
-    │           │   ├── domain
-    │           │   │   ├── user
-    │           │   │   ├── glanner
-    │           │   │   └── board
-    │           │   └── repository
-    │           ├── security
-    │           │   └── jwt
-    │           ├── aop
-    │           │   ├── aspect
-    │           │   ├── annotation
-    │           │   └── logtrace
-    │           └── config
+└── grpc-common
+    ├── src
+    │   └── main
+    │       └── proto
+    │           └── common.proto
+    │           └── notificationMailService.proto
+    │           └── notificationSmsService.proto
+    └── build.gradle
+.    
+└── module-api
+    ├── main
+    │   └── java
+    │       └── polling
+    │           └── auth
+    │               ├── adapter
+    │               ├── controller
+    │               ├── dto
+    │               ├── oauth
+    │               ├── service
+    │               └── CurrentUser
+    │           └── common
+    │               ├── entity
+    │               └── web
+    │           └── contact
+    │               ├── controller
+    │               ├── dto
+    │               ├── entity
+    │               ├── repository
+    │               └── service
+    │           └── grpc
+    │               └── client
+    │                   ├── dto
+    │                   └── stub
+    │           └── member
+    │               ├── controller
+    │               ├── dto
+    │               ├── entity
+    │               ├── repository
+    │               └── service
+    │           └── poll
+    │               ├── poll
+    │               ├── candidate
+    │               └── comment
+    │           └── token
+    │               ├── controller
+    │               ├── dto
+    │               ├── entity
+    │               ├── repository
+    │               └── service
     └── resources
 ```
 
 #### frontend
 ```
-Glanner
+Polling
 └── src
     ├── App.js
     ├── Modal
@@ -66,48 +88,37 @@ Glanner
         └── reducers
 ```
 ### 도커
-저희는 젠킨스, 리액트 프로젝트, 스프링 프로젝트, DB, OpenVidu를 각각의 컨테이너로 배포했습니다. <br>
-리액트 : react-compose <br>
-스프링 : spring-compose <br>
-젠킨스 : jenkins-compose <br>
-DB : mariadb <br>
-OpenVidu : clever_noether <br>
+저희는 jenkins, spring 모듈들, redis, maria db를 각각의 컨테이너로 배포했습니다. <br>
+react : 젠킨스 빌드 후 nginx 설정으로 연결 <br>
+spring : spring-compose, spring-external-compose <br>
+jenkins : jenkins-compose <br>
+rdbms : mariadb <br>
+nosql : redis <br>
 
 ## 빌드 및 배포 방법
 #### 프론트 <br>
 release-front 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
-cd ./frontend/glanner
-node -v
-npm -v
-npm install
-npm run build
+cd frontend
+npm install && CI='' npm run build
 ```
 
-이후 젠킨스 컨테이너안에 있는 팸키 정보로 ec2에 접속해 아래 명령으로 배포 실행 <br>
-
-```
-ssh -t -t -i /key.pem ubuntu@172.26.11.12 <<EOF
-cd ~/compose/react/
-docker-compose build --no-cache && docker-compose up -d
-exit
-EOF
-```
+이후 nginx로 ec2에 연결된 url을 리액트 빌드 결과 index.html로 연결
 
 #### 백엔드
 release-backend 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
-cd ./backend/glanner
+cd ./module/polling && chmod +x gradlew
 ./gradlew clean build
 ```
 이후 젠킨스 컨테이너안에 있는 팸키 정보로 ec2에 접속해 아래 명령으로 배포 실행 <br>
 
 ```
-ssh -t -t -i /key.pem ubuntu@172.26.11.12 <<EOF
+ssh -t -t -i /key.pem ubuntu@172.26.8.164 <<EOF
 cd ~/compose/spring/
-docker-compose build --no-cache && docker-compose up -d
+docker-compose up --build -d && docker restart spring-compose
 exit
 EOF
 ```
