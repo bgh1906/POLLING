@@ -7,8 +7,8 @@ import VotePaper from "../components/poll/VotePaper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import FlipCountdown from '@rumess/react-flip-countdown';
-import Votebox from "../assets/votebox2.png"
+import FlipCountdown from "@rumess/react-flip-countdown";
+import Votebox from "../assets/votebox2.png";
 
 function Poll() {
   const params = useParams();
@@ -23,7 +23,7 @@ function Poll() {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/${params.pollnum}`)
       .then((res) => {
-        console.log(res);
+        console.log("투표정보 : ", res);
         setItemDetail((prev) => {
           return { ...prev, ...res.data };
         });
@@ -63,40 +63,36 @@ function Poll() {
         <div className={styles.pl_top}>
           <div className={styles.pl_top2}>
             <div id={styles.poll_box}>
-                  <img
-                    src={itemDetail.thumbnail}
-                    alt="main"
-                    className={styles.pollImg}
-                    col={4}
-                  />
+              <img
+                src={itemDetail.thumbnail}
+                alt="main"
+                className={styles.pollImg}
+                col={4}
+              />
               <div id={styles.poll_box2} col={8}>
                 <div className={styles.left_title}>{itemDetail.title}</div>
-                  
-                  
-                  {/* <VotePaper cand={cand} /> */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center"
-                    }}
-                  >
-                      <div id={styles.poll_date}>
-                        {startYMD} - {endYMD}
-                      </div>
-                      <div id={styles.poll_content}>{itemDetail.content}</div>
-                  </div>
-              </div>
 
+                {/* <VotePaper cand={cand} /> */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <div id={styles.poll_date}>
+                    {startYMD} - {endYMD}
+                  </div>
+                  <div id={styles.poll_content}>{itemDetail.content}</div>
+                </div>
+              </div>
             </div>
-          <div id={styles.flip}>
-            <p id={styles.flip_text}> 투표 종료까지 남은 시간</p>
-            <FlipCountdown  size='medium' endAt={end} />
+            <div id={styles.flip}>
+              <p id={styles.flip_text}> 투표 종료까지 남은 시간</p>
+              <FlipCountdown size="medium" endAt={end} />
+            </div>
           </div>
         </div>
-        </div>
-
-
 
         <div className={styles.pl_bottom}>
           <CandList cand={cand} countOpen={countOpen} />

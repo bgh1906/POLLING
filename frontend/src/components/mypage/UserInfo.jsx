@@ -12,6 +12,9 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   console.log("state", state);
   console.log("email", state[0].email);
   const token = sessionStorage.getItem("token");
+  const nick = sessionStorage.getItem("nickname");
+  const wallet = sessionStorage.getItem("wallet");
+  console.log(nick);
 
   const logoutSuccess = () => {
     Swal.fire({
@@ -102,8 +105,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   };
 
   // const nick = state[0].nickname;
-  const nick = sessionStorage.getItem("nickname");
-  console.log(nick);
+  
 
   useEffect(() => {}, [nick]);
 
@@ -124,6 +126,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
       )
       .then((res) => {
         DispatchmodifyNickname(nickname);
+        sessionStorage.setItem("nickname", nickname);
         console.log("res", res);
         NickSuccess();
       })
@@ -165,14 +168,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
       });
   };
 
-  //지갑 발급/수정
-  const [wallet, setWallet] = useState("");
-  const getWallet = (e) => {
-    setWallet(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const getnewWallet = () => {};
 
   const navigation = useNavigate();
   //로그아웃
@@ -286,8 +281,8 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
         type={"text"}
         placeholder="Wallet"
         className={Styles.wallet}
-        onChange={getWallet}
-      ></div>
+        style={{wordBreak:'break-all', lineHeight:'6vh'}}
+      >{wallet}</div>
       {/* <button className={Styles.walletbtn} onClick={getnewWallet}>수정</button> */}
       {/* <br /> */}
       <button className={Styles.logout} onClick={logout}>
