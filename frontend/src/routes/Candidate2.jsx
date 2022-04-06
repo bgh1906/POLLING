@@ -7,17 +7,20 @@ import Comment from "../components/comment/Comment";
 import mark from "../assets/mark_slim.png";
 import crown from "../assets/crown.png";
 import tx from "../assets/tx.png";
+import tokenimg from "../assets/token.png";
 import axios from "axios";
 import Modal from "@mui/material/Modal";
 import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
+// import { voteBlock, totalVotesBlock, approveAccount, sendPOL, checkPOL } from "../contracts/CallContract";
 import {
   voteBlock,
   totalVotesBlock,
   unlockAccount,
   lockAccount,
+  approveAccount, sendPOL, checkPOL
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
@@ -144,6 +147,15 @@ function Candidate2({ state }) {
     setPicked((prev) => !prev);
   }
 
+  const pollfin = () => {
+    Swal.fire({
+        title: "투표가 완료되었습니다.",
+        icon: "success",
+    });
+  }
+
+  const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
   }
@@ -177,13 +189,20 @@ function Candidate2({ state }) {
           console.log(res);
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
-          Swal.fire({
-            title: "투표가 완료되었습니다.",
-            icon: "success",
-          });
-          handleClose();
-          lockAccount(wallet);
+        //   pollfin();
+        //   handleClose();
+        //   Swal.fire({
+        //     title: "투표가 완료되었습니다.",
+        //     icon: "success",
+        //   });
+        //   handleClose();
+        //   lockAccount(wallet);
         })
+        .then(pollfin())
+        .then(handleClose())
+        .then(approveAccount(1000,fromAddress), console.log("approveAccount"))
+        .then(sendPOL(1000,fromAddress,wallet),console.log("sendPOL"))
+        .then(lockAccount(wallet))
         .catch((error) => {
           console.log(error.response);
         });
@@ -204,33 +223,58 @@ function Candidate2({ state }) {
     setmodalOpen2(false);
   }
 
-  function handleLock() {
-    axios
-      .post(
-        "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
-        {
-          candidateId: params.id,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-            Accept: "*/*",
-          },
-        }
-      )
-      .then((res) => {
-        console.log("사진 공개 성공");
-        Swal.fire({
-          title: "사진이 공개 되었습니다.",
-          icon: "success",
+  const imgopen = () => {
+    Swal.fire({
+        title: "사진이 공개 되었습니다.",
+        icon: "success",
         });
-        setimageLock(false);
-        handleClose3();
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+  }
+
+  const notoken = () => {
+    Swal.fire({
+        title: "토큰이 부족합니다.",
+        icon: "error",
+        });
+  }
+
+  async function handleLock() {
+    const balance = await checkPOL(wallet);
+    //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
+    if(balance > 500) {
+        axios
+        .post(
+            "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
+            {
+            candidateId: params.id,
+            },
+            {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "*/*",
+            },
+            }
+        )
+        .then((res) => {
+            console.log("사진 공개 성공");
+            imgopen();
+            // setimageLock(false);
+            // handleClose3();
+        })
+        .then(setimageLock(false))
+        .then(handleClose3())
+        // .then(approveAccount(500,fromAddress))
+        //내 계좌에서 보낼꺼니깐 보낼주소 fromAddress를 wallet로 하면 맞나??
+        .then(approveAccount(500,wallet))
+        // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
+        .then(sendPOL(500,wallet,fromAddress)) 
+        .catch((error) => {
+            console.log(error.response);
+        });
+    }
+    else{
+        notoken();
+    }
   }
 
   function handleOpen3() {
@@ -371,7 +415,8 @@ function Candidate2({ state }) {
               <p id={styles.behind_marktext}>POLLING</p>
               <p id={styles.behind_text}>
                 {" "}
-                POL 토큰 500개를 사용하여 <br />
+                <img id={styles.tokenimg} src={tokenimg} alt="token"/>
+                500POL를 사용하여 <br />
                 미공개 사진을 여시겠습니까?
               </p>
               <Button

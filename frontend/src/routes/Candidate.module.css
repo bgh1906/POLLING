@@ -566,6 +566,14 @@
     top: 6vh;
 }
 
+#tokenimg{
+    position: absolute;
+    width: 2.2vw;
+    left: 3vw;
+    /* bottom: 0; */
+    margin: 0.25vw;
+}
+
 #behind_btn{
     position: absolute;
     width: 8vw;

@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { actionCreators } from "../../store";
 import { Avatar } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
+import token from "../../assets/token.png"
 
 function NewNav({state}) {
 // function NewNav() {
@@ -43,7 +44,7 @@ function NewNav({state}) {
                             </div>
                             <div>
                                 {/* <div> </div> */}
-                                <img className={Styles.tokenimg} src="https://img.icons8.com/external-flat-wichaiwi/30/000000/external-gamefi-gamefi-flat-wichaiwi-3.png"/>
+                                <img className={Styles.tokenimg} src={token}/>
                                 <div className={Styles.token}>{"보유토큰 값"}</div>
                             </div>
                         </div>
