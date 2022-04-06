@@ -23,6 +23,7 @@ function Admin() {
   const [rendernumber, setRendernumber] = useState(0);
   // const token = useSelector((state)=>(state[0].token));
   const token = sessionStorage.getItem("token");
+  const wallet = sessionStorage.getItem("wallet");
   //   const [candIdx, setCandIdx] = useState([]);
   useEffect(() => {
     // console.log(ENDPOINT)
@@ -80,7 +81,7 @@ function Admin() {
     const nomineeNum = res.data.candidates.length;
     console.log("등록할 후보 수는 :", nomineeNum);
     await registerBlock(nomineeNum);
-    const Index = await getStartIndexBlock();
+    const Index = await getStartIndexBlock(wallet);
     console.log("시작 Index값은 :", Index);
     let candIdx = [];
     for (let i = parseInt(Index); i < parseInt(Index) + nomineeNum; i++) {
