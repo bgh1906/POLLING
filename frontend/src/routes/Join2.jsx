@@ -280,7 +280,7 @@ function Join2() {
             nickname: nickname,
             password: password,
             phoneNumber: phone,
-            role: "ROLE_USER",
+            role: "ROLE_ADMIN",
             wallet: wallet,
           }
         )
