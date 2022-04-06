@@ -250,9 +250,9 @@ function Join2() {
     ) {
       e.preventDefault();
       alert("닉네임/이메일/비밀번호/계좌 비밀번호를 입력하세요.");
-      // } else if (phonecheck === false) {
-      //   e.preventDefault();
-      //   alert("휴대폰 인증을 진행해주세요.");
+    } else if (phonecheck === false) {
+      e.preventDefault();
+      alert("휴대폰 인증을 진행해주세요.");
     } else if (checknick === false) {
       e.preventDefault();
       alert("닉네임 중복체크를 진행해주세요.");
@@ -263,8 +263,8 @@ function Join2() {
       nickname !== " " &&
       email !== " " &&
       password !== " " &&
-      //   phone !== " " &&
-      //   phonecheck !== false &&
+      phone !== " " &&
+      phonecheck !== false &&
       checknick !== false &&
       pcheck !== false
     ) {

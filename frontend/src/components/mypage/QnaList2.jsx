@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Styles from './Qnalist.module.css';
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function QnaList2() {
 
@@ -69,6 +70,27 @@ function QnaList2() {
         iscompomount = false;
       };
     },[qnalist]);
+ 
+    //1:1문의 삭제 성공
+    const deleSuccess = () => {
+      Swal.fire({
+        title: "1:1문의 삭제 성공!!",
+        text: "POLLING에 오신 것을 환영합니다!",
+        icon: "success",
+        confirmButtonColor: "#73E0C1",
+        confirmButtonText: "확인",
+      })
+    };
+      
+    //1:1문의 삭제 실패
+    const deleFail = () => {
+      Swal.fire({
+        title:"1:1문의 삭제 실패!",
+        icon: 'error',
+        confirmButtonColor: '#73E0C1',
+        confirmButtonText: '확인'
+      })
+    }
 
     //1:1문의 삭제
     const qnadelet = (id) => {
@@ -91,12 +113,14 @@ function QnaList2() {
         )
         .then((res) => {
           console.log(res);
+          deleSuccess();
                   
         })
         .catch((e) => {
           // console.log(e);
           console.log("error,qnadelet",e);
           console.log("res,qnadelet",e.response);
+          deleFail();
       });
     }
 

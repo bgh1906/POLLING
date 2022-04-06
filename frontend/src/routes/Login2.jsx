@@ -52,6 +52,15 @@ function Login2() {
     setPassword(e.target.value);
     console.log(password);
   };
+  //빈칸확인
+  const inputnull = () => {
+    Swal.fire({
+      text: "이메일/비밀번호를 입력하세요",
+      icon: "error",
+      confirmButtonColor: "#73E0C1",
+      confirmButtonText: "확인",
+    });
+  };
 
   //페이지 이동
   const navigate = useNavigate();
@@ -60,7 +69,8 @@ function Login2() {
   const onLogin = (e) => {
     if (email === "" || password === "") {
       e.preventDefault();
-      alert("이메일/비밀번호를 입력해주세요");
+      // alert("이메일/비밀번호를 입력해주세요");
+      inputnull();
     } else if (email !== "" && password !== "") {
       axios
         .post(
@@ -72,7 +82,7 @@ function Login2() {
           }
         )
         .then((res) => {
-          console.log("res :", res.data);
+          console.log("res", res.data);
           // console.log(res.headers.refreshtoken)
           //토큰 찍어보기
           // console.log("토큰",res.headers.refreshToken);
