@@ -39,23 +39,24 @@ function Mypoll() {
         return() => {
           iscompomount = false;
         };
-      },[polllist]);
+      },[]);
+      // polllist
 
     return (
         <>
             {polllist.map((index, key) => (
-                <div className={Styles.firstdiv} key={index}>
+                <div className={Styles.firstdiv} key={key}>
                 {/* <div className={Styles.firstdiv} > */}
-                    <div className={Styles.date}>투표일시 {""}</div>
+                    <div className={Styles.date}>{index.createdDate.slice(0,1)}년 {index.createdDate.slice(1,2)}월  {index.createdDate.slice(2,3)}일 {index.createdDate.slice(3,4)}시 {index.createdDate.slice(4,5)}분 {index.createdDate.slice(5,6)}초 </div>
                     <div className={Styles.line}>
                     {/* <div> */}
-                        <img src="???" className={Styles.img}></img>
+                        <img src={index.thumbnail} className={Styles.img}></img>
                         <div className={Styles.seconddiv}>
                             <div className={Styles.thirddiv}>
-                                <span className={Styles.competition}>투표명 {""}</span>
+                                <span className={Styles.competition}>대회명: {index.titie}</span>
                                 <br/>
                                 {/* <br/> */}
-                                <span className={Styles.nominee}>후보명 {""}</span>
+                                <span className={Styles.nominee}>후보: {index.name}</span>
                                 <br/>
                                 {/* <br/> */}
                                 <div className={Styles.fourthdiv}>
