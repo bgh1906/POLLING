@@ -25,7 +25,7 @@ public class SaveContactRequestDto {
   private String email;
 
   public Contact toEntity() {
-    ContactType ct = ContactType.findByMethod(contactType);
+    ContactType ct = ContactType.findByKeyword(contactType);
     return Contact.builder()
         .title(title)
         .content(content)

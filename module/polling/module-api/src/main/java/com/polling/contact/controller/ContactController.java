@@ -4,12 +4,15 @@ import com.polling.aop.annotation.Retry;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.CurrentUser;
 import com.polling.auth.dto.MemberDto;
-import com.polling.contact.dto.FindAllContactResponseDto;
+import com.polling.contact.dto.FindContactPageResponseDto;
 import com.polling.contact.dto.FindContactResponseDto;
 import com.polling.contact.dto.SaveContactRequestDto;
 import com.polling.contact.repository.ContactQueryRepository;
 import com.polling.contact.repository.ContactRepository;
 import com.polling.contact.service.ContactService;
+import com.polling.exception.CustomErrorResult;
+import com.polling.exception.CustomException;
+import com.polling.member.entity.status.MemberRole;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -44,29 +47,38 @@ public class ContactController {
   }
 
   @Trace
-  @DeleteMapping("/{id}")
+  @DeleteMapping()
   @ApiOperation(value = "1:1문의 취소")
-  public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto, @PathVariable Long id) {
-    contactRepository.deleteById(id);
+  public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto) {
+    contactRepository.deleteById(memberDto.getId());
     return ResponseEntity.status(200).build();
   }
 
   @Trace
   @GetMapping
-  @ApiOperation(value = "1:1문의 전체조회")
+  @ApiOperation(value = "내 문의 전체조회")
   public ResponseEntity<List<FindContactResponseDto>> getContacts(
       @CurrentUser MemberDto memberDto) {
-    List<FindContactResponseDto> list = contactQueryRepository.findContactByMemberId(
+    List<FindContactResponseDto> list = contactQueryRepository.findByMemberId(
         memberDto.getId());
     return ResponseEntity.status(200).body(list);
   }
 
   @Trace
-  @GetMapping("/admin")
+  @GetMapping("/admin/{page}/{limit}")
   @ApiOperation(value = "1:1문의 전체조회")
-  public ResponseEntity<List<FindAllContactResponseDto>> getAllContacts(
-      @CurrentUser MemberDto memberDto) {
-    List<FindAllContactResponseDto> list = contactQueryRepository.findAllContact();
+  public ResponseEntity<List<FindContactPageResponseDto>> getAllContacts(
+      @CurrentUser MemberDto memberDto, @PathVariable int page, @PathVariable int limit) {
+    validateMemberRole(memberDto);
+    List<FindContactPageResponseDto> list = contactQueryRepository.findPageOrderByCreateDate(page,
+        limit);
     return ResponseEntity.status(200).body(list);
+  }
+
+  private void validateMemberRole(MemberDto memberDto) {
+    if (!(memberDto.getMemberRole().contains(MemberRole.ROLE_ADMIN) || memberDto.getMemberRole()
+        .contains(MemberRole.ROLE_COMPANY))) {
+      throw new CustomException(CustomErrorResult.UNAUTHORIZED_MEMBER_ROLE);
+    }
   }
 }

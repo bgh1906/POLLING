@@ -1,4 +1,4 @@
-package com.polling.grpc.client;
+package com.polling.grpc.client.stub;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
