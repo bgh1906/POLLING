@@ -15,6 +15,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import axios from "axios";
+import Historytxid from "./Historytxid";
 
 function History() {
 
@@ -35,6 +36,8 @@ useEffect(() => {
       console.log(error.response);
     });
 }, []);
+
+console.log("")
 
   const [modalShow, setModalShow] = useState(false);
   const endItemData = [
@@ -119,14 +122,15 @@ useEffect(() => {
                 <div id={styles.date_info}>{item.startDate} <br/> {item.endDate}</div>
               </div>
               <div className={styles.ended_button}>
-                <Button
+                {/* <Button
                   id={styles.button_info}
                   variant="contained"
                   size="large"
                   onClick={() => setModalShow(true)}
                 >
                   투표결과
-                </Button>
+                </Button> */}
+                <Historytxid pollId={item.pollId}/>
               </div>
             </div>
           ))}

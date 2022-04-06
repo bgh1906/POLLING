@@ -12,7 +12,7 @@ import {checkPOL} from "../../contracts/CallContract";
 
 // function NewNav({state,token,rendering2}) {
 // function NewNav({state,rendering2,setRendering2}) {
-function NewNav({state, reward}) {
+function NewNav({state, reward, tminus}) {
 // function NewNav() {
     const wallet = sessionStorage.getItem("wallet");
     const role = sessionStorage.getItem("role");

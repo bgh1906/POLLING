@@ -122,23 +122,12 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
-                <figcaption>
-                  <div className={styles.captionName}>{item.name}</div>
-                  {countOpen === true && (
-                    <div className={styles.captionName2}>
-                      득표수 : {item.votesTotalCount}표
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                  {countOpen === false && (
-                    <div className={styles.captionName2}>
-                      득표수 : ???표
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                </figcaption>
+                 <CandCaption
+                  item={item}
+                  index={index}
+                  countOpen={countOpen}
+                  // setCount={setCount}
+                />
               </div>
             ))}
           </div>
