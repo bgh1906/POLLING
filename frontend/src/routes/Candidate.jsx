@@ -284,8 +284,8 @@ function Candidate({ state }) {
         )
         .then(async(res) => {
           console.log("사진 공개 성공",res);
-          await approveAccount(500, wallet);
           unlockAccount(wallet, inputImgPw);
+          await approveAccount(500, wallet);
           console.log("wallet \n",wallet);
           console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
@@ -293,7 +293,7 @@ function Candidate({ state }) {
           imgopen();//스윗알럿
           handleClose3() //모달 닫기
           setimageLock(false);//사진 잠금 풀기
-          // lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
+          lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
           console.log("lockAccount \n",wallet);
           console.log("setimageLock");
           setTminus((prev) => (prev+1)); //렌더링 안먹음
