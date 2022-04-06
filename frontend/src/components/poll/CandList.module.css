@@ -125,11 +125,11 @@
 }
 
 .poll_Cand:nth-child(3) figcaption {
-  padding-right: 3.8vw;
+  padding-right: 3.4vw;
 }
 
 .poll_Cand:nth-child(3n + 4) figcaption {
-  padding-left: 3.8vw;
+  padding-left: 4.2vw;
   
 }
 
@@ -155,7 +155,7 @@
 }
 
 .poll_Cand:nth-child(3n + 6) figcaption {
-  padding-right: 3.1vw;
+  padding-right: 4vw;
 }
 
 .poll_Cand .CandImg {
