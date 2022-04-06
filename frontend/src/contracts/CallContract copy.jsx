@@ -557,8 +557,8 @@ export const sendPOL = (val,fromAddress,toAddress) => {
 
   //account는 관리자주소
   return tokenContract.methods
-    .transferFrom("fromAddress", "toAddress", val)
-    // .transferFrom("0xadfc94e2e9FA31b39Ef500E5669A8C8766c4F70A", "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1", 100)
+    // .transferFrom("fromAddress", "toAddress", val)
+    .transferFrom(fromAddress, toAddress, val)
     // .send({ from: fromAddress });
     .send({ from: toAddress });
     // .send({ from: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1" });

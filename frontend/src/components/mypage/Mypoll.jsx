@@ -47,7 +47,8 @@ function Mypoll() {
             {polllist.map((index, key) => (
                 <div className={Styles.firstdiv} key={key}>
                 {/* <div className={Styles.firstdiv} > */}
-                    <div className={Styles.date}>{index.createdDate.slice(0,1)}년 {index.createdDate.slice(1,2)}월  {index.createdDate.slice(2,3)}일 {index.createdDate.slice(3,4)}시 {index.createdDate.slice(4,5)}분 {index.createdDate.slice(5,6)}초 </div>
+                    {/* <div className={Styles.date}>{index.createdDate.slice(0,1)}년 {index.createdDate.slice(1,2)}월  {index.createdDate.slice(2,3)}일 {index.createdDate.slice(3,4)}시 {index.createdDate.slice(4,5)}분 {index.createdDate.slice(5,6)}초 </div> */}
+                    <div className={Styles.date}>{index.createdDate.slice(0,1)}년 {index.createdDate.slice(1,2)}월  {index.createdDate.slice(2,3)}일 </div>
                     <div className={Styles.line}>
                     {/* <div> */}
                         <img src={index.thumbnail} className={Styles.img}></img>

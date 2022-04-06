@@ -189,19 +189,20 @@
 .mininick{
   display: flex;
   position: fixed;
-  right: 16.5vw;
+  right: 14vw;
   /* left: 8vw; */
   top: 5.5vh;
   font-family: 'ROKAFSansMedium';
   font-size: 1.4vw;
+  line-height: 3.5vh;
 }
 
 .tokenimg {
   display: flex;
   position: fixed;
-  right: 14vw;
+  right: 11.5vw;
   /* left: 8vw; */
-  top: 5.5vh;
+  top: 5.4vh;
   width: 1.8vw;
   font-family: 'ROKAFSansMedium';
   font-size: 1.4vw;
@@ -215,6 +216,7 @@
   top: 5.5vh;
   font-family: 'ROKAFSansMedium';
   font-size: 1.4vw;
+  line-height: 3.5vh;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");

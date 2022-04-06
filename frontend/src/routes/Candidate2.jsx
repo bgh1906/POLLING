@@ -156,11 +156,14 @@ function Candidate2({ state }) {
     });
   };
 
-  const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  const adminAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  // const adminAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
 
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
   }
+
+  const [reward, setReward] = useState(0)
 
   async function handlepoll() {
     if (picked) {
@@ -187,24 +190,18 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then((res) => {
+        .then(async(res) => {
           console.log(res);
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
-          //   pollfin();
-          //   handleClose();
-          //   Swal.fire({
-          //     title: "투표가 완료되었습니다.",
-          //     icon: "success",
-          //   });
-          //   handleClose();
-          //   lockAccount(wallet);
+          lockAccount(wallet); //블록체인 계좌 잠금
+          pollfin(); //스윗알랏
+          handleClose(); //모달 종료
+          await approveAccount(1000,adminAddress);
+          await sendPOL(1000,adminAddress,wallet);
+          setReward((prev) => (prev+1));
+
         })
-        .then(pollfin())
-        .then(handleClose())
-        // .then(approveAccount(1000,fromAddress), console.log("approveAccount"))
-        // .then(sendPOL(1000,fromAddress,wallet),console.log("sendPOL"))
-        .then(lockAccount(wallet))
         .catch((error) => {
           console.log(error.response);
         });
@@ -257,19 +254,17 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then((res) => {
-          console.log("사진 공개 성공");
+        .then(async(res) => {
+          console.log("사진 공개 성공",res);
           imgopen();
           // setimageLock(false);
           // handleClose3();
+          setimageLock(false)
+          handleClose3()
+          await approveAccount(500, wallet)
+          await sendPOL(500, wallet, adminAddress)
+          setReward((prev) => (prev+1));
         })
-        .then(setimageLock(false))
-        .then(handleClose3())
-        // .then(approveAccount(500,fromAddress))
-        //내 계좌에서 보낼꺼니깐 보낼주소 fromAddress를 wallet로 하면 맞나??
-        .then(approveAccount(500, wallet))
-        // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
-        .then(sendPOL(500, wallet, fromAddress))
         .catch((error) => {
           console.log(error.response);
         });
@@ -287,7 +282,7 @@ function Candidate2({ state }) {
 
   return (
     <div>
-      <NewNav />
+      <NewNav reward={reward}/>
       <div className={styles.container}>
         <img id={styles.crown2} src={crown} alt="crown" />
         <img id={styles.tx2} src={tx} alt="tx2" />
