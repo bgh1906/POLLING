@@ -3,7 +3,7 @@ import { web3 } from "../contracts/CallContract";
 
 export default function Blocktest() {
   const [password, setPassword] = useState("");
-  const [userAccount, setUserAccount] = useState([]);
+  const [userAccount, setUserAccount] = useState("");
   const getpassword = (e) => {
     setPassword(e.target.value);
   };
