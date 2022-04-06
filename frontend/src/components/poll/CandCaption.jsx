@@ -1,8 +1,8 @@
 import styles from "./CandList.module.css";
 import { totalVotesBlock } from "../../contracts/CallContract";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function CandCaption({ item, index, countOpen, setCount }) {
+function CandCaption({ item, index, countOpen }) {
   // 유저 지갑 주소
   // const wallet = state[0].wallet;
   const wallet = sessionStorage.getItem("wallet");
@@ -11,7 +11,7 @@ function CandCaption({ item, index, countOpen, setCount }) {
   //   console.log(totalVotes);
   //   return totalVotes;
   // }
-  console.log("caption에 내려온 item:", item);
+
   const [totalVotes, setTotalVotes] = useState(0);
   function getTotalVotes(idx) {
     totalVotesBlock(idx, wallet).then((res) => {
@@ -21,10 +21,6 @@ function CandCaption({ item, index, countOpen, setCount }) {
     return totalVotes;
   }
 
-  // setCount((state) => ({
-  //   array: state.array.concat(getTotalVotes(item.candidateIndex)),
-  // }));
-  // setCount((count) => [...count, getTotalVotes(item.candidateIndex)]);
   // 득표순정렬
   // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
