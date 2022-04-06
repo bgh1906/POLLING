@@ -20,7 +20,9 @@ import {
   totalVotesBlock,
   unlockAccount,
   lockAccount,
-  approveAccount, sendPOL, checkPOL
+  approveAccount,
+  sendPOL,
+  checkPOL,
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
@@ -152,13 +154,13 @@ function Candidate({ state }) {
 
   const pollfin = () => {
     Swal.fire({
-        title: "투표가 완료되었습니다.",
-        icon: "success",
+      title: "투표가 완료되었습니다.",
+      icon: "success",
     });
-  }
+  };
 
-  // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
-  const fromAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
+  const adminAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  // const adminAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
   
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
@@ -173,19 +175,19 @@ function Candidate({ state }) {
       //   1. Unlock 해준다.(비밀번호 입력받아서)
       unlockAccount(wallet, inputWalletPw);
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
-     
-    //   const res = await voteBlock(candIdx);
+
+      //   const res = await voteBlock(candIdx);
       const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
       console.log(txId);
-        axios
-            .post(
-            `https://j6a304.p.ssafy.io/api/polls/candidates`,
-            {
-                candidateId: params.id,
-                transactionId: txId,
-                voteCount: 1,
-            },
+      axios
+        .post(
+          `https://j6a304.p.ssafy.io/api/polls/candidates`,
+          {
+            candidateId: params.id,
+            transactionId: txId,
+            voteCount: 1,
+          },
             {
                 headers: {
                 "Content-Type": "application/json",
@@ -200,8 +202,9 @@ function Candidate({ state }) {
                 lockAccount(wallet); //블록체인 계좌 잠금
                 pollfin(); //스윗알랏
                 handleClose(); //모달 종료
-                await approveAccount(1000,fromAddress,fromAddress);
-                await sendPOL(1000,fromAddress,wallet,fromAddress);
+                // await approveAccount(1000,adminAddress,adminAddress);
+                await approveAccount(1000,adminAddress);
+                await sendPOL(1000,adminAddress,wallet);
                 setReward((prev) => (prev+1));
             })
             .catch((error) => {
@@ -210,8 +213,8 @@ function Candidate({ state }) {
             // .then(lockAccount(wallet))
             // .then(pollfin())
             // .then(handleClose())
-            // .then(approveAccount(1000,fromAddress,fromAddress))
-            // .then(sendPOL(1000,fromAddress,wallet,fromAddress))
+            // .then(approveAccount(1000,adminAddress,adminAddress))
+            // .then(sendPOL(1000,adminAddress,wallet,adminAddress))
             // .then(setReward((prev) => (prev+1)))
         }
      else {
@@ -232,53 +235,61 @@ function Candidate({ state }) {
 
   const imgopen = () => {
     Swal.fire({
-        title: "사진이 공개 되었습니다.",
-        icon: "success",
-        });
-  }
+      title: "사진이 공개 되었습니다.",
+      icon: "success",
+    });
+  };
 
   const notoken = () => {
     Swal.fire({
-        title: "토큰이 부족합니다.",
-        icon: "error",
-        });
-  }
+      title: "토큰이 부족합니다.",
+      icon: "error",
+    });
+  };
 
   async function handleLock() {
     const balance = await checkPOL(wallet);
     //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
-    if(balance > 500) {
-        axios
+    if (balance > 500) {
+      axios
         .post(
-            "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
-            {
+          "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
+          {
             candidateId: params.id,
-            },
-            {
+          },
+          {
             headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-                Accept: "*/*",
+              "Content-Type": "application/json",
+              Authorization: token,
+              Accept: "*/*",
             },
-            }
+          }
         )
-        .then((res) => {
-            console.log("사진 공개 성공");
-            imgopen();
+        .then(async(res) => {
+          console.log("사진 공개 성공",res);
+          await approveAccount(500, wallet);
+          console.log("approveAccount");
+          await sendPOL(500, wallet, adminAddress);
+          console.log("sendPOL");
+          setimageLock(false);//사진 잠금 풀기
+          console.log("setimageLock");
+          // imgopen();//스윗알럿
+          setReward((prev) => (prev+1));
+          handleClose3() //모달 닫기
+          console.log("setReward");
         })
-        .then(setimageLock(false))
-        .then(handleClose3())
-        // .then(approveAccount(500,fromAddress))
-        //내 계좌에서 보낼꺼니깐 보낼주소 fromAddress를 wallet로 하면 맞나??
-        .then(approveAccount(500,wallet))
-        // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
-        .then(sendPOL(500,wallet,fromAddress)) 
+        // .then(setimageLock(false))
+        // .then(handleClose3())
+        // // .then(approveAccount(500,adminAddress))
+        // //내 계좌에서 보낼꺼니깐 보낼주소 adminAddress를 wallet로 하면 맞나??
+        // .then(approveAccount(500,wallet))
+        // // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
+        // .then(sendPOL(500,wallet,adminAddress)) 
         .catch((error) => {
-            console.log(error.response);
+          console.log("error",error.response);
         });
-    }
-    else{
-        notoken();
+    } else {
+      notoken();
     }
   }
 
@@ -384,7 +395,8 @@ function Candidate({ state }) {
           <Txid /> 
         </Modal> */}
 
-          <Txid id={params.id} />
+          <Txid id={params.pollnum} />
+          {/* <Txid id={candIdx} /> */}
 
         <Button id={styles.back_button} onClick={gotoList} variant="contained">
           참가자 목록
@@ -422,14 +434,14 @@ function Candidate({ state }) {
               <p id={styles.behind_marktext}>POLLING</p>
               <p id={styles.behind_text}>
                 {" "}
-                <img id={styles.tokenimg} src={tokenimg} alt="token"/>
+                <img id={styles.tokenimg} src={tokenimg} alt="token" />
                 500POL를 사용하여 <br />
                 미공개 사진을 여시겠습니까?
               </p>
               <Button
                 id={styles.behind_btn}
                 onClick={handleLock}
-                variant="contained"
+                variant="contained" 
               >
                 {" "}
                 예{" "}

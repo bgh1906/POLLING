@@ -21,7 +21,7 @@ function NewNav({state, reward}) {
     if(nickname !== null){
         firstnick = nickname.substring(0, 1);
     }
-    console.log(wallet);
+    // console.log(wallet);
     // const [token, setToken] = useState();
 
     const [token1, setToken1] = useState();
@@ -36,7 +36,7 @@ function NewNav({state, reward}) {
     };
 
     useEffect(() => {
-        console.log("working?")
+        // console.log("working?")
         getToken1();
     })
 
