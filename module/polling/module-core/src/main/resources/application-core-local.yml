@@ -8,7 +8,7 @@ spring:
     port: 6379
 
   datasource:
-    url: jdbc:mariadb://j6a304.p.ssafy.io:3306/polling
+    url: jdbc:mariadb://j6a304.p.ssafy.io:3306/polling?serverTimezone=Asia/Seoul&useLegacyDatetimeCode=false
     username: root
     password: root!
     driver-class-name: org.mariadb.jdbc.Driver
