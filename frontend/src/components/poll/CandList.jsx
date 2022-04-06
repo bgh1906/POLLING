@@ -12,7 +12,7 @@ import podium from "../../assets/podium.png";
 import heart from "../../assets/heart.png";
 import { fontSize } from "@mui/system";
 import { connect } from "react-redux";
-import { totalVotesBlock } from "../../contracts/CallContract";
+import CandCaption from "./CandCaption";
 
 function CandList({ state, cand, countOpen }) {
   const navigate = useNavigate();
@@ -27,23 +27,7 @@ function CandList({ state, cand, countOpen }) {
   function changelistType2() {
     setlistType("register");
   }
-  // 유저 지갑 주소
-  // const wallet = state[0].wallet;
-  const wallet = sessionStorage.getItem("wallet");
-  // const [nomiIndex, setNomiIndex] = useState([]);
-  // useEffect(() => {
-  //   cand.map((item) => {
-  //     nomiIndex.push();
-  //   });
-  // });
-  async function getTotalVotes(idx) {
-    const totalVotes = await totalVotesBlock(idx, wallet);
-    console.log(totalVotes);
-    return totalVotes;
-  }
-  // console.log(getTotalVotes(1));
-  // 득표순정렬
-  // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
+
   return (
     <>
       <div className={styles.right_title}>당신의 스타에게 투표하세요.</div>
@@ -113,24 +97,7 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
-                <figcaption>
-                  <div className={styles.captionName}>{item.name}</div>
-
-                  {countOpen === true && (
-                    <div className={styles.captionName2}>
-                      {/* 득표수 : {getTotalVotes(item.candidateIndex)}표 */}
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                  {countOpen === false && (
-                    <div className={styles.captionName2}>
-                      득표수 : ???표
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                </figcaption>
+                <CandCaption item={item} index={index} countOpen={countOpen} />
               </div>
             ))}
           </div>{" "}
