@@ -140,7 +140,7 @@ const abi = [
   },
 ];
 
-const CONTRACT_ADDRESS = "0x0A46cD0544ef510437f4d74Aa57640aEa20852a3";
+const CONTRACT_ADDRESS = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
 // const account = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
@@ -161,7 +161,7 @@ export const registerBlock = (num) => {
   // const pollContract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
   return pollContract.methods
     .addCandidates(num)
-    .send({ from: "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328", gas: 1000000 });
+    .send({ from: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1", gas: 1000000 });
   // .then(console.log);
 };
 // add 에서 return값 0,9 받아오는 함수 지환님이  새로 작성해서 넘겨주실 예정
@@ -523,7 +523,7 @@ const tokenAbi = [
   },
 ];
 
-const TOKEN_ADDRESS = "0x946E9E14A281A8F69A2a248EE0575a2b76D69D45";
+const TOKEN_ADDRESS = "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550";
 
 //POL토큰 전송 과정
 // export const tokenContract = new web3.eth.Contract(tokenAbi, CONTRACT_ADDRESS);
