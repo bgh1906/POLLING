@@ -632,3 +632,12 @@
     text-align: center;
 }
     
+.img_password{
+    width: 15vw;
+    left: 7vw;
+    top: 6.5vh;
+    font-family: 'ROKAFSansBold';
+    margin: auto;
+    text-align: center;
+}
+    

@@ -533,25 +533,44 @@ export const tokenContract = new web3.eth.Contract(tokenAbi, TOKEN_ADDRESS);
 
 //보낼주소에서 val만큼의 토큰을 전송가능하도록 승인해준다.
 export const approveAccount = (val,fromAddress) => {
+// export const approveAccount = (val,fromAddress,wallet) => {
+  // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보낼주소
   // const val = 100; //보내는것을 승인할 금액
   //account는 관리자주소
   return tokenContract.methods
+    // .approve("fromAddress", val)
     .approve(fromAddress, val)
-    .send({ from: fromAddress });
+    // .send({ from: fromAddress });
+    // .send({ from: fromAddress });
+    .send({ from: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1" });
+  // .then(console.log);
 };
 
 //보내는주소에서 받는주소로 val만큼의 POL토큰을 보내준다.
 // export const sendPOL = (val,fromAddress,toAddress) => {
 export const sendPOL = (val,fromAddress,toAddress) => {
+  // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
+  // export const sendPOL = (val, account) => {
+  // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
+  // toAddress = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //받는주소
+  // const toAddress = "0x17F0549660827d87C864B4078c5E7E6d0987F667";
 
   //account는 관리자주소
   return tokenContract.methods
     .transferFrom(fromAddress, toAddress, val)
-    // .send({ from: fromAddress }); //토큰 받는 것은 됨
+    // .transferFrom("0xadfc94e2e9FA31b39Ef500E5669A8C8766c4F70A", "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1", 100)
     .send({ from: fromAddress }); //토큰 받는 것은 됨
+    // .send({ from: toAddress });
+    // .send({ from: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1" });
+  // .then(console.log);
 };
 
 // 사용자 주소의 잔액 확인 (잔액 바뀔때마다 리렌더링 필요)
 export const checkPOL = (wallet) => {
+  // Address = "0x82769faAC683cF4AE8A5846B49e83414772686D3"; //POL 토큰 잔액 조회할 주소
+  //account는 관리자주소
+  // return tokenContract.methods.balanceOf(wallet).call({ from: wallet });
   return tokenContract.methods.balanceOf(wallet).call({ from: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1" });
+  // return tokenContract.methods.balanceOf(wallet).call({ from: account });
+  // .then(console.log);
 };
