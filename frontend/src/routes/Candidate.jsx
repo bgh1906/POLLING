@@ -168,11 +168,6 @@ function Candidate({ state }) {
     setInputWalletPw(e.target.value);
   }
 
-  function getImgPw(e){
-    setInputImgtPw(e.target.value);
-  }
-  // console.log("wallet",wallet);
-
   const [reward, setReward] = useState(0);
 
   async function handlepoll() {
@@ -257,7 +252,12 @@ function Candidate({ state }) {
   //   };
   //   console.log("balance11",balance);
   //   console.log("wallet11",wallet);
-  
+  function getImgPw(e){
+    setInputImgtPw(e.target.value);
+  }
+
+  const [tminus, setTminus] = useState(0);
+
   async function handleLock() {
     // const tokenweight = getBalance();
     //저 잠시만 물먹고 오께여
@@ -284,19 +284,19 @@ function Candidate({ state }) {
         )
         .then(async(res) => {
           console.log("사진 공개 성공",res);
-          approveAccount(500, wallet);
           unlockAccount(wallet, inputImgPw);
+          await approveAccount(500, wallet);
           console.log("wallet \n",wallet);
           console.log("approveAccount \n",wallet);
-           sendPOL(500, wallet, adminAddress);
+          await sendPOL(500, wallet, adminAddress);
           console.log("sendPOL",wallet,adminAddress);
           imgopen();//스윗알럿
           handleClose3() //모달 닫기
           setimageLock(false);//사진 잠금 풀기
-          // lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
+          lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
           console.log("lockAccount \n",wallet);
           console.log("setimageLock");
-          setReward((prev) => (prev+1)); //렌더링 안먹음
+          setTminus((prev) => (prev+1)); //렌더링 안먹음
           console.log("setReward");
         })
         // .then(setimageLock(false))
@@ -323,7 +323,7 @@ function Candidate({ state }) {
 
   return (
     <>
-      <NewNav reward={reward}/>
+      <NewNav reward={reward} tminus={tminus}/>
       <div className={styles.container}>
         <img id={styles.crown} src={crown} alt="crown" />
         <img id={styles.tx} src={tx} alt="tx" />
