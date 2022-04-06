@@ -24,6 +24,8 @@ import {
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
+import Txid from "./Txid";
+
 
 function Candidate({ state }) {
   const navigate = useNavigate();
@@ -155,10 +157,15 @@ function Candidate({ state }) {
     });
   }
 
-  const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  const fromAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
+  
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
   }
+  // console.log("wallet",wallet);
+
+  const [reward, setReward] = useState(0);
 
   async function handlepoll() {
     if (picked) {
@@ -186,24 +193,26 @@ function Candidate({ state }) {
                 Accept: "*/*",
                 },
             })
-            .then((res) => {
+            .then(async(res) => {
                 console.log("res",res);
                 //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
-                // setTokenok(true);
-                //   console.log("tokenok",tokenok)
                 renderCheck();
-                // pollfin();
-                // handleClose();
+                lockAccount(wallet); //블록체인 계좌 잠금
+                pollfin(); //스윗알랏
+                handleClose(); //모달 종료
+                await approveAccount(1000,fromAddress,fromAddress);
+                await sendPOL(1000,fromAddress,wallet,fromAddress);
+                setReward((prev) => (prev+1));
             })
-            .then(pollfin())
-            .then(handleClose())
-            .then(approveAccount(1000,fromAddress,wallet), console.log("approveAccount"))
-            .then(sendPOL(1000,fromAddress,wallet,wallet),console.log("sendPOL"))
-            .then(lockAccount(wallet))
-            // .then(sendPOL(1000,fromAddress),console.log("sendPOL"))
             .catch((error) => {
-            console.log(error.response);
+            console.log("error",error.response);
             });
+            // .then(lockAccount(wallet))
+            // .then(pollfin())
+            // .then(handleClose())
+            // .then(approveAccount(1000,fromAddress,fromAddress))
+            // .then(sendPOL(1000,fromAddress,wallet,fromAddress))
+            // .then(setReward((prev) => (prev+1)))
         }
      else {
       Swal.fire({
@@ -261,9 +270,9 @@ function Candidate({ state }) {
         .then(handleClose3())
         // .then(approveAccount(500,fromAddress))
         //내 계좌에서 보낼꺼니깐 보낼주소 fromAddress를 wallet로 하면 맞나??
-        .then(approveAccount(500,wallet,wallet))
+        .then(approveAccount(500,wallet))
         // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
-        .then(sendPOL(500,wallet,fromAddress,wallet)) 
+        .then(sendPOL(500,wallet,fromAddress)) 
         .catch((error) => {
             console.log(error.response);
         });
@@ -282,7 +291,7 @@ function Candidate({ state }) {
 
   return (
     <>
-      <NewNav />
+      <NewNav reward={reward}/>
       <div className={styles.container}>
         <img id={styles.crown} src={crown} alt="crown" />
         <img id={styles.tx} src={tx} alt="tx" />
@@ -363,7 +372,7 @@ function Candidate({ state }) {
           </div>
         </Modal>
 
-        <Button
+        {/* <Button
           id={styles.con_button}
           onClick={handleOpen2}
           variant="contained"
@@ -372,7 +381,10 @@ function Candidate({ state }) {
         </Button>
         <Modal open={modalOpen2} onClose={handleClose2}>
           <div id={styles.tran_box}>거래내역</div>
-        </Modal>
+          <Txid /> 
+        </Modal> */}
+
+          <Txid id={params.id} />
 
         <Button id={styles.back_button} onClick={gotoList} variant="contained">
           참가자 목록

@@ -61,12 +61,43 @@ function Join2() {
     console.log(nickname);
   };
 
+      //닉네임 사용 가능
+      const usenick = () => {
+        Swal.fire({
+          text:"사용가능한 닉네임입니다.",
+          icon: 'success',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //닉네임 중복
+    const samenick = () => {
+        Swal.fire({
+          text:"동일 닉네임이 존재합니다.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //닉네임 빈값
+    const nicknull = () => {
+        Swal.fire({
+          text:"Nickname을 입력해주세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
   //닉네임 중복 체크
   const [checknick, setChecknick] = useState(false);
 
   const getChecknick = (e) => {
     if (nickname === "") {
-      alert("Nickname을 입력해주세요.");
+    //   alert("Nickname을 입력해주세요.");
+    nicknull();
     } else {
       axios
         .get(
@@ -80,13 +111,15 @@ function Join2() {
         )
         .then((res) => {
           console.log("res", res);
-          alert("사용가능한 닉네임입니다.");
+        //   alert("사용가능한 닉네임입니다.");
+        usenick();
           setChecknick(true);
         })
         .catch((error) => {
           console.log("error", error.response);
           if (error.code === 409) {
-            alert("동일 닉네임이 존재합니다.");
+            // alert("동일 닉네임이 존재합니다.");
+            samenick();
           }
           alert(error);
           setNickname("");
@@ -123,12 +156,43 @@ function Join2() {
   //찐 인증번호 확인위해 저장하기
   const [realNum, setRealNum] = useState("");
 
+      //폰번호 입력 
+      const phonenull = () => {
+        Swal.fire({
+        text:"휴대폰 번호를 입력해주세요",
+        icon: 'error',
+        confirmButtonColor: '#73E0C1',
+        confirmButtonText: '확인'
+        })
+    }
+
+    //인증번호 전송
+    const sendnum = () => {
+        Swal.fire({
+          text:"인증번호가 전송되었습니다!",
+          icon: 'success',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //인증번호 전송 실패
+    const sendfail = () => {
+        Swal.fire({
+          text:"인증번호 전송 실패!",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
   //인증창 열기 & 인증번호 보내기
   const handleClickOpen = (e) => {
     //인증번호 보내기
     if (phone === "") {
       e.preventDefault();
-      alert("휴대폰 번호를 입력해주세요");
+    //   alert("휴대폰 번호를 입력해주세요");
+    phonenull();
     } else if (phone !== "") {
       axios
         .post(
@@ -141,7 +205,8 @@ function Join2() {
         )
         .then((res) => {
           console.log("인증번호 발송", res);
-          alert("인증번호가 전송되었습니다!");
+        //   alert("인증번호가 전송되었습니다!");
+        sendnum();
           setOpen(true);
           setPhonelock(true);
           setRealNum(res.data.code);
@@ -151,7 +216,8 @@ function Join2() {
           const message = error.message;
           console.log("message", error.response);
           console.log("message", message);
-          alert("인증번호 전송 실패!");
+        //   alert("인증번호 전송 실패!");
+        sendfail();
         });
     }
   };
@@ -166,18 +232,51 @@ function Join2() {
     setChecknum(e.target.value);
     console.log(checknum);
   };
+
+      //인증번호 미입력
+      const numnull = () => {
+        Swal.fire({
+        text:"인증번호를 입력해주세요",
+        icon: 'error',
+        confirmButtonColor: '#73E0C1',
+        confirmButtonText: '확인'
+        })
+    }
+
+    //인증번호 전송
+    const numsucc = () => {
+        Swal.fire({
+          text:"본인 확인 완료",
+          icon: 'success',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //인증번호 전송 실패
+    const numfail = () => {
+        Swal.fire({
+          text:"인증번호가 틀렸습니다.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
   //인증번호 맞는지 체크
   const [phonecheck, setPhonecheck] = useState(false);
   const getPhone = (e) => {
     //휴대폰인증 진행
     if (checknum === " ") {
       e.preventDefault();
-      alert("인증번호를 입력해주세요");
+    //   alert("인증번호를 입력해주세요");
+    numnull();
     } else if (checknum !== "") {
       if (checknum !== realNum) {
-        alert("인증번호가 틀렸습니다.");
+        // alert("인증번호가 틀렸습니다.");
+        numfail();
       } else if (checknum === realNum) {
-        alert("본인 확인 완료");
+        // alert("본인 확인 완료");
+        numsucc();
         //정상 처리되면 true로 바꾸기 & 모달 종료
         setPhonecheck(true);
         setOpen(false);
@@ -236,6 +335,45 @@ function Join2() {
     setPcheck(!pcheck);
     console.log(pcheck);
   };
+     //빈칸확인
+     const inputnull = () => {
+        Swal.fire({
+          text:"닉네임/이메일/비밀번호/휴대폰번호/계좌 비밀번호를 입력하세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //인증번호 여부
+    const phonechek = () => {
+        Swal.fire({
+          text:"휴대폰 인증을 진행해주세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //중복 체크 여부
+    const nickchek = () => {
+        Swal.fire({
+          text:"닉네임 중복체크를 진행해주세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //개인정보처리 여부
+    const privacychek = () => {
+        Swal.fire({
+          text:"개인정보처리방침에 동의해주세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
 
   //페이지 이동
   const navigate = useNavigate();
@@ -249,16 +387,20 @@ function Join2() {
       walletpw === ""
     ) {
       e.preventDefault();
-      alert("닉네임/이메일/비밀번호/계좌 비밀번호를 입력하세요.");
+      //   alert("닉네임/이메일/비밀번호/계좌 비밀번호를 입력하세요.");
+      inputnull();
     } else if (phonecheck === false) {
       e.preventDefault();
-      alert("휴대폰 인증을 진행해주세요.");
+    //   alert("휴대폰 인증을 진행해주세요.");
+    phonechek();
     } else if (checknick === false) {
       e.preventDefault();
-      alert("닉네임 중복체크를 진행해주세요.");
+    //   alert("닉네임 중복체크를 진행해주세요.");
+    nickchek();
     } else if (pcheck === false) {
       e.preventDefault();
       alert("개인정보처리방침에 동의해주세요.");
+      privacychek();
     } else if (
       nickname !== " " &&
       email !== " " &&
@@ -280,7 +422,7 @@ function Join2() {
             nickname: nickname,
             password: password,
             phoneNumber: phone,
-            role: "ROLE_ADMIN",
+            role: "ROLE_USER",
             wallet: wallet,
           }
         )

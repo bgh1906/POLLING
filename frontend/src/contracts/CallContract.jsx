@@ -523,27 +523,31 @@ const tokenAbi = [
   },
 ];
 
-const TOKEN_ADDRESS = "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550";
+// const TOKEN_ADDRESS = "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550";
+const TOKEN_ADDRESS = "0x946E9E14A281A8F69A2a248EE0575a2b76D69D45";
 
 //POL토큰 전송 과정
 // export const tokenContract = new web3.eth.Contract(tokenAbi, CONTRACT_ADDRESS);
 export const tokenContract = new web3.eth.Contract(tokenAbi, TOKEN_ADDRESS);
 
 //보낼주소에서 val만큼의 토큰을 전송가능하도록 승인해준다.
-export const approveAccount = (val,fromAddress,wallet) => {
+export const approveAccount = (val,fromAddress) => {
+// export const approveAccount = (val,fromAddress,wallet) => {
   // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보낼주소
   // const val = 100; //보내는것을 승인할 금액
   //account는 관리자주소
   return tokenContract.methods
     // .approve("fromAddress", val)
     .approve(fromAddress, val)
-    .send({ from: wallet });
+    // .send({ from: fromAddress });
+    .send({ from: fromAddress });
   // .then(console.log);
 };
 
 
 //보내는주소에서 받는주소로 val만큼의 POL토큰을 보내준다.
-export const sendPOL = (val,fromAddress,toAddress,wallet) => {
+// export const sendPOL = (val,fromAddress,toAddress) => {
+export const sendPOL = (val,fromAddress,toAddress) => {
   // const fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
 // export const sendPOL = (val, account) => {
   // fromAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"; //보내는주소
@@ -554,7 +558,8 @@ export const sendPOL = (val,fromAddress,toAddress,wallet) => {
   return tokenContract.methods
     // .transferFrom("fromAddress", "toAddress", val)
     .transferFrom(fromAddress, toAddress, val)
-    .send({ from: wallet });
+    // .send({ from: fromAddress });
+    .send({ from: fromAddress });
   // .then(console.log);
 };
 
