@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from "./Candidate.module.css";
+import styles from "./History.module.css";
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -17,11 +17,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 
-function Txid({id}) {
-  console.log("id",id);
+function Historytxid({pollId}) {
 
-  const token = sessionStorage.getItem("token")
-  const [open, setOpen] = React.useState(false);
+    const token = sessionStorage.getItem("token")
+   const [open, setOpen] = React.useState(false);
 
    const handleClickOpen = () => {
      setOpen(true);
@@ -39,7 +38,8 @@ function Txid({id}) {
     // const getlist = () =>{
       axios
       .get(
-        `/api/polls/candidates/${id}/0/50`,
+        // /api/polls/candidates/polls/{pollsId}/{page}/{limit}
+        `/api/polls/candidates/polls/${pollId}/0/50`,
         {
           headers: {
             "Authorization":token,
@@ -61,12 +61,14 @@ function Txid({id}) {
   return (
     <div>
       <Button
-          id={styles.con_button}
-          onClick={handleClickOpen}
-          variant="contained"
-        >
-          투표내역
-    </Button>
+        id={styles.button_info}
+        variant="contained"
+        size="large"
+        onClick={handleClickOpen}
+        // onClick={() => setModalShow(true)}
+      >
+        투표결과
+      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -120,4 +122,4 @@ function Txid({id}) {
     </div>
   );
 }
-export default Txid;
+export default Historytxid;
