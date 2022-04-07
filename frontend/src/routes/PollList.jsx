@@ -23,7 +23,6 @@ export default function PollList() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
       .then((res) => {
-        console.log(res);
         setItemData(res.data);
       })
       .catch((error) => {

@@ -20,6 +20,7 @@ function CandList({ state, cand, countOpen }) {
   const params = useParams();
 
   const [listType, setlistType] = useState("rank");
+  const [temp, setTemp] = useState([]);
 
   function changelistType() {
     setlistType("rank");
@@ -28,24 +29,27 @@ function CandList({ state, cand, countOpen }) {
   function changelistType2() {
     setlistType("register");
   }
-  // const wallet = sessionStorage.getItem("wallet");
-  // const [totalVotes, setTotalVotes] = useState(0);
-  // function getTotalVotes(idx) {
-  //   totalVotesBlock(idx, wallet).then((res) => {
-  //     setTotalVotes(res);
-  //     // console.log(`${idx}번 후보자의 득표수: ${totalVotes}`);
-  //   });
-  //   return totalVotes;
-  // }
-  // let array = [];
-  // useEffect(() => {
-  //   // console.log(cand);
-  //   for (let item of cand) {
-  //     console.log(item.candidateIndex);
-  //     // array.push(getTotalVotes(item.candidateIndex));
-  //   }
-  //   // console.log(array);
-  // });
+
+  if (listType === "rank") {
+    temp.sort((a, b) => b[1] - a[1]);
+  } else {
+    temp.sort((a, b) => a[0] - b[0]);
+  }
+
+  // 유저 지갑 주소
+  // const wallet = state[0].wallet;
+  const wallet = sessionStorage.getItem("wallet");
+  function getTotalVotes(idx) {
+    totalVotesBlock(idx, wallet).then((res) => {
+      setTemp((prev) => [...prev, [idx, parseInt(res)]]);
+    });
+    // return totalVotes;
+  }
+  useEffect(() => {
+    cand.map((item) => getTotalVotes(item.candidateIndex));
+  }, [cand]);
+
+  console.log("temp:", temp);
   return (
     <>
       <div className={styles.right_title}>당신의 스타에게 투표하세요.</div>
@@ -92,56 +96,83 @@ function CandList({ state, cand, countOpen }) {
       {listType === "rank" ? (
         <>
           <div id={styles.cand_background}>
-            <img id={styles.dark} src={dark} alt="dark"></img>
+            <img id={styles.dark} src={dark} alt="dark" />
             <img id={styles.rank1} src={rank1} alt="rank1" />
             <img id={styles.rank2} src={rank2} alt="rank2" />
             <img id={styles.rank3} src={rank3} alt="rank3" />
             <img id={styles.podium} src={podium} alt="podium" />
           </div>
           <div className={styles.Cand_list}>
-            {cand.map((item, index) => (
-              <div className={styles.poll_Cand} key={item.candidateId}>
-                <img
-                  src={item.thumbnail}
-                  alt={item.name}
-                  className={styles.CandImg}
-                  onClick={() => {
-                    item.candidateId % 2
-                      ? navigate(
-                          `/poll/${params.pollnum}/${item.candidateId}/1`
-                        )
-                      : navigate(
-                          `/poll/${params.pollnum}/${item.candidateId}/2`
-                        );
-                  }}
-                />
-                {/* <figcaption>
-                  <div className={styles.captionName}>{item.name}</div>
-
-                  {countOpen === true && (
-                    <div className={styles.captionName2}>
-                      득표수 : {totalVotes}표
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                  {countOpen === false && (
-                    <div className={styles.captionName2}>
-                      득표수 : ???표
-                      <br />
-                      현재 순위 : {index + 1}위
-                    </div>
-                  )}
-                </figcaption> */}
-                <CandCaption item={item} index={index} countOpen={countOpen} />
-              </div>
-            ))}
-          </div>{" "}
+            {temp.map((item, index) => {
+              const person = cand.filter(
+                (candidateInfo) => candidateInfo.candidateIndex === item[0]
+              );
+              console.log("person:", person[0]);
+              return (
+                <div className={styles.poll_Cand} key={person[0].thumbnail}>
+                  <img
+                    src={person[0].thumbnail}
+                    alt={person[0].name}
+                    className={styles.CandImg}
+                    onClick={() => {
+                      person[0].candidateId % 2
+                        ? navigate(
+                            `/poll/${params.pollnum}/${person[0].candidateId}/1`
+                          )
+                        : navigate(
+                            `/poll/${params.pollnum}/${person[0].candidateId}/2`
+                          );
+                    }}
+                  />
+                  <CandCaption
+                    item={person[0]}
+                    countOpen={countOpen}
+                    voteCount={item[1]}
+                    rank={index + 1}
+                    listType={listType}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </>
       ) : (
         <>
           <div id={styles.cand_background2}></div>
           <div className={styles.Cand_list2}>
+            {temp.map((item, index) => {
+              const person = cand.filter(
+                (candidateInfo) => candidateInfo.candidateIndex === item[0]
+              );
+              console.log("person:", person[0]);
+              return (
+                <div className={styles.poll_Cand2} key={person[0].thumbnail}>
+                  <img
+                    src={person[0].thumbnail}
+                    alt={person[0].name}
+                    className={styles.CandImg2}
+                    onClick={() => {
+                      person[0].candidateId % 2
+                        ? navigate(
+                            `/poll/${params.pollnum}/${person[0].candidateId}/1`
+                          )
+                        : navigate(
+                            `/poll/${params.pollnum}/${person[0].candidateId}/2`
+                          );
+                    }}
+                  />
+                  <CandCaption
+                    item={person[0]}
+                    countOpen={countOpen}
+                    voteCount={item[1]}
+                    rank={index + 1}
+                    listType={listType}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          {/* <div className={styles.Cand_list2}>
             {cand.map((item, index) => (
               <div className={styles.poll_Cand2} key={item.candidateId}>
                 <img
@@ -158,15 +189,10 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
-                <CandCaption
-                  item={item}
-                  index={index}
-                  countOpen={countOpen}
-                  // setCount={setCount}
-                />
+                <CandCaption item={item} index={index} countOpen={countOpen} />
               </div>
             ))}
-          </div>
+          </div> */}
         </>
       )}
     </>
