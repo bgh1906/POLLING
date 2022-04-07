@@ -174,13 +174,66 @@
   padding-top: 0.5vw;
 }
 
+/* 1등 */
+.captionName1 {
+  position: relative;
+  font-size: 2vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-weight: 700;
+  /* left: 1.3vw; */
+  left: 0.3vw;
+  color: white;
+  /* 1등  */
+  background-image: url(https://img.icons8.com/external-yogi-aprelliyanto-outline-color-yogi-aprelliyanto/32/000000/external-medal-award-yogi-aprelliyanto-outline-color-yogi-aprelliyanto-15.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw left;
+  padding-left:2vw;
+  width: 7vw;
+}
+/* 2등 : https://img.icons8.com/external-yogi-aprelliyanto-outline-color-yogi-aprelliyanto/32/000000/external-medal-award-yogi-aprelliyanto-outline-color-yogi-aprelliyanto-16.png */
+.captionName22 {
+  position: relative;
+  font-size: 2vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-weight: 700;
+  /* left: 1.3vw; */
+  left: 0.3vw;
+  color: white;
+  /* 1등  */
+  background-image: url(https://img.icons8.com/external-yogi-aprelliyanto-outline-color-yogi-aprelliyanto/32/000000/external-medal-award-yogi-aprelliyanto-outline-color-yogi-aprelliyanto-16.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw left;
+  padding-left:2vw;
+  width: 7vw;
+}
+
+/* 3등 : https://img.icons8.com/external-yogi-aprelliyanto-outline-color-yogi-aprelliyanto/32/000000/external-medal-award-yogi-aprelliyanto-outline-color-yogi-aprelliyanto-17.png */
+.captionName33 {
+  position: relative;
+  font-size: 2vw;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-weight: 700;
+  /* left: 1.3vw; */
+  left: 0.3vw;
+  color: white;
+  /* 1등  */
+  background-image: url(https://img.icons8.com/external-yogi-aprelliyanto-outline-color-yogi-aprelliyanto/32/000000/external-medal-award-yogi-aprelliyanto-outline-color-yogi-aprelliyanto-17.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw left;
+  padding-left:2vw;
+  width: 7vw;
+}
+
+/* 무관 */
 .captionName {
   position: relative;
   font-size: 2vw;
   font-family: 'GangwonEdu_OTFBoldA';
   font-weight: 700;
-  left: 1.3vw;
+  /* left: 1.3vw; */
+  left: 0.3vw;
   color: white;
+
 }
 
 .captionName2 {
@@ -190,6 +243,7 @@
   font-weight: 700;
   color: white;
   margin-top: 0.5vh;
+  
 }
 
 
@@ -208,11 +262,18 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-#rank1 {
+/* #rank1 {
   position:relative;
   width: 2vw;
   top: 38.7vh;
   left: 25.7vw;
+} */
+#rank1 {
+  position:absolute;
+  width: 2vw;
+  top: 49.7vh;
+  left: 25.7vw;
+  background-image: url("https://img.icons8.com/external-justicon-lineal-color-justicon/64/000000/external-medal-awards-justicon-lineal-color-justicon.png");
 }
 
 #rank2 {

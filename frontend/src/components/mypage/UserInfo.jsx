@@ -167,7 +167,7 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
         }
       )
       .then((res) => {
-        // console.log("res", res);
+        console.log("res", res);
         sessionStorage.clear();
         DispatchdeleteInfo();
         setNickname("");

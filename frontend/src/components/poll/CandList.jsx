@@ -91,9 +91,9 @@ function CandList({ state, cand, countOpen }) {
         <>
           <div id={styles.cand_background}>
             <img id={styles.dark} src={dark} alt="dark" />
-            <img id={styles.rank1} src={rank1} alt="rank1" />
-            <img id={styles.rank2} src={rank2} alt="rank2" />
-            <img id={styles.rank3} src={rank3} alt="rank3" />
+            {/* <img id={styles.rank1} src={rank1} alt="rank1" /> */}
+            {/* <img id={styles.rank2} src={rank2} alt="rank2" /> */}
+            {/* <img id={styles.rank3} src={rank3} alt="rank3" /> */}
             <img id={styles.podium} src={podium} alt="podium" />
           </div>
           <div className={styles.Cand_list}>
