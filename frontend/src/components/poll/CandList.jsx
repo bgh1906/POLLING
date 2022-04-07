@@ -20,8 +20,6 @@ function CandList({ state, cand, countOpen }) {
 
   const [listType, setlistType] = useState("rank");
 
-  // const [count, setCount] = useState([]);
-
   function changelistType() {
     setlistType("rank");
   }
@@ -99,12 +97,7 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
-                <CandCaption
-                  item={item}
-                  index={index}
-                  countOpen={countOpen}
-                  // setCount={setCount}
-                />
+                <CandCaption item={item} index={index} countOpen={countOpen} />
               </div>
             ))}
           </div>{" "}
