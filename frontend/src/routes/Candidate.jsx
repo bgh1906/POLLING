@@ -214,8 +214,8 @@ function Candidate({ state }) {
           lockAccount(wallet); //블록체인 계좌 잠금
           pollfin(); //스윗알랏
           handleClose(); //모달 종료
-          await approveAccount(1000, adminAddress);
-          await sendPOL(1000, adminAddress, wallet);
+          await approveAccount(100, adminAddress);
+          await sendPOL(100, adminAddress, wallet);
           setReward((prev) => prev + 1);
         })
         .catch((error) => {
@@ -262,7 +262,7 @@ function Candidate({ state }) {
   };
   const nopw = () => {
     Swal.fire({
-      title: "지갑 비밀번호를 입력해주세요.",
+      title: "지갑 비밀번호가 틀렸습니다.",
       icon: "error",
     });
   };
@@ -276,7 +276,7 @@ function Candidate({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     if (balance >= 500 && inputWalletPw !== "") {
-      console.log("balance3",balance);
+      console.log("balance3", balance);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -305,9 +305,9 @@ function Candidate({ state }) {
           console.log("error", error.response);
         });
     } else if (balance < 500 && inputWalletPw !== "") {
-        notoken();
-    } else if (balance >= 500 && inputWalletPw === ""){
-        nopw();
+      notoken();
+    } else if (balance >= 500 && inputWalletPw === "") {
+      nopw();
     } else {
       Swal.fire({
         title: "토큰 부족 && 비밀번호를 입력하세요.",
@@ -455,11 +455,11 @@ function Candidate({ state }) {
                 미공개 사진을 여시겠습니까?
               </p>
               <TextField
-                  className={styles.img_password}
-                  placeholder="Wallet Password"
-                  variant="standard"
-                  type="password"
-                  onChange={getImgPw}
+                className={styles.img_password}
+                placeholder="Wallet Password"
+                variant="standard"
+                type="password"
+                onChange={getImgPw}
               />
               <Button
                 id={styles.behind_btn}
