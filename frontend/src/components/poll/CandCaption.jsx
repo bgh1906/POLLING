@@ -5,7 +5,23 @@ function CandCaption({ item, countOpen, voteCount, rank, listType }) {
   return (
     <>
       <figcaption>
-        <div className={styles.captionName}>{item.name}</div>
+        {/* 여기부터 => 전체 싸서 삼항으로, rank에 따라  */}
+        {rank === 1? 
+          <div className={styles.captionName1}>{item.name}</div>
+          :
+          (
+            rank === 2?
+            <div className={styles.captionName22}>{item.name}</div>
+            :
+            (
+              rank === 3?
+              <div className={styles.captionName33}>{item.name}</div>
+              :
+              <div className={styles.captionName}>{item.name}</div>
+            )
+          )
+        }
+        {/* 여기까지 */}
         {countOpen === true && listType === "rank" && (
           <div className={styles.captionName2}>
             득표수 : {voteCount}표
