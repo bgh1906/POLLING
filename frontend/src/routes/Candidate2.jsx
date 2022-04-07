@@ -55,7 +55,6 @@ function Candidate2({ state }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
   }, []);
 
   useEffect(() => {
@@ -205,7 +204,6 @@ function Candidate2({ state }) {
           }
         )
         .then(async (res) => {
-          console.log(res);
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
           lockAccount(wallet); //블록체인 계좌 잠금
@@ -260,7 +258,7 @@ function Candidate2({ state }) {
   };
   const nopw = () => {
     Swal.fire({
-      title: "지갑 비밀번호를 입력해주세요.",
+      title: "지갑 비밀번호가 틀렸습니다.",
       icon: "error",
     });
   };
@@ -303,8 +301,8 @@ function Candidate2({ state }) {
         });
     } else if (balance < 500 && inputWalletPw !== "") {
       notoken();
-    } else if (balance >= 500 && inputWalletPw === ""){
-        nopw();
+    } else if (balance >= 500 && inputWalletPw === "") {
+      nopw();
     } else {
       Swal.fire({
         title: "토큰 부족 && 비밀번호를 입력하세요.",

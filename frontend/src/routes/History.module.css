@@ -140,9 +140,6 @@ font-family: 'Yellowtail', cursive; */
   text-align: center;
 }
 
-.history_item:hover img {
-}
-
 .history_item:hover .ended_info {
   opacity: 1;
   /* background-color: #ffffff; */

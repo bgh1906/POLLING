@@ -53,7 +53,7 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
@@ -89,7 +89,7 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
@@ -123,7 +123,7 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
@@ -157,7 +157,7 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    src={item.thumbnail}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
