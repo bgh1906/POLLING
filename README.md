@@ -25,8 +25,8 @@
 <img src="https://img.shields.io/badge/-mariaDB-003545?style=flat-square&logo=mariaDB&logoColor=white"> <img src="https://img.shields.io/badge/-H2-181717?style=flat-square"/> <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white">
 
 #### DevOps
-<img src="https://img.shields.io/badge/-Amazon AWS-232F3E?style=flat-square&logo=AmazonAWS&logoColor=white"/> <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/>
-<img src="https://img.shields.io/badge/-Ngnix-181717?style=flat-square"/>
+<img src="https://img.shields.io/badge/-AWS%20EC2-232F3E?style=flat-square&logo=AmazonAWS&logoColor=white"/> <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/-Nginx-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=black"/>
 <img src="https://img.shields.io/badge/-Jira-0052CC?style=flat-square&logo=jira&logoColor=black"/>
 
