@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <HashRouter>
-      {/* <BrowserRouter> */}
+        {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join2 />}></Route>
@@ -55,7 +55,7 @@ function App() {
           <Route path={"*"} element={<NotFound />} />
           <Route path="/company" element={<Company />}></Route>
         </Routes>
-      {/* </BrowserRouter> */}
+        {/* </BrowserRouter> */}
       </HashRouter>
     </div>
   );

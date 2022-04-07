@@ -1,6 +1,6 @@
 import styles from "./CandList.module.css";
 import { totalVotesBlock } from "../../contracts/CallContract";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CandCaption({ item, index, countOpen }) {
   // 유저 지갑 주소
@@ -18,9 +18,11 @@ function CandCaption({ item, index, countOpen }) {
       setTotalVotes(res);
       // console.log(`${idx}번 후보자의 득표수: ${totalVotes}`);
     });
-    return totalVotes;
+    // return totalVotes;
   }
-
+  useEffect(() => {
+    getTotalVotes(item.candidateIndex);
+  });
   // 득표순정렬
   // cand.sort((a, b) => b.votesTotalCount - a.votesTotalCount);
   return (
@@ -30,7 +32,7 @@ function CandCaption({ item, index, countOpen }) {
 
         {countOpen === true && (
           <div className={styles.captionName2}>
-            득표수 : {getTotalVotes(item.candidateIndex)}표
+            득표수 : {totalVotes}표
             <br />
             현재 순위 : {index + 1}위
           </div>
