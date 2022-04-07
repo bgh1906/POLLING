@@ -20,6 +20,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import { web3 } from "../contracts/CallContract";
 
 function Kakaojoin({ DispatchdeleteInfo }) {
 
@@ -56,7 +57,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const [nickname, setNickname] = useState("");
     const getNickname = (e) => {
         setNickname(e.target.value);
-        console.log(nickname);
     };
 
     //닉네임 사용 가능
@@ -104,16 +104,13 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 }           
             )
             .then((res) => {
-                console.log("res", res);
                 usenick();
                 setChecknick(true);
             })
             .catch(error => {
-                console.log("error", error.response);
                 samenick();
                 setNickname("");
             })
-            console.log("nickname",nickname);
         }
     };
 
@@ -121,7 +118,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const [phone, setPhone] = useState("");
     const getPhonenum = (e) =>{
         setPhone(e.target.value);
-        console.log(phone);
     }
 
     //폰번호 입력 
@@ -178,17 +174,15 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 },
             )
             .then((res) => {
-                console.log("인증번호 발송", res);
+                console.log(res.data.code);
                 sendnum();
                 setOpen(true);
                 setPhonelock(true);
                 setRealNum(res.data.code);
-                console.log(res.data.code);
             })
             .catch(error => {
                 const message = error.message;
-                console.log("message",error.response)
-                console.log("message", message);
+                // console.log("message", message);
                 sendfail();
             }); 
         }
@@ -202,7 +196,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const [checknum, setChecknum] = useState("");
     const getChecknum = (e) => {
         setChecknum(e.target.value);
-        console.log(checknum);
     }
 
     //인증번호 미입력
@@ -260,8 +253,12 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const [walletpw, setWalletpw] = useState("");
     const getWalletpw = (e) => {
         setWalletpw(e.target.value);
-        console.log(walletpw);
     }
+    const createWallet = async () => {
+        let userAccount = await web3.eth.personal.newAccount(walletpw);
+        return userAccount;
+        // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
+    };
     //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함. 
     //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
     //그때 일시적으로 풀때 필요함. 그떄 동일 값 넣어야 계정이 일시적으로 열리면서 투표 진행, 진행 후 다시 잠김.
@@ -296,18 +293,17 @@ function Kakaojoin({ DispatchdeleteInfo }) {
 
     const getPcheck = (e) => {
         setPcheck(!pcheck);
-        console.log(pcheck);
     }
 
-        //빈칸확인
-        const inputnull = () => {
-            Swal.fire({
-              text:"닉네임/휴대폰번호/계좌 비밀번호를 입력하세요.",
-              icon: 'error',
-              confirmButtonColor: '#73E0C1',
-              confirmButtonText: '확인'
-            })
-        }
+    //빈칸확인
+    const inputnull = () => {
+        Swal.fire({
+            text:"닉네임/휴대폰번호/계좌 비밀번호를 입력하세요.",
+            icon: 'error',
+            confirmButtonColor: '#73E0C1',
+            confirmButtonText: '확인'
+        })
+    }
     
         //인증 여부
         const phonechek = () => {
@@ -343,8 +339,8 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const navigate = useNavigate();
 
     //회원가입
-    const joinus = (e) => {
-        if(nickname ===" " || phone === " " || walletpw === ""){
+    const joinus = async(e) => {
+        if(nickname ===" " || phone === " " || walletpw === "" ){
             e.preventDefault();
             inputnull();
         } 
@@ -360,23 +356,26 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             e.preventDefault();
             privacychek();
         }
-        else if( nickname !== " " && phone !== " " && phonecheck !== false &&checknick !== false && pcheck !== false ){
+        else if( nickname !== " " && phone !== " " && walletpw !== "" && phonecheck !== false &&checknick !== false && pcheck !== false ){
+            const wallet = await createWallet();
             axios
             .post("https://j6a304.p.ssafy.io/api/auth/social", {
                 accessToken: params.accessToken,
                 nickname: nickname,
                 phoneNumber: phone,
+                wallet: wallet,
             })
             .then((res) => {
                 // console.log("res",res);
                 sessionStorage.setItem("token", params.accessToken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
+                sessionStorage.setItem("wallet", res.data.wallet);
                 dispatch(actionCreators.addInfo(
                     {
-                      token: params.accessToken,
                       id: res.data.id,
                       nickname: res.data.nickname,
+                      token: params.accessToken,
                       wallet: res.data.wallet
                     }
                   ));
