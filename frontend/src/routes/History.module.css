@@ -2,9 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap");
 
-/* font-family: 'Courgette', cursive;
-font-family: 'Dancing Script', cursive;
-font-family: 'Yellowtail', cursive; */
 
 @font-face {
   font-family: "ROKAFSansBold";
@@ -24,11 +21,9 @@ font-family: 'Yellowtail', cursive; */
 }
 
 .history_title {
-  position: fixed;
-  /* font-family: "Bitter", serif; */
-  /* font-family: 'Dancing Script', cursive; */
-  font-family: "Yellowtail", cursive;
-  /* font-family: 'Dancing Script', cursive; */
+  position:fixed;
+
+  font-family: 'Yellowtail', cursive;
   font-size: 24vw;
   font-weight: 900;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -52,9 +47,7 @@ font-family: 'Yellowtail', cursive; */
 }
 
 .history_container {
-  /* padding-top: -10vh; */
   max-width: 1024px;
-  /* max-width: 53vw; */
   margin: 0 auto;
   height: 100%;
   position: relative;
@@ -78,8 +71,7 @@ font-family: 'Yellowtail', cursive; */
   transition: all 0.5s;
   width: 35.7vw;
   height: 21.7vw;
-  /* width: 690px;
-  height: 420px; */
+
   float: left;
   margin-top: -130px;
   position: relative;
@@ -91,8 +83,7 @@ font-family: 'Yellowtail', cursive; */
   transition: all 0.5s;
   width: 21.7vw;
   height: 35.7vw;
-  /* width: 420px;
-  height: 690px; */
+
   float: right;
   margin-top: -190px;
   position: relative;
@@ -104,8 +95,7 @@ font-family: 'Yellowtail', cursive; */
   transition: all 0.5s;
   width: 23vw;
   height: 35.7vw;
-  /* width: 420px;
-  height: 690px; */
+
   float: left;
   margin-top: -80px;
   margin-left: -4.14vw;
@@ -120,11 +110,9 @@ font-family: 'Yellowtail', cursive; */
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* -ms-transform: translate(-50%, -50%); */
   text-align: center;
   line-height: normal;
   width: fit-content;
-  /* font-family: "Bitter", serif; */
   font-family: "Baskervville", serif;
   color: rgb(0, 0, 0);
 }
@@ -136,13 +124,11 @@ font-family: 'Yellowtail', cursive; */
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* -ms-transform: translate(-50%, -50%); */
   text-align: center;
 }
 
 .history_item:hover .ended_info {
   opacity: 1;
-  /* background-color: #ffffff; */
 }
 
 .history_item:hover .ended_button {
@@ -160,7 +146,6 @@ font-family: 'Yellowtail', cursive; */
 
 .history_item:hover img {
   filter: grayscale(0);
-  /* transform: scale(1.025); */
   box-shadow: 25px 25px 55px -5px rgb(0 0 0 / 75%);
   transition: all 0.5s;
 }
@@ -169,8 +154,7 @@ font-family: 'Yellowtail', cursive; */
   font-family: "ROKAFSansBold";
   font-size: 3vw;
   font-weight: 700;
-  /* color: #fb71aabc; */
-  color: beige;
+  color: rgba(6, 65, 84, 0.652);
 }
 
 #date_info {

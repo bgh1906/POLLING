@@ -58,8 +58,11 @@ function History() {
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
           {itemData.map((item, index) => (
-            // <div className={styles.history_item}>
-            <div className={styles.history_item} key={index} data-aos="fade-up">
+            <div
+              className={styles.history_item}
+              key={index}
+              data-aos="fade-up"
+            >
               <img src={item.thumbnail} alt={item.title} />
               <div className={styles.ended_info}>
                 <div id={styles.name_info}>{item.title}</div>
@@ -68,15 +71,8 @@ function History() {
                 </div>
               </div>
               <div className={styles.ended_button}>
-                {/* <Button
-                  id={styles.button_info}
-                  variant="contained"
-                  size="large"
-                  onClick={() => setModalShow(true)}
-                >
-                  투표결과
-                </Button> */}
-                <Historytxid pollId={item.pollId} />
+                
+                <Historytxid pollId={item.pollId}/>
               </div>
             </div>
           ))}

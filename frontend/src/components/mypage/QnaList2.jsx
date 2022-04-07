@@ -24,6 +24,7 @@ function QnaList2() {
 
     //1:1문의 저장
     const [qnalist, setQnalist] = useState([]);
+    const [qnaplus, setQnaplus] = useState(0);
 
     useEffect(() => {
       let iscompomount = true;
@@ -40,6 +41,7 @@ function QnaList2() {
         )
         .then((res) => {
           setQnalist(res.data);
+          setQnaplus((prev) => (prev+1));
         })
         .catch(error => {
           console.log("res",error.response);
@@ -49,7 +51,7 @@ function QnaList2() {
       return() => {
         iscompomount = false;
       };
-    },[qnalist]);
+    },[qnaplus]);
  
     //1:1문의 삭제 성공
     const deleSuccess = () => {

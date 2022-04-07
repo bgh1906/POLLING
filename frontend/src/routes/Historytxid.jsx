@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import Table from '@mui/material/Table';
@@ -35,15 +34,12 @@ function Historytxid({pollId}) {
 
     //투표 내역 받아오기
     React.useEffect(() => {
-    // const getlist = () =>{
       axios
       .get(
-        // /api/polls/candidates/polls/{pollsId}/{page}/{limit}
         `/api/polls/candidates/polls/${pollId}/0/50`,
         {
           headers: {
             "Authorization":token,
-            // refreshToken: token,
           },
         }
       )
@@ -65,7 +61,6 @@ function Historytxid({pollId}) {
         variant="contained"
         size="large"
         onClick={handleClickOpen}
-        // onClick={() => setModalShow(true)}
       >
         투표결과
       </Button>
@@ -74,7 +69,6 @@ function Historytxid({pollId}) {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        // style={{width:'20vw'}}
         maxWidth={'md'}
       >
         <DialogTitle id="alert-dialog-title" style={{fontFamily:'ROKAFSansBold'}}>
@@ -96,13 +90,11 @@ function Historytxid({pollId}) {
                   key={key}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  {/* <TableCell style={{width:'8vw'}} component="th" scope="row"> */}
                   <TableCell style={{width:'8vw'}}>
                     {row.nickname}
                   </TableCell>
                   <TableCell style={{width:'10vw'}}>
                     {row.transactionId.slice(0,39)}...
-                    {/* {row.transactionId} */}
                   </TableCell>
                   <TableCell style={{width:'5vw'}}>
                     {row.voteCount}
