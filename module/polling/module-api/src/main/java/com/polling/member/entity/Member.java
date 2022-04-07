@@ -74,4 +74,6 @@ public class Member extends BaseTimeEntity {
   public void addRole(MemberRole role) {
     this.memberRole.add(role);
   }
+
+  public void deleteRole(){this.memberRole.clear();}
 }

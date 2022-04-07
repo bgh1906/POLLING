@@ -61,6 +61,14 @@ MemberService {
     member.addRole(MemberRole.ROLE_ADMIN);
   }
 
+  @Trace
+  @Transactional
+  public void delete(Long memberId){
+    Member member = getMember(memberId);
+    member.deleteRole();
+    memberRepository.deleteById(memberId);
+  }
+
   private void checkDuplicateMemberEmail(String email) {
     if (memberRepository.existsByEmail(email)) {
       throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
