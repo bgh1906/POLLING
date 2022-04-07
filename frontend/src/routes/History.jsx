@@ -18,65 +18,23 @@ import axios from "axios";
 import Historytxid from "./Historytxid";
 
 function History() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  useEffect(()=>{
-    window.scrollTo(0,0);
-}, [])
+  const [itemData, setItemData] = useState([]);
 
-const [itemData, setItemData] = useState([]);
-
-useEffect(() => {
-  axios
-    .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
-    .then((res) => {
-      console.log(res);
-      setItemData(res.data);
-    })
-    .catch((error) => {
-      console.log(error.response);
-    });
-}, []);
-
-console.log("")
-
-  const [modalShow, setModalShow] = useState(false);
-  const endItemData = [
-    {
-      img: chunhyang,
-      title: "chunhyang",
-    },
-    {
-      img: fox,
-      title: "fox",
-    },
-    {
-      img: ocean,
-      title: "ocean",
-    },
-    {
-      img: eyes,
-      title: "eyes",
-    },
-    {
-      img: cybertruck,
-      title: "cybertruck",
-    },
-    {
-      img: gogh,
-      title: "gogh",
-    },
-    {
-      img: monarisa,
-      title: "monarisa",
-    },
-    {
-      img: hair,
-      title: "hair",
-    },
-  ];
-
-
-
+  useEffect(() => {
+    axios
+      .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
+      .then((res) => {
+        console.log(res);
+        setItemData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }, []);
 
   Aos.init({
     // Global settings:
@@ -109,17 +67,13 @@ console.log("")
         <div className={styles.history_itemlist}>
           {itemData.map((item, index) => (
             // <div className={styles.history_item}>
-            <div
-              className={styles.history_item}
-              key={index}
-              data-aos="fade-up"
-            >
+            <div className={styles.history_item} key={index} data-aos="fade-up">
               <img src={item.thumbnail} alt={item.title} />
               <div className={styles.ended_info}>
-                <div id={styles.name_info}>
-                  {item.title}
+                <div id={styles.name_info}>{item.title}</div>
+                <div id={styles.date_info}>
+                  {item.startDate} <br /> {item.endDate}
                 </div>
-                <div id={styles.date_info}>{item.startDate} <br/> {item.endDate}</div>
               </div>
               <div className={styles.ended_button}>
                 {/* <Button
@@ -130,7 +84,7 @@ console.log("")
                 >
                   투표결과
                 </Button> */}
-                <Historytxid pollId={item.pollId}/>
+                <Historytxid pollId={item.pollId} />
               </div>
             </div>
           ))}
