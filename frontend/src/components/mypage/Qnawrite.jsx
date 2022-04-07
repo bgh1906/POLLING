@@ -76,7 +76,6 @@ function Qnawrite() {
     //내용 전송하기
     const qna = () => {
         if(type === "" || title === "" || email === "" ||content === ""){
-            // alert("모든 칸을 입력해주세요")
             qnafull()
         }else if(type !== "" || title !== "" || email !== "" ||content !== ""){
             axios
@@ -121,7 +120,6 @@ function Qnawrite() {
                     E-MAIL
                 </div>
                 <input type={"email"} value={email} className={Styles.emailC} onChange={getEmail} placeholder="답변 받을 메일을 적어주세요"></input>
-                    {/* <FormControl variant="standard" sx={{ minWidth: 250 }} className={Styles.type}> */}
                     <FormControl variant="standard" className={Styles.type}>
                         <InputLabel id="demo-simple-select-standard-label" className={Styles.typetitle} >type</InputLabel>
                         <Select

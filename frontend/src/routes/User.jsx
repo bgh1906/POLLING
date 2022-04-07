@@ -1,17 +1,14 @@
 import { Link,useNavigate } from "react-router-dom";
 import NewNav from "../components/layout/NewNav.jsx";
-import Footer from "../components/layout/Footer.jsx";
 import Styles from "./User.module.css";
-import { Collapse } from "bootstrap";
 import { useState } from "react";
-import { Button } from "bootstrap";
 import axios from "axios";
-// import { Table } from "react-bootstrap";
 
 import * as React from 'react';
 import UserSearch2 from "../components/admin/Usesearch2.jsx";
 import Userqnalist from "../components/admin/Userqnalist.jsx";
 import Swal from "sweetalert2";
+import { web3 } from "../contracts/CallContract";
 
 function User() {
 
@@ -19,7 +16,6 @@ function User() {
 
 
     const [clickCom, setClickCom] = useState('#FEFFF8');
-    // const [clickUser, setClickUser] = useState(Styles.other);
     
     function changeColor() {
         setClickCom('#caceb7');
@@ -34,12 +30,10 @@ function User() {
         if(openO === false){
             //hidden처리 하기.
             setOpenO(true);
-            // setOpenL(true);
         }
         if(openL === false){
             //hidden처리 하기.
             setOpenO(true);
-            // setOpenL(true);
         }
     }
 
@@ -47,7 +41,6 @@ function User() {
     const [openO, setOpenO] = useState(true);
     const getOpenO = () => {
         setOpenO(!openO);
-        // if(open === false){
         if(open === false){
             setOpen(true);
         }
@@ -60,7 +53,6 @@ function User() {
     const [openL, setOpenL] = useState(true);
     const getOpenL = () => {
         setOpenL(!openL);
-        // if(open === false){
         if(open === false){
             setOpen(true);
         }
@@ -117,31 +109,26 @@ function User() {
 
     const getChecknick = (e) => {
         if (nickname === "") {
-        //   alert("Nickname을 입력해주세요.");
-        nicknull();
+            nicknull();
         } else {
-        axios
-            .get(
-            `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
-            {
-                n: nickname,
-            }
-            )
-            .then((res) => {
-            //   alert("사용가능한 닉네임입니다.");
-            usenick();
-            setChecknick(true);
-            })
-            .catch((error) => {
-            console.log("error", error.response);
-            if (error.code === 409) {
-                // alert("동일 닉네임이 존재합니다.");
-                samenick();
-            }
-            // alert(error);
-            setId("");
-            });
-        // console.log("nickname", nickname);
+            axios
+              .get(
+                `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+                {
+                    n: nickname,
+                }
+              )
+              .then((res) => {
+                usenick();
+                setChecknick(true);
+              })
+              .catch((error) => {
+                console.log("error", error.response);
+                if (error.code === 409) {
+                    samenick();
+                }
+                setId("");
+              });
         }
     };
 
@@ -157,6 +144,18 @@ function User() {
     const getPhone = (e) => {
         setPhone(e.target.value);
         console.log(phone);
+    };
+
+    //계좌 비밀번호
+    const [walletpw, setWalletpw] = useState("");
+    const [userAccount, setUserAccount] = useState("");
+    const getWalletpw = (e) => {
+      setWalletpw(e.target.value);
+    };
+    const createWallet = async () => {
+      let userAccount = await web3.eth.personal.newAccount(walletpw);
+      return userAccount;
+      // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
     };
 
     //alert 창_회원가입 
@@ -182,7 +181,7 @@ function User() {
     //빈칸확인
     const inputnull = () => {
         Swal.fire({
-          text:"닉네임/이메일/비밀번호/휴대폰번호를 입력하세요.",
+          text:"닉네임/이메일/비밀번호/휴대폰번호/계좌 비밀번호를 입력하세요.",
           icon: 'error',
           confirmButtonColor: '#73E0C1',
           confirmButtonText: '확인'
@@ -193,35 +192,33 @@ function User() {
     const navigate = useNavigate();
 
     // 회원가입하기
-    const onLogin = (e) => {
-        if(nickname ===" " || email === " " || password === " " || phone === " "){
-            e.preventDefault();
-            // alert("닉네임/이메일/비밀번호/휴대폰번호를 입력하세요.")
+    const onLogin = async (e) => {
+        if(nickname ===" " || email === " " || password === " " || phone === " " || walletpw === " "){
             inputnull();
+            e.preventDefault();
         } 
-        else if(nickname !== " " && email !== " " && password !== " " ){
+        else if(nickname !== " " && email !== " " && password !== " " && walletpw !== " " ){
+            const wallet = await createWallet();
+
             axios
             .post(
-                // "http://j6a304.p.ssafy.io:8080/api/members",
                 "http://j6a304.p.ssafy.io/api/members",
                 {
                     email: email,
                     nickname: nickname,
                     password: password,
                     phoneNumber: phone,
+                    wallet: wallet,
                     role: "ROLE_COMPANY"
                 },
             )
             .then((res) => {
                 console.log("res", res);
-                // alert("회원가입 성공!")
                 joinSuccess();
-                // navigate("/login");
             })
             .catch(error => {
                 const message = error.message;
                 console.log("message", message);
-                // alert("회원가입 실패");
                 joinFail();
               });
         }
@@ -264,7 +261,6 @@ function User() {
                 <div hidden={openO}>
                     {/* 회원리스트 주루륵 */}
 
-                    {/* <UserSearch2 id={rows.id} nickname={rows.nickname} email={rows.email} /> */}
                     <UserSearch2 />
                 </div>
                 

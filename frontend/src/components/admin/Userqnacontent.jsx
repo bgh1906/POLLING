@@ -62,11 +62,8 @@ function Userqnacontent({content,title}) {
 
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button> */}
+
       <button className={Styles.button} onClick={handleClickOpen}> </button>
-      {/* <BootstrapDialog */}
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

@@ -30,7 +30,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
 
     const params = useParams();
 
-    // console.log(params.accessToken);
     const dispatch = useDispatch();
 
     //alert 창
@@ -95,26 +94,22 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     
     const getChecknick = (e) => {
         if(nickname === "") {
-            // alert("Nickname을 입력해주세요.")
             nicknull();
         } else {
             axios
             .get(
                 `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
-                // `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
                 {
                     n: nickname,
                 }           
             )
             .then((res) => {
                 console.log("res", res);
-                // alert("사용가능한 닉네임입니다.");
                 usenick();
                 setChecknick(true);
             })
             .catch(error => {
                 console.log("error", error.response);
-                // alert("동일 닉네임이 존재합니다.");
                 samenick();
                 setNickname("");
             })
@@ -129,35 +124,35 @@ function Kakaojoin({ DispatchdeleteInfo }) {
         console.log(phone);
     }
 
-        //폰번호 입력 
-        const phonenull = () => {
-            Swal.fire({
-            text:"휴대폰 번호를 입력해주세요",
+    //폰번호 입력 
+    const phonenull = () => {
+        Swal.fire({
+        text:"휴대폰 번호를 입력해주세요",
+        icon: 'error',
+        confirmButtonColor: '#73E0C1',
+        confirmButtonText: '확인'
+        })
+    }
+    
+    //인증번호 전송
+    const sendnum = () => {
+        Swal.fire({
+            text:"인증번호가 전송되었습니다!",
+            icon: 'success',
+            confirmButtonColor: '#73E0C1',
+            confirmButtonText: '확인'
+        })
+    }
+    
+    //인증번호 전송 실패
+    const sendfail = () => {
+        Swal.fire({
+            text:"인증번호 전송 실패!",
             icon: 'error',
             confirmButtonColor: '#73E0C1',
             confirmButtonText: '확인'
-            })
-        }
-    
-        //인증번호 전송
-        const sendnum = () => {
-            Swal.fire({
-              text:"인증번호가 전송되었습니다!",
-              icon: 'success',
-              confirmButtonColor: '#73E0C1',
-              confirmButtonText: '확인'
-            })
-        }
-    
-        //인증번호 전송 실패
-        const sendfail = () => {
-            Swal.fire({
-              text:"인증번호 전송 실패!",
-              icon: 'error',
-              confirmButtonColor: '#73E0C1',
-              confirmButtonText: '확인'
-            })
-        }
+        })
+    }
 
     //휴대폰인증 모달창
     const [open, setOpen] = React.useState(false);
@@ -171,14 +166,12 @@ function Kakaojoin({ DispatchdeleteInfo }) {
         //인증번호 보내기
         if(phone === ""){
             e.preventDefault();
-            // alert("휴대폰 번호를 입력해주세요")
             phonenull();
         }
         else if(phone !== "") {
             axios
             .post(
                 "https://j6a304.p.ssafy.io/api/notify/sms",
-                // "https://j6a304.p.ssafy.io:8080/api/notify/sms",
                 {
                     content : "",
                     to : phone,
@@ -186,7 +179,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             )
             .then((res) => {
                 console.log("인증번호 발송", res);
-                // alert("인증번호가 전송되었습니다!")
                 sendnum();
                 setOpen(true);
                 setPhonelock(true);
@@ -197,7 +189,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 const message = error.message;
                 console.log("message",error.response)
                 console.log("message", message);
-                // alert("인증번호 전송 실패!");
                 sendfail();
             }); 
         }
@@ -250,16 +241,13 @@ function Kakaojoin({ DispatchdeleteInfo }) {
         //휴대폰인증 진행
         if(checknum === " "){
             e.preventDefault();
-            // alert("인증번호를 입력해주세요")
             numnull();
         }
         else if(checknum !== "") {
             if(checknum !== realNum ){
-                // alert("인증번호가 틀렸습니다.")
                 numfail();
             }
             else if(checknum === realNum ){
-                // alert("본인 확인 완료")
                 numsucc();
                 //정상 처리되면 true로 바꾸기 & 모달 종료
                 setPhonecheck(true);
@@ -294,9 +282,7 @@ function Kakaojoin({ DispatchdeleteInfo }) {
          <Tooltip {...props} classes={{ popper: className }} />
      ))(({ theme }) => ({
          [`& .${tooltipClasses.tooltip}`]: {
-         // backgroundColor: "#f5f5f9",
          backgroundColor: "#ffe6f1",
-         // color: "rgba(0, 0, 0, 0.87)",
          color: "rgba(51, 51, 51, 0.87)",
          maxWidth: 300,
          fontSize: theme.typography.pxToRem(14),
@@ -360,46 +346,29 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     const joinus = (e) => {
         if(nickname ===" " || phone === " " || walletpw === ""){
             e.preventDefault();
-            // alert("닉네임/휴대폰 번호/계좌 비밀번호를 입력하세요.")
             inputnull();
         } 
         else if( phonecheck === false){
             e.preventDefault();
-            // alert("휴대폰 인증을 진행해주세요.")
             phonechek();
         } 
         else if( checknick === false){
             e.preventDefault();
-            // alert("닉네임 중복체크를 진행해주세요.")
             nickchek();
         } 
         else if( pcheck===false ){
             e.preventDefault();
-            // alert("개인정보처리방침에 동의해주세요.")
             privacychek();
         }
         else if( nickname !== " " && phone !== " " && phonecheck !== false &&checknick !== false && pcheck !== false ){
-        // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){      
             axios
             .post("https://j6a304.p.ssafy.io/api/auth/social", {
-            // .post("https://j6a304.p.ssafy.io:8080/api/auth/social", {
-                // accessToken: response.access_token,
                 accessToken: params.accessToken,
                 nickname: nickname,
                 phoneNumber: phone,
             })
             .then((res) => {
-                console.log("res",res);
-                // localStorage.setItem("token", res.data.token);
-                          
-                // if (state.length === 0) {
-                //   DispatchaddInfo({
-                //     seq: res.data.seq,
-                //     nickname: res.data.nickname,
-                //     token: res.data.token,
-                //     email: res.data.email,
-                //   });
-                // }
+                // console.log("res",res);
                 sessionStorage.setItem("token", params.accessToken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
@@ -412,14 +381,11 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                     }
                   ));
                 joinSuccess();
-                console.log("회원가입")
                 navigate("/");
             })
             .catch(error => {
                 const message = error.message;
-                console.log("error", error);
-                console.log("message", message);
-                // alert("로그인 실패");
+                // console.log("message", message);
                 DispatchdeleteInfo();
                 joinFail();
             });
@@ -432,7 +398,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             <div style={{height: '100vh'}}>
                 <div className={Styles.kakojoin}> Join us_by kakao</div>
                 <div className={Styles.plus}> 추가 정보 입력 </div>
-                {/* <div className={Styles.squ}></div> */}
                 <div className={Styles.squ1}></div>
                 <div className={Styles.squ2}></div>
                 <input type={"text"} placeholder="Nickname" name="nickname" onChange={getNickname} className={Styles.nickname} />

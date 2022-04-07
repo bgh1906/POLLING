@@ -45,12 +45,10 @@ function Txid1({id}) {
         }
       )
       .then((res) => {
-        // console.log("data",res.data);
         setTxidlist(res.data);
       })
       .catch(error => {
         // console.log("res",error.response);
-        // console.log("error",error);
       })
   },[open]);
   

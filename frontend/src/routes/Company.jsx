@@ -22,11 +22,9 @@ function Company() {
     const [polldata4, setPolldata4] = useState([]);
     const [rendernumber, setRendernumber] = useState(0);
 
-    // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
     useEffect(()=>{
-            // console.log(ENDPOINT)
 
             axios
             .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")

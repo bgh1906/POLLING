@@ -9,12 +9,9 @@ import Swal from "sweetalert2";
 
 function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const id = sessionStorage.getItem("userid");
-  // console.log("state", state);
-  // console.log("email", state[0].email);
   const token = sessionStorage.getItem("token");
   const nick = sessionStorage.getItem("nickname");
   const wallet = sessionStorage.getItem("wallet");
-  // console.log(nick);
 
   const logoutSuccess = () => {
     Swal.fire({

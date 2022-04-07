@@ -1,9 +1,7 @@
 import NewNav from "../layout/NewNav";
 import { styled } from '@mui/system';
-import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Qna from "./Qnawrite";
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -27,23 +25,7 @@ function QnaList2() {
     //1:1문의 저장
     const [qnalist, setQnalist] = useState([]);
 
-    // const getlist = () =>{
-    //   axios
-    //   .get(
-    //     "https://j6a304.p.ssafy.io/api/contact"
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //     setQnalist(res.data);
-    //   })
-    //   .catch(error => {
-    //     console.log("res",error.response);
-    //     console.log("error",error);
-    //   })
-    // }
-
     useEffect(() => {
-      // const getlist = () =>{
       let iscompomount = true;
 
       if( iscompomount === true ){
@@ -53,12 +35,10 @@ function QnaList2() {
           {
             headers: {
               "Authorization":token,
-              // refreshToken: token,
             },
           }
         )
         .then((res) => {
-          // console.log("data",res.data);
           setQnalist(res.data);
         })
         .catch(error => {
@@ -96,18 +76,10 @@ function QnaList2() {
     const qnadelet = (id) => {
       axios
         .delete(
-          // `https://i6a306.p.ssafy.io:8080/api/contact/${id}`,
           `/api/contact/${id}`,
-        //   {
-        //     id: id,
-        //     nickname: nickname,
-        //     password: email,
-        //     phoneNumber: title,
-        // },
           {
               headers: {
                 "Authorization":token,
-                // refreshToken: token,
               },
           }
         )
@@ -117,7 +89,6 @@ function QnaList2() {
                   
         })
         .catch((e) => {
-          // console.log(e);
           console.log("error,qnadelet",e);
           console.log("res,qnadelet",e.response);
           deleFail();
@@ -126,9 +97,6 @@ function QnaList2() {
 
     return (
         <>
-          {/* <button></button> */}
-            {/* <Accordion style={{width:"45vw", left:"8vw"}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}> */}
-            {/* {(qnalist).map((qna) => ( */}
             {qnalist.map((index, key) => (
               <div key={index.id}>
                 <Accordion 

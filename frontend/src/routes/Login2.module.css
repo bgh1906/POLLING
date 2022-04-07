@@ -1,43 +1,42 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 @import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
-/* body {
-  min-height: 100vh;
-  font-family: "Raleway", sans-serif;
-} */
 
 .container {
     z-index: -1;
   position: absolute;
-  /* width: 95vw;
-  height: 92vh;
-  left: 2vw;
-  top: 4.5vh; */
-  /* width: 95.2vw; */
+
   width: 96.2vw;
   height: 92vh;
-  /* left: 7vw; */
-  /* top: 13vh; */
+
   left: 1.9vw;
   top: 4vh;
   overflow: hidden;
 }
 
-/* margin-left: 200px; */
-/* transform-origin: -200px 50%; */
-/* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after { */
-/* .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after, .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after { */
 .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after {
-  /* z-index: 1; */
   margin-left: 13vw;
   transform-origin: -13vw 50%;
   transition-delay: 0s;
 }
-/* .container:hover .center, .container:active .center { */
 .container .center, .container:active .center {
   z-index: 10;
   opacity: 1;
@@ -62,45 +61,36 @@
 
 .top:before {
   transform: rotate(45deg);
-  /* background: #e46569; */
-  /* background: #FB71AB; */
   background: #FEA6CB;
 }
 .top:after {
   transform: rotate(135deg);
   background: #FEA6CB;
 }
-/* background: #ecaf81; */
 
 .bottom:before {
   transform: rotate(-45deg);
-  /* background: #60b8d4; */
   background: #BAF0E8;
 }
 .bottom:after {
     transform: rotate(-135deg);
     background: #BAF0E8;
 }
-/* background: #3745b5; */
-/* background: #3AFACB; */
 
 .center {
   position: absolute;
-  /* width: 400px;
-  height: 400px; */
+
   width: 26vw;
   height: 26vh;
   top: 50%;
   left: 50%;
-  /* margin-left: -200px; */
-  /* margin-top: -200px; */
+
   margin-left: -13vw;
   margin-top: -26vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: 30px; */
   padding: 3vh;
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
@@ -108,15 +98,9 @@
   color: #333;
 }
 .center input {
-  /* width:100%; */
-  /* width:50vw; */
-  /* padding: 15px; */
-  /* padding: 1.5vh; */
   margin: 5px;
   border-radius: 0.5vh;
-  /* border: 1px solid #ccc; */
   border: 1px solid rgba(204, 204, 204, 0);
-  /* font-family: inherit; */
    font-family: 'Bitter', serif;
 }
 
@@ -131,7 +115,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 2.3vw;
-  /* line-height: 60px; */
   text-align: center;
   
   color: #000000;
@@ -151,9 +134,7 @@
     background-repeat: no-repeat;
     background-position: 0.2vw center;
     padding-left: 2vw;
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 2vh;
 }
 
@@ -169,10 +150,7 @@
     background-repeat: no-repeat;
     background-position: 0.2vw center;
     padding-left:2vw;
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 0.0vw 0.1vw 0.5vw 0.1vw #f1d2a1; */
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 2vh;
 }
 
@@ -185,17 +163,13 @@
     
     background: #FEFFF8;
     mix-blend-mode: normal;
-    /* box-shadow: 0px 5px 5px 5px #F5EAD8; */
-    /* box-shadow: 0.2vw 0.2vw 0.2vw 0.2vw #fae7c8; */
     box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8;
     border-radius: 3vh;
 
-    font-family: 'Russo One';
+    font-family: 'ROKAFSansMedium';
     font-style: normal;
     font-weight: 400;
     font-size: 1vw;
-    /* line-height: 5vh; */
-    /* identical to box height */
 
     text-align: center;
 
@@ -209,8 +183,6 @@
     left: 6.6vw;
     top: 35vh;
 
-    /* font-family: 'Russo One'; */
-    /* font-family: 'ROKAFSansMedium'; */
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
     font-weight: 400;
@@ -219,13 +191,11 @@
     text-align: center;
     text-decoration: none;
 
-    /* color: #746240; */
     color: #77A3A9;
 }
 
 .kakao {
     position: absolute;
-    /* width: 2.1vw; */
     height: 3.1vh;
     left: 12.8vw;
     top: 35.6vh;
@@ -279,17 +249,12 @@
     top: 42vh;
 
     font-family: 'Russo One';
-    /* font-family: 'ROKAFSansMedium'; */
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-style: normal;
-    /* font-weight: 100; */
     font-size: 1.3vw;
     line-height: 3vh;
     text-align: center;
     text-decoration: none;
 
-    /* border: 0.1vw solid #77A3A9; */
-    /* color: #746240; */
     color: #77A3A9;
 }
 
