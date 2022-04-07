@@ -10,6 +10,7 @@ import com.polling.member.entity.Member;
 import com.polling.member.entity.status.MemberRole;
 import com.polling.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +24,13 @@ public class
 MemberService {
 
   private final MemberRepository memberRepository;
+  private final PasswordEncoder passwordEncoder;
 
   @Transactional
   public void join(SaveNativeMemberRequestDto requestDto) {
     checkDuplicateMemberEmail(requestDto.getEmail());
+    Member member = requestDto.toEntity();
+    member.changePassword(passwordEncoder.encode(member.getPassword()));
     memberRepository.save(requestDto.toEntity());
   }
 
