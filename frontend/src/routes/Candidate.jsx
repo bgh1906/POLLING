@@ -203,20 +203,26 @@ function Candidate({ state }) {
                 lockAccount(wallet); //블록체인 계좌 잠금
                 pollfin(); //스윗알랏
                 handleClose(); //모달 종료
-                await approveAccount(1000,adminAddress);
-                await sendPOL(1000,adminAddress,wallet);
+                await approveAccount(100,adminAddress);
+                await sendPOL(100,adminAddress,wallet);
                 setReward((prev) => (prev+1));
             })
             .catch((error) => {
             console.log("error",error.response);
             });
         }
-     else {
+     else if (picked && inputWalletPw===""){
       Swal.fire({
-        title: "투표 도장과 비밀번호를 입력해주세요.",
+        title: "지갑 비밀번호를 입력해주세요.",
         icon: "error",
       });
     }
+     else if (inputWalletPw !== "" && picked===false){
+      Swal.fire({
+        title: "도장을 찍어주세요.",
+        icon: "error",
+      });
+     }
   }
 
   function handleOpen2() {
@@ -250,7 +256,7 @@ function Candidate({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     // console.log("balance2",balance);
-    if (balance > 500) {
+    if (balance >= 500) {
       console.log("balance3",balance);
       axios
         .post(
