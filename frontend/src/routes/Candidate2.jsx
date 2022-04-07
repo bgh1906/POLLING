@@ -164,7 +164,7 @@ function Candidate2({ state }) {
     setInputWalletPw(e.target.value);
   }
 
-  const [reward, setReward] = useState(0)
+  const [reward, setReward] = useState(0);
 
   async function handlepoll() {
     if (picked && inputWalletPw !== "") {
@@ -191,20 +191,19 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then(async(res) => {
+        .then(async (res) => {
           console.log(res);
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
           lockAccount(wallet); //블록체인 계좌 잠금
           pollfin(); //스윗알랏
           handleClose(); //모달 종료
-          await approveAccount(1000,adminAddress);
-          await sendPOL(1000,adminAddress,wallet);
-          setReward((prev) => (prev+1));
-
+          await approveAccount(1000, adminAddress);
+          await sendPOL(1000, adminAddress, wallet);
+          setReward((prev) => prev + 1);
         })
         .catch((error) => {
-          console.log("error",error.response);
+          console.log("error", error.response);
         });
       // 3. 다시 lock 한다.
     } else {
@@ -237,7 +236,7 @@ function Candidate2({ state }) {
     });
   };
 
-  function getImgPw(e){
+  function getImgPw(e) {
     setInputImgtPw(e.target.value);
   }
 
@@ -261,7 +260,7 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then(async(res) => {
+        .then(async (res) => {
           // console.log("사진 공개 성공",res);
           unlockAccount(wallet, inputImgPw);
           await approveAccount(500, wallet);
@@ -269,13 +268,13 @@ function Candidate2({ state }) {
           // console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
           // console.log("sendPOL",wallet,adminAddress);
-          imgopen();//스윗알럿
-          handleClose3() //모달 닫기
-          setimageLock(false);//사진 잠금 풀기
+          imgopen(); //스윗알럿
+          handleClose3(); //모달 닫기
+          setimageLock(false); //사진 잠금 풀기
           lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
           // console.log("lockAccount \n",wallet);
           // console.log("setimageLock");
-          setTminus((prev) => (prev+1)); //렌더링 안먹음
+          setTminus((prev) => prev + 1); //렌더링 안먹음
           // console.log("setReward");
         })
         .catch((error) => {
@@ -292,10 +291,11 @@ function Candidate2({ state }) {
   function handleClose3() {
     setmodalOpen3(false);
   }
-
+  const rank = sessionStorage.getItem("rank");
+  const listType = sessionStorage.getItem("listType");
   return (
     <div>
-      <NewNav reward={reward} tminus={tminus}/>
+      <NewNav reward={reward} tminus={tminus} />
       <div className={styles.container}>
         <img id={styles.crown2} src={crown} alt="crown" />
         <img id={styles.tx2} src={tx} alt="tx2" />
@@ -306,7 +306,12 @@ function Candidate2({ state }) {
           src={profile_image}
           alt="profile_image"
         />
-        <p id={styles.nowrank2}> 현재 순위: 1위 </p>
+        {listType === "rank" && (
+          <p id={styles.nowrank2}> 현재 순위: {rank}위 </p>
+        )}
+        {listType === "register" && (
+          <p id={styles.nowrank2}> 후보 No. {rank}번 </p>
+        )}
         {pollOpen === "true" && (
           <p id={styles.nowpoll2}>
             {" "}
@@ -430,11 +435,11 @@ function Candidate2({ state }) {
                 미공개 사진을 여시겠습니까?
               </p>
               <TextField
-                  className={styles.img_password}
-                  placeholder="Img Password"
-                  variant="standard"
-                  type="password"
-                  onChange={getImgPw}
+                className={styles.img_password}
+                placeholder="Img Password"
+                variant="standard"
+                type="password"
+                onChange={getImgPw}
               />
               <Button
                 id={styles.behind_btn}

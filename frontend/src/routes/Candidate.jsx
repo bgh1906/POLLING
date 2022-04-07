@@ -28,7 +28,6 @@ import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
 import Txid1 from "./Txid1.jsx";
 
-
 function Candidate({ state }) {
   const navigate = useNavigate();
   const params = useParams();
@@ -163,7 +162,7 @@ function Candidate({ state }) {
 
   const adminAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
   // const adminAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
-  
+
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
   }
@@ -189,29 +188,29 @@ function Candidate({ state }) {
             transactionId: txId,
             voteCount: 1,
           },
-            {
-                headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-                Accept: "*/*",
-                },
-            })
-            .then(async(res) => {
-                // console.log("res",res);
-                //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
-                renderCheck();
-                lockAccount(wallet); //블록체인 계좌 잠금
-                pollfin(); //스윗알랏
-                handleClose(); //모달 종료
-                await approveAccount(1000,adminAddress);
-                await sendPOL(1000,adminAddress,wallet);
-                setReward((prev) => (prev+1));
-            })
-            .catch((error) => {
-            console.log("error",error.response);
-            });
-        }
-     else {
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+              Accept: "*/*",
+            },
+          }
+        )
+        .then(async (res) => {
+          // console.log("res",res);
+          //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
+          renderCheck();
+          lockAccount(wallet); //블록체인 계좌 잠금
+          pollfin(); //스윗알랏
+          handleClose(); //모달 종료
+          await approveAccount(1000, adminAddress);
+          await sendPOL(1000, adminAddress, wallet);
+          setReward((prev) => prev + 1);
+        })
+        .catch((error) => {
+          console.log("error", error.response);
+        });
+    } else {
       Swal.fire({
         title: "투표 도장과 비밀번호를 입력해주세요.",
         icon: "error",
@@ -241,7 +240,7 @@ function Candidate({ state }) {
     });
   };
 
-  function getImgPw(e){
+  function getImgPw(e) {
     setInputImgtPw(e.target.value);
   }
 
@@ -251,7 +250,7 @@ function Candidate({ state }) {
     const balance = await checkPOL(wallet);
     // console.log("balance2",balance);
     if (balance > 500) {
-      console.log("balance3",balance);
+      console.log("balance3", balance);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -266,7 +265,7 @@ function Candidate({ state }) {
             },
           }
         )
-        .then(async(res) => {
+        .then(async (res) => {
           // console.log("사진 공개 성공",res);
           unlockAccount(wallet, inputImgPw);
           await approveAccount(500, wallet);
@@ -274,17 +273,17 @@ function Candidate({ state }) {
           // console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
           // console.log("sendPOL",wallet,adminAddress);
-          imgopen();//스윗알럿
-          handleClose3() //모달 닫기
-          setimageLock(false);//사진 잠금 풀기
+          imgopen(); //스윗알럿
+          handleClose3(); //모달 닫기
+          setimageLock(false); //사진 잠금 풀기
           lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
           // console.log("lockAccount \n",wallet);
           // console.log("setimageLock");
-          setTminus((prev) => (prev+1)); //렌더링 안먹음
+          setTminus((prev) => prev + 1); //렌더링 안먹음
           // console.log("setReward");
         })
         .catch((error) => {
-          console.log("error",error.response);
+          console.log("error", error.response);
         });
     } else {
       notoken();
@@ -297,10 +296,11 @@ function Candidate({ state }) {
   function handleClose3() {
     setmodalOpen3(false);
   }
-
+  const rank = sessionStorage.getItem("rank");
+  const listType = sessionStorage.getItem("listType");
   return (
     <>
-      <NewNav reward={reward} tminus={tminus}/>
+      <NewNav reward={reward} tminus={tminus} />
       <div className={styles.container}>
         <img id={styles.crown} src={crown} alt="crown" />
         <img id={styles.tx} src={tx} alt="tx" />
@@ -311,7 +311,12 @@ function Candidate({ state }) {
           src={profile_image}
           alt="profile_image"
         />
-        <p id={styles.nowrank}> 현재 순위: 1위 </p>
+        {listType === "rank" && (
+          <p id={styles.nowrank}> 현재 순위: {rank}위 </p>
+        )}
+        {listType === "register" && (
+          <p id={styles.nowrank}> 후보 No. {rank}번 </p>
+        )}
         {pollOpen === "true" && (
           <p id={styles.nowpoll}>
             {" "}
@@ -435,16 +440,16 @@ function Candidate({ state }) {
                 미공개 사진을 여시겠습니까?
               </p>
               <TextField
-                  className={styles.img_password}
-                  placeholder="Img Password"
-                  variant="standard"
-                  type="password"
-                  onChange={getImgPw}
+                className={styles.img_password}
+                placeholder="Img Password"
+                variant="standard"
+                type="password"
+                onChange={getImgPw}
               />
               <Button
                 id={styles.behind_btn}
                 onClick={handleLock}
-                variant="contained" 
+                variant="contained"
               >
                 {" "}
                 예{" "}

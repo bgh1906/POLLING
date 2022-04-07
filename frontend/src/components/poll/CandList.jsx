@@ -115,6 +115,8 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg}
                     onClick={() => {
+                      sessionStorage.setItem("listType", listType);
+                      sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(
                             `/poll/${params.pollnum}/${person[0].candidateId}/1`
@@ -152,6 +154,8 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg2}
                     onClick={() => {
+                      sessionStorage.setItem("listType", listType);
+                      sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(
                             `/poll/${params.pollnum}/${person[0].candidateId}/1`
@@ -172,27 +176,6 @@ function CandList({ state, cand, countOpen }) {
               );
             })}
           </div>
-          {/* <div className={styles.Cand_list2}>
-            {cand.map((item, index) => (
-              <div className={styles.poll_Cand2} key={item.candidateId}>
-                <img
-                  className={styles.CandImg2}
-                  src={item.thumbnail}
-                  alt="thumbnail"
-                  onClick={() => {
-                    item.candidateId % 2
-                      ? navigate(
-                          `/poll/${params.pollnum}/${item.candidateId}/1`
-                        )
-                      : navigate(
-                          `/poll/${params.pollnum}/${item.candidateId}/2`
-                        );
-                  }}
-                />
-                <CandCaption item={item} index={index} countOpen={countOpen} />
-              </div>
-            ))}
-          </div> */}
         </>
       )}
     </>
