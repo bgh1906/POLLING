@@ -280,7 +280,7 @@ function Candidate({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     // console.log("balance2",balance);
-    if (balance > 500) {
+    if (balance >= 500) {
       console.log("balance3", balance);
       axios
         .post(

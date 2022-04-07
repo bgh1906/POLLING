@@ -219,17 +219,27 @@ function Candidate2({ state }) {
           lockAccount(wallet); //블록체인 계좌 잠금
           pollfin(); //스윗알랏
           handleClose(); //모달 종료
-          await approveAccount(1000, adminAddress);
-          await sendPOL(1000, adminAddress, wallet);
+          await approveAccount(100, adminAddress);
+          await sendPOL(100, adminAddress, wallet);
           setReward((prev) => prev + 1);
         })
         .catch((error) => {
           console.log("error", error.response);
         });
       // 3. 다시 lock 한다.
+    } else if (picked && inputWalletPw === "") {
+      Swal.fire({
+        title: "지갑 비밀번호를 입력하세요.",
+        icon: "error",
+      });
+    } else if (!picked && inputWalletPw !== "") {
+      Swal.fire({
+        title: "투표 도장을 찍어주세요.",
+        icon: "error",
+      });
     } else {
       Swal.fire({
-        title: "투표 도장과 비밀번호를 <br/>입력해주세요.",
+        title: "투표 도장과 비밀번호를 입력하세요.",
         icon: "error",
       });
     }
@@ -266,7 +276,7 @@ function Candidate2({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
-    if (balance > 500) {
+    if (balance >= 500) {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -299,7 +309,7 @@ function Candidate2({ state }) {
           // console.log("setReward");
         })
         .catch((error) => {
-          // console.log(error.response);
+          console.log("error", error.response);
         });
     } else {
       notoken();
