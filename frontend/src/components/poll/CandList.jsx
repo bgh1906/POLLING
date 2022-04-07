@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./CandList.module.css";
 import pollinglogo from "../../assets/pollinglogo.png";
-import fox from "../../assets/fox.PNG";
 import { Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import rank1 from "../../assets/rank1.png";
