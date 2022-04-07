@@ -27,6 +27,7 @@ function Kakaojoin({ DispatchdeleteInfo }) {
     React.useEffect(() => {
         setNickname("");
         setPhone("");
+        setWalletpw("");
       }, []);
 
     const params = useParams();
@@ -251,6 +252,7 @@ function Kakaojoin({ DispatchdeleteInfo }) {
 
     // 계좌 비밀번호 입력 -> 회원가입 -> 자동 계정 생성, 화면에 그 사람 (join에 인풋 만들기)
     const [walletpw, setWalletpw] = useState("");
+    const [userAccount, setUserAccount] = useState("");
     const getWalletpw = (e) => {
         setWalletpw(e.target.value);
     }
@@ -271,6 +273,7 @@ function Kakaojoin({ DispatchdeleteInfo }) {
          setOpenW(false);
      };
  
+     //계좌 툴팁
      const handleTooltipOpen = () => {
          setOpenW(true);
      };
@@ -356,10 +359,12 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             e.preventDefault();
             privacychek();
         }
-        else if( nickname !== " " && phone !== " " && walletpw !== "" && phonecheck !== false &&checknick !== false && pcheck !== false ){
+        else if( nickname !== " " && phone !== " " && walletpw !== "" && phonecheck !== false && checknick !== false && pcheck !== false ){
             const wallet = await createWallet();
+            console.log("wallet",wallet);
             axios
-            .post("https://j6a304.p.ssafy.io/api/auth/social", {
+            .post("https://j6a304.p.ssafy.io/api/auth/social", 
+            {
                 accessToken: params.accessToken,
                 nickname: nickname,
                 phoneNumber: phone,
@@ -370,13 +375,15 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 sessionStorage.setItem("token", params.accessToken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
-                sessionStorage.setItem("wallet", res.data.wallet);
+                // sessionStorage.setItem("wallet", res.data.wallet);
+                sessionStorage.setItem("wallet", wallet);
                 dispatch(actionCreators.addInfo(
                     {
                       id: res.data.id,
                       nickname: res.data.nickname,
                       token: params.accessToken,
-                      wallet: res.data.wallet
+                    //   wallet: res.data.wallet
+                      wallet: wallet
                     }
                   ));
                 joinSuccess();
@@ -384,8 +391,9 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             })
             .catch(error => {
                 const message = error.message;
-                // console.log("message", message);
-                DispatchdeleteInfo();
+                console.log("message", message);
+                console.log("error", error);
+                // DispatchdeleteInfo();
                 joinFail();
             });
         }

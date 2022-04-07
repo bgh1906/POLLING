@@ -230,6 +230,12 @@ div .qna:hover{
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
   border-radius: 2vh;
 }
+.walletimg{
+  position: absolute;
+  left: 40vw;
+  top: 35vh;
+  color: #FF5656;
+}
 
 
 .phone {
@@ -250,9 +256,9 @@ div .qna:hover{
 
 .signinbtn {
     position: absolute;
-    width: 10vw;
+    width: 8vw;
     height: 5vh;
-    left: 42vw;
+    left: 45.5vw;
     top: 35vh;
     
     background: #FFF9EE;

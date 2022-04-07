@@ -29,6 +29,7 @@ function Join2() {
     setEmail("");
     setPassword("");
     setPhone("");
+    setWalletpw("");
     setPhonecheck(false);
     setPcheck(false);
   }, []);
@@ -352,8 +353,6 @@ function Join2() {
 
   //회원가입
   const joinus = async (e) => {
-    console.log("들어는 오니");
-    
     if (
       nickname === " " ||
       email === " " ||
@@ -379,12 +378,9 @@ function Join2() {
       phone !== " " &&
       phonecheck !== false &&
       checknick !== false &&
-      pcheck !== false &&
-      walletpw === ""
+      pcheck !== false
     ) {
-      console.log("들어는 오니2");
       const wallet = await createWallet();
-      console.log(e);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/members",
@@ -398,14 +394,13 @@ function Join2() {
           }
         )
         .then((res) => {
+          console.log("res", res);
           joinSuccess();
           console.log("회원가입");
           navigate("/login");
         })
         .catch((error) => {
           const message = error.message;
-          console.log("message",message);
-          console.log("error",error);
           joinFail();
         });
     }

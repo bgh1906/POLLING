@@ -9,6 +9,9 @@ import UserSearch2 from "../components/admin/Usesearch2.jsx";
 import Userqnalist from "../components/admin/Userqnalist.jsx";
 import Swal from "sweetalert2";
 import { web3 } from "../contracts/CallContract";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 function User() {
 
@@ -105,30 +108,32 @@ function User() {
         console.log(nickname);
     };
 
+    //닉네임 중복 체크
     const [checknick, setChecknick] = useState(false);
 
     const getChecknick = (e) => {
         if (nickname === "") {
+            e.preventDefault();
             nicknull();
         } else {
-            axios
-              .get(
-                `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
-                {
-                    n: nickname,
-                }
-              )
-              .then((res) => {
+        axios
+            .get(
+            `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+            {
+                n: nickname,
+            }
+            )
+            .then((res) => {
                 usenick();
                 setChecknick(true);
-              })
-              .catch((error) => {
+            })
+            .catch((error) => {
                 console.log("error", error.response);
                 if (error.code === 409) {
                     samenick();
                 }
                 setId("");
-              });
+                });
         }
     };
 
@@ -157,6 +162,35 @@ function User() {
       return userAccount;
       // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
     };
+    //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함. 
+    //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
+    //그때 일시적으로 풀때 필요함. 그떄 동일 값 넣어야 계정이 일시적으로 열리면서 투표 진행, 진행 후 다시 잠김.
+    //주의사항 명시 계좌 비밀번호는 사이트에서 관리하지않습니다 잊어버리는경우 알수없으니 보관시 주의 바랍니다.
+
+     //계좌 비밀번호 툴팁용
+     const [openW, setOpenW] = React.useState(false);
+
+     const handleTooltipClose = () => {
+         setOpenW(false);
+     };
+ 
+     //계좌 툴팁
+     const handleTooltipOpen = () => {
+         setOpenW(true);
+     };
+ 
+     const HtmlTooltip = styled(({ className, ...props }) => (
+         <Tooltip {...props} classes={{ popper: className }} />
+     ))(({ theme }) => ({
+         [`& .${tooltipClasses.tooltip}`]: {
+         backgroundColor: "#ffe6f1",
+         color: "rgba(51, 51, 51, 0.87)",
+         maxWidth: 300,
+         fontSize: theme.typography.pxToRem(14),
+         border: "1px solid #dadde9",
+         fontFamily: 'GangwonEdu_OTFBoldA',
+         }
+     }));
 
     //alert 창_회원가입 
     const joinSuccess = () => {
@@ -194,15 +228,16 @@ function User() {
     // 회원가입하기
     const onLogin = async (e) => {
         if(nickname ===" " || email === " " || password === " " || phone === " " || walletpw === " "){
-            inputnull();
             e.preventDefault();
+            inputnull();
         } 
         else if(nickname !== " " && email !== " " && password !== " " && walletpw !== " " ){
             const wallet = await createWallet();
 
             axios
             .post(
-                "http://j6a304.p.ssafy.io/api/members",
+                "/api/members",
+                // "http://j6a304.p.ssafy.io/api/members",
                 {
                     email: email,
                     nickname: nickname,
@@ -214,6 +249,11 @@ function User() {
             )
             .then((res) => {
                 console.log("res", res);
+                setId("");
+                setEmail("");
+                setPassword("");
+                setPhone("");
+                setChecknick(false);
                 joinSuccess();
             })
             .catch(error => {
@@ -252,7 +292,19 @@ function User() {
                             <input type={"email"} placeholder=" email" className={Styles.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password" maxLength="13"/>
                             <input type={"text"} placeholder=" PhoneNumber(01012345678) " className={Styles.phone} onChange={getPhone} name="phone"/>
-                            <input type={"password"} placeholder=" Wallet Password " className={Styles.walletpassword} onChange={getPhone} name="phone"/>
+                            <input type={"password"} placeholder=" Wallet Password " className={Styles.walletpassword} onChange={getWalletpw} name="walletpassword"/>
+                            <HtmlTooltip
+                                title={
+                                    <React.Fragment>
+                                        <Typography color="#f12b5c" fontWeight="800" fontFamily="GangwonEdu_OTFBoldA">주의</Typography>
+                                        <b>{"계좌 비밀번호는 사이트에서 관리하지 않습니다."}</b> <br/> 
+                                        {"잊어버리는 경우, 알 수 없으니 보관시 주의 바랍니다."}
+                                    </React.Fragment>
+                                }
+                                placement="top"
+                            >
+                                <img className={Styles.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/stickers/30/000000/high-importance.png"/>
+                            </HtmlTooltip>
                             <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
                         </div>
                     </div>
