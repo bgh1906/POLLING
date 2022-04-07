@@ -73,13 +73,13 @@ public class CandidateService {
   }
 
   @Trace
-  public void didVoteToday(Long candidateId, Long memberId) {
+  public void canVoteToday(Long candidateId, Long memberId) {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(candidateId);
     if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(
         member.getId(),
         candidate.getPoll().getId(),
-        LocalDateTime.now())) {
+        LocalDateTime.now().toLocalDate().atStartOfDay())) {
       throw new CustomException(CustomErrorResult.ALREADY_VOTES);
     }
   }
