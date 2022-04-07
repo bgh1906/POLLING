@@ -12,7 +12,6 @@ import Votebox from "../assets/votebox2.png";
 
 function Poll() {
   const params = useParams();
-  // console.log("파라미터", params);
   const [itemDetail, setItemDetail] = useState({});
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -23,7 +22,6 @@ function Poll() {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/${params.pollnum}`)
       .then((res) => {
-        console.log("투표정보 : ", res);
         setItemDetail((prev) => {
           return { ...prev, ...res.data };
         });
@@ -46,19 +44,9 @@ function Poll() {
   const startYMD = start.slice(0, 10).replaceAll("-", ".");
   const endYMD = end.slice(0, 10).replaceAll("-", ".");
 
-  const endDay = new Date(2022, 3, 30, 23, 59, 0, 0);
-  // const renderCounter = ({ days, hours, minutes, seconds }) => (
-  //   <div className={styles.timer}>
-  //     투표 종료까지 남은 시간
-  //     <br /> {days} DAYS | {hours}시간 : {minutes}분 : {seconds}초
-  //   </div>
-  // );
-
   return (
     <>
       <Newnav />
-      {/* <img id={styles.votebox} src={Votebox} alt="votebox"/> */}
-      {/* <Countdown date={endDay} renderer={renderCounter} /> */}
       <div className={styles.poll_container}>
         <div className={styles.pl_top}>
           <div className={styles.pl_top2}>
