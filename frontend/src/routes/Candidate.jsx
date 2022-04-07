@@ -210,9 +210,19 @@ function Candidate({ state }) {
         .catch((error) => {
           console.log("error", error.response);
         });
+    } else if (picked && inputWalletPw === "") {
+      Swal.fire({
+        title: "지갑 비밀번호를 입력하세요.",
+        icon: "error",
+      });
+    } else if (!picked && inputWalletPw !== "") {
+      Swal.fire({
+        title: "투표 도장을 찍어주세요.",
+        icon: "error",
+      });
     } else {
       Swal.fire({
-        title: "투표 도장과 비밀번호를 입력해주세요.",
+        title: "투표 도장과 비밀번호를 입력하세요.",
         icon: "error",
       });
     }
