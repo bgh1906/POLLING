@@ -138,7 +138,28 @@ function Candidate2({ state }) {
   }
 
   function handleOpen() {
-    setmodalOpen(true);
+    axios
+      .get(
+        `https://j6a304.p.ssafy.io/api/polls/candidates/limit/${params.id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+            Accept: "*/*",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setmodalOpen(true);
+      })
+      .catch((error) => {
+        console.log("error", error.response);
+        Swal.fire({
+          title: "한 대회당 한 명에게만 투표할 수 있습니다.",
+          icon: "error",
+        });
+      });
   }
 
   function handleClose() {
