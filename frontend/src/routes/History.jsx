@@ -1,13 +1,5 @@
 import Footer from "../components/layout/Footer";
 import styles from "./History.module.css";
-import chunhyang from "../assets/chunhyang.PNG";
-import fox from "../assets/fox.PNG";
-import ocean from "../assets/ocean.PNG";
-import eyes from "../assets/eyes.PNG";
-import cybertruck from "../assets/cybertruck.PNG";
-import monarisa from "../assets/monarisa.PNG";
-import hair from "../assets/hair.PNG";
-import gogh from "../assets/gogh.PNG";
 import { useState } from "react";
 import Newnav from "../components/layout/NewNav";
 import { Button } from "@mui/material";

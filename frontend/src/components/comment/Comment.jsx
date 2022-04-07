@@ -37,7 +37,6 @@ function Comment({candiId, data, renderCheck}) {
             }
         )
         .then((res) =>{
-            // console.log("댓글작성!")
             Swal.fire({
                 title: '댓글작성!',
                 icon: 'success'                        

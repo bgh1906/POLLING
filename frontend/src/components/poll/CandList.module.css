@@ -25,11 +25,7 @@
 
 
 .right_title {
-  /* font-family: 'ROKAFSansBold'; */
-  /* font-family: 'Dancing Script', cursive; */
-  /* font-family: 'Yellowtail', cursive; */
   font-family: 'GangwonEdu_OTFBoldA';
-  /* font-family: "Bitter", serif; */
   position: absolute;
   font-size: 3vw;
   top: 1.5vh;
@@ -53,7 +49,6 @@
 .poll_Cand {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 2vw 0;
 
   overflow: hidden;
@@ -185,7 +180,6 @@
   font-family: 'GangwonEdu_OTFBoldA';
   font-weight: 700;
   left: 1.3vw;
-  /* color: #201e1ef1; */
   color: white;
 }
 
@@ -194,7 +188,6 @@
   font-size: 1.3vw;
   font-family: 'GangwonEdu_OTFBoldA';
   font-weight: 700;
-  /* color: #201e1ef1 */
   color: white;
   margin-top: 0.5vh;
 }
@@ -267,7 +260,6 @@
 .poll_Cand2 {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 2vw 0;
 }
 

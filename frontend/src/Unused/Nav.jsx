@@ -18,10 +18,7 @@ function Nav() {
                         </div>
                     </div>
                 </Link>
-                {/* <div className={Styles.boxtop}></div> */}
-                {/* <span className={Styles.pollbox}>
-                    <img src={votebox} height={30} alt="poll box"></img>
-                </span> */}
+
                 <div className={Styles.rightbox}>
                     <div className={Styles.rightboxtop}></div>
                 </div>
@@ -39,7 +36,6 @@ function Nav() {
                     <Link to="/mypage" className={Styles.login}> 마이페이지</Link>
                 }
                 {/* 기업 회원용 마이페이지 -> 추후 링크 연결 */}
-                {/* <Link to="/mypage" className={Styles.login}> 투표 관리(기업용) </Link> */}
                 <Link to="/management" className={Styles.admin}> 관리자페이지</Link>
         </div>
     );

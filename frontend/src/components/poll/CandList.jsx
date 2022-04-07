@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./CandList.module.css";
 import pollinglogo from "../../assets/pollinglogo.png";
-import fox from "../../assets/fox.PNG";
 import { Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import rank1 from "../../assets/rank1.png";
@@ -37,13 +36,11 @@ function CandList({ state, cand, countOpen }) {
   }
 
   // 유저 지갑 주소
-  // const wallet = state[0].wallet;
   const wallet = sessionStorage.getItem("wallet");
   function getTotalVotes(idx) {
     totalVotesBlock(idx, wallet).then((res) => {
       setTemp((prev) => [...prev, [idx, parseInt(res)]]);
     });
-    // return totalVotes;
   }
   useEffect(() => {
     cand.map((item) => getTotalVotes(item.candidateIndex));
@@ -90,8 +87,7 @@ function CandList({ state, cand, countOpen }) {
             </span>
           </>
         )}
-        {/* <span onClick={changelistType} style={{ cursor: "pointer" }}>득표순</span>&nbsp;|&nbsp;
-        <span onClick={changelistType2} style={{ cursor: "pointer" }}>등록순</span> */}
+
       </div>
       {listType === "rank" ? (
         <>

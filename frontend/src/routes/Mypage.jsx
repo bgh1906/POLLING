@@ -72,10 +72,11 @@ function Mypage() {
         setValue(newValue);
     };
 
+    const [newnick, setNewnick] = useState("");
 
     return (
         <div>
-            <NewNav />
+            <NewNav newnick={newnick}/>
 
             <div className={Styles.mypage}> My page </div>
 
@@ -88,7 +89,7 @@ function Mypage() {
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    <UserInfo />
+                    <UserInfo setNewnick={setNewnick}/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Mypoll />

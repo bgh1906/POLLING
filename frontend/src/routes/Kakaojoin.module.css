@@ -42,15 +42,10 @@
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #f7e337,
     #caba2b,
     #FAE100
-    
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -68,14 +63,10 @@
     border-image: linear-gradient(
     120deg,
     #caba2b,
-    /* #fced6c, */
     #f7e337,
     #FAE100,
     #fff59e
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -92,14 +83,10 @@
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #FAE100,
     #caba2b,
     #f7e337
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -116,14 +103,10 @@
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #caba2b,
     #f7e337,
     #FAE100
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+ 
   );
   border-image-slice: 1;
 }
@@ -140,15 +123,10 @@
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #f7e337,
     #FAE100,
     #caba2b
 
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
   );
   border-image-slice: 1;
 }
@@ -167,7 +145,6 @@
     background-repeat: no-repeat;
     background-position: 0.3vw center;
     padding-left:2.3vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
 }
 
@@ -180,7 +157,6 @@
   
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e6d64671; */
     border-radius: 3vh;
     font-family: 'GangwonEdu_OTFBoldA';
     line-height: 1vh;
@@ -197,7 +173,6 @@
     top: 56vh;
     
     background: #FEFFF8;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
     border-radius: 1vh;
     background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
@@ -263,7 +238,6 @@
   
   background: #FEFFF8;
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
-  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
   border-radius: 1vh;
   background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
   background-repeat: no-repeat;
@@ -278,8 +252,6 @@
 
 .walletimg{
   position: absolute;
-  /* width: 7vw; */
-  /* height: 4vh; */
   left: 62.5vw;
   top: 66.6vh;
   color: #FF5656;
@@ -318,7 +290,6 @@
   border: none;
   background-color: #9f824d00;
 
-  /* color: #9F824D; */
   color: #caba2b;
 }
 

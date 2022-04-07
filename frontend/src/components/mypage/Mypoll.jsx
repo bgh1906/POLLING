@@ -29,7 +29,6 @@ function Mypoll() {
           })
           .catch(error => {
             // console.log("res",error.response);
-            // console.log("error",error);
           })
         };
         return() => {

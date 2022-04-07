@@ -25,7 +25,6 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
             }
         )
         .then(() =>{
-            // console.log("delete 성공!!")
             Swal.fire({
                 title: 'delete 성공!!',
                 icon: 'success'                        

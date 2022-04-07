@@ -20,9 +20,7 @@ export default function VotePaper({cand}) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [picked, setPicked] = useState(false);
-  // useEffect(() => console.log("클릭후", picked));
   const voteToCand = () => {
-    // console.log("클릭전", picked);
     setPicked((prev) => !prev);
   };
 

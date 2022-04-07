@@ -10,7 +10,7 @@ import { deepOrange } from "@mui/material/colors";
 import token2 from "../../assets/token.png"
 import {checkPOL} from "../../contracts/CallContract";
 
-function NewNav({state, reward, tminus}) {
+function NewNav({state, reward, tminus, newnick}) {
     const wallet = sessionStorage.getItem("wallet");
     const role = sessionStorage.getItem("role");
     const nickname = sessionStorage.getItem("nickname");
@@ -82,7 +82,7 @@ function NewNav({state, reward, tminus}) {
                                 <Link to="/management" className={Styles.text}> ADMIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                                 : 
                                 ( role === "ROLE_COMPANY"?
-                                <Link to="/management" className={Styles.text}> COMPANY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+                                <Link to="/company" className={Styles.text}> COMPANY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                                 :
                                 <Link to="/login" className={Styles.text}> {" "}LOGIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "} </Link>
                                 )
