@@ -56,8 +56,7 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    // src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
-                    src={item.thumbnail}
+                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
@@ -93,8 +92,8 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
                     className={styles.opened_img}
@@ -127,8 +126,8 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
                     className={styles.opened_img}
@@ -161,8 +160,8 @@ export default function PollList() {
               {itemData.map((item, index) => (
                 <ImageListItem key={index} className={styles.opened_item}>
                   <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
                     className={styles.opened_img}
