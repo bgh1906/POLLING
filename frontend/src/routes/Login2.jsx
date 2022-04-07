@@ -114,6 +114,7 @@ function Login2() {
           })
           .then((res) => {
             // const token
+            console.log("wallet",res.data.wallet);
 
             if (res.data.existMember === false) {
 
@@ -127,10 +128,12 @@ function Login2() {
               sessionStorage.setItem("token", accessToken);
               sessionStorage.setItem("userid", res.data.id);
               sessionStorage.setItem("role", res.data.role);
+              sessionStorage.setItem("wallet", res.data.wallet);
+              sessionStorage.setItem("nickname", res.data.nickname);
               dispatch(
                 actionCreators.addInfo({
                   token: response.access_token,
-                  email: email,
+                  email: "카카오톡 로그인 회원",
                   id: res.data.id,
                   nickname: res.data.nickname,
                   wallet: res.data.wallet,
@@ -139,6 +142,7 @@ function Login2() {
               loginSuccess();
               navigate("/");
             }
+
           });
       },
       fail: (error) => {
