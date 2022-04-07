@@ -41,7 +41,8 @@ function Hamburger({ state, DispatchdeleteInfo, setRendering }) {
                 headers: {
                     refreshToken: token,
                 },
-            })
+            }
+        )
         .then((res) => {
             // console.log("res", res);
             sessionStorage.clear();
