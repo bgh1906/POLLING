@@ -19,7 +19,6 @@ function NoticeP () {
     return(
 
         <div>
-            {/* <Accordion expanded={expanded === 'panel1'} className={Styles.aaccordioncolor} onChange={handleChangeA('panel1')}> */}
             <Accordion expanded={expanded === 'panel1'} style={{backgroundColor:"#3afaca15"}}  onChange={handleChangeA('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -31,7 +30,6 @@ function NoticeP () {
                     <div sx={{ width: '33%', flexShrink: 0 }} style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} className={Styles.aaccordiontitle}>
                         투표 방법
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -52,7 +50,6 @@ function NoticeP () {
                     <div sx={{ width: '33%', flexShrink: 0 }} style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} className={Styles.aaccordiontitle}>
                         투표 프로세스
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -72,7 +69,6 @@ function NoticeP () {
                     <div sx={{ width: '33%', flexShrink: 0 }} style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} className={Styles.aaccordiontitle}>
                         투표 결과
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>

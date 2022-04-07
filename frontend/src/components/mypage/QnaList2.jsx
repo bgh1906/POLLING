@@ -140,13 +140,11 @@ function QnaList2() {
                 >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    // aria-controls="panel${index.id}bh-content"
-                    // id="panel${index.id}bh-header"
                     key={key}
                   >
                     <div 
                       key={index.contactType}
-                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.4vw', lineHeight:'4vh'}} 
+                      style={{fontFamily:'RussoOne', fontSize:'1.2vw', lineHeight:'4vh'}} 
                       className={Styles.typotype} 
                       sx={{ width: '33%', flexShrink: 0 }}
                     >
@@ -155,7 +153,7 @@ function QnaList2() {
                     <div 
                       key={index.title}
                       maxLength="20"
-                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw', paddingLeft:'5vw', fontWeight:'5vh'}}  
+                      style={{fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw', paddingLeft:'5vw',paddingTop:'1vh',  fontWeight:'5vh'}}  
                       className={Styles.typoTitle} 
                       sx={{ color: 'text.secondary' }}
                     >
@@ -166,7 +164,7 @@ function QnaList2() {
                     <div 
                       key={index.content} 
                       className={Styles.typoTitle} 
-                      style={{wordBreak:'break-all', fontFamily:'GangwonEdu_OTFBoldA', fontSize:'1.3vw'}} 
+                      style={{wordBreak:'break-all', fontFamily:'GangwonEdu_OTFBoldA', paddingLeft:'1vw', fontSize:'1.3vw'}} 
                     >
                       {index.content}
                     </div>
@@ -181,13 +179,8 @@ function QnaList2() {
                     </button>
                   </AccordionDetails>
                 </Accordion>
-                {/* <input type={"checkbox"} /> */} 
-                {/* <button value={index.id} onClick={ () => {qnadelet(index.id)}} className={Styles.listbtn}>
-                  삭제
-                </button> */}
               </div>
             ))}
-            {/* ))} */}
         </>
     );
 }

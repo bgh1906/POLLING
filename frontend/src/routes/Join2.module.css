@@ -32,8 +32,8 @@
     transform-origin: -13vw 50%;
     transition-delay: 0s;
   }
-  .container .center, .container:active .center {
-  /* .container:hover .center, .container:active .center { */
+  /* .container .center, .container:active .center { */
+  .container:hover .center, .container:active .center {
     z-index: 10;
     opacity: 1;
     transition-delay: 0.2s;
@@ -121,9 +121,9 @@
 .joinus {
     /* z-index: 5; */
     position: absolute;
-    width: 10vw;
+    width: 12vw;
     height: 3vh;
-    left: 8.1vw;
+    left: 7vw;
     top: 2vh;
     
     font-family: 'Russo One';

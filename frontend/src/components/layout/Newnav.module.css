@@ -1,9 +1,6 @@
 .outbox{
     z-index: -5;
     position: fixed;
-    /* width: 95vw; */
-    /* width: 96vw;
-    height: 92vh; */
     width: 98vw;
     height: 96vh;
     left: 1vw;
@@ -18,8 +15,6 @@
     #8ac1be8c,
     #3afaca8c
   );
-  /* border-image: linear-gradient(120deg,  #3AFACB, #8AC1BE, #C399B4, #FB71AB); */
-  /* border-color: #3AFACB 50%  #8AC1BE 50% #C399B4 50% #FB71AB 50%; */
   border-image-slice: 1;
 }
 
@@ -30,9 +25,7 @@
     max-width: 100%;
     max-height: 100%;
     width: 3vw;
-    /* height: 7vh; */
     height: auto;
-    /* padding-right: 1vw; */
     z-index:100;
 }
 
@@ -42,20 +35,14 @@
     max-height: 100%;
     width: auto;
     height: auto;
-    /* width: 9vw;
-    height: 9vh; */
     left: 5.6vw;
     top: 5.3vh;
     display: block;
-    /* padding-left: 1vw; */
 
     text-decoration: none;
     text-align: center;
-    /* font-size: 6vh; */
     font-size: 2.5vw;
-    /* font-size: 6vmin; */
     font-family: 'RussoOne';
-    /* font-family: 'Bitter', serif; */
     color: #231815;
     z-index:100;
 }
@@ -96,52 +83,30 @@
   border: 1px solid #77a3a9;
 }
 
-/* 큰 div 만들고 */
-/* .div{
-    display: flex; */
-/* 세로 */
-/* flex-direction: column; 
-
-    width: 10vw;
-    height: 100vh;
-} */
-
-/* 네브바 */
-/* .div{
-    position: fixed;
-    display: flex;
-    justify-content: center;
-} */
 
 .user {
   display: flex;
   flex-direction: column;
   float: left;
   width: 10vw;
-  /* height: 100vh; */
   height: 98.5vh;
   justify-content: center;
-  /* border: 0.1vw solid #000000; */
 }
 
 .userNav{
     -webkit-transform: rotate(270deg);
     -webkit-transform-origin: bottom ;
     position: fixed;
-    /* justify-content: center; */
-    /* flex-direction: row; */
     display: flex;
     width: 10.5vw;
     top: 50vh;
 
     text-align: center;
-    /* font-size: 2.5vh; */
     font-size: 1.18vw;
     font-family: 'RussoOne';
     z-index: 5;
 
   text-align: center;
-  /* font-size: 2.5vh; */
   font-size: 1.18vw;
   font-family: "RussoOne";
 }
@@ -151,27 +116,20 @@
     flex-direction: column;
     float: right;
     width: 10vw;
-    /* height: 100vh; */
     height: 98.5vh;
     justify-content: center;
-    /* border: 0.1vw solid #000000; */
     z-index: 5;
 }
 
 .pollNav{
     -webkit-transform: rotate(90deg);
-    /* -webkit-transform-origin:left top; */
     -webkit-transform-origin: bottom;
     position: fixed;
-    /* justify-content: center; */
-    /* flex-direction: row; */
     display: flex;
-    /* width: 21vw; */
     width: 10.5vw;
     top: 40vh;
     right: 1vw;
     text-align: center;
-    /* font-size: 2.5vh; */
     font-size: 1.18vw;
     font-family: 'RussoOne';
     z-index: 5;
@@ -182,15 +140,13 @@
     text-align: center;
     color: #231815;
     z-index: 5;
-    /* margin-left: 1vh; */
-    /* margin-right: 1vh; */
 }
 
 .mininick{
+  z-index: 100;
   display: flex;
   position: fixed;
   right: 14vw;
-  /* left: 8vw; */
   top: 5.5vh;
   font-family: 'ROKAFSansMedium';
   font-size: 1.4vw;
@@ -198,10 +154,10 @@
 }
 
 .tokenimg {
+  z-index: 100;
   display: flex;
   position: fixed;
   right: 11.5vw;
-  /* left: 8vw; */
   top: 5.4vh;
   width: 1.8vw;
   font-family: 'ROKAFSansMedium';
@@ -209,10 +165,10 @@
 }
 
 .token {
+  z-index: 100;
   display: flex;
   position: fixed;
   right: 6.5vw;
-  /* left: 8vw; */
   top: 5.5vh;
   font-family: 'ROKAFSansMedium';
   font-size: 1.4vw;

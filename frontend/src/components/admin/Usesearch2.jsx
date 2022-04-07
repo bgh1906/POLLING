@@ -5,26 +5,6 @@ import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-// function createData(name, calories, fat) {
-//   return { name, calories, fat };
-// }
-
-// const rows = [
-//   createData('사랑해요신짱아', 'shinjja@naver.com', 3.7),
-//   createData('오마이걸짱', 'loveomg@omg.com', 25.0),
-//   createData('아이유아니유', 'iuau@iuana.com', 16.0),
-//   createData('갓구아짱', 'guajjang@gua', 6.0),
-//   createData('이부장님', 'bujanglee@ssafy.com', 16.0),
-//   createData('서대리', 'whydearee@ssafy.com', 3.2),
-//   createData('배수지환', 'BsuzyH@ssafy.com', 9.0),
-//   createData('저스트 비버', 'fakebieber@singer.com', 0.0),
-//   createData('능력주헌', 'superjung@ssafy', 26.0),
-//   createData('승진원츄', 'teamkim@ssafy.com', 0.2),
-//   createData('Marshmallow', 318, 0),
-//   createData('Nougat', 360, 19.0),
-//   createData('Oreo', 437, 18.0),
-// ];
-// ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 const Root = styled('div')`
   table {
@@ -101,6 +81,8 @@ function UserSearch2() {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  //유저목록 받기
+  const [rows, setRows] = useState([]);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -115,9 +97,6 @@ function UserSearch2() {
     setPage(0);
   };
 
-  //유저목록 받기
-  const [rows, setRows] = useState([]);
-  const axios2 = axios;
 
   const getUsers = () => {
     axios
@@ -167,12 +146,11 @@ function UserSearch2() {
     <Root>
       <div style={{top: '30vh'}}>
         <button onClick={getUsers} className={Styles.userlistbtn}> 회원 불러오기 </button>
-        <div>
+        {/* <div>
           <input className={Styles.userEmail} type="text" placeholder="회원 이메일"/>
           <img src='https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/20/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png' className={Styles.emailicon}></img>
-          {/* <button className={Styles.searchbtn}></button> */}
-        </div>
-        <img src='https://img.icons8.com/pastel-glyph/30/000000/search--v2.png' className={Styles.searchbtn}></img>
+        </div> */}
+        {/* <img src='https://img.icons8.com/pastel-glyph/30/000000/search--v2.png' className={Styles.searchbtn}></img> */}
         <table style={{top: '30vh'}} aria-label="custom pagination table">
           <thead>
             <tr>
@@ -187,6 +165,7 @@ function UserSearch2() {
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row, index) => (
+            // {rows.map((row, index) => (
               <tr key={index}>
                 <td style={{ width: '7vw' }} >{row.id}</td>
                 <td style={{ width: '13vw' }} align="right">
@@ -199,7 +178,8 @@ function UserSearch2() {
                   {row.wallet}
                 </td>
               </tr>
-            ))}
+            ))
+            }
 
             {emptyRows > 0 && (
               <tr style={{ height: 41 * emptyRows }}>

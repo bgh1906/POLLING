@@ -4,13 +4,11 @@ import Styles from "./Mypage.module.css";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from "react";
 import UserInfo from "../components/mypage/UserInfo";
 import Mypoll from "../components/mypage/Mypoll";
 import Qnawrite from "../components/mypage/Qnawrite";
-import QnaList from "../components/mypage/QnaList";
 import QnaList2 from "../components/mypage/QnaList2";
 
 function TabPanel(props) {
@@ -82,7 +80,6 @@ function Mypage() {
             <div className={Styles.mypage}> My page </div>
 
             <Box sx={{ width: '80vw', paddingTop: '29vh', paddingLeft: '17vw'}}>
-            {/* <Box className={Styles.firstbox}> */}
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab label="정보 수정" {...a11yProps(0)} style={{fontFamily:"GangwonEdu_OTFBoldA", fontSize:'1.4vw'}} className={Styles.tabs}/>
@@ -94,7 +91,6 @@ function Mypage() {
                     <UserInfo />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    {/* map~ */}
                     <Mypoll />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
@@ -104,7 +100,6 @@ function Mypage() {
                         <Qnawrite />
                     </div>
                     <div hidden={listopen}>
-                        {/* <QnaList /> */}
                           <QnaList2 />
                     </div>
                 </TabPanel>

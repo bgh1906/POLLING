@@ -26,7 +26,7 @@ import {
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
-import Txid from "./Txid";
+import Txid1 from "./Txid1.jsx";
 
 
 function Candidate({ state }) {
@@ -68,7 +68,7 @@ function Candidate({ state }) {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setCandIdx(res.data.candidateIndex);
         setProfile_image(res.data.thumbnail);
         setPhoto1(res.data.imagePath1);
@@ -77,8 +77,8 @@ function Candidate({ state }) {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        console.log("이 후보의 id:", params.id);
-        console.log("이 후보의 IDX:", res.data.candidateIndex);
+        // console.log("이 후보의 id:", params.id);
+        // console.log("이 후보의 IDX:", res.data.candidateIndex);
       })
       .catch((error) => {
         console.log(error.response);
@@ -97,8 +97,8 @@ function Candidate({ state }) {
         },
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         const imagebuy = res.data[0];
         if (imagebuy) {
           setimageLock(false);
@@ -197,15 +197,12 @@ function Candidate({ state }) {
                 },
             })
             .then(async(res) => {
-                console.log("res",res);
+                // console.log("res",res);
                 //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
                 renderCheck();
-                console.log("render");
                 lockAccount(wallet); //블록체인 계좌 잠금
-                console.log("lock");
                 pollfin(); //스윗알랏
                 handleClose(); //모달 종료
-                // await approveAccount(1000,adminAddress,adminAddress);
                 await approveAccount(1000,adminAddress);
                 await sendPOL(1000,adminAddress,wallet);
                 setReward((prev) => (prev+1));
@@ -243,15 +240,7 @@ function Candidate({ state }) {
       icon: "error",
     });
   };
-  // const [balance, setBalance] = useState(0);
 
-  // const getBalance = () => {
-  //     checkPOL(wallet).then(res => {setBalance(res); console.log("checkPOLresToken",res);});
-  //     console.log("balance1",balance);
-  //     console.log("wallet1",wallet);
-  //   };
-  //   console.log("balance11",balance);
-  //   console.log("wallet11",wallet);
   function getImgPw(e){
     setInputImgtPw(e.target.value);
   }
@@ -259,15 +248,10 @@ function Candidate({ state }) {
   const [tminus, setTminus] = useState(0);
 
   async function handleLock() {
-    // const tokenweight = getBalance();
-    //저 잠시만 물먹고 오께여
     const balance = await checkPOL(wallet);
-    //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
-    console.log("balance2",balance);
-    // console.log("tokenweight",tokenweight);
+    // console.log("balance2",balance);
     if (balance > 500) {
       console.log("balance3",balance);
-    // if (balance > 10000) {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -283,29 +267,22 @@ function Candidate({ state }) {
           }
         )
         .then(async(res) => {
-          console.log("사진 공개 성공",res);
+          // console.log("사진 공개 성공",res);
           unlockAccount(wallet, inputImgPw);
           await approveAccount(500, wallet);
-          console.log("wallet \n",wallet);
-          console.log("approveAccount \n",wallet);
+          // console.log("wallet \n",wallet);
+          // console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
-          console.log("sendPOL",wallet,adminAddress);
+          // console.log("sendPOL",wallet,adminAddress);
           imgopen();//스윗알럿
           handleClose3() //모달 닫기
           setimageLock(false);//사진 잠금 풀기
           lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
-          console.log("lockAccount \n",wallet);
-          console.log("setimageLock");
+          // console.log("lockAccount \n",wallet);
+          // console.log("setimageLock");
           setTminus((prev) => (prev+1)); //렌더링 안먹음
-          console.log("setReward");
+          // console.log("setReward");
         })
-        // .then(setimageLock(false))
-        // .then(handleClose3())
-        // // .then(approveAccount(500,adminAddress))
-        // //내 계좌에서 보낼꺼니깐 보낼주소 adminAddress를 wallet로 하면 맞나??
-        // .then(approveAccount(500,wallet))
-        // // 여기서는 사용자가 서버에 보내는 거니깐 순서 반대 맞나??
-        // .then(sendPOL(500,wallet,adminAddress)) 
         .catch((error) => {
           console.log("error",error.response);
         });
@@ -415,8 +392,7 @@ function Candidate({ state }) {
           <div id={styles.tran_box}>거래내역</div>
           <Txid /> 
         </Modal> */}
-
-          <Txid id={params.id} />
+        <Txid1 id={params.id} />
 
         <Button id={styles.back_button} onClick={gotoList} variant="contained">
           참가자 목록

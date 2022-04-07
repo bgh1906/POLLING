@@ -230,7 +230,7 @@ function Login2() {
           <div className={Styles2.top}></div>
           <div className={Styles2.bottom}></div>
           <div className={Styles2.center}>
-            <div className={Styles2.signin}>Sign In&nbsp;</div>
+            <div className={Styles2.signin}>Log In&nbsp;</div>
             {/* <h2>Sign In &nbsp;</h2>  */}
             {/* <input type="email" placeholder="email"/>
                     <input type="password" placeholder="password"/> */}
@@ -249,7 +249,7 @@ function Login2() {
               name="password"
             />
             <button className={Styles2.signinbtn} onClick={onLogin}>
-              Sign in
+              Log in
             </button>
             <div>
               <Link to="/Companylogin" className={Styles2.company}>

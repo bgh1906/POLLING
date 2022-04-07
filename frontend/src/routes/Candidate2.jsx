@@ -26,6 +26,7 @@ import {
 } from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
+import Txid2 from "./Txid2.jsx";
 
 function Candidate2({ state }) {
   const navigate = useNavigate();
@@ -45,11 +46,11 @@ function Candidate2({ state }) {
   const [modalOpen2, setmodalOpen2] = useState(false);
   const [imageLock, setimageLock] = useState(true);
   const [modalOpen3, setmodalOpen3] = useState(false);
-
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
   const [inputWalletPw, setInputWalletPw] = useState("");
+  const [inputImgPw, setInputImgtPw] = useState("");
 
   // const wallet = state[0].wallet;
   const wallet = sessionStorage.getItem("wallet");
@@ -64,7 +65,7 @@ function Candidate2({ state }) {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setCandIdx(res.data.candidateIndex);
         setProfile_image(res.data.thumbnail);
         setPhoto1(res.data.imagePath1);
@@ -73,8 +74,8 @@ function Candidate2({ state }) {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        console.log("이 후보의 id:", params.id);
-        console.log("이 후보의 IDX:", res.data.candidateIndex);
+        // console.log("이 후보의 id:", params.id);
+        // console.log("이 후보의 IDX:", res.data.candidateIndex);
       })
       .catch((error) => {
         console.log(error.response);
@@ -93,8 +94,8 @@ function Candidate2({ state }) {
         },
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         const imagebuy = res.data[0];
         if (imagebuy) {
           setimageLock(false);
@@ -166,7 +167,7 @@ function Candidate2({ state }) {
   const [reward, setReward] = useState(0)
 
   async function handlepoll() {
-    if (picked) {
+    if (picked && inputWalletPw !== "") {
       // 블록체인 투표 하는 부분
       //   1. Unlock 해준다.(비밀번호 입력받아서)
       unlockAccount(wallet, inputWalletPw);
@@ -203,12 +204,12 @@ function Candidate2({ state }) {
 
         })
         .catch((error) => {
-          console.log(error.response);
+          console.log("error",error.response);
         });
       // 3. 다시 lock 한다.
     } else {
       Swal.fire({
-        title: "투표 도장을 찍어주세요.",
+        title: "투표 도장과 비밀번호를 <br/>입력해주세요.",
         icon: "error",
       });
     }
@@ -236,6 +237,12 @@ function Candidate2({ state }) {
     });
   };
 
+  function getImgPw(e){
+    setInputImgtPw(e.target.value);
+  }
+
+  const [tminus, setTminus] = useState(0);
+
   async function handleLock() {
     const balance = await checkPOL(wallet);
     //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
@@ -255,18 +262,24 @@ function Candidate2({ state }) {
           }
         )
         .then(async(res) => {
-          console.log("사진 공개 성공",res);
-          imgopen();
-          // setimageLock(false);
-          // handleClose3();
-          setimageLock(false)
-          handleClose3()
-          await approveAccount(500, wallet)
-          await sendPOL(500, wallet, adminAddress)
-          setReward((prev) => (prev+1));
+          // console.log("사진 공개 성공",res);
+          unlockAccount(wallet, inputImgPw);
+          await approveAccount(500, wallet);
+          // console.log("wallet \n",wallet);
+          // console.log("approveAccount \n",wallet);
+          await sendPOL(500, wallet, adminAddress);
+          // console.log("sendPOL",wallet,adminAddress);
+          imgopen();//스윗알럿
+          handleClose3() //모달 닫기
+          setimageLock(false);//사진 잠금 풀기
+          lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
+          // console.log("lockAccount \n",wallet);
+          // console.log("setimageLock");
+          setTminus((prev) => (prev+1)); //렌더링 안먹음
+          // console.log("setReward");
         })
         .catch((error) => {
-          console.log(error.response);
+          // console.log(error.response);
         });
     } else {
       notoken();
@@ -282,7 +295,7 @@ function Candidate2({ state }) {
 
   return (
     <div>
-      <NewNav reward={reward}/>
+      <NewNav reward={reward} tminus={tminus}/>
       <div className={styles.container}>
         <img id={styles.crown2} src={crown} alt="crown" />
         <img id={styles.tx2} src={tx} alt="tx2" />
@@ -365,7 +378,7 @@ function Candidate2({ state }) {
           </div>
         </Modal>
 
-        <Button
+        {/* <Button
           id={styles.con_button2}
           onClick={handleOpen2}
           variant="contained"
@@ -374,7 +387,8 @@ function Candidate2({ state }) {
         </Button>
         <Modal open={modalOpen2} onClose={handleClose2}>
           <div id={styles.tran_box}>거래내역</div>
-        </Modal>
+        </Modal> */}
+        <Txid2 id={params.id} />
 
         <Button id={styles.back_button2} onClick={gotoList} variant="contained">
           참가자 목록
@@ -415,6 +429,13 @@ function Candidate2({ state }) {
                 500POL를 사용하여 <br />
                 미공개 사진을 여시겠습니까?
               </p>
+              <TextField
+                  className={styles.img_password}
+                  placeholder="Img Password"
+                  variant="standard"
+                  type="password"
+                  onChange={getImgPw}
+              />
               <Button
                 id={styles.behind_btn}
                 onClick={handleLock}
