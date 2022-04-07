@@ -1,9 +1,7 @@
 import styles from "./Poll.module.css";
 import Footer from "../components/layout/Footer";
 import Newnav from "../components/layout/NewNav";
-// import Countdown from "react-countdown";
 import CandList from "../components/poll/CandList";
-// import VotePaper from "../components/poll/VotePaper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";

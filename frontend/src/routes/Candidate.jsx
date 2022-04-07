@@ -144,7 +144,6 @@ function Candidate({ state }) {
         }
       )
       .then((res) => {
-        console.log(res);
         setmodalOpen(true);
       })
       .catch((error) => {

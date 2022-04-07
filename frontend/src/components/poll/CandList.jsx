@@ -13,6 +13,7 @@ import { fontSize } from "@mui/system";
 import { connect } from "react-redux";
 import CandCaption from "./CandCaption";
 import { totalVotesBlock } from "../../contracts/CallContract";
+import Swal from "sweetalert2";
 
 function CandList({ state, cand, countOpen }) {
   const navigate = useNavigate();
@@ -20,7 +21,6 @@ function CandList({ state, cand, countOpen }) {
 
   const [listType, setlistType] = useState("rank");
   const [temp, setTemp] = useState([]);
-
   function changelistType() {
     setlistType("rank");
   }
@@ -34,6 +34,18 @@ function CandList({ state, cand, countOpen }) {
   } else {
     temp.sort((a, b) => a[0] - b[0]);
   }
+  console.log("토큰토큰:", sessionStorage.getItem("token"));
+  // function needLogin() {
+  //   if (sessionStorage.getItem("token") === null) {
+  //     navigate("/login");
+  //     console.log("ㄴㅇㄹㅇㄴㄹㅇㄴㄹㄴㅇ");
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "로그인 후 이용해주세요!",
+  //       text: "확인을 누르면 로그인 페이지로 이동합니다.",
+  //     });
+  //   }
+  // }
 
   // 유저 지갑 주소
   const wallet = sessionStorage.getItem("wallet");
@@ -46,7 +58,6 @@ function CandList({ state, cand, countOpen }) {
     cand.map((item) => getTotalVotes(item.candidateIndex));
   }, [cand]);
 
-  console.log("temp:", temp);
   return (
     <>
       <div className={styles.right_title}>당신의 스타에게 투표하세요.</div>
@@ -87,7 +98,6 @@ function CandList({ state, cand, countOpen }) {
             </span>
           </>
         )}
-
       </div>
       {listType === "rank" ? (
         <>
@@ -103,7 +113,6 @@ function CandList({ state, cand, countOpen }) {
               const person = cand.filter(
                 (candidateInfo) => candidateInfo.candidateIndex === item[0]
               );
-              console.log("person:", person[0]);
               return (
                 <div className={styles.poll_Cand} key={person[0].thumbnail}>
                   <img
@@ -111,7 +120,9 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg}
                     onClick={() => {
-                      sessionStorage.setItem("listType", listType);
+                      sessionStorage.getItem("token") === null
+                        ? navigate("/login")
+                        : sessionStorage.setItem("listType", listType);
                       sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(
@@ -150,7 +161,9 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg2}
                     onClick={() => {
-                      sessionStorage.setItem("listType", listType);
+                      sessionStorage.getItem("token") === null
+                        ? navigate("/login")
+                        : sessionStorage.setItem("listType", listType);
                       sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(
