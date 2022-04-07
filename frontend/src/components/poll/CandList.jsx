@@ -34,18 +34,6 @@ function CandList({ state, cand, countOpen }) {
   } else {
     temp.sort((a, b) => a[0] - b[0]);
   }
-  console.log("토큰토큰:", sessionStorage.getItem("token"));
-  // function needLogin() {
-  //   if (sessionStorage.getItem("token") === null) {
-  //     navigate("/login");
-  //     console.log("ㄴㅇㄹㅇㄴㄹㅇㄴㄹㄴㅇ");
-  //     Swal.fire({
-  //       icon: "error",
-  //       title: "로그인 후 이용해주세요!",
-  //       text: "확인을 누르면 로그인 페이지로 이동합니다.",
-  //     });
-  //   }
-  // }
 
   // 유저 지갑 주소
   const wallet = sessionStorage.getItem("wallet");
@@ -120,9 +108,7 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg}
                     onClick={() => {
-                      sessionStorage.getItem("token") === null
-                        ? navigate("/login")
-                        : sessionStorage.setItem("listType", listType);
+                      sessionStorage.setItem("listType", listType);
                       sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(
@@ -161,9 +147,7 @@ function CandList({ state, cand, countOpen }) {
                     alt={person[0].name}
                     className={styles.CandImg2}
                     onClick={() => {
-                      sessionStorage.getItem("token") === null
-                        ? navigate("/login")
-                        : sessionStorage.setItem("listType", listType);
+                      sessionStorage.setItem("listType", listType);
                       sessionStorage.setItem("rank", index + 1);
                       person[0].candidateId % 2
                         ? navigate(

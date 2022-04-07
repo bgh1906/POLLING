@@ -68,14 +68,6 @@ function History() {
                 </div>
               </div>
               <div className={styles.ended_button}>
-                {/* <Button
-                  id={styles.button_info}
-                  variant="contained"
-                  size="large"
-                  onClick={() => setModalShow(true)}
-                >
-                  투표결과
-                </Button> */}
                 <Historytxid pollId={item.pollId} />
               </div>
             </div>
