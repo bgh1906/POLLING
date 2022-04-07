@@ -13,6 +13,7 @@ import heart from "../../assets/heart.png";
 import { fontSize } from "@mui/system";
 import { connect } from "react-redux";
 import CandCaption from "./CandCaption";
+import { totalVotesBlock } from "../../contracts/CallContract";
 
 function CandList({ state, cand, countOpen }) {
   const navigate = useNavigate();
@@ -27,7 +28,24 @@ function CandList({ state, cand, countOpen }) {
   function changelistType2() {
     setlistType("register");
   }
-
+  // const wallet = sessionStorage.getItem("wallet");
+  // const [totalVotes, setTotalVotes] = useState(0);
+  // function getTotalVotes(idx) {
+  //   totalVotesBlock(idx, wallet).then((res) => {
+  //     setTotalVotes(res);
+  //     // console.log(`${idx}번 후보자의 득표수: ${totalVotes}`);
+  //   });
+  //   return totalVotes;
+  // }
+  // let array = [];
+  // useEffect(() => {
+  //   // console.log(cand);
+  //   for (let item of cand) {
+  //     console.log(item.candidateIndex);
+  //     // array.push(getTotalVotes(item.candidateIndex));
+  //   }
+  //   // console.log(array);
+  // });
   return (
     <>
       <div className={styles.right_title}>당신의 스타에게 투표하세요.</div>
@@ -97,6 +115,24 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
+                {/* <figcaption>
+                  <div className={styles.captionName}>{item.name}</div>
+
+                  {countOpen === true && (
+                    <div className={styles.captionName2}>
+                      득표수 : {totalVotes}표
+                      <br />
+                      현재 순위 : {index + 1}위
+                    </div>
+                  )}
+                  {countOpen === false && (
+                    <div className={styles.captionName2}>
+                      득표수 : ???표
+                      <br />
+                      현재 순위 : {index + 1}위
+                    </div>
+                  )}
+                </figcaption> */}
                 <CandCaption item={item} index={index} countOpen={countOpen} />
               </div>
             ))}
@@ -122,7 +158,7 @@ function CandList({ state, cand, countOpen }) {
                         );
                   }}
                 />
-                 <CandCaption
+                <CandCaption
                   item={item}
                   index={index}
                   countOpen={countOpen}

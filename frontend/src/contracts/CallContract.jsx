@@ -3,7 +3,7 @@ const Web3 = require("web3");
 
 /* REPLACE: 노드 엔드포인트 문자열 */
 // const ENDPOINT = "http://localhost:7545";
-const ENDPOINT = "http://j6a304.p.ssafy.io:7545";
+const ENDPOINT = "https://j6a304.p.ssafy.io/block/";
 export const web3 = new Web3(new Web3.providers.HttpProvider(ENDPOINT));
 
 //컨트랙트 배포주소
