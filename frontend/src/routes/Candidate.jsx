@@ -26,6 +26,7 @@ import {
 import TextField from "@mui/material/TextField";
 import { connect } from "react-redux";
 import Txid1 from "./Txid1.jsx";
+import { Co2Sharp } from "@mui/icons-material";
 
 function Candidate({ state }) {
   const navigate = useNavigate();
@@ -177,6 +178,7 @@ function Candidate({ state }) {
 
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
+    console.log("지갑 비번: ",e.target.value);
   }
 
   const [reward, setReward] = useState(0);
@@ -268,13 +270,14 @@ function Candidate({ state }) {
 
   function getImgPw(e) {
     setInputImgtPw(e.target.value);
+    console.log(e.target.value);
   }
 
   const [tminus, setTminus] = useState(0);
 
   async function handleLock() {
     const balance = await checkPOL(wallet);
-    if (balance >= 500 && inputWalletPw !== "") {
+    if (balance >= 500 && inputImgPw !== "") {
       console.log("balance3", balance);
       axios
         .post(
@@ -303,9 +306,9 @@ function Candidate({ state }) {
         .catch((error) => {
           console.log("error", error.response);
         });
-    } else if (balance < 500 && inputWalletPw !== "") {
+    } else if (balance < 500 && inputImgPw !== "") {
       notoken();
-    } else if (balance >= 500 && inputWalletPw === "") {
+    } else if (balance >= 500 && inputImgPw === "") {
       nopw();
     } else {
       Swal.fire({

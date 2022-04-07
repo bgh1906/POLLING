@@ -271,7 +271,7 @@ function Candidate2({ state }) {
 
   async function handleLock() {
     const balance = await checkPOL(wallet);
-    if (balance >= 500 && inputWalletPw !== "") {
+    if (balance >= 500 && inputImgPw !== "") {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -299,9 +299,9 @@ function Candidate2({ state }) {
         .catch((error) => {
           console.log("error", error.response);
         });
-    } else if (balance < 500 && inputWalletPw !== "") {
+    } else if (balance < 500 && inputImgPw !== "") {
       notoken();
-    } else if (balance >= 500 && inputWalletPw === "") {
+    } else if (balance >= 500 && inputImgPw === "") {
       nopw();
     } else {
       Swal.fire({
