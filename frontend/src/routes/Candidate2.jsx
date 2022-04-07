@@ -232,7 +232,7 @@ function Candidate2({ state }) {
 
   const notoken = () => {
     Swal.fire({
-      title: "토큰이 부족합니다.",
+      title: "토큰 부족 or 지갑 비밀번호를 입력해주세요",
       icon: "error",
     });
   };
@@ -246,7 +246,7 @@ function Candidate2({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
-    if (balance > 500) {
+    if (balance > 500 && inputWalletPw !== "") {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",

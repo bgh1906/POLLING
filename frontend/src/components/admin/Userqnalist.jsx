@@ -92,8 +92,9 @@ function Userqnalist () {
     useEffect (() => {
         // getrows();
         axios
-        //   .get("http://j6a304.p.ssafy.io/api/contact/admin",
-          .get("/api/contact/admin",
+          // .get("http://j6a304.p.ssafy.io/api/contact/admin",
+          // .get("/api/contact/admin",
+          .get("/api/contact/admin/0/50",
             {
                 headers:{
                     // refreshToken: token,
@@ -108,6 +109,7 @@ function Userqnalist () {
         })
         .catch(error => {
             console.log("error,qnalist \n", error);
+            console.log("error,qnalist \n", error.response);
             console.log("목록 출력 실패 - qnalist");
         })
     }, [])

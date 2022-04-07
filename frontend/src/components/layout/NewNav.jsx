@@ -10,7 +10,7 @@ import { deepOrange } from "@mui/material/colors";
 import token2 from "../../assets/token.png"
 import {checkPOL} from "../../contracts/CallContract";
 
-function NewNav({state, reward, tminus}) {
+function NewNav({state, reward, tminus, newnick}) {
     const wallet = sessionStorage.getItem("wallet");
     const role = sessionStorage.getItem("role");
     const nickname = sessionStorage.getItem("nickname");

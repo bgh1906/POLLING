@@ -213,7 +213,7 @@ function Candidate({ state }) {
         }
      else {
       Swal.fire({
-        title: "투표 도장과 비밀번호를 입력해주세요.",
+        title: "투표 도장과 지갑 비밀번호를 입력해주세요.",
         icon: "error",
       });
     }
@@ -236,7 +236,7 @@ function Candidate({ state }) {
 
   const notoken = () => {
     Swal.fire({
-      title: "토큰이 부족합니다.",
+      title: "토큰 부족 or 지갑 비밀번호를 입력해주세요.",
       icon: "error",
     });
   };
@@ -250,7 +250,7 @@ function Candidate({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     // console.log("balance2",balance);
-    if (balance > 500) {
+    if (balance > 500 && inputWalletPw !== "") {
       console.log("balance3",balance);
       axios
         .post(
@@ -436,7 +436,7 @@ function Candidate({ state }) {
               </p>
               <TextField
                   className={styles.img_password}
-                  placeholder="Img Password"
+                  placeholder="Wallet Password"
                   variant="standard"
                   type="password"
                   onChange={getImgPw}

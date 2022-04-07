@@ -76,11 +76,73 @@ function User() {
         console.log(email);
     };
 
+          //닉네임 사용 가능
+          const usenick = () => {
+            Swal.fire({
+              text:"사용가능한 닉네임입니다.",
+              icon: 'success',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
+    
+        //닉네임 중복
+        const samenick = () => {
+            Swal.fire({
+              text:"동일 닉네임이 존재합니다.",
+              icon: 'error',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
+    
+        //닉네임 빈값
+        const nicknull = () => {
+            Swal.fire({
+              text:"Nickname을 입력해주세요.",
+              icon: 'error',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
+
     //nickname -> 회사명 받아오기
     const [nickname, setId] = useState("");
     const getId = (e) => {
         setId(e.target.value);
         console.log(nickname);
+    };
+
+    const [checknick, setChecknick] = useState(false);
+
+    const getChecknick = (e) => {
+        if (nickname === "") {
+        //   alert("Nickname을 입력해주세요.");
+        nicknull();
+        } else {
+        axios
+            .get(
+            `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+            {
+                n: nickname,
+            }
+            )
+            .then((res) => {
+            //   alert("사용가능한 닉네임입니다.");
+            usenick();
+            setChecknick(true);
+            })
+            .catch((error) => {
+            console.log("error", error.response);
+            if (error.code === 409) {
+                // alert("동일 닉네임이 존재합니다.");
+                samenick();
+            }
+            // alert(error);
+            setId("");
+            });
+        // console.log("nickname", nickname);
+        }
     };
 
     //비밀번호 받아오기
@@ -161,38 +223,11 @@ function User() {
                 console.log("message", message);
                 // alert("회원가입 실패");
                 joinFail();
-                // setSubmitError(message);
-                // setTimeout(() => {
-                //   setSubmitError(null);
-                // }, 3000);
               });
         }
     };
 
-    //   //유저목록 받기
-    // const [rows, setRows] = useState([]);
 
-
-    // //회원리스트 뽑기
-    // React.useEffect(() => {
-    //     axios
-    //     .get(
-    //       "https://j6a304.p.ssafy.io/api/members",
-    //       {
-    //         headers: {
-    //           "Authorization":token,
-    //         },
-    //       }
-    //     )
-    //     .then((res) => {
-    //       console.log("data",res.data);
-    //       setRows(res.data);
-    //     })
-    //     .catch(error => {
-    //       console.log("res,userlist",error.response);
-    //       console.log("error,userlist",error);
-    //     })
-    //   },[])
 
     return (
         <div style={{height:'100vh'}}>
@@ -214,9 +249,13 @@ function User() {
                     <div className={Styles.login}>
                         <div> 
                             <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname" maxLength="12"/>
+                            <button className={Styles.nicknameCheck} onClick={getChecknick} disabled={checknick === true}>
+                                중복확인
+                            </button>
                             <input type={"email"} placeholder=" email" className={Styles.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password" maxLength="13"/>
                             <input type={"text"} placeholder=" PhoneNumber(01012345678) " className={Styles.phone} onChange={getPhone} name="phone"/>
+                            <input type={"password"} placeholder=" Wallet Password " className={Styles.walletpassword} onChange={getPhone} name="phone"/>
                             <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
                         </div>
                     </div>
