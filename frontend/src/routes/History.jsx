@@ -61,7 +61,6 @@ console.log("")
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
           {itemData.map((item, index) => (
-            // <div className={styles.history_item}>
             <div
               className={styles.history_item}
               key={index}
@@ -75,14 +74,7 @@ console.log("")
                 <div id={styles.date_info}>{item.startDate} <br/> {item.endDate}</div>
               </div>
               <div className={styles.ended_button}>
-                {/* <Button
-                  id={styles.button_info}
-                  variant="contained"
-                  size="large"
-                  onClick={() => setModalShow(true)}
-                >
-                  투표결과
-                </Button> */}
+                
                 <Historytxid pollId={item.pollId}/>
               </div>
             </div>
