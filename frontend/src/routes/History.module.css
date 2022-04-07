@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Yellowtail&display=swap");
 
-
 @font-face {
   font-family: "ROKAFSansBold";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff")
@@ -21,9 +20,9 @@
 }
 
 .history_title {
-  position:fixed;
+  position: fixed;
 
-  font-family: 'Yellowtail', cursive;
+  font-family: "Yellowtail", cursive;
   font-size: 24vw;
   font-weight: 900;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -154,7 +153,7 @@
   font-family: "ROKAFSansBold";
   font-size: 3vw;
   font-weight: 700;
-  color: rgba(6, 65, 84, 0.652);
+  color: beige;
 }
 
 #date_info {
