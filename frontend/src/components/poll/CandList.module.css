@@ -216,24 +216,24 @@
 }
 
 #rank1 {
-  position:absolute;
+  position:relative;
   width: 2vw;
-  top: 38.5vh;
-  left: 26.5vw;
+  top: 38.7vh;
+  left: 25.7vw;
 }
 
 #rank2 {
   position:absolute;
   width: 2vw;
   top: 46.4vh;
-  left: 7.3vw;
+  left: 6.6vw;
 }
 
 #rank3 {
   position:absolute;
   width: 2vw;
   top: 49.9vh;
-  right: 14.9vw;
+  right: 15.3vw;
 }
 
 #dark {
