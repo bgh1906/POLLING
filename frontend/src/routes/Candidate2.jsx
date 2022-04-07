@@ -138,7 +138,28 @@ function Candidate2({ state }) {
   }
 
   function handleOpen() {
-    setmodalOpen(true);
+    axios
+      .get(
+        `https://j6a304.p.ssafy.io/api/polls/candidates/limit/${params.id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+            Accept: "*/*",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setmodalOpen(true);
+      })
+      .catch((error) => {
+        console.log("error", error.response);
+        Swal.fire({
+          title: "한 대회당 한 명에게만 투표할 수 있습니다.",
+          icon: "error",
+        });
+      });
   }
 
   function handleClose() {
@@ -164,7 +185,7 @@ function Candidate2({ state }) {
     setInputWalletPw(e.target.value);
   }
 
-  const [reward, setReward] = useState(0)
+  const [reward, setReward] = useState(0);
 
   async function handlepoll() {
     if (picked && inputWalletPw !== "") {
@@ -191,35 +212,37 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then(async(res) => {
+        .then(async (res) => {
           console.log(res);
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
           lockAccount(wallet); //블록체인 계좌 잠금
           pollfin(); //스윗알랏
           handleClose(); //모달 종료
-          await approveAccount(100,adminAddress);
-          await sendPOL(100,adminAddress,wallet);
-          setReward((prev) => (prev+1));
-
+          await approveAccount(100, adminAddress);
+          await sendPOL(100, adminAddress, wallet);
+          setReward((prev) => prev + 1);
         })
         .catch((error) => {
-          console.log("error",error.response);
+          console.log("error", error.response);
         });
       // 3. 다시 lock 한다.
-    } 
-    else if (picked && inputWalletPw===""){
+    } else if (picked && inputWalletPw === "") {
       Swal.fire({
-        title: "지갑 비밀번호를 입력해주세요.",
+        title: "지갑 비밀번호를 입력하세요.",
+        icon: "error",
+      });
+    } else if (!picked && inputWalletPw !== "") {
+      Swal.fire({
+        title: "투표 도장을 찍어주세요.",
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "투표 도장과 비밀번호를 입력하세요.",
         icon: "error",
       });
     }
-     else if (inputWalletPw !== "" && picked===false){
-      Swal.fire({
-        title: "도장을 찍어주세요.",
-        icon: "error",
-      });
-     }
   }
 
   function handleOpen2() {
@@ -244,7 +267,7 @@ function Candidate2({ state }) {
     });
   };
 
-  function getImgPw(e){
+  function getImgPw(e) {
     setInputImgtPw(e.target.value);
   }
 
@@ -268,7 +291,7 @@ function Candidate2({ state }) {
             },
           }
         )
-        .then(async(res) => {
+        .then(async (res) => {
           // console.log("사진 공개 성공",res);
           unlockAccount(wallet, inputImgPw);
           await approveAccount(500, wallet);
@@ -276,17 +299,17 @@ function Candidate2({ state }) {
           // console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
           // console.log("sendPOL",wallet,adminAddress);
-          imgopen();//스윗알럿
-          handleClose3() //모달 닫기
-          setimageLock(false);//사진 잠금 풀기
+          imgopen(); //스윗알럿
+          handleClose3(); //모달 닫기
+          setimageLock(false); //사진 잠금 풀기
           lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
           // console.log("lockAccount \n",wallet);
           // console.log("setimageLock");
-          setTminus((prev) => (prev+1)); //렌더링 안먹음
+          setTminus((prev) => prev + 1); //렌더링 안먹음
           // console.log("setReward");
         })
         .catch((error) => {
-          // console.log(error.response);
+          console.log("error", error.response);
         });
     } else {
       notoken();
@@ -299,10 +322,11 @@ function Candidate2({ state }) {
   function handleClose3() {
     setmodalOpen3(false);
   }
-
+  const rank = sessionStorage.getItem("rank");
+  const listType = sessionStorage.getItem("listType");
   return (
     <div>
-      <NewNav reward={reward} tminus={tminus}/>
+      <NewNav reward={reward} tminus={tminus} />
       <div className={styles.container}>
         <img id={styles.crown2} src={crown} alt="crown" />
         <img id={styles.tx2} src={tx} alt="tx2" />
@@ -313,7 +337,12 @@ function Candidate2({ state }) {
           src={profile_image}
           alt="profile_image"
         />
-        <p id={styles.nowrank2}> 현재 순위: 1위 </p>
+        {listType === "rank" && (
+          <p id={styles.nowrank2}> 현재 순위: {rank}위 </p>
+        )}
+        {listType === "register" && (
+          <p id={styles.nowrank2}> 후보 No. {rank}번 </p>
+        )}
         {pollOpen === "true" && (
           <p id={styles.nowpoll2}>
             {" "}
@@ -437,11 +466,11 @@ function Candidate2({ state }) {
                 미공개 사진을 여시겠습니까?
               </p>
               <TextField
-                  className={styles.img_password}
-                  placeholder="Img Password"
-                  variant="standard"
-                  type="password"
-                  onChange={getImgPw}
+                className={styles.img_password}
+                placeholder="Img Password"
+                variant="standard"
+                type="password"
+                onChange={getImgPw}
               />
               <Button
                 id={styles.behind_btn}
