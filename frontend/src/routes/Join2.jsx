@@ -16,7 +16,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
@@ -58,7 +57,6 @@ function Join2() {
   const [nickname, setNickname] = useState("");
   const getNickname = (e) => {
     setNickname(e.target.value);
-    console.log(nickname);
   };
 
       //닉네임 사용 가능
@@ -102,17 +100,13 @@ function Join2() {
       axios
         .get(
           `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
-          // `https://j6a304.p.ssafy.io:8080/api/members/nickname/${nickname}`,
           {
-            // nickname: nickname,
             n: nickname,
-            // n:n
           }
         )
         .then((res) => {
-          console.log("res", res);
         //   alert("사용가능한 닉네임입니다.");
-        usenick();
+          usenick();
           setChecknick(true);
         })
         .catch((error) => {
@@ -121,10 +115,10 @@ function Join2() {
             // alert("동일 닉네임이 존재합니다.");
             samenick();
           }
-          alert(error);
+          // alert(error);
           setNickname("");
         });
-      console.log("nickname", nickname);
+      // console.log("nickname", nickname);
     }
   };
 
@@ -132,21 +126,18 @@ function Join2() {
   const [email, setEmail] = useState("");
   const getEmail = (e) => {
     setEmail(e.target.value);
-    console.log(email);
   };
 
   //비밀번호 받아오기
   const [password, setPassword] = useState("");
   const getPassword = (e) => {
     setPassword(e.target.value);
-    console.log(password);
   };
 
   //휴대전화 번호 입력
   const [phone, setPhone] = useState("");
   const getPhonenum = (e) => {
     setPhone(e.target.value);
-    console.log(phone);
   };
 
   //휴대폰인증 모달창
@@ -192,7 +183,7 @@ function Join2() {
     if (phone === "") {
       e.preventDefault();
     //   alert("휴대폰 번호를 입력해주세요");
-    phonenull();
+      phonenull();
     } else if (phone !== "") {
       axios
         .post(
@@ -206,18 +197,18 @@ function Join2() {
         .then((res) => {
           console.log("인증번호 발송", res);
         //   alert("인증번호가 전송되었습니다!");
-        sendnum();
+          sendnum();
           setOpen(true);
           setPhonelock(true);
           setRealNum(res.data.code);
-          console.log(res.data.code);
+          // console.log(res.data.code);
         })
         .catch((error) => {
           const message = error.message;
-          console.log("message", error.response);
-          console.log("message", message);
+          // console.log("message", error.response);
+          // console.log("message", message);
         //   alert("인증번호 전송 실패!");
-        sendfail();
+          sendfail();
         });
     }
   };
@@ -230,17 +221,17 @@ function Join2() {
   const [checknum, setChecknum] = useState("");
   const getChecknum = (e) => {
     setChecknum(e.target.value);
-    console.log(checknum);
+    // console.log(checknum);
   };
 
       //인증번호 미입력
-      const numnull = () => {
-        Swal.fire({
+    const numnull = () => {
+      Swal.fire({
         text:"인증번호를 입력해주세요",
         icon: 'error',
         confirmButtonColor: '#73E0C1',
         confirmButtonText: '확인'
-        })
+      })
     }
 
     //인증번호 전송
@@ -309,6 +300,7 @@ function Join2() {
     setOpenW(false);
   };
 
+  //버튼형?툴팁용
   const handleTooltipOpen = () => {
     setOpenW(true);
   };
@@ -317,9 +309,7 @@ function Join2() {
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
-      // backgroundColor: "#f5f5f9",
       backgroundColor: "#ffe6f1",
-      // color: "rgba(0, 0, 0, 0.87)",
       color: "rgba(51, 51, 51, 0.87)",
       maxWidth: 300,
       fontSize: theme.typography.pxToRem(14),
@@ -333,7 +323,6 @@ function Join2() {
 
   const getPcheck = (e) => {
     setPcheck(!pcheck);
-    console.log(pcheck);
   };
      //빈칸확인
      const inputnull = () => {
@@ -422,7 +411,7 @@ function Join2() {
             nickname: nickname,
             password: password,
             phoneNumber: phone,
-            role: "ROLE_ADMIN",
+            role: "ROLE_USER",
             wallet: wallet,
           }
         )
@@ -434,28 +423,27 @@ function Join2() {
         })
         .catch((error) => {
           const message = error.message;
-          console.log("message", message);
-          console.log(error.response);
+          // console.log("message", message);
+          // console.log(error.response);
           joinFail();
         });
     }
   };
 
-  //
 
   return (
     <div>
       <NewNav />
-      {/* <div className={Styles2.container} onclick="onclick"> */}
       <div className={Styles2.container}>
         <div className={Styles2.top}></div>
         <div className={Styles2.bottom}></div>
         <div className={Styles2.center}>
-          {/* <div className={Styles.joinbg}> */}
-          <div className={Styles2.joinus}>Join us&nbsp;</div>
-          {/* <h2>Join us &nbsp;</h2>  */}
-          {/* <input type="email" placeholder="email"/>
-                        <input type="password" placeholder="password"/> */}
+          <div className={Styles2.joinus}>
+            Join us&nbsp;
+            <Tooltip title="일반 유저 회원가입 페이지입니다." placement="top" >
+              <img src="https://img.icons8.com/dotty/35/000000/about.png"/>
+            </Tooltip>
+          </div>
           <input
             type={"text"}
             placeholder="Nickname"
@@ -493,17 +481,7 @@ function Join2() {
             onChange={getWalletpw}
             name="walletpassword"
           />
-          {/* <ClickAwayListener onClickAway={handleTooltipClose}> */}
-          {/* <div> */}
           <HtmlTooltip
-            // PopperProps={{
-            //     disablePortal: true
-            // }}
-            // onClose={handleTooltipClose}
-            // open={openW}
-            // disableFocusListener
-            // disableHoverListener
-            // disableTouchListener
             title={
               <React.Fragment>
                 <Typography
@@ -525,11 +503,7 @@ function Join2() {
               src="https://img.icons8.com/stickers/30/000000/high-importance.png"
               alt=""
             />
-            {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/material-outlined/30/000000/box-important--v1.png"/> */}
-            {/* <img className={Styles2.walletimg} onClick={handleTooltipOpen}  src="https://img.icons8.com/color/30/000000/high-priority.png"/> */}
           </HtmlTooltip>
-          {/* </div> */}
-          {/* </ClickAwayListener>    */}
           <input
             type={"text"}
             placeholder="PhoneNumber"
@@ -583,32 +557,23 @@ function Join2() {
           />
           <div className={Styles2.privateset}>
             <span>
-              {/* <input type={"checkbox"} className={Styles.privatecheck}></input> */}
-              {/* <button className={Styles2.privatebtn} onClick={getOpenPrivate}>{" "}이용약관/개인정보처리방침{" "}</button>  */}
-              {/* <button className={Styles2.privatebtn} variant="outlined" onClick={getOpenPrivate}>{" "}이용약관/개인정보처리방침{" "}</button>  */}
-              {/* {openPrivate && (<Private closePrivate={getClosePrivate}/>)} */}
-              {/* <Private /> */}
               <Private2 />
               <p className={Styles2.private}> 동의</p>
             </span>
           </div>
-          {/* <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button> */}
           <button className={Styles2.create} onClick={joinus}>
             CREATE ACCOUNT
           </button>
           <div>
-            {/* <h className={Styles2.signinQ}>Alraedy have an account?</h> */}
             <Link to="/login" className={Styles2.signinQ}>
               Alraedy have an account?
             </Link>
             <Link to="/login" className={Styles2.signin}>
-              Sign in
+              Log in
             </Link>
           </div>
-          {/* </div> */}
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }

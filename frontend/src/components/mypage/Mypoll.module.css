@@ -37,15 +37,10 @@
     margin-top: 1vh;
     margin-right: 1vh;
     margin-left: 2vh;
-
-    /* border-top: 0.2vw solid #000000; */
-    /* border-bottom: 0.2vw solid #000000; */
 }
 
 .seconddiv{
-    /* justify-content: space-evenly; */
     align-content: space-between;
-    /* flex-direction: column; */
     position: flex;
     margin-top: 1vh;
     margin-left: 1vw;
@@ -54,88 +49,60 @@
 
 .thirddiv{
     position: flex;
-    /* justify-content: space-evenly; */
-    /* align-content: space-between; */
     align-content: stretch;
     flex-direction: column;
     width: 35vw;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     margin-left: 1vw;
 }
 
 .competition{
     position: flex;
     width: 20vw;
-    /* height: 15vh; */
     left: 33vw;
-    /* margin-top: 1vh; */
     
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
-    /* border-top: 0.2vw solid #000000; */
-    /* border-bottom: 0.2vw solid #000000; */
 }
 
 .nominee{
     position: flex;
     width: 20vw;
-    /* height: 15vh; */
     left: 32vw;
-    /* margin-top: 1vh; */
     font-size: 1.2vw;
     
     font-family: 'GangwonEdu_OTFBoldA';
-    /* border-top: 0.2vw solid #000000; */
-    /* border-bottom: 0.2vw solid #000000; */
 }
 
 .fourthdiv{
     position: flex;
     display: inline-flex;
 
-    /* justify-content: space-evenly; */
     align-content: space-between;
     width: 50vw;
-    margin-top: 3.5vh;
-    /* margin-left: 1vw; */
+    margin-top: 6vh;
 }
 .txid{
     position: flex;
-    width: 25vw;
-    /* height: 15vh; */
-    /* left: 23.5vw; */
-    /* margin-top: 1vh; */
+    width: 30vw;
     
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.2vw;
-    /* border-top: 0.2vw solid #000000; */
-    /* border-bottom: 0.2vw solid #000000; */
 }
 
 .totalPoll{
-    /* flex-direction: row-reverse; */
-    /* justify-content: flex-end; */
     position: flex;
-    /* position: absolute; */
     width: 10vw;
-    /* height: 15vh; */
     
-    /* margin-top: 1vh; */
-
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.2vw;
-    /* border-top: 0.2vw solid #000000; */
-    /* border-bottom: 0.2vw solid #000000; */
 }
 
 .line2{
     position: flex;
     width: 59vw;
-    /* height: 15vh; */
     left: 23.5vw;
-    /* margin-top: 1vh; */
 
-    /* border-top: 0.2vw solid #000000; */
     border-bottom: 0.2vw solid #000000;
 }
 

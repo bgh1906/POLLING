@@ -172,12 +172,14 @@ font-family: 'Yellowtail', cursive; */
   font-family: 'ROKAFSansBold';
   font-size: 3.2vw;
   font-weight: 700;
+  /* color: #fb71aabc; */
+  color: rgba(6, 65, 84, 0.652);
 }
 
 #date_info {
   font-family: 'GangwonEdu_OTFBoldA';
   font-size: 1.6vw;
-
+  color: rgba(6, 65, 84, 0.652);
 }
 
 #button_info{

@@ -21,10 +21,8 @@ function WhyPolling() {
                 <div className={Styles.inlinecircle1}>
                     <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/150/000000/external-voter-politics-flaticons-lineal-color-flat-icons.png" className={Styles.img1} />
                 </div>
-                {/* <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/90/000000/external-voter-politics-flaticons-lineal-color-flat-icons.png" className={Styles.voterimg}/> */}
             </div>
             <div className={Styles.voter}>유권자</div>
-            {/* 여기 화살표 넣고 */}
             <img src="https://img.icons8.com/ios/70/000000/long-arrow-right.png" className={Styles.arrow}/>
             <div className={Styles.text}>본인 인증</div>
             <div className={Styles.outlinecircle2}>
@@ -37,7 +35,6 @@ function WhyPolling() {
                 블록체인에 <br />
                 투표데이터 기록
             </div>
-            {/* 여기 화살표 넣고 */}
             <img src="https://img.icons8.com/ios/70/000000/long-arrow-right.png" className={Styles.arrow2}/>
             <div className={Styles.outlinecircle3}>
                 <div className={Styles.inlinecircle3}>

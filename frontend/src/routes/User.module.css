@@ -1,17 +1,13 @@
 .user {
     z-index: 5;
     position: absolute;
-    /* width: 200px; */
-    /* height: 62px; */
     left: 13vw;
     top: 20vh;
     
-    /* font-family: 'ROKAFSansBold'; */
     font-family: "RussoOne";
     font-style: normal;
     font-weight: 400;
     font-size: 3vw;
-    /* line-height: 60px; */
     text-align: center;
     
     color: #000000;
@@ -20,20 +16,10 @@
 }
 
 .userbg {
-    /* z-index: -1; */
-    /* position: absolute;
-    width: 78vw;
-    height: 50vh;
-    left: 11vw;
-    top: 33vh;
-    
-    background: #FFF9EE;
-    border-radius: 7vh; */
     position: absolute;
     width: 56.5vw;
     height: 30vh;
     left: 21vw;
-    /* top: 55vh; */
     top: 53vh;
     
     background: #FFF9EE;
@@ -42,7 +28,6 @@
  
 div .addcompany:hover{
     background: #fdeac7;
-    /* transition: all 0.3s ease-out; */
     background-image: url(https://img.icons8.com/pastel-glyph/40/000000/company--v1.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
@@ -51,7 +36,6 @@ div .addcompany:hover{
 
 div .other:hover{
     background: #fdeac7;
-    /* transition: all 0.3s ease-out; */
     background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
@@ -60,7 +44,6 @@ div .other:hover{
 
 div .qna:hover{
   background: #fdeac7;
-  /* transition: all 0.3s ease-out; */
   background-image: url(https://img.icons8.com/external-tal-revivo-light-tal-revivo/40/000000/external-question-and-answer-session-with-speech-bubble-school-light-tal-revivo.png);
   background-repeat: no-repeat;
   background-position: 0.5vw center;
@@ -69,17 +52,13 @@ div .qna:hover{
 
 .nav{
     position: absolute;
-    /* width: 50vw; */
     width: 55vw;
     height: 7vh;
     left: 22vw;
-    /* left: 22vw; */
-    /* top: 45vh; */
     top: 33vh;
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 2vh;
     
     font-family: 'GangwonEdu_OTFBoldA';
@@ -95,21 +74,14 @@ div .qna:hover{
 
 .addcompany {
     position: absolute;
-    /* width: 24vw;
-    height: 7vh;
-    left: 22vw;
-    top: 33vh; */
-    /* width: 27.5vw; */
     width: 18.3vw;
     height: 7vh;
     left: 0vw;
     
-    /* background: #FEFFF8; */
     background-image: url(https://img.icons8.com/pastel-glyph/40/000000/company--v1.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 5vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     border-radius: 2vh;
     border-top-right-radius: 0vh;
     border-bottom-right-radius: 0vh;
@@ -128,25 +100,15 @@ div .qna:hover{
 
 .other {
     position: absolute;
-    /* width: 24vw;
-    height: 7vh;
-    left: 53vw;
-    top: 33vh; */
-    /* width: 27.5vw; */
     width: 18.3vw;
     height: 7vh;
     left: 18.3vw;
-    /* left: 27.5vw; */
     
     background: #FEFFF8;
     background-image: url(https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-advertising-kiranshastry-lineal-kiranshastry-4.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left:6.5vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    /* border-radius: 2vh; */
-    /* border-top-left-radius: 0vh; */
-    /* border-bottom-left-radius: 0vh; */
     border-left: 0.25vh dotted #f1d2a1;
     border-right: 0.25vh dotted #f1d2a1;
 
@@ -163,11 +125,6 @@ div .qna:hover{
 
 .qna {
   position: absolute;
-  /* width: 24vw;
-  height: 7vh;
-  left: 53vw;
-  top: 33vh; */
-  /* width: 27.5vw; */
   width: 18.3vw;
   height: 7vh;
   left: 36.6vw;
@@ -177,7 +134,6 @@ div .qna:hover{
   background-repeat: no-repeat;
   background-position: 0.5vw center;
   padding-left:6.5vw;
-  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
   border-radius: 2vh;
   border-top-left-radius: 0vh;
   border-bottom-left-radius: 0vh;
@@ -197,10 +153,7 @@ div .qna:hover{
 .id {
     position: absolute;
     width: 35vw;
-    /* height: 6vh; */
     height: 6vh;
-    /* left: 24vw; */
-    /* top: 60vh; */
     left: 5vw;
     top: 4vh;
     
@@ -209,7 +162,6 @@ div .qna:hover{
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 2.5vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
     border-radius: 2vh;
 }
@@ -217,10 +169,7 @@ div .qna:hover{
 .email {
   position: absolute;
   width: 35vw;
-  /* height: 6vh; */
   height: 6vh;
-  /* left: 24vw; */
-  /* top: 60vh; */
   left: 5vw;
   top: 13vh;
   
@@ -229,7 +178,6 @@ div .qna:hover{
   background-repeat: no-repeat;
   background-position: 0.5vw center;
   padding-left: 2.5vw;
-  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
   border-radius: 2vh;
 }
@@ -237,10 +185,7 @@ div .qna:hover{
 .password {
     position: absolute;
     width: 35vw;
-    /* height: 6vh; */
     height: 6vh;
-    /* left: 24vw;
-    top: 69vh; */
     left: 5vw;
     top: 22vh;
     
@@ -249,7 +194,6 @@ div .qna:hover{
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left:2.3vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
     border-radius: 2vh;
 }
@@ -257,10 +201,7 @@ div .qna:hover{
 .phone {
   position: absolute;
   width: 35vw;
-  /* height: 6vh; */
   height: 6vh;
-  /* left: 24vw;
-  top: 69vh; */
   left: 5vw;
   top: 31vh;
   
@@ -269,17 +210,12 @@ div .qna:hover{
   background-repeat: no-repeat;
   background-position: 0.5vw center;
   padding-left:2.3vw;
-  /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #229b7d56;
   border-radius: 2vh;
 }
 
 .signinbtn {
     position: absolute;
-    /* width: 15vw;
-    height: 9vh;
-    left: 60.5vw;
-    top: 63.5vh; */
     width: 10vw;
     height: 5vh;
     left: 42vw;
@@ -287,7 +223,6 @@ div .qna:hover{
     
     background: #FFF9EE;
     mix-blend-mode: normal;
-    /* box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8; */
     box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #229b7d56;
     border-radius: 3vh;
 
@@ -296,36 +231,25 @@ div .qna:hover{
     font-weight: 400;
     font-size: 1.5vw;
     line-height: 4vh;
-    /* identical to box height */
 
     text-align: center;
 
-    /* color: #9F824D; */
     color: #77A3A9;
 }
 
 .userEmail {
     position: absolute;
-    /* width: 23.5vw; */
     width: 39vw;
     height: 6vh;
-    /* left: 4vw;
-    top: 15vh; */
     left: 25vw;
-    /* left: 38vw; */
     top: 45vh;
-    /* top: 58vh; */
     
-    /* background: #FEFFF8; */
     background: #e8eca559;
     background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 3.2vw;
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 1vh;
     border-color: #00000000;
 
@@ -338,27 +262,17 @@ div .qna:hover{
 
 .searchbtn {
     position: absolute;
-    /* width: 23.5vw; */
     width: 4vw;
     height: 6vh;
-    /* left: 4vw;
-    top: 15vh; */
     left: 68vw;
-    /* left: 38vw; */
     top: 45vh;
-    /* top: 58.5vh; */
-    
-    /* background: #FEFFF8; */
-    /* background: #e8eca559; */
+
     background: #e8eca500;
     background-image: url(https://img.icons8.com/pastel-glyph/40/000000/search--v2.png);
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 2.3vw;
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 1vh;
     border-color: #00000000;
 
@@ -375,21 +289,10 @@ div .qna:hover{
     height: 6vh;
     left: 26.5vw;
     top: 67vh;
-
-    /* background: #e8eca500;
-    background-repeat: no-repeat;
-    background-position: 0.5vw center; */
     padding-left: 2.3vw;
     box-shadow: 0.1vw 0.2vw 0.5vw 0.0vw #0a0600;
     border-radius: 1vh;
     border-color: #00000000;
-
-    /* font-family: 'ROKAFSansMedium';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.2vw;
-    line-height: 6vh;
-    text-align: center; */
 }
 
 .thead {
@@ -413,20 +316,11 @@ div .qna:hover{
 
 .login {
     overflow: hidden;
-    /* background-color: white; */
     background-color: #ffffff5b;
-    /* padding: 40px 30px 30px 30px; */
-    /* border-radius: 10px; */
-    /* padding: 40px 30px 30px 30px; */
     padding: 4vw 3vw 3vw 3vw;
-    /* border-radius: 10px; */
     border-radius: 2vh;
     position: absolute;
-    /* top: 50%; */
-    /* left: 50%; */
-    /* width: 400px; */
-    /* width: 35vw; */
-    /* top: 49vh; */
+
     top: 66vh;
     left: 49.5vw;
     width: 55vw;
@@ -444,10 +338,7 @@ div .qna:hover{
   .login::before, .login::after {
     content: "";
     position: absolute;
-    /* width: 600px;
-    height: 600px; */
-    /* width: 39vw;
-    height: 80vh; */
+
     width: 50vw;
     height: 130vh;
     border-top-left-radius: 40%;
@@ -459,9 +350,7 @@ div .qna:hover{
   .login::before {
     left: 40%;
     bottom: -130%;
-    /* 옅은색 */
-    /* background-color: rgba(69, 105, 144, 0.15); */
-    /* background-color: #3afaca21; */
+
     background-color: #8ac1be52;
     -webkit-animation: wawes 6s infinite linear;
     -moz-animation: wawes 6s infinite linear;
@@ -470,8 +359,7 @@ div .qna:hover{
   .login::after {
     left: 35%;
     bottom: -125%;
-    /* 진한색 */
-    /* background-color: rgba(2, 128, 144, 0.2); */
+
     background-color: #3afaca2a;
     -webkit-animation: wawes 7s infinite;
     -moz-animation: wawes 7s infinite;
@@ -480,34 +368,13 @@ div .qna:hover{
   .login > input {
     font-family: "Asap", sans-serif;
     display: block;
-    /* border-radius: 5px; */
-    /* font-size: 16px; */
+
     background: white;
     width: 100%;
     border: 0;
-    /* padding: 10px 10px; */
-    /* margin: 15px -10px; */
+
   }
-  /* .login > button {
-    font-family: "Asap", sans-serif;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    width: 80px;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: #f45b69;
-    -webkit-transition: background-color 300ms;
-    -moz-transition: background-color 300ms;
-    transition: background-color 300ms;
-  }
-  .login > button:hover {
-    background-color: #f24353;
-  } */
+
   
   @-webkit-keyframes wawes {
     from {

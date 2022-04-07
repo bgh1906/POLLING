@@ -1,7 +1,4 @@
 .footer {
-  /* border-top: 1px solid #eee; */
-  /* background-color: rgb(32, 32, 32); */
-  /* color: white; */
   padding: 180px 120px 80px 220px;
   position: relative;
   font-weight: 300;
@@ -9,13 +6,11 @@
   z-index: -1;
   display: grid;
   grid-template-columns: repeat(32, 1fr);
-  /* font-family: "Bitter", serif; */
   font-size: 19px;
 }
 
 .ft_company {
   grid-column: 1 / 16;
-  /* padding-right: 20px; */
 }
 
 .ft_Name {
@@ -28,7 +23,6 @@
 .ft_Info {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  /* justify-content: space-between; */
   font-size: 22px;
 }
 

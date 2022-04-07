@@ -28,7 +28,6 @@ function NoticeH () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         명예의 전당이란?
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -46,7 +45,6 @@ function NoticeH () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         명예의 전당 등록 기준
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -63,7 +61,6 @@ function NoticeH () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         명예의 전당 혜택 
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>

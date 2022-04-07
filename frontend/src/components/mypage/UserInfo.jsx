@@ -19,7 +19,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const logoutSuccess = () => {
     Swal.fire({
       title: "로그아웃!",
-      // text: "POLLING을 이용해주셔서 감사합니다.",
       text: "오늘도 좋은 하루 보내세요",
       icon: "success",
       confirmButtonColor: "#73E0C1",
@@ -30,7 +29,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const logoutFail = () => {
     Swal.fire({
       title: "로그아웃 실패",
-      //   text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "error",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -50,7 +48,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const DeleteFail = () => {
     Swal.fire({
       title: "탈퇴 실패",
-      //   text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "error",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -60,7 +57,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const NickSuccess = () => {
     Swal.fire({
       title: "Nickname 변경 성공!",
-      // text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "success",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -70,7 +66,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const NickFail = () => {
     Swal.fire({
       title: "동일 Nickname 존재",
-      //   text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "error",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -80,7 +75,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const PassSuccess = () => {
     Swal.fire({
       title: "Password 변경 성공!",
-      // text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "success",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -90,7 +84,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const PassFail = () => {
     Swal.fire({
       title: "Password 변경 실패",
-      //   text: "POLLING을 이용해주셔서 감사합니다.",
       icon: "error",
       confirmButtonColor: "#73E0C1",
       confirmButtonText: "확인",
@@ -101,11 +94,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const [nickname, setNickname] = useState("");
   const getNickname = (e) => {
     setNickname(e.target.value);
-    console.log(e.target.value);
   };
-
-  // const nick = state[0].nickname;
-  
 
   useEffect(() => {}, [nick]);
 
@@ -120,7 +109,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
         {
           headers: {
             Authorization: token,
-            // refreshToken: token,
           },
         }
       )
@@ -154,7 +142,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
         {
           headers: {
             Authorization: token,
-            // refreshToken: token,
           },
         }
       )
@@ -175,11 +162,8 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
     axios
       .get(
         "https://j6a304.p.ssafy.io/api/auth/logout",
-        // "/api/auth/logout",
-        // {},
         {
           headers: {
-            // "Authorization":token,
             refreshToken: token,
           },
         }
@@ -206,7 +190,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
       .delete("https://j6a304.p.ssafy.io//api/members", {
         headers: {
           Authorization: token,
-          // refreshToken: token,
         },
       })
       .then((res) => {
@@ -238,9 +221,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
 
   return (
     <>
-      {/* <h>Item One</h> */}
       <span className={Styles.textNickname}>Nickname : </span>
-      {/* <input type={'text'} placeholder="" className={Styles.nickname} onChange={getNickname}></input> */}
       <label
         type={"text"}
         htmlFor="nick"
@@ -283,8 +264,6 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
         className={Styles.wallet}
         style={{wordBreak:'break-all', lineHeight:'6vh'}}
       >{wallet}</div>
-      {/* <button className={Styles.walletbtn} onClick={getnewWallet}>수정</button> */}
-      {/* <br /> */}
       <button className={Styles.logout} onClick={logout}>
         로그아웃
       </button>
