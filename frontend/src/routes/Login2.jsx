@@ -41,14 +41,12 @@ function Login2() {
   const [email, setEmail] = useState("");
   const getEmail = (e) => {
     setEmail(e.target.value);
-    console.log(email);
   };
 
   //비밀번호 받아오기
   const [password, setPassword] = useState("");
   const getPassword = (e) => {
     setPassword(e.target.value);
-    console.log(password);
   };
   //빈칸확인
   const inputnull = () => {
@@ -78,9 +76,6 @@ function Login2() {
           }
         )
         .then((res) => {
-          console.log("res", res.data);
-
-
           sessionStorage.setItem("token", res.headers.refreshtoken);
           sessionStorage.setItem("userid", res.data.id);
           sessionStorage.setItem("role", res.data.role);
@@ -96,13 +91,12 @@ function Login2() {
               wallet: res.data.wallet,
             })
           );
-          console.log("res", res.data.nickname);
           loginSuccess();
           navigate("/");
         })
         .catch((error) => {
           const message = error.message;
-          console.log("error", error);
+          // console.log("error", error);
           alert("로그인 실패");
           loginFail();
         });
@@ -113,16 +107,12 @@ function Login2() {
   const LoginWithKakao = () => {
     Kakao.Auth.login({
       success: (response) => {
-        console.log(response.access_token);
         const accessToken = response.access_token;
         axios
           .post("https://j6a304.p.ssafy.io/api/auth/validate", {
             accessToken: response.access_token,
           })
           .then((res) => {
-            console.log("res", res);
-            console.log("res", res.data.existMember);
-            console.log("token", res.data.token);
             // const token
 
             if (res.data.existMember === false) {
@@ -146,21 +136,14 @@ function Login2() {
                   wallet: res.data.wallet,
                 })
               );
-              console.log(
-                "카톡 로그인 토큰-response.access_token,",
-                response.access_token
-              );
-              console.log("카톡 로그인 토큰-accessToken", accessToken);
               loginSuccess();
               navigate("/");
             }
           });
       },
       fail: (error) => {
-        console.log(error);
         const message = error.message;
-        console.log("error", error);
-        console.log("message", message);
+        // console.log("error", error);
         loginFail();
         navigate("/");
       },

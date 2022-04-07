@@ -29,6 +29,7 @@ function Join2() {
     setEmail("");
     setPassword("");
     setPhone("");
+    setWalletpw("");
     setPhonecheck(false);
     setPcheck(false);
   }, []);
