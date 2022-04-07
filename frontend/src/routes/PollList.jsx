@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function PollList() {
   const navigate = useNavigate();
@@ -30,6 +31,14 @@ export default function PollList() {
       });
   }, []);
 
+  function needLogin() {
+    Swal.fire({
+      icon: "warning",
+      title: "로그인 후 이용해주세요!",
+      text: "확인을 누르면 로그인 페이지로 이동합니다.",
+    });
+    navigate("/login");
+  }
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -74,7 +83,9 @@ export default function PollList() {
                       id={styles.poll_button}
                       variant="contained"
                       onClick={() => {
-                        navigate(`/poll/${item.pollId}`);
+                        sessionStorage.getItem("token") === null
+                          ? needLogin()
+                          : navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
@@ -108,7 +119,9 @@ export default function PollList() {
                       id={styles.poll_button}
                       variant="contained"
                       onClick={() => {
-                        navigate(`/poll/${item.pollId}`);
+                        sessionStorage.getItem("token") === null
+                          ? needLogin()
+                          : navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
@@ -142,7 +155,9 @@ export default function PollList() {
                       id={styles.poll_button}
                       variant="contained"
                       onClick={() => {
-                        navigate(`/poll/${item.pollId}`);
+                        sessionStorage.getItem("token") === null
+                          ? needLogin()
+                          : navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기
@@ -176,7 +191,9 @@ export default function PollList() {
                       id={styles.poll_button}
                       variant="contained"
                       onClick={() => {
-                        navigate(`/poll/${item.pollId}`);
+                        sessionStorage.getItem("token") === null
+                          ? needLogin()
+                          : navigate(`/poll/${item.pollId}`);
                       }}
                     >
                       투표하기

@@ -2,7 +2,6 @@ import Footer from "../components/layout/Footer";
 import styles from "./History.module.css";
 import { useState } from "react";
 import Newnav from "../components/layout/NewNav";
-import { Button } from "@mui/material";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -58,11 +57,7 @@ function History() {
       <div className={styles.history_container}>
         <div className={styles.history_itemlist}>
           {itemData.map((item, index) => (
-            <div
-              className={styles.history_item}
-              key={index}
-              data-aos="fade-up"
-            >
+            <div className={styles.history_item} key={index} data-aos="fade-up">
               <img src={item.thumbnail} alt={item.title} />
               <div className={styles.ended_info}>
                 <div id={styles.name_info}>{item.title}</div>
@@ -71,8 +66,7 @@ function History() {
                 </div>
               </div>
               <div className={styles.ended_button}>
-                
-                <Historytxid pollId={item.pollId}/>
+                <Historytxid pollId={item.pollId} />
               </div>
             </div>
           ))}
