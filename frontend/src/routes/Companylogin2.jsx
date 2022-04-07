@@ -56,7 +56,6 @@ function Companylogin2() {
         } else if(email !== "" && password !==""){
             axios
               .post(
-                // "http://j6a304.p.ssafy.io:8080/api/auth",
                 "http://j6a304.p.ssafy.io/api/auth",
                   {
                     email: email,
@@ -98,16 +97,12 @@ function Companylogin2() {
                 <div className={Styles2.bottom}></div>
                 <div className={Styles2.center}>
                     <div className={Styles2.signin}>Sign in_Business</div>
-                    {/* <form> */}
-                        {/* <div className={Styles2.userbg}> </div> */}
                         <input type="text" placeholder=" Business E-mail" className={Styles2.id} onChange={getEmail} name="email"/>
                         <input type={"password"} placeholder=" Password" className={Styles2.password} onChange={getPassword} name="password"/>
                         <button className={Styles2.signinbtn} onClick={onLogin}>Sign in</button>
-                    {/* </form> */}
                 <Link to="/login" className={Styles2.login}>일반회원이신가요?</Link>
                 </div>
             </div>
-            {/* <Footer /> */}
         </div>
     );
 }

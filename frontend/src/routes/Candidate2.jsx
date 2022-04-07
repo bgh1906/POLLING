@@ -14,7 +14,6 @@ import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
-// import { voteBlock, totalVotesBlock, approveAccount, sendPOL, checkPOL } from "../contracts/CallContract";
 import {
   voteBlock,
   totalVotesBlock,
@@ -52,20 +51,17 @@ function Candidate2({ state }) {
   const [inputWalletPw, setInputWalletPw] = useState("");
   const [inputImgPw, setInputImgtPw] = useState("");
 
-  // const wallet = state[0].wallet;
   const wallet = sessionStorage.getItem("wallet");
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // console.log("store에서 가져온 wallet:", state[0].wallet);
   }, []);
 
   useEffect(() => {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
       .then((res) => {
-        // console.log(res);
         setCandIdx(res.data.candidateIndex);
         setProfile_image(res.data.thumbnail);
         setPhoto1(res.data.imagePath1);
@@ -74,8 +70,8 @@ function Candidate2({ state }) {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        // console.log("이 후보의 id:", params.id);
-        // console.log("이 후보의 IDX:", res.data.candidateIndex);
+        // "이 후보의 id:", params.id
+        // "이 후보의 IDX:", res.data.candidateIndex
       })
       .catch((error) => {
         console.log(error.response);
@@ -94,8 +90,6 @@ function Candidate2({ state }) {
         },
       })
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data);
         const imagebuy = res.data[0];
         if (imagebuy) {
           setimageLock(false);
@@ -110,7 +104,6 @@ function Candidate2({ state }) {
 
   async function getTotalVotes(idx) {
     const totalVotes = await totalVotesBlock(idx, wallet);
-    // console.log(idx, totalVotes);
     setVoteCount(totalVotes);
   }
 
@@ -195,7 +188,6 @@ function Candidate2({ state }) {
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
       const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
-      // console.log(txId);
       axios
         .post(
           `https://j6a304.p.ssafy.io/api/polls/candidates`,
@@ -266,6 +258,12 @@ function Candidate2({ state }) {
       icon: "error",
     });
   };
+  const nopw = () => {
+    Swal.fire({
+      title: "지갑 비밀번호를 입력해주세요.",
+      icon: "error",
+    });
+  };
 
   function getImgPw(e) {
     setInputImgtPw(e.target.value);
@@ -275,8 +273,7 @@ function Candidate2({ state }) {
 
   async function handleLock() {
     const balance = await checkPOL(wallet);
-    //if(balance > 500){axios.then(app).then(send)} else{alert("토큰부족부족")}
-    if (balance >= 500) {
+    if (balance >= 500 && inputWalletPw !== "") {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -292,27 +289,27 @@ function Candidate2({ state }) {
           }
         )
         .then(async (res) => {
-          // console.log("사진 공개 성공",res);
           unlockAccount(wallet, inputImgPw);
           await approveAccount(500, wallet);
-          // console.log("wallet \n",wallet);
-          // console.log("approveAccount \n",wallet);
           await sendPOL(500, wallet, adminAddress);
-          // console.log("sendPOL",wallet,adminAddress);
           imgopen(); //스윗알럿
           handleClose3(); //모달 닫기
           setimageLock(false); //사진 잠금 풀기
           lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
-          // console.log("lockAccount \n",wallet);
-          // console.log("setimageLock");
           setTminus((prev) => prev + 1); //렌더링 안먹음
-          // console.log("setReward");
         })
         .catch((error) => {
           console.log("error", error.response);
         });
-    } else {
+    } else if (balance < 500 && inputWalletPw !== "") {
       notoken();
+    } else if (balance >= 500 && inputWalletPw === ""){
+        nopw();
+    } else {
+      Swal.fire({
+        title: "토큰 부족 && 비밀번호를 입력하세요.",
+        icon: "error",
+      });
     }
   }
 
@@ -414,16 +411,6 @@ function Candidate2({ state }) {
           </div>
         </Modal>
 
-        {/* <Button
-          id={styles.con_button2}
-          onClick={handleOpen2}
-          variant="contained"
-        >
-          투표내역
-        </Button>
-        <Modal open={modalOpen2} onClose={handleClose2}>
-          <div id={styles.tran_box}>거래내역</div>
-        </Modal> */}
         <Txid2 id={params.id} />
 
         <Button id={styles.back_button2} onClick={gotoList} variant="contained">
@@ -467,7 +454,7 @@ function Candidate2({ state }) {
               </p>
               <TextField
                 className={styles.img_password}
-                placeholder="Img Password"
+                placeholder="Wallet Password"
                 variant="standard"
                 type="password"
                 onChange={getImgPw}

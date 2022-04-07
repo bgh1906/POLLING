@@ -102,11 +102,9 @@ function UserSearch2() {
     axios
     .get(
       `https://j6a304.p.ssafy.io/api/admin/members/0/50`,
-      // `https://j6a304.p.ssafy.io/api/admin/members/${page}/${limit}`,
       {
         headers: {
           "Authorization":token,
-          // refreshToken: token,
         },
       }
     )
@@ -120,37 +118,15 @@ function UserSearch2() {
     })
   }
 
-  // refreshToken: token,
   useEffect(() => {
-    // axios
-    // .get(
-    //   "https://j6a304.p.ssafy.io/api/members",
-    //   {
-    //     headers: {
-    //       "Authorization":token,
-    //     },
-    //   }
-    // )
-    // .then((res) => {
-    //   console.log("data",res.data);
-    //   setRows(res.data);
-    // })
-    // .catch(error => {
-    //   console.log("res,userlist",error.response);
-    //   console.log("error,userlist",error);
-    // })
-    // getUsers();
+
   },[])
 
   return (
     <Root>
       <div style={{top: '30vh'}}>
         <button onClick={getUsers} className={Styles.userlistbtn}> 회원 불러오기 </button>
-        {/* <div>
-          <input className={Styles.userEmail} type="text" placeholder="회원 이메일"/>
-          <img src='https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/20/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png' className={Styles.emailicon}></img>
-        </div> */}
-        {/* <img src='https://img.icons8.com/pastel-glyph/30/000000/search--v2.png' className={Styles.searchbtn}></img> */}
+
         <table style={{top: '30vh'}} aria-label="custom pagination table">
           <thead>
             <tr>

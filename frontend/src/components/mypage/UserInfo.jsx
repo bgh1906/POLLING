@@ -7,14 +7,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
+function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname }) {
   const id = sessionStorage.getItem("userid");
-  console.log("state", state);
-  console.log("email", state[0].email);
   const token = sessionStorage.getItem("token");
   const nick = sessionStorage.getItem("nickname");
   const wallet = sessionStorage.getItem("wallet");
-  console.log(nick);
 
   const logoutSuccess = () => {
     Swal.fire({
@@ -116,6 +113,7 @@ function UserInfo({ state, DispatchdeleteInfo, DispatchmodifyNickname }) {
         DispatchmodifyNickname(nickname);
         sessionStorage.setItem("nickname", nickname);
         console.log("res", res);
+        setNewnick((prev) => (prev+1));
         NickSuccess();
       })
       .catch((error) => {

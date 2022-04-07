@@ -11,10 +11,8 @@
 
 /* Bitter */
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
-/* font-family: 'Bitter', serif; */
 
 .form_box {
-    /* display: flex; */
     justify-content: center;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.5vw;
@@ -23,13 +21,11 @@
 
 #nomi_box{
     position: relative;
-    /* top: -18vh; */
     left: 15vw;
 }
 
 #nomi_box2{
     position: relative;
-    /* top: -18vh; */
     bottom: 3vh;
 }
 
@@ -158,7 +154,6 @@
 #profile_name{
     font-size: 2vw;
     position: relative;
-    /* top: 1vh; */
     bottom: 23vh;
     
 }

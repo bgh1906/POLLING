@@ -56,9 +56,7 @@
 
 .header {
     position: relative;
-    /* justify-content: center; */
     width: 49vw;
-    /* height: 4.8vh; */
     left: 38vw;
     top: -10vh;
 
@@ -86,7 +84,6 @@
     position: relative;
     justify-content: center;
     width: 99.7vw;
-    /* width: 100%; */
     height: 5.2vh;
     left: -0.4vw;
     top: -16vh;
@@ -96,19 +93,12 @@
 
 .home {
     position: relative;
-    /* width: 160px; */
-    /* height: 26px; */
     left: 7vw;
     top: -21.4vh;
     justify-content: center;
 
     font-family: 'ROKAFSansMedium';
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
-    /* font-style: normal; */
-    /* font-weight: bold; */
-    /* font-size: 1.5vw; */
     font-size: 1.3vw;
-    /* line-height: -1vh; */
     line-height: 6vh;
     text-align: center;
     text-decoration: none;
@@ -117,20 +107,13 @@
 
 .hall {
     position: relative;
-    /* width: 160px; */
-    /* height: 26px; */
     left: 17vw;
     top: -21.4vh;
     justify-content: center;
 
     font-family: 'ROKAFSansMedium';
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
-    /* font-style: normal; */
-    /* font-weight: bold; */
-    /* font-size: 1.5vw; */
     font-size: 1.3vw;
     line-height: -1vh;
-    /* line-height: 6vh; */
     text-align: center;
     text-decoration: none;
     color: #FFFFFF;
@@ -138,40 +121,24 @@
 
 .poll {
     position: relative;
-    /* width: 123px; */
-    /* height: 26px; */
     left: 27vw;
     justify-content: center;
     top: -21.4vh;
     
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: 'ROKAFSansMedium';
-    /* font-style: normal; */
-    /* font-weight: 700; */
-    /* font-size: 1.5vw; */
-    /* line-height: 6vh; */
     font-size: 1.3vw;
     line-height: -1vh;
-    /* text-align: center; */
     text-decoration: none;
     color: #FFFFFF;
 }
 
 .history {
     position: relative;
-    /* width: 123px; */
-    /* height: 26px; */
     left: 37vw;
     top: -21.4vh;
     justify-content: center;
     
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: 'ROKAFSansMedium';
-    /* font-style: normal;
-    font-weight: 700;
-    font-size: 1.5vw;
-    line-height: 6vh;
-    text-align: center; */
     font-size: 1.3vw;
     line-height: -1vh;
     text-decoration: none;
@@ -180,19 +147,12 @@
 
 .notice {
     position: relative;
-    /* width: 114px; */
-    /* height: 26px; */
     left:47vw;
     justify-content: center;
     top: -21.4vh;
     
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: 'ROKAFSansMedium';
-    /* font-style: normal;
-    font-weight: 700;
-    font-size: 1.5vw;
-    line-height: 6vh;
-    text-align: center; */
+
     font-size: 1.3vw;
     line-height: -1vh;
     text-decoration: none;
@@ -201,19 +161,12 @@
 
 .login {
     position: relative;
-    /* width: 107px; */
-    /* height: 26px; */
     left: 57vw;
     top:-21.4vh;
     justify-content: center;
 
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: 'ROKAFSansMedium';
-    /* font-style: normal;
-    font-weight: 700;
-    font-size: 1.5vw;
-    line-height: 6vh;
-    text-align: center; */
+
     font-size: 1.3vw;
     line-height: -1vh;
     text-decoration: none;
@@ -222,19 +175,12 @@
 
 .admin{
     position: relative;
-    /* width: 107px; */
-    /* height: 26px; */
     left: 57vw;
     top: -21.4vh;
     justify-content: center;
     
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: 'ROKAFSansMedium';
-    /* font-style: normal;
-    font-weight: 700;
-    font-size: 1.5vw;
-    line-height: 6vh;
-    text-align: center; */
+
     font-size: 1.3vw;
     line-height: -1vh;
     text-decoration: none;

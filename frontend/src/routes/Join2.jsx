@@ -59,43 +59,42 @@ function Join2() {
     setNickname(e.target.value);
   };
 
-      //닉네임 사용 가능
-      const usenick = () => {
-        Swal.fire({
-          text:"사용가능한 닉네임입니다.",
-          icon: 'success',
-          confirmButtonColor: '#73E0C1',
-          confirmButtonText: '확인'
-        })
-    }
+  //닉네임 사용 가능
+  const usenick = () => {
+    Swal.fire({
+      text:"사용가능한 닉네임입니다.",
+      icon: 'success',
+      confirmButtonColor: '#73E0C1',
+      confirmButtonText: '확인'
+    })
+  }
 
-    //닉네임 중복
-    const samenick = () => {
-        Swal.fire({
-          text:"동일 닉네임이 존재합니다.",
-          icon: 'error',
-          confirmButtonColor: '#73E0C1',
-          confirmButtonText: '확인'
-        })
-    }
+  //닉네임 중복
+  const samenick = () => {
+    Swal.fire({
+      text:"동일 닉네임이 존재합니다.",
+      icon: 'error',
+      confirmButtonColor: '#73E0C1',
+      confirmButtonText: '확인'
+    })
+  }
 
-    //닉네임 빈값
-    const nicknull = () => {
-        Swal.fire({
-          text:"Nickname을 입력해주세요.",
-          icon: 'error',
-          confirmButtonColor: '#73E0C1',
-          confirmButtonText: '확인'
-        })
-    }
+  //닉네임 빈값
+  const nicknull = () => {
+    Swal.fire({
+      text:"Nickname을 입력해주세요.",
+      icon: 'error',
+      confirmButtonColor: '#73E0C1',
+      confirmButtonText: '확인'
+    })
+  }
 
   //닉네임 중복 체크
   const [checknick, setChecknick] = useState(false);
 
   const getChecknick = (e) => {
     if (nickname === "") {
-    //   alert("Nickname을 입력해주세요.");
-    nicknull();
+      nicknull();
     } else {
       axios
         .get(
@@ -105,20 +104,16 @@ function Join2() {
           }
         )
         .then((res) => {
-        //   alert("사용가능한 닉네임입니다.");
           usenick();
           setChecknick(true);
         })
         .catch((error) => {
           console.log("error", error.response);
           if (error.code === 409) {
-            // alert("동일 닉네임이 존재합니다.");
             samenick();
           }
-          // alert(error);
           setNickname("");
         });
-      // console.log("nickname", nickname);
     }
   };
 
@@ -182,13 +177,11 @@ function Join2() {
     //인증번호 보내기
     if (phone === "") {
       e.preventDefault();
-    //   alert("휴대폰 번호를 입력해주세요");
       phonenull();
     } else if (phone !== "") {
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/notify/sms",
-          // "https://j6a304.p.ssafy.io:8080/api/notify/sms",
           {
             content: "",
             to: phone,
@@ -196,18 +189,14 @@ function Join2() {
         )
         .then((res) => {
           console.log("인증번호 발송", res);
-        //   alert("인증번호가 전송되었습니다!");
           sendnum();
           setOpen(true);
           setPhonelock(true);
           setRealNum(res.data.code);
-          // console.log(res.data.code);
         })
         .catch((error) => {
           const message = error.message;
           // console.log("message", error.response);
-          // console.log("message", message);
-        //   alert("인증번호 전송 실패!");
           sendfail();
         });
     }
@@ -221,7 +210,6 @@ function Join2() {
   const [checknum, setChecknum] = useState("");
   const getChecknum = (e) => {
     setChecknum(e.target.value);
-    // console.log(checknum);
   };
 
       //인증번호 미입력
@@ -259,14 +247,11 @@ function Join2() {
     //휴대폰인증 진행
     if (checknum === " ") {
       e.preventDefault();
-    //   alert("인증번호를 입력해주세요");
     numnull();
     } else if (checknum !== "") {
       if (checknum !== realNum) {
-        // alert("인증번호가 틀렸습니다.");
         numfail();
       } else if (checknum === realNum) {
-        // alert("본인 확인 완료");
         numsucc();
         //정상 처리되면 true로 바꾸기 & 모달 종료
         setPhonecheck(true);
@@ -283,10 +268,8 @@ function Join2() {
   };
   const createWallet = async () => {
     let userAccount = await web3.eth.personal.newAccount(walletpw);
-    // console.log("accounts : ", accounts);
     return userAccount;
     // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
-    // console.log("userAccount : ", userAccount);
   };
   //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함.
   //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
@@ -376,15 +359,12 @@ function Join2() {
       walletpw === ""
     ) {
       e.preventDefault();
-      //   alert("닉네임/이메일/비밀번호/계좌 비밀번호를 입력하세요.");
       inputnull();
     } else if (phonecheck === false) {
       e.preventDefault();
-    //   alert("휴대폰 인증을 진행해주세요.");
     phonechek();
     } else if (checknick === false) {
       e.preventDefault();
-    //   alert("닉네임 중복체크를 진행해주세요.");
     nickchek();
     } else if (pcheck === false) {
       e.preventDefault();
@@ -399,13 +379,10 @@ function Join2() {
       checknick !== false &&
       pcheck !== false
     ) {
-      // else if( nickname !== " " && email !== " " && password !== " " && phone !== " " && pcheck !== false ){
       const wallet = await createWallet();
-      //   console.log(wallet);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/members",
-          // "https://j6a304.p.ssafy.io:8080/api/members",
           {
             email: email,
             nickname: nickname,
@@ -423,8 +400,6 @@ function Join2() {
         })
         .catch((error) => {
           const message = error.message;
-          // console.log("message", message);
-          // console.log(error.response);
           joinFail();
         });
     }
@@ -562,7 +537,7 @@ function Join2() {
             </span>
           </div>
           <button className={Styles2.create} onClick={joinus}>
-            CREATE ACCOUNT
+            회원가입
           </button>
           <div>
             <Link to="/login" className={Styles2.signinQ}>

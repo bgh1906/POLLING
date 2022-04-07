@@ -90,13 +90,10 @@ function Userqnalist () {
     const [rows , setRows] = useState([]);
 
     useEffect (() => {
-        // getrows();
         axios
-        //   .get("http://j6a304.p.ssafy.io/api/contact/admin",
-          .get("/api/contact/admin",
+          .get("/api/contact/admin/0/50",
             {
                 headers:{
-                    // refreshToken: token,
                     "Authorization": token,
                 },
         })
@@ -108,6 +105,7 @@ function Userqnalist () {
         })
         .catch(error => {
             console.log("error,qnalist \n", error);
+            console.log("error,qnalist \n", error.response);
             console.log("목록 출력 실패 - qnalist");
         })
     }, [])
@@ -174,7 +172,6 @@ function Userqnalist () {
                                     {row.title}
                                     </td>
                                     <td style={{ width: '6vw' }} align="right">
-                                        {/* <button className={Styles.button}> </button> */}
                                         <Userqnacontent content={row.content} title={row.title}/>
                                     </td>
                                 </tr>

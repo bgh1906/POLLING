@@ -1,14 +1,13 @@
 import styles from "./Poll.module.css";
 import Footer from "../components/layout/Footer";
 import Newnav from "../components/layout/NewNav";
-import Countdown from "react-countdown";
+// import Countdown from "react-countdown";
 import CandList from "../components/poll/CandList";
-import VotePaper from "../components/poll/VotePaper";
+// import VotePaper from "../components/poll/VotePaper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import FlipCountdown from "@rumess/react-flip-countdown";
-import Votebox from "../assets/votebox2.png";
 
 function Poll() {
   const params = useParams();
@@ -37,10 +36,6 @@ function Poll() {
       });
   }, []);
 
-  // 후보들 득표 순으로 정렬하기
-  // itemDetail.data.candidates.sort(
-  //   (a, b) => b.votesTotalCount - a.votesTotalCount
-  // );
   const startYMD = start.slice(0, 10).replaceAll("-", ".");
   const endYMD = end.slice(0, 10).replaceAll("-", ".");
 
@@ -60,7 +55,6 @@ function Poll() {
               <div id={styles.poll_box2} col={8}>
                 <div className={styles.left_title}>{itemDetail.title}</div>
 
-                {/* <VotePaper cand={cand} /> */}
                 <div
                   style={{
                     display: "flex",

@@ -37,8 +37,6 @@ export default function PollList() {
     }
   }
   shuffle(itemData);
-  // useEffect(() => {
-  // }, [itemData]);
   const isDesktop = useMediaQuery({ minWidth: 1200 });
   const isLabtop = useMediaQuery({ minWidth: 992, maxWidth: 1199 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });

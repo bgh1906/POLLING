@@ -21,17 +21,13 @@ function Admin() {
   const [polldata3, setPolldata3] = useState([]);
   const [polldata4, setPolldata4] = useState([]);
   const [rendernumber, setRendernumber] = useState(0);
-  // const token = useSelector((state)=>(state[0].token));
   const token = sessionStorage.getItem("token");
   const wallet = sessionStorage.getItem("wallet");
-  //   const [candIdx, setCandIdx] = useState([]);
   useEffect(() => {
-    // console.log(ENDPOINT)
 
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata(res.data);
       })
       .catch((error) => {
@@ -40,7 +36,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/wait/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata2(res.data);
       })
       .catch((error) => {
@@ -50,7 +45,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata3(res.data);
       })
       .catch((error) => {
@@ -60,7 +54,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata4(res.data);
       })
       .catch((error) => {
