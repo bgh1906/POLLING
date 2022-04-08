@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import NewNav from "../components/layout/NewNav.jsx";
 import Swal from "sweetalert2";
-import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import Kakaojoin from "./Kakaojoin.jsx"; //사용합니다
 import { useDispatch } from "react-redux";
@@ -68,13 +67,10 @@ function Login2() {
       inputnull();
     } else if (email !== "" && password !== "") {
       axios
-        .post(
-          "https://j6a304.p.ssafy.io/api/auth",
-          {
-            email: email,
-            password: password,
-          }
-        )
+        .post("https://j6a304.p.ssafy.io/api/auth", {
+          email: email,
+          password: password,
+        })
         .then((res) => {
           sessionStorage.setItem("token", res.headers.refreshtoken);
           sessionStorage.setItem("userid", res.data.id);
@@ -96,8 +92,6 @@ function Login2() {
         })
         .catch((error) => {
           const message = error.message;
-          // console.log("error", error);
-          alert("로그인 실패");
           loginFail();
         });
     }
@@ -114,10 +108,8 @@ function Login2() {
           })
           .then((res) => {
             // const token
-            console.log("wallet",res.data.wallet);
 
             if (res.data.existMember === false) {
-
               dispatch(
                 actionCreators.addInfo({
                   email: email,
@@ -142,12 +134,10 @@ function Login2() {
               loginSuccess();
               navigate("/");
             }
-
           });
       },
       fail: (error) => {
         const message = error.message;
-        // console.log("error", error);
         loginFail();
         navigate("/");
       },
@@ -197,7 +187,6 @@ function Login2() {
             <h2>&nbsp;</h2>
           </div>
         </div>
-
       </div>
     </>
   );

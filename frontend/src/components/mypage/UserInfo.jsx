@@ -112,12 +112,10 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
       .then((res) => {
         DispatchmodifyNickname(nickname);
         sessionStorage.setItem("nickname", nickname);
-        console.log("res", res);
         setNewnick((prev) => (prev+1));
         NickSuccess();
       })
       .catch((error) => {
-        console.log("error", error);
         NickFail();
       });
   };
@@ -126,7 +124,6 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
   const [password, setPassword] = useState("");
   const getPassword = (e) => {
     setPassword(e.target.value);
-    console.log(e.target.value);
   };
 
   //비번 수정
@@ -144,11 +141,9 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
         }
       )
       .then((res) => {
-        console.log("res", res);
         PassSuccess();
       })
       .catch((error) => {
-        console.log("error", error);
         PassFail();
       });
   };
@@ -167,7 +162,6 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
         }
       )
       .then((res) => {
-        console.log("res", res);
         sessionStorage.clear();
         DispatchdeleteInfo();
         setNickname("");
@@ -175,9 +169,7 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
         navigation("/");
       })
       .catch((error) => {
-        console.log("error", error);
         logoutFail();
-        console.log("로그아웃 실패");
       });
   };
 
@@ -190,17 +182,13 @@ function UserInfo({setNewnick, state, DispatchdeleteInfo, DispatchmodifyNickname
         },
       })
       .then((res) => {
-        console.log("res", res);
-        console.log("탈퇴");
         sessionStorage.clear();
         DispatchdeleteInfo();
         DeleteSuccess();
         navigation("/");
       })
       .catch((error) => {
-        console.log("error", error);
         DeleteFail();
-        console.log("탈퇴 실패");
       });
   };
 

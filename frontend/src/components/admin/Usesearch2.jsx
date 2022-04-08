@@ -1,7 +1,6 @@
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import Styles from "./Usesearch.module.css";
-import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -109,12 +108,9 @@ function UserSearch2() {
       }
     )
     .then((res) => {
-      console.log("data",res.data);
       setRows(res.data);
     })
     .catch(error => {
-      console.log("res,userlist",error.response);
-      console.log("error,userlist",error);
     })
   }
 

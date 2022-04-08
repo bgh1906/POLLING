@@ -44,7 +44,6 @@ function Hamburger({ state, DispatchdeleteInfo, setRendering }) {
             }
         )
         .then((res) => {
-            // console.log("res", res);
             sessionStorage.clear();
             DispatchdeleteInfo();
             logoutSuccess();
@@ -53,9 +52,7 @@ function Hamburger({ state, DispatchdeleteInfo, setRendering }) {
             
         })
         .catch(error => {
-            // console.log("error",error);
             logoutFail();
-            // console.log("로그아웃 실패");
         })
     }
 

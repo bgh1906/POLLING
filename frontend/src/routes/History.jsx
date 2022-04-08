@@ -19,11 +19,11 @@ function History() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setItemData(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   }, []);
 
