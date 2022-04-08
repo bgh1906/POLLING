@@ -63,12 +63,14 @@ function Companylogin2() {
           sessionStorage.setItem("token", res.headers.refreshtoken);
           sessionStorage.setItem("userid", res.data.id);
           sessionStorage.setItem("role", res.data.role);
+          sessionStorage.setItem("wallet", res.data.wallet);
           dispatch(
             actionCreators.addInfo({
               token: res.headers.refreshtoken,
               email: email,
               id: res.data.id,
               nickname: res.data.nickname,
+              wallet: res.data.wallet,
             })
           );
           loginSuccess();
@@ -76,7 +78,6 @@ function Companylogin2() {
         })
         .catch((error) => {
           const message = error.message;
-          console.log("message", message);
           loginFail();
         });
     }

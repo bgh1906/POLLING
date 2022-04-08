@@ -6,15 +6,15 @@ function CandCaption({ item, countOpen, voteCount, rank, listType }) {
     <>
       <figcaption>
         {/* 여기부터 => 전체 싸서 삼항으로, rank에 따라  */}
-        {rank === 1? 
+        { listType === "rank" && rank === 1? 
           <div className={styles.captionName1}>{item.name}</div>
           :
           (
-            rank === 2?
+            listType === "rank" && rank === 2?
             <div className={styles.captionName22}>{item.name}</div>
             :
             (
-              rank === 3?
+              listType === "rank" && rank === 3?
               <div className={styles.captionName33}>{item.name}</div>
               :
               <div className={styles.captionName}>{item.name}</div>

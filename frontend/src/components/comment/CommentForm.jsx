@@ -32,7 +32,6 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
             renderCheck();
         })
         .catch(error => {
-            console.log(error.response)
         });
     }
 

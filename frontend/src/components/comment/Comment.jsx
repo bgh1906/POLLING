@@ -46,7 +46,6 @@ function Comment({candiId, data, renderCheck}) {
             
         })
         .catch((e) =>{
-            // console.error(e);
             Swal.fire({
                 title: '로그인을 해주세요!',
                 icon: 'warning'                        

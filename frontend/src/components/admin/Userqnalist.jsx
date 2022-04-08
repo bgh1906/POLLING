@@ -4,7 +4,6 @@ import Styles from "./Userqnalist.module.css";
 
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
-import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import Userqnacontent from './Userqnacontent';
 import axios from 'axios';
   
@@ -98,15 +97,9 @@ function Userqnalist () {
                 },
         })
         .then((res) => {
-            console.log("res", res);
-            console.log("데이터", res.data);
             setRows(res.data);
-            console.log("rows",rows);
         })
         .catch(error => {
-            console.log("error,qnalist \n", error);
-            console.log("error,qnalist \n", error.response);
-            console.log("목록 출력 실패 - qnalist");
         })
     }, [])
 
@@ -161,7 +154,7 @@ function Userqnalist () {
                             : rows
                             ).map((row, index) => (
                                 <tr key={index}>
-                                    <td style={{ width: '6vw' }} >{row.contactType}</td>
+                                    <td style={{ width: '6vw' }} >{index.contactType.slice(8, 14)} </td>
                                     <td style={{ width: '10vw' }} align="right">
                                     {row.id}
                                     </td>

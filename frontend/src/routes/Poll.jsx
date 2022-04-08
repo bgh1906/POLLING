@@ -30,7 +30,7 @@ function Poll() {
         sessionStorage.setItem("poll", res.data.title);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   }, []);
 

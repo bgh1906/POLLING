@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import NewNav from "../components/layout/NewNav.jsx";
 import Swal from "sweetalert2";
-import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import Kakaojoin from "./Kakaojoin.jsx"; //사용합니다
 import { useDispatch } from "react-redux";
@@ -96,8 +95,6 @@ function Login2() {
         })
         .catch((error) => {
           const message = error.message;
-          // console.log("error", error);
-          alert("로그인 실패");
           loginFail();
         });
     }
@@ -114,7 +111,6 @@ function Login2() {
           })
           .then((res) => {
             // const token
-            console.log("wallet",res.data.wallet);
 
             if (res.data.existMember === false) {
 
@@ -147,7 +143,6 @@ function Login2() {
       },
       fail: (error) => {
         const message = error.message;
-        // console.log("error", error);
         loginFail();
         navigate("/");
       },

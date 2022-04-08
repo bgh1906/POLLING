@@ -68,7 +68,6 @@ function User() {
     const [email, setEmail] = useState("");
     const getEmail = (e) => {
         setEmail(e.target.value);
-        console.log(email);
     };
 
           //닉네임 사용 가능
@@ -105,7 +104,6 @@ function User() {
     const [nickname, setId] = useState("");
     const getId = (e) => {
         setId(e.target.value);
-        console.log(nickname);
     };
 
     //닉네임 중복 체크
@@ -128,7 +126,6 @@ function User() {
                 setChecknick(true);
             })
             .catch((error) => {
-                console.log("error", error.response);
                 if (error.code === 409) {
                     samenick();
                 }
@@ -141,14 +138,12 @@ function User() {
     const [password, setPassword] = useState("");
     const getPassword = (e) => {
         setPassword(e.target.value);
-        console.log(password);
     };
 
     //담당자 번호
     const [phone, setPhone] = useState("");
     const getPhone = (e) => {
         setPhone(e.target.value);
-        console.log(phone);
     };
 
     //계좌 비밀번호
@@ -248,7 +243,6 @@ function User() {
                 },
             )
             .then((res) => {
-                console.log("res", res);
                 setId("");
                 setEmail("");
                 setPassword("");
@@ -258,7 +252,6 @@ function User() {
             })
             .catch(error => {
                 const message = error.message;
-                console.log("message", message);
                 joinFail();
               });
         }
