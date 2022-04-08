@@ -300,7 +300,6 @@ function Candidate({ state }) {
           setTminus((prev) => prev + 1); //렌더링 안먹음
         })
         .catch((error) => {
-          // console.log("error", error.response);
         });
     } else if (balance < 500 && inputImgPw !== "") {
       notoken();
