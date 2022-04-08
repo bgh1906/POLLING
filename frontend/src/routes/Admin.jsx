@@ -14,7 +14,7 @@ function Admin() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+ 
   const navigate = useNavigate();
   const [polldata, setPolldata] = useState([]);
   const [polldata2, setPolldata2] = useState([]);
@@ -23,6 +23,7 @@ function Admin() {
   const [rendernumber, setRendernumber] = useState(0);
   const token = sessionStorage.getItem("token");
   const wallet = sessionStorage.getItem("wallet");
+      
   useEffect(() => {
 
     axios
