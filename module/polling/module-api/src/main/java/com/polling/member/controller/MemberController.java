@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
 
   private final MemberService memberService;
-  private final MemberRepository memberRepository;
 
   @Retry
   @PostMapping
