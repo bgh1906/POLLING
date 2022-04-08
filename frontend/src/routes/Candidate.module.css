@@ -232,8 +232,6 @@
 #profile2 {
     position: absolute;
     width: 30vw;
-    /* height: 10vh; */
-    /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
     font-size: 1.4vw;
     left: 47vw;
@@ -266,7 +264,6 @@
 
 
 #poll_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -298,7 +295,6 @@
 }
 
 #con_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -315,7 +311,6 @@
 }
 
 #back_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 10vw;
     height: 5vh;
@@ -382,7 +377,6 @@
 }
 
 #poll_paper{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 15vh;
@@ -394,7 +388,6 @@
 }
 
 #poll_paper2{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     background-color: white;
@@ -509,7 +502,6 @@
 /* 트랜잭션 모달 */
 
 #tran_box{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 23vh;
@@ -521,7 +513,6 @@
 }
 
 #behind_box{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 26vh;
@@ -535,8 +526,6 @@
 #behind_mark{
     position: absolute;
     width: 3vw;
-    /* right: -0.2vw; */
-    /* bottom: 0; */
     margin: 0.3vw;
 }
 
@@ -544,7 +533,6 @@
     position: relative;
     text-align: center;
     font-family: 'ROKAFSansMedium';
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-size: 1.9vw;
     top: 6vh;
 }
@@ -553,7 +541,6 @@
     position: absolute;
     width: 2.2vw;
     left: 3vw;
-    /* bottom: 0; */
     margin: 0.25vw;
 }
 
@@ -567,7 +554,6 @@
     cursor: pointer; 
     color: black;
     padding-top: 1vh;
-    /* bottom: 7vh; */
     bottom: 3vh;
     left: 6vw;
 }
@@ -582,7 +568,6 @@
     cursor: pointer; 
     color: black;
     padding-top: 1vh;
-    /* bottom: 7vh; */
     bottom: 3vh;
     right: 6vw;
 }

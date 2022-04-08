@@ -76,7 +76,7 @@ function Candidate({ state }) {
         // "이 후보의 IDX:", res.data.candidateIndex
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   }, [renderCount]);
 
@@ -100,7 +100,7 @@ function Candidate({ state }) {
         }
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   }, []);
 
@@ -148,7 +148,7 @@ function Candidate({ state }) {
         setmodalOpen(true);
       })
       .catch((error) => {
-        console.log("error", error.response);
+        // console.log("error", error.response);
         Swal.fire({
           title: "한 대회당 한 명에게만 투표할 수 있습니다.",
           icon: "error",
@@ -178,7 +178,6 @@ function Candidate({ state }) {
 
   function getWalletPw(e) {
     setInputWalletPw(e.target.value);
-    console.log("지갑 비번: ",e.target.value);
   }
 
   const [reward, setReward] = useState(0);
@@ -192,7 +191,6 @@ function Candidate({ state }) {
 
       const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
-      console.log(txId);
       axios
         .post(
           `https://j6a304.p.ssafy.io/api/polls/candidates`,
@@ -220,7 +218,7 @@ function Candidate({ state }) {
           setReward((prev) => prev + 1);
         })
         .catch((error) => {
-          console.log("error", error.response);
+          // console.log("error", error.response);
         });
     } else if (picked && inputWalletPw === "") {
       Swal.fire({
@@ -270,7 +268,6 @@ function Candidate({ state }) {
 
   function getImgPw(e) {
     setInputImgtPw(e.target.value);
-    console.log(e.target.value);
   }
 
   const [tminus, setTminus] = useState(0);
@@ -278,7 +275,6 @@ function Candidate({ state }) {
   async function handleLock() {
     const balance = await checkPOL(wallet);
     if (balance >= 500 && inputImgPw !== "") {
-      console.log("balance3", balance);
       axios
         .post(
           "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
@@ -304,7 +300,7 @@ function Candidate({ state }) {
           setTminus((prev) => prev + 1); //렌더링 안먹음
         })
         .catch((error) => {
-          console.log("error", error.response);
+          // console.log("error", error.response);
         });
     } else if (balance < 500 && inputImgPw !== "") {
       notoken();

@@ -11,10 +11,9 @@ export default function Blocktest() {
     e.preventDefault();
     setPassword("");
     let accounts = await web3.eth.personal.newAccount(password);
-    console.log("accounts : ", accounts);
     setUserAccount(accounts);
     // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
-    console.log("userAccount : ", userAccount);
+    // console.log("userAccount : ", userAccount);
   };
 
   return (
