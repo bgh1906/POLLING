@@ -18,10 +18,6 @@ import dayjs from "dayjs";
 import axios from "axios";
 
 
-
-
-
-
 function CreatePoll() {
     const [pollImage, setpollImage] = useState("");
     const [pollName, setpollName] = useState("");
@@ -31,7 +27,6 @@ function CreatePoll() {
     const [pollRealtime, setpollRealtime] = useState(false);
 
 
-    // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
     const navigate = useNavigate();
@@ -95,8 +90,6 @@ function CreatePoll() {
 
     function savePolldata(){
               
-        // console.log(token)
-
         axios.post(
             "https://j6a304.p.ssafy.io/api/polls/admin",
             {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -9,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Styles2 from "../../routes/Join2.module.css";
-// import Styles from './Private.module.css';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -58,13 +56,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     const handleClose = () => {
       setOpen(false);
     };
-// function PrivateInfo({closePrivate}) {
     
 
     return(
         <div>
-            {/* <Button onClick={handleClickOpen} className={Styles2.privatebtn} style={{fontSize:"0.8vw", color:"#9F824D", left:'2vw',fontFamily:"font"}} > */}
-            {/* <button onClick={handleClickOpen}  style={{left:'4.55vw', fontSize:'2.5vh', fontFamily:''}}> */}
             <button onClick={handleClickOpen} className={Styles2.privacybtn} >
             {" "}Polling 개인정보처리방침{" "}
             </button>

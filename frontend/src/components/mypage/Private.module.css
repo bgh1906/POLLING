@@ -1,18 +1,8 @@
 .bg{
-     /* z-index: -1; */
-    /* position: absolute;
-    width: 78vw;
-    height: 50vh;
-    left: 11vw;
-    top: 33vh;
-    
-    background: #FFF9EE;
-    border-radius: 7vh; */
     position: absolute;
     width: 56.5vw;
     height: 30vh;
     left: 21vw;
-    /* top: 55vh; */
     top: 10vh;
     
     background: #FFF9EE;

@@ -5,15 +5,12 @@ import { useState, useEffect } from "react";
 import deleteimage2 from "../../assets/delete2.png";
 import axios from "axios";
 import { useSelector } from 'react-redux'
-
+import Swal from "sweetalert2";
 
 function CommentForm({comment, memberId, commentId, renderCheck}) {
 
     const {memberNickname, content} = comment
     
-    // const token = useSelector((state)=>(state[0].token));
-    // const userid = useSelector((state)=>(state[0].userid)); 
-
     const token = sessionStorage.getItem("token")
     const userid = Number(sessionStorage.getItem("userid"))
 
@@ -28,7 +25,10 @@ function CommentForm({comment, memberId, commentId, renderCheck}) {
             }
         )
         .then(() =>{
-            console.log("delete 성공!!")
+            Swal.fire({
+                title: 'delete 성공!!',
+                icon: 'success'                        
+            })
             renderCheck();
         })
         .catch(error => {

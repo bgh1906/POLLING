@@ -17,7 +17,7 @@
 .plus{
     position: absolute;
     left: 20vw;
-    top: 35vh;
+    top: 32vh;
     
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
@@ -34,7 +34,7 @@
     width: 47vw;
     height: 37vh;
     left: 26.5vw;
-    top: 43vh;
+    top: 40vh;
 
     border-right: none;
     border-left: 0.7vh solid transparent;
@@ -42,15 +42,10 @@
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #f7e337,
     #caba2b,
     #FAE100
-    
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -60,7 +55,7 @@
     width: 15vw;
     height: 10vh;
     left: 28vw;
-    top: 43vh;
+    top: 40vh;
 
     border-right: none;
     border-left: 0.7vh solid transparent;
@@ -68,14 +63,10 @@
     border-image: linear-gradient(
     120deg,
     #caba2b,
-    /* #fced6c, */
     #f7e337,
     #FAE100,
     #fff59e
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -85,21 +76,17 @@
     width: 13vw;
     height: 10vh;
     left: 59vw;
-    top: 43vh;
+    top: 40vh;
 
     border-right: 0.7vh solid transparent;
     border-top: 0.7vh solid transparent;
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #FAE100,
     #caba2b,
     #f7e337
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+
   );
   border-image-slice: 1;
 }
@@ -109,21 +96,17 @@
     width: 13vw;
     height: 10vh;
     left: 28vw;
-    top: 72vh;
+    top: 75vh;
 
     border-left: 0.7vh solid transparent;
     border-bottom: 0.7vh solid transparent;
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #caba2b,
     #f7e337,
     #FAE100
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
+ 
   );
   border-image-slice: 1;
 }
@@ -133,22 +116,17 @@
     width: 13vw;
     height: 10vh;
     left: 59vw;
-    top: 72vh;
+    top: 75vh;
 
     border-right: 0.7vh solid transparent;
     border-bottom: 0.7vh solid transparent;
     border-image: linear-gradient(
     120deg,
     #fff59e,
-    /* #fced6c, */
     #f7e337,
     #FAE100,
     #caba2b
 
-    /* #f1d2a1,
-    #e9c387,
-    #ccaf80,
-    #d3aa68 */
   );
   border-image-slice: 1;
 }
@@ -158,7 +136,7 @@
     width: 24vw;
     height: 5vh;
     left: 35vw;
-    top: 51vh;
+    top: 46vh;
 
     border-radius: 1vh;
 
@@ -167,7 +145,6 @@
     background-repeat: no-repeat;
     background-position: 0.3vw center;
     padding-left:2.3vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
 }
 
@@ -176,11 +153,10 @@
     width: 5vw;
     height: 4vh;
     left: 61vw;
-    top: 51.6vh;
+    top: 46.6vh;
   
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e6d64671; */
     border-radius: 3vh;
     font-family: 'GangwonEdu_OTFBoldA';
     line-height: 1vh;
@@ -194,10 +170,9 @@
     width: 24vw;
     height: 5vh;
     left: 35vw;
-    top: 61vh;
+    top: 56vh;
     
     background: #FEFFF8;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
     border-radius: 1vh;
     background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
@@ -219,7 +194,7 @@
     width: 5vw;
     height: 4vh;
     left: 61vw;
-    top: 61.6vh;
+    top: 56.6vh;
   
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -254,11 +229,39 @@
   font-size: 1.1vw;
 }
 
+.walletpassword {
+  position: absolute;
+  width: 24vw;
+  height: 5vh;
+  left: 35vw;
+  top: 66vh;
+  
+  background: #FEFFF8;
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #e2cc0571;
+  border-radius: 1vh;
+  background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
+  background-repeat: no-repeat;
+  background-position: 0.5vw center;
+  padding-left:2.3vw;
+
+  font-family: 'Roboto';
+  line-height: 10vh;
+  font-size: 0.9vw;
+  color: #496370;
+}
+
+.walletimg{
+  position: absolute;
+  left: 62.5vw;
+  top: 66.6vh;
+  color: #FF5656;
+}
+
 .privateset{
   position: absolute;
   width:20vw;
   left:45vw;
-  top: 68vh;
+  top: 72vh;
 }
 
 .privatecheck {
@@ -267,7 +270,7 @@
   width: 1vw;
   height: 3vh;
   left:43.5vw;
-  top: 68.4vh;
+  top: 72.4vh;
   
   border: 3px solid #9F824D;
   border-radius: 5px;
@@ -287,7 +290,6 @@
   border: none;
   background-color: #9f824d00;
 
-  /* color: #9F824D; */
   color: #caba2b;
 }
 
@@ -312,7 +314,7 @@
     width: 8vw;
     height: 3.8vh;
     left: 46vw;
-    top: 73vh;
+    top: 77vh;
 
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
@@ -323,6 +325,8 @@
 
     color: #496370;
 }
+
+
 
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';

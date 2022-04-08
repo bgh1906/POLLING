@@ -28,7 +28,6 @@ function NoticeU () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         기업회원 문의
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -47,7 +46,6 @@ function NoticeU () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         중복 회원 가입
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>
@@ -65,7 +63,6 @@ function NoticeU () {
                     <div style={{fontFamily:"ROKAFSansMedium", fontWeight:'bold', fontSize:'0.9vw'}} sx={{ width: '33%', flexShrink: 0 }} className={Styles.aaccordiontitle}>
                         사용자 제공 기능
                     </div>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
                 </AccordionSummary>
                 <AccordionDetails>
                     <div style={{fontFamily:"GangwonEdu_OTFBoldA", fontWeight:'bold'}} className={Styles.aaccordioncontent}>

@@ -32,7 +32,6 @@ function UpdatePoll() {
 
     const params = useParams();
 
-    // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
     const navigate = useNavigate();

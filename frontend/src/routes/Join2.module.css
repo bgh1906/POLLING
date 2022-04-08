@@ -1,20 +1,20 @@
-/* 
-*, *:before, *:after {
-    box-sizing: border-box;
-  } */
-  
-  /* body {
-    min-height: 100vh;
-    font-family: "Raleway", sans-serif;
-  } */
-  
+@font-face {
+  font-family: 'ROKAFSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROKAFSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
   .container {
       z-index: -1;
     position: absolute;
-    /* width: 95vw;
-    height: 92vh;
-    left: 2vw;
-    top: 4.5vh; */
     width: 96.2vw;
     height: 92vh;
     left: 1.9vw;
@@ -22,18 +22,13 @@
     overflow: hidden;
   }
   
-  /* margin-left: 200px; */
-  /* transform-origin: -200px 50%; */
-  /* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after { */
-/* .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after { */
 .container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after {
-/* .container:active .top:before, .container:active  .top:after, .container:active  .bottom:before, .container:active  .bottom:after, .container .top:before, .container .top:after, .container .bottom:before, .container .bottom:after { */
     margin-left: 13vw;
     transform-origin: -13vw 50%;
     transition-delay: 0s;
   }
-  .container .center, .container:active .center {
-  /* .container:hover .center, .container:active .center { */
+  /* .container .center, .container:active .center { */
+  .container:hover .center, .container:active .center {
     z-index: 10;
     opacity: 1;
     transition-delay: 0.2s;
@@ -57,48 +52,34 @@
   
   .top:before {
     transform: rotate(45deg);
-    /* background: #e46569; */
-    /* background: #FB71AB; */
     background: #FEA6CB;
-    /* background: #f12b5c; */
   }
   .top:after {
     transform: rotate(135deg);
     background: #FEA6CB;
   }
-  /* background: #ecaf81; */
   
   .bottom:before {
     transform: rotate(-45deg);
-    /* background: #60b8d4; */
     background: #BAF0E8;
   }
   .bottom:after {
       transform: rotate(-135deg);
       background: #BAF0E8;
   }
-  /* background: #3745b5; */
-  /* background: #3AFACB; */
   
   .center {
     position: absolute;
-    /* width: 400px;
-    height: 400px; */
     width: 26vw;
     height: 26vh;
     top: 50%;
     left: 50%;
-    /* top: 100%; */
-    /* left: 100%; */
-    /* margin-left: -200px; */
-    /* margin-top: -200px; */
     margin-left: -13vw;
     margin-top: -26vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding: 30px; */
     padding: 3vh;
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
@@ -106,31 +87,22 @@
     color: #333;
   }
   .center input {
-    /* width:100%; */
-    /* width:50vw; */
-    /* padding: 15px; */
-    /* padding: 1.5vh; */
     margin: 5px;
     border-radius: 0.5vh;
-    /* border: 1px solid #ccc; */
     border: 1px solid rgba(204, 204, 204, 0);
-    /* font-family: inherit; */
-     /* font-family: 'Bitter', serif; */
   }
 
 .joinus {
-    /* z-index: 5; */
     position: absolute;
-    width: 10vw;
+    width: 12vw;
     height: 3vh;
-    left: 8.1vw;
+    left: 7vw;
     top: 2vh;
     
     font-family: 'Russo One';
     font-style: normal;
     font-weight: 400;
     font-size: 2.3vw;
-    /* line-height: 60px; */
     text-align: center;
     
     color: #000000;
@@ -151,7 +123,6 @@
 
 .nickname {
     position: absolute;
-    /* width: 19vw; */
     width: 15.5vw;
     height: 4vh;
     left: 2.5vw;
@@ -163,18 +134,12 @@
     background-position: 0.3vw center;
     padding-left:2.3vw;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 3vh;
 
     font-family: 'Roboto';
-    /* font-style: normal; */
-    /* font-weight: 400; */
-    /* line-height: 41px; */
-    /* text-align: center; */
+
     line-height: 10vh;
     font-size: 0.9vw;
-
-    /* color: #A5B8C2; */
 }
 
 .nicknameCheck{
@@ -186,18 +151,10 @@
   
   background: #FEFFF8;
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
   border-radius: 3vh;
-  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
-  background-repeat: no-repeat;
-  background-position: 0.3vw center;
-  padding-left:1vw; */
 
-  /* font-family: 'Roboto'; */
   font-family: 'GangwonEdu_OTFBoldA';
-  /* font-style: normal;
-  font-weight: 400;
-  text-align: center; */
+
   line-height: 1vh;
   font-size: 0.9vw;
 
@@ -213,7 +170,6 @@
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 3vh;
     background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/20/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png);
     background-repeat: no-repeat;
@@ -221,15 +177,10 @@
     padding-left: 2.3vw;
 
     font-family: 'Roboto';
-    /* font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 41px;
-    text-align: center; */
+
     line-height: 10vh;
     font-size: 0.9vw;
 
-    /* color: #A5B8C2; */
 }
 
 .password {
@@ -241,7 +192,6 @@
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 3vh;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
     background-repeat: no-repeat;
@@ -262,7 +212,6 @@
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 3vh;
     background-image: url(https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/20/000000/external-lock-digital-marketing-xnimrodx-lineal-gradient-xnimrodx.png);
     background-repeat: no-repeat;
@@ -276,8 +225,7 @@
 
 .walletimg{
     position: absolute;
-    /* width: 7vw; */
-    /* height: 4vh; */
+
     left: 20.5vw;
     top: 31.5vh;
     color: #FF5656;
@@ -292,7 +240,6 @@
     
     background: #FEFFF8;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
     border-radius: 3vh;
     background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
     background-repeat: no-repeat;
@@ -300,10 +247,7 @@
     padding-left:2.3vw;
 
     font-family: 'Roboto';
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
-    /* font-style: normal;
-    font-weight: 400;
-    text-align: center; */
+
     line-height: 10vh;
     font-size: 0.9vw;
 
@@ -319,18 +263,11 @@
   
   background: #FEFFF8;
   box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1;
-  /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
   border-radius: 3vh;
-  /* background-image: url(https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/20/000000/external-phone-essentials-icongeek26-outline-colour-icongeek26.png);
-  background-repeat: no-repeat;
-  background-position: 0.3vw center;
-  padding-left:1vw; */
 
-  /* font-family: 'Roboto'; */
+
   font-family: 'GangwonEdu_OTFBoldA';
-  /* font-style: normal;
-  font-weight: 400;
-  text-align: center; */
+
   line-height: 1vh;
   font-size: 0.9vw;
 
@@ -363,21 +300,15 @@
 .privateset{
     position: absolute;
     width:20vw;
-    /* width:18vw; */
     left:7.5vw;
-    /* top: 32.7vh; */
     top: 43.7vh;
 }
 
 .privatecheck {
     z-index: 1;
     position: absolute;
-    /* width: 2vw; */
-    /* height: 3vh; */
     width: 1vw;
     height: 3vh;
-    /* left:10.3vw; */
-    /* top: 32.9vh; */
     left:6vw;
     top: 43.9vh;
     
@@ -388,16 +319,13 @@
 .privatebtn{
     position: absolute;
     width: 15vw;
-    /* height: 29px; */
     left: -2.6vw;
     top: 1.3vh;
     
-    /* font-family: 'Roboto'; */
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
     font-weight: 700;
     font-size: 1vw;
-    /* line-height: 5vh; */
     text-align: center;
     border: none;
     background-color: #9f824d00;
@@ -408,16 +336,13 @@
 .private{
     position: absolute;
     width: 2.5vw;
-    /* height: 26px; */
     left:9.6vw;
     top: -0.6vh;
 
-    /* font-family: 'Roboto'; */
     font-family: 'GangwonEdu_OTFBoldA';
     font-style: normal;
     font-weight: 700;
     font-size: 1vw;
-    /* line-height: 5.5vh; */
     text-align: center;
 
     color: #000000;
@@ -434,15 +359,12 @@
     background: #FEFFF8;
     mix-blend-mode: normal;
     box-shadow: 0.0vw 0.0vw 0.2vw 0.2vw #fae7c8;
-    /* box-shadow: 0px 5px 5px 5px #F5EAD8; */
     border-radius: 3vh;
 
-    font-family: 'Russo One';
+    font-family: 'ROKAFSansMedium';
     font-style: normal;
     font-weight: 400;
-    font-size: 1vw;
-    /* line-height: 3vh; */
-    /* identical to box height */
+    font-size: 1.2vw;
 
     text-align: center;
 
@@ -452,8 +374,7 @@
 /* 이미 계정이 있는지 확인 질문 */
 .signinQ {
     position: absolute;
-    /* width: 343px;
-    height: 28px; */
+
     left: 7vw;
     top: 55vh;
     
@@ -461,8 +382,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 0.7vw;
-    /* line-height: 30px; */
-    /* text-align: center; */
+
     text-decoration: none;
     color: #000000;
 }
@@ -470,10 +390,7 @@
 /* 로그인페이지 이동 버튼 */
 .signin {
     position: absolute;
-    /* width: 107px; */
-    /* height: 28px; */
-    /* left: 11vw; */
-    /* top: 49vh; */
+
     left: 16.2vw;
     top: 54.4vh;
     
@@ -481,9 +398,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 1vw;
-    /* line-height: 30px;
-    text-align: center;
-    */
+
     text-decoration: none;
     color: #9F824D;
 }
@@ -492,11 +407,9 @@
 .privacybtn{
   position: absolute;
   width: 15vw;
-  /* height: 29px; */
   left: 5vw;
   top: 5vh;
   
-  /* font-family: 'Roboto'; */
   font-family: 'GangwonEdu_OTFBoldA';
   font-style: normal;
   font-weight: 700;
@@ -507,19 +420,15 @@
   background-color: #9f824d00;
 
   color: #115a64f1;
-  /* color: #f8f2f5; */
-  /* color: #03333af1; */
 }
 
 /* 서비스 이용약관 모달*/
 .servicebtn{
   position: absolute;
   width: 15vw;
-  /* height: 29px; */
   left: 5vw;
   top: 15vh;
   
-  /* font-family: 'Roboto'; */
   font-family: 'GangwonEdu_OTFBoldA';
   font-style: normal;
   font-weight: 700;

@@ -21,16 +21,13 @@ function Admin() {
   const [polldata3, setPolldata3] = useState([]);
   const [polldata4, setPolldata4] = useState([]);
   const [rendernumber, setRendernumber] = useState(0);
-  // const token = useSelector((state)=>(state[0].token));
   const token = sessionStorage.getItem("token");
-  //   const [candIdx, setCandIdx] = useState([]);
+  const wallet = sessionStorage.getItem("wallet");
   useEffect(() => {
-    // console.log(ENDPOINT)
 
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata(res.data);
       })
       .catch((error) => {
@@ -39,7 +36,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/wait/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata2(res.data);
       })
       .catch((error) => {
@@ -49,7 +45,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata3(res.data);
       })
       .catch((error) => {
@@ -59,7 +54,6 @@ function Admin() {
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata4(res.data);
       })
       .catch((error) => {
@@ -80,7 +74,7 @@ function Admin() {
     const nomineeNum = res.data.candidates.length;
     console.log("등록할 후보 수는 :", nomineeNum);
     await registerBlock(nomineeNum);
-    const Index = await getStartIndexBlock();
+    const Index = await getStartIndexBlock(wallet);
     console.log("시작 Index값은 :", Index);
     let candIdx = [];
     for (let i = parseInt(Index); i < parseInt(Index) + nomineeNum; i++) {

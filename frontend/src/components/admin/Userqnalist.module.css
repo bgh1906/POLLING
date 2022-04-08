@@ -1,39 +1,25 @@
 
-
 .accordion {
-    /* position: relative; */
-    /* position: absolute; */
     width: 50vw;
     top: 45vh;
     left: 24vw;
-    /* font-family:'GangwonEdu_OTFBoldA'; */
-    /* background-color: rgba(250, 235, 215, 0.521); */
-    /* background-color: #ffffff00 */
 }
 
 .appbar {
-    /* position: relative; */
-    /* background-color: rgba(250, 235, 215, 0.521); */
     background-color: #ffffff00;
     box-shadow: none;
-    /* style={{backgroundColor:'#ffffff00'}} */
 }
 
 .tab{
     color: #000000;
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-family: "RussoOne";
     font-size: 1.5vw;
 }
 
 .aaccordiontitle {
-    /* font-family: "Bitter"; */
     font-family: "ROKAFSansMedium";
     font-weight: bold;
     font-size: 0.9vw;
-
-    /* background-color: #3afaca31; */
-    /* border: 0.2vh solid #000000; */
 }
 
 .aaccordioncontent {
@@ -41,25 +27,15 @@
     font-weight: bold;
 
     background-color: rgba(173, 217, 255, 0.164);
-    /* background-color: #3afaca31; */
     border-radius: 1vh;
-    /* border: 0.2vh solid #000000; */
-    /* border: 0.2vh solid rgba(173, 217, 255, 0.301); */
 }
 
 .aaccordioncolor {
-    /* background-color: #00000000; */
-    /* background-color: rgba(171, 213, 250, 0.322); */
-    /* background-color: rgba(173, 217, 255, 0.116); */
-    /* background-color: #3afaca31; */
     background-color: #3afaca15;
     border: 0.2vh solid #000000;
 }
 .aaccordioncolor2 {
-    /* background-color: #00000000; */
-    /* background-color: rgba(171, 213, 250, 0.322); */
     background-color: rgba(173, 217, 255, 0.116);
-    /* background-color: #3afaca31; */
     border: 0.1vh solid #000000;
 }
 
@@ -67,14 +43,12 @@
     position: relative;
     left: 0.1vw;
     top: 0.2vh;
-    /* justify-content: center; */
     width: 5vw;
     height: 3.5vh;
     background-image: url(https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-arrow-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya-31.png);
     background-repeat: no-repeat;
     background-position:center;
     background-color: #00000000;
-    /* border: none; */
 }
 
 .contentTitle{

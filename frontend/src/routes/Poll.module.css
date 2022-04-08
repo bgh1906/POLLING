@@ -45,7 +45,6 @@
   border: solid 3px;
   position: relative;
   background-color: white;
-  /* background-color: #F9F7F1; */
 
 }
 
@@ -60,7 +59,6 @@
 
 #poll_box {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 
