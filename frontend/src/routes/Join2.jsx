@@ -109,7 +109,6 @@ function Join2() {
           setChecknick(true);
         })
         .catch((error) => {
-          console.log("error", error.response);
           if (error.code === 409) {
             samenick();
           }
@@ -189,7 +188,6 @@ function Join2() {
           }
         )
         .then((res) => {
-          console.log("인증번호 발송", res);
           sendnum();
           setOpen(true);
           setPhonelock(true);
@@ -197,7 +195,6 @@ function Join2() {
         })
         .catch((error) => {
           const message = error.message;
-          // console.log("message", error.response);
           sendfail();
         });
     }
@@ -369,7 +366,6 @@ function Join2() {
     nickchek();
     } else if (pcheck === false) {
       e.preventDefault();
-      alert("개인정보처리방침에 동의해주세요.");
       privacychek();
     } else if (
       nickname !== " " &&
@@ -394,9 +390,7 @@ function Join2() {
           }
         )
         .then((res) => {
-          console.log("res", res);
           joinSuccess();
-          console.log("회원가입");
           navigate("/login");
         })
         .catch((error) => {

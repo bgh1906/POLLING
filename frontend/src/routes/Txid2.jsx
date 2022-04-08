@@ -17,7 +17,6 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 
 function Txid2({id}) {
-  console.log("id",id);
 
   const token = sessionStorage.getItem("token")
   const [open, setOpen] = React.useState(false);
@@ -48,7 +47,6 @@ function Txid2({id}) {
         setTxidlist(res.data);
       })
       .catch(error => {
-        // console.log("error",error);
       })
   },[open]);
   

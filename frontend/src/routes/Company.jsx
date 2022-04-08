@@ -29,40 +29,32 @@ function Company() {
             axios
             .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")
             .then((res) => {
-                console.log(res);
                 setPolldata(res.data);
             })
             .catch(error => {
-                console.log(error.response)
             });  
             axios
             .get("https://j6a304.p.ssafy.io/api/polls/wait/0/50")
             .then((res) => {
-                console.log(res);
                 setPolldata2(res.data);
             })
             .catch(error => {
-                console.log(error.response)
             });  
     
             axios
             .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
             .then((res) => {
-                console.log(res);
                 setPolldata3(res.data);
             })
             .catch(error => {
-                console.log(error.response)
             });  
 
             axios
             .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
             .then((res) => {
-                console.log(res);
                 setPolldata4(res.data);
             })
             .catch(error => {
-                console.log(error.response)
             });  
         }, [rendernumber]);
 
@@ -104,7 +96,6 @@ function Company() {
            })
            .then(()=>{
                setRendernumber(rendernumber+1);
-               console.log('투표 옵션 변경!')
            })
     }
 

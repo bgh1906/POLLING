@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { actionCreators } from "../../store";
 import { Avatar } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 import token2 from "../../assets/token.png"
 import {checkPOL} from "../../contracts/CallContract";
 
@@ -29,7 +28,6 @@ function NewNav({state, reward, tminus, newnick}) {
         }
         //checkPOL
         checkPOL(wallet).then(res => setToken1(res));
-        // checkPOL(wallet).then(res => {setToken1(res); console.log("resToken",res);});
     };
 
     useEffect(() => {

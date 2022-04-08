@@ -27,7 +27,6 @@ export default function PollList() {
         setItemData(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
       });
   }, []);
 
