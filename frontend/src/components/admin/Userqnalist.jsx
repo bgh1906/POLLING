@@ -154,7 +154,7 @@ function Userqnalist () {
                             : rows
                             ).map((row, index) => (
                                 <tr key={index}>
-                                    <td style={{ width: '6vw' }} >{index.contactType.slice(8, 14)} </td>
+                                    <td style={{ width: '6vw' }} >{index.contactType}</td>
                                     <td style={{ width: '10vw' }} align="right">
                                     {row.id}
                                     </td>
