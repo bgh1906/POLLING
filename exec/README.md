@@ -133,3 +133,38 @@ docker-compose up --build -d && docker restart spring-compose
 exit
 EOF
 ```
+
+
+### 블록체인 <br>
+
+트러플설치
+npm install truffle -g
+
+가나슈 설치
+npm -g install ganache-cli
+
+오픈제플린설치
+npm i @openzeppelin/contracts
+
+경로설정
+mkdir BlockChain
+mkdir BCNetwork
+cd BlockChain/BCNetwork/
+
+가나슈 배포
+ganache-cli -d -m -p 7545 -h "0.0.0.0" -a 5 -g 0 -l 1000000000000000
+
+트러플 init
+truffle init
+
+컨트랙트 파일 작성
+/blockchain/bcnet 폴더 참고
+
+트러플 컴파일
+truffle compile
+
+컨트랙트 배포
+truffle migrate
+
+재배포시
+truffle migrate --reset
