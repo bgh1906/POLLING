@@ -66,7 +66,7 @@ MemberService {
   public void delete(Long memberId){
     Member member = getMember(memberId);
     member.deleteRole();
-    memberRepository.deleteById(memberId);
+    memberRepository.delete(member);
   }
 
   private void checkDuplicateMemberEmail(String email) {

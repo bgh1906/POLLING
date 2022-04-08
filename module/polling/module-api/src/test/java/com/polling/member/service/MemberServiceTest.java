@@ -100,6 +100,15 @@ public class MemberServiceTest {
     verify(memberRepository, times(1)).findById(any(Long.class));
   }
 
+  @Test
+  public void 멤버삭제성공() throws Exception{
+      //given
+
+      //when
+
+      //then
+  }
+
   private Member createMember() {
     return Member.builder()
         .nickname(nickname)
