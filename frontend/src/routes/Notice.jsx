@@ -1,7 +1,5 @@
 import NewNav from "../components/layout/NewNav";
 import Styles from "./Notice.module.css";
-//tabs
-// import Typography from '@mui/material/Typography';
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -22,7 +20,6 @@ function TabPanel(props) {
         role="tabpanel"
         hidden={value !== index}
         id={`full-width-tabpanel-${index}`}
-        // aria-labelledby={`full-width-tab-${index}`}
         {...other}
       >
         {value === index && (
@@ -67,7 +64,6 @@ function Notice() {
             <div style={{height:"100vh"}}>
                 <NewNav />
                 <div className={Styles.faq}>FAQ</div>
-                {/* <Box sx={{ bgcolor: "background.paper", width: 500 }}> */}
                 <Box className={Styles.accordion}>
                     <AppBar position="static" style={{backgroundColor:'#ffffff00', boxShadow: 'none'}} className={Styles.appbar}>
                         <Tabs
@@ -90,7 +86,6 @@ function Notice() {
                         onChangeIndex={handleChangeIndex}
                     >
                         <TabPanel value={value} index={0} dir={theme.direction}>
-                            {/* <div className={Styles.accordion}> */}
                             <NoticeP />
                         </TabPanel>
                         <TabPanel value={value} index={1} dir={theme.direction}>

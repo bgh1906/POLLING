@@ -7,16 +7,28 @@ import Comment from "../components/comment/Comment";
 import mark from "../assets/mark_slim.png";
 import crown from "../assets/crown.png";
 import tx from "../assets/tx.png";
+import tokenimg from "../assets/token.png";
 import axios from "axios";
 import Modal from "@mui/material/Modal";
 import Swal from "sweetalert2";
 import x from "../assets/x.png";
 import stamp from "../assets/stamp.png";
 import Lock from "../assets/Lock.png";
-import { voteBlock, totalVotesBlock } from "../contracts/CallContract";
+import {
+  voteBlock,
+  totalVotesBlock,
+  unlockAccount,
+  lockAccount,
+  approveAccount,
+  sendPOL,
+  checkPOL,
+} from "../contracts/CallContract";
 import TextField from "@mui/material/TextField";
+import { connect } from "react-redux";
+import Txid1 from "./Txid1.jsx";
+import { Co2Sharp } from "@mui/icons-material";
 
-function Candidate() {
+function Candidate({ state }) {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -38,10 +50,13 @@ function Candidate() {
   const pollOpen = sessionStorage.getItem("open");
   const polltitle = sessionStorage.getItem("poll");
   const token = sessionStorage.getItem("token");
+  const [inputWalletPw, setInputWalletPw] = useState("");
+  const [inputImgPw, setInputImgtPw] = useState("");
 
+  // 사용자 지갑주소
+  const wallet = sessionStorage.getItem("wallet");
   useEffect(() => {
     window.scrollTo(0, 0);
-    // console.log(params);
     // {pollnum: '1', id: '5'}
   }, []);
 
@@ -49,7 +64,6 @@ function Candidate() {
     axios
       .get(`https://j6a304.p.ssafy.io/api/polls/candidates/${params.id}`)
       .then((res) => {
-        console.log(res);
         setCandIdx(res.data.candidateIndex);
         setProfile_image(res.data.thumbnail);
         setPhoto1(res.data.imagePath1);
@@ -58,13 +72,15 @@ function Candidate() {
         setCandi_name(res.data.name);
         setProfile(res.data.profile);
         setCommentdata(res.data.comments);
-        console.log(params.id);
-        console.log("이 후보의 IDX:", candIdx);
+        // "이 후보의 id:", params.id
+        // "이 후보의 IDX:", res.data.candidateIndex
       })
       .catch((error) => {
         console.log(error.response);
       });
   }, [renderCount]);
+
+  getTotalVotes(candIdx);
 
   useEffect(() => {
     axios
@@ -76,8 +92,6 @@ function Candidate() {
         },
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
         const imagebuy = res.data[0];
         if (imagebuy) {
           setimageLock(false);
@@ -90,11 +104,8 @@ function Candidate() {
       });
   }, []);
 
-  getTotalVotes(candIdx);
-
   async function getTotalVotes(idx) {
-    const totalVotes = await totalVotesBlock(idx);
-    // console.log(idx, totalVotes);
+    const totalVotes = await totalVotesBlock(idx, wallet);
     setVoteCount(totalVotes);
   }
 
@@ -122,28 +133,64 @@ function Candidate() {
   }
 
   function handleOpen() {
-    setmodalOpen(true);
+    axios
+      .get(
+        `https://j6a304.p.ssafy.io/api/polls/candidates/limit/${params.id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+            Accept: "*/*",
+          },
+        }
+      )
+      .then((res) => {
+        setmodalOpen(true);
+      })
+      .catch((error) => {
+        console.log("error", error.response);
+        Swal.fire({
+          title: "한 대회당 한 명에게만 투표할 수 있습니다.",
+          icon: "error",
+        });
+      });
   }
 
   function handleClose() {
     setmodalOpen(false);
     setPicked(false);
+    setInputWalletPw("");
   }
 
   function handlePicked() {
     setPicked((prev) => !prev);
   }
 
-  //   function votesRerender() {
-  //     setVotesRender((prev) => !prev);
-  //   }
+  const pollfin = () => {
+    Swal.fire({
+      title: "투표가 완료되었습니다.",
+      icon: "success",
+    });
+  };
+
+  const adminAddress = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
+  // const adminAddress = "0x0BcE168eb0fd21A6ae9bAD5C156bcC08633c2328";
+
+  function getWalletPw(e) {
+    setInputWalletPw(e.target.value);
+    console.log("지갑 비번: ",e.target.value);
+  }
+
+  const [reward, setReward] = useState(0);
 
   async function handlepoll() {
-    if (picked) {
+    if (picked && inputWalletPw !== "") {
       // 블록체인 투표 하는 부분
       //   1. Unlock 해준다.(비밀번호 입력받아서)
+      unlockAccount(wallet, inputWalletPw);
       // 2. 투표로직을 블록체인에 전송한다. & 서버에 후보자의 득표내역 전송한다.
-      const res = await voteBlock(candIdx);
+
+      const res = await voteBlock(candIdx, wallet);
       const txId = res.transactionHash;
       console.log(txId);
       axios
@@ -162,23 +209,32 @@ function Candidate() {
             },
           }
         )
-        .then((res) => {
-          console.log(res);
+        .then(async (res) => {
           //   투표 성공하면 후보자 득표수 리렌더링 해줘야하니 아무 state값이나 업데이트
           renderCheck();
-          Swal.fire({
-            title: "투표가 완료되었습니다.",
-            icon: "success",
-          });
-          handleClose();
+          lockAccount(wallet); //블록체인 계좌 잠금
+          pollfin(); //스윗알랏
+          handleClose(); //모달 종료
+          await approveAccount(100, adminAddress);
+          await sendPOL(100, adminAddress, wallet);
+          setReward((prev) => prev + 1);
         })
         .catch((error) => {
-          console.log(error.response);
+          console.log("error", error.response);
         });
-      // 3. 다시 lock 한다.
-    } else {
+    } else if (picked && inputWalletPw === "") {
+      Swal.fire({
+        title: "지갑 비밀번호를 입력하세요.",
+        icon: "error",
+      });
+    } else if (!picked && inputWalletPw !== "") {
       Swal.fire({
         title: "투표 도장을 찍어주세요.",
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "투표 도장과 비밀번호를 입력하세요.",
         icon: "error",
       });
     }
@@ -192,33 +248,74 @@ function Candidate() {
     setmodalOpen2(false);
   }
 
-  function handleLock() {
-    axios
-      .post(
-        "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
-        {
-          candidateId: params.id,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-            Accept: "*/*",
+  const imgopen = () => {
+    Swal.fire({
+      title: "사진이 공개 되었습니다.",
+      icon: "success",
+    });
+  };
+
+  const notoken = () => {
+    Swal.fire({
+      title: "토큰이 부족합니다.",
+      icon: "error",
+    });
+  };
+  const nopw = () => {
+    Swal.fire({
+      title: "지갑 비밀번호가 틀렸습니다.",
+      icon: "error",
+    });
+  };
+
+  function getImgPw(e) {
+    setInputImgtPw(e.target.value);
+    console.log(e.target.value);
+  }
+
+  const [tminus, setTminus] = useState(0);
+
+  async function handleLock() {
+    const balance = await checkPOL(wallet);
+    if (balance >= 500 && inputImgPw !== "") {
+      console.log("balance3", balance);
+      axios
+        .post(
+          "https://j6a304.p.ssafy.io/api/use-tokens/candidates",
+          {
+            candidateId: params.id,
           },
-        }
-      )
-      .then((res) => {
-        console.log("사진 공개 성공");
-        Swal.fire({
-          title: "사진이 공개 되었습니다.",
-          icon: "success",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+              Accept: "*/*",
+            },
+          }
+        )
+        .then(async (res) => {
+          unlockAccount(wallet, inputImgPw);
+          await approveAccount(500, wallet);
+          await sendPOL(500, wallet, adminAddress);
+          imgopen(); //스윗알럿
+          handleClose3(); //모달 닫기
+          setimageLock(false); //사진 잠금 풀기
+          lockAccount(wallet); //lock해줘야 하는데, 얘가 먼저 되어버림
+          setTminus((prev) => prev + 1); //렌더링 안먹음
+        })
+        .catch((error) => {
+          console.log("error", error.response);
         });
-        setimageLock(false);
-        handleClose3();
-      })
-      .catch((error) => {
-        console.log(error.response);
+    } else if (balance < 500 && inputImgPw !== "") {
+      notoken();
+    } else if (balance >= 500 && inputImgPw === "") {
+      nopw();
+    } else {
+      Swal.fire({
+        title: "토큰 부족 && 비밀번호를 입력하세요.",
+        icon: "error",
       });
+    }
   }
 
   function handleOpen3() {
@@ -227,10 +324,11 @@ function Candidate() {
   function handleClose3() {
     setmodalOpen3(false);
   }
-
+  const rank = sessionStorage.getItem("rank");
+  const listType = sessionStorage.getItem("listType");
   return (
     <>
-      <NewNav />
+      <NewNav reward={reward} tminus={tminus} />
       <div className={styles.container}>
         <img id={styles.crown} src={crown} alt="crown" />
         <img id={styles.tx} src={tx} alt="tx" />
@@ -241,7 +339,12 @@ function Candidate() {
           src={profile_image}
           alt="profile_image"
         />
-        <p id={styles.nowrank}> 현재 순위: 1위 </p>
+        {listType === "rank" && (
+          <p id={styles.nowrank}> 현재 순위: {rank}위 </p>
+        )}
+        {listType === "register" && (
+          <p id={styles.nowrank}> 후보 No. {rank}번 </p>
+        )}
         {pollOpen === "true" && (
           <p id={styles.nowpoll}>
             {" "}
@@ -287,6 +390,7 @@ function Candidate() {
                   placeholder="Wallet Password"
                   variant="standard"
                   type="password"
+                  onChange={getWalletPw}
                 />
               </p>
               <p id={styles.paper_button}>
@@ -310,16 +414,7 @@ function Candidate() {
           </div>
         </Modal>
 
-        <Button
-          id={styles.con_button}
-          onClick={handleOpen2}
-          variant="contained"
-        >
-          투표내역
-        </Button>
-        <Modal open={modalOpen2} onClose={handleClose2}>
-          <div id={styles.tran_box}>거래내역</div>
-        </Modal>
+        <Txid1 id={params.id} />
 
         <Button id={styles.back_button} onClick={gotoList} variant="contained">
           참가자 목록
@@ -357,9 +452,17 @@ function Candidate() {
               <p id={styles.behind_marktext}>POLLING</p>
               <p id={styles.behind_text}>
                 {" "}
-                POL 토큰 500개를 사용하여 <br />
+                <img id={styles.tokenimg} src={tokenimg} alt="token" />
+                500POL를 사용하여 <br />
                 미공개 사진을 여시겠습니까?
               </p>
+              <TextField
+                className={styles.img_password}
+                placeholder="Wallet Password"
+                variant="standard"
+                type="password"
+                onChange={getImgPw}
+              />
               <Button
                 id={styles.behind_btn}
                 onClick={handleLock}
@@ -402,4 +505,8 @@ function Candidate() {
   );
 }
 
-export default Candidate;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps, null)(Candidate);

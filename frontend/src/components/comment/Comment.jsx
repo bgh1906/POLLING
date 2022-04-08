@@ -13,8 +13,6 @@ function Comment({candiId, data, renderCheck}) {
 
     const [ripple, setRipple] = useState("")
 
-    // const token = useSelector((state)=>(state[0].token));
-    // const nick = useSelector((state)=>(state[0].token));
 
     const token = sessionStorage.getItem("token")
 
@@ -39,13 +37,16 @@ function Comment({candiId, data, renderCheck}) {
             }
         )
         .then((res) =>{
-            console.log("댓글작성!")
+            Swal.fire({
+                title: '댓글작성!',
+                icon: 'success'                        
+            })
             setRipple("")
             renderCheck()
             
         })
         .catch((e) =>{
-            console.error(e);
+            // console.error(e);
             Swal.fire({
                 title: '로그인을 해주세요!',
                 icon: 'warning'                        

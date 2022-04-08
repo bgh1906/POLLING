@@ -11,7 +11,6 @@
 
 /* Bitter */
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
-/* font-family: 'Bitter', serif; */
 
 
 
@@ -44,7 +43,6 @@
     font-family: 'Bitter', serif;
     font-size: 1.5vw;
     font-weight: 900;
-    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
     padding: 2vw;
     color: #201e1ef1;
 }
@@ -124,7 +122,6 @@
     font-family: 'Bitter', serif !important;
     font-size: 1.5vw;
     font-weight: 900;
-    /* right: 6vw; */
     width: 80%;
     top: 57vh;
     left: 18.5vw;
@@ -135,7 +132,6 @@
     font-family: 'Bitter', serif !important;
     font-size: 1.5vw;
     font-weight: 900;
-    /* right: 6vw; */
     width: 100%;
     top: 68vh;
     left: -1vw;
@@ -146,7 +142,6 @@
     font-family: 'Bitter', serif !important;
     font-size: 1.5vw;
     font-weight: 900;
-    /* right: 6vw; */
     width: 100%;
     top: 68vh;
     left: 3vw;
@@ -212,7 +207,6 @@
     height: 3vh;
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
-    /* margin: 0 1vw; */
     text-align: center;
 
 }
@@ -266,7 +260,6 @@
     position: relative;
     width: 3vw;
     height: 3vh;
-    /* margin-left: 1 vw; */
     font-size: 1.3vw;
     font-family: 'GangwonEdu_OTFBoldA';
     text-align: center;

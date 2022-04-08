@@ -1,9 +1,9 @@
-import NewNav from "../layout/NewNav";
+import NewNav from "../components/layout/NewNav";
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Qna from "./Qnawrite";
+import Qna from "../components/mypage/Qnawrite";
 
 function createData(name, calories, fat) {
     return { name, calories, fat };

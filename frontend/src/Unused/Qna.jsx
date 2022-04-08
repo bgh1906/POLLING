@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NewNav from "../layout/NewNav";
+import NewNav from "../components/layout/NewNav";
 import Styles from "./Qna.module.css"
 
 
