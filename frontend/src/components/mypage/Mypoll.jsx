@@ -23,9 +23,7 @@ function Mypoll() {
         .then((res) => {
           setPolllist(res.data);
         })
-        .catch((error) => {
-          // console.log("res",error.response);
-        });
+        .catch((error) => {});
     }
     return () => {
       iscompomount = false;

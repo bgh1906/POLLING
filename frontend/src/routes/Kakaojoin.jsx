@@ -12,12 +12,10 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Private2 from "../components/mypage/Private2";
-import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import { useDispatch } from 'react-redux'
 
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import { web3 } from "../contracts/CallContract";
@@ -175,7 +173,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 },
             )
             .then((res) => {
-                console.log(res.data.code);
                 sendnum();
                 setOpen(true);
                 setPhonelock(true);
@@ -183,7 +180,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             })
             .catch(error => {
                 const message = error.message;
-                // console.log("message", message);
                 sendfail();
             }); 
         }
@@ -361,7 +357,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
         }
         else if( nickname !== " " && phone !== " " && walletpw !== "" && phonecheck !== false && checknick !== false && pcheck !== false ){
             const wallet = await createWallet();
-            console.log("wallet",wallet);
             axios
             .post("https://j6a304.p.ssafy.io/api/auth/social", 
             {
@@ -371,10 +366,10 @@ function Kakaojoin({ DispatchdeleteInfo }) {
                 wallet: wallet,
             })
             .then((res) => {
-                // console.log("res",res);
                 sessionStorage.setItem("token", params.accessToken);
                 sessionStorage.setItem("userid", res.data.id);
                 sessionStorage.setItem("role", res.data.role);
+                sessionStorage.setItem("nickname", res.data.nickname);
                 // sessionStorage.setItem("wallet", res.data.wallet);
                 sessionStorage.setItem("wallet", wallet);
                 dispatch(actionCreators.addInfo(
@@ -391,8 +386,6 @@ function Kakaojoin({ DispatchdeleteInfo }) {
             })
             .catch(error => {
                 const message = error.message;
-                console.log("message", message);
-                console.log("error", error);
                 // DispatchdeleteInfo();
                 joinFail();
             });

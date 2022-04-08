@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { web3 } from "../contracts/CallContract";
 
 export default function Blocktest() {

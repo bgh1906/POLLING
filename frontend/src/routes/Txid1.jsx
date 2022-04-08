@@ -43,7 +43,6 @@ function Txid1({ id }) {
         setTxidlist(res.data);
       })
       .catch((error) => {
-        // console.log("res",error.response);
       });
   }, [open]);
 
