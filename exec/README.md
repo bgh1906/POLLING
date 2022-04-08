@@ -73,12 +73,12 @@ Polling
     │   │   ├── App
     │   ├── Member
     ├── Routes
-    │   ├── Community
+    │   ├── poll
     │   ├── Member
     │   │   ├── SignUp
     │   │   └── SignIn
-    │   ├── Conference
-    │   ├── Planner
+    │   ├── Contact
+    │   ├── Candidate
     │   ├── Setting
     │   └── Review
     ├── api
@@ -97,7 +97,7 @@ nosql : redis <br>
 
 ## 빌드 및 배포 방법
 #### 프론트 <br>
-release-front 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
+front 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
 cd frontend
@@ -107,7 +107,7 @@ npm install && CI='' npm run build
 이후 nginx로 ec2에 연결된 url을 리액트 빌드 결과 index.html로 연결
 
 #### 백엔드
-release-backend 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
+backend 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
 cd ./module/polling && chmod +x gradlew
