@@ -6,7 +6,6 @@ import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Styles from './Qnalist.module.css';
 import axios from "axios";
@@ -44,8 +43,6 @@ function QnaList2() {
           setQnaplus((prev) => (prev+1));
         })
         .catch(error => {
-          console.log("res",error.response);
-          console.log("error",error);
         })
       };
       return() => {
@@ -86,13 +83,10 @@ function QnaList2() {
           }
         )
         .then((res) => {
-          console.log(res);
           deleSuccess();
                   
         })
         .catch((e) => {
-          console.log("error,qnadelet",e);
-          console.log("res,qnadelet",e.response);
           deleFail();
       });
     }

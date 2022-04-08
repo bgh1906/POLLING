@@ -3,9 +3,6 @@ import styles from "./CandList.module.css";
 import pollinglogo from "../../assets/pollinglogo.png";
 import { Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import rank1 from "../../assets/rank1.png";
-import rank2 from "../../assets/rank2.png";
-import rank3 from "../../assets/rank3.png";
 import dark from "../../assets/logowhite.png";
 import podium from "../../assets/podium.png";
 import heart from "../../assets/heart.png";
@@ -139,7 +136,7 @@ function CandList({ state, cand, countOpen }) {
               const person = cand.filter(
                 (candidateInfo) => candidateInfo.candidateIndex === item[0]
               );
-              console.log("person:", person[0]);
+              // console.log("person:", person[0]);
               return (
                 <div className={styles.poll_Cand2} key={person[0].thumbnail}>
                   <img

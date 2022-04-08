@@ -28,7 +28,6 @@ function Mypoll() {
             setPolllist(res.data);
           })
           .catch(error => {
-            // console.log("res",error.response);
           })
         };
         return() => {

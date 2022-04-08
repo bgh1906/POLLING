@@ -92,7 +92,6 @@ function Login2() {
         })
         .catch((error) => {
           const message = error.message;
-          // console.log("error", error);
           loginFail();
         });
     }
@@ -109,7 +108,6 @@ function Login2() {
           })
           .then((res) => {
             // const token
-            console.log("wallet", res.data.wallet);
 
             if (res.data.existMember === false) {
               dispatch(
@@ -140,7 +138,6 @@ function Login2() {
       },
       fail: (error) => {
         const message = error.message;
-        // console.log("error", error);
         loginFail();
         navigate("/");
       },

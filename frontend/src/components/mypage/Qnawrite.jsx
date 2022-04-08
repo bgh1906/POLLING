@@ -42,28 +42,24 @@ function Qnawrite() {
     const [type, setType] = useState('');
     const handleChange = (event) => {
         setType(event.target.value);
-        console.log(type);
     };
     
     //title 받기
     const [title, setTitle] = useState('');
     const  getTitle = (event) => {
         setTitle(event.target.value);
-        console.log(title);
     };
     
     //email 받기
     const [email, setEmail] = useState('');
     const getEmail = (event) => {
         setEmail(event.target.value);
-        console.log(email);
     };
     
     //내용 받기
     const [content, setContent] = useState('');
     const getContent = (event) => {
         setContent(event.target.value);
-        console.log(content);
     };
 
     //글 등록시 내용 비우기
@@ -94,13 +90,10 @@ function Qnawrite() {
                 }
             )
             .then((res) => {
-                console.log("res", res);
                 getClear();
                 qnaSuccess();
             })
             .catch(error => {
-                console.log("error", error.response);
-                console.error(error);
                 qnaFail();
             })
         }

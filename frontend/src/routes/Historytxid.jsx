@@ -42,7 +42,6 @@ function Historytxid({ pollId }) {
   }
   //투표 내역 받아오기
   React.useEffect(() => {
-    // const getlist = () =>{
     axios
       .get(`/api/polls/candidates/polls/${pollId}/0/50`, {
         headers: {
@@ -50,12 +49,9 @@ function Historytxid({ pollId }) {
         },
       })
       .then((res) => {
-        console.log("data", res.data);
         setTxidlist(res.data);
       })
       .catch((error) => {
-        console.log("res", error.response);
-        console.log("error", error);
       });
   }, []);
 

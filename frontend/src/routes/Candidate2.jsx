@@ -73,7 +73,6 @@ function Candidate2({ state }) {
         // "이 후보의 IDX:", res.data.candidateIndex
       })
       .catch((error) => {
-        console.log(error.response);
       });
   }, [renderCount]);
 
@@ -97,7 +96,6 @@ function Candidate2({ state }) {
         }
       })
       .catch((error) => {
-        console.log(error.response);
       });
   }, []);
 
@@ -142,11 +140,9 @@ function Candidate2({ state }) {
         }
       )
       .then((res) => {
-        console.log(res);
         setmodalOpen(true);
       })
       .catch((error) => {
-        console.log("error", error.response);
         Swal.fire({
           title: "한 대회당 한 명에게만 투표할 수 있습니다.",
           icon: "error",
@@ -214,7 +210,6 @@ function Candidate2({ state }) {
           setReward((prev) => prev + 1);
         })
         .catch((error) => {
-          console.log("error", error.response);
         });
       // 3. 다시 lock 한다.
     } else if (picked && inputWalletPw === "") {
@@ -297,7 +292,6 @@ function Candidate2({ state }) {
           setTminus((prev) => prev + 1); //렌더링 안먹음
         })
         .catch((error) => {
-          console.log("error", error.response);
         });
     } else if (balance < 500 && inputImgPw !== "") {
       notoken();
