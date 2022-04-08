@@ -96,7 +96,14 @@ rdbms : mariadb <br>
 nosql : redis <br>
 
 ## 빌드 및 배포 방법
-#### 프론트 <br>
+### nginx 설정 파일
+![nginx](/uploads/7e5e8a0b67d3285318f8c03053c7170d/nginx.PNG)
+
+### 프론트 <br>
+
+#### 리액트 설정파일
+![react](/uploads/1cfbe20149cbd231de5c60a38e1613b5/react.PNG)
+
 front 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
@@ -106,7 +113,11 @@ npm install && CI='' npm run build
 
 이후 nginx로 ec2에 연결된 url을 리액트 빌드 결과 index.html로 연결
 
-#### 백엔드
+### 백엔드
+
+#### 스프링 설정파일
+![spring](/uploads/bc9269d71904b67496fabea6086f7670/spring.PNG)
+
 backend 브랜치에 리액트 프로젝트를 푸쉬하면 깃랩 웹훅으로 아래 명령으로 빌드 실행 <br>
 
 ```
