@@ -1,3 +1,7 @@
+# 당신의 선택이 가치를 가지는, 블록체인 기반 온라인 투표 플랫폼 POLLING🗳️
+* 스마트 컨트랙트를 이용해 투표 내역을 투명하게 공개합니다.
+* 자체 발행 토큰 POL을 이용해 리워드를 제공하고, 서비스 내 구매가 가능합니다. 
+
 [<img src="https://img.shields.io/badge/Notion-go-007396?style=flat-square"/>](https://www.notion.so/2-_-A306-6437c4bf4953486a9b5b17ea97c37069)
 
 [<img src="https://img.shields.io/badge/Polling-go-007396?style=flat-square"/>](https://j6a304.p.ssafy.io/)
@@ -39,4 +43,11 @@
 <img src="https://img.shields.io/badge/-Agile-181717?style=flat-square"/>
 
 ## 🌏Distribution flow
-![Project Structure](https://lab.ssafy.com/s06-blockchain-sub2/S06P22A304/uploads/03da5ab405cf4103d404b22f5067e07e/%EA%B7%B8%EB%A6%BC2.png)
+<img src="/uploads/dece80eb61973bbb0b4969663edb9e66/그림3.png" width="70%" height="70%">
+
+## ⛓Blockchain Main Process
+<img src="/uploads/15bef069a3a45b02c44706bf5420a7e6/블체.png" width="70%" height="70%">
+
+
+
+
