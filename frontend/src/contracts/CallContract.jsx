@@ -138,7 +138,7 @@ const abi = [
   },
 ];
 
-const POLL_ADDRESS = "0xCfEB869F69431e42cdB54A4F4f105C19C080A601";
+const POLL_ADDRESS = "0x5124897FC24acbb69C77c21A5a155330614D22e9";
 // EC2에서 배포된 CA : 0xCfEB869F69431e42cdB54A4F4f105C19C080A601
 //트랜젝션 보내는 유저지갑주소
 
@@ -504,7 +504,7 @@ const tokenAbi = [
   },
 ];
 
-const TOKEN_ADDRESS = "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550";
+const TOKEN_ADDRESS = "0x64aE71EEA9382715a9166b99F00CD9c3D9eBEC80";
 
 //POL토큰 전송 과정
 export const tokenContract = new web3.eth.Contract(tokenAbi, TOKEN_ADDRESS);
