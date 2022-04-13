@@ -10,7 +10,7 @@ function About({ changeModeplus, changeModeminus }) {
         <p>ABOUT</p>
       </div>
       <div>
-        <p id={styles.main_text_about}> Tlockchain</p>
+        <p id={styles.main_text_about}> Blockchain</p>
         <p id={styles.main_text_about2}> Based</p>
         <p id={styles.main_text_about3}> Vote</p>
       </div>
