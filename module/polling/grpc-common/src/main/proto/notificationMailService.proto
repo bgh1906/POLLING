@@ -1,0 +1,28 @@
+syntax = "proto3";
+package com.polling.grpc.notification.service;
+
+option java_multiple_files = true;
+
+option java_package = "com.polling.grpc";
+
+import "common.proto";
+
+service NotificationMailService {
+  rpc sendReward(MailRequest) returns (MailResponse) {}
+}
+
+enum GiftType {
+  FREE_TICKET = 0;
+  FREE_PHOTO = 1;
+  FREE_PARTICLE = 2;
+}
+
+message MailRequest {
+  string email = 1;
+  GiftType giftType = 2;
+}
+
+message MailResponse {
+  ResultStatus status = 1;
+  string result = 2;
+}
