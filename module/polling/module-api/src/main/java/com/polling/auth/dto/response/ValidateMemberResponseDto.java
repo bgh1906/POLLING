@@ -20,12 +20,14 @@ public class ValidateMemberResponseDto {
   private boolean existMember = false;
   private MemberRole role;
   private String nickname;
+  private String wallet;
 
   public static ValidateMemberResponseDto of(Member member) {
     return new ValidateMemberResponseDto(member.getId(),
         true,
         findHighestRole(member.getMemberRole()),
-        member.getNickname());
+        member.getNickname(),
+        member.getWallet());
   }
 
   /**

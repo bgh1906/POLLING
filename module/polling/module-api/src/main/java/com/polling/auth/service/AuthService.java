@@ -40,6 +40,7 @@ public class AuthService {
         .nickname(requestDto.getNickname())
         .oauthType(OAuthType.KAKAO)
         .oauthId(profile.getId())
+         .wallet(requestDto.getWallet())
         .phoneNumber(requestDto.getPhoneNumber())
         .build();
     return memberRepository.save(member);

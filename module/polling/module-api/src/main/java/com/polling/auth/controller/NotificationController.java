@@ -1,12 +1,7 @@
 package com.polling.auth.controller;
 
-import com.google.common.util.concurrent.ListenableFuture;
 import com.polling.aop.annotation.Trace;
 import com.polling.auth.service.NotificationService;
-import com.polling.grpc.ListOfNotificationRequest;
-import com.polling.grpc.NotificationSmsServiceGrpc;
-import com.polling.grpc.SMSRequest;
-import com.polling.grpc.SMSResponse;
 import com.polling.grpc.client.dto.request.SendSMSRequestDto;
 import com.polling.member.dto.response.SMSCodeResponseDto;
 import lombok.RequiredArgsConstructor;

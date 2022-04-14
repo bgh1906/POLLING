@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
 
   private final MemberService memberService;
-  private final MemberRepository memberRepository;
 
   @Retry
   @PostMapping
@@ -42,7 +41,7 @@ public class MemberController {
   @DeleteMapping
   @ApiOperation(value = "회원 탈퇴")
   public ResponseEntity<Void> delete(@CurrentUser MemberDto memberDto) {
-    memberRepository.deleteById(memberDto.getId());
+    memberService.delete(memberDto.getId());
     return ResponseEntity.status(200).build();
   }
 

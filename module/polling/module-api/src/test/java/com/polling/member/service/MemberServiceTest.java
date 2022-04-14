@@ -42,7 +42,7 @@ public class MemberServiceTest {
   }
 
   @Test
-  public void 멤버등록실패_이미존재함() throws Exception {
+  public void 멤버등록실패_이메일이이미존재함() throws Exception {
     //given
     doReturn(true).when(memberRepository).existsByEmail(email);
     SaveNativeMemberRequestDto requestDto =
@@ -58,13 +58,32 @@ public class MemberServiceTest {
   }
 
   @Test
+  public void 멤버등록실패_핸드폰번호가이미존재함() throws Exception {
+    //given
+    String phoneNumber = "01012345678";
+    doReturn(true).when(memberRepository).existsByPhoneNumber(phoneNumber);
+    SaveNativeMemberRequestDto requestDto =
+        new SaveNativeMemberRequestDto(nickname, "wallet", email, "test", phoneNumber,
+            MemberRole.ROLE_USER);
+
+    //when
+    final CustomException result = assertThrows(CustomException.class,
+        () -> target.join(requestDto));
+
+    //then
+    assertThat(result.getCustomErrorResult()).isEqualTo(CustomErrorResult.DUPLICATE_PHONE_NUMBER);
+  }
+
+  @Test
   public void 멤버등록성공() throws Exception {
     //given
+    String phoneNumber = "01012345678";
     doReturn(false).when(memberRepository).existsByEmail(email);
+    doReturn(false).when(memberRepository).existsByPhoneNumber(phoneNumber);
     doReturn(createMember()).when(memberRepository).save(any(Member.class));
     SaveNativeMemberRequestDto requestDto = new SaveNativeMemberRequestDto(nickname, "wallet",
         email,
-        "test", "01012345678", MemberRole.ROLE_USER);
+        "test", phoneNumber, MemberRole.ROLE_USER);
 
     //when
     target.join(requestDto);
@@ -98,6 +117,19 @@ public class MemberServiceTest {
     //then
     assertThat(findMember.getEmail()).isEqualTo(email);
     verify(memberRepository, times(1)).findById(any(Long.class));
+  }
+
+  @Test
+  public void 멤버삭제성공() throws Exception{
+    //given
+    Member member = createMember();
+    doReturn(Optional.of(member)).when(memberRepository).findById(any(Long.class));
+
+    //when
+    target.delete(1L);
+
+    //then
+    verify(memberRepository, times(1)).delete(any(Member.class));
   }
 
   private Member createMember() {
