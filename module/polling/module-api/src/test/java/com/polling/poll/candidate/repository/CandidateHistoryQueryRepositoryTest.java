@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
-import com.polling.poll.candidate.dto.response.FindCandidateHistoryByMemberResponseDto;
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.entity.Candidate;
 import com.polling.poll.candidate.entity.CandidateGallery;
@@ -23,11 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class CandidateHistoryQueryRepositoryTest {
 
   @Autowired
-  private CandidateHistoryQueryRepository queryRepository;
-  @Autowired
   private CandidateRepository candidateRepository;
   @Autowired
-  private CandidateHistoryRepository candidateHistoryRepository;
+  private CandidateQueryRepository candidateQueryRepository;
   @Autowired
   private MemberRepository memberRepository;
   @Autowired
@@ -47,57 +44,12 @@ public class CandidateHistoryQueryRepositoryTest {
     vote(savedMember, anotherCandidate, 1);
 
     //when
-    List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateId(
+    List<FindCandidateHistoryResponseDto> result = candidateQueryRepository.findHistoryById(
         savedCandidate.getId(), 0, 10);
 
     //then
     assertThat(result.size()).isEqualTo(5);
     assertThat(result.get(0).getVoteCount()).isEqualTo(1);
-  }
-
-  @Test
-  public void 후보자투표내역조회_유저id기준() throws Exception {
-    //given
-    Poll savedpoll = pollRepository.save(Poll.builder().build());
-    Candidate savedCandidate = candidateRepository.save(createCandidateWithPoll(1, savedpoll));
-    Member savedMember = memberRepository.save(Member.builder().build());
-    Member anotherMember = memberRepository.save(Member.builder().build());
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(anotherMember, savedCandidate, 1);
-
-    //when
-    List<FindCandidateHistoryByMemberResponseDto> result = queryRepository.findByCandidateByMemberId(
-        savedMember.getId(), 0, 10);
-
-    //then
-    assertThat(result.size()).isEqualTo(5);
-  }
-
-  @Test
-  public void 후보자투표내역조회_pollid기준() throws Exception {
-    //given
-    Poll savedpoll = pollRepository.save(Poll.builder().build());
-    Poll anotherpoll = pollRepository.save(Poll.builder().build());
-    Candidate savedCandidate = candidateRepository.save(createCandidateWithPoll(1, savedpoll));
-    Candidate anotherCandidate = candidateRepository.save(createCandidateWithPoll(2, anotherpoll));
-    Member savedMember = memberRepository.save(Member.builder().build());
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, savedCandidate, 1);
-    vote(savedMember, anotherCandidate, 1);
-
-    //when
-    List<FindCandidateHistoryResponseDto> result = queryRepository.findByCandidateByPollId(
-        savedpoll.getId(), 0, 10);
-
-    //then
-    assertThat(result.size()).isEqualTo(5);
   }
 
   @Test
@@ -111,7 +63,7 @@ public class CandidateHistoryQueryRepositoryTest {
     vote(savedMember, savedCandidate, 1);
 
     //when
-    boolean result = queryRepository.existsByMemberIdAndPollIdInToday(savedMember.getId(),
+    boolean result = candidateQueryRepository.existsByMemberIdAndPollIdInToday(savedMember.getId(),
         pollId, LocalDate.now().atStartOfDay());
 
     //then
@@ -119,11 +71,8 @@ public class CandidateHistoryQueryRepositoryTest {
   }
 
   public void vote(Member member, Candidate candidate, int count) {
-    candidateHistoryRepository.save(CandidateHistory.builder()
-        .candidate(candidate)
-        .member(member)
-        .voteCount(1)
-        .build());
+    candidate.addHistory(CandidateHistory
+            .createCandidateHistory(member, candidate, count, null));
   }
 
   public Candidate createCandidate(Integer index) {
@@ -132,21 +81,6 @@ public class CandidateHistoryQueryRepositoryTest {
         .thumbnail("thumbnail")
         .profile("profile")
         .name("name" + index)
-        .build();
-    candidate.addGallery(new CandidateGallery("image1"));
-    candidate.addGallery(new CandidateGallery("image2"));
-    candidate.addGallery(new CandidateGallery("image3"));
-
-    return candidate;
-  }
-
-  public Candidate createCandidateWithPoll(Integer index, Poll poll) {
-    Candidate candidate = Candidate.builder()
-        .contractIndex(index)
-        .thumbnail("thumbnail")
-        .profile("profile")
-        .name("name" + index)
-        .poll(poll)
         .build();
     candidate.addGallery(new CandidateGallery("image1"));
     candidate.addGallery(new CandidateGallery("image2"));

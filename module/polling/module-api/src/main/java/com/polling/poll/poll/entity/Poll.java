@@ -40,7 +40,7 @@ public class Poll extends BaseTimeEntity {
   @JoinColumn(name = "member_id")
   private Member pollCreator;
 
-  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  @OneToMany(mappedBy = "poll", cascade = CascadeType.PERSIST)
   private final List<Candidate> candidates = new ArrayList<>();
 
   private String title;
@@ -69,6 +69,18 @@ public class Poll extends BaseTimeEntity {
     this.endDate = endDate;
     this.thumbnail = thumbnail;
     this.openStatus = openStatus;
+  }
+
+  public static Poll createPoll(String title, String content, String thumbnail, Boolean openStatus,
+      LocalDateTime startDate, LocalDateTime endDate) {
+    return Poll.builder()
+        .title(title)
+        .content(content)
+        .thumbnail(thumbnail)
+        .openStatus(openStatus)
+        .startDate(startDate)
+        .endDate(endDate)
+        .build();
   }
 
   public void changePollStatus(PollStatus pollStatus) {

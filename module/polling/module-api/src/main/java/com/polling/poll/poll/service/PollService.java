@@ -12,7 +12,6 @@ import com.polling.poll.candidate.dto.request.AddCandidateRequestDto;
 import com.polling.poll.candidate.dto.response.FindAdminCandidateResponseDto;
 import com.polling.poll.candidate.dto.response.FindAnonymousCandidateResponseDto;
 import com.polling.poll.candidate.entity.Candidate;
-import com.polling.poll.candidate.repository.CandidateQueryRepository;
 import com.polling.poll.poll.dto.request.ApprovePollRequestDto;
 import com.polling.poll.poll.dto.request.ModifyPollRequestDto;
 import com.polling.poll.poll.dto.request.SavePollRequestDto;
@@ -38,7 +37,6 @@ public class PollService {
 
   private final PollRepository pollRepository;
   private final MemberRepository memberRepository;
-  private final CandidateQueryRepository candidateQueryRepository;
   private final PollQueryRepository pollQueryRepository;
 
   @Trace
@@ -61,9 +59,13 @@ public class PollService {
   @Transactional(readOnly = true)
   public FindSimplePollResponseDto findPollThumbnail(Long pollId) {
     Poll poll = getPoll(pollId);
-    List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllSimpleByPollId(
-        pollId);
-    return FindSimplePollResponseDto.of(list, poll);
+    List<FindAnonymousCandidateResponseDto> responseDtos = poll.getCandidates().stream()
+        .map(candidate -> new FindAnonymousCandidateResponseDto(candidate.getId(),
+            candidate.getContractIndex(),
+            candidate.getName(),
+            candidate.getThumbnail())).collect(Collectors.toList());
+
+    return FindSimplePollResponseDto.of(responseDtos, poll);
   }
 
   @Trace
@@ -71,9 +73,8 @@ public class PollService {
   @Transactional(readOnly = true)
   public FindPollWithCandidateResponseDto findPollAllInfo(Long pollId) {
     Poll poll = getPoll(pollId);
-    List<Candidate> candidates = candidateQueryRepository.findAllByPollId(pollId);
+    List<Candidate> candidates = poll.getCandidates();
 
-    // entity to dto
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
             .candidateId(candidate.getId())

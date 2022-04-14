@@ -35,10 +35,6 @@ public class Candidate extends BaseTimeEntity {
   @JoinColumn(name = "vote_id")
   private Poll poll;
 
-  @Column(length = 1000)
-  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
-  private final List<CandidateGallery> galleries = new ArrayList<>();
-
   private String name;
 
   private String profile;
@@ -48,6 +44,13 @@ public class Candidate extends BaseTimeEntity {
 
   private Integer contractIndex;
 
+  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
+  private final List<CandidateHistory> histories = new ArrayList<>();
+
+  @Column(length = 1000)
+  @OneToMany(mappedBy = "candidate", cascade = CascadeType.PERSIST)
+  private final List<CandidateGallery> galleries = new ArrayList<>();
+
   @Builder
   public Candidate(Integer contractIndex, Poll poll, String name, String profile,
       String thumbnail) {
@@ -56,6 +59,19 @@ public class Candidate extends BaseTimeEntity {
     this.name = name;
     this.profile = profile;
     this.thumbnail = thumbnail;
+  }
+
+  public static Candidate createCandidate(String name, String profile, String thumbnail,
+      String... imagePaths) {
+    Candidate candidate = Candidate.builder()
+        .name(name)
+        .profile(profile)
+        .thumbnail(thumbnail)
+        .build();
+    for (String imagePath : imagePaths) {
+      candidate.addGallery(CandidateGallery.createImage(imagePath));
+    }
+    return candidate;
   }
 
   public void changePoll(Poll poll) {
@@ -77,6 +93,11 @@ public class Candidate extends BaseTimeEntity {
   public void addGallery(CandidateGallery gallery) {
     this.galleries.add(gallery);
     gallery.changeCandidate(this);
+  }
+
+  public void addHistory(CandidateHistory history) {
+    this.histories.add(history);
+    history.changeCandidate(this);
   }
 
   public void changeContractIndex(Integer contractIndex) {

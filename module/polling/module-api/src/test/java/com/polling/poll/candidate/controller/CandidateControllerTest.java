@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.polling.exception.CustomErrorResult;
 import com.polling.exception.CustomException;
 import com.polling.exception.CustomExceptionHandler;
-import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
+import com.polling.poll.candidate.repository.CandidateQueryRepository;
 import com.polling.poll.candidate.service.CandidateService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ public class CandidateControllerTest {
   private CandidateService candidateService;
 
   @Mock
-  private CandidateHistoryQueryRepository queryRepository;
+  private CandidateQueryRepository queryRepository;
 
   private MockMvc mockMvc;
 
@@ -96,7 +96,7 @@ public class CandidateControllerTest {
 
     //then
     resultActions.andExpect(status().isOk());
-    verify(queryRepository, times(1)).findByCandidateId(candidatesId, page, limit);
+    verify(queryRepository, times(1)).findHistoryById(candidatesId, page, limit);
   }
 
 }
