@@ -23,10 +23,8 @@ public class FindCandidateDetailsResponseDto {
   private String imagePath1;
   private String imagePath2;
   private String imagePath3;
-  private List<FindCommentResponseDto> comments;
 
-  public static FindCandidateDetailsResponseDto of(Candidate candidate,
-      List<FindCommentResponseDto> comments) {
+  public static FindCandidateDetailsResponseDto of(Candidate candidate) {
     return new FindCandidateDetailsResponseDto(
         candidate.getContractIndex(),
         candidate.getName(),
@@ -34,7 +32,6 @@ public class FindCandidateDetailsResponseDto {
         candidate.getThumbnail(),
         candidate.getGalleries().get(0).getImagePath(),
         candidate.getGalleries().get(1).getImagePath(),
-        candidate.getGalleries().get(2).getImagePath(),
-        comments);
+        candidate.getGalleries().get(2).getImagePath());
   }
 }

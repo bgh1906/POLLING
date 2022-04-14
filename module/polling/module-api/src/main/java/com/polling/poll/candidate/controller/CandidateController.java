@@ -9,7 +9,7 @@ import com.polling.poll.candidate.dto.response.FindCandidateHistoryByMemberRespo
 import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
 import com.polling.poll.candidate.service.CandidateService;
-import com.polling.poll.poll.dto.request.SaveCandidateHistoryRequestDto;
+import com.polling.poll.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -40,10 +40,10 @@ public class CandidateController {
 
   @Trace
   @GetMapping("/limit/{candidateId}")
-  @ApiOperation(value = "오늘 투표 했는지 안 했는지 조회", notes = "투표 안 했으면 200, 투표 했으면 에러 코드 전송")
+  @ApiOperation(value = "해당 후보자에게 투표가 가능한지 안한지 검사", notes = "투표 가능하면 200, 투표 불가능하면 400 에러 전송")
   public ResponseEntity<Void> didPollToday(@CurrentUser MemberDto memberDto,
       @PathVariable Long candidateId) {
-    candidateService.didVoteToday(candidateId, memberDto.getId());
+    candidateService.canVoteToday(candidateId, memberDto.getId());
     return ResponseEntity.status(200).build();
   }
 

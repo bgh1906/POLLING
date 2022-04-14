@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,8 +33,15 @@ public class CandidateGallery extends BaseTimeEntity {
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;
 
+  @Builder
   public CandidateGallery(String imagePath) {
     this.imagePath = imagePath;
+  }
+
+  public static CandidateGallery createImage(String imagePath){
+    return CandidateGallery.builder()
+        .imagePath(imagePath)
+        .build();
   }
 
   public void changeCandidate(Candidate candidate) {

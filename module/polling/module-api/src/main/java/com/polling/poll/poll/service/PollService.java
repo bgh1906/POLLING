@@ -23,6 +23,7 @@ import com.polling.poll.poll.entity.status.PollStatus;
 import com.polling.poll.poll.repository.PollQueryRepository;
 import com.polling.poll.poll.repository.PollRepository;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,7 +39,6 @@ public class PollService {
 
   private final PollRepository pollRepository;
   private final MemberRepository memberRepository;
-  private final CandidateQueryRepository candidateQueryRepository;
   private final PollQueryRepository pollQueryRepository;
 
   @Trace
@@ -61,9 +61,13 @@ public class PollService {
   @Transactional(readOnly = true)
   public FindSimplePollResponseDto findPollThumbnail(Long pollId) {
     Poll poll = getPoll(pollId);
-    List<FindAnonymousCandidateResponseDto> list = candidateQueryRepository.findAllSimpleByPollId(
-        pollId);
-    return FindSimplePollResponseDto.of(list, poll);
+    List<FindAnonymousCandidateResponseDto> responseDtos = poll.getCandidates().stream()
+        .map(candidate -> new FindAnonymousCandidateResponseDto(candidate.getId(),
+            candidate.getContractIndex(),
+            candidate.getName(),
+            candidate.getThumbnail())).collect(Collectors.toList());
+
+    return FindSimplePollResponseDto.of(responseDtos, poll);
   }
 
   @Trace
@@ -71,9 +75,8 @@ public class PollService {
   @Transactional(readOnly = true)
   public FindPollWithCandidateResponseDto findPollAllInfo(Long pollId) {
     Poll poll = getPoll(pollId);
-    List<Candidate> candidates = candidateQueryRepository.findAllByPollId(pollId);
+    List<Candidate> candidates = poll.getCandidates();
 
-    // entity to dto
     List<FindAdminCandidateResponseDto> list = candidates.stream()
         .map(candidate -> FindAdminCandidateResponseDto.builder()
             .candidateId(candidate.getId())

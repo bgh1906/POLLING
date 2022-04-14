@@ -58,6 +58,18 @@ public class Candidate extends BaseTimeEntity {
     this.thumbnail = thumbnail;
   }
 
+  public static Candidate createCandidate(String name, String profile, String thumbnail, String... imagePaths){
+      Candidate candidate = Candidate.builder()
+          .name(name)
+          .profile(profile)
+          .thumbnail(thumbnail)
+          .build();
+      for (String imagePath: imagePaths) {
+        candidate.addGallery(CandidateGallery.createImage(imagePath));
+      }
+      return candidate;
+  }
+
   public void changePoll(Poll poll) {
     this.poll = poll;
   }
