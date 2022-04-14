@@ -17,7 +17,6 @@ import Companylogin2 from "./routes/Companylogin2";
 import WhyPolling from "./routes/WhyPolling";
 import Candidate2 from "./routes/Candidate2";
 import UpdatePoll from "./routes/UpdatePoll";
-import Qna from "./components/mypage/Qna";
 import Kakaojoin from "./routes/Kakaojoin";
 import { Switch } from "@mui/material";
 import Blocktest from "./routes/Blocktest";
@@ -28,19 +27,17 @@ function App() {
   return (
     <div>
       <HashRouter>
-      {/* <BrowserRouter> */}
+        {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/join" element={<Join2 />}></Route>
           <Route path="/kakaojoin/:accessToken" element={<Kakaojoin />}></Route>
-          {/* <Route path="/kakaojoin" element={<Kakaojoin />}></Route> */}
           <Route path="/login" element={<Login2 />}></Route>
           <Route path="/Companylogin" element={<Companylogin2 />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/management" element={<Management />}></Route>
           <Route path="/user" element={<User />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
-          <Route path="/qna" element={<Qna />}></Route>
           <Route path="/createpoll" element={<CreatePoll />}></Route>
           <Route path="/polllist" element={<PollList />}></Route>
           <Route path="/history" element={<History />}></Route>
@@ -55,7 +52,7 @@ function App() {
           <Route path={"*"} element={<NotFound />} />
           <Route path="/company" element={<Company />}></Route>
         </Routes>
-      {/* </BrowserRouter> */}
+        {/* </BrowserRouter> */}
       </HashRouter>
     </div>
   );

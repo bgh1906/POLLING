@@ -1,16 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Styles2 from "../../routes/Join2.module.css";
-// import Styles from './Private.module.css';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -62,8 +59,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
    
     return(
         <div>
-            {/* <Button onClick={handleClickOpen} className={Styles2.privatebtn} style={{fontSize:"0.8vw", color:"#9F824D", left:'2vw',fontFamily:"font"}} > */}
-            {/* <Button onClick={handleClickOpen} style={{left:'5vw', fontSize:'2.5vh'}}> */}
             <button onClick={handleClickOpen} className={Styles2.servicebtn} >
                 {" "}Polling 서비스 이용약관{" "}
             </button>
@@ -414,13 +409,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
                 </Typography>
             </DialogContent>
         </Dialog>
-        {/* <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            close
-          </Button>
-        </DialogActions> */}
      </div>
-        // </div>
     );
 }
 // export default PrivateService;

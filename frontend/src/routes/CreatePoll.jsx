@@ -5,8 +5,8 @@ import NomineeInput from "../components/admin/NomineeInput"
 import NomineeList from "../components/admin/NomineeList"
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useSelector } from 'react-redux'
-import { actionCreators } from "../store"
+// import { useSelector } from 'react-redux'
+// import { actionCreators } from "../store"
 import Footer from "../components/layout/Footer";
 import logo from "../assets/mark_slim.png"
 import nonono from "../assets/nonono.png"
@@ -18,10 +18,6 @@ import dayjs from "dayjs";
 import axios from "axios";
 
 
-
-
-
-
 function CreatePoll() {
     const [pollImage, setpollImage] = useState("");
     const [pollName, setpollName] = useState("");
@@ -31,7 +27,6 @@ function CreatePoll() {
     const [pollRealtime, setpollRealtime] = useState(false);
 
 
-    // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
     const navigate = useNavigate();
@@ -95,8 +90,6 @@ function CreatePoll() {
 
     function savePolldata(){
               
-        // console.log(token)
-
         axios.post(
             "https://j6a304.p.ssafy.io/api/polls/admin",
             {
@@ -117,7 +110,6 @@ function CreatePoll() {
             }
         )
         .then((res) =>{
-            console.log("POST 성공!!")
             Swal.fire({
                 title: '투표가 생성되었습니다.',
                 icon: 'success'                        
@@ -127,7 +119,6 @@ function CreatePoll() {
             navigate("/admin");
         })
         .catch(error => {
-            console.log(error.response)
         });
 
         

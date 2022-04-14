@@ -5,15 +5,11 @@
     left: 20vw;
     top: 45vh;
     
-    /* background: #e8eca559; */
     background: #e8eca52d;
-    /* background-image: url(https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/24/000000/external-email-advertising-kiranshastry-gradient-kiranshastry-7.png); */
     background-repeat: no-repeat;
     background-position: 0.5vw center;
     padding-left: 3vw;
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95; */
     box-shadow: 0.0vw 0.2vw 0.0vw 0.0vw #babb9536;
-    /* border-radius: 1vh; */
     border-color: #00000000;
 
     font-family: 'ROKAFSansMedium';
@@ -36,21 +32,12 @@
     width: 2vw;
     height: 4vh;
     left: 40.5vw;
-    /* left: 38vw; */
     top: 45vh;
-    /* top: 58.5vh; */
     
-    /* background: #FEFFF8; */
-    /* background: #e8eca559; */
     background: #e8eca500;
-    /* background-image: url(https://img.icons8.com/pastel-glyph/30/000000/search--v2.png); */
     background-repeat: no-repeat;
     background-position: 0.0vw center;
-    /* padding-left: 2.3vw; */
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95; */
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+
     border-radius: 1vh;
     border-color: #00000000;
 
@@ -66,23 +53,13 @@
     width: 7vw;
     height: 3.3vh;
     left: 72.5vw;
-    /* left: 38vw; */
     top: 46vh;
-    /* top: 58.5vh; */
     
-    /* background: #FEFFF8; */
-    /* background: #e8eca559; */
     background: #87fcde5b;
-    /* background-image: url(https://img.icons8.com/pastel-glyph/30/000000/search--v2.png); */
     background-repeat: no-repeat;
     background-position: 0.0vw center;
-    /* padding-left: 2.3vw; */
-    /* box-shadow: 0.0vw 0.2vw 0.5vw 0.0vw #f1d2a1; */
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #babb95; */
-    /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #f1d2a1; */
-    /* box-shadow: 6px 6px 10px 3px #F5EAD8; */
+
     border-radius: 1vh;
-    /* border-color: #0000007c; */
     border-color: #a2fae470;
 
     font-family: 'GangwonEdu_OTFBoldA';
@@ -98,20 +75,11 @@
     left: 26.5vw;
     top: 67vh;
 
-    /* background: #e8eca500;
-    background-repeat: no-repeat;
-    background-position: 0.5vw center; */
     padding-left: 2.3vw;
     box-shadow: 0.1vw 0.2vw 0.5vw 0.0vw #0a0600;
     border-radius: 1vh;
     border-color: #00000000;
 
-    /* font-family: 'ROKAFSansMedium';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.2vw;
-    line-height: 6vh;
-    text-align: center; */
 }
 
 .thead {
@@ -122,7 +90,7 @@
     line-height: 6vh;
     text-align: center;
 }
-
+ 
 .tbody {
     width: 30vw;
     height: 0vh;

@@ -1,7 +1,4 @@
-import styles from "../components/home/Home.module.css";
-import { Link } from "react-router-dom";
 import Newnav from "../components/layout/NewNav";
-import Footer from "../components/layout/Footer";
 import About from "../components/home/About"
 import PollListmain from "../components/home/PollListmain"
 import Historymain from "../components/home/Historymain"

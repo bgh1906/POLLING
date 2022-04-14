@@ -9,13 +9,11 @@
 .typotype {
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.4vw;
-    /* text-align: center; */
     line-height: 4vh;
 }
 .typoTitle {
     font-family: 'GangwonEdu_OTFBoldA';
     font-size: 1.3vw;
-    /* font-weight: 400; */
 }
 .typoContent {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -24,11 +22,13 @@
 
 .listbtn {
     position: relative;
+    width: 2.5vw;
+    height: 3vh;
     left: 39vw; 
     top: 0vh;
     font-family: 'GangwonEdu_OTFBoldA';
     border-radius: 30vw;
-    /* background-color:rgba(176, 224, 230, 0.596);  */
+    font-size: 0.8vw;
     background-color:rgba(255, 194, 113, 0.452);
 }
 

@@ -1,18 +1,17 @@
 import { Link,useNavigate } from "react-router-dom";
 import NewNav from "../components/layout/NewNav.jsx";
-import Footer from "../components/layout/Footer.jsx";
 import Styles from "./User.module.css";
-import { Collapse } from "bootstrap";
 import { useState } from "react";
-import { Button } from "bootstrap";
 import axios from "axios";
-// import { Table } from "react-bootstrap";
-import UserSearch from "../components/admin/Usesearch.jsx";
 
 import * as React from 'react';
 import UserSearch2 from "../components/admin/Usesearch2.jsx";
 import Userqnalist from "../components/admin/Userqnalist.jsx";
-
+import Swal from "sweetalert2";
+import { web3 } from "../contracts/CallContract";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 function User() {
 
@@ -20,7 +19,6 @@ function User() {
 
 
     const [clickCom, setClickCom] = useState('#FEFFF8');
-    // const [clickUser, setClickUser] = useState(Styles.other);
     
     function changeColor() {
         setClickCom('#caceb7');
@@ -35,12 +33,10 @@ function User() {
         if(openO === false){
             //hidden처리 하기.
             setOpenO(true);
-            // setOpenL(true);
         }
         if(openL === false){
             //hidden처리 하기.
             setOpenO(true);
-            // setOpenL(true);
         }
     }
 
@@ -48,7 +44,6 @@ function User() {
     const [openO, setOpenO] = useState(true);
     const getOpenO = () => {
         setOpenO(!openO);
-        // if(open === false){
         if(open === false){
             setOpen(true);
         }
@@ -61,7 +56,6 @@ function User() {
     const [openL, setOpenL] = useState(true);
     const getOpenL = () => {
         setOpenL(!openL);
-        // if(open === false){
         if(open === false){
             setOpen(true);
         }
@@ -74,94 +68,196 @@ function User() {
     const [email, setEmail] = useState("");
     const getEmail = (e) => {
         setEmail(e.target.value);
-        console.log(email);
     };
+
+          //닉네임 사용 가능
+          const usenick = () => {
+            Swal.fire({
+              text:"사용가능한 닉네임입니다.",
+              icon: 'success',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
+    
+        //닉네임 중복
+        const samenick = () => {
+            Swal.fire({
+              text:"동일 닉네임이 존재합니다.",
+              icon: 'error',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
+    
+        //닉네임 빈값
+        const nicknull = () => {
+            Swal.fire({
+              text:"Nickname을 입력해주세요.",
+              icon: 'error',
+              confirmButtonColor: '#73E0C1',
+              confirmButtonText: '확인'
+            })
+        }
 
     //nickname -> 회사명 받아오기
     const [nickname, setId] = useState("");
     const getId = (e) => {
         setId(e.target.value);
-        console.log(nickname);
+    };
+
+    //닉네임 중복 체크
+    const [checknick, setChecknick] = useState(false);
+
+    const getChecknick = (e) => {
+        if (nickname === "") {
+            e.preventDefault();
+            nicknull();
+        } else {
+        axios
+            .get(
+            `https://j6a304.p.ssafy.io/api/members/nickname/${nickname}`,
+            {
+                n: nickname,
+            }
+            )
+            .then((res) => {
+                usenick();
+                setChecknick(true);
+            })
+            .catch((error) => {
+                if (error.code === 409) {
+                    samenick();
+                }
+                setId("");
+                });
+        }
     };
 
     //비밀번호 받아오기
     const [password, setPassword] = useState("");
     const getPassword = (e) => {
         setPassword(e.target.value);
-        console.log(password);
     };
 
     //담당자 번호
     const [phone, setPhone] = useState("");
     const getPhone = (e) => {
         setPhone(e.target.value);
-        console.log(phone);
     };
 
+    //계좌 비밀번호
+    const [walletpw, setWalletpw] = useState("");
+    const [userAccount, setUserAccount] = useState("");
+    const getWalletpw = (e) => {
+      setWalletpw(e.target.value);
+    };
+    const createWallet = async () => {
+      let userAccount = await web3.eth.personal.newAccount(walletpw);
+      return userAccount;
+      // setState는 비동기처리이기 때문에 바로 console에 변한 값이 출력되지 않음
+    };
+    //입력만 받아서 onchange에만 -> 유저가 관리, 서비스측에서 저장안함. 
+    //스마트컨트랙트에 전송해서, 블록체인 계정 만들고, 나중에 유저가 투표할때 기본적으로 생성된 계정이 잠겨있는데,
+    //그때 일시적으로 풀때 필요함. 그떄 동일 값 넣어야 계정이 일시적으로 열리면서 투표 진행, 진행 후 다시 잠김.
+    //주의사항 명시 계좌 비밀번호는 사이트에서 관리하지않습니다 잊어버리는경우 알수없으니 보관시 주의 바랍니다.
+
+     //계좌 비밀번호 툴팁용
+     const [openW, setOpenW] = React.useState(false);
+
+     const handleTooltipClose = () => {
+         setOpenW(false);
+     };
+ 
+     //계좌 툴팁
+     const handleTooltipOpen = () => {
+         setOpenW(true);
+     };
+ 
+     const HtmlTooltip = styled(({ className, ...props }) => (
+         <Tooltip {...props} classes={{ popper: className }} />
+     ))(({ theme }) => ({
+         [`& .${tooltipClasses.tooltip}`]: {
+         backgroundColor: "#ffe6f1",
+         color: "rgba(51, 51, 51, 0.87)",
+         maxWidth: 300,
+         fontSize: theme.typography.pxToRem(14),
+         border: "1px solid #dadde9",
+         fontFamily: 'GangwonEdu_OTFBoldA',
+         }
+     }));
+
+    //alert 창_회원가입 
+    const joinSuccess = () => {
+        Swal.fire({
+          title: "회원가입 성공!!",
+          text: "POLLING에 오신 것을 환영합니다!",
+          icon: "success",
+          confirmButtonColor: "#73E0C1",
+          confirmButtonText: "확인",
+        })
+    };
+    
+    const joinFail = () => {
+        Swal.fire({
+          title:"회원가입 실패!",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
+
+    //빈칸확인
+    const inputnull = () => {
+        Swal.fire({
+          text:"닉네임/이메일/비밀번호/휴대폰번호/계좌 비밀번호를 입력하세요.",
+          icon: 'error',
+          confirmButtonColor: '#73E0C1',
+          confirmButtonText: '확인'
+        })
+    }
 
     //페이지 이동
     const navigate = useNavigate();
 
     // 회원가입하기
-    const onLogin = (e) => {
-        if(nickname ===" " || email === " " || password === " " || phone === " "){
+    const onLogin = async (e) => {
+        if(nickname ===" " || email === " " || password === " " || phone === " " || walletpw === " "){
             e.preventDefault();
-            alert("닉네임/이메일/비밀번호를 입력하세요.")
+            inputnull();
         } 
-        else if(nickname !== " " && email !== " " && password !== " " ){
+        else if(nickname !== " " && email !== " " && password !== " " && walletpw !== " " ){
+            const wallet = await createWallet();
+
             axios
             .post(
-                // "http://j6a304.p.ssafy.io:8080/api/members",
-                "http://j6a304.p.ssafy.io/api/members",
+                "/api/members",
+                // "http://j6a304.p.ssafy.io/api/members",
                 {
                     email: email,
                     nickname: nickname,
                     password: password,
                     phoneNumber: phone,
+                    wallet: wallet,
                     role: "ROLE_COMPANY"
                 },
             )
             .then((res) => {
-                console.log("res", res);
-                alert("회원가입 성공!")
-                // navigate("/login");
+                setId("");
+                setEmail("");
+                setPassword("");
+                setPhone("");
+                setChecknick(false);
+                joinSuccess();
             })
             .catch(error => {
                 const message = error.message;
-                console.log("message", message);
-                alert("회원가입 실패");
-                // setSubmitError(message);
-                // setTimeout(() => {
-                //   setSubmitError(null);
-                // }, 3000);
+                joinFail();
               });
         }
     };
 
-    //   //유저목록 받기
-    // const [rows, setRows] = useState([]);
 
-
-    // //회원리스트 뽑기
-    // React.useEffect(() => {
-    //     axios
-    //     .get(
-    //       "https://j6a304.p.ssafy.io/api/members",
-    //       {
-    //         headers: {
-    //           "Authorization":token,
-    //         },
-    //       }
-    //     )
-    //     .then((res) => {
-    //       console.log("data",res.data);
-    //       setRows(res.data);
-    //     })
-    //     .catch(error => {
-    //       console.log("res,userlist",error.response);
-    //       console.log("error,userlist",error);
-    //     })
-    //   },[])
 
     return (
         <div style={{height:'100vh'}}>
@@ -183,9 +279,25 @@ function User() {
                     <div className={Styles.login}>
                         <div> 
                             <input type={"text"} placeholder=" Business_name " className={Styles.id} onChange={getId} name="nickname" maxLength="12"/>
+                            <button className={Styles.nicknameCheck} onClick={getChecknick} disabled={checknick === true}>
+                                중복확인
+                            </button>
                             <input type={"email"} placeholder=" email" className={Styles.email} onChange={getEmail} name="email"/>
                             <input type={"password"} placeholder=" Password" className={Styles.password} onChange={getPassword} name="password" maxLength="13"/>
                             <input type={"text"} placeholder=" PhoneNumber(01012345678) " className={Styles.phone} onChange={getPhone} name="phone"/>
+                            <input type={"password"} placeholder=" Wallet Password " className={Styles.walletpassword} onChange={getWalletpw} name="walletpassword"/>
+                            <HtmlTooltip
+                                title={
+                                    <React.Fragment>
+                                        <Typography color="#f12b5c" fontWeight="800" fontFamily="GangwonEdu_OTFBoldA">주의</Typography>
+                                        <b>{"계좌 비밀번호는 사이트에서 관리하지 않습니다."}</b> <br/> 
+                                        {"잊어버리는 경우, 알 수 없으니 보관시 주의 바랍니다."}
+                                    </React.Fragment>
+                                }
+                                placement="top"
+                            >
+                                <img className={Styles.walletimg} onClick={handleTooltipOpen} src="https://img.icons8.com/stickers/30/000000/high-importance.png"/>
+                            </HtmlTooltip>
                             <button className={Styles.signinbtn} onClick={onLogin}>Create</button>
                         </div>
                     </div>
@@ -194,7 +306,6 @@ function User() {
                 <div hidden={openO}>
                     {/* 회원리스트 주루륵 */}
 
-                    {/* <UserSearch2 id={rows.id} nickname={rows.nickname} email={rows.email} /> */}
                     <UserSearch2 />
                 </div>
                 

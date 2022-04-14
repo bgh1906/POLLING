@@ -18,10 +18,6 @@ import dayjs from "dayjs";
 import axios from "axios";
 
 
-
-
-
-
 function UpdatePoll() {
     const [pollImage, setpollImage] = useState("");
     const [pollName, setpollName] = useState("");
@@ -32,7 +28,6 @@ function UpdatePoll() {
 
     const params = useParams();
 
-    // const token = useSelector((state)=>(state[0].token));
     const token = sessionStorage.getItem("token")
 
     const navigate = useNavigate();
@@ -61,8 +56,6 @@ function UpdatePoll() {
         }
         )
             .then((res) => {
-                console.log("성공!");
-                console.log(res);
                 setpollName(res.data.title)
                 setpollImage(res.data.thumbnail)
                 setpollStart(res.data.startDate)
@@ -72,7 +65,6 @@ function UpdatePoll() {
                 setpollRealtime(res.data.openStatus)
             })
             .catch(error => {
-                console.log(error.response)
             });  
     },[])
 
@@ -85,9 +77,7 @@ function UpdatePoll() {
     
     const onEdit=(nominee)=>{
         setCurrent(nominee)    
-        console.log(current)
         setIsEdit(true) 
-        console.log(nomiList)
     }
 
     const onUpdate=(nominee)=>{
@@ -103,7 +93,6 @@ function UpdatePoll() {
         form.id = no.current++;
         setnomiList((nomiList)=> nomiList.concat(form));
         addCandi(form)
-        console.log("추가")
     }
 
     
@@ -117,12 +106,10 @@ function UpdatePoll() {
     function changePollStart(e) {
         const startdate = dayjs(e).format("YYYY-MM-DD HH:mm")
         setpollStart(String(startdate));
-        // console.log(String(startdate))
     }
     function changePollEnd(e) {
         const enddate = dayjs(e).format("YYYY-MM-DD HH:mm")
         setpollEnd(String(enddate));
-        // console.log(enddate)
         
     }
     function changepollDescribe(e) {
@@ -139,7 +126,6 @@ function UpdatePoll() {
 
     function updatePolldata(){
         
-        // console.log(pollInfo)
         
         axios.put(
             `https://j6a304.p.ssafy.io/api/polls/admin/${params.pollnum}`,
@@ -169,7 +155,6 @@ function UpdatePoll() {
             navigate("/admin");
         })
         .catch(error => {
-            console.log(error.response)
         });  
 
     }
@@ -193,7 +178,6 @@ function UpdatePoll() {
             navigate("/admin");
         })
         .catch(error => {
-            console.log(error.response)
         });
     }
 
@@ -218,10 +202,8 @@ function UpdatePoll() {
             }
         )
         .then((res) =>{
-            console.log("후보자 정보 수정 성공!!")
         })
         .catch(error => {
-            console.log(error.response)
         });  
 
     }
@@ -236,11 +218,9 @@ function UpdatePoll() {
             }
         )
         .then(() =>{
-            console.log("delete 성공!!")
             onDel(id)
         })
         .catch(error => {
-            console.log(error.response)
         });
     }
 
@@ -265,10 +245,8 @@ function UpdatePoll() {
                 } 
             })
             .then(() =>{
-                console.log("후보자 추가 성공!!")
             })
             .catch(error => {
-                console.log(error.response)
             });
         
     }

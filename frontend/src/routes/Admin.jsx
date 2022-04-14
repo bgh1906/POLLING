@@ -14,56 +14,51 @@ function Admin() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+ 
   const navigate = useNavigate();
   const [polldata, setPolldata] = useState([]);
   const [polldata2, setPolldata2] = useState([]);
   const [polldata3, setPolldata3] = useState([]);
   const [polldata4, setPolldata4] = useState([]);
   const [rendernumber, setRendernumber] = useState(0);
-  // const token = useSelector((state)=>(state[0].token));
   const token = sessionStorage.getItem("token");
-  //   const [candIdx, setCandIdx] = useState([]);
+  const wallet = sessionStorage.getItem("wallet");
+      
   useEffect(() => {
-    // console.log(ENDPOINT)
 
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/unapproved/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/wait/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata2(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
 
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/progress/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata3(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
 
     axios
       .get("https://j6a304.p.ssafy.io/api/polls/done/0/50")
       .then((res) => {
-        // console.log(res);
         setPolldata4(res.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   }, [rendernumber]);
 
@@ -78,15 +73,15 @@ function Admin() {
       }
     );
     const nomineeNum = res.data.candidates.length;
-    console.log("등록할 후보 수는 :", nomineeNum);
+    // "등록할 후보 수는 :", nomineeNum;
     await registerBlock(nomineeNum);
-    const Index = await getStartIndexBlock();
-    console.log("시작 Index값은 :", Index);
+    const Index = await getStartIndexBlock(wallet);
+    // 시작 Index값은 :", Index
     let candIdx = [];
     for (let i = parseInt(Index); i < parseInt(Index) + nomineeNum; i++) {
       candIdx.push(i);
     }
-    console.log("서버에 넘겨줄 후보자 인덱스 리스트 :", candIdx);
+    // 서버에 넘겨줄 후보자 인덱스 리스트 :", candIdx
     axios
       .patch(
         `https://j6a304.p.ssafy.io/api/polls/admin/wait`,
@@ -124,7 +119,6 @@ function Admin() {
       )
       .then(() => {
         setRendernumber(rendernumber + 1);
-        console.log("투표 옵션 변경!");
       });
   }
 

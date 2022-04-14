@@ -15,14 +15,11 @@ import { Button } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
 
 export default function VotePaper({cand}) {
-  console.log(cand);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [picked, setPicked] = useState(false);
-  // useEffect(() => console.log("클릭후", picked));
   const voteToCand = () => {
-    // console.log("클릭전", picked);
     setPicked((prev) => !prev);
   };
 

@@ -4,30 +4,8 @@ import Styles from "./Userqnalist.module.css";
 
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
-import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import Userqnacontent from './Userqnacontent';
 import axios from 'axios';
-  
-// function CreateData(name, calories, fat) {
-//     return { name, calories, fat };
-//   }
-
-//   const rows = [
-//     createData('사랑해요신짱아', 'shinjja@naver.com', 3.7),
-//     createData('오마이걸짱', 'loveomg@omg.com', 25.0),
-//     createData('아이유아니유', 'iuau@iuana.com', 16.0),
-//     createData('갓구아짱', 'guajjang@gua', 6.0),
-//     createData('이부장님', 'bujanglee@ssafy.com', 16.0),
-//     createData('서대리', 'whydearee@ssafy.com', 3.2),
-//     createData('배수지환', 'BsuzyH@ssafy.com', 9.0),
-//     createData('저스트 비버', 'fakebieber@singer.com', 0.0),
-//     createData('능력주헌', 'superjung@ssafy', 26.0),
-//     createData('승진원츄', 'teamkim@ssafy.com', 0.2),
-//     createData('Marshmallow', 318, 0),
-//     createData('Nougat', 360, 19.0),
-//     createData('Oreo', 437, 18.0),
-//   ];
-  // ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
   
   //표 css
   const Root = styled('div')`
@@ -109,47 +87,19 @@ function Userqnalist () {
 
     //list 저장할 배열
     const [rows , setRows] = useState([]);
-    // const getrows =() =>  {
-    //     axios
-    //       .get("http://j6a304.p.ssafy.io//api/contact/admin",
-    //         {
-    //             headers:{
-    //                 refreshToken: token,
-    //             },
-    //     })
-    //     .then((res) => {
-    //         console.log("res", res);
-    //         console.log("데이터", res.data);
-    //         setRows(res.data);
-    //         console.log(rows);
-    //     })
-    //     .catch(error => {
-    //         console.log("error", error);
-    //         console.log("목록 출력 실패");
-    //     })
-
-    // }
 
     useEffect (() => {
-        // getrows();
         axios
-        //   .get("http://j6a304.p.ssafy.io/api/contact/admin",
-          .get("/api/contact/admin",
+          .get("/api/contact/admin/0/50",
             {
                 headers:{
-                    // refreshToken: token,
                     "Authorization": token,
                 },
         })
         .then((res) => {
-            console.log("res", res);
-            console.log("데이터", res.data);
             setRows(res.data);
-            console.log(rows);
         })
         .catch(error => {
-            console.log("error,qnalist \n", error);
-            console.log("목록 출력 실패 - qnalist");
         })
     }, [])
 
@@ -204,7 +154,7 @@ function Userqnalist () {
                             : rows
                             ).map((row, index) => (
                                 <tr key={index}>
-                                    <td style={{ width: '6vw' }} >{row.contactType}</td>
+                                    <td style={{ width: '6vw' }} >{index.contactType.slice(8, 14)} </td>
                                     <td style={{ width: '10vw' }} align="right">
                                     {row.id}
                                     </td>
@@ -215,7 +165,6 @@ function Userqnalist () {
                                     {row.title}
                                     </td>
                                     <td style={{ width: '6vw' }} align="right">
-                                        {/* <button className={Styles.button}> </button> */}
                                         <Userqnacontent content={row.content} title={row.title}/>
                                     </td>
                                 </tr>

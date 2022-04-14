@@ -25,7 +25,6 @@
 
 /* Bitter */
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
-/* font-family: 'Bitter', serif; */
 
 
 
@@ -150,7 +149,6 @@
 
 #list_img {
     width: 70%;
-    /* border:5px solid #ffcbcb; */
     margin: auto;
     margin-bottom: 2.5vh;
     

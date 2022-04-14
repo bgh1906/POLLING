@@ -29,10 +29,12 @@ MemberService {
   @Transactional
   public void join(SaveNativeMemberRequestDto requestDto) {
     checkDuplicateMemberEmail(requestDto.getEmail());
+    checkDuplicateMemberPhone(requestDto.getPhoneNumber());
     Member member = requestDto.toEntity();
     member.changePassword(passwordEncoder.encode(member.getPassword()));
     memberRepository.save(requestDto.toEntity());
   }
+
 
   public FindMemberResponseDto findMember(Long memberId) {
     Member member = getMember(memberId);
@@ -61,6 +63,14 @@ MemberService {
     member.addRole(MemberRole.ROLE_ADMIN);
   }
 
+  @Trace
+  @Transactional
+  public void delete(Long memberId){
+    Member member = getMember(memberId);
+    member.deleteRole();
+    memberRepository.delete(member);
+  }
+
   private void checkDuplicateMemberEmail(String email) {
     if (memberRepository.existsByEmail(email)) {
       throw new CustomException(CustomErrorResult.DUPLICATE_EMAIL);
@@ -73,9 +83,14 @@ MemberService {
     }
   }
 
+  private void checkDuplicateMemberPhone(String phoneNumber) {
+    if (memberRepository.existsByPhoneNumber(phoneNumber)) {
+      throw new CustomException(CustomErrorResult.DUPLICATE_PHONE_NUMBER);
+    }
+  }
+
   private Member getMember(Long memberId) {
     return memberRepository.findById(memberId)
         .orElseThrow(() -> new CustomException(CustomErrorResult.USER_NOT_FOUND));
   }
-
 }

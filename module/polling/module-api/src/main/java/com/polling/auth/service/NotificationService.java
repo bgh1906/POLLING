@@ -72,12 +72,12 @@ public class NotificationService {
     headers.set("x-ncp-apigw-signature-v2", sig);
     HttpEntity<String> body = new HttpEntity<>(jsonBody, headers);
 
-    RestTemplate restTemplate = new RestTemplate();
-    restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-    /* 실제 요청 날리는 부분 주석 처리 */
-//        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
-    return randomCode;
-  }
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        /* 실제 요청 날리는 부분 주석 처리 */
+        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
+        return randomCode;
+    }
 
   private String makeSignature(Long time)
       throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {

@@ -27,29 +27,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,900&display=swap');
 /* font-family: 'Bitter', serif; */
 
-
-
-
-
-
 .container {
     position: relative;
     margin: 8vw 10vw;
-    /* border-style: double; */
 }
 
 
 #profile_image {
     position: relative;
-    /* width: 30vw; */
     width: 30vw;
-    /* max-height: 35vw; */
     height: 30vw;
     left: 35vw;
     border-radius: 10px;
     border-style: double;
     border-width: 0.4vw;
-    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
 }
 
 #name {
@@ -65,7 +56,6 @@
 #profile {
     position: absolute;
     width: 22vw;
-    /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
     font-size: 1.3vw;
     left: 11vw;
@@ -98,7 +88,6 @@
 
 
 #poll_button {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -134,7 +123,6 @@
 }
 
 #con_button {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -151,7 +139,6 @@
 }
 
 #back_button {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 10vw;
     height: 5vh;
@@ -195,20 +182,17 @@
 }
 
 #photo1 {
-    /* width: 8vw; */
     height: 6vw;
     margin: 1vh 1vw;
     cursor: pointer; 
 }
 
 #photo2 {
-    /* width: 8vw; */
     height: 6vw;
     margin: 1vh 1vw;
     cursor: pointer; 
 }
 #photo3 {
-    /* width: 8vw; */
     height: 6vw;
     margin: 1vh 1vw;
     cursor: pointer; 
@@ -227,7 +211,7 @@
     position: absolute;
     font-family: 'ROKAFSansBold';
     font-size: 9vw;
-    left: 46vw;
+    left: 47vw;
     top: 5vh;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     z-index: 5;
@@ -248,8 +232,6 @@
 #profile2 {
     position: absolute;
     width: 30vw;
-    /* height: 10vh; */
-    /* font-family: 'ROKAFSansBold'; */
     font-family: 'ROKAFSansMedium';
     font-size: 1.4vw;
     left: 47vw;
@@ -282,7 +264,6 @@
 
 
 #poll_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -314,7 +295,6 @@
 }
 
 #con_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 15vw;
     height: 5vh;
@@ -331,7 +311,6 @@
 }
 
 #back_button2 {
-    /* margin-top: 1.5vh; */
     position: absolute;
     width: 10vw;
     height: 5vh;
@@ -398,7 +377,6 @@
 }
 
 #poll_paper{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 15vh;
@@ -410,7 +388,6 @@
 }
 
 #poll_paper2{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     background-color: white;
@@ -462,7 +439,6 @@
     font-family: 'ROKAFSansMedium';
     font-size: 1vw;
     margin: auto;
-    margin-top: 5vh;
     text-align: center;
     background-color: black;
 }
@@ -526,7 +502,6 @@
 /* 트랜잭션 모달 */
 
 #tran_box{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 23vh;
@@ -538,7 +513,6 @@
 }
 
 #behind_box{
-    /* position: absolute; */
     position: relative;
     margin: auto;
     top: 26vh;
@@ -552,8 +526,6 @@
 #behind_mark{
     position: absolute;
     width: 3vw;
-    /* right: -0.2vw; */
-    /* bottom: 0; */
     margin: 0.3vw;
 }
 
@@ -561,9 +533,15 @@
     position: relative;
     text-align: center;
     font-family: 'ROKAFSansMedium';
-    /* font-family: 'GangwonEdu_OTFBoldA'; */
     font-size: 1.9vw;
     top: 6vh;
+}
+
+#tokenimg{
+    position: absolute;
+    width: 2.2vw;
+    left: 3vw;
+    margin: 0.25vw;
 }
 
 #behind_btn{
@@ -576,7 +554,7 @@
     cursor: pointer; 
     color: black;
     padding-top: 1vh;
-    bottom: 7vh;
+    bottom: 3vh;
     left: 6vw;
 }
 
@@ -590,7 +568,7 @@
     cursor: pointer; 
     color: black;
     padding-top: 1vh;
-    bottom: 7vh;
+    bottom: 3vh;
     right: 6vw;
 }
 
@@ -613,10 +591,9 @@
 }
     
 #wallet_box{
-    position: absolute;
+    position: relative;
     text-align: center;
     width: 8.8vw;
-    bottom: 12vh;
     left: 6.9vw;
 }
 
@@ -624,5 +601,15 @@
     font-family: 'ROKAFSansBold';
     margin: auto;
     text-align: center;
+}
+    
+.img_password{
+    width: 15vw;
+    left: 7vw;
+    top: 5vh;
+    font-family: 'ROKAFSansBold';
+    margin: auto;
+    text-align: center;
+    font-size: 2vw;
 }
     
