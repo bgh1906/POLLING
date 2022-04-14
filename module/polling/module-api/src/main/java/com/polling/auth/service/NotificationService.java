@@ -5,6 +5,7 @@ import com.polling.grpc.client.dto.request.SendSMSApiRequestDto;
 import com.polling.grpc.client.dto.request.SendSMSRequestDto;
 import com.polling.member.dto.response.SMSCodeResponseDto;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
