@@ -36,7 +36,7 @@ function User() {
         }
         if(openL === false){
             //hidden처리 하기.
-            setOpenL(true);
+            getOpenL(true);
         }
     }
 
