@@ -38,7 +38,7 @@ public class CandidateGallery extends BaseTimeEntity {
     this.imagePath = imagePath;
   }
 
-  public static CandidateGallery createImage(String imagePath){
+  public static CandidateGallery createImage(String imagePath) {
     return CandidateGallery.builder()
         .imagePath(imagePath)
         .build();

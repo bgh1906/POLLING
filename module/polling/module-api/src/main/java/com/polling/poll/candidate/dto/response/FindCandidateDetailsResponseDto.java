@@ -2,8 +2,6 @@ package com.polling.poll.candidate.dto.response;
 
 
 import com.polling.poll.candidate.entity.Candidate;
-import com.polling.poll.comment.dto.response.FindCommentResponseDto;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

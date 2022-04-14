@@ -17,8 +17,6 @@ import com.polling.member.repository.MemberRepository;
 import com.polling.poll.candidate.dto.request.ModifyCandidateRequestDto;
 import com.polling.poll.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.candidate.entity.Candidate;
-import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
-import com.polling.poll.candidate.repository.CandidateHistoryRepository;
 import com.polling.poll.candidate.repository.CandidateQueryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
 import com.polling.poll.poll.entity.Poll;
@@ -43,10 +41,6 @@ public class CandidateServiceTest {
   private CandidateQueryRepository candidateQueryRepository;
   @Mock
   private MemberRepository memberRepository;
-  @Mock
-  private CandidateHistoryQueryRepository queryRepository;
-  @Mock
-  private CandidateHistoryRepository candidateHistoryRepository;
 
 
   @Test
@@ -120,7 +114,7 @@ public class CandidateServiceTest {
     doReturn(Optional.of(Candidate.builder()
         .poll(Poll.builder().build())
         .build())).when(candidateRepository).findById(1L);
-    doReturn(true).when(queryRepository)
+    doReturn(true).when(candidateQueryRepository)
         .existsByMemberIdAndPollIdInToday(nullable(Long.class), nullable(Long.class),
             any(LocalDateTime.class));
 
@@ -146,7 +140,7 @@ public class CandidateServiceTest {
     doReturn(Optional.of(Candidate.builder()
         .poll(Poll.builder().build())
         .build())).when(candidateRepository).findById(candidateId);
-    doReturn(false).when(queryRepository)
+    doReturn(false).when(candidateQueryRepository)
         .existsByMemberIdAndPollIdInToday(nullable(Long.class), nullable(Long.class),
             any(LocalDateTime.class));
 
@@ -156,7 +150,7 @@ public class CandidateServiceTest {
     //then
     verify(memberRepository, times(1)).findById(memberId);
     verify(candidateRepository, times(1)).findById(candidateId);
-    verify(queryRepository, times(1))
+    verify(candidateQueryRepository, times(1))
         .existsByMemberIdAndPollIdInToday(nullable(Long.class), nullable(Long.class),
             any(LocalDateTime.class));
   }

@@ -40,7 +40,7 @@ public class CandidateQueryRepositoryTest {
     pollRepository.save(savedPoll);
 
     //when
-    List<Candidate> candidates = candidateQueryRepository.findAllByPollId(savedPoll.getId());
+    List<Candidate> candidates = savedPoll.getCandidates();
 
     //then
     assertThat(candidates.size()).isEqualTo(2);
@@ -53,13 +53,16 @@ public class CandidateQueryRepositoryTest {
   @Test
   public void 후보자삭제_단일() throws Exception {
     //given
-    Long id = candidateRepository.save(createCandidate(1)).getId();
+    Poll savedPoll = pollRepository.save(Poll.builder().build());
+    savedPoll.addCandidate(createCandidate(1));
     em.flush();
     em.clear();
 
+    System.out.println(savedPoll.getCandidates().get(0).getId());
+
     //when
-    candidateQueryRepository.deleteGalleryById(id);
-    candidateRepository.deleteById(id);
+    candidateQueryRepository.deleteGalleryById(savedPoll.getCandidates().get(0).getId());
+    candidateRepository.deleteById(savedPoll.getCandidates().get(0).getId());
 
     //then
     assertThat(candidateRepository.count()).isEqualTo(0);

@@ -6,7 +6,6 @@ import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
 import com.polling.poll.candidate.entity.Candidate;
 import com.polling.poll.candidate.entity.CandidateGallery;
-import com.polling.poll.candidate.repository.CandidateGalleryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
 import com.polling.token.dto.request.SaveTokenUsageHistoryRequestDto;
 import com.polling.token.entity.TokenUsageHistory;
@@ -23,14 +22,11 @@ public class TokenService {
   private final TokenUsageHistoryRepository tokenUsageHistoryRepository;
   private final MemberRepository memberRepository;
   private final CandidateRepository candidateRepository;
-  private final CandidateGalleryRepository candidateGalleryRepository;
 
   public void saveMemberTokenUsageToCandidate(SaveTokenUsageHistoryRequestDto requestDto,
       Long memberId) {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(requestDto.getCandidateId());
-//    CandidateGallery gallery = candidateGalleryRepository.findById(
-//        requestDto.getCandidateGalleryId()).orElseThrow(IllegalStateException::new);
 
     // simple API
     CandidateGallery gallery = candidate.getGalleries().get(2);

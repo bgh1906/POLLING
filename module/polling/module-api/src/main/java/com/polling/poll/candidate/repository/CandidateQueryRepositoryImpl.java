@@ -1,14 +1,16 @@
 package com.polling.poll.candidate.repository;
 
 
+import static com.polling.member.entity.QMember.member;
 import static com.polling.poll.candidate.entity.QCandidate.candidate;
 import static com.polling.poll.candidate.entity.QCandidateGallery.candidateGallery;
+import static com.polling.poll.candidate.entity.QCandidateHistory.candidateHistory;
 
-import com.polling.poll.candidate.dto.response.FindAnonymousCandidateResponseDto;
-import com.polling.poll.candidate.entity.Candidate;
+import com.polling.poll.candidate.dto.response.FindCandidateHistoryResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,25 +24,33 @@ public class CandidateQueryRepositoryImpl implements CandidateQueryRepository {
   private final JPAQueryFactory query;
 
   @Override
-  public List<FindAnonymousCandidateResponseDto> findAllSimpleByPollId(Long pollId) {
-    return query
-        .select((Projections.constructor(FindAnonymousCandidateResponseDto.class,
-            candidate.id,
-            candidate.contractIndex,
-            candidate.name,
-            candidate.thumbnail)))
-        .from(candidate)
-        .where(candidate.poll.id.eq(pollId))
+  public List<FindCandidateHistoryResponseDto> findHistoryById(Long candidateId, int offset,
+      int limit) {
+    return query.select(Projections.constructor(FindCandidateHistoryResponseDto.class,
+            candidateHistory.member.nickname,
+            candidateHistory.voteCount,
+            candidateHistory.transactionId))
+        .from(candidateHistory)
+        .where(candidateHistory.candidate.id.eq(candidateId))
+        .offset(offset)
+        .limit(limit)
+        .orderBy(candidateHistory.createdDate.desc())
         .fetch();
   }
 
   @Override
-  public List<Candidate> findAllByPollId(Long pollId) {
+  public Boolean existsByMemberIdAndPollIdInToday(Long memberId, Long pollId,
+      LocalDateTime today) {
     return query
-        .select(candidate)
-        .from(candidate)
-        .where(candidate.poll.id.eq(pollId))
-        .fetch();
+        .selectOne()
+        .from(candidateHistory)
+        .innerJoin(candidateHistory.member, member)
+        .innerJoin(candidateHistory.candidate, candidate)
+        .where(candidateHistory.member.id.eq(memberId),
+            candidateHistory.candidate.poll.id.eq(pollId),
+            candidateHistory.createdDate.after(today),
+            candidateHistory.createdDate.before(today.plusDays(1)))
+        .fetchFirst() != null;
   }
 
   @Override
