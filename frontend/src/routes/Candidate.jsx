@@ -487,11 +487,11 @@ function Candidate({ state }) {
           ) : null}
         </div>
 
-        <Comment
+        {/* <Comment
           candiId={params.id}
           data={commentdata}
           renderCheck={renderCheck}
-        ></Comment>
+        ></Comment> */}
         <Button id={styles.list_button} onClick={gotoList} variant="contained">
           리스트로 돌아가기
         </Button>
