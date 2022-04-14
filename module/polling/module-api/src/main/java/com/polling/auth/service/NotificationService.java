@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.polling.grpc.client.dto.request.SendSMSApiRequestDto;
 import com.polling.grpc.client.dto.request.SendSMSRequestDto;
 import com.polling.member.dto.response.SMSCodeResponseDto;
+import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -75,7 +76,7 @@ public class NotificationService {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         /* 실제 요청 날리는 부분 주석 처리 */
-//        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
+        restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/"+this.serviceId+"/messages"), body, SendSMSApiRequestDto.class);
         return randomCode;
     }
 
