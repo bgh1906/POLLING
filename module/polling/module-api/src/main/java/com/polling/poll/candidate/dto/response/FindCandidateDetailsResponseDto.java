@@ -2,8 +2,6 @@ package com.polling.poll.candidate.dto.response;
 
 
 import com.polling.poll.candidate.entity.Candidate;
-import com.polling.poll.comment.dto.response.FindCommentResponseDto;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +21,8 @@ public class FindCandidateDetailsResponseDto {
   private String imagePath1;
   private String imagePath2;
   private String imagePath3;
-  private List<FindCommentResponseDto> comments;
 
-  public static FindCandidateDetailsResponseDto of(Candidate candidate,
-      List<FindCommentResponseDto> comments) {
+  public static FindCandidateDetailsResponseDto of(Candidate candidate) {
     return new FindCandidateDetailsResponseDto(
         candidate.getContractIndex(),
         candidate.getName(),
@@ -34,7 +30,6 @@ public class FindCandidateDetailsResponseDto {
         candidate.getThumbnail(),
         candidate.getGalleries().get(0).getImagePath(),
         candidate.getGalleries().get(1).getImagePath(),
-        candidate.getGalleries().get(2).getImagePath(),
-        comments);
+        candidate.getGalleries().get(2).getImagePath());
   }
 }

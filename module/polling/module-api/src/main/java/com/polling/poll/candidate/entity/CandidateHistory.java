@@ -35,16 +35,30 @@ public class CandidateHistory extends BaseTimeEntity {
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;
 
-  private Integer voteCount;
+  private int voteCount;
 
   private String transactionId;
 
   @Builder
-  public CandidateHistory(Member member, Candidate candidate, Integer voteCount,
+  public CandidateHistory(Member member, Candidate candidate, int voteCount,
       String transactionId) {
     this.member = member;
     this.candidate = candidate;
     this.voteCount = voteCount;
     this.transactionId = transactionId;
+  }
+
+  public static CandidateHistory createCandidateHistory(Member member, Candidate candidate,
+      int voteCount, String transactionId) {
+    return CandidateHistory.builder()
+        .member(member)
+        .candidate(candidate)
+        .voteCount(voteCount)
+        .transactionId(transactionId)
+        .build();
+  }
+
+  public void changeCandidate(Candidate candidate) {
+    this.candidate = candidate;
   }
 }

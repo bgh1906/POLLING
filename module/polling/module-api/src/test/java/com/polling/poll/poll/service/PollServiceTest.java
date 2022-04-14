@@ -131,12 +131,10 @@ public class PollServiceTest {
 
     //when
     doReturn(Optional.of(poll)).when(pollRepository).findById(anyLong());
-    doReturn(candidates).when(candidateQueryRepository).findAllByPollId(anyLong());
     target.findPollAllInfo(1L);
 
     //then
     verify(pollRepository, times(1)).findById(anyLong());
-    verify(candidateQueryRepository, times(1)).findAllByPollId(1L);
   }
 
   @Test
@@ -150,7 +148,6 @@ public class PollServiceTest {
 
     //then
     verify(pollRepository, times(1)).findById(anyLong());
-    verify(candidateQueryRepository, times(1)).findAllSimpleByPollId(1L);
   }
 
   private Candidate createCandidate(String name) {

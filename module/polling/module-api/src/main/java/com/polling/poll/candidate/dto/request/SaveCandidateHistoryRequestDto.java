@@ -1,4 +1,4 @@
-package com.polling.poll.poll.dto.request;
+package com.polling.poll.candidate.dto.request;
 
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

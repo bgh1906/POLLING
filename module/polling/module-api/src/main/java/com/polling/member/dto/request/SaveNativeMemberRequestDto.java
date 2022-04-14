@@ -3,13 +3,9 @@ package com.polling.member.dto.request;
 import com.polling.member.entity.Member;
 import com.polling.member.entity.status.MemberRole;
 import javax.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Native 회원 가입 요청 DTO
@@ -17,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Getter
 @NoArgsConstructor
 public class SaveNativeMemberRequestDto {
+
   @NotNull
   private String nickname;
   @NotNull

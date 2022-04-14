@@ -36,13 +36,6 @@ public class SavePollRequestDto {
   LocalDateTime endDate;
 
   public Poll toPollEntity() {
-    return Poll.builder()
-        .title(title)
-        .content(content)
-        .thumbnail(thumbnail)
-        .openStatus(openStatus)
-        .startDate(startDate)
-        .endDate(endDate)
-        .build();
+    return Poll.createPoll(title, content, thumbnail, openStatus, startDate, endDate);
   }
 }

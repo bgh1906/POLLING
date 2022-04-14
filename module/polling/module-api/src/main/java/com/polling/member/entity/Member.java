@@ -31,10 +31,6 @@ public class Member extends BaseTimeEntity {
   @Column(name = "member_id")
   private Long id;
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @Enumerated(EnumType.STRING)
-  private final Set<MemberRole> memberRole = new HashSet<>();
-
   private String wallet;
 
   private String nickname;
@@ -49,6 +45,10 @@ public class Member extends BaseTimeEntity {
 
   @Enumerated(EnumType.STRING)
   private OAuthType oauthType;
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Enumerated(EnumType.STRING)
+  private final Set<MemberRole> memberRole = new HashSet<>();
 
   @Builder
   public Member(String nickname, String wallet, String email, String password, String phoneNumber,

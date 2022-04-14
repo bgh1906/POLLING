@@ -8,20 +8,15 @@ import com.polling.exception.CustomException;
 import com.polling.member.entity.Member;
 import com.polling.member.repository.MemberRepository;
 import com.polling.poll.candidate.dto.request.ModifyCandidateRequestDto;
+import com.polling.poll.candidate.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.candidate.dto.response.FindCandidateDetailsResponseDto;
 import com.polling.poll.candidate.entity.Candidate;
 import com.polling.poll.candidate.entity.CandidateGallery;
 import com.polling.poll.candidate.entity.CandidateHistory;
-import com.polling.poll.candidate.repository.CandidateHistoryQueryRepository;
-import com.polling.poll.candidate.repository.CandidateHistoryRepository;
 import com.polling.poll.candidate.repository.CandidateQueryRepository;
 import com.polling.poll.candidate.repository.CandidateRepository;
-import com.polling.poll.comment.dto.response.FindCommentResponseDto;
-import com.polling.poll.comment.repository.CommentQueryRepository;
-import com.polling.poll.poll.dto.request.SaveCandidateHistoryRequestDto;
 import com.polling.poll.poll.entity.status.PollStatus;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,18 +27,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class CandidateService {
 
   private final CandidateRepository candidateRepository;
-  private final CommentQueryRepository commentQueryRepository;
-  private final CandidateHistoryQueryRepository candidateHistoryQueryRepository;
-  private final CandidateHistoryRepository candidateHistoryRepository;
   private final CandidateQueryRepository candidateQueryRepository;
   private final MemberRepository memberRepository;
 
   @Transactional(readOnly = true)
   public FindCandidateDetailsResponseDto getProfile(Long candidateId) {
     Candidate candidate = getCandidate(candidateId);
-    List<FindCommentResponseDto> comments = commentQueryRepository
-        .findAllByCandidateId(candidateId);
-    return FindCandidateDetailsResponseDto.of(candidate, comments);
+    return FindCandidateDetailsResponseDto.of(candidate);
   }
 
   @Trace
@@ -55,33 +45,21 @@ public class CandidateService {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(requestDto.getCandidateId());
 
-    if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(
-        member.getId(),
-        candidate.getPoll().getId(),
-        LocalDateTime.now())) {
-      throw new CustomException(CustomErrorResult.ALREADY_VOTES);
-    }
+    validateVoteStatus(member, candidate);
 
-    CandidateHistory history = CandidateHistory.builder()
-        .member(member)
-        .candidate(candidate)
-        .voteCount(requestDto.getVoteCount())
-        .transactionId(requestDto.getTransactionId())
-        .build();
+    /* 후보자 투표 기록 생성 */
+    CandidateHistory candidateHistory = CandidateHistory.createCandidateHistory(member, candidate,
+        requestDto.getVoteCount(), requestDto.getTransactionId());
 
-    candidateHistoryRepository.save(history);
+    /* 후보자 투표 기록 추가 */
+    candidate.addHistory(candidateHistory);
   }
 
   @Trace
   public void canVoteToday(Long candidateId, Long memberId) {
     Member member = getMember(memberId);
     Candidate candidate = getCandidate(candidateId);
-    if (candidateHistoryQueryRepository.existsByMemberIdAndPollIdInToday(
-        member.getId(),
-        candidate.getPoll().getId(),
-        LocalDateTime.now().toLocalDate().atStartOfDay())) {
-      throw new CustomException(CustomErrorResult.ALREADY_VOTES);
-    }
+    validateVoteStatus(member, candidate);
   }
 
   @Trace
@@ -121,6 +99,15 @@ public class CandidateService {
   private void validateStatus(PollStatus pollStatus) {
     if (pollStatus == PollStatus.IN_PROGRESS || pollStatus == PollStatus.DONE) {
       throw new CustomException(CustomErrorResult.IMPOSSIBLE_STATUS_TO_MODIFY);
+    }
+  }
+
+  private void validateVoteStatus(Member member, Candidate candidate){
+    if (candidateQueryRepository.existsByMemberIdAndPollIdInToday(
+        member.getId(),
+        candidate.getPoll().getId(),
+        LocalDateTime.now().toLocalDate().atStartOfDay())) {
+      throw new CustomException(CustomErrorResult.ALREADY_VOTES);
     }
   }
 }
